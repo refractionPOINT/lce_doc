@@ -1,10 +1,13 @@
 # Detection and Response
 
-Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time. Think of it like a `lambda` in various programming languages. They can be added and removed from the web ui and they become immediately available/running as they are set. They are simple to read one-liners.
+Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
+Think of it like a `lambda` in various programming languages or in AWS. They can be added and removed with single operations
+and they become immediately available/running as they are set. They are simple to read one-liners.
 
-Besides using a lambda for matching on behaviors observed from sensors, you can also set a lambda that describes an action that should be taken when those occur.
+Besides using a lambda for matching on behaviors observed from sensors, you can also set a lambda that describes an
+action that should be taken when those occur.
 
-To give you a taste, here is a short term mitigation written for Wanacry (remember those fun few days) written in about 2 minutes:
+To give you a taste, here is a short term mitigation written for Wanacry written in about 2 minutes:
 
 **Match**:
 ```python
@@ -116,11 +119,12 @@ A `report( name = "detection_name", content = event )` function to create a dete
 And a `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
 
 ## Details
-To see details on various functions available, see [code](https://github.com/refractionPOINT/lc_cloud/blob/develop/beach/hcp/utils/EventInterpreter.py#L163).
 
 Additionally, complete event data is available through the `event.data` and metadata through `event.mtd`.
 
-More complex stateless detections, loaded by URL (like the old Capabilities system) are available, examples to follow. To load one, simple put the file URL in the `Matching` section instead of a lambda. The file must contain a class named the same name as the file. This class must have a prototype like this:
+More complex stateless detections, loaded by URL (like `https://...` or `file://...`) are available. To load
+one, simple put the file URL in the `rule` section instead of a lambda. The file must contain a class named the same
+name as the file. This class must have a prototype like this:
 
 ```python
 class SomeStatelessDetection( object ):
@@ -132,7 +136,8 @@ class SomeStatelessDetection( object ):
         pass
 ```
 
-Stateful detections are only available through the loading of a file (not lambdas) as mentioned above. The prototype for this is:
+Stateful detections are only available through the loading of a file (not lambdas) as mentioned above. The prototype
+for this is:
 
 ```python
 class SomeStatefulDetection( object )
@@ -145,7 +150,9 @@ class SomeStatefulDetection( object )
         pass
 ```
 
-More complex actions, loaded by URL (like the old Hunter in the Capabilities system) are available, examples to follow. To load one, simple put the file URL in the `Action` section instead of a lambda. The file must contain a class named the same name as the file. This class must have a prototype like this:
+More complex actions, loaded by URL are available. To load one, simple put the file URL in the `action` section
+instead of a lambda. The file must contain a class named the same name as the file. This class must have a prototype
+like this:
 
 ```python
 class SomeHunter( object )
@@ -157,7 +164,12 @@ class SomeHunter( object )
         pass
 ```
 
-Finally, a `Matching` section (lambda or complex file-based stateless detection) may return a `tuple()` instead of a simple boolean. If that is the case, the first element of the tuple is a `True`/`False` indication of whether a match was successful, and the second element is a context that will be passed to the `Action` section as a variable named `context` like: `( event.Process( pathEndsWith = ".evil" ), event.data.values()[ 0 ][ "base.FILE_PATH" ] )` to match on processes with a path ending in `.evil` and giving the `Action` section a `context` equal to the actual path in the event.
+Finally, a `rule` section (lambda or complex file-based stateless detection) may return a `tuple()` instead of a
+simple boolean. If that is the case, the first element of the tuple is a `True`/`False` indication of whether a
+match was successful, and the second element is a context that will be passed to the `action` section as a variable
+named `context` like: `( event.Process( pathEndsWith = ".evil" ), event.data.values()[ 0 ][ "base.FILE_PATH" ] )` to
+match on processes with a path ending in `.evil` and giving the `action` section a `context` equal to the actual path
+in the event.
 
 ## Use Cases
 | Case | Matching Rule | Action |
@@ -167,3 +179,15 @@ Finally, a `Matching` section (lambda or complex file-based stateless detection)
 | Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
 | Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com` subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
 | Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
+
+## Creating Rules
+* REST: `POST` to the `/rules`
+* RPC: `./rpc.py analytics/dr add_rule -d "{ 'name' : 'rule name', 'rule' : 'event.UserObserved( user = \'ceo\' )', 'action' : 'sensor.tag( \'vip\' )', 'by' : 'user 1' }"`
+
+## Deleting Rules
+* REST: `DELETE` to the `/rules`
+* RPC: `./rpc.py analytics/dr del_rule -d "{ 'name' : 'rule name', 'by' : 'user 1' }"`
+
+## Listing Rules
+* REST: `DELETE` to the `/rules`
+* RPC: `./rpc.py analytics/dr get_rules`
