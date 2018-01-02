@@ -16,6 +16,9 @@ Some common terms used:
 1. Copy LCE over.
 1. Make appliance with script: `./lce/infrastructure/appliance/make_scripts/make_lce_appliance.py`
 
+Once the install process is finished, a new user `lc` is created and everything that follows is located
+in that user's home directory (`/home/lc/`).
+
 ## Starting the Cluster
 An LCE cluster is a collection of appliances connected to each other in order to provide high availability and 
 scalability.
