@@ -8,11 +8,13 @@ To give you a taste, here is a short term mitigation written for Wanacry (rememb
 
 **Match**:
 ```python
-event.Process( pathEndsWith = '@wanadecryptor@.exe' )```
+event.Process( pathEndsWith = '@wanadecryptor@.exe' )
+```
 
 **Action**:
 ```python
-sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry' )```
+sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry' )
+```
 
 ## Matching Rules
 A matching rule that evaluates to `True` will "fire" the associated action (described below). The rule has available to it the `event` object that represents the event being evaluated, and the `sensor` object that has an `aid` variable that is the Agent Id where the event originates, and an `sensor.isTagged( "tag_name" )` method.
