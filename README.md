@@ -1,5 +1,9 @@
 # LimaCharlie Enterprise
 
+<img src="https://raw.github.com/refractionPOINT/limacharlie/master/doc/lc.png" width="150">
+
+By [Refraction Point](https://www.refractionpoint.com)
+
 ## Overview
 LimaCharlie Enterprise (LCE) is a specialized backend for the Open Source LimaCharlie (LC) endpoint 
 sensor focusing on enterprise features, stability and performance.
@@ -67,6 +71,7 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 ## Operations
 * [New Cluster](new_cluster.md)
 * [Appliance Operations](appliance_ops.md)
+* [Simple Configuration](simple_conf.md)
 * [Create Organization](new_org.md)
 * [Update Organization Module](update_org.md)
 * [Manage Installation Keys](manage_keys.md)
