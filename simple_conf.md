@@ -23,7 +23,7 @@ certain amount of time, you may have to wait, for reload components in order for
 
 Below is a sample config file showing the general format. We will focus on specific aspects of the file on the next sections.
 
-```
+```yaml
 # This is a sample config file that can be loaded into an LCE backend.
 # The 00000000-0000-0000-0000-000000000000 values will be replaced with new UUIDs.
 primary: 127.0.0.1
