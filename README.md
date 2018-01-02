@@ -77,5 +77,5 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Manage Installation Keys](manage_keys.md)
 * [Manage Tags](tagging.md)
 * [Manage Profiles](profiles.md)
-* [Manage Detection & Response Rules]()
+* [Manage Detection & Response Rules](dr.md)
 * [Connectivity]()
