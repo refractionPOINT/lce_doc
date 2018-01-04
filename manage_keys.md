@@ -1,3 +1,5 @@
+***[Back to documentation root](README.md)***
+
 # Managing Installation Keys
 Installation keys are the bits of text that you give to new sensors so that they may enroll properly in the organization you want.
 
