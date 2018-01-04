@@ -1,3 +1,5 @@
+***[Back to documentation root](README.md)***
+
 # Managing Profiles
 
 Profiles are used to specify a default behavior for the sensors. The main usage of the profiles is to specify which

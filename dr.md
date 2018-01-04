@@ -1,3 +1,5 @@
+***[Back to documentation root](README.md)***
+
 # Detection and Response
 
 Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.

@@ -1,3 +1,5 @@
+***[Back to documentation root](README.md)***
+
 # Simple Configuration
 
 The simple configuration mechanism is designed to provide a YAML based, simple, humand readable configuration file
