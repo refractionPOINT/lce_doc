@@ -88,6 +88,38 @@ Finally we call `start_node.py` to start the Beach service, which in turns conne
 ## Initial Configurations
 Before creating organizations or enrolling sensors, there are a few configuration values you will want to set.
 
+### Quick Start
+You can set the configurations and organizations in one shot by creating a [simple config file and loading it](simple_conf.md).
+Here is a sample initial config file you can use:
+
+```yaml
+# This is a sample config file that can be loaded into an LCE backend and will create a
+# single new org with a single new installation key.
+# The 00000000-0000-0000-0000-000000000000 values will be replaced with new UUIDs automatically.
+primary: lce1.mycompany.com
+primary_port: 443
+secondary: lce2.mycompany.com
+secondary_port: 443
+orgs:
+    00000000-0000-0000-0000-000000000000:
+        name: my_first_org
+        installation_keys:
+            00000000-0000-0000-0000-000000000000:
+                tags:
+                    - vip
+                desc: installation key for executives
+        outputs:
+            test_out_events:
+                for: event
+                module: file
+                dir: /tmp/lc_out_event/
+            test_out_detecs:
+                for: detect
+                module: file
+                dir: /tmp/lc_out_detect/
+```
+
+### Manual Way
 Each of those configurations can be set either using a `POST` to the `/{site}/configs` endpoint of the Control Plane or
 by issuing a RPC like this: `./rpc.py c2/deploymentmanager set_config -d "{ 'conf' : 'nameOfTheConfigToSet', 'value' : 'valueToSetTheConfigTo' }"`
 
@@ -99,5 +131,4 @@ by issuing a RPC like this: `./rpc.py c2/deploymentmanager set_config -d "{ 'con
 * `global/paging_from`: this is the "from" address to use with paging above.
 * `global/paging_password`: this is the password to authenticate with the paging above.
 
-## Ready to Go
 You can now start [creating organizations and enrolling sensor](new_org.md).
