@@ -89,17 +89,32 @@ Finally we call `start_node.py` to start the Beach service, which in turns conne
 Before creating organizations or enrolling sensors, there are a few configuration values you will want to set.
 
 ### Quick Start
-You can set the configurations and organizations in one shot by creating a [simple config file and loading it](simple_conf.md).
-Here is a sample initial config file you can use:
+Below are two small config files using the [simple config](simple_conf.md) mechanism. The first one will just define
+all the basic attributes of your cluster:
 
 ```yaml
+# File: main_config.yaml
+
+# Main domain name the sensor will attempt to reach:
+primary: lce1.mycompany.com
+primary_port: 443
+
+# Backup domain the sensor will contact:
+secondary: lce2.mycompany.com
+secondary_port: 443
+```
+
+Now load it: `./simpleconf.py --interface eth1 --load ./main_config.yaml`.
+
+The second config defines organizations in one shot.
+
+```yaml
+# File: org_config.yaml
+
 # This is a sample config file that can be loaded into an LCE backend and will create a
 # single new org with a single new installation key.
 # The 00000000-0000-0000-0000-000000000000 values will be replaced with new UUIDs automatically.
-primary: lce1.mycompany.com
-primary_port: 443
-secondary: lce2.mycompany.com
-secondary_port: 443
+
 orgs:
     00000000-0000-0000-0000-000000000000:
         name: my_first_org
@@ -118,6 +133,17 @@ orgs:
                 module: file
                 dir: /tmp/lc_out_detect/
 ```
+
+Now load it: `./simpleconf.py --interface eth1 --load ./org_config.yaml`.
+
+Finally set the default [profiles](profiles.md) to apply to all sensors:
+```shell
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.10000000.0', 'default_profile' : 'windows' }"
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.20000000.0', 'default_profile' : 'linux' }"
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.30000000.0', 'default_profile' : 'macos' }"
+```
+
+You're not good to go. Get the [installation key](manage_keys.md) you created and start deploying sensors.
 
 ### Manual Way
 Each of those configurations can be set either using a `POST` to the `/{site}/configs` endpoint of the Control Plane or
