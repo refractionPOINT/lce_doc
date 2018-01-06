@@ -14,7 +14,8 @@ The latest sensors are available here: [https://github.com/refractionPOINT/limac
 The `lc_sensor_XXXX.zip` is the sensor pack for version `XXXX`. This contains the specialized executables used by the LCE
 backend to drive the sensors. It is the component referred to in the configuration `sensor_package`.
 
-The other `lc_installer_PLATFORM_ARCH_VERSION` executables found at the link above are installers for the various supported platforms.
+The LC installers are available through the Refraction Point website at [https://sensors.refractionpoint.com/](https://sensors.refractionpoint.com/).
+The `lc_installer_PLATFORM_ARCH_VERSION` executables found at the link above are installers for the various supported platforms.
 Download the relevant one to the computer where you want to install LC.
 
 For example, if you wanted to install LC on a 64 bit Windows computer, you would use the `lc_installer_windows_64_3.7.0.1.exe` file.

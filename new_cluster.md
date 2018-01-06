@@ -63,7 +63,7 @@ The `start_backend.py` command starts the collection of common helful services f
   2. The Beach Patrol which takes care of monitoring for fallen actors in the Beach cluster and restarting them.
   3. The Control Plane which is the REST interface you can use to manage your LCE deployment (also supports multiple sites). Default port is `8888`.
   4. The Beach REST bridge which can be used to issue Beach RPCs over a generic REST interface. The Control Plane uses this to communicate with each site it connects to. Default port is `8889`.
-As the backend starts, the Beach Patrol will request you input a password for the root key and a password for the c2 key.
+As the backend starts, the Beach Patrol will request you input a password for the root key, a password for the c2 key and a password for the hbs keys.
 These passwords are used to encrypt/decrypt those sensitive keys in the database. The passwords are not stored on disk
 or in the database so that anyone gaining access to the database would not have easy access. You may alternatively
 provide the `--no-key-passwords` argument to `start_backend.py` or `start_all_in_one.py` to use a blank password and skip
