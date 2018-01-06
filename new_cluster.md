@@ -143,7 +143,7 @@ Finally set the default [profiles](profiles.md) to apply to all sensors:
 ./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.30000000.0', 'default_profile' : 'macos' }"
 ```
 
-You're not good to go. Get the [installation key](manage_keys.md) you created and start deploying sensors.
+You're now good to go. Get the [installation key](manage_keys.md) you created and start [deploying sensors](deploy_sensor.md).
 
 ### Manual Way
 Each of those configurations can be set either using a `POST` to the `/{site}/configs` endpoint of the Control Plane or
@@ -157,4 +157,4 @@ by issuing a RPC like this: `./rpc.py c2/deploymentmanager set_config -d "{ 'con
 * `global/paging_from`: this is the "from" address to use with paging above.
 * `global/paging_password`: this is the password to authenticate with the paging above.
 
-You can now start [creating organizations and enrolling sensor](new_org.md).
+You can now start [creating organizations](new_org.md) and [enrolling sensor](deploy_sensor.md).
