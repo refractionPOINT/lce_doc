@@ -8,6 +8,8 @@ By [Refraction Point](https://www.refractionpoint.com)
 LimaCharlie Enterprise (LCE) is a specialized backend for the Open Source LimaCharlie (LC) endpoint 
 sensor focusing on enterprise features, stability and performance.
 
+***Glossary [here](glossary.md)***
+
 ## Core Concepts
 ### Sensors
 The LC sensor is an Open Source cross platform endpoint sensor developed in C. Its source is available
