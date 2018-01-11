@@ -63,7 +63,7 @@ The `start_backend.py` command starts the collection of common helful services f
   2. The Beach Patrol which takes care of monitoring for fallen actors in the Beach cluster and restarting them.
   3. The Control Plane which is the REST interface you can use to manage your LCE deployment (also supports multiple sites). Default port is `8888`.
   4. The Beach REST bridge which can be used to issue Beach RPCs over a generic REST interface. The Control Plane uses this to communicate with each site it connects to. Default port is `8889`.
-As the backend starts, the Beach Patrol will request you input a password for the root key and a password for the c2 key.
+As the backend starts, the Beach Patrol will request you input a password for the root key, a password for the c2 key and a password for the hbs keys.
 These passwords are used to encrypt/decrypt those sensitive keys in the database. The passwords are not stored on disk
 or in the database so that anyone gaining access to the database would not have easy access. You may alternatively
 provide the `--no-key-passwords` argument to `start_backend.py` or `start_all_in_one.py` to use a blank password and skip
@@ -88,6 +88,64 @@ Finally we call `start_node.py` to start the Beach service, which in turns conne
 ## Initial Configurations
 Before creating organizations or enrolling sensors, there are a few configuration values you will want to set.
 
+### Quick Start
+Below are two small config files using the [simple config](simple_conf.md) mechanism. The first one will just define
+all the basic attributes of your cluster:
+
+```yaml
+# File: main_config.yaml
+
+# Main domain name the sensor will attempt to reach:
+primary: lce1.mycompany.com
+primary_port: 443
+
+# Backup domain the sensor will contact:
+secondary: lce2.mycompany.com
+secondary_port: 443
+```
+
+Now load it: `./simpleconf.py --interface eth1 --load ./main_config.yaml`.
+
+The second config defines organizations in one shot.
+
+```yaml
+# File: org_config.yaml
+
+# This is a sample config file that can be loaded into an LCE backend and will create a
+# single new org with a single new installation key.
+# The 00000000-0000-0000-0000-000000000000 values will be replaced with new UUIDs automatically.
+
+orgs:
+    00000000-0000-0000-0000-000000000000:
+        name: my_first_org
+        installation_keys:
+            00000000-0000-0000-0000-000000000000:
+                tags:
+                    - vip
+                desc: installation key for executives
+        outputs:
+            test_out_events:
+                for: event
+                module: file
+                dir: /tmp/lc_out_event/
+            test_out_detecs:
+                for: detect
+                module: file
+                dir: /tmp/lc_out_detect/
+```
+
+Now load it: `./simpleconf.py --interface eth1 --load ./org_config.yaml`.
+
+Finally set the default [profiles](profiles.md) to apply to all sensors:
+```shell
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.10000000.0', 'default_profile' : 'windows' }"
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.20000000.0', 'default_profile' : 'linux' }"
+./rpc.py c2/hbsprofilemanager set_profile -d "{ 'aid' : '0.0.0.30000000.0', 'default_profile' : 'macos' }"
+```
+
+You're now good to go. Get the [installation key](manage_keys.md) you created and start [deploying sensors](deploy_sensor.md).
+
+### Manual Way
 Each of those configurations can be set either using a `POST` to the `/{site}/configs` endpoint of the Control Plane or
 by issuing a RPC like this: `./rpc.py c2/deploymentmanager set_config -d "{ 'conf' : 'nameOfTheConfigToSet', 'value' : 'valueToSetTheConfigTo' }"`
 
@@ -99,5 +157,4 @@ by issuing a RPC like this: `./rpc.py c2/deploymentmanager set_config -d "{ 'con
 * `global/paging_from`: this is the "from" address to use with paging above.
 * `global/paging_password`: this is the password to authenticate with the paging above.
 
-## Ready to Go
-You can now start [creating organizations and enrolling sensor](new_org.md).
+You can now start [creating organizations](new_org.md) and [enrolling sensor](deploy_sensor.md).
