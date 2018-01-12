@@ -82,3 +82,4 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Manage Detection & Response Rules](dr.md)
 * [Sensor Commands](sensor_commands.md)
 * [Connectivity](connectivity.md)
+* [Output Configuration](outputs.md)
