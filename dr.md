@@ -118,7 +118,9 @@ The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`
 
 A `report( name = "detection_name", content = event )` function to create a detect.
 
-And a `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
+A `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
+
+And a `virustotal( hash )` to get a VirusTotal report for a hash.
 
 ## Details
 
@@ -179,7 +181,7 @@ in the event.
 | Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
 | Tagging a sensor when a process executes, like Developers. | `event.Process( pathEndsWith = 'devenv.exe' )` | `sensor.tag( 'developer' )` |
 | Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
-| Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com` subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
+| Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
 | Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
 
 ## Creating Rules
