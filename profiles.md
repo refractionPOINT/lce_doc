@@ -28,6 +28,9 @@ Learning the best way to customize profiles is to look at the [SensorConfig.py](
 There you can find the default profiles built in the `getDefaultWindowsProfile` function and base your profiles off of the
 `profile` variable as a simple Domain Specifi cLanguage.
 
+If you would like customizations to the profiles you use, do not hesitate to contact us at `support@refractionpoint.com` where
+we can help you.
+
 ## Listing Profiles
 Issue a `GET` to `/profiles` REST endpoint of the Control Plane
 or `rpc.py c2/hbsprofilemanager get_profiles`
