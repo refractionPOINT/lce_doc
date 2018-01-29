@@ -26,6 +26,7 @@ Output events and detections to an Amazon S3 bucket.
 ### SCP
 Output events and detections over SCP (SSH file transfer).
 
+* `dest_host`: the ip:port where to send the data to, like `1.2.3.4:22`.
 * `dir`: the directory where to output the files on the remote host.
 * `username`: the SSH username to log in with.
 * `password`: optional password to use to login with.

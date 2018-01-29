@@ -75,6 +75,9 @@ List all running processes on the sensor.
 ### os_autoruns
 List pieces of code executing at startup, similar to SysInternals autoruns.
 
+### os_version
+Get detailed OS information on the sensor.
+
 
 ## Anomalies
 
