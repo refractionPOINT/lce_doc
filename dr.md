@@ -18,7 +18,7 @@ event.Process( pathEndsWith = '@wanadecryptor@.exe' )
 
 **Action**:
 ```python
-sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry' )
+sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry' )
 ```
 
 ## Matching Rules
@@ -106,6 +106,38 @@ A matching rule that evaluates to `True` will "fire" the associated action (desc
 
 `isOutgoing = `: the network connection is outgoing.
 
+### Sensor Object
+The `sensor` object in the matching part and the action part support the following:
+* Send a command to the sensor: `sensor.Task( [ 'command', 'with', 'arguments' ], inv_id = 'some-id-to-include-in-related-events' )`.
+* Tag, untag and test tag presence: `sensor.tag( 'a-tag' )`, `sensor.untag( 'another-tag' )` and `sensor.isTagged( 'a-tag' )`.
+* Test to see if in organization: `sensor.inOrg( 'org_id' )`.
+* Test platform and architecture: `sensor.isWindows`, `sensor.isMacOSX`, `sensor.isLinux`, `sensor.is32Bit` and `sensor.is64Bit`.
+* The raw full agent id: `sensor.aid`.
+
+General routing information on the sensor: `sensor.routing` where routing is a dictionary containing the following:
+* Organization Id: `sensor.routing.oid`.
+* Installer Id: `sensor.routing.iid`.
+* Sensor Id: `sensor.routing.sid`.
+* Host Name: `sensor.routing.hostname`.
+* Internal IP: `sensor.routing.int_ip`.
+* External IP: `sensor.routing.ext_ip`.
+* Event Time: `sensor.routing.event_time`.
+* Event Id: `sensor.routing.event_id`.
+
+### Event Object
+Beyond the basic matching described above, the `event` object can do:
+
+Raw event data: `event.data`.
+Event type name: `event.dataType`.
+Get the atoms to relate events: `event.atom` and `event.parentAtom`.
+
+### Helpers
+Some other simple helper functions are available both in detection and action:
+
+A `virustotal( hash )` to get a VirusTotal report for a hash (dictionary of AV engines reporting Bad).
+
+A `geolocate( ip )` to get information on the geolocation of an IP as reported by [ip-api](https://ip-api.com).
+
 ### Examples
 `event.Dns( domainEndsWith = ".3322.org" ) and sensor.isTagged( "server" )`: matches all DNS requests to a domain ending with `.3322.org` and where the sensor has the "server" tag.
 
@@ -119,8 +151,6 @@ The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`
 A `report( name = "detection_name", content = event )` function to create a detect.
 
 A `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
-
-And a `virustotal( hash )` to get a VirusTotal report for a hash.
 
 ## Details
 
@@ -180,7 +210,7 @@ in the event.
 | ---- | ------------- | ------ |
 | Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
 | Tagging a sensor when a process executes, like Developers. | `event.Process( pathEndsWith = 'devenv.exe' )` | `sensor.tag( 'developer' )` |
-| Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom() ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
+| Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
 | Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
 | Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
 
