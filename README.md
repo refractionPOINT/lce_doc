@@ -42,7 +42,9 @@ data goes and where detections go to allow for faster response in your SOC.
 ## Core Concepts
 ### Sensors
 The LC sensor is an Open Source cross platform endpoint sensor developed in C. Its source is available
-[https://github.com/refractionpoint/limacharlie](here). It provides all the basic types of events needed
+[https://github.com/refractionpoint/limacharlie](here).
+
+It provides all the basic types of events needed
 for Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
 It also supports some more advanced features like intelligent local caching of events for in depth Incident Response (IR)
 as well as some forensic features like dumping memory.
@@ -100,9 +102,12 @@ function of the Detection & Response rules. This means you can send your bulk "e
 send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output).
 
 ## Operations
-* [New Cluster](new_cluster.md)
-* [Appliance Operations](appliance_ops.md)
-* [Simple Configuration](simple_conf.md)
+
+### Quick Start
+***If you are a cloud hosted LCE customer, this will get you started.***
+* [LCE Quick Start](lce_quick_start.md)
+
+### User Operations
 * [Create Organization](new_org.md)
 * [Update Organization Module](update_org.md)
 * [Manage Installation Keys](manage_keys.md)
@@ -110,6 +115,12 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Manage Profiles](profiles.md)
 * [Manage Detection & Response Rules](dr.md)
 * [Sensor Commands](sensor_commands.md)
-* [Connectivity](connectivity.md)
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
+
+### Appliance Operations
+***Unless you are running LCE on premise you don't need to know about this.***
+* [New Cluster](new_cluster.md)
+* [Appliance Operations](appliance_ops.md)
+* [Simple Configuration](simple_conf.md)
+* [Connectivity](connectivity.md)
