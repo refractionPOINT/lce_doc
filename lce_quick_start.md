@@ -5,7 +5,7 @@
 This quick start guide will take you from you receiving your LCE cloud hosted credentials to having sensors enrolled and
 seeing the data roll in.
 
-## Getting Yoour Bearings
+## Getting Your Bearings
 As part of your enrollment into the cloud hosted you should have received two pieces of information you will need.
 
 The first is the domain name of your REST API endpoint. Although this endpoint is mainly used for REST call, it also
