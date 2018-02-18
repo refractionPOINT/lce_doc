@@ -148,7 +148,7 @@ The action states what should happen when the matching rule "fires". It has acce
 
 The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`) to apply a new tag to the sensor, and `sensor.task( [ "command", "arg1", ... ] )` to send a tasking to the sensor. The actual commands are documented in the command line interface `admin_cli.py` that can be found [here](https://github.com/refractionPOINT/lc_cloud/blob/master/beach/hcp/admin_cli.py#L703).
 
-A `report( name = "detection_name", content = event )` function to create a detect.
+A `report( name = "detection_name", content = event, mtd = new_info, isPublish = True )` function to create a detect.
 
 A `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
 

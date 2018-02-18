@@ -10,10 +10,41 @@ sensor focusing on enterprise features, stability and performance.
 
 ***Glossary [here](glossary.md)***
 
+## Highlights
+### Fully Hosted or On Premise
+LCE is offered as a fully hosted platform or in some cases on premise. The hosted solution means you never have
+to worry about scaling or maintaining the platform. It also means you get access to your own LCE deployment giving
+you access to the full power of LCE like deploying your own D&R rules.
+
+Whatever configuration you deploy on, LCE will give you complete management over a REST interface or a basic web interface.
+This means you can trivially integrate with other solutions, any system can send commands to the endpoint sensors.
+
+### Detect & Response Rules
+Create extremely powerful rules on the fly to automate detection, mitigation or general endpoint management. These rules
+make it easy to leverage complex powerful external solutions like `virustotal( hash )`, `malwaredomains( domain )` and 
+`geolocate( ip )`. For example,
+want to stop Wanacry in its tracks?
+
+#### Detect
+```python
+event.Process( pathEndsWith = '@wanadecryptor@.exe' )
+```
+#### Respond
+```python
+sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( 'segregate_network' ) and report( name = 'wanacry' )
+```
+
+### Output Data
+Output the data where you want it and for however long you want it. Maintain ownership of your data, decide the retention.
+LCE can output data in realtime through tons of different methods like syslog, scp, file, Slack etc. Decide where the bulk
+data goes and where detections go to allow for faster response in your SOC.
+
 ## Core Concepts
 ### Sensors
 The LC sensor is an Open Source cross platform endpoint sensor developed in C. Its source is available
-[https://github.com/refractionpoint/limacharlie](here). It provides all the basic types of events needed
+[https://github.com/refractionpoint/limacharlie](here).
+
+It provides all the basic types of events needed
 for Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
 It also supports some more advanced features like intelligent local caching of events for in depth Incident Response (IR)
 as well as some forensic features like dumping memory.
@@ -71,9 +102,12 @@ function of the Detection & Response rules. This means you can send your bulk "e
 send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output).
 
 ## Operations
-* [New Cluster](new_cluster.md)
-* [Appliance Operations](appliance_ops.md)
-* [Simple Configuration](simple_conf.md)
+
+### Quick Start
+***If you are a cloud hosted LCE customer, this will get you started.***
+* [LCE Quick Start](lce_quick_start.md)
+
+### User Operations
 * [Create Organization](new_org.md)
 * [Update Organization Module](update_org.md)
 * [Manage Installation Keys](manage_keys.md)
@@ -81,6 +115,12 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Manage Profiles](profiles.md)
 * [Manage Detection & Response Rules](dr.md)
 * [Sensor Commands](sensor_commands.md)
-* [Connectivity](connectivity.md)
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
+
+### Appliance Operations
+***Unless you are running LCE on premise you don't need to know about this.***
+* [New Cluster](new_cluster.md)
+* [Appliance Operations](appliance_ops.md)
+* [Simple Configuration](simple_conf.md)
+* [Connectivity](connectivity.md)
