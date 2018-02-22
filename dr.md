@@ -138,6 +138,8 @@ A `virustotal( hash )` to get a VirusTotal report for a hash (dictionary of AV e
 
 A `geolocate( ip )` to get information on the geolocation of an IP as reported by [ip-api](https://ip-api.com).
 
+A `malwaredomains( domain )` to get information on a domain from [malwaredomains.com](https://malwaredomains.com).
+
 ### Examples
 `event.Dns( domainEndsWith = ".3322.org" ) and sensor.isTagged( "server" )`: matches all DNS requests to a domain ending with `.3322.org` and where the sensor has the "server" tag.
 
