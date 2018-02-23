@@ -1,6 +1,6 @@
 # LimaCharlie Enterprise
 
-<img src="https://raw.github.com/refractionPOINT/limacharlie/master/doc/lc.png" width="150">
+<img src="https://lcio.nyc3.digitaloceanspaces.com/lc.png" width="150">
 
 By [Refraction Point](https://www.refractionpoint.com)
 
@@ -41,8 +41,7 @@ data goes and where detections go to allow for faster response in your SOC.
 
 ## Core Concepts
 ### Sensors
-The LC sensor is an Open Source cross platform endpoint sensor developed in C. Its source is available
-[https://github.com/refractionpoint/limacharlie](here).
+The LC sensor is a cross platform endpoint sensor developed in C.
 
 It provides all the basic types of events needed
 for Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
