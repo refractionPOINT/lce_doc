@@ -140,6 +140,8 @@ A `geolocate( ip )` to get information on the geolocation of an IP as reported b
 
 A `malwaredomains( domain )` to get information on a domain from [malwaredomains.com](https://malwaredomains.com).
 
+A `coinblockerlists( domain )` to know if a domain is present in the lists from [CoinBlockerLists](https://zerodot1.github.io/CoinBlockerLists/).
+
 ### Examples
 `event.Dns( domainEndsWith = ".3322.org" ) and sensor.isTagged( "server" )`: matches all DNS requests to a domain ending with `.3322.org` and where the sensor has the "server" tag.
 
