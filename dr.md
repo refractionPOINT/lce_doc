@@ -217,6 +217,7 @@ in the event.
 | Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
 | Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
 | Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
+| Segregate the network if a bitcoin miner domain is accessed by anyone except servers. | `coinblockerlists( event ) and not sensor.isTagged( 'server' )` | `report( 'bitcoin-minor-segregated' ) and sensor.task( [ 'segregate_network' ] )` |
 
 ## Creating Rules
 * REST: `POST` to the `/rules`
