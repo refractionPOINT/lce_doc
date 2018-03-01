@@ -38,3 +38,12 @@ or `rpc.py c2/hbsprofilemanager get_profiles`
 ## Deleting Profiles
 Issue a `DELETE` to `/profiles` REST endpoint of the Control Plane
 or `rpc.py c2/hbsprofilemanager del_profile -d "{ 'aid' : '00000000-0000-0000-0000-000000000000', 'tag' : [ 'tagOfProfileDelete' ] }"`
+
+## Profile Matching Priority
+When looking for a profile to match a sensor, a specific search order is used:
+1. Evaluate rules that refer to a specific Sensor ID.
+1. Evaluate rules that refer to a specific Organization ID.
+1. Evaluate all other rules.
+
+Within each of those evaluations, a rule that specifies both an AgentID ***and*** a Tag will have priority over a rule
+that only matches an AgentID.
