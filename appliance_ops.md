@@ -51,3 +51,7 @@ about the current execution of the micro-service.
 
 Try it: `rpc.py c2/endpoint z --is-broadcast`. You should see a lot of metrics being printed to the screen. The 
 `--is-broadcast` says that the RPC should be sent to *all* instances of that micro-service, not just one (the default).
+
+## Removing Node From Cluster
+If you intend on removing a node permanently from the cluster, use the `decommission_node.py` script. This will ensure
+that any steps needed to leave the cluster in a clean way are taken.
