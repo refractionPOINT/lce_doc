@@ -216,7 +216,9 @@ in the event.
 
 | Case | Matching Rule | Action |
 | ---- | ------------- | ------ |
-| Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
+| Tagging a sensor when a user logs in, like VIPs. | ```python                          | ```python           |
+|                                                  | event.UserObserved( user = 'ceo' ) | sensor.tag( 'vip' ) |                      |
+|                                                  | ```                                | ```                 |
 | Tagging a sensor when a process executes, like Developers. | `event.Process( pathEndsWith = 'devenv.exe' )` | `sensor.tag( 'developer' )` |
 | Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
 | Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
