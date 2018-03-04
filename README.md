@@ -117,6 +117,10 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
 
+### Reference
+* [Collectors](collectors.md)
+* [Events](events.md)
+
 ### Appliance Operations
 ***Unless you are running LCE on premise you don't need to know about this.***
 * [New Cluster](new_cluster.md)
