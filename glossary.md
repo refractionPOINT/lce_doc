@@ -1,3 +1,5 @@
+***[Back to documentation root](README.md)***
+
 # Glossary
 
 | Term | Description

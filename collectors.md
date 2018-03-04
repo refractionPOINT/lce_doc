@@ -2,6 +2,7 @@
 
 # Collectors
 
+* TOC
 {:toc}
 
 Sensor capabilities are grouped by components called Collectors. Each Collector will generally provide a single or small suite

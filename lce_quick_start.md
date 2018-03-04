@@ -2,6 +2,7 @@
 
 # LCE Quick Start
 
+* TOC
 {:toc}
 
 This quick start guide will take you from you receiving your LCE cloud hosted credentials to having sensors enrolled and

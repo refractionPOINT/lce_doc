@@ -1,4 +1,9 @@
+***[Back to documentation root](README.md)***
+
 # Splunk
+
+* TOC
+{:toc}
 
 Splunk can easily be configured to ingest LimaCharlie data.
 
