@@ -2,7 +2,7 @@
 
 # Deploying Sensors
 
-The LimaCharlie sensor is open source and available [here](https://github.com/refractionpoint/limacharlie).
+The latest version of the LimaCharlie sensor is available [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
 
 The sensor is signed and the same for everyone. The sensor's home and keying is done at installation time based
 on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect

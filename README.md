@@ -1,6 +1,6 @@
 # LimaCharlie Enterprise
 
-<img src="https://raw.github.com/refractionPOINT/limacharlie/master/doc/lc.png" width="150">
+<img src="https://lcio.nyc3.digitaloceanspaces.com/lc.png" width="150">
 
 By [Refraction Point](https://www.refractionpoint.com)
 
@@ -41,8 +41,7 @@ data goes and where detections go to allow for faster response in your SOC.
 
 ## Core Concepts
 ### Sensors
-The LC sensor is an Open Source cross platform endpoint sensor developed in C. Its source is available
-[https://github.com/refractionpoint/limacharlie](here).
+The LC sensor is a cross platform endpoint sensor developed in C.
 
 It provides all the basic types of events needed
 for Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
@@ -117,6 +116,10 @@ send all the important "detect" data to a Splunk instance or a Slack channel (us
 * [Sensor Commands](sensor_commands.md)
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
+
+### Reference
+* [Collectors](collectors.md)
+* [Events](events.md)
 
 ### Appliance Operations
 ***Unless you are running LCE on premise you don't need to know about this.***
