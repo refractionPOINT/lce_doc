@@ -2,6 +2,9 @@
 
 # Simple Configuration
 
+* TOC
+{:toc}
+
 The simple configuration mechanism is designed to provide a YAML based, simple, humand readable configuration file
 format that can be used for a two main purposes:
 

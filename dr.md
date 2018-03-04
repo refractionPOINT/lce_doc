@@ -2,6 +2,7 @@
 
 # Detection and Response
 
+* TOC
 {:toc}
 
 Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
