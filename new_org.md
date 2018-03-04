@@ -2,6 +2,9 @@
 
 # New Organization
 
+* TOC
+{:toc}
+
 ## Creating the Organization
 Creating an organization is easy and involves two simple parameters. The first parameter is the name of the new organization.
 The name doesn't have to be anything special since it's only used as a human reference, internally a UUID identifies the organization.

@@ -2,6 +2,9 @@
 
 # Appliance Operations
 
+* TOC
+{:toc}
+
 The LCE appliance is designed to operate either standalone or to cluster with other LCE appliances.
 
 ***If you're looking for how to setup a new cluster, see [this](new_cluster.md).***

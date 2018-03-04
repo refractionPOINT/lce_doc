@@ -2,6 +2,9 @@
 
 # Deploying Sensors
 
+* TOC
+{:toc}
+
 The latest version of the LimaCharlie sensor is available [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
 
 The sensor is signed and the same for everyone. The sensor's home and keying is done at installation time based

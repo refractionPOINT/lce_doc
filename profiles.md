@@ -2,6 +2,9 @@
 
 # Managing Profiles
 
+* TOC
+{:toc}
+
 Profiles are used to specify a default behavior for the sensors. The main usage of the profiles is to specify which
 events generated in the sensor are sent back to the cloud automatically. Since the sensors generate a lot of events
 we usually want a subset of them to come back.
