@@ -2,6 +2,8 @@
 
 # Sensor Commands
 
+{:toc}
+
 Sensor commands are commands that can be sent to the sensor (through the backend as an intermediary) to do various things.
 These commands may rely on various collectors that may or may not be enabled on the sensor (see [Profiles](profiles.md) 
 for instructions on enabling and disabling collectors).
