@@ -2,6 +2,8 @@
 
 # Events
 
+{:toc}
+
 Below is a list of all the events available in LC along with a sample output. Please note that there may be some variability between platforms.
 
 ## Common Information
