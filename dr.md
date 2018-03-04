@@ -210,6 +210,7 @@ match on processes with a path ending in `.evil` and giving the `action` section
 in the event.
 
 ## Use Cases
+
 | Case | Matching Rule | Action |
 | ---- | ------------- | ------ |
 | Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
