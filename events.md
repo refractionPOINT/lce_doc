@@ -4,7 +4,18 @@
 
 Below is a list of all the events available in LC along with a sample output. Please note that there may be some variability between platforms.
 
-## STARTING_UP
+## Common Information
+
+Some common elements to events are worth pointing out.
+
+* THIS_ATOM is a UUID generated for every event in the sensor.
+* PARENT_ATOM is a reference to the parent event's THIS_ATOM, providing strong relationships (much more reliable than simple process IDs)
+between the events. This allows you to get the extremely powerful explorer view.
+* TIMESTAMP is the time (UTC) the sensor produced the event.
+
+## Events Listing
+
+### STARTING_UP
 
 ```json
 {
@@ -14,7 +25,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## SHUTTING_DOWN
+### SHUTTING_DOWN
 
 ```json
 {
@@ -24,7 +35,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## NEW_PROCESS
+### NEW_PROCESS
 
 ```json
 {
@@ -52,7 +63,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## TERMINATE_PROCESS
+### TERMINATE_PROCESS
 
 ```json
 {
@@ -66,7 +77,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## DNS_REQUEST
+### DNS_REQUEST
 
 ```json
 {
@@ -81,7 +92,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## CODE_IDENTITY
+### CODE_IDENTITY
 
 ```json
 {
@@ -102,7 +113,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## NEW_TCP4_CONNECTION
+### NEW_TCP4_CONNECTION
 
 ```json
 {
@@ -124,7 +135,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## NEW_UDP4_CONNECTION
+### NEW_UDP4_CONNECTION
 
 ```json
 {
@@ -139,9 +150,9 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## HIDDEN_MODULE_DETECTED
+### HIDDEN_MODULE_DETECTED
 
-## MODULE_LOAD
+### MODULE_LOAD
 
 ```json
 {
@@ -158,7 +169,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## FILE_CREATE
+### FILE_CREATE
 
 ```json
 {
@@ -171,7 +182,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## FILE_DELETE
+### FILE_DELETE
 
 ```json
 {
@@ -184,7 +195,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## NETWORK_SUMMARY
+### NETWORK_SUMMARY
 
 ```json
 {
@@ -240,31 +251,31 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## FILE_GET_REP
+### FILE_GET_REP
 
-## FILE_DEL_REP
+### FILE_DEL_REP
 
-## FILE_MOV_REP
+### FILE_MOV_REP
 
-## FILE_HASH_REP
+### FILE_HASH_REP
 
-## FILE_INFO_REP
+### FILE_INFO_REP
 
-## DIR_LIST_REP
+### DIR_LIST_REP
 
-## MEM_MAP_REP
+### MEM_MAP_REP
 
-## MEM_READ_REP
+### MEM_READ_REP
 
-## MEM_HANDLES_REP
+### MEM_HANDLES_REP
 
-## MEM_FIND_HANDLES_REP
+### MEM_FIND_HANDLES_REP
 
-## MEM_STRINGS_REP
+### MEM_STRINGS_REP
 
-## MEM_FIND_STRING_REP
+### MEM_FIND_STRING_REP
 
-## OS_SERVICES_REP
+### OS_SERVICES_REP
 
 ```json
 {
@@ -293,7 +304,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 .....
 ```
 
-## OS_DRIVERS_REP
+### OS_DRIVERS_REP
 
 ```json
 {
@@ -320,11 +331,11 @@ Below is a list of all the events available in LC along with a sample output. Pl
 .....
 ```
 
-## OS_KILL_PROCESS_REP
+### OS_KILL_PROCESS_REP
 
-## OS_PROCESSES_REP
+### OS_PROCESSES_REP
 
-## OS_AUTORUNS_REP
+### OS_AUTORUNS_REP
 
 ```json
 {
@@ -345,9 +356,9 @@ Below is a list of all the events available in LC along with a sample output. Pl
 .....
 ```
 
-## HISTORY_DUMP_REP
+### HISTORY_DUMP_REP
 
-## EXEC_OOB
+### EXEC_OOB
 
 ```json
 {
@@ -387,11 +398,11 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## MODULE_MEM_DISK_MISMATCH
+### MODULE_MEM_DISK_MISMATCH
 
-## YARA_DETECTION
+### YARA_DETECTION
 
-## SERVICE_CHANGE
+### SERVICE_CHANGE
 
 ```json
 {
@@ -410,7 +421,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## DRIVER_CHANGE
+### DRIVER_CHANGE
 
 ```json
 {
@@ -426,9 +437,9 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## AUTORUN_CHANGE
+### AUTORUN_CHANGE
 
-## FILE_MODIFIED
+### FILE_MODIFIED
 
 ```json
 {
@@ -441,7 +452,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## NEW_DOCUMENT
+### NEW_DOCUMENT
 
 ```json
 {
@@ -455,9 +466,9 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## GET_DOCUMENT_REP
+### GET_DOCUMENT_REP
 
-## USER_OBSERVED
+### USER_OBSERVED
 
 ```json
 {
@@ -470,7 +481,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 }
 ```
 
-## FILE_TYPE_ACCESSED
+### FILE_TYPE_ACCESSED
 
 ```json
 {
