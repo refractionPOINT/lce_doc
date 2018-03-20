@@ -21,7 +21,7 @@ event.Process( pathEndsWith = '@wanadecryptor@.exe' )
 
 **Action**:
 ```python
-sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry' )
+sensor.task( [ 'deny_tree ' + event.atom, 'history_dump' ] ) and report( name = 'wanacry' )
 ```
 
 ## Matching Rules
@@ -111,7 +111,7 @@ A matching rule that evaluates to `True` will "fire" the associated action (desc
 
 ### Sensor Object
 The `sensor` object in the matching part and the action part support the following:
-* Send a command to the sensor: `sensor.Task( [ 'command', 'with', 'arguments' ], inv_id = 'some-id-to-include-in-related-events' )`.
+* Send a command (or list of) to the sensor: `sensor.Task( [ 'command --with arguments' ], inv_id = 'some-id-to-include-in-related-events' )` as documented [here](sensor_commands.md).
 * Tag, untag and test tag presence: `sensor.tag( 'a-tag' )`, `sensor.untag( 'another-tag' )` and `sensor.isTagged( 'a-tag' )`.
 * Test to see if in organization: `sensor.inOrg( 'org_id' )`.
 * Test platform and architecture: `sensor.isWindows`, `sensor.isMacOSX`, `sensor.isLinux`, `sensor.is32Bit` and `sensor.is64Bit`.
@@ -153,7 +153,7 @@ A `coinblockerlists( domain )` to know if a domain is present in the lists from 
 ## Action
 The action states what should happen when the matching rule "fires". It has access to the `event` object (like the Matching rules) and the `sensor` object.
 
-The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`) to apply a new tag to the sensor, and `sensor.task( [ "command", "arg1", ... ] )` to send a tasking to the sensor. The actual commands are documented in the command line interface `admin_cli.py` that can be found [here](https://github.com/refractionPOINT/lc_cloud/blob/master/beach/hcp/admin_cli.py#L703).
+The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`) to apply a new tag to the sensor, and `sensor.task( [ "command arg1 ..." ] )` to send a tasking to the sensor as documented [here](sensor_commands.md).
 
 A `report( name = "detection_name", content = event, mtd = new_info, isPublish = True )` function to create a detect.
 
@@ -218,8 +218,8 @@ in the event.
 | ---- | ------------- | ------ |
 | Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
 | Tagging a sensor when a process executes, like Developers. | `event.Process( pathEndsWith = 'devenv.exe' )` | `sensor.tag( 'developer' )` |
-| Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( [ 'deny_tree', event.atom ] ) and sensor.task( [ 'history_dump' ] ) and report( name = 'wanacry', content = event )` |
-| Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( [ 'history_dump' ] )` |
+| Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( 'deny_tree ' + event.atom ) and sensor.task( 'history_dump' ) and report( name = 'wanacry', content = event )` |
+| Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( 'history_dump' )` |
 | Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
 | Segregate the network if a bitcoin miner domain is accessed by anyone except servers. | `coinblockerlists( event ) and not sensor.isTagged( 'server' )` | `report( 'bitcoin-minor-segregated' ) and sensor.task( [ 'segregate_network' ] )` |
 
