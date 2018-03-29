@@ -35,7 +35,16 @@ Output events and detections over SCP (SSH file transfer).
 * `dir`: the directory where to output the files on the remote host.
 * `username`: the SSH username to log in with.
 * `password`: optional password to use to login with.
-* `secret_key`: the SSH private key to authenticate with.
+* `secret_key`: the optional SSH private key to authenticate with.
+
+### SFTP
+Output events and detections over SFTP.
+
+* `dest_host`: the ip:port where to send the data to, like `1.2.3.4:22`.
+* `dir`: the directory where to output the files on the remote host.
+* `username`: the username to log in with.
+* `password`: optional password to use to login with.
+* `secret_key`: the optional SSH private key to authenticate with.
 
 ### Slack
 Output detections (only) to a Slack community and channel.
