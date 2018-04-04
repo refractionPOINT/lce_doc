@@ -98,16 +98,18 @@ and analysis. Where that data is sent depends on which Outputs are activated. Yo
 active, so you can send it to two different syslog destinations using the Syslog Output module and then send it two
 some cold storage over an Scp Output module.
 
-Output is also split between two categories: "event" and "detect". Event will be a stream containing the all raw data from
+Output is also split between two categories: "event", "detect" and "audit". Event will be a stream containing the all raw data from
 all the sensors, so it tends to be a large amount of data. Detect is a stream of detections generated through the `report`
 function of the Detection & Response rules. This means you can send your bulk "event" data to a cheap cold storage and
-send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output).
+send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output). The "audit" stream
+receives all auditing events produced by LCE and is useful for compliance.
 
 ## Operations
 
 ### Quick Start
-***If you are a cloud hosted LCE customer, this will get you started.***
-* [LCE Quick Start](lce_quick_start.md)
+***If you are a cloud hosted customer, this will get you started.***
+* [LimaCharlie Enterprise Quick Start](lce_quick_start.md)
+* [LimaCharlie Cloud Quick Start](lcc_quick_start.md)
 
 ### User Operations
 * [Create Organization](new_org.md)

@@ -5,11 +5,16 @@
 * TOC
 {:toc}
 
-The latest version of the LimaCharlie sensor is available [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
+A machine-readable (YAML) link to the latest version of the LimaCharlie Enterprise sensor is [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
 
-The sensor is signed and the same for everyone. The sensor's home and keying is done at installation time based
-on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect
+Direct links are also available from [LimaCharlie.io](https://limacharlie.io).
+
+The sensor is signed and the same for everyone. The sensor's customization (who is the owner) is done at installation time
+based on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect
 to enroll as well as the encryption key used to start the enrollment process.
+
+Installing the sensor does not require a reboot. Also note that once installed the sensor does not have any visual components
+so instructions on confirming it is installed and running are found below.
 
 ## Downloading the Sensors
 The latest sensor packs are available here: [https://github.com/refractionPOINT/limacharlie/releases/latest](https://github.com/refractionPOINT/limacharlie/releases/latest).
@@ -32,9 +37,16 @@ Before installing, you will need the [installation key](manage_keys.md) you want
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a Windows service and trigger its enrollment.
 
+#### Checking it Runs
+In an administrative command prompt issue the command `sc query rphcpsvc` and confirm the `STATE` displayed is `RUNNING`.
+
 ### MacOS
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a launchctl service and trigger its enrollment.
+
+#### Checking it Runs
+In a Terminal, run the command `sudo launchctl list | grep com.refractionpoint.rphcp` which should return a single record with
+the first column of the output being a number (a `-` indicates it is NOT running).
 
 *Important Note*
 
