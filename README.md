@@ -107,8 +107,9 @@ receives all auditing events produced by LCE and is useful for compliance.
 ## Operations
 
 ### Quick Start
-***If you are a cloud hosted LCE customer, this will get you started.***
-* [LCE Quick Start](lce_quick_start.md)
+***If you are a cloud hosted customer, this will get you started.***
+* [LimaCharlie Enterprise Quick Start](lce_quick_start.md)
+* [LimaCharlie Cloud Quick Start](lcc_quick_start.md)
 
 ### User Operations
 * [Create Organization](new_org.md)
