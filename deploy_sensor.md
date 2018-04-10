@@ -75,3 +75,12 @@ simply specifying the location of the installer, the `-d INSTALLATION_KEY` param
 directory is the directory where you want the few sensor-related files written to disk to reside.
 
 Common Linux packages may be available in the future.
+
+# Uninstalling the Sensor
+Using an installer, as administrator / root, simply invoke it with one of:
+
+`-r` to remove the sensor but leave in place the identity files. This means that although the sensor is no longer running, 
+re-running an installer will re-use the previous sensor config (where to connect, sensor id etc) instead of creating a new one.
+
+`-c` to remove EVERYTHING. This means that after a `-c`, the previous sensor's identity is no longer recoverable. Installing a
+new sensor on the same host will result in a brand new sensor registering with the cloud.

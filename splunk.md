@@ -23,3 +23,7 @@ disabled = false
 sourcetype = limacharlie
 move_policy = sinkhole
 ```
+
+## App
+A basic Splunk App is available to help you start going through the LimaCharlie data. 
+It is currently available [here](https://lcio.nyc3.digitaloceanspaces.com/lce.spl)
