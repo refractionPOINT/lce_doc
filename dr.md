@@ -26,8 +26,8 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 ```json
 { 
-    'op': "and", 
-    'rules' : [
+    "op": "and", 
+    "rules" : [
         {
             "op": "is linux",
             "event": "STARTING_UP"
@@ -214,7 +214,7 @@ Simple WanaCry detection and mitigation rule:
 
 
 ### Classify Users
-Tag any sensor where the CEO logs in with 'vip'.
+Tag any sensor where the CEO logs in with "vip".
 
 **Detect**
 ```json
