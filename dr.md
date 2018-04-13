@@ -123,7 +123,7 @@ Example:
 {
     "op": "matches",
     "path": "FILE_PATH",
-    "re": ".*\\system32\\.*\.scr",
+    "re": ".*\\\\system32\\\\.*\\.scr",
     "case sensitive": false
 }
 ```
