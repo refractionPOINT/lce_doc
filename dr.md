@@ -34,7 +34,7 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
         },
         {
             "op" : "is tagged",
-            "tag": test_tag
+            "tag": "test_tag"
         }
     ]
 }
