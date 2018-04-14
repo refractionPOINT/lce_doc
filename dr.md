@@ -236,3 +236,13 @@ Tag any sensor where the CEO logs in with "vip".
     }
 ]
 ```
+
+### Suspicious Windows Executable Names
+```json
+{
+    "op": "matches",
+    "path": "event/FILE_PATH",
+    "case sensitive": false,
+    "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
+}
+```
