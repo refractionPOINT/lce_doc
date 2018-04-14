@@ -7,230 +7,242 @@
 
 Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
 Think of it like a `lambda` in various programming languages or in AWS. They can be added and removed with single operations
-and they become immediately available/running as they are set. They are simple to read one-liners.
+and they become immediately available/running as they are set. 
 
-Besides using a lambda for matching on behaviors observed from sensors, you can also set a lambda that describes an
-action that should be taken when those occur.
+A D&R rule has two components:
+* the Detection part of the rule is a simple expression that describes what the rule should match on.
+* the response part of the rule describes the list of actions that should be taken when the rule matches.
 
-To give you a taste, here is a short term mitigation written for Wanacry written in about 2 minutes:
+The REST interface expects those rules in their native JSON format (as descrbed below), but UIs to generate this
+format will be available if you are uncomfortable with the JSON.
 
-**Match**:
-```python
-event.Process( pathEndsWith = '@wanadecryptor@.exe' )
+## Detection Component
+Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
+by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
+operations to perform.
+
+Here is a basic example of a rule that says:
+When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
+
+```json
+{ 
+    "op": "and", 
+    "rules" : [
+        {
+            "op": "is linux",
+            "event": "STARTING_UP"
+        },
+        {
+            "op" : "is tagged",
+            "tag": "test_tag"
+        }
+    ]
+}
 ```
 
-**Action**:
-```python
-sensor.task( [ 'deny_tree ' + event.atom, 'history_dump' ] ) and report( name = 'wanacry' )
+The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the event type of the event being
+evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter for the event being one of the types
+in the list.
+
+### Logical Operations
+Some parameters are available to all logical operations.
+* `"not": true`: will reverse the matching outcome of an operations.
+* `"case sensitive": false`: will turn all string-based evaluations to ignore case.
+
+A recurring parameter also found in many operations is the `"path": <>` parameter. It represents a path within the event
+being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
+`*` wildcard to represent 0 or many number of directories as well as the `?` wildcard that represents exactly one directory.
+
+The root of the path should be `event` or `routing` depending on whether you want to get a value from the event itself or
+the routing instead.
+
+Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing 
+a value to a literal like `"system32"`, can also support a value of `"<<event/PARENT/FILE_PATH>>"`. When that value is 
+surrounded by `"<<"` and `">>"`, the value located in between will be interpreted as a path within the event and the
+value at that path will replace the `"<<...>>"` value. This allows you to "look back" at the event and use values
+within for your rule.
+
+For example, this sample JSON event:
+```json
+{
+    "USER_ID": 501, 
+    "PARENT": {
+        "USER_ID": 501, 
+        "COMMAND_LINE": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host 71954", 
+        "PROCESS_ID": 71955, 
+        "USER_NAME": "maxime", 
+        "FILE_PATH": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host", 
+        "PARENT_PROCESS_ID": 71954,
+        "DEEP_HASH": {
+            "HASH_VALUE": "ufs8f8hfinsfd9sfdsf"
+        }
+    }, 
+    "TIMESTAMP": 1523626989645, 
+    "PARENT_ATOM": "bc21716094d2cbcb74e502519c7be33e", 
+    "THIS_ATOM": "a66eaddba1eface39988865828caa29e", 
+    "PROCESS_ID": 23819, 
+    "FILE_PATH": "/Applications/Xcode.app/Contents/Developer/usr/bin/git", 
+    "PARENT_PROCESS_ID": 71955
+}
 ```
 
-## Matching Rules
-A matching rule that evaluates to `True` will "fire" the associated action (described below). The rule has available to it the `event` object that represents the event being evaluated, and the `sensor` object that has an `aid` variable that is the Agent Id where the event originates, and an `sensor.isTagged( "tag_name" )` method.
+The following paths with their result element:
+* `event/USER_ID` results in `501`
+* `event/?/USER_NAME` results in `"maxime"`
+* `event/PARENT/PROCESS_ID` results in `71955`
+* `event/*/HASH_VALUE` results in `ufs8f8hfinsfd9sfdsf`
 
-### Event Selection
-`event.Process()`: the rule will only apply to events that contain process information.
+#### and, or
+The standard logical boolean operations to combine other logical operations. Take a single `"rules" : []` parameter
+with the logical operations to apply the boolean logic to.
 
-`event.ParentProcess()`: access the parent process of the event, if it is contained within the same event.
+#### is
+Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
+parameter.
 
-`event.Dns()`: the rule will only apply to `DNS_REQUEST` events.
-
-`event.Hash()`: the rule will only apply to events that report the hash of a piece of code.
-
-`event.NetworkSummary()`: the rule will only apply to `NETWORK_SUMMARY` events.
-
-`event.Connections()`: the rule will only apply to events that contain network connection information.
-
-`event.UserObserved()`: the rule will only apply to `USER_OBSERVED` events.
-
-`event.StartingUp()`: the rule will only apply to `STARTING_UP` events.
-
-`event.Sync()`: the rule will only apply to `SYNC` events.
-
-### Characteristic Selection
-`path = `: the file path equals.
-
-`pathEndsWith = `: the file path ends with.
-
-`pathStartsWith = `: the file path starts with.
-
-`pathMatches = `: the file path matches the regular expression.
-
-`commandLine = `: the process command line equals.
-
-`commandLineEndsWith = `: the process command line ends with.
-
-`commandLineStartsWith = `: the process command line starts with.
-
-`commandLineMatches = `: the process command line matches the regular expression.
-
-`user = `: the user name equals.
-
-`userEndsWith = `: the user name ends with.
-
-`userStartsWith = `: the user name starts with.
-
-`userMatches = `: the user name matches the regular expression.
-
-`domain = `: the domain name equals.
-
-`domainEndsWith = `: the domain name ends with.
-
-`domainStartsWith = `: the domain name starts with.
-
-`domainMatches = `: the domain name matches the regular expression.
-
-`cname = `: the CNAME (in a DNS request) equals.
-
-`cnameEndsWith = `: the CNAME (in a DNS request) ends with.
-
-`cnameStartsWith = `: the CNAME (in a DNS request) starts with.
-
-`cnameMatches = `: the CNAME (in a DNS request) matches the regular expression.
-
-`ip = `: the IP address equals.
-
-`ipEndsWith = `: the IP address ends with.
-
-`ipStartsWith = `: the IP address starts with.
-
-`ipIn = `: the IP address is within the network (CIDR notation).
-
-`hash = `: the hash (sha256) equals.
-
-`userId = `: the user id (as in 0 == `root`) equals.
-
-`dstIpIn = `: the destination IP address is within the network (CIDR notation).
-
-`srcIpIn = `: the source IP address is within the network (CIDR notation).
-
-`dstPort = `: the destination port equals.
-
-`srcPort = `: the source port equals.
-
-`isOutgoing = `: the network connection is outgoing.
-
-### Sensor Object
-The `sensor` object in the matching part and the action part support the following:
-* Send a command (or list of) to the sensor: `sensor.Task( [ 'command --with arguments' ], inv_id = 'some-id-to-include-in-related-events' )` as documented [here](sensor_commands.md).
-* Tag, untag and test tag presence: `sensor.tag( 'a-tag' )`, `sensor.untag( 'another-tag' )` and `sensor.isTagged( 'a-tag' )`.
-* Test to see if in organization: `sensor.inOrg( 'org_id' )`.
-* Test platform and architecture: `sensor.isWindows`, `sensor.isMacOSX`, `sensor.isLinux`, `sensor.is32Bit` and `sensor.is64Bit`.
-* The raw full agent id: `sensor.aid`.
-
-General routing information on the sensor: `sensor.routing` where routing is a dictionary containing the following:
-* Organization Id: `sensor.routing.oid`.
-* Installer Id: `sensor.routing.iid`.
-* Sensor Id: `sensor.routing.sid`.
-* Host Name: `sensor.routing.hostname`.
-* Internal IP: `sensor.routing.int_ip`.
-* External IP: `sensor.routing.ext_ip`.
-* Event Time: `sensor.routing.event_time`.
-* Event Id: `sensor.routing.event_id`.
-
-### Event Object
-Beyond the basic matching described above, the `event` object can do:
-
-Raw event data: `event.data`.
-Event type name: `event.dataType`.
-Get the atoms to relate events: `event.atom` and `event.parentAtom`.
-
-### Helpers
-Some other simple helper functions are available both in detection and action:
-
-A `virustotal( hash )` to get a VirusTotal report for a hash (dictionary of AV engines reporting Bad).
-
-A `geolocate( ip )` to get information on the geolocation of an IP as reported by [ip-api](https://ip-api.com).
-
-A `malwaredomains( domain )` to get information on a domain from [malwaredomains.com](https://malwaredomains.com).
-
-A `coinblockerlists( domain )` to know if a domain is present in the lists from [CoinBlockerLists](https://zerodot1.github.io/CoinBlockerLists/).
-
-### Examples
-`event.Dns( domainEndsWith = ".3322.org" ) and sensor.isTagged( "server" )`: matches all DNS requests to a domain ending with `.3322.org` and where the sensor has the "server" tag.
-
-`event.Process( pathEndsWith = "Google Chrome Helper" ) and event.Connections( dstPort = 1900 )`: matches all processes who's name ends with `Google Chrome Helper`, and which have a network connection to port `1900`, note that this indirectly refers to a `NETWORK_SUMMARY` event since they are the only ones containing both a network connection and process information.
-
-## Action
-The action states what should happen when the matching rule "fires". It has access to the `event` object (like the Matching rules) and the `sensor` object.
-
-The `sensor` object can also `sensor.tag( "new_tag" )` (or `.untag( "old_tag" )`) to apply a new tag to the sensor, and `sensor.task( [ "command arg1 ..." ] )` to send a tasking to the sensor as documented [here](sensor_commands.md).
-
-A `report( name = "detection_name", content = event, mtd = new_info, isPublish = True )` function to create a detect.
-
-A `page( to = "some@gmail.com", subject = "email subject", data = event )` to send an email page somewhere.
-
-## Details
-
-Additionally, complete event data is available through the `event.data` and metadata through `event.mtd`.
-
-More complex stateless detections, loaded by URL (like `https://...` or `file://...`) are available. To load
-one, simple put the file URL in the `rule` section instead of a lambda. The file must contain a class named the same
-name as the file. This class must have a prototype like this:
-
-```python
-class SomeStatelessDetection( object ):
-    def __init__( self, fromActor ):
-        # fromActor is a reference to the Actor running this, use it to get Beach virtual handles etc.
-        pass
-
-    def analyze( self, event, sensor, *args ):
-        pass
+Example:
+```json
+{
+    "op": "is",
+    "path": "PARENT/PROCESS_ID",
+    "value": 9999
+}
 ```
 
-Stateful detections are only available through the loading of a file (not lambdas) as mentioned above. The prototype
-for this is:
+#### contains, ends with, starts with
+The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix
+match.
 
-```python
-class SomeStatefulDetection( object )
-    def __init__( self, fromActor ):
-        # fromActor is a reference to the Actor running this, use it to get Beach virtual handles etc.
-        pass
+They all use the `path` and `value` parameters.
 
-    def getDescriptor( self ):
-        # This must return a single StateMachineDescriptor() as with the old Stateful detections.
-        pass
+#### matches
+The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
+
+Example:
+```json
+{
+    "op": "matches",
+    "path": "FILE_PATH",
+    "re": ".*\\\\system32\\\\.*\\.scr",
+    "case sensitive": false
+}
 ```
 
-More complex actions, loaded by URL are available. To load one, simple put the file URL in the `action` section
-instead of a lambda. The file must contain a class named the same name as the file. This class must have a prototype
-like this:
+#### is windows, is linux, is mac, is 32 bit, is 64 bit
+All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
+correct.
 
-```python
-class SomeHunter( object )
-    def __init__( self, fromActor ):
-        # fromActor is a reference to the Actor running this, use it to get Beach virtual handles etc.
-        pass
+#### is tagged
+Determines if the tag supplied in the `tag` parameter is already associated with the sensor the event under evaluation
+is from.
 
-    def respond( self, event, sensor, context, report, page, *args ):
-        pass
+## Response Component
+The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
+when the Detection component matches.
+
+The action type is specified in the `action` parameter.
+
+### Actions
+Possible actions are:
+
+#### task
+This action sends the task (as described [here](sensor_commands.md)) in the `command` parameter to the sensor the event
+under evaluation is from.
+
+Example:
+```json
+{
+    "action": "task",
+    "command": "history_dump"
+}
 ```
 
-Finally, a `rule` section (lambda or complex file-based stateless detection) may return a `tuple()` instead of a
-simple boolean. If that is the case, the first element of the tuple is a `True`/`False` indication of whether a
-match was successful, and the second element is a context that will be passed to the `action` section as a variable
-named `context` like: `( event.Process( pathEndsWith = ".evil" ), event.data.values()[ 0 ][ "base.FILE_PATH" ] )` to
-match on processes with a path ending in `.evil` and giving the `action` section a `context` equal to the actual path
-in the event.
+#### report
+Reports the match as a detection. This means that the content of this event will be bubbled up to the Detection Output
+stream. Think of it as an alert. It takes a `name` parameter that will be passed along with the detection and a `publish`
+parameter that, if set to `false` means the report won't be published to the Output stream.
 
-## Use Cases
+This last distinction about the `publish` parameter is important because the detections created by the `report` action
+get feed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting the
+`publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
+of itself.
 
-| Case | Matching Rule | Action |
-| ---- | ------------- | ------ |
-| Tagging a sensor when a user logs in, like VIPs. | `event.UserObserved( user = 'ceo' )` | `sensor.tag( 'vip' )` |
-| Tagging a sensor when a process executes, like Developers. | `event.Process( pathEndsWith = 'devenv.exe' )` | `sensor.tag( 'developer' )` |
-| Stop WanaCry (ransomware), get context events and report the detection. | `event.Process( pathEndsWith = '@wanadecryptor@.exe' )` | `sensor.task( 'deny_tree ' + event.atom ) and sensor.task( 'history_dump' ) and report( name = 'wanacry', content = event )` |
-| Send an email any time a domain admin account is used outside of domain controllers. | `event.Process( user = 'mydomain\\domainadmin' ) and not sensor.isTagged( 'domain_controller' )` | `page( to = 'security@mydomain.com subject = 'Suspicious Domain Admin Activity' data = event ) and sensor.task( 'history_dump' )` |
-| Detect if an executable running as root gets a connection on port 80. | `event.Process( userId = 0 ) and event.Connections( srcPort = 80, isOutgoing = False )` | `report( name = 'root_in_80', content = event ) and sensor.task( [ 'history_dump' ] )` |
-| Segregate the network if a bitcoin miner domain is accessed by anyone except servers. | `coinblockerlists( event ) and not sensor.isTagged( 'server' )` | `report( 'bitcoin-minor-segregated' ) and sensor.task( [ 'segregate_network' ] )` |
+#### add tag, remove tag
+These two actions associate and disassociate the tag found in the `tag` parameter with the sensor.
 
-## Creating Rules
-* REST: `POST` to the `/rules`
-* RPC: `./rpc.py analytics/dr add_rule -d "{ 'name' : 'rule name', 'rule' : 'event.UserObserved( user = \'ceo\' )', 'action' : 'sensor.tag( \'vip\' )', 'by' : 'user 1' }"`
+Example:
+```json
+{
+    "action": "add tag",
+    "tag": "vip"
+}
+```
 
-## Deleting Rules
-* REST: `DELETE` to the `/rules`
-* RPC: `./rpc.py analytics/dr del_rule -d "{ 'name' : 'rule name', 'by' : 'user 1' }"`
+## Putting it Together
 
-## Listing Rules
-* REST: `DELETE` to the `/rules`
-* RPC: `./rpc.py analytics/dr get_rules`
+### WanaCry
+Simple WanaCry detection and mitigation rule:
+
+**Detect**
+```json
+{
+    "op": "ends with",
+    "event": "NEW_PROCESS",
+    "path": "event/FILE_PATH",
+    "re": "@wanadecryptor@.exe",
+    "case sensitive": false
+}
+```
+
+**Respond**
+```json
+[
+    {
+        "action": "report",
+        "name": "wanacry"
+    },
+    {
+        "action": "task",
+        "command": "history_dump"
+    },
+    {
+        "action": "task",
+        "command": [ "deny_tree", "<<routing/this>>" ]
+    }
+]
+```
+
+
+### Classify Users
+Tag any sensor where the CEO logs in with "vip".
+
+**Detect**
+```json
+{
+    "op": "is",
+    "event": "USER_OBSERVED",
+    "path": "event/USER_NAME",
+    "value": "stevejobs",
+    "case sensitive": false
+}
+```
+
+**Respond**
+```json
+[
+    {
+        "action": "add tag",
+        "tag": "vip"
+    }
+]
+```
+
+### Suspicious Windows Executable Names
+```json
+{
+    "op": "matches",
+    "path": "event/FILE_PATH",
+    "case sensitive": false,
+    "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
+}
+```

@@ -47,7 +47,7 @@ Output events and detections over SFTP.
 * `secret_key`: the optional SSH private key to authenticate with.
 
 ### Slack
-Output detections (only) to a Slack community and channel.
+Output detections and audit (only) to a Slack community and channel.
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
