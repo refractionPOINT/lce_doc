@@ -52,7 +52,7 @@ Output detections and audit (only) to a Slack community and channel.
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
 
-### Syslog
+### Syslog (TCP)
 Output events and detections to a syslog target.
 
 * `dest_host`: the IP or DNS and port to connect to, format `www.myorg.com:514`.
@@ -60,4 +60,89 @@ Output events and detections to a syslog target.
 
 ## Integrations
 
-* [Splunk](splunk.md)
+### Splunk
+Splunk provides you with a simple web interface to view and search the data. 
+It has a paying enterprise version and a free tier.
+
+Because the LimaCharlie.io cloud needs to be able to reach your Splunk instance at all times to upload data, we recommend
+you create a virtual machine at a cloud provider like DigitalOcean, Amazon AWS or Google Cloud.
+
+Splunk is the visualization tool, but there are many ways you can use to get the data to Splunk. We will use SFTP as it
+is fairly simple and safe.
+
+1. Create your virtual machine, for example using [this DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet).
+1. Install Splunk, [here](https://medium.com/@smurf3r5/splunk-enterprise-on-digital-ocean-ubuntu-16-x-95c31c7e7e2c) is a quick tutotial on how to do that.
+1. Configure a write-only user and directory for SFTP using [this guide](https://www.digitalocean.com/community/tutorials/how-to-enable-sftp-without-shell-access-on-ubuntu-16-04).
+  1. We recommend using `PasswordAuthentication false` and to use RSA keys instead, but for ease you may simply set a password.
+1. Edit the file `/opt/splunk/etc/apps/search/local/props.conf` and add the following lines:
+    ```
+    [limacharlie]
+    SHOULD_LINEMERGE = false
+    ```
+1. Edit the file `/opt/splunk/etc/apps/search/local/inputs.conf` and add the following lines:
+    ```
+    [batch:///var/sftp/uploads]
+    disabled = false
+    sourcetype = limacharlie
+    move_policy = sinkhole
+    ```
+1. Restart Splunk by issuing: `sudo /opt/splunk/bin/splunk restart`.
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Git it a name, select the "sftp" module and select the stram you would like to send.
+1. Set the "username" that you used to setup the SFTP service.
+1. Set either the "password" field or the "secret_key" field depending on which one you chose when setting up SFTP.
+1. In "dest_host", input the public IP address of the virtual machine you created.
+1. Set the "dir" value to "/uploads/".
+1. Click "Create".
+1. After a minute, the data should start getting written to the `/var/sftp/uploads` directory on the server and Splunk should ingest it.
+1. In Splunk, doing a query for "sourcetype=limacharlie" should result in your data.
+
+If you are using the free version of Splunk, note that user management is not included. The suggested method to make
+access to your virtual machine safe is to use an SSH tunnel. This will turn a local port into the remote Splunk port
+over a secure connection. A sample SSH tunnel command looks like this:
+```
+ssh root@your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N
+```
+Then you can connect through the tunnel with your browser at `http://127.0.0.1:8000/`.
+
+### Amazon S3
+If you have your own visualization stack, or you just need the data archived, you can upload
+directly to Amazon S3. This way you don't need any infrastructure.
+
+1. Log in to AWS console and go to the IAM service.
+1. Click on "Users" from the menu.
+1. Click "Add User", give it a name and select "Programmatic access".
+1. Click "Next permissions", then "Next review", you will see a warning about no access, ignore it and click "Create User".
+1. Take note of the "Access key", "Secret access key" and ARN name for the user (starts with "arn:").
+1. Go to the S3 service.
+1. Click "Create Bucket", enter a name and select a region.
+1. Click "Next" until you get to the permissions page.
+1. Select "Bucket policy" and input the following policy:
+    ```
+    {
+       "Version": "2012-10-17",
+       "Statement": [
+          {
+             "Sid": "PermissionForObjectOperations",
+             "Effect": "Allow",
+             "Principal": {
+                "AWS": "<<USER_ARN>>"
+             },
+             "Action": [
+                "s3:PutObject"
+             ],
+             "Resource": [
+                "arn:aws:s3:::<<BUCKET_NAME>>/*"
+             ]
+          }
+       ]
+    }
+    ```
+    where you replace the "<<USER_ARN>>" with the ARN name of the user you created and the "<<BUCKET_NAME>>" with the
+    name of the bucket you just created.
+1. Click "Save".
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Give it a name, select the "s3" module and select the stream you would like to send.
+1. Enter the bucket name, key_id and secret_key you noted down from AWS.
+1. Click "Create".
+1. After a minute, the data should start getting written to your bucket.
