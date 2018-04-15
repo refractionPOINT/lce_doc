@@ -52,7 +52,7 @@ Output detections and audit (only) to a Slack community and channel.
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
 
-### Syslog
+### Syslog (TCP)
 Output events and detections to a syslog target.
 
 * `dest_host`: the IP or DNS and port to connect to, format `www.myorg.com:514`.

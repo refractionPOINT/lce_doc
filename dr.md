@@ -16,6 +16,8 @@ A D&R rule has two components:
 The REST interface expects those rules in their native JSON format (as descrbed below), but UIs to generate this
 format will be available if you are uncomfortable with the JSON.
 
+The website version (on limacharlie.io) of this takes the rules as YAML to make it easier to visualize.
+
 ## Detection Component
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
 by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
@@ -77,9 +79,6 @@ For example, this sample JSON event:
             "HASH_VALUE": "ufs8f8hfinsfd9sfdsf"
         }
     }, 
-    "TIMESTAMP": 1523626989645, 
-    "PARENT_ATOM": "bc21716094d2cbcb74e502519c7be33e", 
-    "THIS_ATOM": "a66eaddba1eface39988865828caa29e", 
     "PROCESS_ID": 23819, 
     "FILE_PATH": "/Applications/Xcode.app/Contents/Developer/usr/bin/git", 
     "PARENT_PROCESS_ID": 71955
@@ -104,7 +103,7 @@ Example:
 ```json
 {
     "op": "is",
-    "path": "PARENT/PROCESS_ID",
+    "path": "event/PARENT/PROCESS_ID",
     "value": 9999
 }
 ```
@@ -122,7 +121,7 @@ Example:
 ```json
 {
     "op": "matches",
-    "path": "FILE_PATH",
+    "path": "event/FILE_PATH",
     "re": ".*\\\\system32\\\\.*\\.scr",
     "case sensitive": false
 }
@@ -179,6 +178,25 @@ Example:
 ```
 
 ## Putting it Together
+
+Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration
+is used but is in YAML format instead, like this:
+**Detect:**
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: .scr
+```
+
+**Respond:**
+```yaml
+- action: report
+  name: susp_screensaver
+- action: tag
+  tag: uses_screensaver
+  ttl: 80000
+```
 
 ### WanaCry
 Simple WanaCry detection and mitigation rule:
