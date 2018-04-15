@@ -97,6 +97,14 @@ is fairly simple and safe.
 1. After a minute, the data should start getting written to the `/var/sftp/uploads` directory on the server and Splunk should ingest it.
 1. In Splunk, doing a query for "sourcetype=limacharlie" should result in your data.
 
+If you are using the free version of Splunk, note that user management is not included. The suggested method to make
+access to your virtual machine safe is to use an SSH tunnel. This will turn a local port into the remote Splunk port
+over a secure connection. A sample SSH tunnel command looks like this:
+```
+ssh root@your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N
+```
+Then you can connect through the tunnel with your browser at `http://127.0.0.1:8000/`.
+
 ### Amazon S3
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Amazon S3. This way you don't need any infrastructure.
