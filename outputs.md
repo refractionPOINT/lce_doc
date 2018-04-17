@@ -60,6 +60,31 @@ Output events and detections to a syslog target.
 
 ## Integrations
 
+### Common Patterns
+Here are a few common topologies used with LimaCharlie Cloud (LCC).
+
+All data over batched files via SFTP, Splunk or ELK consumes the received files for ingestion.
+```
+Sensor ---> LCC (All Streams) ---> SFTP ---> ( Splunk | ELK )
+```
+
+All data stramed in real-time via Syslog, Splunk or ELK receive directly via an open Syslog socket.
+```
+Sensor ---> LCC (All Streams) ---> Syslog( TCP+SSL) ---> ( Splunk | ELK )
+```
+
+All data over batched files stored on Amazon S3, Splunk or ELK consumes the received files remotely for ingestion.
+```
+Sensor ---> LCC (All Streams) ---> Amazon S3 ---> ( Splunk | ELK )
+```
+
+Bulk events are uploaded to Amazon S3 for archival while alerts and auditing events are sent in real-time to Splunk via Syslog.
+This has the added benefit of reducing Splunk license cost while keeping the raw events available for analysis at a cheaper cost.
+```
+Sensor ---> LCC (Event Stream) ---> Amazon S3
+       +--> LCC (Alert+Audit Streams) ---> Syslog (TCP+SSL) ---> Splunk
+```
+
 ### Splunk
 Splunk provides you with a simple web interface to view and search the data. 
 It has a paying enterprise version and a free tier.
