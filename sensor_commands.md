@@ -383,10 +383,10 @@ optional arguments:
 Update the compiled yara signature bundle that is being used for constant memory and file scanning on the sensor.
 
 ```
-usage: yara_update [-h] ruleFile
+usage: yara_update [-h] rule
 
 positional arguments:
-  ruleFile    file holding the compiled rules to upload
+  rule        rule to compile and set on sensor for contstant scanning.
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -396,10 +396,10 @@ optional arguments:
 Scan for a specific yara signature in memory and files on the sensor.
 
 ```
-usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] ruleFile
+usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] rule
 
 positional arguments:
-  ruleFile              file holding the compiled rules to upload
+  rule                  rule to compile and run on sensor
 
 optional arguments:
   -h, --help            show this help message and exit
