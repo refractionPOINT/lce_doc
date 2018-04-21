@@ -193,7 +193,7 @@ value: .scr
 ```yaml
 - action: report
   name: susp_screensaver
-- action: tag
+- action: add tag
   tag: uses_screensaver
   ttl: 80000
 ```
