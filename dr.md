@@ -150,6 +150,19 @@ Example:
 }
 ```
 
+#### external
+Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
+Resources are of the form `lcr://<resource_type>/<resource_name>`, the `external` operation only supports Resources of
+type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
+detection logic using the `and` and `or` operations.
+
+Example:
+```json
+{
+    "op": "external",
+    "resource": "lcr://detection/suspicious-windows-exec-location"
+}
+```
 
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
