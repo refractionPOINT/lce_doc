@@ -135,6 +135,35 @@ correct.
 Determines if the tag supplied in the `tag` parameter is already associated with the sensor the event under evaluation
 is from.
 
+#### lookup
+Looks up a value against a LimaCharlie Resource like a threat feed. The value is supplied via the `path` parameter and
+the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`.
+In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+
+Example:
+```json
+{
+    "op": "lookup",
+    "path": "event/DOMAIN_NAME",
+    "resource": "lcr://lookup/malwaredomains"
+    "case sensitive": false
+}
+```
+
+#### external
+Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
+Resources are of the form `lcr://<resource_type>/<resource_name>`, the `external` operation only supports Resources of
+type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
+detection logic using the `and` and `or` operations.
+
+Example:
+```json
+{
+    "op": "external",
+    "resource": "lcr://detection/suspicious-windows-exec-location"
+}
+```
+
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
 when the Detection component matches.
@@ -193,7 +222,7 @@ value: .scr
 ```yaml
 - action: report
   name: susp_screensaver
-- action: tag
+- action: add tag
   tag: uses_screensaver
   ttl: 80000
 ```
