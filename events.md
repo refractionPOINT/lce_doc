@@ -38,6 +38,9 @@ between the events. This allows you to get the extremely powerful explorer view.
 }
 ```
 
+### CONNECTED
+(Sent when sensor connects to cloud.)
+
 ### NEW_PROCESS
 
 ```json

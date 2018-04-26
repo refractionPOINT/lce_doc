@@ -145,7 +145,7 @@ Example:
 {
     "op": "lookup",
     "path": "event/DOMAIN_NAME",
-    "resource": "lcr://lookup/malwaredomains"
+    "resource": "lcr://lookup/malwaredomains",
     "case sensitive": false
 }
 ```

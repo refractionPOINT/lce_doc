@@ -57,6 +57,7 @@ Output events and detections to a syslog target.
 
 * `dest_host`: the IP or DNS and port to connect to, format `www.myorg.com:514`.
 * `is_tls`: if `true` will output over TCP/TLS.
+* `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
 
 ## Integrations
 
