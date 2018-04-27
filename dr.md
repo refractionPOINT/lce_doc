@@ -16,6 +16,9 @@ A D&R rule has two components:
 The REST interface expects those rules in their native JSON format (as descrbed below), but UIs to generate this
 format will be available if you are uncomfortable with the JSON.
 
+For more sample rules and guidelines around rule-writing, see our public repository dedicated to this purpose
+[here](https://github.com/refractionPOINT/rules).
+
 The website version (on limacharlie.io) of this takes the rules as YAML to make it easier to visualize.
 
 ## Detection Component
