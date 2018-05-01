@@ -11,6 +11,9 @@
 * `is_flat`: take the json output and flatten the whole thing to a flat structure.
 * `is_base64`: instead of escaping binary data to hex, escape it to base64.
 * `is_full_tag`: display the fully qualified tag name instead of the short version.
+* `inv_id`: only send events matching the investigation id to this output (event stream only).
+* `tag`: only send events from sensors with this tag to this output (event stream only).
+* `cat`: only send detections from this category to this output (detect stream only).
 
 ### File
 Output events and detections to local files.
@@ -18,7 +21,6 @@ Output events and detections to local files.
 * `dir`: the directory where to out the files.
 * `max_bytes`: maximum number of bytes in a file before it rotates to a new file.
 * `backup_count`: total number of files outputted before they are rotated.
-
 
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
