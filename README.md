@@ -1,4 +1,4 @@
-# LimaCharlie Enterprise
+# LimaCharlie Cloud
 
 <img src="https://lcio.nyc3.digitaloceanspaces.com/lc.png" width="150">
 
