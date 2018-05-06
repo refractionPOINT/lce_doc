@@ -20,29 +20,23 @@ Tags can be added to a sensor a few different ways:
 ## Adding Tags
 
 ### Manual API
-Issue a `POST` to `/{sid}/tags` REST endpoint of the Control Plane
-or `./rpc.py c2/taggingmanager add_tags -d "{ 'aid' : '00000000-0000-0000-0000-000000000000', 'tag' : [ 'someTagToAdd', 'another' ], 'ttl' : 60 * 60 * 24, 'by' : 'analyst_1' }"`
+Issue a `POST` to `/{sid}/tags` REST endpoint
 
 ### Detection & Response
-In detection and response rules, you may use the `sensor.tag( 'someTagToAdd', ttl = 60 * 60 * 24 )` expression.
-This example expression would add the `someTagToAdd` tag to the sensor whose event is being evaluated, and that tag would
-remain present for 1 day (`60 * 60 * 24` seconds).
+In detection and response rules
 
 ## Removing Tags
 
 ### Manual API
-Issue a `DELETE` to `/{sid}/tags` REST endpoint of the Control Plane
-or `./rpc.py c2/taggingmanager del_tags -d "{ 'sid' : '00000000-0000-0000-0000-000000000000', 'tag' : [ 'tagToDelete' ], 'by' : 'analyst_1' }"`
+Issue a `DELETE` to `/{sid}/tags` REST endpoint
 
 ### Detection & Response
-In detection and response rules, you may use the `sensor.untag( 'tagToDelete' )` expression.
+In detection and response rules
 
 ## Checking Tags
 
 ### Manual API
-Issue a `GET` to `/{sid}/tags` REST endpoint of the Control Plane
-or `./rpc.py c2/taggingmanager get_tags -d "{ 'sid' : '00000000-0000-0000-0000-000000000000' }"`
+Issue a `GET` to `/{sid}/tags` REST endpoint
 
 ### Detection & Response
-In detection and response rules, you may use the `sensor.isTagged( 'checkForThisTag' )` expression which returns True if 
-the sensor has this tag.
+In detection and response rules

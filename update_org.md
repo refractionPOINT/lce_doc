@@ -1,5 +1,7 @@
 ***[Back to documentation root](README.md)***
 
+**LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
+
 # Update Organization
 
 Organization sensors are not automatically updated. You must first `update_binaries`. Once that is done the sensors

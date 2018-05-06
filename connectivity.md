@@ -1,5 +1,7 @@
 ***[Back to documentation root](README.md)***
 
+**LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
+
 # Connectivity
 
 * TOC
