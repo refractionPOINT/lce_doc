@@ -35,6 +35,7 @@ systemctl restart sshd
 
 echo Creating SSH Keys
 sudo -u lc -- ssh-keygen -t rsa -N "" -f /home/lc/.ssh/id_rsa
+cp /home/lc/.ssh/id_rsa.pub /home/lc/.ssh/authorized_keys
 
 echo Configuring Splunk
 echo "
