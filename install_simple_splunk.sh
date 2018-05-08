@@ -38,6 +38,7 @@ sudo -u lc -- ssh-keygen -t rsa -N "" -f /home/lc/.ssh/id_rsa
 cp /home/lc/.ssh/id_rsa.pub /home/lc/.ssh/authorized_keys
 
 echo Configuring Splunk
+mkdir -p /opt/splunk/etc/apps/search/local/
 echo "
 [limacharlie]
 SHOULD_LINEMERGE = false
@@ -59,7 +60,14 @@ PASSWORD = letmein1
 echo Restarting Splunk
 /opt/splunk/bin/splunk restart --accept-license --no-prompt
 
+echo "======================="
+echo "DONE"
+echo "=======================\n\n"
+
+
 echo "You can connect to Splunk by creating an SSH tunnel like: \"ssh your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N\" and then connecting to local port 8000."
+echo "Splunk default user name and password: admin / letmein1"
+echo "limacharlie data flows into sourcetype=limacharlie"
 
 echo "Done, use the following information to configure a limacharlie.io output (all other fields are default):"
 echo "======================="
