@@ -61,3 +61,6 @@ receives all auditing events produced by LCE and is useful for compliance.
 
 ### Reference
 * [Events](events.md)
+
+### FAQ
+* [FAQ](faq.md)
