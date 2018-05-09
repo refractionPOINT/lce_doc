@@ -239,7 +239,7 @@ Simple WanaCry detection and mitigation rule:
     "op": "ends with",
     "event": "NEW_PROCESS",
     "path": "event/FILE_PATH",
-    "re": "@wanadecryptor@.exe",
+    "value": "@wanadecryptor@.exe",
     "case sensitive": false
 }
 ```
