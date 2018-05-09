@@ -64,11 +64,6 @@ echo "======================="
 echo "DONE"
 echo "=======================\n\n"
 
-
-echo "You can connect to Splunk by creating an SSH tunnel like: \"ssh your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N\" and then connecting to local port 8000."
-echo "Splunk default user name and password: admin / letmein1"
-echo "limacharlie data flows into sourcetype=limacharlie"
-
 echo "Done, use the following information to configure a limacharlie.io output (all other fields are default):"
 echo "======================="
 echo "Output Module: SFTP"
@@ -77,3 +72,7 @@ echo "dir: /uploads"
 echo "username: lc"
 echo "secret_key:"
 cat /home/lc/.ssh/id_rsa
+
+echo "You can connect to Splunk by creating an SSH tunnel like: \"ssh your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N\" and then connecting to local port 8000."
+echo "Splunk default user name and password: admin / letmein1"
+echo "limacharlie data flows into sourcetype=limacharlie"
