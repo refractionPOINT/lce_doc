@@ -11,15 +11,15 @@ Below is a list of all the events available in LC along with a sample output. Pl
 
 Some common elements to events are worth pointing out.
 
-* THIS_ATOM is a UUID generated for every event in the sensor.
-* PARENT_ATOM is a reference to the parent event's THIS_ATOM, providing strong relationships (much more reliable than simple process IDs)
+* routing/this is a UUID generated for every event in the sensor.
+* routing/parent is a reference to the parent event's routing/this, providing strong relationships (much more reliable than simple process IDs)
 between the events. This allows you to get the extremely powerful explorer view.
-* TIMESTAMP is the time (UTC) the sensor produced the event.
+* routing/event_time is the time (UTC) the sensor produced the event.
 
 ## Events Listing
 
 ### STARTING_UP
-
+Event generated when the sensor starts.
 ```json
 {
   "STARTING_UP": {
@@ -29,6 +29,8 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### SHUTTING_DOWN
+Event generated when the sensor shuts down, may not be observed if the
+host shuts down too quickly or abruptly.
 
 ```json
 {
@@ -39,9 +41,10 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### CONNECTED
-(Sent when sensor connects to cloud.)
+Generated when sensor connects to cloud.
 
 ### NEW_PROCESS
+Generated when a new process starts.
 
 ```json
 {
@@ -70,6 +73,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### TERMINATE_PROCESS
+Generated when a process exits.
 
 ```json
 {
@@ -84,6 +88,11 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### DNS_REQUEST
+Generated from DNS responses and therefore includes both the
+requested domain and the response from the server. If the server responds
+with multiple responses as allowed by the DNS protocol, the N answers will
+become N DNS_REQUEST events, so you can always assume one DNS_REQUEST event
+means one answer.
 
 ```json
 {
@@ -99,6 +108,9 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### CODE_IDENTITY
+Unique combinations of file hash and file path. Event is emitted the first time
+the combination is seen. Therefore it's a great event to look for hashes without being
+overwhelmed by process execution or module loads.
 
 ```json
 {
@@ -120,6 +132,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### NEW_TCP4_CONNECTION
+Generated when a new TCPv4 connection is established, either inbound or outbound.
 
 ```json
 {
@@ -142,6 +155,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### NEW_UDP4_CONNECTION
+Generated when a new UDPv4 socket "connection" is established, either inbound or outbound.
 
 ```json
 {
@@ -157,8 +171,11 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### HIDDEN_MODULE_DETECTED
+Generated when the signature of an executable module is found in memory without
+being known by the operating system.
 
 ### MODULE_LOAD
+Generated when a module (like DLL on Windows) is loaded in a process.
 
 ```json
 {
@@ -176,6 +193,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### FILE_CREATE
+Generated when a file is created.
 
 ```json
 {
@@ -189,6 +207,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### FILE_DELETE
+Generated when a file is deleted.
 
 ```json
 {
@@ -202,6 +221,10 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### NETWORK_SUMMARY
+Generated either when a process exits or when a process has established 10 network
+connections. This event combines process information with the first 10 network connections
+it has done. It is a way to generated detections on process/network information without
+sending home all network events all the time which is a lot of data.
 
 ```json
 {
@@ -258,30 +281,43 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### FILE_GET_REP
+Response from a file retrieval request.
 
 ### FILE_DEL_REP
+Response from a file deletion request.
 
 ### FILE_MOV_REP
+Response from a file move request.
 
 ### FILE_HASH_REP
+Response from a file hash request.
 
 ### FILE_INFO_REP
+Response from a file information request.
 
 ### DIR_LIST_REP
+Response from a directory list request.
 
 ### MEM_MAP_REP
+Response from a memory map request.
 
 ### MEM_READ_REP
+Response from a memory read request.
 
 ### MEM_HANDLES_REP
+Response from a list of memory handles request.
 
 ### MEM_FIND_HANDLES_REP
+Response from a find handles request.
 
 ### MEM_STRINGS_REP
+Response from a memory listing of strings request.
 
 ### MEM_FIND_STRING_REP
+Response from a memory find string request.
 
 ### OS_SERVICES_REP
+Response from a Services listing request.
 
 ```json
 {
@@ -311,6 +347,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### OS_DRIVERS_REP
+Response from a Drivers listing request.
 
 ```json
 {
@@ -338,10 +375,13 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### OS_KILL_PROCESS_REP
+Response from a kill process request.
 
 ### OS_PROCESSES_REP
+Response from a process listing request.
 
 ### OS_AUTORUNS_REP
+Response from an Autoruns listing request.
 
 ```json
 {
@@ -363,8 +403,11 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### HISTORY_DUMP_REP
+Response from history dump request. Does not itself contain the historic
+events but will be generated along them.
 
 ### EXEC_OOB
+Generated when an execution out of bounds (like a thread injection) is detected.
 
 ```json
 {
@@ -405,10 +448,14 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### MODULE_MEM_DISK_MISMATCH
+Generated when a mismatch between the contents of memory and the expected module
+on disk is found, can be an indicator of process hollowing.
 
 ### YARA_DETECTION
+Generated when a Yara scan finds a match.
 
 ### SERVICE_CHANGE
+Generated when a Service is changed.
 
 ```json
 {
@@ -428,6 +475,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### DRIVER_CHANGE
+Generated when a Driver is changed.
 
 ```json
 {
@@ -444,8 +492,10 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### AUTORUN_CHANGE
+Generated when an Autorun is changed.
 
 ### FILE_MODIFIED
+Generated when a file is modified.
 
 ```json
 {
@@ -459,6 +509,9 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### NEW_DOCUMENT
+Generated when a file is created that matches a set list of locations and
+extensions. It indicates the file has been cached in memory and can be retrieved
+using the [doc_cache_get](sensor_commands.md) task.
 
 ```json
 {
@@ -473,6 +526,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### GET_DOCUMENT_REP
+Generated when a doc_cache_get task requrested a cached document.
 
 ### USER_OBSERVED
 
@@ -488,6 +542,9 @@ between the events. This allows you to get the extremely powerful explorer view.
 ```
 
 ### FILE_TYPE_ACCESSED
+Generated when a new process is observed interacting with certain
+file types (like .doc). These can be used as indicators of an unknown
+process exfiltrating files it should not.
 
 ```json
 {
