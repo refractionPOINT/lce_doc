@@ -148,14 +148,21 @@ Depending on the module you chose, different options will be available. The outp
 one is the best depends on your organization. Modules include Syslog, SFTP and Amazon S3 Buckets, which covers the most
 common use cases.
 
-A good, safe recommendation for output would be using SFTP. Here is a [suggested walkthrough](https://www.digitalocean.com/community/tutorials/how-to-enable-sftp-without-shell-access-on-ubuntu-16-04) to setup an SFTP server on a
-Ubuntu server.
+A good, safe recommendation for output would be using SFTP.
 
 For a basic setup, creating a Ubuntu server with SFTP in a cloud provider such as Google Cloud or Digital Ocean, along with
 a Splunk Free version does a great job.
 
 Some more documentation on Output can be found [here](https://refractionpoint.github.io/lce_doc/outputs.html). More tutorials
 and apps for Splunk and ELK will become available shortly.
+
+For the purpose of this quick start, we recommend you use the [installation script](install_simple_splunk.sh) that
+will install a free Splunk instance on a Ubuntu LTS box and configure it to
+receive LimaCharlie data through SFTP. It's the quickest way of getting started.
+Simply create a Ubuntu LTS box somewhere (we use Digital Ocean) with abour 2 GB of RAM minimum
+then copy the [installation script](install_simple_splunk.sh) over, make it executable (`chmod +x ./install_simple_splunk.sh`)
+and execute is as `root`. Once installed (takes about 2 minutes) all the relevant
+configuration information you need for the LimaCharlie Output.
 
 ## Confirm Data
 Data should start flowing to your Output fairly quickly, depending on how much data your sensor is generating.
