@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # Appliance Operations
 
-* TOC
-{:toc}
+[TOC]
 
 The LCE appliance is designed to operate either standalone or to cluster with other LCE appliances.
 

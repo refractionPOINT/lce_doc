@@ -1,9 +1,6 @@
-***[Back to documentation root](README.md)***
-
 # Managing Tags
 
-* TOC
-{:toc}
+[TOC]
 
 Tags in LCE are simple strings that can be associated with any number of sensors. A sensor can also have an arbitrary number
 of tags associated with it.

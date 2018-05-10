@@ -1,0 +1,25 @@
+site_name: LimaCharlie.io
+repo_url: https://github.com/refractionPOINT/lce_doc
+site_description: Official documentation for LimaCharlie.io
+docs_dir: 'docs'
+markdown_extensions:
+    - toc:
+        permalink: True
+theme: readthedocs
+pages:
+    - Home: index.md
+    - AgentIDs: agentid.md
+    - API Keys: api_keys.md
+    - Deploying Sensors: deploy_sensor.md
+    - Serverless D&R: dr.md
+    - Events: events.md
+    - FAQ: faq.md
+    - Glossary: glossary.md
+    - Quick Start: lcc_quick_start.md
+    - Installation Keys: manage_keys.md
+    - Outputs: outputs.md
+    - Sensor Interaction:
+      - Sensor Commands: sensor_commands.md
+      - Profiles: profiles.md
+    - Tagging: tagging.md
+    - Updating: update_org.md

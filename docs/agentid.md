@@ -1,9 +1,6 @@
-***[Back to documentation root](README.md)***
-
 # Agent IDs
 
-* TOC
-{:toc}
+[TOC]
 
 An AgentID is a 5-tuple that completely describes a sensor, whereas a SensorID is the smallest single unique identifier
 that can identify a sensor.

@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # Simple Configuration
 
-* TOC
-{:toc}
+[TOC]
 
 The simple configuration mechanism is designed to provide a YAML based, simple, humand readable configuration file
 format that can be used for a two main purposes:

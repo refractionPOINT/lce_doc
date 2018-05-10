@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # Collectors
 
-* TOC
-{:toc}
+[TOC]
 
 Sensor capabilities are grouped by components called Collectors. Each Collector will generally provide a single or small suite
 of capabilities. Collectors can be enabled and disabled individually through the use of [Profiles](profiles.md). All collectors

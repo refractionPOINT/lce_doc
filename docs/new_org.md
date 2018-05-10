@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # New Organization
 
-* TOC
-{:toc}
+[TOC]
 
 ## Creating the Organization
 Creating an organization is easy and involves two simple parameters. The first parameter is the name of the new organization.
