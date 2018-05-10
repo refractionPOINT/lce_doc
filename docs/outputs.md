@@ -142,27 +142,7 @@ directly to Amazon S3. This way you don't need any infrastructure.
 1. Go to the S3 service.
 1. Click "Create Bucket", enter a name and select a region.
 1. Click "Next" until you get to the permissions page.
-1. Select "Bucket policy" and input the following policy:
-    ```json
-    {
-       "Version": "2012-10-17",
-       "Statement": [
-          {
-             "Sid": "PermissionForObjectOperations",
-             "Effect": "Allow",
-             "Principal": {
-                "AWS": "<<USER_ARN>>"
-             },
-             "Action": [
-                "s3:PutObject"
-             ],
-             "Resource": [
-                "arn:aws:s3:::<<BUCKET_NAME>>/*"
-             ]
-          }
-       ]
-    }
-    ```
+1. Select "Bucket policy" and input the policy in [sample below](#policy-sample):
     where you replace the "<<USER_ARN>>" with the ARN name of the user you created and the "<<BUCKET_NAME>>" with the
     name of the bucket you just created.
 1. Click "Save".
@@ -171,3 +151,25 @@ directly to Amazon S3. This way you don't need any infrastructure.
 1. Enter the bucket name, key_id and secret_key you noted down from AWS.
 1. Click "Create".
 1. After a minute, the data should start getting written to your bucket.
+
+#### Policy Sample
+```json
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Sid": "PermissionForObjectOperations",
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "<<USER_ARN>>"
+         },
+         "Action": [
+            "s3:PutObject"
+         ],
+         "Resource": [
+            "arn:aws:s3:::<<BUCKET_NAME>>/*"
+         ]
+      }
+   ]
+}
+```
