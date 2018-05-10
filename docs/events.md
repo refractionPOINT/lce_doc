@@ -170,6 +170,7 @@ Generated when a new UDPv4 socket "connection" is established, either inbound or
 ### HIDDEN_MODULE_DETECTED
 Generated when the signature of an executable module is found in memory without
 being known by the operating system.
+**Temporarily unavailable as we transition from the open source solution.**
 
 ### MODULE_LOAD
 Generated when a module (like DLL on Windows) is loaded in a process.
@@ -412,6 +413,8 @@ events but will be generated along them.
 ### EXEC_OOB
 Generated when an execution out of bounds (like a thread injection) is detected.
 
+**Temporarily unavailable as we transition from the open source solution.**
+
 ```json
 {
   "EXEC_OOB": {
@@ -453,6 +456,8 @@ Generated when an execution out of bounds (like a thread injection) is detected.
 ### MODULE_MEM_DISK_MISMATCH
 Generated when a mismatch between the contents of memory and the expected module
 on disk is found, can be an indicator of process hollowing.
+
+**Temporarily unavailable as we transition from the open source solution.**
 
 ### YARA_DETECTION
 Generated when a Yara scan finds a match.
