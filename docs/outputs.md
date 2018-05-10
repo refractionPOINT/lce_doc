@@ -143,7 +143,7 @@ directly to Amazon S3. This way you don't need any infrastructure.
 1. Click "Create Bucket", enter a name and select a region.
 1. Click "Next" until you get to the permissions page.
 1. Select "Bucket policy" and input the following policy:
-    ```
+    ```json
     {
        "Version": "2012-10-17",
        "Statement": [
