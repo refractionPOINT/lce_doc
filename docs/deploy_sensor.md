@@ -1,9 +1,6 @@
-***[Back to documentation root](README.md)***
-
 # Deploying Sensors
 
-* TOC
-{:toc}
+[TOC]
 
 A machine-readable (YAML) link to the latest version of the LimaCharlie Enterprise sensor is [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
 

@@ -1,9 +1,6 @@
-***[Back to documentation root](README.md)***
-
 # LimaCharlie Cloud Quick Start
 
-* TOC
-{:toc}
+[TOC]
 
 ## Logging in
 To access LimaCharlie.io, you will first need to create an account. This account can be attached to a specific

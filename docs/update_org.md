@@ -1,8 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # Update Organization
+
+[TOC]
 
 Organization sensors are not automatically updated. You must first `update_binaries`. Once that is done the sensors
 will automatically begin updating by themselves. When the `update_binaries` command is executed, the version of the

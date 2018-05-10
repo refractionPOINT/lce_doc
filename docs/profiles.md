@@ -1,11 +1,13 @@
-***[Back to documentation root](README.md)***
-
-**LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
-
 # Managing Profiles
 
-* TOC
-{:toc}
+[TOC]
+
+** WARNING **
+Profiles are currently not modifiable by users of LimaCharlie.io.
+This is due to the origins of the Open Source LimaCharlie sensor, we are
+in the process of porting them to a new mechanism that will allow users
+to customize various sensor configurations further.
+
 
 Profiles are used to specify a default behavior for the sensors. The main usage of the profiles is to specify which
 events generated in the sensor are sent back to the cloud automatically. Since the sensors generate a lot of events

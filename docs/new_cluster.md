@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # New Cluster
 
-* TOC
-{:toc}
+[TOC]
 
 Some common terms used:
 * Node: an instance of the appliance running as a virtual machine.

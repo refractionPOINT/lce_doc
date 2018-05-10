@@ -4,8 +4,7 @@
 
 By [Refraction Point](https://www.refractionpoint.com)
 
-* TOC
-{:toc}
+[TOC]
 
 ## Overview
 LimaCharlie Enterprise (LCE) is a specialized backend for the Open Source LimaCharlie (LC) endpoint 

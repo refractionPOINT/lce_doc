@@ -1,11 +1,8 @@
-***[Back to documentation root](README.md)***
-
 **LimaCharlie Enterprise Only - Not LimaCharlie Cloud**
 
 # LCE Quick Start
 
-* TOC
-{:toc}
+[TOC]
 
 This quick start guide will take you from you receiving your LCE cloud hosted credentials to having sensors enrolled and
 seeing the data roll in.

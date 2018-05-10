@@ -4,8 +4,7 @@
 
 By [Refraction Point](https://www.refractionpoint.com)
 
-* TOC
-{:toc}
+[TOC]
 
 ***Glossary [here](glossary.md)***
 

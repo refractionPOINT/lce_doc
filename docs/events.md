@@ -1,9 +1,6 @@
-***[Back to documentation root](README.md)***
-
 # Events
 
-* TOC
-{:toc}
+[TOC]
 
 Below is a list of all the events available in LC along with a sample output. Please note that there may be some variability between platforms.
 
@@ -343,7 +340,9 @@ Response from a Services listing request.
         "SVC_DISPLAY_NAME": "Application Layer Gateway Service", 
         "EXECUTABLE": "%SystemRoot%\\System32\\alg.exe"
       },
-.....
+      { "..." : "..." }
+    ]
+}
 ```
 
 ### OS_DRIVERS_REP
@@ -371,7 +370,9 @@ Response from a Drivers listing request.
         "SVC_DISPLAY_NAME": "3ware", 
         "EXECUTABLE": "System32\\drivers\\3ware.sys"
       }, 
-.....
+      { "..." : "..." }
+    ]
+}
 ```
 
 ### OS_KILL_PROCESS_REP
@@ -399,7 +400,9 @@ Response from an Autoruns listing request.
         "FILE_PATH": "\"C:\\Program Files (x86)\\ROCCAT\\Tyon Mouse\\TyonMonitorW.EXE\"", 
         "HASH": "7d601591625d41aecfb40b4fc770ff6d22094047216c4a3b22903405281e32e1"
       }, 
-.....
+      { "..." : "..." }
+    ]
+}
 ```
 
 ### HISTORY_DUMP_REP
