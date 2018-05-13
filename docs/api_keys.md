@@ -21,3 +21,8 @@ key to use.
 
 The return value is a simple JSON response with a `jwt` component which is the JWT token. This token is only valid for one
 hour to limit the possible damage of a leak and make the deletion of the API keys easier.
+
+## Python
+A simple [Python API](https://github.com/refractionpoint/python-limacharlie/) is also
+provided that simplifies usage of the REST API by taking care of the API Key -> JWT exchange
+as necessary and wraps the functionality into nicer objects.
