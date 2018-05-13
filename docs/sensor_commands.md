@@ -101,6 +101,8 @@ optional arguments:
 ### mem_map
 Display the map of memory pages from a process including size, access rights etc.
 
+**Due to recent changes in MacOS, may be less reliable on that platform.**
+
 ```
 usage: mem_map [-h] [-p PID] [-a PROCESSATOM]
 
@@ -113,6 +115,8 @@ optional arguments:
 
 ### mem_read
 Retrieve a chunk of memory from a process given a base address and size.
+
+**Due to recent changes in MacOS, may be less reliable on that platform.**
 
 ```
 usage: mem_read [-h] [-p PID] [-a PROCESSATOM] baseAddr memSize
@@ -145,6 +149,8 @@ optional arguments:
 ### mem_strings
 List strings from a process' memory.
 
+**Due to recent changes in MacOS, may be less reliable on that platform.**
+
 ```
 usage: mem_strings [-h] [-p PID] [-a PROCESSATOM]
 
@@ -158,6 +164,8 @@ optional arguments:
 
 ### mem_find_string
 Find specific strings in memory.
+
+**Due to recent changes in MacOS, may be less reliable on that platform.**
 
 ```
 usage: mem_find_string [-h] -s [STRINGS [STRINGS ...]] pid
@@ -283,6 +291,8 @@ optional arguments:
 ### hidden_module_scan
 Look for hidden modules in a process' (or all) memory. Hidden modules are DLLs or dylibs loaded manually (not by the OS).
 
+**Temporarily unavailable as we transition from the open source solution.**
+
 ```
 usage: hidden_module_scan [-h] pid
 
@@ -296,6 +306,8 @@ optional arguments:
 ### exec_oob_scan
 Look for threads executing code outside bounds of known modules in memory. Various process injection methodologies.
 
+**Temporarily unavailable as we transition from the open source solution.**
+
 ```
 usage: exec_oob_scan [-h] pid
 
@@ -308,6 +320,8 @@ optional arguments:
 
 ### hollowed_module_scan
 Look for signs of process/module hollowing.
+
+**Temporarily unavailable as we transition from the open source solution.**
 
 ```
 usage: hollowed_module_scan [-h] pid
@@ -391,6 +405,8 @@ optional arguments:
 
 ### yara_scan
 Scan for a specific yara signature in memory and files on the sensor.
+
+**The memory component of the scan on MacOS may be less reliable due to recent limitations imposed by Apple.**
 
 ```
 usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] rule

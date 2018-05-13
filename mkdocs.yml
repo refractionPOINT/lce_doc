@@ -5,6 +5,7 @@ docs_dir: 'docs'
 markdown_extensions:
     - toc:
         permalink: True
+    - fenced_code
 theme: readthedocs
 pages:
     - Home: index.md
