@@ -57,6 +57,7 @@ receives all auditing events produced by LCE and is useful for compliance.
 * [Sensor Commands](sensor_commands.md)
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
+* [Add-ons](user_addons.md)
 
 ### Reference
 * [Events](events.md)

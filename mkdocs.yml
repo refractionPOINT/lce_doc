@@ -24,3 +24,4 @@ pages:
       - Profiles: profiles.md
     - Tagging: tagging.md
     - Updating: update_org.md
+    - Add-ons: user_addons.md
