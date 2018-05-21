@@ -9,7 +9,7 @@ By [Refraction Point](https://www.refractionpoint.com)
 ***Glossary [here](glossary.md)***
 
 ## Quick Start
-To skip all of the details and get setup with endpoint detection and response capability you can follow our [quickstart instructions](lcc_quick_start.md).
+To skip all of the details and get setup with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
 ## Core Concepts
 ### Sensors
@@ -26,10 +26,10 @@ Sensors can be described through [AgentIDs](agentid.md)
 Installer Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
 
 ### Tags
-Sensors can have Tags associated with them. Tags are added during creation or dynamically either through the UI, API or Detection & Response Rules.
+Sensors can have Tags associated with them. Tags are added during creation or dynamically through the UI, API or Detection & Response Rules.
 
 ### Detection & Response Rules
-The Detection & Response Rules are an automation engine. The Detection component is a rule that either matches an event
+The Detection & Response Rules act as an automation engine. The Detection component is a rule that either matches an event
 or not. If the Detection component matches, the Response component of the rule is actioned. This can be used to automatically
 investigate, mitigate or apply Tags.
 
