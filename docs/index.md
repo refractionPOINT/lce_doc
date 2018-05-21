@@ -8,25 +8,25 @@ By [Refraction Point](https://www.refractionpoint.com)
 
 ***Glossary [here](glossary.md)***
 
+## Quick Start
+To skip all of the details and get setup with endpoint detection and response capability you can follow our [quickstart instructions](lcc_quick_start.md).
+
 ## Core Concepts
 ### Sensors
-The LC sensor is a cross platform endpoint sensor developed in C.
+The LimaCharlie sensor is a cross platform endpoint sensor developed in the C programming language. It is a low-level, light-weight sensor that executes detection and response functionality in real-time.
 
-It provides all the basic types of events needed
-for Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
-It also supports some more advanced features like intelligent local caching of events for in depth Incident Response (IR)
+The sensor provides a wide range of advanced capability.
+Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
+Host isolation, automated response rules, intelligent local caching of events for in depth Incident Response (IR)
 as well as some forensic features like dumping memory.
 
 Sensors can be described through [AgentIDs](agentid.md)
 
 ### Installer Key
-Installer Keys are keys used to install a sensor. By specifying a key at install time the sensor knows where to connect
-as well as the cryptographic keys specific to your installation. Installer Keys can also associate specific Tags the first
-time a sensor is installed.
+Installer Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
 
 ### Tags
-Sensors can have Tags associated with them. Tags are applied either based on an Installer Key, or
-dynamically via Detection & Response Rules.
+Sensors can have Tags associated with them. Tags are added during creation or dynamically either through the UI, API or Detection & Response Rules.
 
 ### Detection & Response Rules
 The Detection & Response Rules are an automation engine. The Detection component is a rule that either matches an event
