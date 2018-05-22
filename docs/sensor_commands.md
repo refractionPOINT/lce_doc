@@ -24,6 +24,10 @@ A common scheme is to set an investigation ID in all tasks sent during an intera
 to create an Output with this specific ID for the duration of the session. That way you can find all the
 responses from your session in one place.
 
+When you issue a task, you will see `CLOUD_NOTIFICATION` events coming back from your
+sensor. Those events are simply "receipts" from your sensor to let you know they have
+received a task and the contents of that task.
+
 ## Files and Directories
 
 ### file_get
