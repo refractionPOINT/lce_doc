@@ -3,12 +3,26 @@
 [TOC]
 
 Sensor commands are commands that can be sent to the sensor (through the backend as an intermediary) to do various things.
-These commands may rely on various collectors that may or may not be enabled on the sensor (see [Profiles](profiles.md) 
-for instructions on enabling and disabling collectors).
+These commands may rely on various collectors that may or may not be currently enabled on the sensor and have been marked as such.
 
 Below is a high level listing of available commands and their purpose. Commands are sent like a command line interface
 and may have positional or optional parameters. To get exact usage, either do a `GET` to the REST interface's `/tasks`
 endpoint or issue the RPC `get_help` to the `c2/taskingproxy` category.
+
+When issuing a task, the expected answer from the REST interface is an empty (`{}`) 200 OK. This because responses
+from the sensor to a task may come right away or may trickle in over time (like in the case of the Yara scanning). To
+prevent the REST interface from blocking for very long times, the responses to the tasks are simply sent as part
+of the normal data flow from the sensor as response events. This means you can find the responses through the data in the
+Output you have configured.
+
+To assist in find the responses more easily, the `investigation_id` mechanism was created. When issuing a taks, including
+an `investigation_id`, which is simply an arbitrary string you define, will include that ID in all related responses from
+the sensor (`routing/investigation_id`). Note that Outputs also support the `inv_id` parameter that allows you to create
+an Output that will only receive data related to an investigation ID.
+
+A common scheme is to set an investigation ID in all tasks sent during an interactive session and
+to create an Output with this specific ID for the duration of the session. That way you can find all the
+responses from your session in one place.
 
 ## Files and Directories
 
