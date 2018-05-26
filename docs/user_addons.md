@@ -57,3 +57,20 @@ quality or performance concerns. If you are not sure, contact us at support@lima
 required for the detection, but avoid filtering on organization-defined labels as they change from
 organization to organization. If you do use labels, describe the exact usage in the description.
 * Before making an add-on public, make sure to test it.
+
+### Lookups
+Creating a lookup add-on enables you to create a list that you can use as part of [D&R rules](dr.md).
+Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your looking
+like `resource: lcr://lookup/my-lookup-name`.
+
+The lookup structure is very simple, it should be a dictionary where each key is a value that
+can be matched while the value associated with the key is any type of metadata you would like
+reported in association with this particular match. Here are some example:
+
+```yaml
+evil.com: some evil website, definitely bad
+example.com:
+  source: my-threat-intel
+  risk: high
+  contact: email threatintel@mycorp.com immediately if spotted
+```
