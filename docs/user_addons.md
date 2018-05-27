@@ -74,3 +74,7 @@ example.com:
   risk: high
   contact: email threatintel@mycorp.com immediately if spotted
 ```
+
+When a Lookup add-on is submitted via a URL callback instead of through the website, the
+format pointed to by the URL must be in JSON format (still a dictionary). The maximum size
+of a lookup fetched from a URL is 15MB and from the web is 512KB.
