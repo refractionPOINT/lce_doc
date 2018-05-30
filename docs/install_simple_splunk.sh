@@ -73,6 +73,15 @@ PASSWORD = $SPLUNK_PASSWORD
 echo Restarting Splunk
 /opt/splunk/bin/splunk restart --accept-license --no-prompt
 
+sleep 10
+
+echo Installing the LimaCharlie Splunk app
+wget "https://lcio.nyc3.digitaloceanspaces.com/lce.spl"
+/opt/splunk/bin/splunk install app ./lce.spl
+
+echo Restarting Splunk
+/opt/splunk/bin/splunk restart --accept-license --no-prompt
+
 echo "======================="
 echo "DONE"
 echo "=======================\n\n"
