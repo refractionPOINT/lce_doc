@@ -89,6 +89,10 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
 Splunk provides you with a simple web interface to view and search the data. 
 It has a paying enterprise version and a free tier.
 
+Below are manual steps to using Splunk with LimaCharlie data. But you can also use
+this [installation script](install_simple_splunk.sh) to install and configure a free
+version on a Debian/Ubuntu server automatically.
+
 Because the LimaCharlie.io cloud needs to be able to reach your Splunk instance at all times to upload data, we recommend
 you create a virtual machine at a cloud provider like DigitalOcean, Amazon AWS or Google Cloud.
 
