@@ -26,3 +26,22 @@ hour to limit the possible damage of a leak and make the deletion of the API key
 A simple [Python API](https://github.com/refractionpoint/python-limacharlie/) is also
 provided that simplifies usage of the REST API by taking care of the API Key -> JWT exchange
 as necessary and wraps the functionality into nicer objects.
+
+## Privileges
+API Keys have several on-off privileges available.
+
+General modifier:
+* Read: can read configuration values.
+* Write: can update and create configuration values.
+
+Scopes:
+* Execute: can execute tasks on agents *(does not require any general modifier to work)*.
+* Installation Keys: can deal with Installation Keys.
+* D&R Rules: can deal with D&R Rules.
+* Output: can deal with Outputs.
+
+This means that a key with *Read* and *Output* will be able to read all Outputs currently configured, but will not be able 
+to create any new Outputs.
+
+For example, the Spout feature from the [Python](https://github.com/refractionpoint/python-limacharlie/) and [JS](https://www.npmjs.com/package/limacharlie) API (streaming Output over HTTPS) requires *Read*, *Write* and *Output* 
+privileges.
