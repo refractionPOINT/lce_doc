@@ -44,7 +44,8 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the event type of the event being
 evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter for the event being one of the types
-in the list.
+in the list. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
+of `_DETECTIONNAME`. This can be used to compose higher order detections.
 
 ### Logical Operations
 Some parameters are available to all logical operations.
@@ -193,7 +194,7 @@ parameter that, if set to `false` means the report won't be published to the Out
 This last distinction about the `publish` parameter is important because the detections created by the `report` action
 get feed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting the
 `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
-of itself.
+of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
 #### add tag, remove tag
 These two actions associate and disassociate the tag found in the `tag` parameter with the sensor.
