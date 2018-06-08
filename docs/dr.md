@@ -44,7 +44,8 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the event type of the event being
 evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter for the event being one of the types
-in the list.
+in the list. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
+of `_DETECTIONNAME`. This can be used to compose higher order detections.
 
 ### Logical Operations
 Some parameters are available to all logical operations.
@@ -114,6 +115,13 @@ match.
 
 They all use the `path` and `value` parameters.
 
+#### is greater than, is lower than
+Check to see if a value is greater, or lower (numerically) than a value in the event.
+
+They both use the `path` and `value` parameters.
+They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
+the value at the specified path, it compares the length of the value at the specified path.
+
 #### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
 
@@ -148,6 +156,34 @@ Example:
     "resource": "lcr://lookup/malwaredomains",
     "case sensitive": false
 }
+```
+
+##### VirusTotal
+The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the 
+organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations 
+configurations.
+
+As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain 
+further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary 
+of AntiVirus vendor reports (here we test for more than 1 vendor saying the hash is bad), while in the case of a custom 
+lookup resource it would be whatever is set as the item's metadata.
+
+To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal 
+API key in the Integrations section of the limacharlie.io web interface.
+
+VirusTotal results are cached for a limited period of time locally which reduces your the usage of your API key.
+
+Example:
+```yaml
+op: lookup
+event: CODE_IDENTITY
+path: event/HASH
+resource: 'lcr://api/vt'
+metadata_rules:
+  path: /
+  length of: true
+  value: 1
+  op: is greater than
 ```
 
 #### external
@@ -193,7 +229,7 @@ parameter that, if set to `false` means the report won't be published to the Out
 This last distinction about the `publish` parameter is important because the detections created by the `report` action
 get feed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting the
 `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
-of itself.
+of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
 #### add tag, remove tag
 These two actions associate and disassociate the tag found in the `tag` parameter with the sensor.
