@@ -173,6 +173,8 @@ API key in the Integrations section of the limacharlie.io web interface.
 
 VirusTotal results are cached for a limited period of time locally which reduces the usage of your API key and saves you money.
 
+Also note that if your API Key runs out of quota with VirusTotal, hashes seen until you have quota again will be ignored.
+
 Example:
 ```yaml
 op: lookup
