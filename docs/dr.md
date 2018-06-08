@@ -171,7 +171,7 @@ lookup resource it would be whatever is set as the item's metadata.
 To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal 
 API key in the Integrations section of the limacharlie.io web interface.
 
-VirusTotal results are cached for a limited period of time locally which reduces your the usage of your API key.
+VirusTotal results are cached for a limited period of time locally which reduces the usage of your API key and saves you money.
 
 Example:
 ```yaml
