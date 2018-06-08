@@ -180,10 +180,10 @@ event: CODE_IDENTITY
 path: event/HASH
 resource: 'lcr://api/vt'
 metadata_rules:
+  op: is greater than
+  value: 1
   path: /
   length of: true
-  value: 1
-  op: is greater than
 ```
 
 #### external
