@@ -115,6 +115,13 @@ match.
 
 They all use the `path` and `value` parameters.
 
+#### is greater than, is lower than
+Check to see if a value is greater, or lower (numerically) than a value in the event.
+
+They both use the `path` and `value` parameters.
+They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
+the value at the specified path, it compares the length of the value at the specified path.
+
 #### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
 
@@ -149,6 +156,34 @@ Example:
     "resource": "lcr://lookup/malwaredomains",
     "case sensitive": false
 }
+```
+
+##### VirusTotal
+The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the 
+organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations 
+configurations.
+
+As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain 
+further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary 
+of AntiVirus vendor reports (here we test for more than 1 vendor saying the hash is bad), while in the case of a custom 
+lookup resource it would be whatever is set as the item's metadata.
+
+To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal 
+API key in the Integrations section of the limacharlie.io web interface.
+
+VirusTotal results are cached for a limited period of time locally which reduces your the usage of your API key.
+
+Example:
+```yaml
+op: lookup
+event: CODE_IDENTITY
+path: event/HASH
+resource: 'lcr://api/vt'
+metadata_rules:
+  path: /
+  length of: true
+  value: 1
+  op: is greater than
 ```
 
 #### external
