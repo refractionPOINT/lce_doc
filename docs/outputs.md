@@ -59,6 +59,12 @@ Output events and detections to a syslog target.
 * `is_strict_tls`: if `true` will enforce validation of TLS certs.
 * `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
 
+### Webhook
+Output individually each event, detection or audit through a POST webhook.
+
+* `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+
 ## Integrations
 
 ### Common Patterns
@@ -214,3 +220,14 @@ done on the side of `output.limacharlie.io` is very minimal. If you are not fast
 be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of 
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}` 
 message aproximately every minute to indicate the stream is still alive.
+
+### Webhook
+Using this ouput, every element will be sent over HTTP(S) to a webserver of your choice via a POST.
+
+The JSON data will be found in the `data` parameter of the `application/x-www-form-urlencoded` encoded POST.
+
+An HTTP header name `Lc-Signature` will contain an HMAC signature of the contents. This HMAC is computed from the string
+value of the `data` parameter and the `secret_key` set when creating the Output, using SHA256 as the hashing algorithm.
+
+The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or 
+the [JavaScript API](https://www.npmjs.com/package/limacharlie).
