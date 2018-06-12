@@ -231,3 +231,55 @@ value of the `data` parameter and the `secret_key` set when creating the Output,
 
 The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or 
 the [JavaScript API](https://www.npmjs.com/package/limacharlie).
+
+For example, here is a sample Google Cloud Function that can receive a webhook:
+```javascript
+const Webhook = require('limacharlie/Webhook');
+
+/**
+ * Receives LimaCharlie.io webhooks.
+ *
+ * @param {!Object} req Cloud Function request context.
+ * @param {!Object} res Cloud Function response context.
+ */
+exports.lc_cloud_func = (req, res) => {
+  // Example input: {"message": "Hello!"}
+  if (req.body.data === undefined) {
+    // This is an error case, as we expect a form parameter "data".
+    console.error('Got: ' + JSON.stringify(req.body, null, 2));
+    res.status(400).send('No data defined.');
+  } else {
+    // First thing to do is validate this is a legitimate
+    // webhook sent by limacharlie.io.
+    let hookData = req.body.data;
+    
+    // This is the secret key set when creating the webhook.
+    let whSecretKey = '123';
+    
+    // This is the signature sent via header, we must validate it.
+    let whSignature = req.get('Lc-Signature');
+
+    // This object will do the validation for you.
+    let wh = new Webhook(whSecretKey);
+
+    // Check the signature and return early if not valid.
+    if(!wh.isSignatureValid(hookData, whSignature)) {
+    console.error("Invalid signature, do not trust!"); 
+      // Early return, 200 or an actual error if you want.
+      res.status(200);
+    }
+    
+    console.log("Good signature, proceed.");
+    
+    // Parse the JSON payload.
+    hookData = JSON.parse(hookData);
+    console.log("Parsed hook data: " + JSON.stringify(hookData, null, 2));
+    
+    // This is where you would do your own processing
+    // like talking to other APIs etc.
+    
+    res.status(200);
+  }
+};
+
+```
