@@ -14,7 +14,7 @@ The API Keys are managed through the organization view of the https://limacharli
 ## Getting a JWT
 Simply issue an HTTP GET like:
 ```
-curl "https://limacharlie.io/jwt?oid=c82e5c17-d520-4ef5-a4ac-c454a95d31ca&secret=1b1ae891-4316-4124-b859-556dd92add00"
+curl "https://app.limacharlie.io/jwt?oid=c82e5c17-d520-4ef5-a4ac-c454a95d31ca&secret=1b1ae891-4316-4124-b859-556dd92add00"
 ```
 where the `oid` parameter is the organization id as found through the web interface and the `secret` parameter is the API
 key to use.

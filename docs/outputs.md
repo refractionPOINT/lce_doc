@@ -59,6 +59,12 @@ Output events and detections to a syslog target.
 * `is_strict_tls`: if `true` will enforce validation of TLS certs.
 * `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
 
+### Webhook
+Output individually each event, detection or audit through a POST webhook.
+
+* `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+
 ## Integrations
 
 ### Common Patterns
@@ -214,3 +220,66 @@ done on the side of `output.limacharlie.io` is very minimal. If you are not fast
 be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of 
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}` 
 message aproximately every minute to indicate the stream is still alive.
+
+### Webhook
+Using this ouput, every element will be sent over HTTP(S) to a webserver of your choice via a POST.
+
+The JSON data will be found in the `data` parameter of the `application/x-www-form-urlencoded` encoded POST.
+
+An HTTP header name `Lc-Signature` will contain an HMAC signature of the contents. This HMAC is computed from the string
+value of the `data` parameter and the `secret_key` set when creating the Output, using SHA256 as the hashing algorithm.
+
+The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or 
+the [JavaScript API](https://www.npmjs.com/package/limacharlie).
+
+For example, here is a sample Google Cloud Function that can receive a webhook:
+```javascript
+const Webhook = require('limacharlie/Webhook');
+
+/**
+ * Receives LimaCharlie.io webhooks.
+ *
+ * @param {!Object} req Cloud Function request context.
+ * @param {!Object} res Cloud Function response context.
+ */
+exports.lc_cloud_func = (req, res) => {
+  // Example input: {"message": "Hello!"}
+  if (req.body.data === undefined) {
+    // This is an error case, as we expect a form parameter "data".
+    console.error('Got: ' + JSON.stringify(req.body, null, 2));
+    res.status(400).send('No data defined.');
+  } else {
+    // First thing to do is validate this is a legitimate
+    // webhook sent by limacharlie.io.
+    let hookData = req.body.data;
+    
+    // This is the secret key set when creating the webhook.
+    let whSecretKey = '123';
+    
+    // This is the signature sent via header, we must validate it.
+    let whSignature = req.get('Lc-Signature');
+
+    // This object will do the validation for you.
+    let wh = new Webhook(whSecretKey);
+
+    // Check the signature and return early if not valid.
+    if(!wh.isSignatureValid(hookData, whSignature)) {
+    console.error("Invalid signature, do not trust!"); 
+      // Early return, 200 or an actual error if you want.
+      res.status(200);
+    }
+    
+    console.log("Good signature, proceed.");
+    
+    // Parse the JSON payload.
+    hookData = JSON.parse(hookData);
+    console.log("Parsed hook data: " + JSON.stringify(hookData, null, 2));
+    
+    // This is where you would do your own processing
+    // like talking to other APIs etc.
+    
+    res.status(200);
+  }
+};
+
+```
