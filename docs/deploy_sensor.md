@@ -35,12 +35,19 @@ Before installing, you will need the [installation key](manage_keys.md) you want
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a Windows service and trigger its enrollment.
 
+#### System Requirements
+The LimaCharlie.io agent supports Windows XP 32 bit and up (32 and 64 bit). However, Windows XP and 2003 support is for the
+more limited capabilities of the agent that do not require kernel support.
+
 #### Checking it Runs
 In an administrative command prompt issue the command `sc query rphcpsvc` and confirm the `STATE` displayed is `RUNNING`.
 
 ### MacOS
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a launchctl service and trigger its enrollment.
+
+#### System Requirements
+All versions of 64 bit macOS 10.9 and above are supported. If you need more, contact us.
 
 #### Checking it Runs
 In a Terminal, run the command `sudo launchctl list | grep com.refractionpoint.rphcp` which should return a single record with
@@ -73,6 +80,10 @@ simply specifying the location of the installer, the `-d INSTALLATION_KEY` param
 directory is the directory where you want the few sensor-related files written to disk to reside.
 
 Common Linux packages may be available in the future.
+
+#### System Requirements
+All versions of Debian and CentOS starting around Debian 5 should be supported. Due to the high diversity of the ecosystem
+it's also likely to be working on other distributions. If you need a specific platform contact us.
 
 # Uninstalling the Sensor
 Using an installer, as administrator / root, simply invoke it with one of:
