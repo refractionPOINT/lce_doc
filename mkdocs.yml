@@ -9,19 +9,17 @@ markdown_extensions:
 theme: readthedocs
 pages:
     - Home: index.md
-    - AgentIDs: agentid.md
-    - API Keys: api_keys.md
-    - Deploying Sensors: deploy_sensor.md
-    - Serverless D&R: dr.md
-    - Events: events.md
-    - FAQ: faq.md
-    - Glossary: glossary.md
     - Quick Start: lcc_quick_start.md
     - Installation Keys: manage_keys.md
+    - Deploying Sensors: deploy_sensor.md
     - Outputs: outputs.md
-    - Sensor Interaction:
-      - Sensor Commands: sensor_commands.md
-      - Profiles: profiles.md
+    - API Keys: api_keys.md
+    - Sensor Commands: sensor_commands.md
     - Tagging: tagging.md
-    - Updating: update_org.md
+    - Detection & Response: dr.md
     - Add-ons: user_addons.md
+    - Events: events.md
+    - ID Schemes: agentid.md
+    - FAQ: faq.md
+    - Updating: update_org.md
+    
