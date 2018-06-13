@@ -446,7 +446,31 @@ optional arguments:
 ## Documents
 
 ### doc_cache_get
-Retrieve a document / file that was cached on the sensor. (List of extensions/directories cached specified in [Profiles](profiles.md))
+Retrieve a document / file that was cached on the sensor.
+
+Currently the types of documents cached cannot be changed (although it will be in the future):
+* .bat
+* .js
+* .ps1
+* .sh
+* .py
+* .exe
+* .scr
+* .pdf
+* .doc
+* .docm
+* .docx
+* .ppt
+* .pptm
+* .pptx
+* .xlt
+* .xlsm
+* .xlsx
+* .vbs
+* .rtf
+* .hta
+* .lnk
+* Any files created in `system32` on Windows.
 
 ```
 usage: doc_cache_get [-h] [-f FILE_PATTERN] [-s HASHSTR]
