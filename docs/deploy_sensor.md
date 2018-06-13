@@ -47,7 +47,7 @@ Executing the installer via the command line, pass the `-i INSTALLATION_KEY` arg
 mentioned above. This will install the sensor as a launchctl service and trigger its enrollment.
 
 #### System Requirements
-All versions of 64 bit macOS 10.6 and above are supported. If you need more, contact us.
+All versions of 64 bit macOS 10.9 and above are supported. If you need more, contact us.
 
 #### Checking it Runs
 In a Terminal, run the command `sudo launchctl list | grep com.refractionpoint.rphcp` which should return a single record with
