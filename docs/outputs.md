@@ -145,6 +145,11 @@ Then you can connect through the tunnel with your browser at `http://127.0.0.1:8
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Amazon S3. This way you don't need any infrastructure.
 
+If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the 
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
+as flat files with a UUID name.
+
 1. Log in to AWS console and go to the IAM service.
 1. Click on "Users" from the menu.
 1. Click "Add User", give it a name and select "Programmatic access".
