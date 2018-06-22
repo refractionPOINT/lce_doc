@@ -150,6 +150,10 @@ live querying by the Digger web app. LC data files begin with a `d` while specia
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded. The files being compressed does NOT prevent
+the Digger web app from accessing them (it decompresses them on the fly) but it may prevent other tools expecteding plain
+text from reading the files.
+
 1. Log in to AWS console and go to the IAM service.
 1. Click on "Users" from the menu.
 1. Click "Add User", give it a name and select "Programmatic access".
