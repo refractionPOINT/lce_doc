@@ -66,6 +66,7 @@ authorization tokens that can be used on our REST API. See the [API Key section]
 * [Output Configuration](outputs.md)
 * [Deploying Sensors](deploy_sensor.md)
 * [Add-ons](user_addons.md)
+* [Exploring Data](digger.md)
 
 ### Reference
 * [Events](events.md)

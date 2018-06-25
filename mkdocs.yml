@@ -16,6 +16,7 @@ pages:
     - API Keys: api_keys.md
     - Sensor Commands: sensor_commands.md
     - Tagging: tagging.md
+    - Digger: digger.md
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
     - Events: events.md
