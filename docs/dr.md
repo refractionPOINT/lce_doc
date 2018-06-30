@@ -222,7 +222,7 @@ Example (a descendant of notepad.exe creating cmd.exe):
 }
 ```
 
-##### VirusTotal
+#### VirusTotal
 The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the 
 organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations 
 configurations.
