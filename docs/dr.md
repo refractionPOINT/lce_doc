@@ -158,7 +158,71 @@ Example:
 }
 ```
 
-##### VirusTotal
+#### Stateful
+The following operators are special, we call them Stateful operators. In general, each D&R rule is limited to a single Stateful
+operator per rule. These operators are special in that they do not operate on a single event received from an agent, but rather
+they operate on the entire state of events from an agent, through time.
+
+Concretely what this all means is that they allow you to do things like:
+* Detect certain combinations of events through time (like 3 of process X within 5 minutes).
+* Detect complex relationships between events, like process ancestry (like if you see cmd.exe as a child N levels deep of a notepad.exe).
+
+Needless to say, these are extremely powerful. But with great capabilities comes great responsibility. In this case, using these operators
+in a "bad" way will result in very bad performance and possibly your rule being ejected.
+
+Under the hood, these operators use a form of [Finite State Machines](https://en.wikipedia.org/wiki/Finite-state_machine) in order to be able
+to perform forward lookup only (no need to do a lookup "backwards" in time in a database). This results in a minimal state of relevant events
+being kept in memory for the lifetime of the sensor. A bad rule may result in this minimal state being extremely big, which is not what we want.
+
+Exactly what makes a good usage and a bad usage will be discussed on a per operator basis.
+
+##### process burst
+This will detect when a process matching the `re` parameter is created a minimum of `count` times per `time` (seconds) period.
+
+It is important to keep the bounds reasonable. Any process matching `re` will be kept in the state for at least `time` seconds, so having
+a `time` that is extremely big will potentially keep more events in state. Therefore, if your `re` is somewhat loose, try to make the `time`
+a smaller value to keep less state.
+
+Example (3 Linux reconnaissance processes within 5 seconds):
+```json
+{
+    "op": "process burst",
+    "re": ".*/((ifconfig)|(arp)|(route)|(ping)|(traceroute)|(nslookup)|(netstat)|(wget)|(curl))",
+    "count": 4,
+    "time": 5
+}
+```
+
+##### process descendant
+This will detect a suspicious relationship between a parent process matching the regular express `parent` and one of the following:
+* if `child` is specified, will detect when a descendant process of `parent` matches the regular expression `child`.
+* if the `document` is specified, will detect when a process descendant of `parent` creates a [new document](events.md#new_document) with a 
+file path matching the regular expression in `document`.
+
+In addition to this base behavior, the following modifiers are available:
+* `only direct`: if set to `true`, the target relationship will only attempt to detect a direct relationship, meaning if a non-matching process 
+exists in between the `parent` and `child` (or `document`), no detection will be generated.
+* `parent root`: for a match on the `parent` to be made, the parent process must be owned by the `root` user  on Linux and MacOS or an Administrator 
+account on Windows.
+* `child root`: similar behavior as `parent root` but is applied to the `child`.
+
+This operator potentially keeps a lot more state than others. A process will be kept in state if it matches the `parent` process and this for as long
+as the `parent` process stays alive. This means a bad combination for this operator is to have a `parent` that matches very common processes, and for 
+those processes to have a very long lifetime, and for those `parent` processes to create a lot of children processes. This should be avoided at all cost.
+
+The best combination for this operator is to use a rare `parent`. For example, `notepad.exe` as a `parent` is great, it's not that common and almost never 
+creates other processes. On the other hand, `explorer.exe` is an aweful parent as it creates many processes and stays alive for a very long time.
+
+Example (a descendant of notepad.exe creating cmd.exe):
+```json
+{
+    "op": "process descendant",
+    "parent": ".*notepad.exe",
+    "child": ".*cmd.exe"
+}
+```
+
+#### VirusTotal
 The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the 
 organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations 
 configurations.
