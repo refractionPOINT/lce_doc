@@ -13,6 +13,8 @@ the information unique to the event. The actual event stream will contain much m
 * routing/parent is a reference to the parent event's routing/this, providing strong relationships (much more reliable than simple process IDs)
 between the events. This allows you to get the extremely powerful explorer view.
 * routing/event_time is the time (UTC) the sensor produced the event.
+* routing/hostname is the hostname of where the event came from.
+* routing/tags is the list of tags associated with the agent where the event came from.
 
 ## Events Listing
 
