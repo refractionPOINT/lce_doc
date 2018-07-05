@@ -280,3 +280,14 @@ a file matching a profile-specified pattern category, a `FILE_TYPE_ACCESSED` eve
 file information. This can be useful to efficiently detect processes not expected to access sensitive data for example.
 
 ---
+
+### Collector 23: Remote Thread Tracker
+
+#### Characteristics
+* Profile Reference: `HbsCollectorId.REMOTE_THREAD_TRACKER`
+* Platforms: Windows
+
+#### Description
+This collectors generates an event every time a remote thread is created on a Windows sensor.
+
+---
