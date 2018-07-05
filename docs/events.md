@@ -8,6 +8,7 @@ Below is a list of all the events available in LC along with a sample output. Pl
 
 Some common elements to events are worth pointing out. Those elements have been removed from the events below, only leaving
 the information unique to the event. The actual event stream will contain much more information for each event.
+
 * routing/this is a UUID generated for every event in the sensor.
 * routing/parent is a reference to the parent event's routing/this, providing strong relationships (much more reliable than simple process IDs)
 between the events. This allows you to get the extremely powerful explorer view.
@@ -17,6 +18,7 @@ between the events. This allows you to get the extremely powerful explorer view.
 
 ### Atoms
 Atoms can be found in 3 locations:
+
 * routing/parent
 * routing/this
 * event/TARGET_ATOM
