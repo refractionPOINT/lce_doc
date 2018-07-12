@@ -252,6 +252,89 @@ metadata_rules:
   length of: true
 ```
 
+#### IP GeoLocation
+The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the 
+organization needs to be subscribed to the `api/ip-geo` API Add-On.
+
+As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain 
+further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of `ip-geo` this is a dictionary 
+of the geolocation data returned by the IP GeoLocation data provider, [MaxMind.com](https://maxmind.com).
+
+The format of the metadata returned is documented [here](https://github.com/maxmind/MaxMind-DB-Reader-python) and looks like this:
+
+```json
+{
+  "country": {
+    "geoname_id": 2750405, 
+    "iso_code": "NL", 
+    "is_in_european_union": true, 
+    "names": {
+      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b", 
+      "fr": "Pays-Bas", 
+      "en": "Netherlands", 
+      "de": "Niederlande", 
+      "zh-CN": "\u8377\u5170", 
+      "pt-BR": "Holanda", 
+      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd", 
+      "es": "Holanda"
+    }
+  }, 
+  "location": {
+    "latitude": 52.3824, 
+    "accuracy_radius": 100, 
+    "time_zone": "Europe/Amsterdam", 
+    "longitude": 4.8995
+  }, 
+  "continent": {
+    "geoname_id": 6255148, 
+    "code": "EU", 
+    "names": {
+      "ru": "\u0415\u0432\u0440\u043e\u043f\u0430", 
+      "fr": "Europe", 
+      "en": "Europe", 
+      "de": "Europa", 
+      "zh-CN": "\u6b27\u6d32", 
+      "pt-BR": "Europa", 
+      "ja": "\u30e8\u30fc\u30ed\u30c3\u30d1", 
+      "es": "Europa"
+    }
+  }, 
+  "registered_country": {
+    "geoname_id": 2750405, 
+    "iso_code": "NL", 
+    "is_in_european_union": true, 
+    "names": {
+      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b", 
+      "fr": "Pays-Bas", 
+      "en": "Netherlands", 
+      "de": "Niederlande", 
+      "zh-CN": "\u8377\u5170", 
+      "pt-BR": "Holanda", 
+      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd", 
+      "es": "Holanda"
+    }
+  }
+}
+```
+
+To activate IP GeoLocation usage, you must subscibe to the `api/ip-geo` API in the Add-On section.
+
+Also note that if your API Key runs out of quota with VirusTotal, hashes seen until you have quota again will be ignored.
+
+Example (is the connecting agent in a European Union country):
+```yaml
+op: lookup
+resource: 'lcr://api/ip-geo'
+path: routing/ext_ip
+event: CONNECTED
+metadata_rules:
+  op: is
+  value: true
+  path: country/is_in_european_union
+```
+
+The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
+
 #### external
 Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
 Resources are of the form `lcr://<resource_type>/<resource_name>`, the `external` operation only supports Resources of
