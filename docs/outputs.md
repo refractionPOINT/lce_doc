@@ -15,6 +15,7 @@
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 
 ### File
+***Only available to on-premises deployment.***
 Output events and detections to local files.
 
 * `dir`: the directory where to out the files.

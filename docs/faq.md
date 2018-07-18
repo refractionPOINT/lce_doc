@@ -19,4 +19,5 @@
      home for a specific amount of time.
 * This means a common strategy is to have "first level" detections that look for general
   suspicious behavior, and when necessary for those detections to trigger `history_dump` to get full context.
-  
+
+### How do LimaCharlie events map with Sysmon events on Windows?
