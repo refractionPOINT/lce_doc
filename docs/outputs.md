@@ -155,6 +155,8 @@ The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
 the Digger web app from accessing them (it decompresses them on the fly) but it may prevent other tools expecteding plain
 text from reading the files.
 
+It is recommended you enable `is_indexing` and `is_compression`.
+
 1. Log in to AWS console and go to the IAM service.
 1. Click on "Users" from the menu.
 1. Click "Add User", give it a name and select "Programmatic access".
@@ -167,6 +169,9 @@ text from reading the files.
     where you replace the "<<USER_ARN>>" with the ARN name of the user you created and the "<<BUCKET_NAME>>" with the
     name of the bucket you just created.
 1. Click "Save".
+1. Click the "Permissions" tab for your bucket.
+1. Select CORS Configuration
+1. In the editor, enter the configuration you find below, this allows the Digger to access the data through the browser.
 1. Back in limacharlie.io, in your organization view, create a new Output.
 1. Give it a name, select the "s3" module and select the stream you would like to send.
 1. Enter the bucket name, key_id and secret_key you noted down from AWS.
@@ -193,6 +198,20 @@ text from reading the files.
       }
    ]
 }
+```
+
+#### CORS Configuration
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+
 ```
 
 ### HTTP Streaming
