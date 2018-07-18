@@ -381,13 +381,15 @@ get feed back into the D&R rules so that more complex rules may handle more comp
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
 #### add tag, remove tag
-These two actions associate and disassociate the tag found in the `tag` parameter with the sensor.
+These two actions associate and disassociate the tag found in the `tag` parameter with the sensor. The "add tag" operation 
+can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
 ```json
 {
     "action": "add tag",
-    "tag": "vip"
+    "tag": "vip",
+    "ttl": 30
 }
 ```
 

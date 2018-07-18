@@ -6,8 +6,6 @@
 
 **General Parameters**
 * `is_flat`: take the json output and flatten the whole thing to a flat structure.
-* `is_base64`: instead of escaping binary data to hex, escape it to base64.
-* `is_full_tag`: display the fully qualified tag name instead of the short version.
 * `inv_id`: only send events matching the investigation id to this output (event stream only).
 * `tag`: only send events from sensors with this tag to this output (event stream only).
 * `cat`: only send detections from this category to this output (detect stream only).
@@ -15,6 +13,7 @@
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 
 ### File
+***Only available to on-premises deployment.***
 Output events and detections to local files.
 
 * `dir`: the directory where to out the files.
