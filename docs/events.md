@@ -618,6 +618,8 @@ This event is generated whenever a process opens a handle to another process wit
 of the following access flags: `VM_READ`, `VM_WRITE` or `PROCESS_CREATE_THREAD`. Only 
 available on Windows OS.
 
+The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.com/en-us/windows/desktop/procthread/process-security-and-access-rights).
+
 ```json
 {
    "ACCESS_FLAGS":   136208,

@@ -21,3 +21,18 @@
   suspicious behavior, and when necessary for those detections to trigger `history_dump` to get full context.
 
 ### How do LimaCharlie events map with Sysmon events on Windows?
+Many events generated in LimaCharlie have a good analog event in Sysmon (as described [here](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon)):
+
+* Event ID 1 (Process creation): [NEW_PROCES](events.md#new_process)
+* Event ID 3 (Network connection):  [NEW_*_CONNECTION](events.md#new_tcp4_connection)
+* Event ID 5 (Process terminated): [TERMINATE_PROCESS](events.md#terminate_process)
+* Event ID 6 (Driver loaded): [MODULE_LOAD](events.md#module_load), [CODE_IDENTITY](events.md#code_identity), [DRIVER_CHANGE](events.md#driver_change)
+* Event ID 7 (Image loaded): [MODULE_LOAD](events.md#module_load), [CODE_IDENTITY](events.md#code_identity)
+* Event ID 8 (Create remote thread): [NEW_REMOTE_THREAD](events.md#new_remote_thread)
+* Event ID 10 (ProcessAccess): [REMOTE_PROCESS_HANDLE](events.md#remote_process_handle)
+* Event ID 11 (FileCreate): [FILE_CREATE](events.md#file_create)
+* Event ID 12 (RegistryEvent object create and delete): [REGISTRY_CREATE](events.md#registry_create), [REGISTRY_DELETE](events.md#registry_delete)
+* Event ID 13 (RegistryEvent value set): [REGISTRY_WRITE](events.md#registry_write)
+* Event ID 14 (RegistryEvent rename): [REGISTRY_CREATE](events.md#registry_create)
+
+Obviously, we also have [tons of other events](events.md) that are not found in Sysmon.
