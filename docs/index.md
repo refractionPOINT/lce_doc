@@ -1,8 +1,8 @@
-# LimaCharlie Cloud
+# LimaCharlie.io
 
 <img src="https://lcio.nyc3.digitaloceanspaces.com/logo.png" width="150">
 
-By [Refraction Point](https://www.refractionpoint.com)
+***[Get Started Here](https://limacharlie.io)***
 
 [TOC]
 
