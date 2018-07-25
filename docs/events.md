@@ -87,7 +87,14 @@ host shuts down too quickly or abruptly.
 ```
 
 ### CONNECTED
-Generated when sensor connects to cloud.
+Generated when sensor connects to cloud. The `IS_SEGREGATED` flag 
+signals whether the sensor is currently under network isolation.
+
+```json
+{
+  "IS_SEGREGATED" : 1
+}
+```
 
 ### CLOUD_NOTIFICATION
 This event is a receipt from the agent that it has received the task
