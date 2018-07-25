@@ -21,7 +21,7 @@ Atoms can be found in 3 locations:
 
 * routing/parent
 * routing/this
-* event/TARGET_ATOM
+* routing/target
 
 Atoms are Globally Unique Identifiers that look like this: `1e9e242a512d9a9b16d326ac30229e7b`. You can treat it as an opaque value. These unique values
 are used to relate events together without the need to use clunky and unreliable things like Process IDs.
@@ -35,8 +35,8 @@ nature of relationship varies. For example for a `NETWORK_SUMMARY` event, the pa
 Depending on the exact storage and searching solution you are using, you will likely want to index the values of `routing/this` and `routing/parent` for
 each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
 
-Finally, the `event/TARGET_ATOM` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For
-example, in the `NEW_REMOTE_THREAD` event, this `TARGET_ATOM` represents the process where the remote thread was created.
+Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For
+example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
 
 Basic example:
 
@@ -578,13 +578,12 @@ This is a characteristic often used by malware during various forms of code inje
 
 In this case, the process id `492` created a thread (with id `9012`) in the process id `7944`.
 The parent process is also globally uniquely identified by the `routing/parent` and the process
-where the thread was started is globally uniquely identified by the `event/TARGET_ATOM`.
+where the thread was started is globally uniquely identified by the `routing/target` (not visible here).
 
 ```json
 {
   "THREAD_ID": 9012, 
   "PROCESS_ID": 7944, 
-  "TARGET_ATOM": "1e9e242a512d9a9b16d326ac30229e7b", 
   "PARENT_PROCESS_ID": 492
 }
 ```
@@ -644,7 +643,8 @@ This event is generated whenever a registry value is written to on a Windows OS.
 ### REMOTE_PROCESS_HANDLE
 This event is generated whenever a process opens a handle to another process with one 
 of the following access flags: `VM_READ`, `VM_WRITE` or `PROCESS_CREATE_THREAD`. Only 
-available on Windows OS.
+available on Windows OS. A `routing/target` is also populated in the event as the globally 
+unique identifier of the target process.
 
 The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.com/en-us/windows/desktop/procthread/process-security-and-access-rights).
 
@@ -652,7 +652,6 @@ The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.c
 {
    "ACCESS_FLAGS":   136208,
    "PARENT_PROCESS_ID":  6492,
-   "PROCESS_ID":   2516,
-   "TARGET_ATOM":  "5f8ea65d3bad331a0e052c79487f9f9d"
+   "PROCESS_ID":   2516
 } 
 ```
