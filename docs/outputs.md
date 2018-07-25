@@ -27,6 +27,8 @@ Output events and detections to an Amazon S3 bucket.
 * `key_id`:  the id of the AWS auth key.
 * `secret_key`: the AWS secret key to auth with.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
+* `is_compression`: if set to "true", data will be gzipped before upload.
+* `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 
 ### SCP
 Output events and detections over SCP (SSH file transfer).
@@ -312,3 +314,8 @@ exports.lc_cloud_func = (req, res) => {
 };
 
 ```
+
+### Security Onion
+A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is 
+available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along 
+with the code [here](https://github.com/weslambert/securityonion-limacharlie/).

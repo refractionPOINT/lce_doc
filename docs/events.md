@@ -87,7 +87,35 @@ host shuts down too quickly or abruptly.
 ```
 
 ### CONNECTED
-Generated when sensor connects to cloud.
+Generated when sensor connects to cloud. The `IS_SEGREGATED` flag 
+signals whether the sensor is currently under network isolation.
+
+```json
+{
+  "IS_SEGREGATED" : 1
+}
+```
+
+### CLOUD_NOTIFICATION
+This event is a receipt from the agent that it has received the task
+sent to it, and includes high level errors (if any).
+
+```json
+{
+  "NOTIFICATION_ID": "ADD_EXFIL_EVENT_REQ",
+  "NOTIFICATION": {
+    "INVESTIGATION_ID": "digger-4afdeb2b-a0d8-4a37-83b5-48996117998e"
+  },
+  "HCP_IDENT": {
+    "HCP_ORG_ID": "c82e5c17d5194ef5a4acc454a95d31db",
+    "HCP_SENSOR_ID": "8fc370e6699a49858e75c1316b725570",
+    "HCP_INSTALLER_ID": "00000000000000000000000000000000",
+    "HCP_ARCHITECTURE": 0,
+    "HCP_PLATFORM": 0
+  },
+  "EXPIRY": 0
+}
+```
 
 ### NEW_PROCESS
 Generated when a new process starts.
