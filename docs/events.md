@@ -267,51 +267,53 @@ sending home all network events all the time which is a lot of data.
 
 ```json
 {
-  "PARENT": {
-    "PARENT_PROCESS_ID": 876, 
-    "COMMAND_LINE": "C:\\WINDOWS\\system32\\compattelrunner.exe -maintenance", 
-    "MEMORY_USAGE": 3858432, 
-    "PROCESS_ID": 5164, 
-    "THREADS": 3, 
-    "FILE_PATH": "C:\\WINDOWS\\system32\\compattelrunner.exe", 
-    "BASE_ADDRESS": 140699034058752
-  }, 
-  "PARENT_PROCESS_ID": 5164, 
-  "COMMAND_LINE": "C:\\WINDOWS\\system32\\CompatTelRunner.exe -m:invagent.dll -f:RunUpdateW", 
-  "MEMORY_USAGE": 6668288, 
-  "PROCESS_ID": 652, 
-  "NETWORK_ACTIVITY": [
-    {
-      "DESTINATION": {
-        "IP_ADDRESS": "65.55.252.190", 
-        "PORT": 443
-      }, 
-      "TIMESTAMP": 1456285233, 
-      "STATE": 5, 
-      "PROCESS_ID": 652, 
-      "SOURCE": {
-        "IP_ADDRESS": "172.16.223.156", 
-        "PORT": 49724
-      }
+  "PROCESS": {
+    "PARENT": {
+      "PARENT_PROCESS_ID": 876, 
+      "COMMAND_LINE": "C:\\WINDOWS\\system32\\compattelrunner.exe -maintenance", 
+      "MEMORY_USAGE": 3858432, 
+      "PROCESS_ID": 5164, 
+      "THREADS": 3, 
+      "FILE_PATH": "C:\\WINDOWS\\system32\\compattelrunner.exe", 
+      "BASE_ADDRESS": 140699034058752
     }, 
-    {
-      "DESTINATION": {
-        "IP_ADDRESS": "191.239.54.52", 
-        "PORT": 80
+    "PARENT_PROCESS_ID": 5164, 
+    "COMMAND_LINE": "C:\\WINDOWS\\system32\\CompatTelRunner.exe -m:invagent.dll -f:RunUpdateW", 
+    "MEMORY_USAGE": 6668288, 
+    "PROCESS_ID": 652, 
+    "NETWORK_ACTIVITY": [
+      {
+        "DESTINATION": {
+          "IP_ADDRESS": "65.55.252.190", 
+          "PORT": 443
+        }, 
+        "TIMESTAMP": 1456285233, 
+        "STATE": 5, 
+        "PROCESS_ID": 652, 
+        "SOURCE": {
+          "IP_ADDRESS": "172.16.223.156", 
+          "PORT": 49724
+        }
       }, 
-      "TIMESTAMP": 1456285233, 
-      "STATE": 5, 
-      "PROCESS_ID": 652, 
-      "SOURCE": {
-        "IP_ADDRESS": "172.16.223.156", 
-        "PORT": 49727
+      {
+        "DESTINATION": {
+          "IP_ADDRESS": "191.239.54.52", 
+          "PORT": 80
+        }, 
+        "TIMESTAMP": 1456285233, 
+        "STATE": 5, 
+        "PROCESS_ID": 652, 
+        "SOURCE": {
+          "IP_ADDRESS": "172.16.223.156", 
+          "PORT": 49727
+        }
       }
-    }
-  ], 
-  "THREADS": 4, 
-  "FILE_PATH": "C:\\WINDOWS\\system32\\CompatTelRunner.exe", 
-  "TIMESTAMP": 1456285231, 
-  "BASE_ADDRESS": 140699034058752
+    ], 
+    "THREADS": 4, 
+    "FILE_PATH": "C:\\WINDOWS\\system32\\CompatTelRunner.exe", 
+    "TIMESTAMP": 1456285231, 
+    "BASE_ADDRESS": 140699034058752
+  }
 }
 ```
 
