@@ -226,6 +226,9 @@ It is recommended you enable `is_indexing` and `is_compression`.
 ```
 
 ### Google Cloud Storage
+
+***Google Cloud Storage is currently only supported as an Output. Visualization of data in Digger from GCS is not yet possible.***
+
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Google Cloud Storage (GCS). This way you don't need any infrastructure.
 
