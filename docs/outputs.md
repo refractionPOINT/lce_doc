@@ -30,6 +30,15 @@ Output events and detections to an Amazon S3 bucket.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 
+### Google Cloud Storage
+Output events and detections to a GCS bucket.
+
+* `bucket`: the path to the AWS S3 bucket.
+* `secret_key`: the secret json key identifying a service account.
+* `sec_per_file`: the number of seconds after which a file is cut and uploaded.
+* `is_compression`: if set to "true", data will be gzipped before upload.
+* `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+
 ### SCP
 Output events and detections over SCP (SSH file transfer).
 
@@ -215,6 +224,39 @@ It is recommended you enable `is_indexing` and `is_compression`.
 </CORSConfiguration>
 
 ```
+
+### Google Cloud Storage
+If you have your own visualization stack, or you just need the data archived, you can upload
+directly to Google Cloud Storage (GCS). This way you don't need any infrastructure.
+
+If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the 
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
+as flat files with a UUID name.
+
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded. The files being compressed does NOT prevent
+the Digger web app from accessing them (it decompresses them on the fly) but it may prevent other tools expecteding plain
+text from reading the files.
+
+It is recommended you enable `is_indexing` and `is_compression`.
+
+1. Go to the [IAM Service Account console](https://console.cloud.google.com/iam-admin/serviceaccounts).
+1. Click "Create Service Account", give it a name, no role, check the "Furnish a new private key".
+1. The private key will download to your computer, this is the file containing the key you will later set as `secret_key` in the GCS Output.
+1. Go to the [Google Cloud Storage console](https://console.cloud.google.com/storage).
+1. Create a new bucket in whatever region you prefer.
+1. In your new bucket, click "Permissions", then "Add member".
+1. Enter the name of the Service Account you created above.
+1. As a role, select "Storage" --> "Storage Object Creator" (this will grant Write-Only access to this account).
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Give it a name, select the "gcs" module and select the stream you would like to send.
+1. Enter the bucket name and secret_key (contents of the file automatically downloaded when you created the Service Account).
+1. Click "Create".
+1. After a minute, the data should start getting written to your bucket.
+
+Now this has create a single Service Account in Write-Only mode. To access your data in Digger, you will want to do the same
+steps as above, creating a new Service Account. This time however, you will set the "Storage" --> "Storage Object Viewer". The
+Service Account downloaded will be used in the Digger.
 
 ### HTTP Streaming
 It is also possible to stream an output over HTTPS. This interface allows you to stream smaller dataset
