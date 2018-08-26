@@ -250,7 +250,7 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. Create a new bucket in whatever region you prefer.
 1. In your new bucket, click "Permissions", then "Add member".
 1. Enter the name of the Service Account you created above.
-1. As a role, select "Storage" --> "Storage Object Creator" (this will grant Write-Only access to this account).
+1. As a role, select "Storage" --> "Storage Object Creator" and "Storage Legacy Bucket Writer" (this will grant Write-Only access to this account).
 1. Back in limacharlie.io, in your organization view, create a new Output.
 1. Give it a name, select the "gcs" module and select the stream you would like to send.
 1. Enter the bucket name and secret_key (contents of the file automatically downloaded when you created the Service Account).
