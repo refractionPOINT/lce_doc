@@ -657,3 +657,47 @@ The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.c
    "PROCESS_ID":   2516
 } 
 ```
+
+### REGISTRY_LIST_REP
+This event is generated in response to the `reg_list` command to list keys and values in a registry key.
+
+```json
+{
+    "REGISTRY_KEY": [
+      "ActiveState",
+      "ATI Technologies",
+      "BreakPoint",
+      "Caphyon",
+      "Classes",
+      "Clients",
+      "Dell",
+      "Google",
+      "Intel",
+      "Macromedia",
+      "Microsoft",
+      "MozillaPlugins",
+      "ODBC",
+      "OEM",
+      "Partner",
+      "Policies",
+      "Rainbow Technologies",
+      "RegisteredApplications",
+      "SafeNet",
+      "Sonic",
+      "ThinPrint",
+      "VMware, Inc.",
+      "Volatile",
+      "WinRAR",
+      "WOW6432Node"
+    ],
+    "ROOT": "hklm\\software",
+    "REGISTRY_VALUE": [
+      {
+        "TYPE": 4,
+        "NAME": "Order",
+        "VALUE": "32000000"
+      }
+    ],
+    "ERROR": 0
+}
+```
