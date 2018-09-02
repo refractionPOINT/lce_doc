@@ -430,7 +430,7 @@ Update the compiled yara signature bundle that is being used for constant memory
 usage: yara_update [-h] rule
 
 positional arguments:
-  rule        rule to compile and set on sensor for contstant scanning.
+  rule        rule to compile and set on sensor for contstant scanning, literal rule or "https://" URL or base64 encoded rule
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -445,7 +445,7 @@ Scan for a specific yara signature in memory and files on the sensor.
 usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] rule
 
 positional arguments:
-  rule                  rule to compile and run on sensor
+  rule                  rule to compile and run on sensor, literal rule or "https://" URL or base64 encoded rule
 
 optional arguments:
   -h, --help            show this help message and exit
