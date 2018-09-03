@@ -335,6 +335,43 @@ Response from a file information request.
 ### DIR_LIST_REP
 Response from a directory list request.
 
+### DIR_FINDHASH_REP
+Response to a dir_find_hash request.
+
+```json
+{
+    "DIRECTORY_LIST": [
+        {
+            "HASH": "f11dda931637a1a1bc614fc2f320326b24336c5155679aa062acae7c79f33d67",
+            "ACCESS_TIME": 1535994794247,
+            "FILE_SIZE": 113664,
+            "CREATION_TIME": 1467173189067,
+            "MODIFICATION_TIME": 1467173190171,
+            "FILE_NAME": "MALWARE_DEMO_WINDOWS_1.exe",
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\MALWARE_DEMO_WINDOWS_1.exe"
+        },
+        {
+            "HASH": "e37726feee8e72f3ab006e023cb9d6fa1a4087274b47217d2462325fa8008515",
+            "ACCESS_TIME": 1535989041078,
+            "FILE_SIZE": 1016320,
+            "CREATION_TIME": 1522507344821,
+            "MODIFICATION_TIME": 1522507355732,
+            "FILE_NAME": "lc_win_64.exe",
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\lc_win_64.exe"
+        }
+    ],
+    "HASH": [
+        "f11dda931637a1a1bc614fc2f320326b24336c5155679aa062acae7c79f33d67",
+        "e37726feee8e72f3ab006e023cb9d6fa1a4087274b47217d2462325fa8008515"
+    ],
+    "FILE_PATH": "*.exe",
+    "DIRECTORY_LIST_DEPTH": 0,
+    "DIRECTORY_PATH": "c:\\users\\dev\\desktop\\"
+}
+```
+
 ### MEM_MAP_REP
 Response from a memory map request.
 
@@ -656,4 +693,48 @@ The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.c
    "PARENT_PROCESS_ID":  6492,
    "PROCESS_ID":   2516
 } 
+```
+
+### REGISTRY_LIST_REP
+This event is generated in response to the `reg_list` command to list keys and values in a registry key.
+
+```json
+{
+    "REGISTRY_KEY": [
+      "ActiveState",
+      "ATI Technologies",
+      "BreakPoint",
+      "Caphyon",
+      "Classes",
+      "Clients",
+      "Dell",
+      "Google",
+      "Intel",
+      "Macromedia",
+      "Microsoft",
+      "MozillaPlugins",
+      "ODBC",
+      "OEM",
+      "Partner",
+      "Policies",
+      "Rainbow Technologies",
+      "RegisteredApplications",
+      "SafeNet",
+      "Sonic",
+      "ThinPrint",
+      "VMware, Inc.",
+      "Volatile",
+      "WinRAR",
+      "WOW6432Node"
+    ],
+    "ROOT": "hklm\\software",
+    "REGISTRY_VALUE": [
+      {
+        "TYPE": 4,
+        "NAME": "Order",
+        "VALUE": "32000000"
+      }
+    ],
+    "ERROR": 0
+}
 ```

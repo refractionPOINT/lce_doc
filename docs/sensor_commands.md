@@ -74,6 +74,25 @@ optional arguments:
                         single level
 ```
 
+### dir_find_hash
+Find files matching hashes starting at a root directory.
+
+```
+usage: dir_find_hash [-h] [-d DEPTH] --hash HASHES rootDir fileExp
+
+positional arguments:
+  rootDir               the root directory where to begin the search from
+  fileExp               a file name expression supporting basic wildcards like
+                        * and ?
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DEPTH, --depth DEPTH
+                        optional maximum depth of the listing, defaults to a
+                        single level
+  --hash HASHES         sha256 to search for, can be specified multiple times
+```
+
 ### file_del
 Delete a file from the sensor.
 
@@ -303,6 +322,21 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
+## Registry
+
+### reg_list
+List the keys and values in a Windows registry key.
+
+```
+usage: reg_list [-h] reg
+
+positional arguments:
+  reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku" like: "hklm\\software"...
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
 
 ## Anomalies
 
@@ -415,7 +449,7 @@ Update the compiled yara signature bundle that is being used for constant memory
 usage: yara_update [-h] rule
 
 positional arguments:
-  rule        rule to compile and set on sensor for contstant scanning.
+  rule        rule to compile and set on sensor for contstant scanning, literal rule or "https://" URL or base64 encoded rule
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -430,7 +464,7 @@ Scan for a specific yara signature in memory and files on the sensor.
 usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] rule
 
 positional arguments:
-  rule                  rule to compile and run on sensor
+  rule                  rule to compile and run on sensor, literal rule or "https://" URL or base64 encoded rule
 
 optional arguments:
   -h, --help            show this help message and exit
