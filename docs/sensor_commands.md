@@ -74,6 +74,25 @@ optional arguments:
                         single level
 ```
 
+### dir_find_hash
+Find files matching hashes starting at a root directory.
+
+```
+usage: dir_find_hash [-h] [-d DEPTH] --hash HASHES rootDir fileExp
+
+positional arguments:
+  rootDir               the root directory where to begin the search from
+  fileExp               a file name expression supporting basic wildcards like
+                        * and ?
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DEPTH, --depth DEPTH
+                        optional maximum depth of the listing, defaults to a
+                        single level
+  --hash HASHES         sha256 to search for, can be specified multiple times
+```
+
 ### file_del
 Delete a file from the sensor.
 

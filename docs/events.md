@@ -335,6 +335,43 @@ Response from a file information request.
 ### DIR_LIST_REP
 Response from a directory list request.
 
+### DIR_FINDHASH_REP
+Response to a dir_find_hash request.
+
+```json
+{
+    "DIRECTORY_LIST": [
+        {
+            "HASH": "f11dda931637a1a1bc614fc2f320326b24336c5155679aa062acae7c79f33d67",
+            "ACCESS_TIME": 1535994794247,
+            "FILE_SIZE": 113664,
+            "CREATION_TIME": 1467173189067,
+            "MODIFICATION_TIME": 1467173190171,
+            "FILE_NAME": "MALWARE_DEMO_WINDOWS_1.exe",
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\MALWARE_DEMO_WINDOWS_1.exe"
+        },
+        {
+            "HASH": "e37726feee8e72f3ab006e023cb9d6fa1a4087274b47217d2462325fa8008515",
+            "ACCESS_TIME": 1535989041078,
+            "FILE_SIZE": 1016320,
+            "CREATION_TIME": 1522507344821,
+            "MODIFICATION_TIME": 1522507355732,
+            "FILE_NAME": "lc_win_64.exe",
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\lc_win_64.exe"
+        }
+    ],
+    "HASH": [
+        "f11dda931637a1a1bc614fc2f320326b24336c5155679aa062acae7c79f33d67",
+        "e37726feee8e72f3ab006e023cb9d6fa1a4087274b47217d2462325fa8008515"
+    ],
+    "FILE_PATH": "*.exe",
+    "DIRECTORY_LIST_DEPTH": 0,
+    "DIRECTORY_PATH": "c:\\users\\dev\\desktop\\"
+}
+```
+
 ### MEM_MAP_REP
 Response from a memory map request.
 
