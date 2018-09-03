@@ -190,6 +190,10 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. After a minute, the data should start getting written to your bucket.
 
 #### Policy Sample
+This policy example also shows two more statements (the bottom two) that are the permissions required for a user that 
+is Read-Only to be used in the Digger configuration. We recommend using a Write-Only user from LC and a Read-Only user
+from Digger.
+
 ```json
 {
    "Version": "2012-10-17",
@@ -200,12 +204,26 @@ It is recommended you enable `is_indexing` and `is_compression`.
          "Principal": {
             "AWS": "<<USER_ARN>>"
          },
-         "Action": [
-            "s3:PutObject"
-         ],
-         "Resource": [
-            "arn:aws:s3:::<<BUCKET_NAME>>/*"
-         ]
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::<<BUCKET_NAME>>/*"
+      },
+      {
+         "Sid": "PermissionForObjectOperations",
+         "Effect": "Allow",
+         "Principal": {
+             "AWS": "<<DIGGER_READER_USER_ARN>>"
+         },
+         "Action": "s3:GetObject",
+         "Resource": "arn:aws:s3:::<<BUCKET_NAME>>/*"
+      },
+      {
+        "Sid": "PermissionForObjectOperations",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "<<DIGGER_READER_USER_ARN>>"
+        },
+        "Action": "s3:ListBucket",
+        "Resource": "arn:aws:s3:::<<BUCKET_NAME>>"
       }
    ]
 }
