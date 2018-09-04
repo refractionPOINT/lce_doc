@@ -85,6 +85,7 @@ Output individually each event, detection or audit through an email.
 * `from_email`: the email address to set in the From field of the email sent.
 * `username`: the username (if any) to authenticate with the SMTP server with.
 * `password`: the password (if any) to authenticate with the SMTP server with.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
 
 ## Integrations
 
