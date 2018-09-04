@@ -77,6 +77,15 @@ Output individually each event, detection or audit through a POST webhook.
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
 
+### SMTP
+Output individually each event, detection or audit through an email.
+
+* `dest_host`: the IP or DNS (and optionally port) of the SMTP server to use to send the email.
+* `dest_email`: the email address to send the email to.
+* `from_email`: the email address to set in the From field of the email sent.
+* `username`: the username (if any) to authenticate with the SMTP server with.
+* `password`: the password (if any) to authenticate with the SMTP server with.
+
 ## Integrations
 
 ### Common Patterns
