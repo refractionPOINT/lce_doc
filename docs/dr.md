@@ -124,6 +124,9 @@ the value at the specified path, it compares the length of the value at the spec
 
 #### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
+Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
+is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
+to log files.
 
 Example:
 ```json
