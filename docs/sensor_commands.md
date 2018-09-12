@@ -443,7 +443,7 @@ optional arguments:
 ### set_performance_mode
 Turn on or off the high performance mode on a sensor. This mode is designed for very high performance servers requiring high
 IO throughput. This mode reduces the accuracy of certain events which in turn reduces impact on the system. This mode is not
-useful for the vast majority of hosts.
+useful for the vast majority of hosts. If you are considering its usage, get in touch with the team at LimaCharlie.io.
 
 ```
 usage: set_performance_mode [-h] [--is-enabled]
