@@ -10,7 +10,7 @@ A D&R rule has two components:
 * the Detection part of the rule is a simple expression that describes what the rule should match on.
 * the response part of the rule describes the list of actions that should be taken when the rule matches.
 
-The REST interface expects those rules in their native JSON format (as descrbed below), but UIs to generate this
+The REST interface expects those rules in their native JSON format (as described below), but UIs to generate this
 format will be available if you are uncomfortable with the JSON.
 
 For more sample rules and guidelines around rule-writing, see our public repository dedicated to this purpose
