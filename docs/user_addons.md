@@ -60,12 +60,12 @@ organization to organization. If you do use labels, describe the exact usage in 
 
 ### Lookups
 Creating a lookup add-on enables you to create a list that you can use as part of [D&R rules](dr.md).
-Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your looking
+Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your add-on looking
 like `resource: lcr://lookup/my-lookup-name`.
 
 The lookup structure is very simple, it should be a dictionary where each key is a value that
 can be matched while the value associated with the key is any type of metadata you would like
-reported in association with this particular match. Here are some example:
+reported in association with this particular match. Here is an example:
 
 ```yaml
 evil.com: some evil website, definitely bad

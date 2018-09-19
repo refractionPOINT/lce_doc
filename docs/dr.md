@@ -10,7 +10,7 @@ A D&R rule has two components:
 * the Detection part of the rule is a simple expression that describes what the rule should match on.
 * the response part of the rule describes the list of actions that should be taken when the rule matches.
 
-The REST interface expects those rules in their native JSON format (as descrbed below), but UIs to generate this
+The REST interface expects those rules in their native JSON format (as described below), but UIs to generate this
 format will be available if you are uncomfortable with the JSON.
 
 For more sample rules and guidelines around rule-writing, see our public repository dedicated to this purpose
@@ -124,6 +124,9 @@ the value at the specified path, it compares the length of the value at the spec
 
 #### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
+Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
+is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
+to log files.
 
 Example:
 ```json
