@@ -352,6 +352,16 @@ Example:
 }
 ```
 
+Complex example extending a resource rule:
+```yaml
+op: and
+rules:
+  - op: is tagged
+    tag: finance-dept
+  - op: external
+    resource: lcr://detection/suspicious-windows-exec-location
+```
+
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
 when the Detection component matches.
