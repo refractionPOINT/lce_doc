@@ -352,6 +352,16 @@ Example:
 }
 ```
 
+Complex example extending a resource rule:
+```yaml
+op: and
+rules:
+  - op: is tagged
+    tag: finance-dept
+  - op: external
+    resource: lcr://detection/suspicious-windows-exec-location
+```
+
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
 when the Detection component matches.
@@ -482,4 +492,19 @@ Tag any sensor where the CEO logs in with "vip".
     "case sensitive": false,
     "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
 }
+```
+
+### Disable an Event at the Source
+Turn off the sending of a specific event to the cloud. Useful to limit some verbose data sources when not needed.
+
+**Detect**
+```yaml
+op: is windows
+event: CONNECTED
+```
+
+**Respond**
+```yaml
+- action: task
+  command: exfil_del NEW_DOCUMENT
 ```
