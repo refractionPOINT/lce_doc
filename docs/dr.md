@@ -493,3 +493,18 @@ Tag any sensor where the CEO logs in with "vip".
     "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
 }
 ```
+
+### Disable an Event at the Source
+Turn off the sending of a specific event to the cloud. Useful to limit some verbose data sources when not needed.
+
+**Detect**
+```yaml
+op: is windows
+event: CONNECTED
+```
+
+**Respond**
+```yaml
+- action: task
+  command: exfil_del NEW_DOCUMENT
+```
