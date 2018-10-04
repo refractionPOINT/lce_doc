@@ -738,3 +738,21 @@ This event is generated in response to the `reg_list` command to list keys and v
     "ERROR": 0
 }
 ```
+
+### VOLUME_MOUNT
+This event is generated when a volume is mounted.
+```json
+{
+    "VOLUME_PATH": "E:",
+    "DEVICE_NAME": "\\Device\\HarddiskVolume3"
+}
+```
+
+### VOLUME_UNMOUNT
+This event is generated when a volume is unmounted.
+```json
+{
+    "VOLUME_PATH": "/Volumes/RECOVERY",
+    "VOLUME_NAME": "/dev/disk2s1"
+}
+```
