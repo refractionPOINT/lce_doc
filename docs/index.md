@@ -18,6 +18,12 @@ The sensor provides a wide range of advanced capability.
 * Host isolation, automated response rules, intelligent local caching of events for in depth Incident Response (IR)
 as well as some forensic features like dumping memory.
 
+Sensors are designed to limit the potential for abuse resulting from unauthorized access to the LimaCharlie platform.
+This is achieved by limited open-ended commands as well as commands that could enable an attacker to
+covertly upload malicious software to your hosts. This means the LimaCharlie sensor is extremely powerful
+but also keeps its "read-only" qualities on your infrastructure. Of course, all access and interactions with the hosts
+are also logged for audit both within the cloud and tamper-proof forwarding to your own infrastructure.
+
 Full commands list is in the [Sensor Commands section](sensor_commands.md).
 
 ### Installer Key
