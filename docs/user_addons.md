@@ -58,6 +58,11 @@ required for the detection, but avoid filtering on organization-defined labels a
 organization to organization. If you do use labels, describe the exact usage in the description.
 * Before making an add-on public, make sure to test it.
 
+***Keep in mind that creating an add-on does not immediatly grant organizations you're a member of
+access to it. After creating it, you must go in the organization you want to access it from, go to
+the Add-ons section and "subscribe" to your add-on. This will grant the organization access and then
+you can begin using it as part of D&R rules.***
+
 ### Lookups
 Creating a lookup add-on enables you to create a list that you can use as part of [D&R rules](dr.md).
 Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your add-on looking
