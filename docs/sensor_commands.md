@@ -454,6 +454,51 @@ optional arguments:
                 disabled
 ```
 
+## File (and Registry) Integrity Monitoring
+
+### fim_add
+Add a file or registry path pattern to monitor for modifications.
+Patterns include basic wildcards:
+* for one character: ?
+* for at least one character: +
+* for any number of characters: *
+* escape character: \
+
+Note that the pattern is not a string literal, therefore "\" needs to be escaped by one more level than usual.
+
+So for example, you could do:
+* `?:\\\\windows\\\\system32\\\\*.exe`
+* `\\\\REGISTRY\\\\MACHINE\\\\SOFTWARE\\\\ActiveState\\\\*`
+
+```
+usage: fim_add [-h] --pattern PATTERNS
+
+optional arguments:
+  -h, --help          show this help message and exit
+  --pattern PATTERNS  file path or registry path pattern to monitor
+```
+
+### fim_del
+Remove a pattern from monitoring.
+
+```
+usage: fim_del [-h] --pattern PATTERNS
+
+optional arguments:
+  -h, --help          show this help message and exit
+  --pattern PATTERNS  file path or registry path pattern to stop monitoring
+```
+
+### fim_get
+Get the list of patterns being monitored.
+
+```
+usage: fim_get [-h]
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
 ## Yara
 
 ### yara_update
