@@ -70,6 +70,7 @@ Output events and detections to a syslog target.
 * `is_tls`: if `true` will output over TCP/TLS.
 * `is_strict_tls`: if `true` will enforce validation of TLS certs.
 * `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
+* `structured_data`: arbitrary field to include in syslog "Structured Data" headers. Sometimes useful for cloud SIEMs integration.
 
 ### Webhook
 Output individually each event, detection or audit through a POST webhook.
@@ -115,7 +116,7 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
 ```
 
 ### Splunk
-Splunk provides you with a simple web interface to view and search the data. 
+Splunk provides you with a simple web interface to view and search the data.
 It has a paying enterprise version and a free tier.
 
 Below are manual steps to using Splunk with LimaCharlie data. But you can also use
@@ -167,8 +168,8 @@ Then you can connect through the tunnel with your browser at `http://127.0.0.1:8
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Amazon S3. This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the 
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
@@ -200,7 +201,7 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. After a minute, the data should start getting written to your bucket.
 
 #### Policy Sample
-This policy example also shows two more statements (the bottom two) that are the permissions required for a user that 
+This policy example also shows two more statements (the bottom two) that are the permissions required for a user that
 is Read-Only to be used in the Digger configuration. We recommend using a Write-Only user from LC and a Read-Only user
 from Digger.
 
@@ -260,8 +261,8 @@ from Digger.
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Google Cloud Storage (GCS). This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the 
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
@@ -297,8 +298,8 @@ this task easier using the Spout object.
 
 This feature is activated in two steps.
 
-Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to 
-`https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As 
+Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to
+`https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As
 additional data in the POST, specify the following parameters:
 * `api_key`: this is the secret API key as provided to you in limacharlie.io.
 * `type`: this is the stream type you would like to create, one of `event`, `detect` or `audit`.
@@ -306,23 +307,23 @@ additional data in the POST, specify the following parameters:
 * `tag`: optional, specifies the sensor tags to filter on.
 * `inv_id`: optional, specifies the investigation ID to filter on.
 
-The response from this POST will be an `HTTP 303 See Other`, a redirect. This redirect will point you to where the data 
+The response from this POST will be an `HTTP 303 See Other`, a redirect. This redirect will point you to where the data
 stream will be available.
 
 Note that once you receive the redirect, a new temporary Output will also show up in your organization.
 
-Step 2. Now simply do an HTTP GET to the URL pointed to you in the redirect response. Data will begin streaming shortly. 
+Step 2. Now simply do an HTTP GET to the URL pointed to you in the redirect response. Data will begin streaming shortly.
 The format of this data will be newline-seperated JSON much like all other Outputs.
 
-Do note that if you want, you can keep track of this URL you've been redirected to. If your connection is to drop for 
-whatever reason, or you would like to shard the stream over multiple connections, you can simply re-issue this GET for up to 
-10 minutes after your last disconnection. After 10 minutes without any clients connected, the Output will be torn down and 
+Do note that if you want, you can keep track of this URL you've been redirected to. If your connection is to drop for
+whatever reason, or you would like to shard the stream over multiple connections, you can simply re-issue this GET for up to
+10 minutes after your last disconnection. After 10 minutes without any clients connected, the Output will be torn down and
 you will have to re-issue a POST (step 1) to begin streaming again.
 
-Also note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering 
-done on the side of `output.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will 
-be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of 
-that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}` 
+Also note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering
+done on the side of `output.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will
+be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of
+that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.
 
 ### Webhook
@@ -333,7 +334,7 @@ The JSON data will be found in the `data` parameter of the `application/x-www-fo
 An HTTP header name `Lc-Signature` will contain an HMAC signature of the contents. This HMAC is computed from the string
 value of the `data` parameter and the `secret_key` set when creating the Output, using SHA256 as the hashing algorithm.
 
-The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or 
+The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or
 the [JavaScript API](https://www.npmjs.com/package/limacharlie).
 
 For example, here is a sample Google Cloud Function that can receive a webhook:
@@ -356,10 +357,10 @@ exports.lc_cloud_func = (req, res) => {
     // First thing to do is validate this is a legitimate
     // webhook sent by limacharlie.io.
     let hookData = req.body.data;
-    
+
     // This is the secret key set when creating the webhook.
     let whSecretKey = '123';
-    
+
     // This is the signature sent via header, we must validate it.
     let whSignature = req.get('Lc-Signature');
 
@@ -368,20 +369,20 @@ exports.lc_cloud_func = (req, res) => {
 
     // Check the signature and return early if not valid.
     if(!wh.isSignatureValid(hookData, whSignature)) {
-    console.error("Invalid signature, do not trust!"); 
+    console.error("Invalid signature, do not trust!");
       // Early return, 200 or an actual error if you want.
       res.status(200);
     }
-    
+
     console.log("Good signature, proceed.");
-    
+
     // Parse the JSON payload.
     hookData = JSON.parse(hookData);
     console.log("Parsed hook data: " + JSON.stringify(hookData, null, 2));
-    
+
     // This is where you would do your own processing
     // like talking to other APIs etc.
-    
+
     res.status(200);
   }
 };
@@ -389,6 +390,6 @@ exports.lc_cloud_func = (req, res) => {
 ```
 
 ### Security Onion
-A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is 
-available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along 
+A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is
+available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along
 with the code [here](https://github.com/weslambert/securityonion-limacharlie/).
