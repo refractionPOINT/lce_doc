@@ -12,14 +12,6 @@
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 
-### File
-***Only available to on-premises deployment.***
-Output events and detections to local files.
-
-* `dir`: the directory where to out the files.
-* `max_bytes`: maximum number of bytes in a file before it rotates to a new file.
-* `backup_count`: total number of files outputted before they are rotated.
-
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
 
@@ -30,6 +22,15 @@ Output events and detections to an Amazon S3 bucket.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 
+Example:
+```
+bucket: my-bucket-name
+key_id: AKIAABCDEHPUXHHHHSSQ
+secret_key: fonsjifnidn8anf4fh74y3yr34gf3hrhgh8er
+is_indexing: "true"
+is_compression: "true"
+```
+
 ### Google Cloud Storage
 Output events and detections to a GCS bucket.
 
@@ -38,6 +39,25 @@ Output events and detections to a GCS bucket.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+
+Example:
+```
+bucket: my-bucket-name
+secret_key: {
+  "type": "service_account",
+  "project_id": "my-lc-data",
+  "private_key_id": "11b6f4173dedabcdefb779e4afae6d88ddce3cc1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n.....\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-service-writer@my-lc-data.iam.gserviceaccount.com",
+  "client_id": "102526666608388828174",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-writer%40my-lc-data.iam.gserviceaccount.com"
+}
+is_indexing: "true"
+is_compression: "true"
+```
 
 ### SCP
 Output events and detections over SCP (SSH file transfer).
@@ -48,6 +68,14 @@ Output events and detections over SCP (SSH file transfer).
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
 
+Example:
+```
+dest_host: storage.corp.com
+dir: /uploads/
+username: storage_user
+password: XXXXXXXXXXXX
+```
+
 ### SFTP
 Output events and detections over SFTP.
 
@@ -57,11 +85,25 @@ Output events and detections over SFTP.
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
 
+Example:
+```
+dest_host: storage.corp.com
+dir: /uploads/
+username: storage_user
+password: XXXXXXXXXXXX
+```
+
 ### Slack
 Output detections and audit (only) to a Slack community and channel.
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
+
+Example:
+```
+slack_api_token: d8vyd8yeugr387y8wgf8evfb
+slack_channe: #detections
+```
 
 ### Syslog (TCP)
 Output events and detections to a syslog target.
@@ -70,12 +112,27 @@ Output events and detections to a syslog target.
 * `is_tls`: if `true` will output over TCP/TLS.
 * `is_strict_tls`: if `true` will enforce validation of TLS certs.
 * `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
+* `structured_data`: arbitrary field to include in syslog "Structured Data" headers. Sometimes useful for cloud SIEMs integration.
+
+Example:
+```
+dest_host: storage.corp.com
+is_tls: "true"
+is_strict_tls: "true"
+is_no_header: "false"
+```
 
 ### Webhook
 Output individually each event, detection or audit through a POST webhook.
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+
+Example:
+```
+dest_host: https://webhooks.corp.com/new_detection
+secret_key: this-is-my-secret-shared-key
+```
 
 ### SMTP
 Output individually each event, detection or audit through an email.
@@ -85,7 +142,17 @@ Output individually each event, detection or audit through an email.
 * `from_email`: the email address to set in the From field of the email sent.
 * `username`: the username (if any) to authenticate with the SMTP server with.
 * `password`: the password (if any) to authenticate with the SMTP server with.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. See "Webhook" section below.
+
+Example:
+```
+dest_host: smtp.gmail.com
+dest_email: soc@corp.com
+from_email: lc@corp.com
+username: lc
+password: password-for-my-lc-email-user
+secret_key: this-is-my-secret-shared-key
+```
 
 ## Integrations
 
@@ -115,7 +182,7 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
 ```
 
 ### Splunk
-Splunk provides you with a simple web interface to view and search the data. 
+Splunk provides you with a simple web interface to view and search the data.
 It has a paying enterprise version and a free tier.
 
 Below are manual steps to using Splunk with LimaCharlie data. But you can also use
@@ -167,8 +234,8 @@ Then you can connect through the tunnel with your browser at `http://127.0.0.1:8
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Amazon S3. This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the 
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
@@ -200,7 +267,7 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. After a minute, the data should start getting written to your bucket.
 
 #### Policy Sample
-This policy example also shows two more statements (the bottom two) that are the permissions required for a user that 
+This policy example also shows two more statements (the bottom two) that are the permissions required for a user that
 is Read-Only to be used in the Digger configuration. We recommend using a Write-Only user from LC and a Read-Only user
 from Digger.
 
@@ -260,8 +327,8 @@ from Digger.
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Google Cloud Storage (GCS). This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the 
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating 
+If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the
+live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
@@ -297,8 +364,8 @@ this task easier using the Spout object.
 
 This feature is activated in two steps.
 
-Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to 
-`https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As 
+Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to
+`https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As
 additional data in the POST, specify the following parameters:
 * `api_key`: this is the secret API key as provided to you in limacharlie.io.
 * `type`: this is the stream type you would like to create, one of `event`, `detect` or `audit`.
@@ -306,23 +373,23 @@ additional data in the POST, specify the following parameters:
 * `tag`: optional, specifies the sensor tags to filter on.
 * `inv_id`: optional, specifies the investigation ID to filter on.
 
-The response from this POST will be an `HTTP 303 See Other`, a redirect. This redirect will point you to where the data 
+The response from this POST will be an `HTTP 303 See Other`, a redirect. This redirect will point you to where the data
 stream will be available.
 
 Note that once you receive the redirect, a new temporary Output will also show up in your organization.
 
-Step 2. Now simply do an HTTP GET to the URL pointed to you in the redirect response. Data will begin streaming shortly. 
+Step 2. Now simply do an HTTP GET to the URL pointed to you in the redirect response. Data will begin streaming shortly.
 The format of this data will be newline-seperated JSON much like all other Outputs.
 
-Do note that if you want, you can keep track of this URL you've been redirected to. If your connection is to drop for 
-whatever reason, or you would like to shard the stream over multiple connections, you can simply re-issue this GET for up to 
-10 minutes after your last disconnection. After 10 minutes without any clients connected, the Output will be torn down and 
+Do note that if you want, you can keep track of this URL you've been redirected to. If your connection is to drop for
+whatever reason, or you would like to shard the stream over multiple connections, you can simply re-issue this GET for up to
+10 minutes after your last disconnection. After 10 minutes without any clients connected, the Output will be torn down and
 you will have to re-issue a POST (step 1) to begin streaming again.
 
-Also note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering 
-done on the side of `output.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will 
-be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of 
-that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}` 
+Also note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering
+done on the side of `output.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will
+be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of
+that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.
 
 ### Webhook
@@ -333,7 +400,7 @@ The JSON data will be found in the `data` parameter of the `application/x-www-fo
 An HTTP header name `Lc-Signature` will contain an HMAC signature of the contents. This HMAC is computed from the string
 value of the `data` parameter and the `secret_key` set when creating the Output, using SHA256 as the hashing algorithm.
 
-The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or 
+The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or
 the [JavaScript API](https://www.npmjs.com/package/limacharlie).
 
 For example, here is a sample Google Cloud Function that can receive a webhook:
@@ -356,10 +423,10 @@ exports.lc_cloud_func = (req, res) => {
     // First thing to do is validate this is a legitimate
     // webhook sent by limacharlie.io.
     let hookData = req.body.data;
-    
+
     // This is the secret key set when creating the webhook.
     let whSecretKey = '123';
-    
+
     // This is the signature sent via header, we must validate it.
     let whSignature = req.get('Lc-Signature');
 
@@ -368,20 +435,20 @@ exports.lc_cloud_func = (req, res) => {
 
     // Check the signature and return early if not valid.
     if(!wh.isSignatureValid(hookData, whSignature)) {
-    console.error("Invalid signature, do not trust!"); 
+    console.error("Invalid signature, do not trust!");
       // Early return, 200 or an actual error if you want.
       res.status(200);
     }
-    
+
     console.log("Good signature, proceed.");
-    
+
     // Parse the JSON payload.
     hookData = JSON.parse(hookData);
     console.log("Parsed hook data: " + JSON.stringify(hookData, null, 2));
-    
+
     // This is where you would do your own processing
     // like talking to other APIs etc.
-    
+
     res.status(200);
   }
 };
@@ -389,6 +456,6 @@ exports.lc_cloud_func = (req, res) => {
 ```
 
 ### Security Onion
-A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is 
-available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along 
+A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is
+available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along
 with the code [here](https://github.com/weslambert/securityonion-limacharlie/).
