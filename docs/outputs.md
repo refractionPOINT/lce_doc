@@ -12,14 +12,6 @@
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 
-### File
-***Only available to on-premises deployment.***
-Output events and detections to local files.
-
-* `dir`: the directory where to out the files.
-* `max_bytes`: maximum number of bytes in a file before it rotates to a new file.
-* `backup_count`: total number of files outputted before they are rotated.
-
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
 
@@ -30,6 +22,15 @@ Output events and detections to an Amazon S3 bucket.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 
+Example:
+```
+bucket: my-bucket-name
+key_id: AKIAABCDEHPUXHHHHSSQ
+secret_key: fonsjifnidn8anf4fh74y3yr34gf3hrhgh8er
+is_indexing: "true"
+is_compression: "true"
+```
+
 ### Google Cloud Storage
 Output events and detections to a GCS bucket.
 
@@ -38,6 +39,25 @@ Output events and detections to a GCS bucket.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+
+Example:
+```
+bucket: my-bucket-name
+secret_key: {
+  "type": "service_account",
+  "project_id": "my-lc-data",
+  "private_key_id": "11b6f4173dedabcdefb779e4afae6d88ddce3cc1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n.....\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-service-writer@my-lc-data.iam.gserviceaccount.com",
+  "client_id": "102526666608388828174",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-writer%40my-lc-data.iam.gserviceaccount.com"
+}
+is_indexing: "true"
+is_compression: "true"
+```
 
 ### SCP
 Output events and detections over SCP (SSH file transfer).
@@ -48,6 +68,14 @@ Output events and detections over SCP (SSH file transfer).
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
 
+Example:
+```
+dest_host: storage.corp.com
+dir: /uploads/
+username: storage_user
+password: XXXXXXXXXXXX
+```
+
 ### SFTP
 Output events and detections over SFTP.
 
@@ -57,11 +85,25 @@ Output events and detections over SFTP.
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
 
+Example:
+```
+dest_host: storage.corp.com
+dir: /uploads/
+username: storage_user
+password: XXXXXXXXXXXX
+```
+
 ### Slack
 Output detections and audit (only) to a Slack community and channel.
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
+
+Example:
+```
+slack_api_token: d8vyd8yeugr387y8wgf8evfb
+slack_channe: #detections
+```
 
 ### Syslog (TCP)
 Output events and detections to a syslog target.
@@ -72,11 +114,25 @@ Output events and detections to a syslog target.
 * `is_no_header`: if `true` will not emit a Syslog header before every message. This effectively turns it into a TCP output.
 * `structured_data`: arbitrary field to include in syslog "Structured Data" headers. Sometimes useful for cloud SIEMs integration.
 
+Example:
+```
+dest_host: storage.corp.com
+is_tls: "true"
+is_strict_tls: "true"
+is_no_header: "false"
+```
+
 ### Webhook
 Output individually each event, detection or audit through a POST webhook.
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+
+Example:
+```
+dest_host: https://webhooks.corp.com/new_detection
+secret_key: this-is-my-secret-shared-key
+```
 
 ### SMTP
 Output individually each event, detection or audit through an email.
@@ -86,7 +142,17 @@ Output individually each event, detection or audit through an email.
 * `from_email`: the email address to set in the From field of the email sent.
 * `username`: the username (if any) to authenticate with the SMTP server with.
 * `password`: the password (if any) to authenticate with the SMTP server with.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. See "Webhook" section below.
+
+Example:
+```
+dest_host: smtp.gmail.com
+dest_email: soc@corp.com
+from_email: lc@corp.com
+username: lc
+password: password-for-my-lc-email-user
+secret_key: this-is-my-secret-shared-key
+```
 
 ## Integrations
 
