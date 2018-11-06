@@ -143,6 +143,7 @@ Output individually each event, detection or audit through an email.
 * `username`: the username (if any) to authenticate with the SMTP server with.
 * `password`: the password (if any) to authenticate with the SMTP server with.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. See "Webhook" section below.
+* `is_readable`:if 'true' the email format will be HTML and designed to be readable by a human instead of a machine.
 
 Example:
 ```
