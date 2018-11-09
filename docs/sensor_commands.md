@@ -468,7 +468,7 @@ Add a file or registry path pattern to monitor for modifications.
 Patterns include basic wildcards:
 * for one character: ?
 * for at least one character: +
-* for any number of characters: *
+* for any number of characters: &ast;
 * escape character: \
 
 Note that the pattern is not a string literal, therefore "\" needs to be escaped by one more level than usual.
