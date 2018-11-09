@@ -479,6 +479,8 @@ So for example, you could do:
 * `?:\\\\windows\\\\system32\\\\*.exe`
 * `\\\\REGISTRY\\\\MACHINE\\\\SOFTWARE\\\\ActiveState\\\\*`
 
+Which would result in: `fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
+
 ```
 usage: fim_add [-h] --pattern PATTERNS
 
