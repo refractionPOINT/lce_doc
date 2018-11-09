@@ -456,6 +456,13 @@ optional arguments:
 
 ## File (and Registry) Integrity Monitoring
 
+FIM rules are not persistent. This means that once an asset restarts the rules
+will be gone. The recommended way of managing rule application is to use
+[Detection & Response rules](dr.md) in a similar way to managing [events to be
+sent to the cloud](dr.md/#disable-an-event-at-the-source).
+
+A sample D&R rule is available [here](dr.md/#monitoring-sensitive-directories).
+
 ### fim_add
 Add a file or registry path pattern to monitor for modifications.
 Patterns include basic wildcards:
