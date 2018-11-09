@@ -476,10 +476,10 @@ Note that the pattern is not a string literal, therefore "\" needs to be escaped
 
 So for example, you could do:
 
-* `?:\\\\windows\\\\system32\\\\*.exe`
-* `\\\\REGISTRY\\\\MACHINE\\\\SOFTWARE\\\\ActiveState\\\\*`
+* `?:\\\\*\\\\Programs\\\\Startup\\\\*`
+* `\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*`
 
-Which would result in: `fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
+Which would result in: `fim_add --pattern "?:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
 
 ```
 usage: fim_add [-h] --pattern PATTERNS
