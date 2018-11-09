@@ -466,6 +466,7 @@ A sample D&R rule is available [here](dr/#monitoring-sensitive-directories).
 ### fim_add
 Add a file or registry path pattern to monitor for modifications.
 Patterns include basic wildcards:
+
 * for one character: ?
 * for at least one character: +
 * for any number of characters: &ast;
