@@ -518,7 +518,7 @@ event: CONNECTED
 op: is windows
 ```
 
-**Response**
+**Respond**
 ```yaml
 - action: task
   command: fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"
