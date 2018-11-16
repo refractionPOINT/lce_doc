@@ -29,3 +29,16 @@ expect it to be online, give it 30 seconds, in most situations it will come back
 
 If these steps do not help, get in touch with us, we will help you figure out the issue. The best way of contacting us
 is via our [Community Slack Channel](https://limacharlie.herokuapp.com/), followed by `support@limacharlie.io`.
+
+## Sensor not Connecting
+
+Sensors connect to the LimaCharlie.io cloud via an SSL connection on port 443. Make sure your network allows such
+a connection. It is a VERY common port usually used for HTTPS so an issue is highly unlikely.
+
+The sensor uses a pinned SSL certificate to talk to the cloud. This means that if you are in a network that enforces SSL introspection (a man-
+in-the-middle of the SSL connections sometimes used in large corporate environments), this may prevent the sensor
+from connecting. LimaCharlie uses a pinned certificate to ensure the highest level of security possible as usage of
+off-the-shelf certificates can be leveraged by state sponsored (or advanced) attackers.
+
+If your network uses SSL introspection, we recommend you setup an exception for the LimaCharlie cloud domain
+relevant to you. Get in touch with us and we can provide you with the necessary information.
