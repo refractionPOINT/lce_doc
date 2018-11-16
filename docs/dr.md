@@ -4,7 +4,7 @@
 
 Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
 Think of it like a `lambda` in various programming languages or in AWS. They can be added and removed with single operations
-and they become immediately available/running as they are set. 
+and they become immediately available/running as they are set.
 
 A D&R rule has two components:
 * the Detection part of the rule is a simple expression that describes what the rule should match on.
@@ -27,8 +27,8 @@ Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
 ```json
-{ 
-    "op": "and", 
+{
+    "op": "and",
     "rules" : [
         {
             "op": "is linux",
@@ -59,8 +59,8 @@ being evaluated that we want the value of. Its structure is very close to a dire
 The root of the path should be `event` or `routing` depending on whether you want to get a value from the event itself or
 the routing instead.
 
-Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing 
-a value to a literal like `"system32"`, can also support a value of `"<<event/PARENT/FILE_PATH>>"`. When that value is 
+Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing
+a value to a literal like `"system32"`, can also support a value of `"<<event/PARENT/FILE_PATH>>"`. When that value is
 surrounded by `"<<"` and `">>"`, the value located in between will be interpreted as a path within the event and the
 value at that path will replace the `"<<...>>"` value. This allows you to "look back" at the event and use values
 within for your rule.
@@ -68,20 +68,20 @@ within for your rule.
 For example, this sample JSON event:
 ```json
 {
-    "USER_ID": 501, 
+    "USER_ID": 501,
     "PARENT": {
-        "USER_ID": 501, 
-        "COMMAND_LINE": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host 71954", 
-        "PROCESS_ID": 71955, 
-        "USER_NAME": "maxime", 
-        "FILE_PATH": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host", 
+        "USER_ID": 501,
+        "COMMAND_LINE": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host 71954",
+        "PROCESS_ID": 71955,
+        "USER_NAME": "maxime",
+        "FILE_PATH": "/Applications/Sublime Text.app/Contents/MacOS/plugin_host",
         "PARENT_PROCESS_ID": 71954,
         "DEEP_HASH": {
             "HASH_VALUE": "ufs8f8hfinsfd9sfdsf"
         }
-    }, 
-    "PROCESS_ID": 23819, 
-    "FILE_PATH": "/Applications/Xcode.app/Contents/Developer/usr/bin/git", 
+    },
+    "PROCESS_ID": 23819,
+    "FILE_PATH": "/Applications/Xcode.app/Contents/Developer/usr/bin/git",
     "PARENT_PROCESS_ID": 71955
 }
 ```
@@ -199,21 +199,21 @@ Example (3 Linux reconnaissance processes within 5 seconds):
 ##### process descendant
 This will detect a suspicious relationship between a parent process matching the regular express `parent` and one of the following:
 * if `child` is specified, will detect when a descendant process of `parent` matches the regular expression `child`.
-* if the `document` is specified, will detect when a process descendant of `parent` creates a [new document](events.md#new_document) with a 
+* if the `document` is specified, will detect when a process descendant of `parent` creates a [new document](events.md#new_document) with a
 file path matching the regular expression in `document`.
 
 In addition to this base behavior, the following modifiers are available:
-* `only direct`: if set to `true`, the target relationship will only attempt to detect a direct relationship, meaning if a non-matching process 
+* `only direct`: if set to `true`, the target relationship will only attempt to detect a direct relationship, meaning if a non-matching process
 exists in between the `parent` and `child` (or `document`), no detection will be generated.
-* `parent root`: for a match on the `parent` to be made, the parent process must be owned by the `root` user  on Linux and MacOS or an Administrator 
+* `parent root`: for a match on the `parent` to be made, the parent process must be owned by the `root` user  on Linux and MacOS or an Administrator
 account on Windows.
 * `child root`: similar behavior as `parent root` but is applied to the `child`.
 
 This operator potentially keeps a lot more state than others. A process will be kept in state if it matches the `parent` process and this for as long
-as the `parent` process stays alive. This means a bad combination for this operator is to have a `parent` that matches very common processes, and for 
+as the `parent` process stays alive. This means a bad combination for this operator is to have a `parent` that matches very common processes, and for
 those processes to have a very long lifetime, and for those `parent` processes to create a lot of children processes. This should be avoided at all cost.
 
-The best combination for this operator is to use a rare `parent`. For example, `notepad.exe` as a `parent` is great, it's not that common and almost never 
+The best combination for this operator is to use a rare `parent`. For example, `notepad.exe` as a `parent` is great, it's not that common and almost never
 creates other processes. On the other hand, `explorer.exe` is an aweful parent as it creates many processes and stays alive for a very long time.
 
 Example (a descendant of notepad.exe creating cmd.exe):
@@ -226,16 +226,16 @@ Example (a descendant of notepad.exe creating cmd.exe):
 ```
 
 #### VirusTotal
-The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the 
-organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations 
+The lookup can also use certain APIs in their lookup, like VirusTotal. Note that for the VT API to be accessible, the
+organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations
 configurations.
 
-As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain 
-further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary 
-of AntiVirus vendor reports (here we test for more than 1 vendor saying the hash is bad), while in the case of a custom 
+As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain
+further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary
+of AntiVirus vendor reports (here we test for more than 1 vendor saying the hash is bad), while in the case of a custom
 lookup resource it would be whatever is set as the item's metadata.
 
-To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal 
+To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal
 API key in the Integrations section of the limacharlie.io web interface.
 
 VirusTotal results are cached for a limited period of time locally which reduces the usage of your API key and saves you money.
@@ -256,11 +256,11 @@ metadata_rules:
 ```
 
 #### IP GeoLocation
-The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the 
+The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the
 organization needs to be subscribed to the `api/ip-geo` API Add-On.
 
-As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain 
-further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of `ip-geo` this is a dictionary 
+As visible in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain
+further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of `ip-geo` this is a dictionary
 of the geolocation data returned by the IP GeoLocation data provider, [MaxMind.com](https://maxmind.com).
 
 The format of the metadata returned is documented [here](https://github.com/maxmind/MaxMind-DB-Reader-python) and looks like this:
@@ -268,52 +268,52 @@ The format of the metadata returned is documented [here](https://github.com/maxm
 ```json
 {
   "country": {
-    "geoname_id": 2750405, 
-    "iso_code": "NL", 
-    "is_in_european_union": true, 
+    "geoname_id": 2750405,
+    "iso_code": "NL",
+    "is_in_european_union": true,
     "names": {
-      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b", 
-      "fr": "Pays-Bas", 
-      "en": "Netherlands", 
-      "de": "Niederlande", 
-      "zh-CN": "\u8377\u5170", 
-      "pt-BR": "Holanda", 
-      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd", 
+      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b",
+      "fr": "Pays-Bas",
+      "en": "Netherlands",
+      "de": "Niederlande",
+      "zh-CN": "\u8377\u5170",
+      "pt-BR": "Holanda",
+      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd",
       "es": "Holanda"
     }
-  }, 
+  },
   "location": {
-    "latitude": 52.3824, 
-    "accuracy_radius": 100, 
-    "time_zone": "Europe/Amsterdam", 
+    "latitude": 52.3824,
+    "accuracy_radius": 100,
+    "time_zone": "Europe/Amsterdam",
     "longitude": 4.8995
-  }, 
+  },
   "continent": {
-    "geoname_id": 6255148, 
-    "code": "EU", 
+    "geoname_id": 6255148,
+    "code": "EU",
     "names": {
-      "ru": "\u0415\u0432\u0440\u043e\u043f\u0430", 
-      "fr": "Europe", 
-      "en": "Europe", 
-      "de": "Europa", 
-      "zh-CN": "\u6b27\u6d32", 
-      "pt-BR": "Europa", 
-      "ja": "\u30e8\u30fc\u30ed\u30c3\u30d1", 
+      "ru": "\u0415\u0432\u0440\u043e\u043f\u0430",
+      "fr": "Europe",
+      "en": "Europe",
+      "de": "Europa",
+      "zh-CN": "\u6b27\u6d32",
+      "pt-BR": "Europa",
+      "ja": "\u30e8\u30fc\u30ed\u30c3\u30d1",
       "es": "Europa"
     }
-  }, 
+  },
   "registered_country": {
-    "geoname_id": 2750405, 
-    "iso_code": "NL", 
-    "is_in_european_union": true, 
+    "geoname_id": 2750405,
+    "iso_code": "NL",
+    "is_in_european_union": true,
     "names": {
-      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b", 
-      "fr": "Pays-Bas", 
-      "en": "Netherlands", 
-      "de": "Niederlande", 
-      "zh-CN": "\u8377\u5170", 
-      "pt-BR": "Holanda", 
-      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd", 
+      "ru": "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b",
+      "fr": "Pays-Bas",
+      "en": "Netherlands",
+      "de": "Niederlande",
+      "zh-CN": "\u8377\u5170",
+      "pt-BR": "Holanda",
+      "ja": "\u30aa\u30e9\u30f3\u30c0\u738b\u56fd",
       "es": "Holanda"
     }
   }
@@ -394,7 +394,7 @@ get feed back into the D&R rules so that more complex rules may handle more comp
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
 #### add tag, remove tag
-These two actions associate and disassociate the tag found in the `tag` parameter with the sensor. The "add tag" operation 
+These two actions associate and disassociate the tag found in the `tag` parameter with the sensor. The "add tag" operation
 can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
@@ -507,4 +507,19 @@ event: CONNECTED
 ```yaml
 - action: task
   command: exfil_del NEW_DOCUMENT
+```
+
+### Monitoring Sensitive Directories
+Make sure the File Integrity Monitoring of some directories is enabled whenever Windows sensors connect.
+
+**Detection**
+```yaml
+event: CONNECTED
+op: is windows
+```
+
+**Respond**
+```yaml
+- action: task
+  command: fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"
 ```

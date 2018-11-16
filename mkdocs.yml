@@ -21,5 +21,6 @@ pages:
     - Events: events.md
     - ID Schemes: agentid.md
     - FAQ: faq.md
+    - Upgrading: upgrading.md
+    - Troubleshooting: troubleshooting.md
     - Updating: update_org.md
-    

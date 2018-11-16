@@ -456,19 +456,30 @@ optional arguments:
 
 ## File (and Registry) Integrity Monitoring
 
+FIM rules are not persistent. This means that once an asset restarts the rules
+will be gone. The recommended way of managing rule application is to use
+[Detection & Response rules](dr.md) in a similar way to managing [events to be
+sent to the cloud](dr/#disable-an-event-at-the-source).
+
+A sample D&R rule is available [here](dr/#monitoring-sensitive-directories).
+
 ### fim_add
 Add a file or registry path pattern to monitor for modifications.
 Patterns include basic wildcards:
-* for one character: ?
-* for at least one character: +
-* for any number of characters: *
-* escape character: \
+
+* for one character: `?`
+* for at least one character: `+`
+* for any number of characters: `*`
+* escape character: `\`
 
 Note that the pattern is not a string literal, therefore "\" needs to be escaped by one more level than usual.
 
 So for example, you could do:
-* `?:\\\\windows\\\\system32\\\\*.exe`
-* `\\\\REGISTRY\\\\MACHINE\\\\SOFTWARE\\\\ActiveState\\\\*`
+
+* `?:\\\\*\\\\Programs\\\\Startup\\\\*`
+* `\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*`
+
+Which would result in: `fim_add --pattern "?:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
 
 ```
 usage: fim_add [-h] --pattern PATTERNS
