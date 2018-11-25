@@ -22,7 +22,7 @@ to decide the geolocation of where the data from the sensors will be processed, 
 Enter an organization name. This name must be unique. The "Name Available" indicator should indicate a green checkbox
 a few seconds after you've entered a valid name.
 
-LCC comes with a free tier of two sensors. You do not need a credit card to get this free tier, but
+LimaCharlie comes with a free tier of two sensors. You do not need a credit card to get this free tier, but
 if you decide to upgrade your quota, you will have to enter your credit card information.
 
 Click "Create". Within a few seconds you should see an indication that your organization is ready.
@@ -49,6 +49,15 @@ Outputs decide how and where the data and detections from your sensors should go
 
 ### Sensors
 This is a list of all the sensors enrolled into your organization.
+
+### D&R Rules
+This is where you can manage the [Detection & Response](dr.md) rules.
+
+### Detections
+If you enable Insight (retention), you will see the latest detections here.
+
+### Search
+If you enable Insight (retention), you will be able to search your organization for historical indicators here.
 
 ### Sensor Downloads
 These are simply reference links to download the sensor installers. Quick tip, here is the pattern you can use
@@ -81,6 +90,16 @@ This is where you can subscribe to optional capabilities from the marketplace an
 
 ### Users
 Here you can manage which users have access to your organization in limacharlie.io.
+
+### Integrations
+Some integrations require additional information (like VirusTotal API key), you can specify them here.
+
+## Enable Insight
+With the LimaCharlie free tier, Insight (data retention) is included for the full year. We recommend you enable
+it through the Billing section. It is optional. If you'd like to configure forwarding of your data somewhere
+feel free to proceed with the Create Outputs section later on.
+
+Enabling Insight will provide you with much moreimmediate feedback from your sensors without having to configure anything.
 
 ## Create an Installation Key
 Now that we got our bearings, let's move ahead. Click on the "+" for Installation Keys. The popup will ask you
@@ -117,7 +136,7 @@ That's it, your sensor is running. Although other platforms can be slightly diff
 ## Confirm Enrollment
 
 Back on the limacharlie.io website. If you refresh the organization view page you were on, you should now see your sensor's
-hostname in the Sensors sections and a quota of `1 / 2` in the Billing section. This page refreshes the details of your 
+hostname in the Sensors sections and a quota of `1 / 2` in the Billing section. This page refreshes the details of your
 organization automatically but it does so at a slow frequency. So to check quick changes you may need to refresh it.
 
 If you click on the "Details" link of the Sensors section, you will get a popup of the details of this new sensor. There you
@@ -125,8 +144,10 @@ can add and remove tags as well as delete the sensor. Deleting the sensor will p
 This is a useful feature if you somehow lose control over an Installation Key and unknown people start registering sensors.
 
 ## Create an Output
-Now this is all great, but we'd like to see the data. That is the job of the Outputs. Click on the "+" of the Outputs
-section. The popup will let you define:
+*This section is optional.*
+
+If you want to forward your data to infrastructure you own, here is how to do it:
+That is the job of the Outputs. Click on the "+" of the Outputs section. The popup will let you define:
 
 A name (a unique name to the output within your organization, purely for your benefit).
 
@@ -157,7 +178,18 @@ then copy the [installation script](install_simple_splunk.sh) over, make it exec
 and execute is as `root`. Once installed (takes about 2 minutes) all the relevant
 configuration information you need for the LimaCharlie Output.
 
+## Go Live
+You can go live with your sensor to see data coming back in real-time and interact with it. To do this go to the
+Sensor List section and click on the Go Live button beside your sensor. This will open a new window where you can perform
+various opeations with the sensor in real-time.
+
 ## Confirm Data
+### From Insight
+If you enabled Insight, then things should happen by themselves. Go to the Sensor List section and click on the "History"
+button beside your sensor. It can take up to 2 minutes for your data to show up there (rest assured all detection and response
+is in real-time, only the long term storage can take some time to populate).
+
+### From Outputs
 Data should start flowing to your Output fairly quickly, depending on how much data your sensor is generating.
 If an error is encountered by the output, details will be given in the Error Log section and the output will be retried
 after a few minutes.
@@ -165,5 +197,4 @@ after a few minutes.
 That's it, you're now ready to start adding more sensors!
 
 You can also have a look at the [REST Documentation](https://api.limacharlie.io/static/swagger/) including the various
-[commands you can send to a sensor](sensor_commands.md). Some commands may not
-yet be available in LimaCharlie Cloud (although they are in LimaCharlie Enterprise).
+[commands you can send to a sensor](sensor_commands.md).

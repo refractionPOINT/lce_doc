@@ -41,11 +41,21 @@ investigate, mitigate or apply Tags.
 
 Detailed explanation in the [Detection & Response section](dr.md).
 
+### Insight
+Insight is our built-in data retention and searching. It included within our 2 sensor free tier as well.
+
+When you enable Insight, we configure everything you so that you get access to one year of your data for visualization and searching.
+
+You don't *have to* use the built-in data retention, you can forward data to your infrastructure
+directly if you'd like. In general though, it is much simpler and a better experience to use Insight. If you prefer not to use Insight
+go through the next section (Outputs).
+
 ### Outputs
-Since LimaCharlie Enterprise doesn't store data itself, it needs to relay the data somewhere for longer term storage
-and analysis. Where that data is sent depends on which Outputs are activated. You can have as many Output modules
-active, so you can send it to two different syslog destinations using the Syslog Output module and then send it two
-some cold storage over an Scp Output module.
+If you are using Insight (data retention), you can skip this section.
+
+LimaCharlie can relay the data somewhere for longer term storage and analysis. Where that data is sent depends on which Outputs
+are activated. You can have as many Output modules active, so you can send it to two different syslog destinations using
+the Syslog Output module and then send it two some cold storage over an Scp Output module.
 
 Output is also split between two categories: "event", "detect" and "audit". Event will be a stream containing the all raw data from
 all the sensors, so it tends to be a large amount of data. Detect is a stream of detections generated through the `report`
