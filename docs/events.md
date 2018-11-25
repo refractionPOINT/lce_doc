@@ -66,6 +66,9 @@ Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
 
 ### STARTING_UP
 Event generated when the sensor starts.
+
+Platforms: Windows, Linux, MacOS
+
 ```json
 {
   "STARTING_UP": {
@@ -77,6 +80,8 @@ Event generated when the sensor starts.
 ### SHUTTING_DOWN
 Event generated when the sensor shuts down, may not be observed if the
 host shuts down too quickly or abruptly.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -90,6 +95,8 @@ host shuts down too quickly or abruptly.
 Generated when sensor connects to cloud. The `IS_SEGREGATED` flag
 signals whether the sensor is currently under network isolation.
 
+Platforms: Windows, Linux, MacOS
+
 ```json
 {
   "IS_SEGREGATED" : 1
@@ -99,6 +106,8 @@ signals whether the sensor is currently under network isolation.
 ### CLOUD_NOTIFICATION
 This event is a receipt from the agent that it has received the task
 sent to it, and includes high level errors (if any).
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -119,6 +128,8 @@ sent to it, and includes high level errors (if any).
 
 ### NEW_PROCESS
 Generated when a new process starts.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -145,6 +156,8 @@ Generated when a new process starts.
 ### TERMINATE_PROCESS
 Generated when a process exits.
 
+Platforms: Windows, Linux, MacOS
+
 ```json
 {
   "PARENT_PROCESS_ID": 5820,
@@ -160,6 +173,8 @@ with multiple responses as allowed by the DNS protocol, the N answers will
 become N DNS_REQUEST events, so you can always assume one DNS_REQUEST event
 means one answer.
 
+Platforms: Windows, MacOS
+
 ```json
 {
   "DNS_TYPE": 1,
@@ -173,6 +188,8 @@ means one answer.
 Unique combinations of file hash and file path. Event is emitted the first time
 the combination is seen. Therefore it's a great event to look for hashes without being
 overwhelmed by process execution or module loads.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -191,6 +208,8 @@ overwhelmed by process execution or module loads.
 
 ### NEW_TCP4_CONNECTION
 Generated when a new TCPv4 connection is established, either inbound or outbound.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -211,6 +230,8 @@ Generated when a new TCPv4 connection is established, either inbound or outbound
 ### NEW_UDP4_CONNECTION
 Generated when a new UDPv4 socket "connection" is established, either inbound or outbound.
 
+Platforms: Windows, Linux, MacOS
+
 ```json
 {
   "TIMESTAMP": 1468335452828,
@@ -223,10 +244,15 @@ Generated when a new UDPv4 socket "connection" is established, either inbound or
 ### HIDDEN_MODULE_DETECTED
 Generated when the signature of an executable module is found in memory without
 being known by the operating system.
+
+Platforms: Windows
+
 **Temporarily unavailable as we transition from the open source solution.**
 
 ### MODULE_LOAD
 Generated when a module (like DLL on Windows) is loaded in a process.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -242,6 +268,8 @@ Generated when a module (like DLL on Windows) is loaded in a process.
 ### FILE_CREATE
 Generated when a file is created.
 
+Platforms: Windows, MacOS
+
 ```json
 {
   "FILE_PATH": "C:\\Users\\dev\\AppData\\Local\\Microsoft\\Windows\\WebCache\\V01tmp.log",
@@ -251,6 +279,8 @@ Generated when a file is created.
 
 ### FILE_DELETE
 Generated when a file is deleted.
+
+Platforms: Windows, MacOS
 
 ```json
 {
@@ -264,6 +294,8 @@ Generated either when a process exits or when a process has established 10 netwo
 connections. This event combines process information with the first 10 network connections
 it has done. It is a way to generated detections on process/network information without
 sending home all network events all the time which is a lot of data.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -320,23 +352,37 @@ sending home all network events all the time which is a lot of data.
 ### FILE_GET_REP
 Response from a file retrieval request.
 
+Platforms: Windows, Linux, MacOS
+
 ### FILE_DEL_REP
 Response from a file deletion request.
+
+Platforms: Windows, Linux, MacOS
 
 ### FILE_MOV_REP
 Response from a file move request.
 
+Platforms: Windows, Linux, MacOS
+
 ### FILE_HASH_REP
 Response from a file hash request.
+
+Platforms: Windows, Linux, MacOS
 
 ### FILE_INFO_REP
 Response from a file information request.
 
+Platforms: Windows, Linux, MacOS
+
 ### DIR_LIST_REP
 Response from a directory list request.
 
+Platforms: Windows, Linux, MacOS
+
 ### DIR_FINDHASH_REP
 Response to a dir_find_hash request.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -375,23 +421,37 @@ Response to a dir_find_hash request.
 ### MEM_MAP_REP
 Response from a memory map request.
 
+Platforms: Windows, Linux, MacOS
+
 ### MEM_READ_REP
 Response from a memory read request.
+
+Platforms: Windows, Linux, MacOS
 
 ### MEM_HANDLES_REP
 Response from a list of memory handles request.
 
+Platforms: Windows
+
 ### MEM_FIND_HANDLES_REP
 Response from a find handles request.
+
+Platforms: Windows
 
 ### MEM_STRINGS_REP
 Response from a memory listing of strings request.
 
+Platforms: Windows, Linux, MacOS
+
 ### MEM_FIND_STRING_REP
 Response from a memory find string request.
 
+Platforms: Windows, Linux, MacOS
+
 ### OS_SERVICES_REP
 Response from a Services listing request.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -423,6 +483,8 @@ Response from a Services listing request.
 ### OS_DRIVERS_REP
 Response from a Drivers listing request.
 
+Platforms: Windows
+
 ```json
 {
   "SVCS": [
@@ -451,11 +513,17 @@ Response from a Drivers listing request.
 ### OS_KILL_PROCESS_REP
 Response from a kill process request.
 
+Platforms: Windows, Linux, MacOS
+
 ### OS_PROCESSES_REP
 Response from a process listing request.
 
+Platforms: Windows, Linux, MacOS
+
 ### OS_AUTORUNS_REP
 Response from an Autoruns listing request.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -480,8 +548,12 @@ Response from an Autoruns listing request.
 Response from history dump request. Does not itself contain the historic
 events but will be generated along them.
 
+Platforms: Windows, Linux, MacOS
+
 ### EXEC_OOB
 Generated when an execution out of bounds (like a thread injection) is detected.
+
+Platforms: Windows, Linux, MacOS
 
 **Temporarily unavailable as we transition from the open source solution.**
 
@@ -524,13 +596,19 @@ Generated when an execution out of bounds (like a thread injection) is detected.
 Generated when a mismatch between the contents of memory and the expected module
 on disk is found, can be an indicator of process hollowing.
 
+Platforms: Windows, Linux, MacOS
+
 **Temporarily unavailable as we transition from the open source solution.**
 
 ### YARA_DETECTION
 Generated when a Yara scan finds a match.
 
+Platforms: Windows, Linux, MacOS
+
 ### SERVICE_CHANGE
 Generated when a Service is changed.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -549,6 +627,8 @@ Generated when a Service is changed.
 ### DRIVER_CHANGE
 Generated when a Driver is changed.
 
+Platforms: Windows
+
 ```json
 {
   "PROCESS_ID": 0,
@@ -563,8 +643,12 @@ Generated when a Driver is changed.
 ### AUTORUN_CHANGE
 Generated when an Autorun is changed.
 
+Platforms: Windows, Linux, MacOS
+
 ### FILE_MODIFIED
 Generated when a file is modified.
+
+Platforms: Windows, MacOS
 
 ```json
 {
@@ -578,6 +662,8 @@ Generated when a file is created that matches a set list of locations and
 extensions. It indicates the file has been cached in memory and can be retrieved
 using the [doc_cache_get](sensor_commands.md) task.
 
+Platforms: Windows, MacOS
+
 ```json
 {
   "FILE_PATH": "C:\\Users\\dev\\Desktop\\New Text Document.txt",
@@ -589,7 +675,12 @@ using the [doc_cache_get](sensor_commands.md) task.
 ### GET_DOCUMENT_REP
 Generated when a doc_cache_get task requrested a cached document.
 
+Platforms: Windows, MacOS
+
 ### USER_OBSERVED
+Generated the first time a user is observed on a host.
+
+Platforms: Windows, Linux, MacOS
 
 ```json
 {
@@ -602,6 +693,8 @@ Generated when a doc_cache_get task requrested a cached document.
 Generated when a new process is observed interacting with certain
 file types (like .doc). These can be used as indicators of an unknown
 process exfiltrating files it should not.
+
+Platforms: Windows, MacOS
 
 ```json
 {
@@ -619,6 +712,8 @@ In this case, the process id `492` created a thread (with id `9012`) in the proc
 The parent process is also globally uniquely identified by the `routing/parent` and the process
 where the thread was started is globally uniquely identified by the `routing/target` (not visible here).
 
+Platforms: Windows
+
 ```json
 {
   "THREAD_ID": 9012,
@@ -631,6 +726,8 @@ where the thread was started is globally uniquely identified by the `routing/tar
 List of packages installed on the system. This is currently Windows only but will be
 expanded to MacOS and Linux in the future. It is a response generated by
 the `os_packages` command.
+
+Platforms: Windows
 
 ```json
 "PACKAGES": [
@@ -652,6 +749,8 @@ the `os_packages` command.
 ### REGISTRY_CREATE
 This event is generated whenever a registry key / value is created on a Windows OS.
 
+Platforms: Windows
+
 ```json
 {
   "PROCESS_ID":  764,
@@ -662,6 +761,8 @@ This event is generated whenever a registry key / value is created on a Windows 
 ### REGISTRY_DELETE
 This event is generated whenever a registry key / value is deleted on a Windows OS.
 
+Platforms: Windows
+
 ```json
 {
   "PROCESS_ID":  764,
@@ -671,6 +772,8 @@ This event is generated whenever a registry key / value is deleted on a Windows 
 
 ### REGISTRY_WRITE
 This event is generated whenever a registry value is written to on a Windows OS.
+
+Platforms: Windows
 
 ```json
 {
@@ -687,6 +790,8 @@ unique identifier of the target process.
 
 The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.com/en-us/windows/desktop/procthread/process-security-and-access-rights).
 
+Platforms: Windows
+
 ```json
 {
    "ACCESS_FLAGS":   136208,
@@ -697,6 +802,8 @@ The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.c
 
 ### REGISTRY_LIST_REP
 This event is generated in response to the `reg_list` command to list keys and values in a registry key.
+
+Platforms: Windows
 
 ```json
 {
@@ -741,6 +848,9 @@ This event is generated in response to the `reg_list` command to list keys and v
 
 ### VOLUME_MOUNT
 This event is generated when a volume is mounted.
+
+Platforms: Windows, MacOS
+
 ```json
 {
     "VOLUME_PATH": "E:",
@@ -750,6 +860,9 @@ This event is generated when a volume is mounted.
 
 ### VOLUME_UNMOUNT
 This event is generated when a volume is unmounted.
+
+Platforms: Windows, MacOS
+
 ```json
 {
     "VOLUME_PATH": "/Volumes/RECOVERY",
@@ -759,6 +872,8 @@ This event is generated when a volume is unmounted.
 
 ### FIM_LIST_REP
 Listing of active [FIM](sensor_commands/#file-and-registry-integrity-monitoring) entries.
+
+Platforms: Windows, MacOS
 
 ```
 {
@@ -771,6 +886,8 @@ Listing of active [FIM](sensor_commands/#file-and-registry-integrity-monitoring)
 ### FIM_HIT
 A file, directory or registry key being monitored by [FIM](sensor_commands/#file-and-registry-integrity-monitoring)
 has been modified.
+
+Platforms: Windows, MacOS
 
 ```
 {
