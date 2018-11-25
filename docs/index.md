@@ -63,7 +63,7 @@ function of the Detection & Response rules. This means you can send your bulk "e
 send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output). The "audit" stream
 receives all auditing events produced by LCE and is useful for compliance.
 
-Exaction configuration possibilities in the [Output section](outputs.md).
+Exact configuration possibilities in the [Output section](outputs.md).
 
 ### API Keys
 The API keys are represented as UUIDs. They are linked to your specific organization and enable you to programatically acquire
