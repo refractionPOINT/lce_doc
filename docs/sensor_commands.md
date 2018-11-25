@@ -33,6 +33,8 @@ received a task and the contents of that task.
 ### file_get
 Retrieve a file from the sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: file_get [-h] file
 
@@ -46,6 +48,8 @@ optional arguments:
 ### file_info
 Get file information, timestamps, sizes etc.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: file_info [-h] file
 
@@ -58,6 +62,8 @@ optional arguments:
 
 ### dir_list
 List the contents of a directory.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: dir_list [-h] [-d DEPTH] rootDir fileExp
@@ -76,6 +82,8 @@ optional arguments:
 
 ### dir_find_hash
 Find files matching hashes starting at a root directory.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: dir_find_hash [-h] [-d DEPTH] --hash HASHES rootDir fileExp
@@ -96,6 +104,8 @@ optional arguments:
 ### file_del
 Delete a file from the sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: file_del [-h] file
 
@@ -108,6 +118,8 @@ optional arguments:
 
 ### file_mov
 Move / rename a file on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: file_mov [-h] srcFile dstFile
@@ -122,6 +134,8 @@ optional arguments:
 
 ### file_hash
 Compute the hash of the file on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: file_hash [-h] file
@@ -138,6 +152,8 @@ optional arguments:
 ### mem_map
 Display the map of memory pages from a process including size, access rights etc.
 
+Platforms: Windows, Linux, MacOS
+
 **Due to recent changes in MacOS, may be less reliable on that platform.**
 
 ```
@@ -152,6 +168,8 @@ optional arguments:
 
 ### mem_read
 Retrieve a chunk of memory from a process given a base address and size.
+
+Platforms: Windows, Linux, MacOS
 
 **Due to recent changes in MacOS, may be less reliable on that platform.**
 
@@ -172,6 +190,8 @@ optional arguments:
 ### mem_handles
 List all open handles from a process (or all) on Windows.
 
+Platforms: Windows
+
 ```
 usage: mem_handles [-h] [-p PID] [-a PROCESSATOM]
 
@@ -185,6 +205,8 @@ optional arguments:
 
 ### mem_strings
 List strings from a process' memory.
+
+Platforms: Windows, Linux, MacOS
 
 **Due to recent changes in MacOS, may be less reliable on that platform.**
 
@@ -201,6 +223,8 @@ optional arguments:
 
 ### mem_find_string
 Find specific strings in memory.
+
+Platforms: Windows, Linux, MacOS
 
 **Due to recent changes in MacOS, may be less reliable on that platform.**
 
@@ -219,6 +243,8 @@ optional arguments:
 ### mem_find_handle
 Find specific open handles in memory on Windows.
 
+Platforms: Windows
+
 ```
 usage: mem_find_handle [-h] needle
 
@@ -234,6 +260,8 @@ optional arguments:
 ### os_services
 List all services (Windows, launchctl on MacOS and initd on Linux).
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: os_services [-h]
 
@@ -244,6 +272,8 @@ optional arguments:
 ### os_drivers
 List all drivers on Windows.
 
+Platforms: Windows
+
 ```
 usage: os_drivers [-h]
 
@@ -253,6 +283,8 @@ optional arguments:
 
 ### os_kill_process
 Kill a process running on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: os_kill_process [-h] [-p PID] [-a PROCESSATOM]
@@ -266,6 +298,8 @@ optional arguments:
 
 ### os_suspend
 Suspend a process running on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: os_suspend [-h] [-p PID] [-a PROCESSATOM] [-t TID]
@@ -281,6 +315,8 @@ optional arguments:
 ### os_resume
 Resume execution of a process on the sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: os_resume [-h] [-p PID] [-a PROCESSATOM] [-t TID]
 
@@ -295,6 +331,8 @@ optional arguments:
 ### os_processes
 List all running processes on the sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: os_processes [-h]
 
@@ -305,6 +343,8 @@ optional arguments:
 ### os_autoruns
 List pieces of code executing at startup, similar to SysInternals autoruns.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: os_autoruns [-h]
 
@@ -314,6 +354,8 @@ optional arguments:
 
 ### os_version
 Get detailed OS information on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: os_version [-h]
@@ -326,6 +368,8 @@ optional arguments:
 
 ### reg_list
 List the keys and values in a Windows registry key.
+
+Platforms: Windows
 
 ```
 usage: reg_list [-h] reg
@@ -343,6 +387,8 @@ optional arguments:
 ### hidden_module_scan
 Look for hidden modules in a process' (or all) memory. Hidden modules are DLLs or dylibs loaded manually (not by the OS).
 
+Platforms: Windows
+
 **Temporarily unavailable as we transition from the open source solution.**
 
 ```
@@ -358,6 +404,8 @@ optional arguments:
 ### exec_oob_scan
 Look for threads executing code outside bounds of known modules in memory. Various process injection methodologies.
 
+Platforms: Windows, Linux, MacOS
+
 **Temporarily unavailable as we transition from the open source solution.**
 
 ```
@@ -372,6 +420,8 @@ optional arguments:
 
 ### hollowed_module_scan
 Look for signs of process/module hollowing.
+
+Platforms: Windows, Linux, MacOS
 
 **Temporarily unavailable as we transition from the open source solution.**
 
@@ -390,6 +440,8 @@ optional arguments:
 ### exfil_add
 Add an LC event to the list of events sent back to the backend by default.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: exfil_add [-h] -e EXPIRE event
 
@@ -405,6 +457,8 @@ optional arguments:
 ### exfil_del
 Remove an LC event from the list of events always sent back to the backend.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: exfil_del [-h] event
 
@@ -418,6 +472,8 @@ optional arguments:
 ### exfil_get
 List all LC events sent back to the backend by default.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: exfil_get [-h]
 
@@ -427,6 +483,8 @@ optional arguments:
 
 ### history_dump
 Send to the backend the entire contents of the sensor event cache, so detailed events of everything that happenned recently.
+
+Platforms: Windows, Linux, MacOS
 
 ```
 usage: history_dump [-h] [-r ROOT] [-a ATOM] [-e EVENT]
@@ -444,6 +502,8 @@ optional arguments:
 Turn on or off the high performance mode on a sensor. This mode is designed for very high performance servers requiring high
 IO throughput. This mode reduces the accuracy of certain events which in turn reduces impact on the system. This mode is not
 useful for the vast majority of hosts. If you are considering its usage, get in touch with the team at LimaCharlie.io.
+
+Platforms: Windows
 
 ```
 usage: set_performance_mode [-h] [--is-enabled]
@@ -481,6 +541,8 @@ So for example, you could do:
 
 Which would result in: `fim_add --pattern "?:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
 
+Platforms: Windows, MacOS
+
 ```
 usage: fim_add [-h] --pattern PATTERNS
 
@@ -492,6 +554,8 @@ optional arguments:
 ### fim_del
 Remove a pattern from monitoring.
 
+Platforms: Windows, MacOS
+
 ```
 usage: fim_del [-h] --pattern PATTERNS
 
@@ -502,6 +566,8 @@ optional arguments:
 
 ### fim_get
 Get the list of patterns being monitored.
+
+Platforms: Windows, MacOS
 
 ```
 usage: fim_get [-h]
@@ -515,6 +581,8 @@ optional arguments:
 ### yara_update
 Update the compiled yara signature bundle that is being used for constant memory and file scanning on the sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: yara_update [-h] rule
 
@@ -527,6 +595,8 @@ optional arguments:
 
 ### yara_scan
 Scan for a specific yara signature in memory and files on the sensor.
+
+Platforms: Windows, Linux, MacOS
 
 **The memory component of the scan on MacOS may be less reliable due to recent limitations imposed by Apple.**
 
@@ -576,6 +646,8 @@ Currently the types of documents cached cannot be changed (although it will be i
 * .lnk
 * Any files created in `system32` on Windows.
 
+Platforms: Windows, MacOS
+
 ```
 usage: doc_cache_get [-h] [-f FILE_PATTERN] [-s HASHSTR]
 
@@ -593,6 +665,8 @@ optional arguments:
 ### deny_tree
 Tells the sensor that all activity starting at a specific process (and its children) should be denied and killed. Great for ransomware mitigation.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: deny_tree [-h] atom [atom ...]
 
@@ -606,6 +680,8 @@ optional arguments:
 ### segregate_network
 Tells the sensor to stop all network connectivity on the host except LC comms to the backend. So it's network isolation, great to stop lateral movement.
 
+Platforms: Windows, MacOS
+
 ```
 usage: segregate_network [-h]
 
@@ -615,6 +691,8 @@ optional arguments:
 
 ### rejoin_network
 Tells the sensor to allow network connectivity again (after it was segregated).
+
+Platforms: Windows, MacOS
 
 ```
 usage: rejoin_network [-h]
