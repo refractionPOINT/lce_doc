@@ -700,3 +700,18 @@ usage: rejoin_network [-h]
 optional arguments:
   -h, --help  show this help message and exit
 ```
+
+## Network
+
+### netstat
+
+List network connections and sockets listening.
+
+Platforms: Windows, Linux
+
+```
+usage: netstat [-h]
+
+optional arguments:
+  -h, --help  show this help message and exit
+  ```

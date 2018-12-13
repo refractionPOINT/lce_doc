@@ -83,3 +83,13 @@ example.com:
 When a Lookup add-on is submitted via a URL callback instead of through the website, the
 format pointed to by the URL must be in JSON format (still a dictionary). The maximum size
 of a lookup fetched from a URL is 15MB and from the web is 512KB.
+
+An alternate format is also available for the lookup if you do not wish to associate any metadata with
+each item. This format is simply a newline-separated flat file where each item is on a line.
+
+Lastly, you may also import a list of indicators directly from AlienVault OTX. To create/update a lookup
+with the indicators in a given pulse, set the content of the lookup to be a URL of the form
+
+```otx://YOUR_OTX_API_KEY/pulse/PULSE_ID```
+
+Much like the http(s) URL, this will load the content of the pulse directly.
