@@ -68,10 +68,13 @@ Creating a lookup add-on enables you to create a list that you can use as part o
 Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your add-on looking
 like `resource: lcr://lookup/my-lookup-name`.
 
-The lookup structure is very simple, it should be a dictionary where each key is a value that
-can be matched while the value associated with the key is any type of metadata you would like
-reported in association with this particular match. Here is an example:
+Lookups support two structure. A simple one, which is just newline-separated values, and a complex one
+which allows you to associate metadata with each element. When uploading a lookup through the API, the
+data can be either the flat newline-separated values, or a JSON dictionary. The JSON dictionary should
+contain every element you want to lookup as keys, and the metadata you want associated as JSON values
+to those keys.
 
+Here is an example of this complex format:
 ```yaml
 evil.com: some evil website, definitely bad
 example.com:
@@ -80,16 +83,25 @@ example.com:
   contact: email threatintel@mycorp.com immediately if spotted
 ```
 
-When a Lookup add-on is submitted via a URL callback instead of through the website, the
-format pointed to by the URL must be in JSON format (still a dictionary). The maximum size
-of a lookup fetched from a URL is 15MB and from the web is 512KB.
+When uploaded, the data for the lookup can be provided in three different ways:
 
-An alternate format is also available for the lookup if you do not wish to associate any metadata with
-each item. This format is simply a newline-separated flat file where each item is on a line.
+1. As data literal in the upload API (newline or complex).
+1. As a URL callback, where your data is a URL like https://www.my.data where the content of the lookup can be fetched from.
+1. Or as a link to an AlienVault OTX Pulse.
 
-Lastly, you may also import a list of indicators directly from AlienVault OTX. To create/update a lookup
-with the indicators in a given pulse, set the content of the lookup to be a URL of the form
+If providing an AlientVault OTX pulse, specify the data in the API as a link of the form:
 
-```otx://YOUR_OTX_API_KEY/pulse/PULSE_ID```
+```
+otx://YOUR_OTX_API_KEY/pulse/PULSE_ID
+```
 
-Much like the http(s) URL, this will load the content of the pulse directly.
+The LimaCharlie backend will use the API key encoded in this `otx://` URL and fetch the Pulse directly.
+
+If providing a URL callback, the data provided to the API could look like:
+
+```
+https://raw.githubusercontent.com/gmaniakbg/LCINTEL/master/mal_domain.txt
+```
+
+
+The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
