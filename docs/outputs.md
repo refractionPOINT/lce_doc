@@ -21,6 +21,8 @@ Output events and detections to an Amazon S3 bucket.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+* `region_name`: optionally specify a region name.
+* `endpoint_url`: optionally specify a custom endpoint URL, usually used with region_name to output to S3-compatible 3rd party services.
 
 Example:
 ```
@@ -153,6 +155,18 @@ from_email: lc@corp.com
 username: lc
 password: password-for-my-lc-email-user
 secret_key: this-is-my-secret-shared-key
+```
+
+### Humio
+Output events and detections to the Humio.com service.
+
+* `humio_repo`: the name of the humio repo to upload to.
+* `humio_api_token`: the humio ingestion token.
+
+Example:
+```
+humio_repo: sandbox
+humio_api_token: fdkoefj0erigjre8iANUDBFyfjfoerjfi9erge
 ```
 
 ## Integrations
