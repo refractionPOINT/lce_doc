@@ -162,21 +162,32 @@ Depending on the module you chose, different options will be available. The outp
 one is the best depends on your organization. Modules include Syslog, SFTP and Amazon S3 Buckets, which covers the most
 common use cases.
 
-A good, safe recommendation for output would be using SFTP.
+The easiest demonstration of the forwarding capabilities is to use [Humio](https://humio.com). Their free tier
+allows you to quickly get started on the platform and experiment, which is a great fit with
+getting up and running with LimaCharlie.
 
-For a basic setup, creating a Ubuntu server with SFTP in a cloud provider such as Google Cloud or Digital Ocean, along with
-a Splunk Free version does a great job.
+To do this, head over to https://humio.com and create an account on the free tier. This will
+give you a "sandbox" dataset, which at the time of this writing gives you 2GB/day for 7days of
+retention which is plenty to get a feel for it.
 
-Some more documentation on Output can be found [here](outputs.md). More tutorials
-and apps for Splunk and ELK will become available shortly.
+Once you have an account there, go to the "sandbox" configuration and in the Ingest API Tokens
+create a new token and set its assigned parser to "json". Then copy the token to your clipboard.
 
-For the purpose of this quick start, we recommend you use the [installation script](install_simple_splunk.sh) that
-will install a free Splunk instance on a Ubuntu LTS box and configure it to
-receive LimaCharlie data through SFTP. It's the quickest way of getting started.
-Simply create a Ubuntu LTS box somewhere (we use Digital Ocean) with abour 2 GB of RAM minimum
-then copy the [installation script](install_simple_splunk.sh) over, make it executable (`chmod +x ./install_simple_splunk.sh`)
-and execute is as `root`. Once installed (takes about 2 minutes) all the relevant
-configuration information you need for the LimaCharlie Output.
+When this is done, back in LimaCharlie, head to the "Outpouts" section and click the "+" to create your Output.
+
+Give it a name, select the "humio" module and the "events" stream. The only two fields you need
+to customize are at the botton:
+
+1. Humio Repo: set this to "sandbox".
+1. Humio API Token: set this to the token in your clipboard.
+
+Then click "create". That's it, within a few minutes you will see your data flowing into
+the Humio dashboard where you can query the data and create dashboards.
+
+If you'd like a sample dashboard, you can download [this one we created](https://storage.googleapis.com/limacharlie-io/humio_limacharlie_dashboard.json).
+
+This is the general process to enable forwarding of LC data, we mentioned Humio but you can
+also use any of our other modules that support most log forwarding mechanisms.
 
 ## Go Live
 You can go live with your sensor to see data coming back in real-time and interact with it. To do this go to the
