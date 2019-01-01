@@ -178,8 +178,8 @@ When this is done, back in LimaCharlie, head to the "Outpouts" section and click
 Give it a name, select the "humio" module and the "events" stream. The only two fields you need
 to customize are at the botton:
 
-* Humio Repo: set this to "sandbox".
-* Humio API Token: set this to the token in your clipboard.
+- Humio Repo: set this to "sandbox".
+- Humio API Token: set this to the token in your clipboard.
 
 Then click "create". That's it, within a few minutes you will see your data flowing into
 the Humio dashboard where you can query the data and create dashboards.
