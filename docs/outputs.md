@@ -158,7 +158,7 @@ secret_key: this-is-my-secret-shared-key
 ```
 
 ### Humio
-Output events and detections to the Humio.com service.
+Output events and detections to the [Humio.com](https://humio.com) service.
 
 * `humio_repo`: the name of the humio repo to upload to.
 * `humio_api_token`: the humio ingestion token.

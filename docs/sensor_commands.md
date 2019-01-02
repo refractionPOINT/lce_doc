@@ -389,8 +389,6 @@ Look for hidden modules in a process' (or all) memory. Hidden modules are DLLs o
 
 Platforms: Windows
 
-**Temporarily unavailable as we transition from the open source solution.**
-
 ```
 usage: hidden_module_scan [-h] pid
 
