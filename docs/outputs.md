@@ -162,6 +162,7 @@ Output events and detections to the [Humio.com](https://humio.com) service.
 
 * `humio_repo`: the name of the humio repo to upload to.
 * `humio_api_token`: the humio ingestion token.
+* `endpoint_url`: optionally specify a custom endpoint URL, if you have Humio deployed on-prem use this to point to it, otherwise it defaults to the Humio cloud.
 
 Example:
 ```
