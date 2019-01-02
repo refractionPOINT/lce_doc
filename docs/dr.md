@@ -385,7 +385,7 @@ Example:
 
 #### report
 Reports the match as a detection. This means that the content of this event will be bubbled up to the Detection Output
-stream. Think of it as an alert. It takes a `name` parameter that will be used as a detection category and a `publish`
+stream. Think of it as an alert. It takes a `name` parameter that will be used as a detection category and an optional `publish`
 parameter that, if set to `false` means the report won't be published to the Output stream.
 
 This last distinction about the `publish` parameter is important because the detections created by the `report` action
