@@ -138,6 +138,35 @@ Example:
 }
 ```
 
+#### string distance
+The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between
+two strings. In other words it generates the number of character changes required for one string
+to become equal to another.
+
+For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r` instead of `e`) is 1.
+
+This can be used to find variations of file names or domain names that could be used for phishing for example.
+
+Let's say your company is `onephoton.com`, looking for the Levenshtein Distance between all `DOMAIN_NAME` in
+`DNS_REQUEST` events, compared to `onephoton.com` could detect an attacker using `onephot0n.com` in a phishing
+email domain.
+
+The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the
+maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings
+that represent the value(s) to compare to.
+
+Example:
+```yaml
+op: string distance
+path: event/DOMAIN_NAME
+value:
+  - onephoton.com
+  - www.onephoton.com
+max: 2
+```
+
+This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
+
 #### is windows, is linux, is mac, is 32 bit, is 64 bit
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
 correct.
