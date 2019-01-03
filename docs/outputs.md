@@ -9,6 +9,7 @@
 * `inv_id`: only send events matching the investigation id to this output (event stream only).
 * `tag`: only send events from sensors with this tag to this output (event stream only).
 * `cat`: only send detections from this category to this output (detect stream only).
+* `cat_black_list`: only send detections that do not match the prefixes in this list (newline-seperated).
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 
