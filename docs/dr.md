@@ -235,6 +235,8 @@ exists in between the `parent` and `child` (or `document`), no detection will be
 * `parent root`: for a match on the `parent` to be made, the parent process must be owned by the `root` user on Linux and MacOS, or by an Administrator
 account on Windows.
 * `child root`: similar behavior as `parent root` but is applied to the `child`.
+* `parent signed`: for a match on the `parent` to be made, the parent process executable must be signed and valid.
+* `child signed`: for a match on the `child` to be made, the child process executable must be signed and valid.
 
 This operator potentially keeps a lot more state than others. A process will be kept in state if it matches the `parent` process and this for as long
 as the `parent` process stays alive. This means a bad combination for this operator is to have a `parent` that matches very common processes, and for
