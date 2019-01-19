@@ -228,6 +228,7 @@ This will detect a suspicious relationship between a parent process matching the
 * if `child` is specified, will detect when a descendant process of `parent` matches the regular expression `child`.
 * if the `document` is specified, will detect when a process descendant of `parent` creates a [new document](events.md#new_document) with a
 file path matching the regular expression in `document`.
+* `child event type`: if specified, will detect when a process descendant of `parent` is an event of this type..
 
 In addition to this base behavior, the following modifiers are available:
 * `only direct`: if set to `true`, the target relationship will only attempt to detect a direct relationship, meaning if a non-matching process
