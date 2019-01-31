@@ -24,4 +24,5 @@ pages:
     - Upgrading: upgrading.md
     - Troubleshooting: troubleshooting.md
     - Updating: update_org.md
+    - User Control: user_access.md
 extra_css: [extra.css]
