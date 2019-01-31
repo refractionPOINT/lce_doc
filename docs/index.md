@@ -7,7 +7,7 @@
 [TOC]
 
 ## Quick Start
-To skip all of the details and get setup with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
+To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
 ## Core Concepts
 ### Sensors
@@ -28,7 +28,7 @@ Full commands list is in the [Sensor Commands section](sensor_commands.md).
 
 ### Installer Key
 Installer Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
-Get more detaisl in the [Installation Keys section](manage_keys.md).
+Get more details in the [Installation Keys section](manage_keys.md).
 
 ### Tags
 Sensors can have Tags associated with them. Tags are added during creation or dynamically through the UI, API or Detection & Response Rules.
@@ -42,22 +42,22 @@ investigate, mitigate or apply Tags.
 Detailed explanation in the [Detection & Response section](dr.md).
 
 ### Insight
-Insight is our built-in data retention and searching. It included within our 2 sensor free tier as well.
+Insight is our built-in data retention and searching. It is included within our 2 sensor free tier as well.
 
-When you enable Insight, we configure everything you so that you get access to one year of your data for visualization and searching.
+When you enable Insight, we configure everything for you so that you get access to one year of your data for visualization and searching.
 
-You don't *have to* use the built-in data retention, you can forward data to your infrastructure
-directly if you'd like. In general though, it is much simpler and a better experience to use Insight. If you prefer not to use Insight
+You don't *have to* use the built-in data retention; you can forward data to your infrastructure
+directly if you'd like. In general though, it is much simpler and a better experience to use Insight. If you prefer not to use Insight,
 go through the next section (Outputs).
 
 ### Outputs
 If you are using Insight (data retention), you can skip this section.
 
 LimaCharlie can relay the data somewhere for longer term storage and analysis. Where that data is sent depends on which Outputs
-are activated. You can have as many Output modules active, so you can send it to two different syslog destinations using
-the Syslog Output module and then send it two some cold storage over an Scp Output module.
+are activated. You can have as many Output modules active as you want, so you can send it to multiple syslog destinations using
+the Syslog Output module and then send it to some cold storage over an Scp Output module.
 
-Output is also split between two categories: "event", "detect" and "audit". Event will be a stream containing the all raw data from
+Output is also split between three categories: "event", "detect" and "audit". Event will be a stream containing the raw data from
 all the sensors, so it tends to be a large amount of data. Detect is a stream of detections generated through the `report`
 function of the Detection & Response rules. This means you can send your bulk "event" data to a cheap cold storage and
 send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output). The "audit" stream

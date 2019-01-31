@@ -15,8 +15,8 @@ prevent the REST interface from blocking for very long times, the responses to t
 of the normal data flow from the sensor as response events. This means you can find the responses through the data in the
 Output you have configured.
 
-To assist in find the responses more easily, the `investigation_id` mechanism was created. When issuing a taks, including
-an `investigation_id`, which is simply an arbitrary string you define, will include that ID in all related responses from
+To assist in finding the responses more easily, the `investigation_id` mechanism was created. When issuing a task, you can include
+an `investigation_id`, which is simply an arbitrary string you define, and that ID will be included in all related responses from
 the sensor (`routing/investigation_id`). Note that Outputs also support the `inv_id` parameter that allows you to create
 an Output that will only receive data related to an investigation ID.
 
@@ -31,7 +31,7 @@ received a task and the contents of that task.
 ## Files and Directories
 
 ### file_get
-Retrieve a file from the sensor.
+Retrieve a file from the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -46,7 +46,7 @@ optional arguments:
 ```
 
 ### file_info
-Get file information, timestamps, sizes etc.
+Get file information, timestamps, sizes, etc.
 
 Platforms: Windows, Linux, MacOS
 
@@ -102,7 +102,7 @@ optional arguments:
 ```
 
 ### file_del
-Delete a file from the sensor.
+Delete a file from the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -117,7 +117,7 @@ optional arguments:
 ```
 
 ### file_mov
-Move / rename a file on the sensor.
+Move / rename a file on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -133,7 +133,7 @@ optional arguments:
 ```
 
 ### file_hash
-Compute the hash of the file on the sensor.
+Compute the hash of a file.
 
 Platforms: Windows, Linux, MacOS
 
@@ -150,7 +150,7 @@ optional arguments:
 ## Memory
 
 ### mem_map
-Display the map of memory pages from a process including size, access rights etc.
+Display the map of memory pages from a process including size, access rights, etc.
 
 Platforms: Windows, Linux, MacOS
 
@@ -204,7 +204,7 @@ optional arguments:
 ```
 
 ### mem_strings
-List strings from a process' memory.
+List strings from a process's memory.
 
 Platforms: Windows, Linux, MacOS
 
@@ -229,14 +229,14 @@ Platforms: Windows, Linux, MacOS
 **Due to recent changes in MacOS, may be less reliable on that platform.**
 
 ```
-usage: mem_find_string [-h] -s [STRINGS [STRINGS ...]] pid
+usage: mem_find_string [-h] -s STRING [STRING ...] pid
 
 positional arguments:
   pid                   pid of the process to search in
 
 optional arguments:
   -h, --help            show this help message and exit
-  -s [STRINGS [STRINGS ...]], --strings [STRINGS [STRINGS ...]]
+  -s STRING [STRING ...], --strings STRING [STRING ...]
                         list of strings to look for
 ```
 
@@ -282,7 +282,7 @@ optional arguments:
 ```
 
 ### os_kill_process
-Kill a process running on the sensor.
+Kill a process running on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -297,7 +297,7 @@ optional arguments:
 ```
 
 ### os_suspend
-Suspend a process running on the sensor.
+Suspend a process running on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -313,7 +313,7 @@ optional arguments:
 ```
 
 ### os_resume
-Resume execution of a process on the sensor.
+Resume execution of a process on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -329,7 +329,7 @@ optional arguments:
 ```
 
 ### os_processes
-List all running processes on the sensor.
+List all running processes on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -353,7 +353,7 @@ optional arguments:
 ```
 
 ### os_version
-Get detailed OS information on the sensor.
+Get detailed OS information on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 
@@ -375,7 +375,7 @@ Platforms: Windows
 usage: reg_list [-h] reg
 
 positional arguments:
-  reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku" like: "hklm\\software"...
+  reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku", e.g. "hklm\\software"...
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -385,7 +385,7 @@ optional arguments:
 ## Anomalies
 
 ### hidden_module_scan
-Look for hidden modules in a process' (or all) memory. Hidden modules are DLLs or dylibs loaded manually (not by the OS).
+Look for hidden modules in a process's (or all) memory. Hidden modules are DLLs or dylibs loaded manually (not by the OS).
 
 Platforms: Windows
 
@@ -399,39 +399,6 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
-### exec_oob_scan
-Look for threads executing code outside bounds of known modules in memory. Various process injection methodologies.
-
-Platforms: Windows, Linux, MacOS
-
-**Temporarily unavailable as we transition from the open source solution.**
-
-```
-usage: exec_oob_scan [-h] pid
-
-positional arguments:
-  pid         pid of the process to scan, or "-1" for ALL processes
-
-optional arguments:
-  -h, --help  show this help message and exit
-```
-
-### hollowed_module_scan
-Look for signs of process/module hollowing.
-
-Platforms: Windows, Linux, MacOS
-
-**Temporarily unavailable as we transition from the open source solution.**
-
-```
-usage: hollowed_module_scan [-h] pid
-
-positional arguments:
-  pid         pid of the process to scan
-
-optional arguments:
-  -h, --help  show this help message and exit
-```
 
 ## Management
 
@@ -480,7 +447,7 @@ optional arguments:
 ```
 
 ### history_dump
-Send to the backend the entire contents of the sensor event cache, so detailed events of everything that happenned recently.
+Send to the backend the entire contents of the sensor event cache, i.e. detailed events of everything that happened recently.
 
 Platforms: Windows, Linux, MacOS
 
@@ -514,7 +481,7 @@ optional arguments:
 
 ## File (and Registry) Integrity Monitoring
 
-FIM rules are not persistent. This means that once an asset restarts the rules
+FIM rules are not persistent. This means that once an asset restarts, the rules
 will be gone. The recommended way of managing rule application is to use
 [Detection & Response rules](dr.md) in a similar way to managing [events to be
 sent to the cloud](dr/#disable-an-event-at-the-source).
@@ -585,14 +552,14 @@ Platforms: Windows, Linux, MacOS
 usage: yara_update [-h] rule
 
 positional arguments:
-  rule        rule to compile and set on sensor for contstant scanning, literal rule or "https://" URL or base64 encoded rule
+  rule        rule to compile and set on sensor for constant scanning, literal rule or "https://" URL or base64 encoded rule
 
 optional arguments:
   -h, --help  show this help message and exit
 ```
 
 ### yara_scan
-Scan for a specific yara signature in memory and files on the sensor.
+Scan for a specific yara signature in memory and files on the endpoint.
 
 Platforms: Windows, Linux, MacOS
 

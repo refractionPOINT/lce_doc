@@ -12,7 +12,7 @@ Installation keys are the bits of text that you give to new sensors so that they
 
 ## Common Scheme
 Generally speaking, we use at least one Installation Key per organization. Then we use different keys to help
-differentiate parts of our infrastructure. For example, you may create a key with Tags "server" that you will use
-to install on your servers. A key with "vip" for executives in your organization. A key with "sales" for the sales
-department etc. This way you can use the tags on various sensors to figure out different detection and response
+differentiate parts of our infrastructure. For example, you may create a key with Tag "server" that you will use
+to install on your servers, a key with "vip" for executives in your organization, or a key with "sales" for the sales
+department, etc. This way you can use the tags on various sensors to figure out different detection and response
 rules for different types of hosts on your infrastructure.

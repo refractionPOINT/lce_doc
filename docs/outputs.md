@@ -379,6 +379,8 @@ like investigations or specific sensors or detections. This stream can be achiev
 any additional software layer, although the [Python API](https://github.com/refractionpoint/python-limacharlie/) makes
 this task easier using the Spout object.
 
+This feature is heavily used by the Web Interface's Live view of a sensor.
+
 This feature is activated in two steps.
 
 Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to
@@ -408,6 +410,12 @@ done on the side of `output.limacharlie.io` is very minimal. If you are not fast
 be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.
+
+#### Proxy Access
+If you are in an environment that has strict proxy rules, you may need add whitelisting rules. Here is the expected behavior:
+
+1. HTTPS Connection over port 443 to `output.limacharlie.io` (which resolves to multiple hosts for redundancy).
+1. Redirect from the above connection to a random high port, over HTTPS, to one of `output-1.limacharlie.io` or `output-2.limacharlie.io`.
 
 ### Webhook
 Using this ouput, every element will be sent over HTTP(S) to a webserver of your choice via a POST.
