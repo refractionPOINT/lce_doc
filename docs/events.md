@@ -784,25 +784,7 @@ Platforms: Windows
 
 ### REMOTE_PROCESS_HANDLE
 This event is generated whenever a process opens a handle to another process with one
-of the following access flags: `VM_READ`. Only
-available on Windows OS. A `routing/target` is also populated in the event as the globally
-unique identifier of the target process.
-
-The `ACCESS_FLAGS` is the access mask as defined [here](https://docs.microsoft.com/en-us/windows/desktop/procthread/process-security-and-access-rights).
-
-Platforms: Windows
-
-```json
-{
-   "ACCESS_FLAGS":   136208,
-   "PARENT_PROCESS_ID":  6492,
-   "PROCESS_ID":   2516
-}
-```
-
-### REMOTE_PROCESS_HANDLE_MOD
-This event is generated whenever a process opens a handle to another process with one
-of the following access flags: `VM_WRITE` or `PROCESS_CREATE_THREAD`. Only
+of the following access flags: `VM_READ`, `VM_WRITE` or `PROCESS_CREATE_THREAD`. Only
 available on Windows OS. A `routing/target` is also populated in the event as the globally
 unique identifier of the target process.
 
