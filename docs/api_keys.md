@@ -12,7 +12,7 @@ can then use.
 The API Keys are managed through the organization view of the https://limacharlie.io web interface.
 
 ## Getting a JWT
-Simply issue an HTTP GET like:
+Simply issue an HTTP GET or HTTP POST (recommended) like:
 ```
 curl "https://app.limacharlie.io/jwt?oid=c82e5c17-d520-4ef5-a4ac-c454a95d31ca&secret=1b1ae891-4316-4124-b859-556dd92add00"
 ```
