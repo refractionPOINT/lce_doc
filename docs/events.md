@@ -912,3 +912,9 @@ Platforms: Windows, MacOS
 This event is generated in response to the `netstat` command to list active network sockets.
 
 Platforms: Windows, MacOS, Linux
+
+###  THREAD_INJECTION
+This event is generated when the sensor detects what looks like a thread injection into
+a remote process.
+
+Platforms: Windows
