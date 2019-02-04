@@ -907,3 +907,8 @@ Platforms: Windows, MacOS
   "PROCESS_ID": 4340
 }
 ```
+
+### NETSTAT_REP
+This event is generated in response to the `netstat` command to list active network sockets.
+
+Platforms: Windows, MacOS, Linux
