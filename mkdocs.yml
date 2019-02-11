@@ -25,4 +25,5 @@ pages:
     - Troubleshooting: troubleshooting.md
     - Updating: update_org.md
     - User Control: user_access.md
+    - Error Codes: errors.md
 extra_css: [extra.css]
