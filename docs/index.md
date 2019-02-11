@@ -85,6 +85,7 @@ authorization tokens that can be used on our REST API. See the [API Key section]
 
 ### Reference
 * [Events](events.md)
+* [Error Codes](errors.md)
 
 ### FAQ
 * [FAQ](faq.md)
