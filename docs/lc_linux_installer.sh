@@ -89,8 +89,14 @@ update-rc.d ${LAUNCHER_SCRIPT_NAME} defaults
 service limacharlie start
 
 echo "LimaCharlie installed and started successfully."
-echo "To uninstall: "
+echo "To uninstall the LimaCharlie service: "
 echo "sudo service limacharlie stop"
 echo "sudo rm -rf ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}"
 echo "sudo update-rc.d ${LAUNCHER_SCRIPT_NAME} remove -f"
 echo "sudo rm -rf /etc/init.d/${LAUNCHER_SCRIPT_NAME}"
+echo ""
+echo "This does not delete the identity files from disk."
+echo "This means you can re-install in the future and keep the same sensor ID."
+echo "If you wish to delete the identity: "
+echo "sudo rm /etc/hcp"
+echo "sudo rm /etc/hcp_conf"
