@@ -107,6 +107,15 @@ Example rule:
 }
 ```
 
+#### exists
+Tests if any elements exist at the given path.
+
+Example rule:
+```yaml
+op: exists
+path: event/PARENT
+```
+
 #### contains, ends with, starts with
 The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix
 match.
