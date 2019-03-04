@@ -431,6 +431,16 @@ This last distinction about the `publish` parameter is important because the det
 get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
+Finally, the `priority` parameter is optional. If set, it should be an integer. This integer
+will get added to the root of the detection report.
+
+Example:
+```yaml
+action: report
+name: my-detection
+priority: 3
+```
+
 #### add tag, remove tag
 These two actions associate and disassociate, respectively, the tag found in the `tag` parameter with the sensor. The "add tag" operation
 can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
