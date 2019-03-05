@@ -251,16 +251,14 @@ Then you can connect through the tunnel with your browser at `http://127.0.0.1:8
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Amazon S3. This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling the
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
+If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling some indexed queries.
+LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
-The `is_compression` flag, if on, will compress each file as GZIP when uploaded. The files being compressed does NOT prevent
-the Digger web app from accessing them (it decompresses them on the fly) but it may prevent other tools expecteding plain
-text from reading the files.
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
 
-It is recommended you enable `is_indexing` and `is_compression`.
+It is recommended you enable `is_compression`.
 
 1. Log in to AWS console and go to the IAM service.
 1. Click on "Users" from the menu.
@@ -275,8 +273,6 @@ It is recommended you enable `is_indexing` and `is_compression`.
     name of the bucket you just created.
 1. Click "Save".
 1. Click the "Permissions" tab for your bucket.
-1. Select CORS Configuration
-1. In the editor, enter the configuration you find below, this allows the Digger to access the data through the browser.
 1. Back in limacharlie.io, in your organization view, create a new Output.
 1. Give it a name, select the "s3" module and select the stream you would like to send.
 1. Enter the bucket name, key_id and secret_key you noted down from AWS.
@@ -284,9 +280,6 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. After a minute, the data should start getting written to your bucket.
 
 #### Policy Sample
-This policy example also shows two more statements (the bottom two) that are the permissions required for a user that
-is Read-Only to be used in the Digger configuration. We recommend using a Write-Only user from LC and a Read-Only user
-from Digger.
 
 ```json
 {
@@ -300,58 +293,22 @@ from Digger.
          },
          "Action": "s3:PutObject",
          "Resource": "arn:aws:s3:::<<BUCKET_NAME>>/*"
-      },
-      {
-         "Sid": "PermissionForObjectOperations",
-         "Effect": "Allow",
-         "Principal": {
-             "AWS": "<<DIGGER_READER_USER_ARN>>"
-         },
-         "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::<<BUCKET_NAME>>/*"
-      },
-      {
-        "Sid": "PermissionForObjectOperations",
-        "Effect": "Allow",
-        "Principal": {
-            "AWS": "<<DIGGER_READER_USER_ARN>>"
-        },
-        "Action": "s3:ListBucket",
-        "Resource": "arn:aws:s3:::<<BUCKET_NAME>>"
       }
    ]
 }
 ```
 
-#### CORS Configuration
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-<CORSRule>
-    <AllowedOrigin>*</AllowedOrigin>
-    <AllowedMethod>HEAD</AllowedMethod>
-    <AllowedMethod>GET</AllowedMethod>
-    <AllowedHeader>*</AllowedHeader>
-</CORSRule>
-</CORSConfiguration>
-
-```
-
 ### Google Cloud Storage
-
-***Google Cloud Storage is currently only supported as an Output. Visualization of data in Digger from GCS is not yet possible.***
 
 If you have your own visualization stack, or you just need the data archived, you can upload
 directly to Google Cloud Storage (GCS). This way you don't need any infrastructure.
 
-If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling the
-live querying by the Digger web app. LC data files begin with a `d` while special manifest files (indicating
+If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enablingsome indexed queries.
+LC data files begin with a `d` while special manifest files (indicating
 which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
 as flat files with a UUID name.
 
-The `is_compression` flag, if on, will compress each file as GZIP when uploaded. The files being compressed does NOT prevent
-the Digger web app from accessing them (it decompresses them on the fly) but it may prevent other tools expecteding plain
-text from reading the files.
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
 
 It is recommended you enable `is_indexing` and `is_compression`.
 
@@ -369,9 +326,7 @@ It is recommended you enable `is_indexing` and `is_compression`.
 1. Click "Create".
 1. After a minute, the data should start getting written to your bucket.
 
-Now this has create a single Service Account in Write-Only mode. To access your data in Digger, you will want to do the same
-steps as above, creating a new Service Account. This time however, you will set the "Storage" --> "Storage Object Viewer". The
-Service Account downloaded will be used in the Digger.
+Now this has created a single Service Account in Write-Only mode.
 
 ### HTTP Streaming
 It is also possible to stream an output over HTTPS. This interface allows you to stream smaller dataset
