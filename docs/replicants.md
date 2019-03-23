@@ -60,6 +60,6 @@ Integrity helps you manage all aspects of File and Registry integrity monitoring
 #### Rules
 Rules define which file path patterns and registry patterns should be monitored for changes for specific sets of hosts.
 
-Filter tags are tags that must ALL be present on a sensor for it to match (ANDed), while the platform of the sensor much match one of the platforms in the filter (ORed).
+Filter tags are tags that must ALL be present on a sensor for it to match (AND condition), while the platform of the sensor much match one of the platforms in the filter (OR condition).
 
 Patterns are file or registry patterns, supporting wildcards (*, ?, +). Windows directory separators (backslash, "\") must be escaped like "\\".
