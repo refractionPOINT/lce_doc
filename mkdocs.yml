@@ -18,6 +18,7 @@ pages:
     - Tagging: tagging.md
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
+    - Replicants: replicants.md
     - Events: events.md
     - ID Schemes: agentid.md
     - FAQ: faq.md

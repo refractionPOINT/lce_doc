@@ -107,6 +107,15 @@ Example rule:
 }
 ```
 
+#### exists
+Tests if any elements exist at the given path.
+
+Example rule:
+```yaml
+op: exists
+path: event/PARENT
+```
+
 #### contains, ends with, starts with
 The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix
 match.
@@ -421,6 +430,16 @@ parameter that defaults to `true`. If set to `false`, the report won't be publis
 This last distinction about the `publish` parameter is important because the detections created by the `report` action
 get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
+
+Finally, the `priority` parameter is optional. If set, it should be an integer. This integer
+will get added to the root of the detection report.
+
+Example:
+```yaml
+action: report
+name: my-detection
+priority: 3
+```
 
 #### add tag, remove tag
 These two actions associate and disassociate, respectively, the tag found in the `tag` parameter with the sensor. The "add tag" operation

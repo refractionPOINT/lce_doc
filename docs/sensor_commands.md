@@ -232,7 +232,7 @@ Platforms: Windows, Linux, MacOS
 usage: mem_find_string [-h] -s STRING [STRING ...] pid
 
 positional arguments:
-  pid                   pid of the process to search in
+  pid                   pid of the process to search in, 0 for all processes
 
 optional arguments:
   -h, --help            show this help message and exit

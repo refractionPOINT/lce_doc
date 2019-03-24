@@ -918,3 +918,9 @@ This event is generated when the sensor detects what looks like a thread injecti
 a remote process.
 
 Platforms: Windows
+
+### SENSITIVE_PROCESS_ACCESS
+This event is generated when a process gains sensitive access through a remote process handle
+or a remote thread to sensitive operating system processes like lsass.exe on Windows.
+
+Platforms: Windows
