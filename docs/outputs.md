@@ -12,6 +12,7 @@
 * `cat_black_list`: only send detections that do not match the prefixes in this list (newline-seperated).
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
+* `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
 
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
