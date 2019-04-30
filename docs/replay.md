@@ -61,7 +61,7 @@ The API mainly works on a per-sensor basis, on a limited amount of time. Replayi
 multiple sensors (or entire org), or longer time period is done through multiple
 parallel API calls. This multiplexing is taken care of for you by the Python CLI above.
 
-Specify which Organization ID (OID) and Sensor ID (SID) through the following URI:
+Specify which Organization ID (`OID`) and Sensor ID (`SID`) through the following URI:
 ```
 https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}
 ```
@@ -72,7 +72,7 @@ https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}?start={START_EPOCH}&e
 ```
 
 Specify the rule to apply. This can be done via a `rule_name` query string parameter, or
-by supplying the rule, as JSON in the body of the POST and a Content-Type header of `application-json`:
+by supplying the rule, as `JSON` in the body of the `POST` and a `Content-Type` header of `application-json`:
 ```
 https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}&rule_name={EXISTING_RULE_NAME}
 ```
