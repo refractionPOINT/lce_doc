@@ -31,9 +31,14 @@ The returned dhtopata from the API contains the following:
 The [Python CLI](https://github.com/refractionPOINT/python-limacharlie) gives you a friendly way to replay data, and to do so across larger datasets
 by automatically splitting up your query into multiple queries that can run in parallel.
 
-Sample command line:
+Sample command line to query one sensor:
 ```
 limacharlie-replay --sid 9cbed57a-6d6a-4af0-b881-803a99b177d9 --start 1556568500 --end 1556568600 --rule-content ./test_rule.txt
+```
+
+Sample command line to query an entire organization:
+```
+limacharlie-replay --entire-org --start 1555359000 --end 1556568600 --rule-name my-rule-name
 ```
 
 We invite you to look at the command line usage itself as the tool evolves.
