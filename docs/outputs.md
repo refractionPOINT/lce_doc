@@ -99,6 +99,8 @@ password: XXXXXXXXXXXX
 
 ### Slack
 Output detections and audit (only) to a Slack community and channel.
+The Slack integration currently uses [Slack Legacy Tokens](https://api.slack.com/custom-integrations/legacy-tokens).
+
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
