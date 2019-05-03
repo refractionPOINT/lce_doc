@@ -21,7 +21,7 @@ Using the Replay API requires the [API key](api_keys.md) to have the following p
 * `insight.evt.get`
 * `insight.det.get`
 
-The returned dhtopata from the API contains the following:
+The returned data from the API contains the following:
 * `responses`: a list of the actions that would have been taken by the rule (like `report`, `task`, etc).
 * `num_evals`: a number of evaluation operation performed by the rule. This is a rough estimate of the performance of the rule.
 * `num_events`: the number of events that were replayed.
@@ -39,6 +39,19 @@ limacharlie-replay --sid 9cbed57a-6d6a-4af0-b881-803a99b177d9 --start 1556568500
 Sample command line to query an entire organization:
 ```
 limacharlie-replay --entire-org --start 1555359000 --end 1556568600 --rule-name my-rule-name
+```
+
+If specifying a rule as content with the `--rule-content`, the format should be
+in `JSON` or `YAML` like:
+```
+detect:
+  event: DNS_REQUEST
+  op: is
+  path: event/DOMAIN_NAME
+  value: www.dilbert.com
+respond:
+  - action: report
+    name: dilbert-is-here
 ```
 
 We invite you to look at the command line usage itself as the tool evolves.
