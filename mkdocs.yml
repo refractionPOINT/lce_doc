@@ -19,6 +19,7 @@ pages:
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
     - Replicants: replicants.md
+    - Replay: replay.md
     - Events: events.md
     - ID Schemes: agentid.md
     - FAQ: faq.md

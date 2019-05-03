@@ -924,3 +924,59 @@ This event is generated when a process gains sensitive access through a remote p
 or a remote thread to sensitive operating system processes like lsass.exe on Windows.
 
 Platforms: Windows
+
+```
+{
+    "EVENTS": [
+      {
+        "event": {
+          "BASE_ADDRESS": 140697066274816,
+          "COMMAND_LINE": "C:\WINDOWS\system32\lsass.exe",
+          "FILE_IS_SIGNED": 1,
+          "FILE_PATH": "C:\WINDOWS\system32\lsass.exe",
+          "HASH": "f56dddf7a8f1aa0f3d9ffe0cd618544cfaf233a33314240eccbe5f897a91b534",
+          "MEMORY_USAGE": 14950400,
+          "PARENT_PROCESS_ID": 484,
+          "PROCESS_ID": 636,
+          "THREADS": 12,
+          "USER_NAME": "BUILTIN\Administrators"
+        },
+        "routing": {
+          ...
+        }
+      },
+      {
+        "event": {
+          "ACCESS_FLAGS": 2097151,
+          "PARENT_PROCESS_ID": 4148,
+          "PROCESS_ID": 636,
+          "SOURCE": {
+            "FILE_PATH": "\Device\HarddiskVolume1\ProgramData\Microsoft\Windows Defender\Platform\4.18.1902.2-0\MsMpEng.exe",
+            "MEMORY_USAGE": 126771200,
+            "PARENT_PROCESS_ID": 620,
+            "PROCESS_ID": 4148,
+            "THIS_ATOM": "69a5a90aade375d2860c76701ba8d701",
+            "THREADS": 32,
+            "TIMESTAMP": 1553448803541,
+            "USER_NAME": "NT AUTHORITY\SYSTEM"
+          },
+          "TARGET": {
+            "BASE_ADDRESS": 140697066274816,
+            "COMMAND_LINE": "C:\WINDOWS\system32\lsass.exe",
+            "FILE_PATH": "C:\WINDOWS\system32\lsass.exe",
+            "MEMORY_USAGE": 14950400,
+            "PARENT_PROCESS_ID": 484,
+            "PROCESS_ID": 636,
+            "THIS_ATOM": "98ffb0230c694f750671c7387b535b9b",
+            "THREADS": 12,
+            "TIMESTAMP": 1553448799838,
+            "USER_NAME": "BUILTIN\Administrators"
+          }
+        },
+        "routing": {
+          ...
+        }
+      }
+    ]
+  }
+  ```
