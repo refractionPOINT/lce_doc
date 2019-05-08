@@ -12,7 +12,7 @@ like Windows Event Logs, Syslog, Webserver logs and security appliance logs.
 There are two main ways to get logs onto LimaCharlie.
 
 The first is to enable the Logging Replicant, which then allows you to issue
-the [log_get](sensor_commands.md#os_resume) command to a sensor to get a local file. This turns LC into
+the [log_get](sensor_commands.md#log_get) command to a sensor to get a local file. This turns LC into
 its own customizable and automatable log aggregation system.
 
 The second is to use the REST ingestion API directly. The best way to do this
