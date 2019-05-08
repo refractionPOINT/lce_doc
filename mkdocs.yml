@@ -20,6 +20,7 @@ pages:
     - Add-ons: user_addons.md
     - Replicants: replicants.md
     - Replay: replay.md
+    - External Logs: bulk.md
     - Events: events.md
     - ID Schemes: agentid.md
     - FAQ: faq.md
