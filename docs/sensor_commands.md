@@ -679,7 +679,7 @@ usage: netstat [-h]
 
 optional arguments:
   -h, --help  show this help message and exit
-  ```
+```
 
 ## External Logs
 
@@ -694,4 +694,4 @@ optional arguments:
   --file FILE      file path of log file to get
   --source SOURCE  os specific logging source to get
   --type TYPE      specifies the log type
-  ```
+```
