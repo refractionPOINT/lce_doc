@@ -679,4 +679,19 @@ usage: netstat [-h]
 
 optional arguments:
   -h, --help  show this help message and exit
-  ```
+```
+
+## External Logs
+
+### log_get
+Retrieve a log from a sensor.
+
+```
+usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --file FILE      file path of log file to get
+  --source SOURCE  os specific logging source to get
+  --type TYPE      specifies the log type
+```
