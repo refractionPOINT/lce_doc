@@ -12,12 +12,14 @@ Rule Source:
 
 Traffic:
 * Sensor historical traffic.
-* ... more to come, including organization-wide traffic as well as traffic in request.
+* Local events provided during request.
 
 ## Using
 
 Using the Replay API requires the [API key](api_keys.md) to have the following permissions:
 * `dr.list`
+
+If the traffic source is from an organization, the following additional permissions are required:
 * `insight.evt.get`
 * `insight.det.get`
 
@@ -54,6 +56,9 @@ respond:
     name: dilbert-is-here
 ```
 
+Instead of specifying the `--entire-org` or `--sid` flags, you may use events from
+a local file via the `--events` flag.
+
 We invite you to look at the command line usage itself as the tool evolves.
 
 ### REST API
@@ -72,7 +77,7 @@ Authentication to this API works with the same JWTs as the main limacharlie.io A
 
 For this example, we will use the experimental datacenter's URL:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/
+https://0651b4f82df0a29c.replay.limacharlie.io/sensor/
 ```
 
 The API mainly works on a per-sensor basis, on a limited amount of time. Replaying for
@@ -81,16 +86,32 @@ parallel API calls. This multiplexing is taken care of for you by the Python CLI
 
 Specify which Organization ID (`OID`) and Sensor ID (`SID`) through the following URI:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}
+https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}
 ```
 
 Specify the `start` and `end` time range, as unix second epoch in the query string:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}
+https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}
 ```
 
 Specify the rule to apply. This can be done via a `rule_name` query string parameter, or
 by supplying the rule, as `JSON` in the body of the `POST` and a `Content-Type` header of `application-json`:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}&rule_name={EXISTING_RULE_NAME}
+https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}&rule_name={EXISTING_RULE_NAME}
 ```
+
+You may also use events provided during the request by using the endpoint:
+```
+https://0651b4f82df0a29c.replay.limacharlie.io/simulate/{OID}
+```
+The body of the `POST` should be a `JSON` blob like:
+```
+{
+  "rule": {...},
+  "events": [
+    ...
+  ]
+}
+```
+Like the other endpoints you can also submit a `rule_name` in the URL query if you want
+to use an existing organization rule.
