@@ -18,10 +18,10 @@ To download the single installers relevant for your deployment, access the `/dow
 The `platform` component is one of `win`, `linux` or `osx` while the `architecture` component is either `32` or `64`.
 
 For example:
-* https://limacharlie.io/get/windows/32 for the Windows 32 bit installer
-* https://limacharlie.io/get/windows/64 for the Windows 64 bit installer
-* https://limacharlie.io/get/linux/64 for the Linux 64 bit installer
-* https://limacharlie.io/get/mac/64 for the MacOS 64 bit installer
+* https://app.limacharlie.io/get/windows/32 for the Windows 32 bit installer
+* https://app.limacharlie.io/get/windows/64 for the Windows 64 bit installer
+* https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
+* https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
 
 ## Installing the Sensor
 The sensors are designed to be simple to use and re-package for any deployment methodology you use in your organization.

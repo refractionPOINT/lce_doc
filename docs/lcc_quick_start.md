@@ -62,10 +62,10 @@ If you enable Insight (retention), you will be able to search your organization 
 ### Sensor Downloads
 These are simply reference links to download the sensor installers. Quick tip, here is the pattern you can use
 to download the installers directly to your computers:
-* https://limacharlie.io/get/windows/32 for the Windows 32 bit installer
-* https://limacharlie.io/get/windows/64 for the Windows 64 bit installer
-* https://limacharlie.io/get/linux/64 for the Linux 64 bit installer
-* https://limacharlie.io/get/mac/64 for the MacOS 64 bit installer
+* https://app.limacharlie.io/get/windows/32 for the Windows 32 bit installer
+* https://app.limacharlie.io/get/windows/64 for the Windows 64 bit installer
+* https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
+* https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
 
 ### Billing
 The details of your current plan as well as how to change it is displayed here. If you decide you want to increase your
