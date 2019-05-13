@@ -13,11 +13,13 @@ This becomes particularly dangerous when using ASCII characters with diacritics 
 ### The fractional Slash
 A fractional slash can be used to produce a domain that could be very confusing for phishing targets:
 It's almost not possible to see the difference between
+
 * ⁄ - Fractional slash
 * / - Regular slash (not allowed in domain names)
  
 The use of fractional slashes could have a target believe they are accessing a file on **their local machine** or network via their browser and could potentially dull their senses in spotting a phishing attempt.
 
 To test this use case was enough to use a punycode converter to grab the punycode form of a fractional slash domain to thest via Whois record on Domain Tools, which obviously didn’t exist and simply shows the for sale banner: 
+
 * https://whois.domaintools.com/xn--comdocumentdfrshlmn-706kiab.ml
 * https://whois.domaintools.com/xn--cwindowssystem32-436iha.ml

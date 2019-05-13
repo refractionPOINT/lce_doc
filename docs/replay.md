@@ -17,13 +17,16 @@ Traffic:
 ## Using
 
 Using the Replay API requires the [API key](api_keys.md) to have the following permissions:
+
 * `dr.list`
 
 If the traffic source is from an organization, the following additional permissions are required:
+
 * `insight.evt.get`
 * `insight.det.get`
 
 The returned data from the API contains the following:
+
 * `responses`: a list of the actions that would have been taken by the rule (like `report`, `task`, etc).
 * `num_evals`: a number of evaluation operation performed by the rule. This is a rough estimate of the performance of the rule.
 * `num_events`: the number of events that were replayed.
