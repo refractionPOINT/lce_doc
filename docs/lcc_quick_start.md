@@ -62,6 +62,7 @@ If you enable Insight (retention), you will be able to search your organization 
 ### Sensor Downloads
 These are simply reference links to download the sensor installers. Quick tip, here is the pattern you can use
 to download the installers directly to your computers:
+
 * https://app.limacharlie.io/get/windows/32 for the Windows 32 bit installer
 * https://app.limacharlie.io/get/windows/64 for the Windows 64 bit installer
 * https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
@@ -154,6 +155,7 @@ A name (a unique name to the output within your organization, purely for your be
 A module, this is the method used to export the data from limacharlie.io to your data storage.
 
 A stream, this is the type of data to export.
+
 * Events is a raw stream of all events from sensors.
 * Detections is a stream of all the alerts, or things detected.
 * Audit is a stream of the auditing events, to be used for compliance mainly.

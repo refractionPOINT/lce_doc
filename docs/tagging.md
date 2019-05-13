@@ -10,6 +10,7 @@ duplication of data in the events but it also greatly simplifies the writing of 
 on the presence of specific tags.
 
 Tags can be added to a sensor a few different ways:
+
 1. Enrollment: the installation keys can optionally have a list of Tags that will get applied to sensors that use them.
 1. Manually: using the API as described below, either manually by a human or through some other integration.
 1. Detection & Response: automated detection and response rules can programatically add a tag (and check for tags).
