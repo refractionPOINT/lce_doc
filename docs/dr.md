@@ -412,13 +412,15 @@ Possible actions are:
 
 #### task
 This action sends the task (as described [here](sensor_commands.md)) in the `command` parameter to the sensor that the event
-under evaluation is from.
+under evaluation is from. An optional `investigation` parameter can be given, it associates the given
+identifier with the task and events from the sensor that relate to the task.
 
 Example:
 ```json
 {
     "action": "task",
-    "command": "history_dump"
+    "command": "history_dump",
+    "investigation": "susp-process-inv"
 }
 ```
 
