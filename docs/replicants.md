@@ -13,15 +13,15 @@ Once enabled the replicant will show up in the War Room which is linked off of t
 ## Available Replicants
 Below you will find a brief explanation of each available replicant, along with details on the particular configuration requirements.
 
-### Yara
-The Yara replicant is designed to help you with all aspects of Yara scanning. It takes what is normally a manual piecewise process, provides a framework and automates it.
+### YARA
+The YARA replicant is designed to help you with all aspects of YARA scanning. It takes what is normally a manual piecewise process, provides a framework and automates it.
 
-Once configured, Yara scans can be run on demand for a particular endpoint or continuously in the background across your entire fleet.
+Once configured, YARA scans can be run on demand for a particular endpoint or continuously in the background across your entire fleet.
 
-There are three main sections to the Yara replicant.
+There are three main sections to the YARA replicant.
 
 #### Sources
-This is where you define the source for your particular Yara rule(s). Source URLs can be either a direct link to a given Yara rule or links to a Github repository with a collection of signatures in multiple files.
+This is where you define the source for your particular YARA rule(s). Source URLs can be either a direct link to a given YARA rule or links to a Github repository with a collection of signatures in multiple files.
 
 An example of setting up a source using this repo: [Yara-Rules](https://github.com/Yara-Rules/rules)
 
@@ -32,12 +32,12 @@ For `Email and General Phishing Exploit` rules we would link the following URL, 
 Giving the source a name and clicking the Add Source button will create the new source.
 
 #### Rules
-Rules define which sets of sensors should be scanned with which sets of Yara signatures (or sources).
+Rules define which sets of sensors should be scanned with which sets of YARA signatures (or sources).
 
 Filter tags are tags that must ALL be present on a sensor for it to match (AND condition), while the platform of the sensor much match one of the platforms in the filter (OR condition).
 
 #### Scan
-To apply Yara Sources and scan an endpoint you must select the hostname and then add the Yara Sources you would like to run as a comma separated list.
+To apply YARA Sources and scan an endpoint you must select the hostname and then add the YARA Sources you would like to run as a comma separated list.
 
 ### Responder
 The Responder replicant is able to perform various incident response tasks for you.
