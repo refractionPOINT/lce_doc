@@ -3,6 +3,7 @@
 [TOC]
 
 The External Logs system allows you to ingest external log types like:
+
 * Plain Text Logs (syslog for example)
 * Windows Event Logs
 * PCAPs
