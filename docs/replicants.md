@@ -63,3 +63,26 @@ Rules define which file path patterns and registry patterns should be monitored 
 Filter tags are tags that must ALL be present on a sensor for it to match (AND condition), while the platform of the sensor much match one of the platforms in the filter (OR condition).
 
 Patterns are file or registry patterns, supporting wildcards (*, ?, +). Windows directory separators (backslash, "\") must be escaped like "\\".
+
+#### Linux
+FIM is partially supported on Linux. Specified file path expressions are actively monitored
+via inotify (as opposed to MacOS and Windows where kernel passively monitors).
+
+Due to inotify limitations, paths with wildcard are less efficient and only support
+monitoring up to 20 sub-directories covered by the wildcard. In addition to this, the
+path expressions should specify a final wildcard of `*` when all files under a directory
+need to be monitored. Ommiting this `*` will result in only the directory itself being
+monitored.
+
+### Logging
+Logging helps you specify external log files you want automatically ingested through
+the LC sensor. File expressions specified are monitored at recurring interval for changes
+and when a change is detected, the file gets pushed to the [External Logs](external_logs.md)
+API where it gets indexed for various IOCs and available for visualization.
+
+***Important Note*** that this process is aimed at log files that rotate at recurring interval and not files
+that are continuously streamed to. So for example specifying the file `/var/log/syslog` is a bad
+idea since it will likely mean the same log file will be pushed over and over again (since new
+log lines are added continuously). Instead, target `/var/log/syslog.1` which is the file where
+the `syslog` file gets rotated to daily since this provides you with cleaner logs that are
+not duplicated.

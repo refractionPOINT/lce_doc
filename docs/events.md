@@ -873,7 +873,7 @@ Platforms: Windows, MacOS
 ### FIM_LIST_REP
 Listing of active [FIM](sensor_commands/#file-and-registry-integrity-monitoring) entries.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux
 
 ```
 {
@@ -887,7 +887,7 @@ Platforms: Windows, MacOS
 A file, directory or registry key being monitored by [FIM](sensor_commands/#file-and-registry-integrity-monitoring)
 has been modified.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux
 
 ```
 {
