@@ -29,5 +29,5 @@ pages:
     - Updating: update_org.md
     - User Control: user_access.md
     - Error Codes: errors.md
-    - Data Visualization: data_vizualization.md
+    - Data Visualization: data_visualization.md
 extra_css: [extra.css]
