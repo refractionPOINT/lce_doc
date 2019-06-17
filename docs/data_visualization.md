@@ -46,10 +46,10 @@ The tabbed data section shows details for a given source. The information is spr
 
 #### Source
 
-When a Sensor ID is selected the Source tab will display the following data. It also provides a link into the Historical Insight UI at the time when the initial object was seen.
+When a Sensor ID is selected the Source tab will display the following data. It also provides a link into the Historical Insight UI at the time when the initial object was observed.
 
 * Hostname
-* Last Seen Timestamo
+* Last Seen Timestamp
 * Enrollment Timestamp
 * External IP
 * Internal IP
