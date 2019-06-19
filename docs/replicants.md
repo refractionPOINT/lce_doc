@@ -10,6 +10,10 @@ Each replicant has a particular specialization and can be enabled in the same ma
 
 Once enabled the replicant will show up in the War Room which is linked off of the main menu inside of the Organization view of the web application.
 
+## REST API
+Replicants can be interacted with using the REST API's `/replicant/{oid}/{replicantName}` endpoint. This endpoint is generic for all Replicants, the actual underlying request
+structure is per-Replicant as described below.
+
 ## Available Replicants
 Below you will find a brief explanation of each available replicant, along with details on the particular configuration requirements.
 
@@ -39,6 +43,92 @@ Filter tags are tags that must ALL be present on a sensor for it to match (AND c
 #### Scan
 To apply YARA Sources and scan an endpoint you must select the hostname and then add the YARA Sources you would like to run as a comma separated list.
 
+#### REST
+
+##### List Sources
+```
+{
+  "action": "list_sources"
+}
+```
+
+##### List Rules
+```
+{
+  "action": "list_rules"
+}
+```
+
+##### Add Rule
+```
+{
+  "action": "add_rule",
+  "name": "example-rule",
+  "sources": [
+    "my-source-1",
+    "my-source-2",
+    "my-source-3"
+  ],
+  "tags": [
+    "vip",
+    "workstation"
+  ],
+  "platforms": [
+    "windows",
+    "mac"
+  ]
+}
+```
+
+##### Add Source
+```
+{
+  "action": "add_source",
+  "name": "example-rule",
+  "sources": [
+    "my-source-1",
+    "my-source-2",
+    "my-source-3"
+  ],
+  "tags": [
+    "vip",
+    "workstation"
+  ],
+  "platforms": [
+    "windows",
+    "mac"
+  ]
+}
+```
+
+##### Remove Rule
+```
+{
+  "action": "remove_rule",
+  "name": "example-rule"
+}
+```
+
+##### Remove Source
+```
+{
+  "action": "remove_source",
+  "name": "my-source-1"
+}
+```
+
+##### Scan
+```
+{
+  "action": "scan",
+  "sid": "70b69f23-b889-4f14-a2b5-633f777b0079",
+  "sources": [
+    "my-source-1",
+    "my-source-2"
+  ]
+}
+```
+
 ### Responder
 The Responder replicant is able to perform various incident response tasks for you.
 
@@ -53,6 +143,16 @@ The types of information returned by the sweep is constantly evolving but you ca
 * Hidden modules
 * A list of recently modified files
 * Unique or rare indicators of compromise
+
+#### REST
+
+##### Sweep
+```
+{
+  "action": "sweep",
+  "sid": "70b69f23-b889-4f14-a2b5-633f777b0079"
+}
+```
 
 ### Integrity
 Integrity helps you manage all aspects of File and Registry integrity monitoring.
@@ -74,6 +174,41 @@ path expressions should specify a final wildcard of `*` when all files under a d
 need to be monitored. Ommiting this `*` will result in only the directory itself being
 monitored.
 
+#### REST
+
+##### List Rules
+```
+{
+  "action": "list_rules"
+}
+```
+
+##### Add Rule
+```
+{
+  "action": "add_rule",
+  "name": "linux-root-ssh-configs",
+  "patterns": [
+    "/root/.ssh/*"
+  ],
+  "tags": [
+    "vip",
+    "workstation"
+  ],
+  "platforms": [
+    "linux"
+  ]
+}
+```
+
+##### Remove Rule
+```
+{
+  "action": "remove_rule",
+  "name": "linux-ssh-configs"
+}
+```
+
 ### Logging
 Logging helps you specify external log files you want automatically ingested through
 the LC sensor. File expressions specified are monitored at recurring interval for changes
@@ -86,3 +221,72 @@ idea since it will likely mean the same log file will be pushed over and over ag
 log lines are added continuously). Instead, target `/var/log/syslog.1` which is the file where
 the `syslog` file gets rotated to daily since this provides you with cleaner logs that are
 not duplicated.
+
+#### REST
+
+##### List Rules
+```
+{
+  "action": "list_rules"
+}
+```
+
+##### Add Rule
+```
+{
+  "action": "add_rule",
+  "name": "linux-servers-syslog",
+  "patterns": [
+    "/var/log/syslog.1"
+  ],
+  "tags": [
+    "server"
+  ],
+  "platforms": [
+    "linux"
+  ],
+  "is_delete_after": false
+}
+```
+
+##### Remove Rule
+```
+{
+  "action": "remove_rule",
+  "name": "linux-servers-syslog"
+}
+```
+
+### Replay
+Replay allows you to run [replay](replay.md) jobs in a managed way without using the REST interface or CLI yourself.
+
+#### REST
+
+##### Replay Job
+```
+{
+  "action": "replay",
+  "start": 1560960433,
+  "end": 1560962433,
+
+  // Optional sensor to use as event source, whole organization if not specified.
+  "sid": "70b69f23-b889-4f14-a2b5-633f777b0079",
+
+  // Optional D&R rule name that exists in organization to apply.
+  "rule_name": "win-suspicious-exec-location",
+
+  // Optional rule content to apply.
+  "rule_content": {
+    "detect": {
+      "op": "is",
+      ...
+    },
+    "respond": [
+      "task": "report",
+      "name": "exec-loc-found"
+    ]
+  }
+
+  // One of rule_name or rule_content must be specified.
+}
+```

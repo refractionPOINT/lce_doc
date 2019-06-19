@@ -36,13 +36,18 @@ Retrieve a file from the endpoint.
 Platforms: Windows, Linux, MacOS
 
 ```
-usage: file_get [-h] file
+usage: file_get [-h] [-o OFFSET] [-s MAXSIZE] file
 
 positional arguments:
-  file        file path to file to get
+  file                  file path to file to get
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help            show this help message and exit
+  -o OFFSET, --offset OFFSET
+                        offset bytes to begin reading the file at, in base 10
+  -s MAXSIZE, --size MAXSIZE
+                        maximum number of bytes to read, in base 10, max of
+                        10MB
 ```
 
 ### file_info
