@@ -17,6 +17,18 @@ For more sample rules and guidelines around rule writing, see our [public reposi
 
 The website version of this (on limacharlie.io) takes the rules as YAML to make them easier to visualize.
 
+## Namespaces
+Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
+operations on rules use the `general` namespace.
+
+However, if you plan on having multiple groups of people accessing DR rules and want to maintain some segmentation, then
+namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
+giving them access to the MSSP-maintained sets of rules.
+
+Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
+on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
+parameter in the relevant queries.
+
 ## Detection Component
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
 by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
