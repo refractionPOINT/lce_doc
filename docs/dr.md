@@ -36,9 +36,9 @@ Targets are types of sources of events that the rule should apply to. The D&R ru
 This means that if you omit the `target` element from the Detection component, the rule will assume you want it to apply
 to events coming from the LimaCharlie agents. Other targets are available however.
 
-* `edr`: the default, [telemetry events](events.md#edr_events) from LC agents.
+* `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
 * `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent. (More on this in the future)
-* `deployment`: applies to [high level events](events.md#deployment_events) about the entire deployment, like new enrollments and cloned sensors detected.
+* `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
 
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
 by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical

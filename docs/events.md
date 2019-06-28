@@ -64,6 +64,8 @@ Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
 
 ## EDR Events
 
+Telemetry events from host agents.
+
 `target: edr` (default)
 
 ### STARTING_UP
@@ -981,9 +983,11 @@ Platforms: Windows
       }
     ]
   }
-  ```
+```
 
 ## Deployment Events
+
+Events around the global status of the deployment.
 
 `target: deployment`
 
