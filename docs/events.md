@@ -64,6 +64,8 @@ Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
 
 ## EDR Events
 
+`target: edr` (default)
+
 ### STARTING_UP
 Event generated when the sensor starts.
 
@@ -982,6 +984,8 @@ Platforms: Windows
   ```
 
 ## Deployment Events
+
+`target: deployment`
 
 ### enrollment
 
