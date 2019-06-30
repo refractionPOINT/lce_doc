@@ -484,6 +484,10 @@ optional arguments:
                 disabled
 ```
 
+### restart
+The special command `restart` can be used to tell the LimaCharlie agent to re-initialize. This is usually only useful when
+dealing with cloned sensor IDs in combination with the remote deletion of the identity file on disk.
+
 ## File (and Registry) Integrity Monitoring
 
 FIM rules are not persistent. This means that once an asset restarts, the rules
