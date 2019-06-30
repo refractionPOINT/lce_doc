@@ -17,7 +17,29 @@ For more sample rules and guidelines around rule writing, see our [public reposi
 
 The website version of this (on limacharlie.io) takes the rules as YAML to make them easier to visualize.
 
+## Namespaces
+Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
+operations on rules use the `general` namespace.
+
+However, if you plan on having multiple groups of people accessing DR rules and want to maintain some segmentation, then
+namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
+giving them access to the MSSP-maintained sets of rules.
+
+Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
+on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
+parameter in the relevant queries.
+
 ## Detection Component
+The Detection component describes what event(s) should produce a match, which the Response section will then action.
+
+Targets are types of sources of events that the rule should apply to. The D&R rules apply by default to the `edr` target.
+This means that if you omit the `target` element from the Detection component, the rule will assume you want it to apply
+to events coming from the LimaCharlie agents. Other targets are available however.
+
+* `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
+* `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent. (More on this in the future)
+* `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
+
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
 by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
 operations to perform.

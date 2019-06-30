@@ -62,7 +62,11 @@ Event 2
 
 Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
 
-## Events Listing
+## EDR Events
+
+Telemetry events from host agents.
+
+`target: edr` (default)
 
 ### STARTING_UP
 Event generated when the sensor starts.
@@ -979,4 +983,57 @@ Platforms: Windows
       }
     ]
   }
-  ```
+```
+
+## Deployment Events
+
+Events around the global status of the deployment.
+
+`target: deployment`
+
+### enrollment
+
+Enrollment deployment events are produced when a sensor enrolls into the organization for the first time.
+
+```
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "event_type": "enrollment",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "public_ip": "104.196.34.101",
+    "internal_ip": "172.17.0.2",
+    "host_name": "linux-server-1"
+  }
+}
+```
+
+### sensor_clone
+
+Sensor clone events are generated when the LimaCharlie Cloud detects that a specific Sensor ID may have been cloned.
+Cloning means the same SID is associated with two different hosts at the same time. This is most often due to
+a machine image being created with a LC sensor installed on it, and then being deployed multiple times.
+
+```
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "event_type": "sensor_clone",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "previous_hostname" : "server-1",
+    "new_hostname" : "server-2"
+  }
+}
+```
