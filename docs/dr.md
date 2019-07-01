@@ -7,6 +7,7 @@ Think of it like a `lambda` in various programming languages or in AWS. They can
 and they become immediately available/running as they are set.
 
 A D&R rule has two components:
+
 * the detection part of the rule is a simple expression that describes what the rule should match on.
 * the response part of the rule describes the list of actions that should be taken when the rule matches.
 
@@ -69,6 +70,7 @@ of `_DETECTIONNAME`. This can be used to compose higher order detections.
 
 ### Logical Operations
 Some parameters are available to all logical operations.
+
 * `"not": true`: will reverse the matching outcome of an operations.
 * `"case sensitive": false`: will make all string-based evaluations ignore case.
 
@@ -107,6 +109,7 @@ For example, this sample JSON event:
 ```
 
 The following paths with their result element:
+
 * `<<event/USER_ID>>` results in `501`
 * `<<event/?/USER_NAME>>` results in `"maxime"`
 * `<<event/PARENT/PROCESS_ID>>` results in `71955`
@@ -225,6 +228,7 @@ operator per rule. These operators are special in that they do not operate on a 
 they operate on the entire state of events from an agent, through time.
 
 Concretely what this all means is that they allow you to do things like:
+
 * Detect certain combinations of events through time (e.g. 3 instances of process X within 5 minutes).
 * Detect complex relationships between events, such as process ancestry (e.g. if you see cmd.exe as a child N levels deep of a notepad.exe).
 
@@ -256,12 +260,14 @@ Example (detect at least 4 Linux reconnaissance processes created within 5 secon
 
 ##### process descendant
 This will detect a suspicious relationship between a parent process matching the regular expression `parent` and one of the following:
+
 * if `child` is specified, will detect when a descendant process of `parent` matches the regular expression `child`.
 * if the `document` is specified, will detect when a process descendant of `parent` creates a [new document](events.md#new_document) with a
 file path matching the regular expression in `document`.
 * `child event type`: if specified, will detect when a process descendant of `parent` is an event of this type..
 
 In addition to this base behavior, the following modifiers are available:
+
 * `only direct`: if set to `true`, the target relationship will only attempt to detect a direct relationship, meaning if a non-matching process
 exists in between the `parent` and `child` (or `document`), no detection will be generated.
 * `parent root`: for a match on the `parent` to be made, the parent process must be owned by the `root` user on Linux and MacOS, or by an Administrator
