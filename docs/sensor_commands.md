@@ -286,6 +286,18 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
+### os_packages
+List installed software packages.
+
+Platforms: Windows
+
+```
+usage: os_packages [-h]
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
 ### os_kill_process
 Kill a process running on the endpoint.
 

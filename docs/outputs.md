@@ -233,7 +233,7 @@ is fairly simple and safe.
     ```
 1. Restart Splunk by issuing: `sudo /opt/splunk/bin/splunk restart`.
 1. Back in limacharlie.io, in your organization view, create a new Output.
-1. Git it a name, select the "sftp" module and select the stram you would like to send.
+1. Give it a name, select the "sftp" module and select the stram you would like to send.
 1. Set the "username" that you used to setup the SFTP service.
 1. Set either the "password" field or the "secret_key" field depending on which one you chose when setting up SFTP.
 1. In "dest_host", input the public IP address of the virtual machine you created.
