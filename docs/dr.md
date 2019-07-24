@@ -49,6 +49,9 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
 
+In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
+path `/txt` as the value of a log line.
+
 ### Basic Structure
 
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
@@ -610,4 +613,21 @@ op: is windows
 ```yaml
 - action: task
   command: fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"
+```
+
+### Mention of an Internal Resource
+Look for references to private URLs in proxy logs.
+
+**Detection**
+```yaml
+target: log
+op: contains
+path: /txt
+value: /corp/private/info
+```
+
+**Respond**
+```yaml
+- action: report
+  name: web-proxy-private-url
 ```
