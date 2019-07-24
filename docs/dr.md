@@ -48,9 +48,10 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 * All the basics: `is`, `and`, `or`, `exists`, `contains`, `starst with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
+* `log` target only: `log source`, `log type`
 
 In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
-path `/txt` as the value of a log line.
+path `/txt` as the value of a log line. The `log source` matches the log's source string, and the `log type` matches the log's type string.
 
 ### Basic Structure
 
