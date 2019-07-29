@@ -33,6 +33,8 @@ parameter in the relevant queries.
 ## Detection Component
 The Detection component describes what event(s) should produce a match, which the Response section will then action.
 
+### Targets
+
 Targets are types of sources of events that the rule should apply to. The D&R rules apply by default to the `edr` target.
 This means that if you omit the `target` element from the Detection component, the rule will assume you want it to apply
 to events coming from the LimaCharlie agents. Other targets are available however.
@@ -40,6 +42,18 @@ to events coming from the LimaCharlie agents. Other targets are available howeve
 * `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
 * `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent. (More on this in the future)
 * `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
+
+While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
+
+* All the basics: `is`, `and`, `or`, `exists`, `contains`, `starst with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
+* Referring to add-ons / resources: `lookup`, `external`
+* Response actions: `report`
+* `log` target only: `log source`, `log type`
+
+In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
+path `/txt` as the value of a log line. The `log source` matches the log's source string, and the `log type` matches the log's type string.
+
+### Basic Structure
 
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
 by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
@@ -600,4 +614,21 @@ op: is windows
 ```yaml
 - action: task
   command: fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"
+```
+
+### Mention of an Internal Resource
+Look for references to private URLs in proxy logs.
+
+**Detection**
+```yaml
+target: log
+op: contains
+path: /txt
+value: /corp/private/info
+```
+
+**Respond**
+```yaml
+- action: report
+  name: web-proxy-private-url
 ```

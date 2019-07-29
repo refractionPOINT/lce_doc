@@ -666,6 +666,9 @@ optional arguments:
 ### segregate_network
 Tells the sensor to stop all network connectivity on the host except LC comms to the backend. So it's network isolation, great to stop lateral movement.
 
+Note that you should never upgrade a sensor version while the network is isolated through this mechanism. Doing so may result in the agent not re-gaining
+connectivity to the cloud, requiring a reboot to undo.
+
 Platforms: Windows, MacOS
 
 ```
