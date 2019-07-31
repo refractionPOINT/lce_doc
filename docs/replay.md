@@ -118,3 +118,6 @@ The body of the `POST` should be a `JSON` blob like:
 ```
 Like the other endpoints you can also submit a `rule_name` in the URL query if you want
 to use an existing organization rule.
+
+Finally, you may also set `trace` to `true` in the request to receive a detailed trace of the rule evaluation. This is
+useful in the development of new rules to find where rules are failing.

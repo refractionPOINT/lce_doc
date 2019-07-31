@@ -40,7 +40,7 @@ This means that if you omit the `target` element from the Detection component, t
 to events coming from the LimaCharlie agents. Other targets are available however.
 
 * `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
-* `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent. (More on this in the future)
+* `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent.
 * `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
 
 While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
