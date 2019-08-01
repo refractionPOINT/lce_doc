@@ -527,7 +527,7 @@ So for example, you could do:
 
 Which would result in: `fim_add --pattern "?:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on Linux support)
 
 ```
 usage: fim_add [-h] --pattern PATTERNS
@@ -540,7 +540,7 @@ optional arguments:
 ### fim_del
 Remove a pattern from monitoring.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on Linux support)
 
 ```
 usage: fim_del [-h] --pattern PATTERNS
@@ -553,7 +553,7 @@ optional arguments:
 ### fim_get
 Get the list of patterns being monitored.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on Linux support)
 
 ```
 usage: fim_get [-h]
