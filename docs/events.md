@@ -137,6 +137,8 @@ was successful. It's often a good idea to issue the original command
 with an `investigation_id` which will get echoed in the `RECEIPT` related
 to that command to make it easier to track.
 
+Platforms: Windows, Linux, MacOS
+
 ### NEW_PROCESS
 Generated when a new process starts.
 
