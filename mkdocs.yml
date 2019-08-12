@@ -18,8 +18,12 @@ pages:
     - Tagging: tagging.md
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
-    - Replicants: replicants.md
+    - Jobs: jobs.md
     - Replay: replay.md
+    - Responder: responder.md
+    - Exfil: exfil.md
+    - File Integrity: integrity.md
+    - YARA: yara.md
     - External Logs: external_logs.md
     - Events: events.md
     - ID Schemes: agentid.md
