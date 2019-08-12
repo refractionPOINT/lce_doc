@@ -130,6 +130,13 @@ Platforms: Windows, Linux, MacOS
 }
 ```
 
+### RECEIPT
+This event is used as a generic response to some commands. It usually
+contains an `ERROR` code that you can use to determine if the command
+was successful. It's often a good idea to issue the original command
+with an `investigation_id` which will get echoed in the `RECEIPT` related
+to that command to make it easier to track.
+
 ### NEW_PROCESS
 Generated when a new process starts.
 
