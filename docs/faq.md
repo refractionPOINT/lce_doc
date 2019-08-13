@@ -1,5 +1,5 @@
 # FAQ
-
+  
 [TOC]
 
 ### Why do I get Unauthorized errors from the REST API?
@@ -36,3 +36,14 @@ Many events generated in LimaCharlie have a good analog event in Sysmon (as desc
 * Event ID 14 (RegistryEvent rename): [REGISTRY_CREATE](events.md#registry_create)
 
 Obviously, we also have [tons of other events](events.md) that are not found in Sysmon.
+
+### Why do I get an error 110 when isolating a host from the network?
+The `segregate_network` command requires kernel support to be running on the target host. Kernel support is not always
+available depending on the operating system type and version. [Error 110](errors.md) signifies `ERROR_OPEN_FAILED` which
+means the sensor failed to access the kernel component. You can view the status of kernel access via the sensor list
+of your organization or the REST API.
+
+Currently supported OSes and versions kernel access:
+
+* Windows 7 and up.
+* MacOS 10.7 and up.
