@@ -3,7 +3,7 @@
 [TOC]
 
 ## Overview
-Integrity helps you manage all aspects of File and Registry integrity monitoring.
+The integrity service helps you manage all aspects of File and Registry integrity monitoring.
 
 ### Rules
 Rules define which file path patterns and registry patterns should be monitored for changes for specific sets of hosts.

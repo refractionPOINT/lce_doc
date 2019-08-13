@@ -3,7 +3,7 @@
 [TOC]
 
 ## Overview
-The Responder job is able to perform various incident response tasks for you.
+The Responder service is able to perform various incident response tasks for you.
 
 ### Sweep
 A sweep is an in-depth look through the state of a host. The sweep will highlight parts of the activity that are suspicious. This provides you with a good starting position when beginning an investigation. It allows you to focus on the important things right away.

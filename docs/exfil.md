@@ -3,7 +3,7 @@
 [TOC]
 
 ## Overview
-The Exfil job allows you to customize which events should be sent to the cloud in real-time.
+The Exfil service allows you to customize which events should be sent to the cloud in real-time.
 This is done using an Event List which describes specific event types. And using a Watch list which
 describes a pattern that when found within a specific event type, will trigger the event to be sent
 to the cloud.

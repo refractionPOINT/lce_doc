@@ -3,7 +3,7 @@
 [TOC]
 
 ## Overview
-The YARA job is designed to help you with all aspects of YARA scanning. It takes what is normally a manual piecewise process, provides a framework and automates it.
+The YARA service is designed to help you with all aspects of YARA scanning. It takes what is normally a manual piecewise process, provides a framework and automates it.
 
 Once configured, YARA scans can be run on demand for a particular endpoint or continuously in the background across your entire fleet.
 
