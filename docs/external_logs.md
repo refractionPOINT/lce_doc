@@ -58,6 +58,7 @@ using the following Header fields:
 * `lc-hint` if present, this indicates to the backend how the file should be interpreted. It default to `auto` which results in the backend auto-detecting the formal. Currently supported hints include `wel` (Windows Events Log), `pcap` and `txt`.
 * `lc-payload-id` if present, this is a globally unique identifier for the log file. It can be used to ingest logs in an idempotent way, meaning a second log file ingested with this same value will be ignore.
 * `lc-path` if present, should be a base-64 encoded string representing the original file path of the log on the source system.
+* `lc-part` if present, is used to track multi-part log uploads. If set, it should be an integer starting at `0` and incrementing for every part with the last part being set to `done`. The `lc-payload-id` MUST be set and constant across all parts.
 
 ## Accessing Logs
 There are several ways to access the logs.
