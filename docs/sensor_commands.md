@@ -710,6 +710,8 @@ optional arguments:
 ### log_get
 Retrieve a log from a sensor.
 
+Platforms: Windows, Linux, MacOS
+
 ```
 usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
 
