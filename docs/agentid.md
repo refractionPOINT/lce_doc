@@ -24,6 +24,7 @@ The SID (Sensor ID) is a UUID that identifies a unique sensor.
 ## Platform
 The platform is a 32 bit integer (in its hex format) that identifies the exact platform the sensor runs on. Although it is
 structured with a major and minor platform, the important values are:
+
 * `10000000`: Windows
 * `20000000`: Linux
 * `30000000`: MacOS
