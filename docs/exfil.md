@@ -3,10 +3,32 @@
 [TOC]
 
 ## Overview
-The Exfil service allows you to customize which events should be sent to the cloud in real-time.
-This is done using an Event List which describes specific event types. And using a Watch list which
-describes a pattern that when found within a specific event type, will trigger the event to be sent
-to the cloud.
+By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes
+events like `NEW_PROCESS`, `DNS_REQUEST` etc.
+
+If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
+
+The rule customization is done in two parts:
+
+1. The Event Rules, which simply define a list of events that should be sent to the cloud based on platform and tags.
+1. The Watch Rules, which define additional events that should be sent to the cloud based on the content of each individual event.
+
+The Wacth Rules allow you to specify a platform and tag to select which sensors the rule applies to, plus these elements:
+
+* Event: the specific event type that should be evaluated, like `MODULE_LOAD`.
+* Path: the path within the `event` component whose value should be evaluated, like `FILE_PATH`.
+* Operator: the type of evaluation/comparison that should be done between the value at Path in the event and the Value.
+* Value: the value used in the comparison.
+
+For example:
+```
+Event: MODULE_LOAD
+Path: FILE_PATH
+Operator: ends with
+Value: wininet.dll
+```
+
+The above rule would tell the sensor to send to the cloud, in real-time, all `MODULE_LOAD` events where the `FILE_PATH` ends with the value `wininet.dll`.
 
 ### REST
 
