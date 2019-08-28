@@ -87,11 +87,6 @@ Some parameters are available to all logical operations.
 
 * `"not": true`: will reverse the matching outcome of an operations.
 * `"case sensitive": false`: will make all string-based evaluations ignore case.
-* `"file name": true`: treats the element in the event at "path" as a file path and applies the logical operation to the file name component.
-* `"sub domain": '-2:'`: treats the element in the event at "path" as a domain, the value of "sub domain" is then interpreted as a "slice" operator.
-    - For example `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
-    - Another example: `:-1` means the last component of the domain: `cc` for `aa.bb.cc`.
-    - Finally: `:` means to test the operator to every component individually.
 
 A recurring parameter also found in many operations is the `"path": <>` parameter. It represents a path within the event
 being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
@@ -133,6 +128,15 @@ The following paths with their result element:
 * `<<event/?/USER_NAME>>` results in `"maxime"`
 * `<<event/PARENT/PROCESS_ID>>` results in `71955`
 * `<<event/*/HASH_VALUE>>` results in `ufs8f8hfinsfd9sfdsf`
+
+Some parameters are available to many of the operators:
+
+* `"file name": true`: treats the element in the event at "path" as a file path and applies the logical operation to the file name component.
+* `"sub domain": '-2:'`: treats the element in the event at "path" as a domain, the value of "sub domain" is then interpreted as a "slice" operator.
+    - For example `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
+    - Another example: `:-1` means the last component of the domain: `cc` for `aa.bb.cc`.
+    - Finally: `:` means to test the operator to every component individually.
+
 
 #### and, or
 The standard logical boolean operations to combine other logical operations. Take a single `"rules" : []` parameter
