@@ -89,9 +89,9 @@ Some parameters are available to all logical operations.
 * `"case sensitive": false`: will make all string-based evaluations ignore case.
 * `"file name": true`: treats the element in the event at "path" as a file path and applies the logical operation to the file name component.
 * `"sub domain": '-2:'`: treats the element in the event at "path" as a domain, the value of "sub domain" is then interpreted as a "slice" operator.
-  - For example `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
-  - Another example: `:-1` means the last component of the domain: `cc` for `aa.bb.cc`.
-  - Finally: `:` means to test the operator to every component individually.
+    - For example `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
+    - Another example: `:-1` means the last component of the domain: `cc` for `aa.bb.cc`.
+    - Finally: `:` means to test the operator to every component individually.
 
 A recurring parameter also found in many operations is the `"path": <>` parameter. It represents a path within the event
 being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
