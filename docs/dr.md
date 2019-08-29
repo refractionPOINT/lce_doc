@@ -457,13 +457,13 @@ rules:
 Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
 
 #### file name
-Sample: `"file name": true`
+Sample: `file name: true`
 
 The `file name` transform takes a file path and replaces it with the file name component of the path.
 This means that the file path `c:\windows\system32\wininet.dll` will become `wininet.dll`.
 
 #### sub domain
-Sample: `"sub domain": '-2:'`
+Sample: `sub domain: "-2:"`
 
 The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in basic slice notation.
 This notation is of the form `startIndex:endIndex` where the index is 0-based and indicates which parts of the domain to keep.
