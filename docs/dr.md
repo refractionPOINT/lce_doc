@@ -137,6 +137,8 @@ with the logical operations to apply the boolean logic to.
 Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
 parameter.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 Example rule:
 ```json
 {
@@ -161,6 +163,8 @@ match.
 
 They all use the `path` and `value` parameters.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 #### is greater than, is lower than
 Check to see if a value is greater or lower (numerically) than a value in the event.
 
@@ -173,6 +177,8 @@ The `matches` op compares the value at `path` with a regular expression supplied
 Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
 is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
 to log files.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```json
@@ -201,6 +207,8 @@ The operator takes a `path` parameter indicating which field to compare, a `max`
 maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings
 that represent the value(s) to compare to.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 Example:
 ```yaml
 op: string distance
@@ -225,6 +233,8 @@ is from.
 Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and
 the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`.
 In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```json
