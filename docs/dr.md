@@ -218,7 +218,8 @@ value:
   - www.onephoton.com
 max: 2
 ```
-and
+This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
+
 ```yaml
 op: string distance
 path: event/NEW_PROCESS
@@ -229,7 +230,7 @@ value:
 max: 2
 ```
 
-This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
+This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
 #### is windows, is linux, is mac, is 32 bit, is 64 bit
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
