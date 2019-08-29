@@ -220,6 +220,7 @@ max: 2
 ```
 This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
 
+and using the [file name](#file-name) transform to apply to a file name in a path:
 ```yaml
 op: string distance
 path: event/NEW_PROCESS
