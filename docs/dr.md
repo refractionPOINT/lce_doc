@@ -129,15 +129,6 @@ The following paths with their result element:
 * `<<event/PARENT/PROCESS_ID>>` results in `71955`
 * `<<event/*/HASH_VALUE>>` results in `ufs8f8hfinsfd9sfdsf`
 
-Some parameters are available to many of the operators:
-
-* `"file name": true`: treats the element in the event at "path" as a file path and applies the logical operation to the file name component.
-* `"sub domain": '-2:'`: treats the element in the event at "path" as a domain, the value of "sub domain" is then interpreted as a "slice" operator.
-    - For example `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
-    - Another example: `:-1` means the last component of the domain: `cc` for `aa.bb.cc`.
-    - Finally: `:` means to test the operator to every component individually.
-
-
 #### and, or
 The standard logical boolean operations to combine other logical operations. Take a single `"rules" : []` parameter
 with the logical operations to apply the boolean logic to.
@@ -451,6 +442,27 @@ rules:
   - op: external
     resource: lcr://detection/suspicious-windows-exec-location
 ```
+
+### Transforms
+Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
+
+#### file name
+Sample: `"file name": true`
+
+The `file name` transform takes a file path and replaces it with the file name component of the path.
+This means that the file path `c:\windows\system32\wininet.dll` will become `wininet.dll`.
+
+#### sub domain
+Sample: `"sub domain": '-2:'`
+
+The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in basic slice notation.
+This notation is of the form `startIndex:endIndex` where the index is 0-based and indicates which parts of the domain to keep.
+Examples:
+
+  * `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
+  * `-1` means the last component of the domain: `cc` for `aa.bb.cc`.
+  * `1:` means all components starting at 1: `bb.cc` for `aa.bb.cc`.
+  * `:` means to test the operator to every component individually.
 
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
