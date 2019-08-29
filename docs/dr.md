@@ -218,6 +218,16 @@ value:
   - www.onephoton.com
 max: 2
 ```
+and
+```yaml
+op: string distance
+path: event/NEW_PROCESS
+file name: true
+value:
+  - svchost.exe
+  - csrss.exe
+max: 2
+```
 
 This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
 
