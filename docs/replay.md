@@ -119,5 +119,9 @@ The body of the `POST` should be a `JSON` blob like:
 Like the other endpoints you can also submit a `rule_name` in the URL query if you want
 to use an existing organization rule.
 
+You may also specify a `limit_event` and `limit_eval` parameter as integers. They will limit the number events evaluated
+and the number of rule evaluations performed (approximately). If the limits are reached, the response will contain an
+item named `limit_eval_reached: true` and `limit_event_reached: true`.
+
 Finally, you may also set `trace` to `true` in the request to receive a detailed trace of the rule evaluation. This is
 useful in the development of new rules to find where rules are failing.

@@ -2,8 +2,8 @@
 
 [TOC]
 
-Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
-Think of it like a `lambda` in various programming languages or in AWS. They can be added and removed with single operations
+Detection & Response rules are designed to allow you to push out a detection rule and with a custom action in record time.
+Think of them like AWS Lambda or Google Cloud Functions. They can be added and removed with single operations
 and they become immediately available/running as they are set.
 
 A D&R rule has two components:
