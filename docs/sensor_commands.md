@@ -721,3 +721,24 @@ optional arguments:
   --source SOURCE  os specific logging source to get
   --type TYPE      specifies the log type
 ```
+
+## Payloads
+
+### run
+Execute a payload or a shell command on the sensor.
+
+Platforms: Windows, Linux, MacOS
+
+```
+usage: run [-h] [--payload-name NAME] [--arguments ARGUMENTS]
+           [--shell-command SHELLCMD] [--timeout TIMEOUT]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --payload-name NAME   name of the payload to run
+  --arguments ARGUMENTS
+                        arguments to run the payload with
+  --shell-command SHELLCMD
+                        shell command to run
+  --timeout TIMEOUT     number of seconds to wait for payload termination
+```

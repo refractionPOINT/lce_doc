@@ -994,6 +994,17 @@ Platforms: Windows
   }
 ```
 
+### NEW_NAMED_PIPE
+This event is emitted when a new Named Pipe is created by a process.
+
+Platforms: Windows
+
+### OPEN_NAMED_PIPE
+This event is emitted when an existing Named Pipe is opened by a process.
+
+Platforms: Windows
+
+
 ## Deployment Events
 
 Events around the global status of the deployment.

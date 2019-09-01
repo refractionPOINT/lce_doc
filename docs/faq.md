@@ -34,6 +34,8 @@ Many events generated in LimaCharlie have a good analog event in Sysmon (as desc
 * Event ID 12 (RegistryEvent object create and delete): [REGISTRY_CREATE](events.md#registry_create), [REGISTRY_DELETE](events.md#registry_delete)
 * Event ID 13 (RegistryEvent value set): [REGISTRY_WRITE](events.md#registry_write)
 * Event ID 14 (RegistryEvent rename): [REGISTRY_CREATE](events.md#registry_create)
+* Event ID 17 (PipeEvent created): [NEW_NAMED_PIPE](events.md#new_named_pipe)
+* Event ID 18 (PipeEvent connected): [OPEN_NAMED_PIPE](events.md#open_named_pipe)
 
 Obviously, we also have [tons of other events](events.md) that are not found in Sysmon.
 

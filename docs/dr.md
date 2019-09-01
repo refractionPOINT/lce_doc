@@ -2,8 +2,8 @@
 
 [TOC]
 
-Detect lambdas are designed to allow you to push out a detection rule and with a custom action in record time.
-Think of it like a `lambda` in various programming languages or in AWS. They can be added and removed with single operations
+Detection & Response rules are designed to allow you to push out a detection rule and with a custom action in record time.
+Think of them like AWS Lambda or Google Cloud Functions. They can be added and removed with single operations
 and they become immediately available/running as they are set.
 
 A D&R rule has two components:
@@ -137,6 +137,8 @@ with the logical operations to apply the boolean logic to.
 Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
 parameter.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 Example rule:
 ```json
 {
@@ -161,6 +163,8 @@ match.
 
 They all use the `path` and `value` parameters.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 #### is greater than, is lower than
 Check to see if a value is greater or lower (numerically) than a value in the event.
 
@@ -173,6 +177,8 @@ The `matches` op compares the value at `path` with a regular expression supplied
 Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
 is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
 to log files.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```json
@@ -201,6 +207,8 @@ The operator takes a `path` parameter indicating which field to compare, a `max`
 maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings
 that represent the value(s) to compare to.
 
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
 Example:
 ```yaml
 op: string distance
@@ -210,8 +218,20 @@ value:
   - www.onephoton.com
 max: 2
 ```
-
 This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
+
+and using the [file name](#file-name) transform to apply to a file name in a path:
+```yaml
+op: string distance
+path: event/NEW_PROCESS
+file name: true
+value:
+  - svchost.exe
+  - csrss.exe
+max: 2
+```
+
+This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
 #### is windows, is linux, is mac, is 32 bit, is 64 bit
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
@@ -225,6 +245,8 @@ is from.
 Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and
 the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`.
 In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```json
@@ -442,6 +464,27 @@ rules:
   - op: external
     resource: lcr://detection/suspicious-windows-exec-location
 ```
+
+### Transforms
+Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
+
+#### file name
+Sample: `file name: true`
+
+The `file name` transform takes a file path and replaces it with the file name component of the path.
+This means that the file path `c:\windows\system32\wininet.dll` will become `wininet.dll`.
+
+#### sub domain
+Sample: `sub domain: "-2:"`
+
+The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in basic slice notation.
+This notation is of the form `startIndex:endIndex` where the index is 0-based and indicates which parts of the domain to keep.
+Examples:
+
+  * `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
+  * `-1` means the last component of the domain: `cc` for `aa.bb.cc`.
+  * `1:` means all components starting at 1: `bb.cc` for `aa.bb.cc`.
+  * `:` means to test the operator to every component individually.
 
 ## Response Component
 The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take

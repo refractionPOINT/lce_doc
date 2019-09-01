@@ -5,6 +5,7 @@
 ## Configurations
 
 **General Parameters**
+
 * `is_flat`: take the json output and flatten the whole thing to a flat structure.
 * `inv_id`: only send events matching the investigation id to this output (event stream only).
 * `tag`: only send events from sensors with this tag to this output (event stream only).
@@ -344,6 +345,7 @@ This feature is activated in two steps.
 Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to
 `https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As
 additional data in the POST, specify the following parameters:
+
 * `api_key`: this is the secret API key as provided to you in limacharlie.io.
 * `type`: this is the stream type you would like to create, one of `event`, `detect` or `audit`.
 * `cat`: optional, specifies the detection type to filter on.

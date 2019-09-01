@@ -25,6 +25,7 @@ pages:
     - File Integrity: integrity.md
     - YARA: yara.md
     - External Logs: external_logs.md
+    - Payloads: payloads.md
     - Events: events.md
     - ID Schemes: agentid.md
     - FAQ: faq.md
