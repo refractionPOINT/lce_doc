@@ -30,6 +30,18 @@ retrieve it.
 The payload is retrieved by the sensor over HTTPS to the Ingestion API DNS endpoint. This DNS entry
 is available from the Sensor Download section of the web app if you need to whitelist it.
 
+## Upload / Download via REST
+Creating and getting Payloads is done asynchronously. The relevant REST APIs will return specific
+signed URLs instead of the actual Payload. In the case of a retrieving an existing payload, simply
+doing an HTTP GET using the returned URL will download the payload content. When creating a Payload
+the returned URL should be used in an HTTP PUT using the URL like:
+
+```
+curl -X PUT "THE-SIGNED-URL-HERE" -H "Content-Type: application/octet-stream" --upload-file your-file.exe
+```
+
+Note that the signed URLs are only valid for a few minutes.
+
 ## Permissions
 Payloads are managed with two permissions:
 
