@@ -1,5 +1,7 @@
 # Codelab Detection & Response
 
+[TOC]
+
 ## Background
 
 ### What is a Detection & Response Rule
