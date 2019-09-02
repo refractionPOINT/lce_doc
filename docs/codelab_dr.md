@@ -25,12 +25,12 @@ The detection is processed one step at a time, starting at the root of the detec
 root matches, the rule is considered to be matching.
 
 The detection component is composed of "nodes", where each node has an operator describing the
-logical evaluation. Most operators are simple, like "is", "starts with" etc. Those simple nodes
-can be combined together with boolean (true/false) logic using the "and" and "or" operators, which
-themselves reference a series of nodes. The "and" node matches if all the sub-nodes match, while
-the "or" node matches if any one of the sub-nodes matches.
+logical evaluation. Most operators are simple, like `is`, `starts with` etc. Those simple nodes
+can be combined together with boolean (true/false) logic using the `and` and `or` operators, which
+themselves reference a series of nodes. The `and` node matches if all the sub-nodes match, while
+the `or` node matches if any one of the sub-nodes matches.
 
-When evaluating an "or", as soon as the first sub-node is found matching, the rest of the sub-nodes
+When evaluating an `or`, as soon as the first sub-node is found matching, the rest of the sub-nodes
 are skipped since they will have no impact on the final matching state of the "or". Similarly the
 a failure of a sub-node in an "and" node will immediately terminate its evaluation.
 
@@ -189,7 +189,7 @@ to test for the `event/FILE_PATH` ends in `.cpl`, we can do this using the `ends
 
 Most operators will use a `path` and a `value`. The general convention is that the `path` describes
 how to get to a value we want to compare within the event. So `event/FILE_PATH` says "starting in the `event`
-then get the `FILE_PATH`". The `value` generally represents a value we want to compare to the element found
+then get the `FILE_PATH`. The `value` generally represents a value we want to compare to the element found
 in the `path`, how we compare depends on the operator.
 
 ```
