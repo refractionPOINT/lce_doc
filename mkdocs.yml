@@ -35,4 +35,6 @@ pages:
     - User Control: user_access.md
     - Error Codes: errors.md
     - Data Visualization: data_visualization.md
+    - Codelabs:
+        - D&R Rules: codelab_dr.md
 extra_css: [extra.css]

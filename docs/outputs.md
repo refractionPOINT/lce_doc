@@ -340,11 +340,10 @@ this task easier using the Spout object.
 
 This feature is heavily used by the Web Interface's Live view of a sensor.
 
-This feature is activated in two steps.
+This feature is activated like this:
 
-Step 1. Signal that you would like to begin streaming data over HTTPS. This is done by issuing an HTTP POST to
-`https://output.limacharlie.io/output/<OID>` where `<OID>` is the organization ID you would like to stream from. As
-additional data in the POST, specify the following parameters:
+Issuing an HTTP POST to `https://stream.limacharlie.io/<OID>` where `<OID>` is the organization ID you would like to
+stream from. As additional data in the POST, specify the following parameters:
 
 * `api_key`: this is the secret API key as provided to you in limacharlie.io.
 * `type`: this is the stream type you would like to create, one of `event`, `detect` or `audit`.
@@ -352,21 +351,11 @@ additional data in the POST, specify the following parameters:
 * `tag`: optional, specifies the sensor tags to filter on.
 * `inv_id`: optional, specifies the investigation ID to filter on.
 
-The response from this POST will be an `HTTP 303 See Other`, a redirect. This redirect will point you to where the data
-stream will be available.
-
-Note that once you receive the redirect, a new temporary Output will also show up in your organization.
-
-Step 2. Now simply do an HTTP GET to the URL pointed to you in the redirect response. Data will begin streaming shortly.
+The response from this POST will be a stream of data.
 The format of this data will be newline-seperated JSON much like all other Outputs.
 
-Do note that if you want, you can keep track of this URL you've been redirected to. If your connection is to drop for
-whatever reason, or you would like to shard the stream over multiple connections, you can simply re-issue this GET for up to
-10 minutes after your last disconnection. After 10 minutes without any clients connected, the Output will be torn down and
-you will have to re-issue a POST (step 1) to begin streaming again.
-
-Also note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering
-done on the side of `output.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will
+Note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering
+done on the side of `stream.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will
 be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.
