@@ -55,7 +55,7 @@ The body of the POST contains the log file to ingest. Additional metadata is pro
 using the following Header fields:
 
 * `lc-source` is a free form string used as an identifier of the origin of the log. When a log is ingested from a LC sensor, this value is the Sensor ID (SID) of the sensor.
-* `lc-hint` if present, this indicates to the backend how the file should be interpreted. It default to `auto` which results in the backend auto-detecting the formal. Currently supported hints include `wel` (Windows Events Log), `pcap` and `txt`.
+* `lc-hint` if present, this indicates to the backend how the file should be interpreted. It default to `auto` which results in the backend auto-detecting the formal. Currently supported hints include `wel` (Windows Events Log), `prefetch` (Windows prefetch file), `pcap` and `txt`.
 * `lc-payload-id` if present, this is a globally unique identifier for the log file. It can be used to ingest logs in an idempotent way, meaning a second log file ingested with this same value will be ignore.
 * `lc-path` if present, should be a base-64 encoded string representing the original file path of the log on the source system.
 * `lc-part` if present, is used to track multi-part log uploads. If set, it should be an integer starting at `0` and incrementing for every part with the last part being set to `done`. The `lc-payload-id` MUST be set and constant across all parts.

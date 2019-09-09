@@ -388,9 +388,50 @@ Response from a file information request.
 Platforms: Windows, Linux, MacOS
 
 ### DIR_LIST_REP
-Response from a directory list request.
+Response from a directory list request. Includes Alternate Data Streams on Windows.
 
 Platforms: Windows, Linux, MacOS
+
+```json
+{
+    "DIRECTORY_LIST": [
+        {
+            "FILE_NAME": "vssdk_full.exe",
+            "CREATION_TIME": 1553437930012,
+            "MODIFICATION_TIME": 1553437937000,
+            "STREAMS": [
+                {
+                    "FILE_NAME": "::$DATA",
+                    "SIZE": 13782032
+                }
+            ],
+            "ACCESS_TIME": 1567868284440,
+            "FILE_SIZE": 13782032,
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\vssdk_full.exe"
+        },
+        {
+            "FILE_NAME": "UniversalLog.txt",
+            "CREATION_TIME": 1553028205525,
+            "MODIFICATION_TIME": 1553028206289,
+            "STREAMS": [
+                {
+                    "FILE_NAME": "::$DATA",
+                    "SIZE": 125
+                },
+                {
+                    "FILE_NAME": ":Zone.Identifier:$DATA",
+                    "SIZE": 377
+                }
+            ],
+            "ACCESS_TIME": 1567868284158,
+            "FILE_SIZE": 125,
+            "ATTRIBUTES": 32,
+            "FILE_PATH": "c:\\users\\dev\\desktop\\UniversalLog.txt"
+        }
+    ]
+}
+```
 
 ### DIR_FINDHASH_REP
 Response to a dir_find_hash request.
