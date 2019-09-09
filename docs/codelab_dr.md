@@ -47,7 +47,7 @@ as quickly as possible.
 
 ### Goal
 
-The goal of is code lab will be to create a DR rule to detect the MITR ATT&CK framework
+The goal of is code lab will be to create a DR rule to detect the MITRE ATT&CK framework
 [Control Panel Items](https://attack.mitre.org/techniques/T1196/) execution.
 
 ### Services Used
