@@ -259,6 +259,96 @@ Example:
 ```
 
 #### Stateful
+
+Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time and either matches or doesn't.
+
+To be able to perform D&R rules across events to detect more complex behaviors, you can use the `with child` and `with descendant`
+parameters. Note that those parameters can ONLY be specified on a rule operator specifying the `event: NEW_PROCESS` since they only
+apply to the relationship between an event and a process.
+
+Both the `with child` and `with descendant` parameters are effectively the same except for the "depth" of the relationship they cover.
+The `child` specifies that the target state (described below) must apply to the direct children of the matching process. The `descendant`
+specifies that the target state must apply globally to any descendands (children of children) of the matching process.
+
+The value of a `with child` (or descendant) is simply another (stateless) rule operator. The logic defined in this rule operator describes
+the set of conditions that must match, not a single event, but the collection of events that are children (or descendants) of the matching
+process.
+
+Here is an example of a stateful detection looking for a "cmd.exe" process that has a child "calc.exe":
+
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: cmd.exe
+case sensitive: false
+with child:
+  op: ends with
+  event: NEW_PROCESS
+  path: event/FILE_PATH
+  value: calc.exe
+  case sensitive: false
+```
+
+Simply put, this will detect
+
+```
+cmd.exe --> calc.exe
+```
+
+but not
+
+```
+cmd.exe --> firefox.exe --> calc.exe
+```
+
+If we made the `with child` a `with descendant`, then we could detect:
+
+```
+cmd.exe --> firefox.exe --> powershell.exe --> calc.exe
+```
+
+Much like other stateless rules, the `with child` (and descendant) can also be more complex. For example:
+
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: outlook.exe
+case sensitive: false
+with child:
+  op: and
+  rules:
+    - op: ends with
+      event: NEW_PROCESS
+      path: event/FILE_PATH
+      value: chrome.exe
+      case sensitive: false
+    - op: ends with
+      event: NEW_DOCUMENT
+      path: event/FILE_PATH
+      value: .ps1
+      case sensitive: false
+```
+
+The above example is looking for an `outlook.exe` process that spawns a `chrome.exe` and drops a `.ps1` (powershell) file to disk:
+
+```
+outlook.exe --+--> chrome.exe
+              |
+              +--> New .ps1 file
+```
+
+On top of containing stateless rules, an operator underneath a `with child` (or descendant) can also contain another operator with another `with child` (or descendant).
+
+Another parameter comes into play if you want to define a set of operators underneath a `with child` to be "stateless", meaning where you want all the operators to apply
+and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you
+want to be applied statelessly.
+
+#### Stateful (Legacy)
+
+*** This documentation is left here for a while as these stateful operators get deprecated. It will be eventually removed along with the actual operators. ***
+
 The following special operators are known as Stateful operators. In general, each D&R rule is limited to a single Stateful
 operator per rule. These operators are special in that they do not operate on a single event received from an agent, but rather
 they operate on the entire state of events from an agent, through time.
