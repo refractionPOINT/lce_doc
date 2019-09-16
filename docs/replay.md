@@ -7,10 +7,12 @@ Replay allows you to run [Detection & Response (DR) rules](dr.md) against histor
 This can be done in a few combinations of sources:
 
 Rule Source:
+
 * Existing rule in the organization, by name.
 * Rule in the replay request.
 
 Traffic:
+
 * Sensor historical traffic.
 * Local events provided during request.
 
