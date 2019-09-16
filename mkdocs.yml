@@ -31,7 +31,6 @@ pages:
     - FAQ: faq.md
     - Upgrading: upgrading.md
     - Troubleshooting: troubleshooting.md
-    - Updating: update_org.md
     - User Control: user_access.md
     - Error Codes: errors.md
     - Data Visualization: data_visualization.md
