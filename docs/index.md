@@ -14,6 +14,7 @@ To skip all of the details and get set up with endpoint detection and response c
 The LimaCharlie sensor is a cross platform endpoint sensor (agent). It is a low-level, light-weight sensor that executes detection and response functionality in real-time.
 
 The sensor provides a wide range of advanced capability.
+
 * Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
 * Host isolation, automated response rules, intelligent local caching of events for in depth Incident Response (IR)
 as well as some forensic features like dumping memory.
