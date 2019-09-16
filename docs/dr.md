@@ -766,7 +766,7 @@ value: /corp/private/info
   name: web-proxy-private-url
 ```
 
-### De-duplicate Cloned sensors
+### De-duplicate Cloned Sensors
 Sometimes users install a sensor on a VM image by mistake. This means every time a new instance
 of the image gets started the same sensor ID (SID) is used for multiple boxes with different names.
 When detected, LimaCharlie produces a [sensor_clone](events.md#sensor_clone) event.
@@ -778,7 +778,6 @@ We can use these events to deduplicate. This example targets Windows clones.
 target: deployment
 event: sensor_clone
 op: is windows
-value: /corp/private/info
 ```
 
 **Respond**
