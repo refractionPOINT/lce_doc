@@ -4,9 +4,10 @@
 
 The External Logs system allows you to ingest external log types like:
 
-* Plain Text Logs (syslog for example)
+* Plain text logs (syslog for example)
 * Windows Event Logs
 * PCAPs
+* Windows Prefetch files
 
 Those logs can be ingested from hosts running a LimaCharlie sensor, or they
 can be pushed to the LimaCharlie platform via a REST interface.
