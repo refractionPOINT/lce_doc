@@ -1098,3 +1098,26 @@ a machine image being created with a LC sensor installed on it, and then being d
   }
 }
 ```
+
+### sensor_over_quota
+
+Over quota deployment events are produced when a sensor tries to connect but the organization quota is already reached.
+
+```
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "event_type": "sensor_over_quota",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "public_ip": "104.196.34.101",
+    "internal_ip": "172.17.0.2",
+    "host_name": "linux-server-1"
+  }
+}
+```
