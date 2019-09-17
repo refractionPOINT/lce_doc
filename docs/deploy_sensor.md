@@ -22,6 +22,7 @@ For example:
 * https://app.limacharlie.io/get/windows/32 for the Windows 32 bit installer
 * https://app.limacharlie.io/get/windows/64 for the Windows 64 bit installer
 * https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
+* https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
 * https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
 
 ## Installing the Sensor
@@ -92,6 +93,70 @@ sudo ./lc_linux_installer.sh <PATH_TO_LC_SENSOR> <YOUR_INSTALLATION_KEY>
 #### System Requirements
 All versions of Debian and CentOS starting around Debian 5 should be supported. Due to the high diversity of the ecosystem
 it's also likely to be working on other distributions. If you need a specific platform contact us.
+
+### Containers and Virtual Machines
+The LimaCharlie sensor can be installed in template-based environments whether they're VMs or Containers.
+
+The methodology is the same as described above, but you need to be careful to stage the sensor install properly in your templates.
+
+The most common mistake is to install the sensor directly in the template, and then instantiate the rest of the infrastructure
+from this template. This will result in "cloned sensors", sensors running using the same Sensor ID (SID) on different hosts/VMs/Containers.
+
+If these occur, a [sensor_clone](events.md#sensor_clone) event will be generated as well as an error in your dashboard. If this happens you
+have two choices:
+
+1. Fix the installation process and re-deploy.
+1. Run a de-duplication process with a Detection & Response rule [like this](dr.md#de-duplicate-cloned-sensors).
+
+Preparing sensors to run properly from templates can be done in one of two ways:
+
+1. Run the installer on the template, shut down the service and delete the "identity files".
+1. Script the sensor installation process in the templating process.
+
+For solution 1, the identity files you will want to remove are:
+
+* Windows: `%windir%\system32\hcp*`
+* Linux: depending on the install location of the sensor, the `hcp*` files like `/usr/local/hcp*`.
+* MacOS: `/usr/local/hcp*`
+
+For solution 2, you can start a simple shell script like this to fetch the installer and run it on first boot:
+
+```bash
+#! /bin/bash
+
+# Create a directory where the install will live.
+mkdir lc_sensor
+
+# Set the permissions on the directory to be limited to root.
+chown root:root ./lc_sensor
+chmod 700 ./lc_sensor
+
+# Installer the sensor from within the directory to it install to the CWD.
+cd lc_sensor
+
+# Use an environment variable containing the Installation Key.
+# Write it to a temporary file to limit the exposure of the key.
+echo $LC_SENSOR_INSTALLATION_KEY > lc_installation_key.txt
+
+# Fetch the latest sensor installer from limacharlie.io.
+wget -O lc_sensor_64 https://app.limacharlie.io/get/linux/alpine64
+
+# Limit permissions to the sensor.
+
+# Run the sensor.
+chmod 500 ./lc_sensor_64
+./lc_sensor_64 -d - > /dev/null 2>&1 &
+
+# Remove the Installation Key from the environment.
+unset LC_SENSOR_INSTALLATION_KEY
+
+# We started the sensor detached, so we give it a few seconds to read
+# the Installation Key we put on disk before deleting it.
+sleep 2
+rm lc_installation_key.txt
+
+cd ..
+```
 
 # Uninstalling the Sensor
 Using an installer, as administrator / root, simply invoke it with one of:
