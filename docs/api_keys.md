@@ -34,3 +34,12 @@ To see a full list, see the "REST API" section of your organization.
 
 Making a REST call will fail with a `401` if your API Key / token is missing
 some privileges and the missing privilege will be specified in the error.
+
+## Required Privileges
+Below is a list of privileges required for some common tasks.
+
+### Go Live
+When "going Live" through the web UI, the following is required by the user:
+
+* `output.*`: for the creation of the real-time output via HTTP to the browser.
+* `sensor.task`: to send the commands (both manually for the console and to populate the various tabs) to the sensor.
