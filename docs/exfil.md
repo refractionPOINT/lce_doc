@@ -13,7 +13,7 @@ The rule customization is done in two parts:
 1. The Event Rules, which simply define a list of events that should be sent to the cloud based on platform and tags.
 1. The Watch Rules, which define additional events that should be sent to the cloud based on the content of each individual event.
 
-The Wacth Rules allow you to specify a platform and tag to select which sensors the rule applies to, plus these elements:
+The Watch Rules allow you to specify a platform and tag to select which sensors the rule applies to, plus these elements:
 
 * Event: the specific event type that should be evaluated, like `MODULE_LOAD`.
 * Path: the path within the `event` component whose value should be evaluated, like `FILE_PATH`.
