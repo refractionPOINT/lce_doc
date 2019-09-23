@@ -259,7 +259,7 @@ Generated when a new TCPv6 connection is established, either inbound or outbound
 
 Platforms: Windows, Linux, MacOS
 
-### NEW_UDP4_CONNECTION
+### NEW_UDP6_CONNECTION
 Generated when a new UDPv6 socket "connection" is established, either inbound or outbound.
 
 Platforms: Windows, Linux, MacOS
