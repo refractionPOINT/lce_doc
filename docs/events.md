@@ -254,6 +254,28 @@ Platforms: Windows, Linux, MacOS
 }
 ```
 
+### NEW_TCP6_CONNECTION
+Generated when a new TCPv6 connection is established, either inbound or outbound.
+
+Platforms: Windows, Linux, MacOS
+
+### NEW_UDP4_CONNECTION
+Generated when a new UDPv6 socket "connection" is established, either inbound or outbound.
+
+Platforms: Windows, Linux, MacOS
+
+### TERMINATE_TCP4_CONNECTION
+Generated when a TCPv4 connection terminates.
+
+### TERMINATE_UDP4_CONNECTION
+Generated when a UDPv4 socket terminates.
+
+### TERMINATE_TCP6_CONNECTION
+Generated when a TCPv6 connection terminates.
+
+### TERMINATE_UDP6_CONNECTION
+Generated when a UDPv6 socket terminates.
+
 ### HIDDEN_MODULE_DETECTED
 Generated when the signature of an executable module is found in memory without
 being known by the operating system.
