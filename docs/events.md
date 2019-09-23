@@ -267,6 +267,20 @@ Platforms: Windows, Linux, MacOS
 ### TERMINATE_TCP4_CONNECTION
 Generated when a TCPv4 connection terminates.
 
+```json
+{
+  "DESTINATION": {
+    "IP_ADDRESS": "61.55.252.93",
+    "PORT": 443
+  },
+  "PROCESS_ID": 4784,
+  "SOURCE": {
+    "IP_ADDRESS": "172.16.223.138",
+    "PORT": 50145
+  }
+}
+```
+
 ### TERMINATE_UDP4_CONNECTION
 Generated when a UDPv4 socket terminates.
 
