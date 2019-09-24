@@ -345,6 +345,11 @@ Another parameter comes into play if you want to define a set of operators under
 and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you
 want to be applied statelessly.
 
+Finally, a node in stateful mode under a `with child` or `with descendand` can specify a `count: N` parameter. When specified, you specify that the given node must be
+matched N times before it is considered successful. So setting `count: 3` in a node looking for a `event/FILE_PATH` ending in `cmd.exe` will mean that we want to match
+only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes
+which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert).
+
 #### Stateful (Legacy)
 
 *** This documentation is left here for a while as these stateful operators get deprecated. It will be eventually removed along with the actual operators. ***
