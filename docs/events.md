@@ -254,6 +254,42 @@ Platforms: Windows, Linux, MacOS
 }
 ```
 
+### NEW_TCP6_CONNECTION
+Generated when a new TCPv6 connection is established, either inbound or outbound.
+
+Platforms: Windows, Linux, MacOS
+
+### NEW_UDP6_CONNECTION
+Generated when a new UDPv6 socket "connection" is established, either inbound or outbound.
+
+Platforms: Windows, Linux, MacOS
+
+### TERMINATE_TCP4_CONNECTION
+Generated when a TCPv4 connection terminates.
+
+```json
+{
+  "DESTINATION": {
+    "IP_ADDRESS": "61.55.252.93",
+    "PORT": 443
+  },
+  "PROCESS_ID": 4784,
+  "SOURCE": {
+    "IP_ADDRESS": "172.16.223.138",
+    "PORT": 50145
+  }
+}
+```
+
+### TERMINATE_UDP4_CONNECTION
+Generated when a UDPv4 socket terminates.
+
+### TERMINATE_TCP6_CONNECTION
+Generated when a TCPv6 connection terminates.
+
+### TERMINATE_UDP6_CONNECTION
+Generated when a UDPv6 socket terminates.
+
 ### HIDDEN_MODULE_DETECTED
 Generated when the signature of an executable module is found in memory without
 being known by the operating system.
@@ -1095,6 +1131,29 @@ a machine image being created with a LC sensor installed on it, and then being d
   "event": {
     "previous_hostname" : "server-1",
     "new_hostname" : "server-2"
+  }
+}
+```
+
+### sensor_over_quota
+
+Over quota deployment events are produced when a sensor tries to connect but the organization quota is already reached.
+
+```
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "event_type": "sensor_over_quota",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "public_ip": "104.196.34.101",
+    "internal_ip": "172.17.0.2",
+    "host_name": "linux-server-1"
   }
 }
 ```

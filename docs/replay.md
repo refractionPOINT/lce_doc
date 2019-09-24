@@ -7,10 +7,12 @@ Replay allows you to run [Detection & Response (DR) rules](dr.md) against histor
 This can be done in a few combinations of sources:
 
 Rule Source:
+
 * Existing rule in the organization, by name.
 * Rule in the replay request.
 
 Traffic:
+
 * Sensor historical traffic.
 * Local events provided during request.
 
@@ -125,3 +127,16 @@ item named `limit_eval_reached: true` and `limit_event_reached: true`.
 
 Finally, you may also set `trace` to `true` in the request to receive a detailed trace of the rule evaluation. This is
 useful in the development of new rules to find where rules are failing.
+
+## Billing
+The Replay service is billed on a per operator evaluation basis.
+
+A [D&R Rule](dr.md) is composed of multiple operator evaluations. It is each of those evaluations that gets
+billed for the Replay service. It means that generally speak the number of operator evaluations will be based
+on the `number of events replayed X complexity of the rule`.
+
+Rules, especially complex ones can be hard to evaluate since rules will often perform evaluation short-cicruits
+to reduce the number of evaluations in certain cases. Therefore the best way to evaluate a rule is to use the
+[LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) with the `limacharlie-replay` command
+which outputs precise statistics about a Replay job. This will include number of operator evaluations which will
+then help you determine the performance of your rule.
