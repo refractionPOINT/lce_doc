@@ -49,3 +49,11 @@ Currently supported OSes and versions kernel access:
 
 * Windows 7 and up.
 * MacOS 10.7 and up.
+
+### What happens when the host is not connected to the internet?
+Detection and Response (D&R) rules are not currently mirrored in the sensor. This part of our roadmap as the D&R
+rules were always designed to be forward-deployable.
+
+When the host is offline, the sensor will keep collecting telemetry and store it locally in a "ring buffer"
+(which limits the total possible size). When the host will get back online, the content of this buffer will
+be flushed to the cloud where D&R rules will still apply as usual.
