@@ -57,3 +57,7 @@ rules were always designed to be forward-deployable.
 When the host is offline, the sensor will keep collecting telemetry and store it locally in a "ring buffer"
 (which limits the total possible size). When the host will get back online, the content of this buffer will
 be flushed to the cloud where D&R rules will still apply as usual.
+
+The same ring buffer is used during normal running of the sensor. It holds the full detailed telemetry generated
+within the sensor, even if it is not sent to the cloud in real-time. The cloud can then retroactively request
+the full or partial content of the ring buffer. See the [Exfil](exfil.md) section for more details.
