@@ -30,6 +30,11 @@ Value: wininet.dll
 
 The above rule would tell the sensor to send to the cloud, in real-time, all `MODULE_LOAD` events where the `FILE_PATH` ends with the value `wininet.dll`.
 
+## Performance Mode
+Although not stricly related to Exfil, the sensor's Performance Mode can also be set as a rule on top of interactively.
+
+This is done by modifying Performance Rules through the web app or REST interface. Any sensor matching a rule will have its performance mode enabled.
+
 ### REST
 
 #### List Rules
@@ -88,5 +93,27 @@ The above rule would tell the sensor to send to the cloud, in real-time, all `MO
 {
   "action": "remove_watch",
   "name": "wininet-loading"
+}
+```
+
+#### Add Performance Rule
+```
+{
+  "action": "add_perf_rule",
+  "name": "sql-servers",
+  "tags": [
+    "sql"
+  ],
+  "platforms": [
+    "windows"
+  ]
+}
+```
+
+#### Remove Performance Rule
+```
+{
+  "action": "remove_perf_rule",
+  "name": "sql-servers"
 }
 ```
