@@ -30,6 +30,8 @@ Value: wininet.dll
 
 The above rule would tell the sensor to send to the cloud, in real-time, all `MODULE_LOAD` events where the `FILE_PATH` ends with the value `wininet.dll`.
 
+Finally, note that Exfil configurations are synchronized with sensors every few minutes.
+
 ## Performance Mode
 Although not stricly related to Exfil, the sensor's Performance Mode can also be set as a rule on top of interactively.
 

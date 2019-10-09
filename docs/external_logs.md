@@ -26,6 +26,8 @@ We call this "log operationalization". It is not mean to be a general viewing
 and querying tool like Splunk, but as a tactical tool providing you with critical
 answers as you need them during security operations.
 
+Note that External Logs configurations are synchronized with sensors every few minutes.
+
 ## Ingestion
 ### Using LC Sensors
 To instruct the ingestion of a log file located on a host where LC is installed,

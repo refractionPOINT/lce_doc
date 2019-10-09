@@ -9,6 +9,8 @@ Once configured, YARA scans can be run on demand for a particular endpoint or co
 
 There are three main sections to the YARA job.
 
+Note that Yara configurations are synchronized with sensors every few minutes.
+
 ### Sources
 This is where you define the source for your particular YARA rule(s). Source URLs can be either a direct link to a given YARA rule or links to a Github repository with a collection of signatures in multiple files.
 
