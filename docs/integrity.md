@@ -5,6 +5,8 @@
 ## Overview
 The integrity service helps you manage all aspects of File and Registry integrity monitoring.
 
+Note that FIM configurations are synchronized with sensors every few minutes.
+
 ### Rules
 Rules define which file path patterns and registry patterns should be monitored for changes for specific sets of hosts.
 
