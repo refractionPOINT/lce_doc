@@ -419,6 +419,9 @@ optional arguments:
 
 ## Management
 
+Note that instead of using the `exfil_add` and `exfil_del` commands directly it is recommended
+to use [the Service](exfil.md) available through the web UI and REST interface.
+
 ### exfil_add
 Add an LC event to the list of events sent back to the backend by default.
 
@@ -509,6 +512,9 @@ sent to the cloud](dr/#disable-an-event-at-the-source).
 
 A sample D&R rule is available [here](dr/#monitoring-sensitive-directories).
 
+Note that instead of using the `fim_add` and `fim_del` commands directly it is recommended
+to use [the Service](integrity.md) available through the web UI and REST interface.
+
 ### fim_add
 Add a file or registry path pattern to monitor for modifications.
 Patterns include basic wildcards:
@@ -563,6 +569,9 @@ optional arguments:
 ```
 
 ## Yara
+
+Note that instead of using the `yara_update` command directly it is recommended
+to use [the Service](yara.md) available through the web UI and REST interface.
 
 ### yara_update
 Update the compiled yara signature bundle that is being used for constant memory and file scanning on the sensor.
@@ -706,6 +715,9 @@ optional arguments:
 ```
 
 ## External Logs
+
+Note that instead of using the `log_get` command directly it is recommended
+to use [the Service](external_logs.md) available through the web UI and REST interface.
 
 ### log_get
 Retrieve a log from a sensor.
