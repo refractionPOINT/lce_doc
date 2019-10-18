@@ -865,7 +865,7 @@ Platforms: Windows, Linux, MacOS
 ### FILE_TYPE_ACCESSED
 Generated when a new process is observed interacting with certain
 file types (like .doc). These can be used as indicators of an unknown
-process exfiltrating files it should not.
+process exfiltrating files it should not, or ransom-ware.
 
 Platforms: Windows, MacOS
 
@@ -876,6 +876,17 @@ Platforms: Windows, MacOS
   "FILE_PATH": "C:\\Users\\dev\\Desktop\\importantnews.doc"
 }
 ```
+
+The `RULE_NAME` component is the class of file extension involved:
+
+* Rule 1: `.doc`, `.docm`, `.docx`
+* Rule 2: `.xlt`, `.xlsm`, `.xlsx`
+* Rule 3: `.ppt`, `.pptm`, `.pptx`, `.ppts`
+* Rule 4: `.pdf`
+* Rule 5: `.rtf`
+* Rule 50: `.zip`
+* Rule 51: `.rar`
+* Rule 64: `.locky`, `.aesir`
 
 ### NEW_REMOTE_THREAD
 Generated on a Windows system when a thread is created by a process in another process.
