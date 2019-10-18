@@ -24,6 +24,7 @@ For example:
 * https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
 * https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
 * https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
+* https://app.limacharlie.io/get/chrome for the Chrome extension
 
 ## Installing the Sensor
 The sensors are designed to be simple to use and re-package for any deployment methodology you use in your organization.
@@ -157,6 +158,17 @@ rm lc_installation_key.txt
 
 cd ..
 ```
+
+### Chrome
+The Chrome sensor is currently shipped as an extension you must install locally. The Chrome Web Store support is coming.
+
+1. In the LimaCharlie web app (app.limacharlie.io), go to the "Installation Keys" section, select your installation key and click the "Chrome Key" copy icon to
+copy the key to your clipboard.
+1. Download the sensor from: https://app.limacharlie.io/get/chrome
+1. Then follow the instructions found in Method 2 here: https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034
+1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
+1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
+1. Give it a minute and you should see your sensor showing up in your organization.
 
 # Uninstalling the Sensor
 Using an installer, as administrator / root, simply invoke it with one of:
