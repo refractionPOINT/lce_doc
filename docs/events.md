@@ -290,6 +290,89 @@ Generated when a TCPv6 connection terminates.
 ### TERMINATE_UDP6_CONNECTION
 Generated when a UDPv6 socket terminates.
 
+### NETWORK_CONNECTIONS
+List of recent network connections performed by a process.
+
+```json
+{
+  "NETWORK_ACTIVITY": [
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50396
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "23.214.49.56",
+        "PORT": 80
+      }
+    },
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50397
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "189.247.166.18",
+        "PORT": 80
+      }
+    },
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50398
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "23.217.70.67",
+        "PORT": 80
+      }
+    },
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50399
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "104.110.238.53",
+        "PORT": 80
+      }
+    },
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50400
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "23.214.49.56",
+        "PORT": 80
+      }
+    },
+    {
+      "SOURCE": {
+        "IP_ADDRESS": "172.16.223.138",
+        "PORT": 50401
+      },
+      "IS_OUTGOING": 1,
+      "DESTINATION": {
+        "IP_ADDRESS": "204.79.197.203",
+        "PORT": 80
+      }
+    }
+  ],
+  "HASH": "2de228cad2e542b2af2554d61fab5463ecbba3ff8349ba88c3e48637ed8086e9",
+  "COMMAND_LINE": "C:\\WINDOWS\\system32\\msfeedssync.exe sync",
+  "PROCESS_ID": 6968,
+  "FILE_IS_SIGNED": 1,
+  "USER_NAME": "WIN-5KC7E0NG1OD\\dev",
+  "FILE_PATH": "C:\\WINDOWS\\system32\\msfeedssync.exe",
+  "PARENT_PROCESS_ID": 1892
+}
+```
+
 ### HIDDEN_MODULE_DETECTED
 Generated when the signature of an executable module is found in memory without
 being known by the operating system.
