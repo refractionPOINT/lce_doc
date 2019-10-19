@@ -166,9 +166,11 @@ The Chrome sensor is currently shipped as an extension you must install locally.
 copy the key to your clipboard.
 1. Download the sensor from: [https://app.limacharlie.io/get/chrome](https://app.limacharlie.io/get/chrome)
 1. Then follow the instructions found in Method 2 here: [https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034](https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034)
-1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
-1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
-1. Give it a minute and you should see your sensor showing up in your organization.
+1. A new tab will open where you can add your installation key from before. If you close it by mistake, you can re-open it by:
+  1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
+  1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
+
+The installation key can also be pre-configured through the Managed Storage feature (key named `installation_key`) if you are using a managed Chrome deployment.
 
 # Uninstalling the Sensor
 Using an installer, as administrator / root, simply invoke it with one of:
