@@ -289,7 +289,7 @@ optional arguments:
 ### os_packages
 List installed software packages.
 
-Platforms: Windows
+Platforms: Windows, Chrome
 
 ```
 usage: os_packages [-h]
@@ -678,7 +678,7 @@ Tells the sensor to stop all network connectivity on the host except LC comms to
 Note that you should never upgrade a sensor version while the network is isolated through this mechanism. Doing so may result in the agent not re-gaining
 connectivity to the cloud, requiring a reboot to undo.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Chrome
 
 ```
 usage: segregate_network [-h]
@@ -690,7 +690,7 @@ optional arguments:
 ### rejoin_network
 Tells the sensor to allow network connectivity again (after it was segregated).
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Chrome
 
 ```
 usage: rejoin_network [-h]
