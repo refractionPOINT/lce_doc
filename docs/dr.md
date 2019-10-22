@@ -614,8 +614,12 @@ This last distinction about the `publish` parameter is important because the det
 get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
-Finally, the `priority` parameter is optional. If set, it should be an integer. This integer
+The `priority` parameter is optional. If set, it should be an integer. This integer
 will get added to the root of the detection report.
+
+The `metadata` parameter is optional. It can be set to any data which will be included
+in the detection generated in a field named `detect_mtd` at the root of the detection.
+This can be used to include information for internal use like reference numbers or URLs.
 
 Example:
 ```yaml
