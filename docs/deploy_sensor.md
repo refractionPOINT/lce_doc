@@ -160,13 +160,11 @@ cd ..
 ```
 
 ### Chrome
-The Chrome sensor is currently shipped as an extension you must install locally. The Chrome Web Store support is coming.
+The Chrome sensor is available in the Chrome Web Store.
 
 1. In the LimaCharlie web app (app.limacharlie.io), go to the "Installation Keys" section, select your installation key and click the "Chrome Key" copy icon to
 copy the key to your clipboard.
-1. Download the sensor from: [https://app.limacharlie.io/get/chrome](https://app.limacharlie.io/get/chrome)
-1. Unzip the sensor, you should get a `.crx` file.
-1. In Chrome, open the `chrome://extensions` page, and drag-and-drop the `.crx` file.
+1. Install the sensor from: [https://app.limacharlie.io/get/chrome](https://app.limacharlie.io/get/chrome)
 1. A new tab will open where you can add your installation key from before. If you close it by mistake, you can re-open it by:
   1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
   1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
