@@ -9,6 +9,7 @@ markdown_extensions:
 theme: readthedocs
 pages:
     - Home: index.md
+    - Features: features.md
     - Quick Start: lcc_quick_start.md
     - Installation Keys: manage_keys.md
     - Deploying Sensors: deploy_sensor.md

@@ -53,6 +53,14 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
 path `/txt` as the value of a log line. The `log source` matches the log's source string, and the `log type` matches the log's type string.
 
+#### Windows Event Logs
+When running D&R rules against Windows Event Logs (`target: log` and `log source: wel`), although the [External Logs Service](external_logs.md) may ingest
+the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
+processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
+
+This means you can safely set the [External Logs Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
+without risking producing the same alert multiple times.
+
 ### Basic Structure
 
 Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
