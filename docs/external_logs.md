@@ -80,3 +80,11 @@ time period and will allow you to go view them. Finally, from the same page, whe
 viewing the details of a specific event, right-clicking on an indicator and clicking
 "Find Other Locations" will bring you a search interface where you can also search
 for "in logs".
+
+#### Windows Event Logs
+When running D&R rules against Windows Event Logs (`target: log` and `log source: wel`), although the [External Logs Service](external_logs.md) may ingest
+the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
+processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
+
+This means you can safely set the [External Logs Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
+without risking producing the same alert multiple times.
