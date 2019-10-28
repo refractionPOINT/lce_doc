@@ -88,3 +88,5 @@ processed `EventRecordID` and therefore will NOT run the same D&R rule over the 
 
 This means you can safely set the [External Logs Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
 without risking producing the same alert multiple times.
+
+For most Windows Event Logs available, see `c:\windows\system32\winevt\logs\`.
