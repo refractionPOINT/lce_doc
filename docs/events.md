@@ -427,6 +427,8 @@ connections. This event combines process information with the first 10 network c
 it has done. It is a way to generated detections on process/network information without
 sending home all network events all the time which is a lot of data.
 
+***Deprecated, replaced by:*** `NETWORK_CONNECTIONS`
+
 Platforms: Windows, Linux, MacOS
 
 ```json
