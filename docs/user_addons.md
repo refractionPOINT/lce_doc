@@ -68,11 +68,12 @@ Creating a lookup add-on enables you to create a list that you can use as part o
 Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your add-on looking
 like `resource: lcr://lookup/my-lookup-name`.
 
-Lookups support two structure. A simple one, which is just newline-separated values, and a complex one
-which allows you to associate metadata with each element. When uploading a lookup through the API, the
-data can be either the flat newline-separated values, or a JSON dictionary. The JSON dictionary should
-contain every element you want to lookup as keys, and the metadata you want associated as JSON values
-to those keys.
+Lookups support a few structures.
+
+* A simple one, which is just newline-separated values.
+* A complex one which allows you to associate metadata with each element.
+* An OTX Pusle.
+* A MISP JSON feed.
 
 Here is an example of this complex format:
 ```yaml
@@ -85,8 +86,8 @@ example.com:
 
 When uploaded, the data for the lookup can be provided in three different ways:
 
-1. As data literal in the upload API (newline or complex).
-1. As a URL callback, where your data is a URL like https://www.my.data where the content of the lookup can be fetched from.
+1. As data literal in the upload API (newline, complex or MISP).
+1. As a URL callback, where your data is a URL like https://www.my.data where the content of the lookup (newline, complex or MISP) can be fetched from.
 1. Or as a link to an AlienVault OTX Pulse.
 
 If providing an AlientVault OTX pulse, specify the data in the API as a link of the form:
