@@ -70,10 +70,11 @@ like `resource: lcr://lookup/my-lookup-name`.
 
 Lookups support a few structures.
 
-* A simple one, which is just newline-separated values.
-* A complex one which allows you to associate metadata with each element.
-* An OTX Pusle.
-* A MISP JSON feed.
+* Newline-separated values.
+* JSON dictionary where keys are the elements of the lookup and the values are the metadata associated.
+* YAML dictionary where keys are the elements of the lookup and the values are the metadata associated.
+* OTX JSON Pulse.
+* MISP JSON Feed.
 
 Here is an example of this complex format:
 ```yaml
@@ -86,23 +87,8 @@ example.com:
 
 When uploaded, the data for the lookup can be provided in three different ways:
 
-1. As data literal in the upload API (newline, complex or MISP).
-1. As a URL callback, where your data is a URL like https://www.my.data where the content of the lookup (newline, complex or MISP) can be fetched from.
-1. Or as a link to an AlienVault OTX Pulse.
-
-If providing an AlientVault OTX pulse, specify the data in the API as a link of the form:
-
-```
-otx://YOUR_OTX_API_KEY/pulse/PULSE_ID
-```
-
-The LimaCharlie backend will use the API key encoded in this `otx://` URL and fetch the Pulse directly.
-
-If providing a URL callback, the data provided to the API could look like:
-
-```
-https://raw.githubusercontent.com/gmaniakbg/LCINTEL/master/mal_domain.txt
-```
-
+1. As data literal in the upload API.
+1. As a URL callback, where your data is a URL like https://www.my.data.
+1. As an [Authenticated Resource Locator (ARL)](arl.md) (the prefered method)
 
 The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
