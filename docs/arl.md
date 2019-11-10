@@ -26,7 +26,7 @@ Without authentication:
 [methodName,methodDest]
 ```
 
-* methodName: the transport to use, one of `http`, `https` and `gcs`.
+* methodName: the transport to use, one of `http`, `https`, `gcs` and `github`.
 * methodDest: the actual destination of the transport. A domain and
 path for HTTP(S) and a bucket name and path for GCS.
 * authType: how to authenticate, one of `basic`, `bearer`, `token`, `gaia` or `otx`.
@@ -45,5 +45,7 @@ Access using Authentication token: `[https,my.corpwebsite.com/resourdata,token,b
 Google Cloud Storage: `[gcs,my-bucket-name/some-blob-prefix,gaia,base64(GCP_SERVICE_KEY)]`
 
 An OTX Pulse via the REST API: `[https,otx.alienvault.com/api/v1/pulses/5dc56c60a9edbde72dd5d013,otx,9uhr438uhf4h4u9fj7f6the8h383v8jv4ccc1e263d37f29d034d]`
+
+Files in a Github repo's subdirectory using a Github Personal Access Token: `[github,myGithubUserOrOrg/repoName/optional/subpath/to,token,f1eb898f20a0db07e88878aadfsdfdfsffdsdfadwq8f767a72218f2]`
 
 You can also omit the auth components to just describe a method: `[https,my.corpwebsite.com/resourdata]`
