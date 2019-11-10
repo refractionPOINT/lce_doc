@@ -12,7 +12,7 @@ There are three main sections to the YARA job.
 Note that Yara configurations are synchronized with sensors every few minutes.
 
 ### Sources
-This is where you define the source for your particular YARA rule(s). Source URLs can be either a direct link to a given YARA rule or links to a Github repository with a collection of signatures in multiple files.
+This is where you define the source for your particular YARA rule(s). Source URLs can be either a direct link to a given YARA rule or [ARLs](arl.md)].
 
 An example of setting up a source using this repo: [Yara-Rules](https://github.com/Yara-Rules/rules)
 
