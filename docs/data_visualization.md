@@ -15,6 +15,7 @@ The data types that can be searched for are:
 * File Hash: Search for observed file hashes.
 * User: Search by username.
 * File Name: Search by file name.
+* Service Name: Search by service name.
 
 ## Node Size
 

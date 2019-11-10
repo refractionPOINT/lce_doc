@@ -26,6 +26,7 @@ Output events and detections to an Amazon S3 bucket.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 * `region_name`: optionally specify a region name.
 * `endpoint_url`: optionally specify a custom endpoint URL, usually used with region_name to output to S3-compatible 3rd party services.
+* `dir`: the directory prefix
 
 Example:
 ```
@@ -44,6 +45,7 @@ Output events and detections to a GCS bucket.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+* `dir`: the directory prefix where to output the files on the remote host.
 
 Example:
 ```
