@@ -571,6 +571,37 @@ rules:
     resource: lcr://detection/suspicious-windows-exec-location
 ```
 
+#### yara
+Only accessible for the `target: log`. Scans the relevant original log file in the cloud using the Yara signature specified.
+
+The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<resource_type>/<resource_name>`. Currently
+the main source of Yara signatures are the [Yara Sources](yara.md#sources) specified in the [Yara Service](yara.md). If your Yara Source is
+named `my-yara-source`, the LC Resource would be: `lcr://service/yara/my-yara-source`.
+
+The `yara` operator scan the log file at most once. This means it can be used both as a simple "scan" detection like this:
+
+```yaml
+op: yara
+target: log
+resource: lcr://service/yara/my-yara-source
+```
+
+Or it can also be used as part of a more complex D&R rule evaluation like this:
+
+```yaml
+target: log
+log type: pe
+op: and
+rules:
+  - op: yara
+    resource: lcr://service/yara/my-yara-source
+  - op: contains
+    path: PDB
+    value: RemoteShellsRemote
+```
+
+The rule above would match when an executable is a match with the Yara signature AND has a PDB containing `RemoteShellsRemote`.
+
 ### Transforms
 Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
 

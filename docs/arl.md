@@ -48,4 +48,6 @@ An OTX Pulse via the REST API: `[https,otx.alienvault.com/api/v1/pulses/5dc56c60
 
 Files in a Github repo's subdirectory using a Github Personal Access Token: `[github,myGithubUserOrOrg/repoName/optional/subpath/to,token,f1eb898f20a0db07e88878aadfsdfdfsffdsdfadwq8f767a72218f2]`
 
+Github, unauthenticated at a specific branch: `[github,refractionPOINT/sigma/some-sub-dir?ref=my-branch]`
+
 You can also omit the auth components to just describe a method: `[https,my.corpwebsite.com/resourdata]`
