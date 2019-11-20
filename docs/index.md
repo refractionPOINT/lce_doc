@@ -58,11 +58,8 @@ LimaCharlie can relay the data somewhere for longer term storage and analysis. W
 are activated. You can have as many Output modules active as you want, so you can send it to multiple syslog destinations using
 the Syslog Output module and then send it to some cold storage over an Scp Output module.
 
-Output is also split between three categories: "event", "detect" and "audit". Event will be a stream containing the raw data from
-all the sensors, so it tends to be a large amount of data. Detect is a stream of detections generated through the `report`
-function of the Detection & Response rules. This means you can send your bulk "event" data to a cheap cold storage and
-send all the important "detect" data to a Splunk instance or a Slack channel (using the Slack Output). The "audit" stream
-receives all auditing events produced by LCE and is useful for compliance.
+Output is also split between four categories: "event", "detect", "audit" and "deployment". Selecting a Stream when creating an Output
+will select the relevant type of data to flow through it.
 
 Exact configuration possibilities in the [Output section](outputs.md).
 
