@@ -13,6 +13,16 @@ to enroll as well as the encryption key used to start the enrollment process.
 Installing the sensor does not require a reboot. Also note that once installed the sensor does not have any visual components
 so instructions on confirming it is installed and running are found below.
 
+## Connectivity
+The network connection required by the LimaCharlie sensor is very simple. It requires a single TCP connection over port
+443 to a specific domain, and optionally another destination for the [External Logs](external_logs.md) service.
+
+The specific domains are listed in the Sensor Downloads section of your organization's dashboard. They will vary depending
+on the datacenter you chose to create your organization in.
+
+Currently, web proxies are not supported, but since LimaCharlie requires a single connection to a single dedicated domain, it
+makes creating a single exception safe and easy.
+
 ## Downloading the Sensors
 To download the single installers relevant for your deployment, access the `/download/[platform]/[architecture]` control plane.
 The `platform` component is one of `win`, `linux` or `osx` while the `architecture` component is either `32` or `64`.
