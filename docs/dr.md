@@ -192,8 +192,18 @@ respond:
 #### Operators
 
 ##### and, or
-The standard logical boolean operations to combine other logical operations. Take a single `"rules" : []` parameter
-with the logical operations to apply the boolean logic to.
+The standard logical boolean operations to combine other logical operations.
+Takes a single `rules:` parameter that contains a list of other operators
+to "AND" or "OR" together.
+
+Example:
+```yaml
+op: or
+rules:
+  - ...rule1...
+  - ...rule2...
+  - ...
+```
 
 ##### is
 Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
