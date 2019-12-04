@@ -227,7 +227,7 @@ They all use the `path` and `value` parameters.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
-#### is greater than, is lower than
+##### is greater than, is lower than
 Check to see if a value is greater or lower (numerically) than a value in the event.
 
 They both use the `path` and `value` parameters.
