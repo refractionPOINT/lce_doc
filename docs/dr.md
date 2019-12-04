@@ -98,12 +98,16 @@ Some parameters are available to all logical operations.
 * `"not": true`: will reverse the matching outcome of an operations.
 * `"case sensitive": false`: will make all string-based evaluations ignore case.
 
+#### Paths
+
 A recurring parameter also found in many operations is the `"path": <>` parameter. It represents a path within the event
 being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
 `*` wildcard to represent 0 or more directories, and the `?` wildcard which represents exactly one directory.
 
 The root of the path should be `event` or `routing` depending on whether you want to get a value from the event itself or
 the routing instead.
+
+#### Lookback
 
 Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing
 a value to a literal like `"system32"`, can also support a value of `"<<event/PARENT/FILE_PATH>>"`. When that value is
@@ -139,11 +143,69 @@ The following paths with their result element:
 * `<<event/PARENT/PROCESS_ID>>` results in `71955`
 * `<<event/*/HASH_VALUE>>` results in `ufs8f8hfinsfd9sfdsf`
 
-#### and, or
-The standard logical boolean operations to combine other logical operations. Take a single `"rules" : []` parameter
-with the logical operations to apply the boolean logic to.
+#### Variables
 
-#### is
+It is possible to store some pieces of state on a per-sensor basis for the lifetime of a sensor (single boot).
+This state is called "variables". Variables have a name and a set of values associated with them. Values can
+be associated with a variable name at run-time using the `add var` (and `del var`) response.
+
+Other rules may then use the values in a variable as part of the detection component.
+
+Like the "lookback" feature, variables can be used in the `is`, `contains`, `starts with` and `ends with` operators
+by surrounding the variable name with `[[` and `]]`, like `[[my-var]]`.
+
+For example, these rules looking for unsigned execution from external drives (like USB).
+
+First, add new external drives to a variable when they are connected:
+
+```yaml
+detect:
+  event: VOLUME_MOUNT
+  op: is windows
+
+respond:
+  - action: add var
+    name: external-volumes
+    value: <<event/VOLUME_PATH>>
+```
+
+Second, look for unsigned execution starting on those drives:
+
+```yaml
+detect:
+  event: NEW_PROCESS
+  op: and
+  rules:
+    - path: event/FILE_IS_SIGNED
+      value: 0
+      op: is
+    - path: event/FILE_PATH
+      case sensitive: false
+      value: '[[external-volumes]]'
+      op: starts with
+
+respond:
+  - action: report
+    name: unsigned-exec-removable-drive
+```
+
+#### Operators
+
+##### and, or
+The standard logical boolean operations to combine other logical operations.
+Takes a single `rules:` parameter that contains a list of other operators
+to "AND" or "OR" together.
+
+Example:
+```yaml
+op: or
+rules:
+  - ...rule1...
+  - ...rule2...
+  - ...
+```
+
+##### is
 Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
 parameter.
 
@@ -158,7 +220,7 @@ Example rule:
 }
 ```
 
-#### exists
+##### exists
 Tests if any elements exist at the given path.
 
 Example rule:
@@ -167,7 +229,7 @@ op: exists
 path: event/PARENT
 ```
 
-#### contains, ends with, starts with
+##### contains, ends with, starts with
 The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix
 match.
 
@@ -175,14 +237,14 @@ They all use the `path` and `value` parameters.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
-#### is greater than, is lower than
+##### is greater than, is lower than
 Check to see if a value is greater or lower (numerically) than a value in the event.
 
 They both use the `path` and `value` parameters.
 They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
 the value at the specified path, it compares the length of the value at that path.
 
-#### matches
+##### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
 Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
 is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
@@ -200,7 +262,7 @@ Example:
 }
 ```
 
-#### string distance
+##### string distance
 The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between
 two strings. In other words it generates the minimum number of character changes required for one string
 to become equal to another.
@@ -243,15 +305,15 @@ max: 2
 
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
-#### is windows, is linux, is mac, is chrome, is 32 bit, is 64 bit
+##### is windows, is linux, is mac, is chrome, is 32 bit, is 64 bit
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
 correct.
 
-#### is tagged
+##### is tagged
 Determines if the tag supplied in the `tag` parameter is already associated with the sensor that the event under evaluation
 is from.
 
-#### lookup
+##### lookup
 Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and
 the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`.
 In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
@@ -268,7 +330,7 @@ Example:
 }
 ```
 
-#### Stateful
+##### Stateful
 
 Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time and either matches or doesn't.
 
@@ -361,7 +423,7 @@ only if we see 3 instances of a `cmd.exe` in that context to match. An example u
 which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
 to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
 
-#### Stateful (Legacy)
+##### Stateful (Legacy)
 
 *** This documentation is left here for a while as these stateful operators get deprecated. It will be eventually removed along with the actual operators. ***
 
@@ -383,7 +445,7 @@ being kept in memory for the lifetime of the sensor. A bad rule may result in th
 
 Exactly what constitutes good usage and bad usage will be discussed on a per operator basis.
 
-##### process burst
+###### process burst
 This will detect when a process matching the `re` parameter is created a minimum of `count` times per `time` (seconds) period.
 
 It is important to keep the bounds reasonable. Any process matching `re` will be kept in the state for at least `time` seconds, so having
@@ -400,7 +462,7 @@ Example (detect at least 4 Linux reconnaissance processes created within 5 secon
 }
 ```
 
-##### process descendant
+###### process descendant
 This will detect a suspicious relationship between a parent process matching the regular expression `parent` and one of the following:
 
 * if `child` is specified, will detect when a descendant process of `parent` matches the regular expression `child`.
@@ -434,7 +496,7 @@ Example (detects a descendant of notepad.exe creating cmd.exe):
 }
 ```
 
-#### VirusTotal
+##### VirusTotal
 The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the
 organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations
 configurations.
@@ -464,7 +526,7 @@ metadata_rules:
   length of: true
 ```
 
-#### IP GeoLocation
+##### IP GeoLocation
 The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the
 organization needs to be subscribed to the `api/ip-geo` API Add-On.
 
@@ -547,7 +609,7 @@ metadata_rules:
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
-#### external
+##### external
 Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
 Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
 type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
@@ -571,7 +633,7 @@ rules:
     resource: lcr://detection/suspicious-windows-exec-location
 ```
 
-#### yara
+##### yara
 Only accessible for the `target: log`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
 The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<resource_type>/<resource_name>`. Currently
@@ -680,6 +742,16 @@ Example:
     "tag": "vip",
     "ttl": 30
 }
+```
+
+#### add var, del var
+Add or remove a value from the variables associated with a sensor.
+
+Example:
+```yaml
+action: add var
+name: my-variable
+value: <<event/VOLUME_PATH>>
 ```
 
 ## Putting it Together
