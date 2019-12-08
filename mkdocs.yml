@@ -38,4 +38,5 @@ pages:
     - Codelabs:
         - D&R Rules: codelab_dr.md
     - ARLs: arl.md
+    - Billing: billing.md
 extra_css: [extra.css]
