@@ -169,6 +169,24 @@ rm lc_installation_key.txt
 cd ..
 ```
 
+#### Container Clusters
+You can also run LimaCharlie at the host level in a container cluster system
+like Kubernetes in order to monitor all running containers on the host with
+a single sensor. In fact, this is the prefered method as it reduces the overhead
+of running LC within every single container.
+
+This is accomplished by a combination of two techniques:
+
+1. A privilged container running LC with the `HOST_FS` environment variable pointing to the host's root filesystem mounted within the container.
+1. Running the container with the required flags to make sure it can have proper access.
+
+The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
+
+The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro your-lc-container-name`.
+
+Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
+So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
+
 ### Chrome
 The Chrome sensor is available in the Chrome Web Store.
 
