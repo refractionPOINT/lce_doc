@@ -182,7 +182,7 @@ This is accomplished by a combination of two techniques:
 
 The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
 
-The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro your-lc-container-name`.
+The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
 
 Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
 So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
