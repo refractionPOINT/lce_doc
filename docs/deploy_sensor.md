@@ -244,6 +244,7 @@ spec:
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: true
+            privileged: true
           resources:
             requests:
               memory: 80M
