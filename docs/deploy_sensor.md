@@ -187,6 +187,80 @@ The second step is to run the container like: `docker run --privileged --net=hos
 Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
 So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
 
+##### Sample Configurations
+This is a sample `Dockerfile` you may use to run LC within a privileged container as described above:
+
+```
+# Requires an LC_INSTALLATION_KEY environment variable
+# specifying the installation key value.
+# Requires a HOST_FS environment variable that specifies where
+# the host's root filesystem is mounted within the container
+# like "/rootfs".
+
+FROM alpine
+
+RUN mkdir lc
+WORKDIR /lc
+
+RUN wget https://app.limacharlie.io/get/linux/alpine64 -O lc_sensor
+RUN chmod 500 ./lc_sensor
+
+CMD ./lc_sensor -d -
+```
+
+And this is a sample Kubernetes `deployment`:
+
+```
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: lc-sensor
+  namespace: lc-monitoring
+  labels:
+    app: lc-monitoring
+spec:
+  minReadySeconds: 30
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: lc-monitoring
+  template:
+    metadata:
+      namespace: lc-monitoring
+      labels:
+        app: lc-monitoring
+    spec:
+      containers:
+        - name: lc-sensor
+          image: <<<< YOUR CONTAINER PATH AS GENERATED ABOVE >>>
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: true
+          resources:
+            requests:
+              memory: 80M
+              cpu: 0.01
+            limits:
+              memory: 128M
+              cpu: 0.9
+          volumeMounts:
+            - mountPath: /rootfs
+              name: all-host-fs
+          env:
+            - name: HOST_FS
+              value: /rootfs
+            - name: LC_INSTALLATION_KEY
+              value: <<<< YOUR INSTALLATION KEY GOES HERE >>>>
+      volumes:
+        - name: all-host-fs
+          hostPath:
+            path: /
+      hostNetwork: true
+```
+
 ### Chrome
 The Chrome sensor is available in the Chrome Web Store.
 
