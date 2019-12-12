@@ -187,6 +187,8 @@ The second step is to run the container like: `docker run --privileged --net=hos
 Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
 So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
 
+A public version of the container described below is available from dockerhub as: `refractionpoint/limacharlie_sensor:latest`.
+
 ##### Sample Configurations
 This is a sample `Dockerfile` you may use to run LC within a privileged container as described above:
 
