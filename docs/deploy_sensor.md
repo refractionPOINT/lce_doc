@@ -169,6 +169,103 @@ rm lc_installation_key.txt
 cd ..
 ```
 
+#### Container Clusters
+You can also run LimaCharlie at the host level in a container cluster system
+like Kubernetes in order to monitor all running containers on the host with
+a single sensor. In fact, this is the prefered method as it reduces the overhead
+of running LC within every single container.
+
+This is accomplished by a combination of two techniques:
+
+1. A privilged container running LC with the `HOST_FS` environment variable pointing to the host's root filesystem mounted within the container.
+1. Running the container with the required flags to make sure it can have proper access.
+
+The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
+
+The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro your-lc-container-name`.
+
+Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
+So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
+
+A public version of the container described below is available from dockerhub as: `refractionpoint/limacharlie_sensor:latest`.
+
+##### Sample Configurations
+This is a sample `Dockerfile` you may use to run LC within a privileged container as described above:
+
+```
+# Requires an LC_INSTALLATION_KEY environment variable
+# specifying the installation key value.
+# Requires a HOST_FS environment variable that specifies where
+# the host's root filesystem is mounted within the container
+# like "/rootfs".
+# Example:
+# export ENV HOST_FS=/rootfs
+# docker run --privileged --net=host -v /:/rootfs:ro your-lc-container-name
+
+FROM alpine
+
+RUN mkdir lc
+WORKDIR /lc
+
+RUN wget https://app.limacharlie.io/get/linux/alpine64 -O lc_sensor
+RUN chmod 500 ./lc_sensor
+
+CMD ./lc_sensor -d -
+```
+
+And this is a sample Kubernetes `deployment`:
+
+```
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: lc-sensor
+  namespace: lc-monitoring
+  labels:
+    app: lc-monitoring
+spec:
+  minReadySeconds: 30
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: lc-monitoring
+  template:
+    metadata:
+      namespace: lc-monitoring
+      labels:
+        app: lc-monitoring
+    spec:
+      containers:
+        - name: lc-sensor
+          image: refractionpoint/limacharlie_sensor:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: true
+          resources:
+            requests:
+              memory: 80M
+              cpu: 0.01
+            limits:
+              memory: 128M
+              cpu: 0.9
+          volumeMounts:
+            - mountPath: /rootfs
+              name: all-host-fs
+          env:
+            - name: HOST_FS
+              value: /rootfs
+            - name: LC_INSTALLATION_KEY
+              value: <<<< YOUR INSTALLATION KEY GOES HERE >>>>
+      volumes:
+        - name: all-host-fs
+          hostPath:
+            path: /
+      hostNetwork: true
+```
+
 ### Chrome
 The Chrome sensor is available in the Chrome Web Store.
 
