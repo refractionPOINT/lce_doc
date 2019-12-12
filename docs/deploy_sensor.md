@@ -198,6 +198,9 @@ This is a sample `Dockerfile` you may use to run LC within a privileged containe
 # Requires a HOST_FS environment variable that specifies where
 # the host's root filesystem is mounted within the container
 # like "/rootfs".
+# Example:
+# export ENV HOST_FS=/rootfs
+# docker run --privileged --net=host -v /:/rootfs:ro your-lc-container-name
 
 FROM alpine
 
