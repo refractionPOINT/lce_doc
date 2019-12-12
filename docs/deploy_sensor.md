@@ -235,7 +235,7 @@ spec:
     spec:
       containers:
         - name: lc-sensor
-          image: <<<< YOUR CONTAINER PATH AS GENERATED ABOVE >>>
+          image: refractionpoint/limacharlie_sensor:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: true
