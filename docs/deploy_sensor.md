@@ -175,14 +175,16 @@ like Kubernetes in order to monitor all running containers on the host with
 a single sensor. In fact, this is the prefered method as it reduces the overhead
 of running LC within every single container.
 
-This is accomplished by a combination of two techniques:
+This is accomplished by a combination of a few techniques:
 
-1. A privilged container running LC with the `HOST_FS` environment variable pointing to the host's root filesystem mounted within the container.
+1. A privilged container running LC.
+1. LC runs with `HOST_FS` environment variable pointing to the host's root filesystem mounted within the container.
+1. LC runs with the `NET_NS` environment variable pointing to the host's directory listing network namespaces.
 1. Running the container with the required flags to make sure it can have proper access.
 
-The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
+The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` and `ENV NET_NS=/netns` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
 
-The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
+The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
 
 Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
 So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
@@ -198,9 +200,12 @@ This is a sample `Dockerfile` you may use to run LC within a privileged containe
 # Requires a HOST_FS environment variable that specifies where
 # the host's root filesystem is mounted within the container
 # like "/rootfs".
+# Requires a NET_NS environment variable that specific where
+# the host's namespaces directory is mounted within the container
+# like "/netns".
 # Example:
 # export ENV HOST_FS=/rootfs
-# docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env LC_INSTALLATION_KEY=your_key refractionpoint/limacharlie_sensor
+# docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key refractionpoint/limacharlie_sensor
 
 FROM alpine
 
@@ -258,12 +263,17 @@ spec:
           env:
             - name: HOST_FS
               value: /rootfs
+            - name: NET_NS
+              value: /netns
             - name: LC_INSTALLATION_KEY
               value: <<<< YOUR INSTALLATION KEY GOES HERE >>>>
       volumes:
         - name: all-host-fs
           hostPath:
             path: /
+        - name: all-host-ns
+          hostPath:
+            path: /var/run/docker/netns
       hostNetwork: true
 ```
 

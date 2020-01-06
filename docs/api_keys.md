@@ -43,3 +43,22 @@ When "going Live" through the web UI, the following is required by the user:
 
 * `output.*`: for the creation of the real-time output via HTTP to the browser.
 * `sensor.task`: to send the commands (both manually for the console and to populate the various tabs) to the sensor.
+
+## Flair
+API Keys may have "flair" as part of the key name. A flair is like a tag surrounded by `[]`. Although it is not required, we
+advise to put the flair at the end of the API key name for readability.
+
+For example:
+`orchestration-key[bulk]` is a key with a `bulk` flair.
+
+Flairs are used to modify slightly the behavior of an API key or provide some usage hints to various systems in LimaCharlie.
+
+The following flairs are currently supported:
+
+* `bulk`: indicates to the REST API that this key is meant to do a large amount of calls, the API gateway tweaks the API call limits accordingly.
+* `lock`: indicates that the resources created or updated by this key should be "locked". This means that the only entity able to update or delete those resources is the key itself (or a new key re-created later on with the same name).
+
+### Lock
+The `lock` flair is useful if you are using a key to specifically manage an aspect of your deployment that relies on things like
+precisely defined D&R rules, Exfil Watch rules etc. The key flair ensures someone else does not modify it by mistake.
+It does NOT bring privacy (other users with the appropriate permissions will still see those resources, but they will not be able to modify them).
