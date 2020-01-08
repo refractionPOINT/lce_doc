@@ -52,15 +52,18 @@ Rules define which file path patterns should be monitored for changes and ingest
 
 Filter tags are tags that must ALL be present on a sensor for it to match (ANDed), while the platform of the sensor much match one of the platforms in the filter (ORed).
 
-Patterns are file path where the file expression at the end of the path can contain patterns line (*, ?, +). These wildcards are NOT supported in the path portion of the pattern.
-Windows directory separators (backslash, "\") must be escaped like "\\".
-Good example: /var/log/*.1
+Patterns are file path where the file expression at the end of the path can contain patterns line (`*`, `?`, `+`).
 
-Bad example: /var/*/syslog
+These wildcards are NOT supported in the path portion of the pattern.
+Windows directory separators (backslash, `\`) must be escaped like `\\`.
+
+Good example: `/var/log/*.1`
+
+Bad example: `/var/*/syslog`
 
 Note that matching log files are watched for changes. When a change is detected, the entire file is ingested. This means you usually want to target logs that get rolled over after a certain time.
 
-For example syslog is rolled from "syslog" to "syslog.1" after a day, you want to target "syslog.1 to avoid duplicating records from a file being appended to.
+For example syslog is rolled from `syslog` to `syslog.1` after a day, you want to target `syslog.1` to avoid duplicating records from a file being appended to.
 
 ### Using the CLI
 To simplify the task on ingesting via the REST API, you can use the LC CLI tool (`pip install limacharlie`).
