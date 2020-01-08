@@ -52,11 +52,13 @@ Rules define which file path patterns should be monitored for changes and ingest
 
 Filter tags are tags that must ALL be present on a sensor for it to match (ANDed), while the platform of the sensor much match one of the platforms in the filter (ORed).
 
-Patterns are file path where the file expression at the end of the path can contain patterns line (*, ?, +). These wildcards are NOT supported in the path portion of the pattern.
+Patterns are file path where the file expression at the end of the path can contain patterns line (`*`, `?`, `+`).
+These wildcards are NOT supported in the path portion of the pattern.
 Windows directory separators (backslash, "\") must be escaped like "\\".
-Good example: /var/log/*.1
 
-Bad example: /var/*/syslog
+Good example: `/var/log/*.1`
+
+Bad example: `/var/*/syslog`
 
 Note that matching log files are watched for changes. When a change is detected, the entire file is ingested. This means you usually want to target logs that get rolled over after a certain time.
 
