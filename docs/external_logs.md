@@ -31,11 +31,36 @@ Note that External Logs configurations are synchronized with sensors every few m
 
 ## Ingestion
 ### Using LC Sensors
+The LimaCharlie sensor can be used to retrieve log files directly from hosts.
+
+#### Manually
 To instruct the ingestion of a log file located on a host where LC is installed,
 simply issue the [log_get](sensor_commands.md#log_get) command. You should receive
 two events in response to this command: a general receipt indicating the sensor
 received the command, and a response with a status code indicating whether the
 ingestion was successful (an error code of `200` (as in HTTP) indicates success).
+
+#### Using the Service
+With the External Logs Service enabled, a new section should be open in the web
+interface. It will allow you to manage the automatic collection of log files from
+your fleet without manual input or configuration.
+
+The service manages this through the use of Rules that specify a set of Platforms
+(like Windows), Tags (sensor tags), a retention time and file patterns.
+
+Rules define which file path patterns should be monitored for changes and ingested for specific sets of hosts.
+
+Filter tags are tags that must ALL be present on a sensor for it to match (ANDed), while the platform of the sensor much match one of the platforms in the filter (ORed).
+
+Patterns are file path where the file expression at the end of the path can contain patterns line (*, ?, +). These wildcards are NOT supported in the path portion of the pattern.
+Windows directory separators (backslash, "\") must be escaped like "\\".
+Good example: /var/log/*.1
+
+Bad example: /var/*/syslog
+
+Note that matching log files are watched for changes. When a change is detected, the entire file is ingested. This means you usually want to target logs that get rolled over after a certain time.
+
+For example syslog is rolled from "syslog" to "syslog.1" after a day, you want to target "syslog.1 to avoid duplicating records from a file being appended to.
 
 ### Using the CLI
 To simplify the task on ingesting via the REST API, you can use the LC CLI tool (`pip install limacharlie`).
