@@ -57,6 +57,7 @@ The following flairs are currently supported:
 
 * `bulk`: indicates to the REST API that this key is meant to do a large amount of calls, the API gateway tweaks the API call limits accordingly.
 * `lock`: indicates that the resources created or updated by this key should be "locked". This means that the only entity able to update or delete those resources is the key itself (or a new key re-created later on with the same name).
+* `secret`: indicates that resources created by this key should only have their content visible to the same key. For example [D&R rules](dr.md) will be listed, but the contents will be opaque. This is useful to protect Intellectual Property.
 
 ### Lock
 The `lock` flair is useful if you are using a key to specifically manage an aspect of your deployment that relies on things like
