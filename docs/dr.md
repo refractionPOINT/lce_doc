@@ -754,6 +754,23 @@ name: my-variable
 value: <<event/VOLUME_PATH>>
 ```
 
+#### service request
+Perform an asynchronous request to a service the organization is subscribed to. A service
+request contains two main component: the `name` of the service, like `dumper`, and the arbitrary
+content of the request to this service in the `request` value. The request content
+will vary depending on the service (see the relevant service's documentation).
+
+All values within the `request` can contain [Lookback](#lookback) values (`<< >>`).
+
+Example:
+```yaml
+action: service request
+name: dumper
+request:
+  sid: <<routing/sid>>
+  retention: 3
+```
+
 ## Putting it Together
 
 Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration
