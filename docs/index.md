@@ -1,6 +1,6 @@
 # LimaCharlie.io
 
-<img src="https://lcio.nyc3.digitaloceanspaces.com/logo.png" width="150">
+<img src="https://storage.cloud.google.com/limacharlie-io/logo_mono.png" width="150">
 
 ***[Get Started Here](https://limacharlie.io)***
 
