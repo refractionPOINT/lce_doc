@@ -1276,9 +1276,8 @@ Over quota deployment events are produced when a sensor tries to connect but the
 
 ## Log Events
 
-Events around activity in External Logs.
-
-`target: log`
+Events around activity in External Logs. Currently only used in
+service notifications.
 
 ### ingest
 
