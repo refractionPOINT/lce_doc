@@ -1273,3 +1273,53 @@ Over quota deployment events are produced when a sensor tries to connect but the
   }
 }
 ```
+
+## Log Events
+
+Events around activity in External Logs.
+
+`target: log`
+
+### ingest
+
+A new external log has been ingested.
+
+```
+{
+    "routing" : {
+        "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
+        "event_type" : "ingest",
+        "log_type" : "pcap",
+        "oid" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
+        "event_time" : 1561741553230,
+    },
+    "event" : {
+        "size" : 2048,
+        "source" : "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+        "original_path" : "/data/pcap/dat.pcap",
+        "original_md5" : "adjfnwonefowrnfowef",
+    },
+}
+```
+
+### export_complete
+
+An export of log data is completed and ready for download.
+
+```
+{
+    "routing" : {
+        "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
+        "event_type" : "export_complete",
+        "log_type" : "pcap",
+        "oid" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
+        "event_time" : 1561741553230,
+    },
+    "event" : {
+        "size" : 2048,
+        "source" : "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+        "original_path" : "/data/pcap/dat.pcap",
+        "export_id" : "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    },
+}
+```
