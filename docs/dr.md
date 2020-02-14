@@ -714,8 +714,15 @@ stream. Think of it as an alert. It takes a `name` parameter that will be used a
 parameter that defaults to `true`. If set to `false`, the report won't be published to the Output stream.
 
 This last distinction about the `publish` parameter is important because the detections created by the `report` action
-get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
+get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those.
+Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
 of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
+
+A "non-published" rule stays within the D&R system only (as stated above), but sometimes we also want Services
+to get a notification of the detection without having the detection recorded to Outputs
+or retention. For example, a Service may want to listen for the `CONNECTED` event to do
+something and it makes no sense to record this detection after Services have been notified. To
+accomplish this, you can simply prefix your detection `name` with `__` (double underscore).
 
 The `priority` parameter is optional. If set, it should be an integer. This integer
 will get added to the root of the detection report.
