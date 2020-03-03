@@ -24,6 +24,22 @@ A common scheme is to set an investigation ID in all tasks sent during an intera
 to create an Output with this specific ID for the duration of the session. That way you can find all the
 responses from your session in one place.
 
+The investigation ID used for routing through Outputs only applies to the value of investigation ID that is before the first
+instance of a `/` (slash) character. This allows you to overload an investigation ID by adding values after it, like:
+
+```
+my-inv-id
+my-inv-id/task1
+my-inv-id/task2
+```
+
+All the above will be routed to an Output set to receive the `my-inv-id` investigation ID.
+
+An investigation ID beginning with a `__` (double underscore) will also tell the Output system to ignore
+that specific event from being forwarded to an Output. This can be useful, for example, while building a Service that
+may fetch files, or dump bits of memory that are not useful to retain in the long term outside the service. This scheme
+does not apply to the `CLOUD_NOTIFICATION` event for auditing reasons.
+
 When you issue a task, you will see `CLOUD_NOTIFICATION` events coming back from your
 sensor. Those events are simply "receipts" from your sensor to let you know they have
 received a task and the contents of that task.
@@ -469,7 +485,7 @@ optional arguments:
 ### history_dump
 Send to the backend the entire contents of the sensor event cache, i.e. detailed events of everything that happened recently.
 
-Platforms: Windows, Linux, MacOS
+Platforms: Windows, Linux, MacOS, Chrome
 
 ```
 usage: history_dump [-h] [-r ROOT] [-a ATOM] [-e EVENT]
