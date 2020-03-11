@@ -8,6 +8,8 @@ be used to retrieve a JWT that can be used with the LC REST Api at https://api.l
 This allows you to build headless applications that securely acquire time-restricted REST authentication tokens that it
 can then use.
 
+The list of available permissions can be programmatically retrieved from this URL: https://app.limacharlie.io/owner_permissions
+
 ## Managing
 The API Keys are managed through the organization view of the https://limacharlie.io web interface.
 
