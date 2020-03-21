@@ -31,7 +31,7 @@ IDENTIFY_FILE_DIRECTORY="/etc/"
 echo "Installing LimaCharlie sensor to: ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}"
 
 # Copy the sensor to the /bin directory.
-cp ${ORIGINAL_SENSOR} ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}
+cp -f ${ORIGINAL_SENSOR} ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}
 
 # Make sure the sensor is executable but only accessible to root.
 chown root:root ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}
