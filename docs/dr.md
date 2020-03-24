@@ -778,6 +778,21 @@ request:
   retention: 3
 ```
 
+#### isolate network
+Isolates the sensor from the network in a persistent fashion (if the sensor/host reboots, it will remain isolated).
+Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
+
+```yaml
+action: isolate network
+```
+
+#### rejoin network
+Removes the isolation status of a sensor that had it set using `isolate network`.
+
+```yaml
+action: rejoin network
+```
+
 ## Putting it Together
 
 Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration

@@ -708,6 +708,9 @@ Tells the sensor to stop all network connectivity on the host except LC comms to
 Note that you should never upgrade a sensor version while the network is isolated through this mechanism. Doing so may result in the agent not re-gaining
 connectivity to the cloud, requiring a reboot to undo.
 
+This command primitive is NOT persistent, meaning a sensor you segregate from the network using this command alone, upon reboot will rejoin the network.
+To achieve isolation from the network in a persistent way, see the `isolate network` and `rejoin network` [D&R rule actions](dr.md#isolate-network).
+
 Platforms: Windows, MacOS, Chrome
 
 ```
