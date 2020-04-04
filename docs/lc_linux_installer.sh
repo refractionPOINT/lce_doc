@@ -51,7 +51,7 @@ cat >/etc/init.d/${LAUNCHER_SCRIPT_NAME} <<EOL
 ### END INIT INFO
 start() {
   cd ${IDENTIFY_FILE_DIRECTORY}
-  ${SENSOR_DIR}${SENSOR_NAME_ON_DISK} -d ${INSTALLATION_KEY} &
+  ${SENSOR_DIR}${SENSOR_NAME_ON_DISK} -d ${INSTALLATION_KEY} >/dev/null 2>&1 &
 }
 stop() {
   pkill -2 -f ${SENSOR_DIR}${SENSOR_NAME_ON_DISK}
