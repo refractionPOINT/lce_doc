@@ -838,6 +838,7 @@ extensions. It indicates the file has been cached in memory and can be retrieved
 using the [doc_cache_get](sensor_commands.md) task.
 
 The following file patterns are considered "documents":
+
 * `.bat`
 * `.js`
 * `.ps1`
