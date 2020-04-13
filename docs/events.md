@@ -894,6 +894,25 @@ Generated when a new process is observed interacting with certain
 file types (like .doc). These can be used as indicators of an unknown
 process exfiltrating files it should not, or ransom-ware.
 
+This is the mapping between rule name ID and extensions:
+
+* 1 = `.doc`
+* 1 = `.docm`
+* 1 = `.docx`
+* 2 = `.xlt`
+* 2 = `.xlsm`
+* 2 = `.xlsx`
+* 3 = `.ppt`
+* 3 = `.pptm`
+* 3 = `.pptx`
+* 3 = `.ppts`
+* 4 = `.pdf`
+* 5 = `.rtf`
+* 50 = `.zip`
+* 51 = `.rar`
+* 64 = `.locky`
+* 64 = `.aesir`
+
 Platforms: Windows, MacOS
 
 ```json
