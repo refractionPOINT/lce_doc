@@ -765,9 +765,9 @@ optional arguments:
   -h, --help            show this help message and exit
   --file FILE           file path of log file to get
   --source SOURCE       os specific logging source to get
-  --type TYPE           specifies the log type
+  --type TYPE           optionally specifies the log type, otherwise auto-detected
   --payload-id PAYLOADID
-                        specifies a payload ID to use
+                        optionally specifies a payload ID to use, otherwise auto-generated
   --days-retention RETENTION
                         number of days the data should be retained, default 30
 ```
