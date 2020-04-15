@@ -759,12 +759,17 @@ Platforms: Windows, Linux, MacOS
 
 ```
 usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
+               [--payload-id PAYLOADID] [--days-retention RETENTION]
 
 optional arguments:
-  -h, --help       show this help message and exit
-  --file FILE      file path of log file to get
-  --source SOURCE  os specific logging source to get
-  --type TYPE      specifies the log type
+  -h, --help            show this help message and exit
+  --file FILE           file path of log file to get
+  --source SOURCE       os specific logging source to get
+  --type TYPE           specifies the log type
+  --payload-id PAYLOADID
+                        specifies a payload ID to use
+  --days-retention RETENTION
+                        number of days the data should be retained, default 30
 ```
 
 ## Payloads
