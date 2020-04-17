@@ -35,6 +35,8 @@ For example:
 * https://app.limacharlie.io/get/windows/msi64 for the Windows 64 bit MSI installer
 * https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
 * https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
+* https://app.limacharlie.io/get/linux/arm32 for the Linux ARM 32 bit installer
+* https://app.limacharlie.io/get/linux/arm64 for the Linux ARM 64 bit installer
 * https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
 * https://app.limacharlie.io/get/chrome for the Chrome extension
 
@@ -292,6 +294,13 @@ copy the key to your clipboard.
   1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
 
 The installation key can also be pre-configured through the Managed Storage feature (key named `installation_key`) if you are using a managed Chrome deployment.
+
+### Staging Deployment
+When a new version of the sensor is made available, it can be useful to test the new version on specific hosts within an Organization without upgrading the whole Organization.
+
+This can be achieved using a sensor tag called `latest`. When you tag a sensor with `latest`, the sensor version currently assigned to the Organization will be ignore for that
+specific sensor and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the `latest` tag in
+order to test-deploy the latest version and confirm no negative effects.
 
 # Uninstalling the Sensor
 Using an installer, as administrator / root, simply invoke it with one of:
