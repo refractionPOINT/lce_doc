@@ -760,16 +760,19 @@ Platforms: Windows, Linux, MacOS
 ```
 usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
                [--payload-id PAYLOADID] [--days-retention RETENTION]
+               [--is-ignore-cert]
 
 optional arguments:
   -h, --help            show this help message and exit
   --file FILE           file path of log file to get
   --source SOURCE       os specific logging source to get
-  --type TYPE           optionally specifies the log type, otherwise auto-detected
+  --type TYPE           specifies the log type
   --payload-id PAYLOADID
-                        optionally specifies a payload ID to use, otherwise auto-generated
+                        specifies a payload ID to use
   --days-retention RETENTION
                         number of days the data should be retained, default 30
+  --is-ignore-cert      if specified, the sensor will ignore SSL cert mismatch
+                        while upload the log
 ```
 
 ## Payloads
@@ -781,7 +784,7 @@ Platforms: Windows, Linux, MacOS
 
 ```
 usage: run [-h] [--payload-name NAME] [--arguments ARGUMENTS]
-           [--shell-command SHELLCMD] [--timeout TIMEOUT]
+           [--shell-command SHELLCMD] [--timeout TIMEOUT] [--is-ignore-cert]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -791,4 +794,6 @@ optional arguments:
   --shell-command SHELLCMD
                         shell command to run
   --timeout TIMEOUT     number of seconds to wait for payload termination
+  --is-ignore-cert      if specified, the sensor will ignore SSL cert mismatch
+                        while upload the log
 ```
