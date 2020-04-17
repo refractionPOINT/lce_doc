@@ -83,10 +83,14 @@ chown root:root /etc/init.d/${LAUNCHER_SCRIPT_NAME}
 chmod 500 /etc/init.d/${LAUNCHER_SCRIPT_NAME}
 
 # Setup the launcher script.
-update-rc.d ${LAUNCHER_SCRIPT_NAME} defaults
+if command -v update-rc.d; then
+  update-rc.d ${LAUNCHER_SCRIPT_NAME} defaults
+else
+  chkconfig ${LAUNCHER_SCRIPT_NAME} on
+fi
 
 # Start the service.
-service limacharlie start
+/etc/init.d/${LAUNCHER_SCRIPT_NAME} start
 
 echo "LimaCharlie installed and started successfully."
 echo "To uninstall the LimaCharlie service: "
