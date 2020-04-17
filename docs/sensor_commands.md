@@ -775,6 +775,17 @@ optional arguments:
                         while upload the log
 ```
 
+Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
+on a host where built-in root CAs are not up to date or present at all, it may be
+necessary to use the `--is-ignore-cert` flag to allow the logs to be pushed to the
+cloud.
+
+Unlike the main sensor transport (which uses a pinned certificate), the
+External Logs feature uses Google infrastructure and their public SSL certificates.
+
+This may sometimes come up in unexpected ways. For example fresh Windows Server installations
+do not have the root CAs for `google.com` enabled by default.
+
 ## Payloads
 
 ### run
@@ -797,3 +808,14 @@ optional arguments:
   --is-ignore-cert      if specified, the sensor will ignore SSL cert mismatch
                         while upload the log
 ```
+
+Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
+on a host where built-in root CAs are not up to date or present at all, it may be
+necessary to use the `--is-ignore-cert` flag to allow sensor to pull the payload to
+execute from the cloud.
+
+Unlike the main sensor transport (which uses a pinned certificate), the
+Payloads feature uses Google infrastructure and their public SSL certificates.
+
+This may sometimes come up in unexpected ways. For example fresh Windows Server installations
+do not have the root CAs for `google.com` enabled by default.
