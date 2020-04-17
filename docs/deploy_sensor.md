@@ -29,8 +29,10 @@ The `platform` component is one of `win`, `linux` or `osx` while the `architectu
 
 For example:
 
-* https://app.limacharlie.io/get/windows/32 for the Windows 32 bit installer
-* https://app.limacharlie.io/get/windows/64 for the Windows 64 bit installer
+* https://app.limacharlie.io/get/windows/32 for the Windows 32 bit executable installer
+* https://app.limacharlie.io/get/windows/64 for the Windows 64 bit executable installer
+* https://app.limacharlie.io/get/windows/msi32 for the Windows 32 bit MSI installer
+* https://app.limacharlie.io/get/windows/msi64 for the Windows 64 bit MSI installer
 * https://app.limacharlie.io/get/linux/64 for the Linux 64 bit installer
 * https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
 * https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
@@ -47,6 +49,8 @@ Before installing, you will need the [installation key](manage_keys.md) you want
 ### Windows
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a Windows service and trigger its enrollment.
+
+You may also install the Windows sensor using the MSI version. With the MSI, install using: `installer.msi WRAPPED_ARGUMENTS="INSTALLATION_KEY"`.
 
 #### System Requirements
 The LimaCharlie.io agent supports Windows XP 32 bit and up (32 and 64 bit). However, Windows XP and 2003 support is for the
