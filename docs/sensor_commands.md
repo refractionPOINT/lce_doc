@@ -367,10 +367,12 @@ List all running processes on the endpoint.
 Platforms: Windows, Linux, MacOS
 
 ```
-usage: os_processes [-h]
+usage: os_processes [-h] [-p PID] [--is-no-modules]
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help         show this help message and exit
+  -p PID, --pid PID  only get information on process id
+  --is-no-modules    do not report modules in processes
 ```
 
 ### os_autoruns
