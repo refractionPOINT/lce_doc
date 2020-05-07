@@ -30,6 +30,14 @@ Beyond the `general` namespace, the main other namespace is called `managed` (as
 on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
 parameter in the relevant queries.
 
+## Expiration
+It is possible to set an experation time for D&R rules as well as False Positive rules. The expiration is set by providing
+a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based
+unix epoch timestamp, like `expire_on: 1588876878`.
+
+Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration
+can vary, the rule could effectively remain in operation for as long as 10 minutes past the expiration.
+
 ## Detection Component
 The Detection component describes what event(s) should produce a match, which the Response section will then action.
 
@@ -148,6 +156,9 @@ The following paths with their result element:
 It is possible to store some pieces of state on a per-sensor basis for the lifetime of a sensor (single boot).
 This state is called "variables". Variables have a name and a set of values associated with them. Values can
 be associated with a variable name at run-time using the `add var` (and `del var`) response.
+
+The `add var` action supports an optional `ttl` value which is the number of seconds the value should be
+set for, like `ttl: 3600`.
 
 Other rules may then use the values in a variable as part of the detection component.
 
