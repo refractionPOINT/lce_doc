@@ -34,6 +34,7 @@ structured with a major and minor platform, the important values are:
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:
+
 * `1`: 32 bit
 * `2`: 64 bit
 * `3`: ARM
