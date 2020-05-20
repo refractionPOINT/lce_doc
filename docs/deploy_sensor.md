@@ -211,7 +211,7 @@ This is a sample `Dockerfile` you may use to run LC within a privileged containe
 # like "/netns".
 # Example:
 # export ENV HOST_FS=/rootfs
-# docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key refractionpoint/limacharlie_sensor
+# docker run --privileged --net=host -v /:/rootfs:ro -v /var/run/docker/netns:/netns:ro --env HOST_FS=/rootfs --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key refractionpoint/limacharlie_sensor
 
 FROM alpine
 

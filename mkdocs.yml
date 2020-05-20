@@ -20,11 +20,6 @@ pages:
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
     - Jobs: jobs.md
-    - Replay: replay.md
-    - Responder: responder.md
-    - Exfil: exfil.md
-    - File Integrity: integrity.md
-    - YARA: yara.md
     - External Logs: external_logs.md
     - Payloads: payloads.md
     - Events: events.md
@@ -37,6 +32,14 @@ pages:
     - Data Visualization: data_visualization.md
     - Codelabs:
         - D&R Rules: codelab_dr.md
+    - Services:
+        - Replay: replay.md
+        - Responder: responder.md
+        - Exfil: exfil.md
+        - File Integrity: integrity.md
+        - YARA: yara.md
+        - Dumper: dumper.md
+        - Reliable Tasking: reliable_tasking.md
     - ARLs: arl.md
     - Billing: billing.md
 extra_css: [extra.css]
