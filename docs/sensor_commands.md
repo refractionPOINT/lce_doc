@@ -749,13 +749,13 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
-## External Logs
+## Artifact Collection
 
-Note that instead of using the `log_get` command directly it is recommended
+Note that instead of using the `artifact_get` command directly it is recommended
 to use [the Service](external_logs.md) available through the web UI and REST interface.
 
-### log_get
-Retrieve a log from a sensor.
+### artifact_get
+Retrieve an artifact from a sensor.
 
 Platforms: Windows, Linux, MacOS
 
@@ -766,15 +766,15 @@ usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
 
 optional arguments:
   -h, --help            show this help message and exit
-  --file FILE           file path of log file to get
-  --source SOURCE       os specific logging source to get
-  --type TYPE           specifies the log type
+  --file FILE           file path to get
+  --source SOURCE       optional os specific artifact source (not currently supported)
+  --type TYPE           optional artifact type
   --payload-id PAYLOADID
-                        specifies a payload ID to use
+                        optional specifies an idempotent payload ID to use
   --days-retention RETENTION
                         number of days the data should be retained, default 30
   --is-ignore-cert      if specified, the sensor will ignore SSL cert mismatch
-                        while upload the log
+                        while upload the artifact
 ```
 
 Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
@@ -783,7 +783,7 @@ necessary to use the `--is-ignore-cert` flag to allow the logs to be pushed to t
 cloud.
 
 Unlike the main sensor transport (which uses a pinned certificate), the
-External Logs feature uses Google infrastructure and their public SSL certificates.
+Artifact Collection feature uses Google infrastructure and their public SSL certificates.
 
 This may sometimes come up in unexpected ways. For example fresh Windows Server installations
 do not have the root CAs for `google.com` enabled by default.

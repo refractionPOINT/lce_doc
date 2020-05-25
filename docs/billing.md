@@ -78,8 +78,8 @@ Replay jobs can also be launched with a maximum number of operation evaluations
 to consume during the life-cycle of the job. This limit is aproximate due to
 the de-centralized nature of Replay jobs and may vary a bit.
 
-### External Logs & Files
-The [External Logs service](external_logs.md) allows you to ingest external logs
+### Artifact Collection
+The [Artifact Collection service](external_logs.md) allows you to ingest artifacts
 like Syslogs, Windows Events Logs as well as more complex file formats like
 Packet Captures (PCAP), Windows Prefetch files, Portable Executable (PE) etc.
 

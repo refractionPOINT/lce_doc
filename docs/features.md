@@ -11,7 +11,7 @@ The LimaCharlie sensors support the following platforms:
 
 * Windows XP 32 bit and up.
 * MacOS 10.7 and up.
-* Linux all distributions.
+* Linux all distributions (including ARM and MIPS).
 * Alpine Linux 64 bit
 * Chrome and ChromeOS
 
@@ -107,13 +107,13 @@ Send [commands](sensor_commands.md) to sensors in real-time on demand, automatic
 * Upload and run arbitrary executables on hosts.
 * Execute arbitrary shell commands on hosts.
 
-### External Logs
+### Artifact Collection
 
-* Upload "external log" (non-LC data) to the LimaCharlie platform.
+* Upload artifacts (log files, forensic files etc) to the LimaCharlie platform.
 * Upload from a REST API, Command Line Interface or directly from a sensor.
 * Visualize logs in text or JSON formats.
-* Fetch original log files through API.
-* Retained for a full year.
+* Fetch original files through API.
+* Custom retention.
 
 #### Formats
 
@@ -122,6 +122,10 @@ Send [commands](sensor_commands.md) to sensors in real-time on demand, automatic
     * Syslog (text logs)
     * Packet Capture (PCAP)
     * Prefetch files
+    * PE files
+    * Generic JSON
+    * Full Memory Dumps
+    * Zeek logs
 
 #### Normalization
 
@@ -129,12 +133,12 @@ Send [commands](sensor_commands.md) to sensors in real-time on demand, automatic
 
 #### Detection & Response
 
-* Build Detection & Response rules that apply specifically to "external logs".
-* Detect behaviors or IoCs from any log type or forensic type files ingested.
+* Build Detection & Response rules that apply specifically to artifacts.
+* Detect behaviors or IoCs from any artifact type files ingested.
 
 #### IoC Searching
 
-* Indicators of Compromise (IoC) from "external logs" are extracted, indexed and searchable.
+* Indicators of Compromise (IoC) from artifacts are extracted, indexed and searchable.
 
 ## Management Features
 

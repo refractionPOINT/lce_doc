@@ -1319,14 +1319,14 @@ Over quota deployment events are produced when a sensor tries to connect but the
 }
 ```
 
-## Log Events
+## Artifact Events
 
-Events around activity in External Logs. Currently only used in
+Events around activity in Artifacts Collection. Currently only used in
 service notifications.
 
 ### ingest
 
-A new external log has been ingested.
+A new artifact has been ingested.
 
 ```
 {
@@ -1348,7 +1348,7 @@ A new external log has been ingested.
 
 ### export_complete
 
-An export of log data is completed and ready for download.
+An export of artifact data is completed and ready for download.
 
 ```
 {
