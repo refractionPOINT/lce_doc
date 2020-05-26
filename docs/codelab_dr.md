@@ -10,7 +10,7 @@ Detection & Response (DR) Rules are similar to Google Cloud Functions or AWS Lam
 They allow you to push DR rules to the LimaCharlie cloud where the rules will be applied
 in real-time to the data coming from the sensors.
 
-DR rules can also be applied to [External Logs](external_logs.md), but we will focus
+DR rules can also be applied to [Artifact Collection](external_logs.md), but we will focus
 on the simple case where it is applied to sensor events.
 
 For a full list of all rule operators and detailed documentation see the [Detection & Response](dr.md) section.

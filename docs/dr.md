@@ -48,7 +48,7 @@ This means that if you omit the `target` element from the Detection component, t
 to events coming from the LimaCharlie agents. Other targets are available however.
 
 * `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
-* `log`: applies to external logs submitted through the REST API or through the [log_get](sensor_commands.md#log_get) command of the agent.
+* `artifact`: applies to artifacts submitted through the REST API or through the [artifact_get](sensor_commands.md#artifact_get) command of the agent.
 * `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
 
 While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
@@ -66,7 +66,7 @@ When running D&R rules against Windows Event Logs (`target: log` and `log source
 the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
 processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
 
-This means you can safely set the [External Logs Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
+This means you can safely set the [Artifact Collection Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
 without risking producing the same alert multiple times.
 
 For most Windows Event Logs available, see `c:\windows\system32\winevt\logs\`.

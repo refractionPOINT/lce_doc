@@ -6,7 +6,7 @@
 The Dumper service provides the ability to do full memory dumping of Windows hosts..
 
 It supports a single action, which is to dump the memory of the host and automates the ingestion
-of the resulting dump and dump metadata to LimaCharlie's [External Logs](external_logs.md)
+of the resulting dump and dump metadata to LimaCharlie's [Artifact Collection](external_logs.md)
 artifact storage where it can be downloaded or analyzed.
 
 ### REST

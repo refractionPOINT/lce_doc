@@ -15,7 +15,7 @@ so instructions on confirming it is installed and running are found below.
 
 ## Connectivity
 The network connection required by the LimaCharlie sensor is very simple. It requires a single TCP connection over port
-443 to a specific domain, and optionally another destination for the [External Logs](external_logs.md) service.
+443 to a specific domain, and optionally another destination for the [Artifact Collection](external_logs.md) service.
 
 The specific domains are listed in the Sensor Downloads section of your organization's dashboard. They will vary depending
 on the datacenter you chose to create your organization in.
@@ -266,6 +266,8 @@ spec:
           volumeMounts:
             - mountPath: /rootfs
               name: all-host-fs
+            - mountPath: /netns
+              name: all-host-ns
           env:
             - name: HOST_FS
               value: /rootfs

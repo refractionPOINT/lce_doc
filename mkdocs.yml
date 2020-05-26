@@ -20,7 +20,7 @@ pages:
     - Detection & Response: dr.md
     - Add-ons: user_addons.md
     - Jobs: jobs.md
-    - External Logs: external_logs.md
+    - Artifact Collection: external_logs.md
     - Payloads: payloads.md
     - Events: events.md
     - ID Schemes: agentid.md
