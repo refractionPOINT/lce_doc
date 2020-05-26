@@ -266,6 +266,8 @@ spec:
           volumeMounts:
             - mountPath: /rootfs
               name: all-host-fs
+            - mountPath: /netns
+              name: all-host-ns
           env:
             - name: HOST_FS
               value: /rootfs
