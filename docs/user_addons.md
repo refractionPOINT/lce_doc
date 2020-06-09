@@ -92,3 +92,40 @@ When uploaded, the data for the lookup can be provided in three different ways:
 1. As an [Authenticated Resource Locator (ARL)](arl.md) (the prefered method)
 
 The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
+
+#### From MISP
+When creating an add-on from MISP content, LimaCharlie expects the data to be a JSON document
+to have the following structure:
+
+```json
+{
+  "Event": {
+    "uuid": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
+    "Attribute": [
+      {
+        "uuid": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce",
+        "value": "evil.com"
+      },
+      ...
+    ]
+  }
+}
+```
+
+The MISP event above once ingested in LC will be transformed to a Lookup like:
+
+```json
+{
+  "evil.com": {
+    "misp_event": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
+    "attribute": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce"
+  },
+  ...
+}
+```
+
+LimaCharlie understand the MISP format regarless of how it is ingested. That being
+said the classic way of ingesting it would be to ingest the MSIP Events use an [ARL](https://github.com/refractionPOINT/authenticated_resource_locator)
+on a MISP REST API with one of the supported ARL authentication types like `basic`.
+
+For example: `[https,misp.my.corp.com/events/1234,basic,myuser:mypassword]`.

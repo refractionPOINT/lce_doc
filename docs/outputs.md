@@ -142,10 +142,25 @@ is_no_header: "false"
 ```
 
 ### Webhook
-Output individually each event, detection, audit, deployment or log through a POST webhook.
+Output individually each event, detection, audit, deployment or artifact through a POST webhook.
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+
+Example:
+```
+dest_host: https://webhooks.corp.com/new_detection
+secret_key: this-is-my-secret-shared-key
+```
+
+### Webhook Bulk
+Output batches of events, detections, audits, deployments or artifacts through a POST webhook.
+
+* `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+* `sec_per_file`: the number of seconds after which a file is cut and uploaded.
+* `is_compression`: if set to "true", data will be gzipped before upload.
+* `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 
 Example:
 ```
