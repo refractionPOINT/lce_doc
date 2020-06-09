@@ -98,26 +98,30 @@ When creating an add-on from MISP content, LimaCharlie expects the data to be a 
 to have the following structure:
 
 ```json
-"Event": {
-  "uuid": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
-  "Attribute": [
-    {
-      "uuid": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce",
-      "value": "evil.com"
-    },
-    ...
-  ]
+{
+  "Event": {
+    "uuid": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
+    "Attribute": [
+      {
+        "uuid": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce",
+        "value": "evil.com"
+      },
+      ...
+    ]
+  }
 }
 ```
 
 The MISP event above once ingested in LC will be transformed to a Lookup like:
 
 ```json
-"evil.com": {
-  "misp_event": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
-  "attribute": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce"
-},
-...
+{
+  "evil.com": {
+    "misp_event": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
+    "attribute": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce"
+  },
+  ...
+}
 ```
 
 LimaCharlie understand the MISP format regarless of how it is ingested. That being
