@@ -129,3 +129,36 @@ said the classic way of ingesting it would be to ingest the MSIP Events use an [
 on a MISP REST API with one of the supported ARL authentication types like `basic`.
 
 For example: `[https,misp.my.corp.com/events/1234,basic,myuser:mypassword]`.
+
+#### Reference D&R Rules
+To put a Lookup "into effect", you need a [D&R rule](dr.md). The Lookup is a list of elements while
+the rule describes what you want to look for in that list.
+
+Below is a list of D&R rules describing how to lookup various common Indicators of Compromise:
+
+##### Hashes
+
+```yaml
+op: lookup
+event: CODE_IDENTITY
+path: event/HASH
+resource: 'lcr://lookup/my-hash-lookup'
+```
+
+##### Domain Names
+
+```yaml
+op: lookup
+event: DNS_REQUEST
+path: event/DOMAIN_NAME
+resource: 'lcr://lookup/my-dns-lookup'
+```
+
+##### IP Addresses
+
+```yaml
+op: lookup
+event: NETWORK_CONNECTIONS
+path: event/NETWORK_ACTIVITY/?/IP_ADDRESS
+resource: 'lcr://lookup/my-ip-lookup'
+```
