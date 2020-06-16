@@ -40,6 +40,7 @@ pages:
         - YARA: yara.md
         - Dumper: dumper.md
         - Reliable Tasking: reliable_tasking.md
+        - Zeek: zeek.md
     - ARLs: arl.md
     - Billing: billing.md
 extra_css: [extra.css]
