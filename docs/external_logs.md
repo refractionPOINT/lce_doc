@@ -46,6 +46,8 @@ received the command, and a response with a status code indicating whether the
 ingestion was successful (an error code of `200` (as in HTTP) indicates success).
 
 #### Using the Service
+
+##### Collection
 With the Artifact Collection Service enabled, a new section should be open in the web
 interface. It will allow you to manage the automatic collection of files from
 your fleet without manual input or configuration.
@@ -69,6 +71,36 @@ Bad example: `/var/*/syslog`
 Note that matching files are watched for changes. When a change is detected, the entire file is ingested. This means you usually want to target logs that get rolled over after a certain time.
 
 For example syslog is rolled from `syslog` to `syslog.1` after a day, you want to target `syslog.1` to avoid duplicating records from a file being appended to.
+
+##### Network Capture
+The service also offers a rule system to do network capture from the host. This
+feature is currently only available on Linux.
+
+To see the network interfaces available for capture, issue the `pcap_ifaces` command to the sensor.
+
+Each capture rule filters a set of sensor per platform and tag. The second part of the rule
+is the list of patterns to capture from. Each pattern defines a network interface to use
+and a [tcpdump-like](https://www.tcpdump.org/manpages/pcap-filter.7.html) filter expression to select traffic from that interface.
+
+The filter part of the capture pattern will automatically receive an additional "filter out" expression that removes
+traffic related to LimaCharlie itself (to avoid a feedback loop of traffic).
+
+For example, you could specify the filter:
+
+```
+tcp port 80
+```
+
+which would automatically be expanded for you as
+
+```
+tcp port 80 and not lc.aaa.limacharlie.io and not ...
+```
+
+These rules get synced with agents every 10 minutes. Once a capture on the agent reaches a certain
+threshold (about 30MB), the capture will get automatically sent to the LimaCharlie cloud with the
+retention specified in the rule. From there you can specify D&R rules to process further the pcap
+data automatically, like using the [Zeek](zeek.md) service.
 
 ### Using the CLI
 To simplify the task on ingesting via the REST API, you can use the LC CLI tool (`pip install limacharlie`).
