@@ -46,7 +46,7 @@ run in 1 of 2 modes:
   "action": "run_on",
   "artifact_id": "1111-2222-3333",
   "source": "4444-5555-6666",
-  "filter": "tcp port 80",
+  "filter": "any=tcp port 80",
   "start": 1592312707,
   "end": 1592322707,
   "retention": 30
