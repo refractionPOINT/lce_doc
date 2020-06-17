@@ -27,7 +27,7 @@ target: artifact_event
   name: zeek
   request:
     action: run_on
-    payload_id: <<routing/log_id>>
+    artifact_id: <<routing/log_id>>
     retention: 90
 ```
 
