@@ -40,6 +40,7 @@ pages:
         - YARA: yara.md
         - Dumper: dumper.md
         - Reliable Tasking: reliable_tasking.md
+        - Sensor Cull: sensor_cull.md
         - Zeek: zeek.md
     - ARLs: arl.md
     - Billing: billing.md
