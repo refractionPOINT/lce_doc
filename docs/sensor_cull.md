@@ -56,6 +56,9 @@ Do a cleanup right now.
 }
 ```
 
+Create a rule named "my new rule" that applies to all sensors with the "vip"
+tag and cleans them up when they haven't connected in 30 days.
+
 ### del_rule
 
 ```
