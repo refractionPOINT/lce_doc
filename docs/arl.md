@@ -7,14 +7,14 @@
 Many features in LimaCharlie require access to external
 resources, sometimes authenticated, provided by users.
 
-Authenticted Resource Locators (ARNs) describe a way to
+Authenticted Resource Locators (ARLs) describe a way to
 specify access to a remote resource, supporting many
 methods, and including auth data, and all that within
 a single string.
 
 ## Format
 
-The structure of an ARN is simple:
+The structure of an ARL is simple:
 
 With authentication:
 ```

@@ -49,6 +49,7 @@ to events coming from the LimaCharlie agents. Other targets are available howeve
 
 * `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
 * `artifact`: applies to artifacts submitted through the REST API or through the [artifact_get](sensor_commands.md#artifact_get) command of the agent.
+* `artifact_event`: applies to lifecycle around artifacts, like a new artifact being ingested.
 * `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
 
 While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
@@ -288,7 +289,8 @@ email domain.
 
 The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the
 maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings
-that represent the value(s) to compare to.
+that represent the value(s) to compare to. Note that although `string distance` supports the `value` to be
+a list, most other operators do not.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
