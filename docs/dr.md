@@ -858,7 +858,7 @@ Look for references to private URLs in proxy logs.
 ```yaml
 target: log
 op: contains
-path: /txt
+path: /text
 value: /corp/private/info
 ```
 

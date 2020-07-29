@@ -30,8 +30,9 @@ pages:
     - User Control: user_access.md
     - Error Codes: errors.md
     - Data Visualization: data_visualization.md
-    - Codelabs:
+    - Codelabs & Recipes:
         - D&R Rules: codelab_dr.md
+        - Zeek Alerting: recipe_zeek.md
     - Services:
         - Replay: replay.md
         - Responder: responder.md
