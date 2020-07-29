@@ -8,6 +8,7 @@ network capture, process those network captures with [Zeek/BRO](https://zeek.org
 apply simple [Detection & Response](dr.md) rules on the Zeek logs.
 
 At a high level, these will be the steps we'll take:
+
 1. Automate network capture on a Linux endpoint.
 1. Automate the processing through Zeek.
 1. Create D&R rules for the Zeek logs.
@@ -16,6 +17,7 @@ At a high level, these will be the steps we'll take:
 Network telemetry is ingested in LimaCharlie through the Artifact Collection system.
 
 Packet captures can be acquired in one of two ways:
+
 1. Using the Artifact Collection's [REST API or the SDK's CLI](external_logs.md).
 1. By configuring capture directly through a LimaCharlie endpoint.
 
@@ -26,6 +28,7 @@ In the LimaCharlie web app, go to the Artifact Collection section of your organi
 
 Towards the bottom of the page you'll find "PCAP Collection Rules". These rules define where
 and how to capture network traffic. Each rule has a few components:
+
 * Platforms: this where you select which platform this rule should apply to.
 * Tags: specifies that this rule should only apply to endpoints that have all these tags applied to them.
 * Retention: the number of days that the raw network captures should be retained by LimaCharlie.
@@ -34,6 +37,7 @@ and how to capture network traffic. Each rule has a few components:
   * Filter: this is the filter expression (tcpdump format) of the traffic to capture.
 
 For this recipe, we'll use the following rule:
+
 * Platform: Linux
 * Tags: ***leave empty***
 * Retention: `7`
