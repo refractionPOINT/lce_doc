@@ -13,6 +13,7 @@ pages:
     - Quick Start: lcc_quick_start.md
     - Installation Keys: manage_keys.md
     - Deploying Sensors: deploy_sensor.md
+    - Proxy Support: proxy.md
     - Outputs: outputs.md
     - API Keys: api_keys.md
     - Sensor Commands: sensor_commands.md
