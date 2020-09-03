@@ -107,6 +107,11 @@ sudo chmod +x ./lc_linux_installer.sh
 sudo ./lc_linux_installer.sh <PATH_TO_LC_SENSOR> <YOUR_INSTALLATION_KEY>
 ```
 
+#### Disabling Netlink
+By default the Linux sensor makes use of Netlink if it's availabe. In some rare configurations
+this auto-detection may be unwanted and Netlink usage can be disabled by setting the
+environment variable `DISABLE_NETLINK` to any value on the sensor process.
+
 #### System Requirements
 All versions of Debian and CentOS starting around Debian 5 should be supported. Due to the high diversity of the ecosystem
 it's also likely to be working on other distributions. If you need a specific platform contact us.
