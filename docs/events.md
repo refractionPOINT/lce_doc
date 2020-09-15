@@ -861,6 +861,9 @@ The following file patterns are considered "documents":
 * `.hta`
 * `.lnk`
 * `.xsl`
+* `.com`
+* `.png`
+* `.jpg`
 * `\windows\system32\`
 
 Platforms: Windows, MacOS
