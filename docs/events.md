@@ -861,13 +861,16 @@ The following file patterns are considered "documents":
 * `.hta`
 * `.lnk`
 * `.xsl`
+* `.com`
+* `.png`
+* `.jpg`
 * `\windows\system32\`
 
 Platforms: Windows, MacOS
 
 ```json
 {
-  "FILE_PATH": "C:\\Users\\dev\\Desktop\\New Text Document.txt",
+  "FILE_PATH": "C:\\Users\\dev\\Desktop\\evil.exe",
   "TIMESTAMP": 1468335816308,
   "HASH": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 }
