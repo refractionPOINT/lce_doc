@@ -57,13 +57,15 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 * All the basics: `is`, `and`, `or`, `exists`, `contains`, `starst with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
-* `log` target only: `log source`, `log type`
+* `artifact` target only: `artifact source`, `artifact type`
 
 In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
-path `/txt` as the value of a log line. The `log source` matches the log's source string, and the `log type` matches the log's type string.
+path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+
+For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
 #### Windows Event Logs
-When running D&R rules against Windows Event Logs (`target: log` and `log source: wel`), although the [External Logs Service](external_logs.md) may ingest
+When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest
 the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
 processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
 
