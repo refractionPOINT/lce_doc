@@ -576,7 +576,7 @@ rules:
 ```
 
 ##### yara
-Only accessible for the `target: log`. Scans the relevant original log file in the cloud using the Yara signature specified.
+Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
 The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<resource_type>/<resource_name>`. Currently
 the main source of Yara signatures are the [Yara Sources](yara.md#sources) specified in the [Yara Service](yara.md). If your Yara Source is
@@ -586,15 +586,15 @@ The `yara` operator scan the log file at most once. This means it can be used bo
 
 ```yaml
 op: yara
-target: log
+target: artifact
 resource: lcr://service/yara/my-yara-source
 ```
 
 Or it can also be used as part of a more complex D&R rule evaluation like this:
 
 ```yaml
-target: log
-log type: pe
+target: artifact
+artifact type: pe
 op: and
 rules:
   - op: yara
@@ -858,7 +858,7 @@ Look for references to private URLs in proxy logs.
 
 **Detection**
 ```yaml
-target: log
+target: artifact
 op: contains
 path: /text
 value: /corp/private/info
