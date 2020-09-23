@@ -40,3 +40,24 @@ off-the-shelf certificates can be leveraged by state sponsored (or advanced) att
 
 If your network uses SSL introspection, we recommend you setup an exception for the LimaCharlie cloud domain
 relevant to you. Get in touch with us and we can provide you with the necessary information.
+
+Sensors since version 4.21.2 also generate a local log file that can be used to help pinpoint the level at which
+the connectivity fails. This log file is located:
+
+* Windows: c:\windows\system32\hcp.log
+* MacOS: /usr/local/hcp.log
+* Linux: ./hcp.log
+
+This log provides a simple line for each basic step of connectivity to the cloud. It only logs the first
+connection attempted to the cloud and rolls over every time the sensor starts. A successful connection
+should look like:
+
+```
+hcp launched
+configs applied
+conn started
+connecting
+ssl connected
+headers sent
+channel up
+```
