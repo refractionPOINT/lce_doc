@@ -1,7 +1,5 @@
 # Authenticated Resource Locator
 
-[TOC]
-
 ## Overview
 
 Many features in LimaCharlie require access to external

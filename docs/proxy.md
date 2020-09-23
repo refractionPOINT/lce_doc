@@ -1,7 +1,5 @@
 # Proxy Support
 
-[TOC]
-
 ## General
 The LimaCharlie sensor supports unauthenticated proxy tunneling through [HTTP CONNECT](https://en.wikipedia.org/wiki/HTTP_tunnel).
 

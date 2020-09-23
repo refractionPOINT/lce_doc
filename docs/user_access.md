@@ -1,7 +1,5 @@
 # User Access
 
-[TOC]
-
 To control who has access to an organization, and what they have access to, go
 to the "Users" section of the web UI.
 

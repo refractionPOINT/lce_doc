@@ -1,7 +1,5 @@
 # Data Visualization
 
-[TOC]
-
 The Data Visualization page allows users to search for a variety of data types across the entire fleet for up to a year, as well as a detailed pull of telemetry from any given endpoint for the given time range.
 
 ## Data Types

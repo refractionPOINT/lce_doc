@@ -2,8 +2,6 @@
 
 # New Cluster
 
-[TOC]
-
 Some common terms used:
 * Node: an instance of the appliance running as a virtual machine.
 * Cluster: a collection of Nodes operating as a single unit.

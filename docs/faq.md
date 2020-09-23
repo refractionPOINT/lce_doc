@@ -1,6 +1,4 @@
 # FAQ
-  
-[TOC]
 
 ### Why do I get Unauthorized errors from the REST API?
 * Make sure the API endpoint you're trying to reach is enabled

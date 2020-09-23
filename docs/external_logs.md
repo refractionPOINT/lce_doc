@@ -1,7 +1,5 @@
 # Artifact Collection
 
-[TOC]
-
 The Artifact Collection system allows you to ingest artifact types like:
 
 * Plain text logs (syslog for example)

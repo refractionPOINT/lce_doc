@@ -1,7 +1,5 @@
 # Detection and Response Rules
 
-[TOC]
-
 Detection & Response rules are designed to allow you to push out a detection rule and with a custom action in record time.
 Think of them like AWS Lambda or Google Cloud Functions. They can be added and removed with single operations
 and they become immediately available/running as they are set.

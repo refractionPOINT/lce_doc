@@ -1,7 +1,5 @@
 # Zeek
 
-[TOC]
-
 ## Overview
 The Zeek service allows you to run [Zeek](https://zeek.org/) on PCAP files in the
 [Artifact Collection](external_logs.md) system. The resulting log files from Zeek

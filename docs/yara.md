@@ -1,7 +1,5 @@
 # YARA
 
-[TOC]
-
 ## Overview
 The YARA service is designed to help you with all aspects of YARA scanning. It takes what is normally a manual piecewise process, provides a framework and automates it.
 

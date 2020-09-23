@@ -1,7 +1,5 @@
 # Jobs
 
-[TOC]
-
 ## Overview
 The Job system allows for the automation of complex tasks. Often comprised of expert-driven algorithm, jobs are discrete units of work.
 

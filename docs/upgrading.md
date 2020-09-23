@@ -1,7 +1,5 @@
 # Upgrading Sensors
 
-[TOC]
-
 Sensors are never upgraded without your consent. Upgrading sensors does not require the manual re-installation via installers.
 
 LimaCharlie indicates to you when a newer version is available for upgrade on the Web Dashboard and Sensor Downloads page.

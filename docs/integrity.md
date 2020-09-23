@@ -1,7 +1,5 @@
 # Integrity
 
-[TOC]
-
 ## Overview
 The integrity service helps you manage all aspects of File and Registry integrity monitoring.
 

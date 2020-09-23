@@ -1,7 +1,5 @@
 # Replay
 
-[TOC]
-
 ## Overview
 Replay allows you to run [Detection & Response (DR) rules](dr.md) against historical traffic.
 This can be done in a few combinations of sources:

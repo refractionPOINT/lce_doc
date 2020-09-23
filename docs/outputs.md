@@ -1,7 +1,5 @@
 # Output Modules
 
-[TOC]
-
 ## Streams
 
 When creating a new Output, you chose a Stream. Streams determine the type of data you want to flow through the Output.

@@ -1,7 +1,5 @@
 # Dumper
 
-[TOC]
-
 ## Overview
 The Dumper service provides the ability to do full memory dumping of Windows hosts..
 

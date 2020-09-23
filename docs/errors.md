@@ -1,7 +1,5 @@
 # Errors
 
-[TOC]
-
 The following are error codes you may receive through some sensor functionality:
 
 ```

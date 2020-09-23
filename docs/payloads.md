@@ -1,7 +1,5 @@
 # Payloads
 
-[TOC]
-
 ## Overview
 Payloads are executables that can be delivered and executed through LimaCharlie's sensor.
 

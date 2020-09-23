@@ -1,8 +1,5 @@
 # Feature Overview
 
-[TOC]
-
-
 ## Security Features
 
 ### Sensor Platforms

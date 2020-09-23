@@ -1,7 +1,5 @@
 # Billing
 
-[TOC]
-
 ## Overview
 Billing in LimaCharlie is done on monthly cycles and per-Organization (multi-tenant).
 

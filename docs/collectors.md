@@ -2,8 +2,6 @@
 
 # Collectors
 
-[TOC]
-
 Sensor capabilities are grouped by components called Collectors. Each Collector will generally provide a single or small suite
 of capabilities. Collectors can be enabled and disabled individually through the use of [Profiles](profiles.md). All collectors
 are not necessarily available on all platforms.

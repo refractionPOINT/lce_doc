@@ -1,7 +1,5 @@
 # LimaCharlie Cloud Quick Start
 
-[TOC]
-
 ## Logging in
 To access LimaCharlie.io, you will first need to create an account. This account can be attached to a specific
 email address (which will require you to verify the email), or through a Google account (easiest by far).

@@ -1,7 +1,5 @@
 # Reliable Tasking
 
-[TOC]
-
 ## Overview
 The Reliable Tasking service enables you to task a sensor (or set of sensors)
 that are currently offline. The service will automatically send the tasks to

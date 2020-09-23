@@ -1,7 +1,5 @@
 # Managing Installation Keys
 
-[TOC]
-
 Installation keys are the bits of text that you give to new sensors so that they may enroll properly in the organization you want.
 
 ## Components of an Installation Key

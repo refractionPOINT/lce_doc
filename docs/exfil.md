@@ -1,7 +1,5 @@
 # Exfil
 
-[TOC]
-
 ## Overview
 By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes
 events like `NEW_PROCESS`, `DNS_REQUEST` etc.

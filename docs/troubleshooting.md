@@ -1,7 +1,5 @@
 # Troubleshooting
 
-[TOC]
-
 ## Sensor not showing as online.
 
 ### Determining Online Status

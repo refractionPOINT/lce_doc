@@ -1,7 +1,5 @@
 # Responder
 
-[TOC]
-
 ## Overview
 The Responder service is able to perform various incident response tasks for you.
 

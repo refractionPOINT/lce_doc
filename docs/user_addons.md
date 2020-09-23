@@ -1,7 +1,5 @@
 # User Add-ons
 
-[TOC]
-
 ## Overview
 In LimaCharlie.io, the Add-ons marketplace is a place where you users can subscribe
 to various capabilities as provided by other users.

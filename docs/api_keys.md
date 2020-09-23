@@ -1,7 +1,5 @@
 # API Keys
 
-[TOC]
-
 LimaCharlie Cloud has a concept of API keys. Those are secret keys that can be created and named which can then in turn
 be used to retrieve a JWT that can be used with the LC REST Api at https://api.limacharlie.io.
 

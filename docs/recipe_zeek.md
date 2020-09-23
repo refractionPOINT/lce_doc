@@ -1,7 +1,5 @@
 # Recipe - Zeek
 
-[TOC]
-
 ## Overview
 This recipe will show you how to use various features of LimaCharlie in order to do
 network capture, process those network captures with [Zeek/BRO](https://zeek.org/) and

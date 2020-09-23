@@ -1,7 +1,5 @@
 # Sensor Cull
 
-[TOC]
-
 ## Overview
 The `sensor-cull` service performs continuous cleaning of old sensors that have not
 connected to your organization in a number of days.
