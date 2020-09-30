@@ -1,0 +1,3 @@
+steps:
+  - name: gcr.io/legion-212720/readmeio
+    args: ['docs', './docs', '--version=${TAG_NAME}', '--key', '${_KEY}']
