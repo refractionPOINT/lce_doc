@@ -29,7 +29,7 @@
         "items": [{
             "type": "item",
             "title": "Endpoints",
-            "uri": "/api/swagger.json"
+            "uri": "/api/"
         }]
       },
       {
