@@ -193,6 +193,11 @@
             "uri": "docs/zeek.md"
           }
         ]
+      },
+      {
+          "type": "item",
+          "title": "REST API",
+          "uri": "/api/swagger.json"
       }
     ]
   }
