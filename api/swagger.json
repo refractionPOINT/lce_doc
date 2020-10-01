@@ -39,6 +39,18 @@
   },{
     "name": "exports",
     "description": "Operations related to the exporting of data."
+  },{
+    "name": "false_positives",
+    "description": "Operations related to the management of False Positive rules."
+  },{
+    "name": "installationkeys",
+    "description": "Operations related to the management of Installation Keys."
+  },{
+    "name": "artifacts",
+    "description": "Operations related to the management of Artifacts."
+  },{
+    "name": "api_keys",
+    "description": "Operations related to the management of API Keys."
   }],
   "info": {
     "termsOfService": "https://limacharlie.io/tos",
@@ -2409,7 +2421,7 @@
         "operationId": "getArtifactList",
         "tags": [
           "insight",
-          "logs"
+          "artifacts"
         ],
         "parameters": [
           {
@@ -2462,7 +2474,7 @@
         "operationId": "getArtifactInfo",
         "tags": [
           "insight",
-          "logs"
+          "artifacts"
         ],
         "parameters": [
           {
@@ -2519,7 +2531,7 @@
         "operationId": "getOriginalArtifact",
         "tags": [
           "insight",
-          "logs"
+          "artifacts"
         ],
         "parameters": [
           {
@@ -2633,7 +2645,7 @@
         "description": "Send a request to a Service."
       }
     },
-    "/service/{oid}/": {
+    "/service/{oid}": {
       "get": {
         "operationId": "getAvailableServices",
         "tags": [
