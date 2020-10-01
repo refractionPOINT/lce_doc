@@ -1,0 +1,198 @@
+{
+    "items": [
+      {
+        "type": "divider",
+        "title": "Overview"
+      },
+      {
+        "type": "item",
+        "title": "Home",
+        "uri": "docs/index.md"
+      },
+      {
+        "type": "item",
+        "title": "Features",
+        "uri": "docs/features.md"
+      },
+      {
+        "type": "item",
+        "title": "Quick Start",
+        "uri": "docs/lcc_quick_start.md"
+      },
+      {
+        "type": "divider",
+        "title": "Reference"
+      },
+      {
+        "type": "item",
+        "title": "Sensor Commands",
+        "uri": "docs/sensor_commands.md"
+      },
+      {
+        "type": "item",
+        "title": "Detection & Response",
+        "uri": "docs/dr.md"
+      },
+      {
+        "type": "item",
+        "title": "Events",
+        "uri": "docs/events.md"
+      },
+      {
+        "type": "item",
+        "title": "ID Schemes",
+        "uri": "docs/agentid.md"
+      },
+      {
+        "type": "item",
+        "title": "FAQ",
+        "uri": "docs/faq.md"
+      },
+      {
+        "type": "item",
+        "title": "Error Codes",
+        "uri": "docs/errors.md"
+      },
+      {
+        "type": "divider",
+        "title": "Operations"
+      },
+      {
+        "type": "item",
+        "title": "Installation Keys",
+        "uri": "docs/manage_keys.md"
+      },
+      {
+        "type": "item",
+        "title": "Deploying Sensors",
+        "uri": "docs/deploy_sensor.md"
+      },
+      {
+        "type": "item",
+        "title": "Proxy Support",
+        "uri": "docs/proxy.md"
+      },
+      {
+        "type": "item",
+        "title": "Outputs",
+        "uri": "docs/outputs.md"
+      },
+      {
+        "type": "item",
+        "title": "API Keys",
+        "uri": "docs/api_keys.md"
+      },
+      {
+        "type": "item",
+        "title": "Tagging",
+        "uri": "docs/tagging.md"
+      },
+      {
+        "type": "item",
+        "title": "Add-ons",
+        "uri": "docs/user_addons.md"
+      },
+      {
+        "type": "item",
+        "title": "Jobs",
+        "uri": "docs/jobs.md"
+      },
+      {
+        "type": "item",
+        "title": "Artifact Collection",
+        "uri": "docs/external_logs.md"
+      },
+      {
+        "type": "item",
+        "title": "Payloads",
+        "uri": "docs/payloads.md"
+      },
+      {
+        "type": "item",
+        "title": "Upgrading",
+        "uri": "docs/upgrading.md"
+      },
+      {
+        "type": "item",
+        "title": "User Control",
+        "uri": "docs/user_access.md"
+      },
+      {
+        "type": "item",
+        "title": "Data Visualization",
+        "uri": "docs/data_visualization.md"
+      },
+      {
+        "type": "item",
+        "title": "Troubleshooting",
+        "uri": "docs/troubleshooting.md"
+      },
+      {
+        "type": "group",
+        "title": "Codelabs & Recipes",
+        "items": [
+          {
+            "type": "item",
+            "title": "D&R Rules",
+            "uri": "docs/codelab_dr.md"
+          },
+          {
+            "type": "item",
+            "title": "Zeek Alerting",
+            "uri": "docs/recipe_zeek.md"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "title": "Services",
+        "items": [
+          {
+            "type": "item",
+            "title": "Replay",
+            "uri": "docs/replay.md"
+          },
+          {
+            "type": "item",
+            "title": "Responder",
+            "uri": "docs/responder.md"
+          },
+          {
+            "type": "item",
+            "title": "Exfil",
+            "uri": "docs/exfil.md"
+          },
+          {
+            "type": "item",
+            "title": "File/Reg Integrity",
+            "uri": "docs/integrity.md"
+          },
+          {
+            "type": "item",
+            "title": "Yara",
+            "uri": "docs/yara.md"
+          },
+          {
+            "type": "item",
+            "title": "Memory Dumper",
+            "uri": "docs/dumper.md"
+          },
+          {
+            "type": "item",
+            "title": "Reliable Tasking",
+            "uri": "docs/reliable_tasking.md"
+          },
+          {
+            "type": "item",
+            "title": "Sensor Cull",
+            "uri": "docs/sensor_cull.md"
+          },
+          {
+            "type": "item",
+            "title": "Zeek",
+            "uri": "docs/zeek.md"
+          }
+        ]
+      }
+    ]
+  }
