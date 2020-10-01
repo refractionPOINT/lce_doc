@@ -25,6 +25,11 @@
       },
       {
         "type": "item",
+        "title": "API",
+        "uri": "api/swagger.json"
+      },
+      {
+        "type": "item",
         "title": "Sensor Commands",
         "uri": "docs/sensor_commands.md"
       },
