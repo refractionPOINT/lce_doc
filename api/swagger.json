@@ -2,67 +2,67 @@
   "openapi": "3.0.0",
   "x-explorer-enabled": true,
   "tags": [{
-    "name": "orgs",
+    "name": "Organizations",
     "description": "Operations related to the management of Organizations."
   },{
-    "name": "sensors",
+    "name": "Sensors",
     "description": "Operations related to the interaction with Sensors."
   },{
-    "name": "tags",
+    "name": "Tags",
     "description": "Operations related to the tagging of sensors."
   },{
-    "name": "rules",
+    "name": "Rules",
     "description": "Operations related to the Detection & Response rules."
   },{
-    "name": "outputs",
+    "name": "Outputs",
     "description": "Operations related to the forwarding of data."
   },{
-    "name": "general",
+    "name": "General",
     "description": "Misc. Operations."
   },{
-    "name": "insight",
+    "name": "Retention",
     "description": "Operations related to data retention, visualization and searching."
   },{
-    "name": "service",
+    "name": "Service",
     "description": "Operations related to interaction with LimaCharlie Services."
   },{
-    "name": "users",
+    "name": "Users",
     "description": "Operations related to user and permissions management."
   },{
-    "name": "resources",
+    "name": "Resources",
     "description": "Operations related to subscription and updating of Resources."
   },{
-    "name": "payload",
+    "name": "Payload",
     "description": "Operations related to the management of Payloads."
   },{
-    "name": "jobs",
+    "name": "Jobs",
     "description": "Operations related to the management of Jobs."
   },{
-    "name": "exports",
+    "name": "Exports",
     "description": "Operations related to the exporting of data."
   },{
-    "name": "false_positives",
+    "name": "False Positives",
     "description": "Operations related to the management of False Positive rules."
   },{
-    "name": "installationkeys",
+    "name": "Installation Keys",
     "description": "Operations related to the management of Installation Keys."
   },{
-    "name": "artifacts",
+    "name": "Artifacts",
     "description": "Operations related to the management of Artifacts."
   },{
-    "name": "api_keys",
+    "name": "Api Keys",
     "description": "Operations related to the management of API Keys."
   },{
-    "name": "modules",
+    "name": "Modules",
     "description": "Operations related to the management of sensor versions deployed."
   },{
-    "name": "audit",
+    "name": "Audit",
     "description": "Operations related to the Audit logs."
   },{
-    "name": "errors",
+    "name": "Errors",
     "description": "Operations related to the Error logs."
   },{
-    "name": "billing",
+    "name": "Billing",
     "description": "Operations related to the management of Billing."
   }],
   "info": {
@@ -83,7 +83,7 @@
       "get": {
         "operationId": "getOrgInfo",
         "tags": [
-          "orgs"
+          "Organizations"
         ],
         "parameters": [
           {
@@ -111,7 +111,7 @@
       "get": {
         "operationId": "getOrgURLs",
         "tags": [
-          "orgs"
+          "Organizations"
         ],
         "parameters": [
           {
@@ -139,7 +139,7 @@
       "get": {
         "operationId": "getSensorList",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -167,7 +167,7 @@
       "get": {
         "operationId": "getOnlineSensors",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -193,7 +193,7 @@
       "post": {
         "operationId": "getOnlineSensorsInList",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -232,7 +232,7 @@
       "get": {
         "operationId": "getSensorInfo",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -258,7 +258,7 @@
       "post": {
         "operationId": "taskSensor",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -303,7 +303,7 @@
       "delete": {
         "operationId": "deleteSensor",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -331,8 +331,8 @@
       "get": {
         "operationId": "getSensorTags",
         "tags": [
-          "sensors",
-          "tags"
+          "Sensors",
+          "Tags"
         ],
         "parameters": [
           {
@@ -358,8 +358,8 @@
       "post": {
         "operationId": "addSensorTag",
         "tags": [
-          "sensors",
-          "tags"
+          "Sensors",
+          "Tags"
         ],
         "parameters": [
           {
@@ -404,8 +404,8 @@
       "delete": {
         "operationId": "removeSensorTag",
         "tags": [
-          "sensors",
-          "tags"
+          "Sensors",
+          "Tags"
         ],
         "parameters": [
           {
@@ -449,7 +449,7 @@
       "get": {
         "operationId": "getSensorIsolation",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -475,7 +475,7 @@
       "post": {
         "operationId": "isolateSensor",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -501,7 +501,7 @@
       "delete": {
         "operationId": "rejoinSensor",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -529,7 +529,7 @@
       "get": {
         "operationId": "findSensorByHostname",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -565,7 +565,7 @@
       "get": {
         "operationId": "findSensorWithIP",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -617,7 +617,7 @@
       "get": {
         "operationId": "getAvailableSensorTasks",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [],
         "responses": {
@@ -635,7 +635,7 @@
       "get": {
         "operationId": "getTaskUsage",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [
           {
@@ -663,7 +663,7 @@
       "get": {
         "operationId": "findSensorsWithTag",
         "tags": [
-          "sensors",
+          "Sensors",
           "tags"
         ],
         "parameters": [
@@ -701,7 +701,7 @@
       "get": {
         "operationId": "getOrgRules",
         "tags": [
-          "rules"
+          "Rules"
         ],
         "parameters": [
           {
@@ -735,7 +735,7 @@
       "post": {
         "operationId": "setOrgRule",
         "tags": [
-          "rules"
+          "Rules"
         ],
         "parameters": [
           {
@@ -809,7 +809,7 @@
       "delete": {
         "operationId": "removeOrgRule",
         "tags": [
-          "rules"
+          "Rules"
         ],
         "parameters": [
           {
@@ -853,7 +853,7 @@
       "get": {
         "operationId": "getOrgFalsePositiveRule",
         "tags": [
-          "false_positives"
+          "False Positives"
         ],
         "parameters": [
           {
@@ -879,7 +879,7 @@
       "post": {
         "operationId": "setOrgFalsePositiveRule",
         "tags": [
-          "false_positives"
+          "False Positives"
         ],
         "parameters": [
           {
@@ -929,7 +929,7 @@
       "delete": {
         "operationId": "removeOrgFalsePositiveRule",
         "tags": [
-          "false_positives"
+          "False Positives"
         ],
         "parameters": [
           {
@@ -965,7 +965,7 @@
       "post": {
         "operationId": "upgradeOrg",
         "tags": [
-          "modules"
+          "Modules"
         ],
         "parameters": [
           {
@@ -1001,7 +1001,7 @@
       "get": {
         "operationId": "getInstallationKeys",
         "tags": [
-          "installationkeys"
+          "Installation Keys"
         ],
         "parameters": [
           {
@@ -1027,7 +1027,7 @@
       "post": {
         "operationId": "addInstallationKey",
         "tags": [
-          "installationkeys"
+          "Installation Keys"
         ],
         "parameters": [
           {
@@ -1072,7 +1072,7 @@
       "delete": {
         "operationId": "removeInstallationKey",
         "tags": [
-          "installationkeys"
+          "Installation Keys"
         ],
         "parameters": [
           {
@@ -1108,7 +1108,7 @@
       "get": {
         "operationId": "getOutputs",
         "tags": [
-          "outputs"
+          "Outputs"
         ],
         "parameters": [
           {
@@ -1134,7 +1134,7 @@
       "post": {
         "operationId": "setOutput",
         "tags": [
-          "outputs"
+          "Outputs"
         ],
         "parameters": [
           {
@@ -1400,7 +1400,7 @@
       "delete": {
         "operationId": "removeOutput",
         "tags": [
-          "outputs"
+          "Outputs"
         ],
         "parameters": [
           {
@@ -1436,7 +1436,7 @@
       "get": {
         "operationId": "getOutputSamples",
         "tags": [
-          "outputs"
+          "Outputs"
         ],
         "parameters": [
           {
@@ -1472,7 +1472,7 @@
       "get": {
         "operationId": "getAuditLog",
         "tags": [
-          "audit"
+          "Audit"
         ],
         "parameters": [
           {
@@ -1500,7 +1500,7 @@
       "get": {
         "operationId": "getErrorLog",
         "tags": [
-          "errors"
+          "Errors"
         ],
         "parameters": [
           {
@@ -1528,7 +1528,7 @@
       "get": {
         "operationId": "autocompleteTask",
         "tags": [
-          "sensors"
+          "Sensors"
         ],
         "parameters": [],
         "responses": {
@@ -1546,7 +1546,7 @@
       "get": {
         "operationId": "getAvailableEvents",
         "tags": [
-          "general"
+          "General"
         ],
         "parameters": [],
         "responses": {
@@ -1564,7 +1564,7 @@
       "get": {
         "operationId": "getInsightStatus",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1592,7 +1592,7 @@
       "get": {
         "operationId": "getHistoricEvents",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1685,7 +1685,7 @@
       "get": {
         "operationId": "getHistoricEventOverview",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1738,7 +1738,7 @@
       "get": {
         "operationId": "getDetections",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1812,7 +1812,7 @@
       "delete": {
         "operationId": "deleteAllDetections",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1840,7 +1840,7 @@
       "get": {
         "operationId": "getObjectInformation",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1911,7 +1911,7 @@
       "get": {
         "operationId": "getSpecificObjects",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -1955,7 +1955,7 @@
       "post": {
         "operationId": "getObjectTimeline",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2039,7 +2039,7 @@
       "post": {
         "operationId": "getObjectSummary",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2117,7 +2117,7 @@
       "get": {
         "operationId": "getTrafficBreakdown",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2161,7 +2161,7 @@
       "get": {
         "operationId": "getTrafficStats",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2205,7 +2205,7 @@
       "get": {
         "operationId": "getDetectionStats",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2249,7 +2249,7 @@
       "get": {
         "operationId": "getDetectionBreakdown",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2293,7 +2293,7 @@
       "get": {
         "operationId": "getOnlineStats",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2337,7 +2337,7 @@
       "get": {
         "operationId": "getIngestionKeys",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2363,7 +2363,7 @@
       "post": {
         "operationId": "addIngestionKey",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2397,7 +2397,7 @@
       "delete": {
         "operationId": "removeIngestionKey",
         "tags": [
-          "insight"
+          "Retention"
         ],
         "parameters": [
           {
@@ -2433,8 +2433,8 @@
       "get": {
         "operationId": "getArtifactList",
         "tags": [
-          "insight",
-          "artifacts"
+          "Retention",
+          "Artifacts"
         ],
         "parameters": [
           {
@@ -2486,8 +2486,8 @@
       "get": {
         "operationId": "getArtifactInfo",
         "tags": [
-          "insight",
-          "artifacts"
+          "Retention",
+          "Artifacts"
         ],
         "parameters": [
           {
@@ -2543,8 +2543,8 @@
       "get": {
         "operationId": "getOriginalArtifact",
         "tags": [
-          "insight",
-          "artifacts"
+          "Retention",
+          "Artifacts"
         ],
         "parameters": [
           {
@@ -2581,7 +2581,7 @@
       "get": {
         "operationId": "getOrgUsageStats",
         "tags": [
-          "orgs"
+          "Organizations"
         ],
         "parameters": [
           {
@@ -2609,7 +2609,7 @@
       "post": {
         "operationId": "makeServiceRequest",
         "tags": [
-          "service"
+          "Service"
         ],
         "parameters": [
           {
@@ -2662,7 +2662,7 @@
       "get": {
         "operationId": "getAvailableServices",
         "tags": [
-          "service"
+          "Service"
         ],
         "parameters": [
           {
@@ -2690,7 +2690,7 @@
       "get": {
         "operationId": "getServiceUsage",
         "tags": [
-          "service"
+          "Service"
         ],
         "parameters": [
           {
@@ -2718,7 +2718,7 @@
       "get": {
         "operationId": "getOrgUsers",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -2744,7 +2744,7 @@
       "post": {
         "operationId": "addOrgUser",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -2778,7 +2778,7 @@
       "delete": {
         "operationId": "removeOrgUser",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -2814,7 +2814,7 @@
       "get": {
         "operationId": "getOrgApiKeys",
         "tags": [
-          "api_keys"
+          "Api Keys"
         ],
         "parameters": [
           {
@@ -2840,7 +2840,7 @@
       "post": {
         "operationId": "addOrgApiKey",
         "tags": [
-          "api_keys"
+          "Api Keys"
         ],
         "parameters": [
           {
@@ -2882,7 +2882,7 @@
       "delete": {
         "operationId": "removeOrgApiKey",
         "tags": [
-          "api_keys"
+          "Api Keys"
         ],
         "parameters": [
           {
@@ -2918,7 +2918,7 @@
       "get": {
         "operationId": "getUsersAndPermissions",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -2944,7 +2944,7 @@
       "post": {
         "operationId": "addUserPermission",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -2986,7 +2986,7 @@
       "delete": {
         "operationId": "removeUserPermission",
         "tags": [
-          "users"
+          "Users"
         ],
         "parameters": [
           {
@@ -3030,7 +3030,7 @@
       "get": {
         "operationId": "getOrgResources",
         "tags": [
-          "resources"
+          "Resources"
         ],
         "parameters": [
           {
@@ -3056,7 +3056,7 @@
       "post": {
         "operationId": "registerOrgToResource",
         "tags": [
-          "resources"
+          "Resources"
         ],
         "parameters": [
           {
@@ -3098,7 +3098,7 @@
       "delete": {
         "operationId": "unregisterOrgFromResource",
         "tags": [
-          "resources"
+          "Resources"
         ],
         "parameters": [
           {
@@ -3142,7 +3142,7 @@
       "post": {
         "operationId": "setOrgQuota",
         "tags": [
-          "billing"
+          "Billing"
         ],
         "parameters": [
           {
@@ -3178,7 +3178,7 @@
       "get": {
         "operationId": "getPayload",
         "tags": [
-          "payload"
+          "Payload"
         ],
         "parameters": [
           {
@@ -3213,7 +3213,7 @@
       "post": {
         "operationId": "addPayload",
         "tags": [
-          "payload"
+          "Payload"
         ],
         "parameters": [
           {
@@ -3248,7 +3248,7 @@
       "delete": {
         "operationId": "removePayload",
         "tags": [
-          "payload"
+          "Payload"
         ],
         "parameters": [
           {
@@ -3285,7 +3285,7 @@
       "get": {
         "operationId": "listPayloads",
         "tags": [
-          "payload"
+          "Payload"
         ],
         "parameters": [
           {
@@ -3313,7 +3313,7 @@
       "get": {
         "operationId": "getJobs",
         "tags": [
-          "jobs"
+          "Jobs"
         ],
         "parameters": [
           {
@@ -3389,7 +3389,7 @@
       "get": {
         "operationId": "getJobInfo",
         "tags": [
-          "jobs"
+          "Jobs"
         ],
         "parameters": [
           {
@@ -3440,7 +3440,7 @@
       "delete": {
         "operationId": "removeJob",
         "tags": [
-          "jobs"
+          "Jobs"
         ],
         "parameters": [
           {
@@ -3477,8 +3477,8 @@
       "post": {
         "operationId": "exportSensorList",
         "tags": [
-          "exports",
-          "sensors"
+          "Exports",
+          "Sensors"
         ],
         "parameters": [
           {
