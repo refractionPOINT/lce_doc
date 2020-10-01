@@ -195,8 +195,12 @@
         ]
       },
       {
+          "type": "divider",
+          "title": "REST API"
+      },
+      {
           "type": "item",
-          "title": "REST API",
+          "title": "Overview",
           "uri": "/api/swagger.json"
       }
     ]
