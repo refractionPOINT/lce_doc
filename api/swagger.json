@@ -51,6 +51,18 @@
   },{
     "name": "api_keys",
     "description": "Operations related to the management of API Keys."
+  },{
+    "name": "modules",
+    "description": "Operations related to the management of sensor versions deployed."
+  },{
+    "name": "audit",
+    "description": "Operations related to the Audit logs."
+  },{
+    "name": "errors",
+    "description": "Operations related to the Error logs."
+  },{
+    "name": "billing",
+    "description": "Operations related to the management of Billing."
   }],
   "info": {
     "termsOfService": "https://limacharlie.io/tos",
