@@ -1,5 +1,9 @@
 {
   "openapi": "3.0.0",
+  "tags": [{
+    "name": "LimaCharlie.io API",
+    "description": "REST API for the LimaCharlie.io platform."
+  }],
   "info": {
     "termsOfService": "https://limacharlie.io/tos",
     "contact": {
@@ -38,7 +42,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get information about the organization."
+        "description": "Get information about the organization."
       },
       "post": {
         "tags": [
@@ -71,7 +75,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Set information about the organization."
+        "description": "Set information about the organization."
       },
       "delete": {
         "tags": [
@@ -96,7 +100,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete the organization."
+        "description": "Delete the organization."
       }
     },
     "/orgs/{oid}/url": {
@@ -123,7 +127,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the various access URLs used by resources related to the organization."
+        "description": "Get the various access URLs used by resources related to the organization."
       }
     },
     "/sensors/{oid}": {
@@ -150,7 +154,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the list of sensors belonging to the organization."
+        "description": "Get the list of sensors belonging to the organization."
       }
     },
     "/online/{oid}": {
@@ -177,7 +181,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the number of sensors online belonging to the organization."
+        "description": "Get the number of sensors online belonging to the organization."
       },
       "post": {
         "tags": [
@@ -213,7 +217,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the online status of multiple sensors."
+        "description": "Get the online status of multiple sensors."
       }
     },
     "/{sid}": {
@@ -240,7 +244,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the sensor information and online status."
+        "description": "Get the sensor information and online status."
       },
       "post": {
         "tags": [
@@ -284,7 +288,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Send a task to a sensor."
+        "description": "Send a task to a sensor."
       },
       "delete": {
         "tags": [
@@ -309,7 +313,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete a sensor."
+        "description": "Delete a sensor."
       }
     },
     "/{sid}/tags": {
@@ -337,7 +341,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the sensor tags."
+        "description": "Get the sensor tags."
       },
       "post": {
         "tags": [
@@ -382,7 +386,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add tags to the sensor."
+        "description": "Add tags to the sensor."
       },
       "delete": {
         "tags": [
@@ -424,7 +428,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove a tag from the sensor."
+        "description": "Remove a tag from the sensor."
       }
     },
     "/{sid}/isolation": {
@@ -451,7 +455,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the sensor isolation status."
+        "description": "Get the sensor isolation status."
       },
       "post": {
         "tags": [
@@ -476,7 +480,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Set the sensor in network isolation."
+        "description": "Set the sensor in network isolation."
       },
       "delete": {
         "tags": [
@@ -501,7 +505,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove the sensor from network isolation."
+        "description": "Remove the sensor from network isolation."
       }
     },
     "/hostnames/{oid}": {
@@ -536,7 +540,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get sensors with hostnames matching given expression."
+        "description": "Get sensors with hostnames matching given expression."
       }
     },
     "/ips/{oid}": {
@@ -587,7 +591,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get sensors using matching external or internal IP for a time range."
+        "description": "Get sensors using matching external or internal IP for a time range."
       }
     },
     "/tasks": {
@@ -604,7 +608,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the usage information for commands that can be sent to sensors."
+        "description": "Get the usage information for commands that can be sent to sensors."
       }
     },
     "/tasks/{cmd}": {
@@ -631,7 +635,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the usage information for commands that can be sent to sensors."
+        "description": "Get the usage information for commands that can be sent to sensors."
       }
     },
     "/tags/{oid}/{tag_expr}": {
@@ -668,7 +672,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Search for tags matching a search expression and belonging to the organization."
+        "description": "Search for tags matching a search expression and belonging to the organization."
       }
     },
     "/rules/{oid}": {
@@ -703,7 +707,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List all active detection for a specific organization."
+        "description": "List all active detection for a specific organization."
       },
       "post": {
         "tags": [
@@ -776,7 +780,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add a new detection and response rule to the organization."
+        "description": "Add a new detection and response rule to the organization."
       },
       "delete": {
         "tags": [
@@ -817,7 +821,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete a detection and response rule from an organization."
+        "description": "Delete a detection and response rule from an organization."
       }
     },
     "/fp/{oid}": {
@@ -844,7 +848,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List all active false positive rules for a specific organization."
+        "description": "List all active false positive rules for a specific organization."
       },
       "post": {
         "tags": [
@@ -893,7 +897,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add a new false positive rule to the organization."
+        "description": "Add a new false positive rule to the organization."
       },
       "delete": {
         "tags": [
@@ -926,7 +930,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete a false positive rule from an organization."
+        "description": "Delete a false positive rule from an organization."
       }
     },
     "/modules/{oid}": {
@@ -961,7 +965,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Update the sensor version and regenerate installation keys for the organization."
+        "description": "Update the sensor version and regenerate installation keys for the organization."
       }
     },
     "/installationkeys/{oid}": {
@@ -988,7 +992,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the installation keys for the organization."
+        "description": "Get the installation keys for the organization."
       },
       "post": {
         "tags": [
@@ -1032,7 +1036,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Create a new installation key for the organization."
+        "description": "Create a new installation key for the organization."
       },
       "delete": {
         "tags": [
@@ -1065,7 +1069,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete an installation key for the organization."
+        "description": "Delete an installation key for the organization."
       }
     },
     "/outputs/{oid}": {
@@ -1092,7 +1096,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the various outputs for an organization."
+        "description": "Get the various outputs for an organization."
       },
       "post": {
         "tags": [
@@ -1357,7 +1361,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Enable a specific output module for an organization."
+        "description": "Enable a specific output module for an organization."
       },
       "delete": {
         "tags": [
@@ -1390,7 +1394,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Disable a specific output module for an organization."
+        "description": "Disable a specific output module for an organization."
       }
     },
     "/outputs/{oid}/samples": {
@@ -1425,7 +1429,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get sample data from an Output."
+        "description": "Get sample data from an Output."
       }
     },
     "/audit/{oid}": {
@@ -1452,7 +1456,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the audit log for the organization."
+        "description": "Get the audit log for the organization."
       }
     },
     "/errors/{oid}": {
@@ -1479,7 +1483,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the error log for the organization."
+        "description": "Get the error log for the organization."
       }
     },
     "/autocomplete/task": {
@@ -1496,7 +1500,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get autocomplete information for sensor tasking."
+        "description": "Get autocomplete information for sensor tasking."
       }
     },
     "/events": {
@@ -1513,7 +1517,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get available event names."
+        "description": "Get available event names."
       }
     },
     "/insight/{oid}": {
@@ -1540,7 +1544,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Check if the organization is configured with Insight."
+        "description": "Check if the organization is configured with Insight."
       }
     },
     "/insight/{oid}/{sid}": {
@@ -1632,7 +1636,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve historical data from the sensor using Insight."
+        "description": "Retrieve historical data from the sensor using Insight."
       }
     },
     "/insight/{oid}/{sid}/overview": {
@@ -1684,7 +1688,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve overview data of the historical data from the sensor using Insight."
+        "description": "Retrieve overview data of the historical data from the sensor using Insight."
       }
     },
     "/insight/{oid}/detections": {
@@ -1759,7 +1763,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve historical detections using Insight."
+        "description": "Retrieve historical detections using Insight."
       },
       "delete": {
         "tags": [
@@ -1784,7 +1788,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete all detections stored in Insight."
+        "description": "Delete all detections stored in Insight."
       }
     },
     "/insight/{oid}/objects/{objType}": {
@@ -1854,7 +1858,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve historical information about specific objects / indicators using Insight."
+        "description": "Retrieve historical information about specific objects / indicators using Insight."
       }
     },
     "/insight/{oid}/objects": {
@@ -1897,7 +1901,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve historical information about specific objects / indicators using Insight."
+        "description": "Retrieve historical information about specific objects / indicators using Insight."
       }
     },
     "/insight/{oid}/objects_timeline": {
@@ -1980,7 +1984,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve a timeline of usage about specific objects / indicators using Insight."
+        "description": "Retrieve a timeline of usage about specific objects / indicators using Insight."
       }
     },
     "/insight/{oid}/object_usage/{objType}": {
@@ -2057,7 +2061,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve summarized usage for a specific object / indicator using Insight."
+        "description": "Retrieve summarized usage for a specific object / indicator using Insight."
       }
     },
     "/insight/{oid}/traffic/breakdown": {
@@ -2100,7 +2104,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve traffic type information using Insight."
+        "description": "Retrieve traffic type information using Insight."
       }
     },
     "/insight/{oid}/traffic/stats": {
@@ -2143,7 +2147,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve traffic stats information using Insight."
+        "description": "Retrieve traffic stats information using Insight."
       }
     },
     "/insight/{oid}/detections/stats": {
@@ -2186,7 +2190,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve detection stats information using Insight."
+        "description": "Retrieve detection stats information using Insight."
       }
     },
     "/insight/{oid}/detections/breakdown": {
@@ -2229,7 +2233,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve detection type information using Insight."
+        "description": "Retrieve detection type information using Insight."
       }
     },
     "/insight/{oid}/online/stats": {
@@ -2272,7 +2276,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve stats on sensors online using Insight."
+        "description": "Retrieve stats on sensors online using Insight."
       }
     },
     "/insight/{oid}/ingestion_keys": {
@@ -2299,7 +2303,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the ingestion keys."
+        "description": "Get the ingestion keys."
       },
       "post": {
         "tags": [
@@ -2332,7 +2336,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Create a new ingestion key."
+        "description": "Create a new ingestion key."
       },
       "delete": {
         "tags": [
@@ -2365,7 +2369,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove an ingestion key."
+        "description": "Remove an ingestion key."
       }
     },
     "/insight/{oid}/artifacts": {
@@ -2417,7 +2421,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the list of logs available during a time frame."
+        "description": "Get the list of logs available during a time frame."
       }
     },
     "/insight/{oid}/artifacts/payloads/{payload_id}": {
@@ -2473,7 +2477,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve the parsed/readable version of a specific log."
+        "description": "Retrieve the parsed/readable version of a specific log."
       }
     },
     "/insight/{oid}/artifacts/originals/{payload_id}": {
@@ -2510,7 +2514,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve the original version of a specific log."
+        "description": "Retrieve the original version of a specific log."
       }
     },
     "/usage/{oid}": {
@@ -2537,7 +2541,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get various organization usage stats."
+        "description": "Get various organization usage stats."
       }
     },
     "/service/{oid}/{service_name}": {
@@ -2589,7 +2593,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Send a request to a Service."
+        "description": "Send a request to a Service."
       }
     },
     "/service/{oid}/": {
@@ -2616,7 +2620,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the list of Services enabled on this organization."
+        "description": "Get the list of Services enabled on this organization."
       }
     },
     "/service/{service_name}/usage": {
@@ -2643,7 +2647,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the usage parameters for requests to the service."
+        "description": "Get the usage parameters for requests to the service."
       }
     },
     "/orgs/{oid}/users": {
@@ -2670,7 +2674,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List all users in organization."
+        "description": "List all users in organization."
       },
       "post": {
         "tags": [
@@ -2703,7 +2707,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add a new user to the organization."
+        "description": "Add a new user to the organization."
       },
       "delete": {
         "tags": [
@@ -2736,7 +2740,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove a user from an organization."
+        "description": "Remove a user from an organization."
       }
     },
     "/orgs/{oid}/keys": {
@@ -2763,7 +2767,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List API keys in organization."
+        "description": "List API keys in organization."
       },
       "post": {
         "tags": [
@@ -2804,7 +2808,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add a new user to the organization."
+        "description": "Add a new user to the organization."
       },
       "delete": {
         "tags": [
@@ -2837,7 +2841,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove an API key from an organization."
+        "description": "Remove an API key from an organization."
       }
     },
     "/orgs/{oid}/users/permissions": {
@@ -2864,7 +2868,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List all users and permissions in organization."
+        "description": "List all users and permissions in organization."
       },
       "post": {
         "tags": [
@@ -2905,7 +2909,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Add a new user to the organization."
+        "description": "Add a new user to the organization."
       },
       "delete": {
         "tags": [
@@ -2946,7 +2950,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove a user permission."
+        "description": "Remove a user permission."
       }
     },
     "/orgs/{oid}/resources": {
@@ -2973,7 +2977,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "List all resources subscribed to by an organization."
+        "description": "List all resources subscribed to by an organization."
       },
       "post": {
         "tags": [
@@ -3014,7 +3018,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Subscribe the organization to a resource."
+        "description": "Subscribe the organization to a resource."
       },
       "delete": {
         "tags": [
@@ -3055,7 +3059,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Unsubscribe an organization from a resource."
+        "description": "Unsubscribe an organization from a resource."
       }
     },
     "/orgs/{oid}/quota": {
@@ -3090,7 +3094,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Request a new sensor quota for an organization."
+        "description": "Request a new sensor quota for an organization."
       }
     },
     "/payload/{oid}/{payloadName}": {
@@ -3126,7 +3130,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the content of a payload."
+        "description": "Get the content of a payload."
       },
       "post": {
         "tags": [
@@ -3160,7 +3164,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Create a new payload."
+        "description": "Create a new payload."
       },
       "delete": {
         "tags": [
@@ -3194,7 +3198,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Remove an existing payload."
+        "description": "Remove an existing payload."
       }
     },
     "/payload/{oid}": {
@@ -3221,7 +3225,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Get the list of existing payloads."
+        "description": "Get the list of existing payloads."
       }
     },
     "/job/{oid}": {
@@ -3296,7 +3300,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Retrieve jobs for an organization."
+        "description": "Retrieve jobs for an organization."
       }
     },
     "/job/{oid}/{job_id}": {
@@ -3348,7 +3352,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Fetch a specific job."
+        "description": "Fetch a specific job."
       },
       "delete": {
         "tags": [
@@ -3382,7 +3386,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Delete a specific job."
+        "description": "Delete a specific job."
       }
     },
     "/export/{oid}/sensors": {
@@ -3410,7 +3414,7 @@
             "description": "Access token is missing or invalid"
           }
         },
-        "summary": "Export the full sensor list (info and tags) for the Organization."
+        "description": "Export the full sensor list (info and tags) for the Organization."
       }
     }
   },
