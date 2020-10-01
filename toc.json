@@ -26,11 +26,7 @@
       {
         "type": "group",
         "title": "API",
-        "items": [{
-            "type": "item",
-            "title": "Endpoints",
-            "uri": "/api/"
-        }]
+        "uri": "/api/swagger.json"
       },
       {
         "type": "item",
