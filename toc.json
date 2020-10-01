@@ -24,9 +24,13 @@
         "title": "Reference"
       },
       {
-        "type": "item",
+        "type": "group",
         "title": "API",
-        "uri": "/api/swagger.json"
+        "items": [{
+            "type": "item",
+            "title": "Endpoints",
+            "uri": "/api/swagger.json"
+        }]
       },
       {
         "type": "item",
