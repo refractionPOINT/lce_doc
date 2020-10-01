@@ -26,7 +26,7 @@
       {
         "type": "item",
         "title": "API",
-        "uri": "api/swagger.json"
+        "uri": "api/swagger.json/paths"
       },
       {
         "type": "item",
