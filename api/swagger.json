@@ -3519,7 +3519,7 @@
   ],
   "servers": [
     {
-      "url": "/v1"
+      "url": "https://api.limacharlie.io/v1"
     }
   ]
 }
