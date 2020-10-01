@@ -5,12 +5,12 @@
     "contact": {
       "email": "info@limacharlie.io"
     },
-    "description": "This is the REST API for the LimaCharlie Enterprise control plane.\nTo get a JWT authorization token on LimaCharlie Cloud see https://doc.limacharlie.io/en/master/api_keys/.",
+    "description": "This is the REST API for LimaCharlie.io",
     "license": {
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html",
       "name": "Apache 2.0"
     },
-    "title": "LimaCharlie Enterprise Control Plane",
+    "title": "LimaCharlie.io REST API",
     "version": "1.0.0"
   },
   "paths": {
