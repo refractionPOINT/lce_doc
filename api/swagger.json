@@ -1,0 +1,3436 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "termsOfService": "https://limacharlie.io/tos",
+    "contact": {
+      "email": "info@limacharlie.io"
+    },
+    "description": "This is the REST API for the LimaCharlie Enterprise control plane.\nTo get a JWT authorization token on LimaCharlie Cloud see https://doc.limacharlie.io/en/master/api_keys/.",
+    "license": {
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html",
+      "name": "Apache 2.0"
+    },
+    "title": "LimaCharlie Enterprise Control Plane",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/orgs/{oid}": {
+      "get": {
+        "tags": [
+          "orgs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get information about the organization."
+      },
+      "post": {
+        "tags": [
+          "orgs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sensor_quota",
+            "description": "maximum number of sensors online",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Set information about the organization."
+      },
+      "delete": {
+        "tags": [
+          "orgs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete the organization."
+      }
+    },
+    "/orgs/{oid}/url": {
+      "get": {
+        "tags": [
+          "orgs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the various access URLs used by resources related to the organization."
+      }
+    },
+    "/sensors/{oid}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the list of sensors belonging to the organization."
+      }
+    },
+    "/online/{oid}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the number of sensors online belonging to the organization."
+      },
+      "post": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sids",
+            "description": "list of sensor id to check online status for",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the online status of multiple sensors."
+      }
+    },
+    "/{sid}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the sensor information and online status."
+      },
+      "post": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tasks",
+            "description": "list of tasks to send",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query"
+          },
+          {
+            "name": "investigation_id",
+            "description": "a tag included in data returned from sensor resulting from the tasks",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Send a task to a sensor."
+      },
+      "delete": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete a sensor."
+      }
+    },
+    "/{sid}/tags": {
+      "get": {
+        "tags": [
+          "sensors",
+          "tags"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the sensor tags."
+      },
+      "post": {
+        "tags": [
+          "sensors",
+          "tags"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "description": "list of tags to add",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query"
+          },
+          {
+            "name": "ttl",
+            "description": "number of seconds the tag is valid for",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add tags to the sensor."
+      },
+      "delete": {
+        "tags": [
+          "sensors",
+          "tags"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag",
+            "description": "tag to delete",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "tags",
+            "description": "tags to delete, as a comma separated list",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove a tag from the sensor."
+      }
+    },
+    "/{sid}/isolation": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the sensor isolation status."
+      },
+      "post": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Set the sensor in network isolation."
+      },
+      "delete": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove the sensor from network isolation."
+      }
+    },
+    "/hostnames/{oid}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hostname",
+            "description": "hostname prefix to search for",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get sensors with hostnames matching given expression."
+      }
+    },
+    "/ips/{oid}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ip",
+            "description": "ip to search for",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "start",
+            "description": "unix epoch when time range begins",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "unix epoch when time range ends",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get sensors using matching external or internal IP for a time range."
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the usage information for commands that can be sent to sensors."
+      }
+    },
+    "/tasks/{cmd}": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "cmd",
+            "description": "name of the command get the help from, optional",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the usage information for commands that can be sent to sensors."
+      }
+    },
+    "/tags/{oid}/{tag_expr}": {
+      "get": {
+        "tags": [
+          "sensors",
+          "tags"
+        ],
+        "parameters": [
+          {
+            "name": "tag_expr",
+            "in": "path",
+            "required": true,
+            "description": "tag search expression (% wilcard)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Search for tags matching a search expression and belonging to the organization."
+      }
+    },
+    "/rules/{oid}": {
+      "get": {
+        "tags": [
+          "rules"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespace",
+            "description": "specific namespace to operate on, defaults to 'general'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List all active detection for a specific organization."
+      },
+      "post": {
+        "tags": [
+          "rules"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "description": "unique name of the new rule",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "detection",
+            "description": "detection expression of the new rule",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "response",
+            "description": "response expression of the new rule",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_replace",
+            "description": "if the rule with this name exists, replace it, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_enabled",
+            "description": "if the rule should be enabled, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespace",
+            "description": "specific namespace to operate on, defaults to 'general'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add a new detection and response rule to the organization."
+      },
+      "delete": {
+        "tags": [
+          "rules"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "description": "unique name of the rule to delete",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespace",
+            "description": "specific namespace to operate on, defaults to 'general'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete a detection and response rule from an organization."
+      }
+    },
+    "/fp/{oid}": {
+      "get": {
+        "tags": [
+          "false_positives"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List all active false positive rules for a specific organization."
+      },
+      "post": {
+        "tags": [
+          "false_positives"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "description": "unique name of the new rule",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "rule",
+            "description": "expression of the new rule",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_replace",
+            "description": "if the rule with this name exists, replace it, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add a new false positive rule to the organization."
+      },
+      "delete": {
+        "tags": [
+          "false_positives"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "description": "unique name of the rule to delete",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete a false positive rule from an organization."
+      }
+    },
+    "/modules/{oid}": {
+      "post": {
+        "tags": [
+          "modules"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "is_fallback",
+            "description": "if set to true downgrade to the previous version of the sensor, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Update the sensor version and regenerate installation keys for the organization."
+      }
+    },
+    "/installationkeys/{oid}": {
+      "get": {
+        "tags": [
+          "installationkeys"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the installation keys for the organization."
+      },
+      "post": {
+        "tags": [
+          "installationkeys"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "description": "tags to associate with sensors",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query"
+          },
+          {
+            "name": "desc",
+            "description": "description of key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Create a new installation key for the organization."
+      },
+      "delete": {
+        "tags": [
+          "installationkeys"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iid",
+            "description": "installer id to delete",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete an installation key for the organization."
+      }
+    },
+    "/outputs/{oid}": {
+      "get": {
+        "tags": [
+          "outputs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the various outputs for an organization."
+      },
+      "post": {
+        "tags": [
+          "outputs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "module",
+            "description": "output module name to enable",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "type",
+            "description": "data type for output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "name",
+            "description": "what to name this output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "inv_id",
+            "description": "if specified, only events part of this investigation id will be sent to this output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "tag",
+            "description": "if specified, only events coming from sensors with the specific tag will be sent to this output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cat",
+            "description": "if specified, only detections in this category will be sent to this output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_flat",
+            "description": "if the json should be flattened (true, false)",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "dir",
+            "description": "directory for output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "max_bytes",
+            "description": "max size in bytes before rotation",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "backup_count",
+            "description": "maximum number of output in rotation",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "bucket",
+            "description": "name of the bucket for output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "key_id",
+            "description": "public key id for auth",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "secret_key",
+            "description": "secret key for auth",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "sec_per_file",
+            "description": "seconds per output files",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "dest_host",
+            "description": "destination host for output",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "username",
+            "description": "username for auth",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "password",
+            "description": "password for auth",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "slack_api_token",
+            "description": "slack api token for auth",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "slack_channel",
+            "description": "slack channel to output to",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_tls",
+            "description": "whether connection should be secured over tls (true, false)",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_no_header",
+            "description": "whether protocol header should be sent before the data (true, false)",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_delete_on_failure",
+            "description": "if enabled, the output will be deleted as soon as a connection error occurs (true, false)",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "structured_data",
+            "description": "if included, will insert a Structured Data field into the Syslog header (as per RFC) with this static value",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "humio_repo",
+            "description": "the humio.com repository to send the data to",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "humio_api_token",
+            "description": "the humio.com secret token to send data with",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "event_white_list",
+            "description": "whitelist of event types to allow",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "event_black_list",
+            "description": "blacklist of event types to disallow",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cat_black_list",
+            "description": "blacklist of categories to disallow",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "routing_topic",
+            "description": "topic to publish on from the routing of then event",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "literal_topic",
+            "description": "literal topic to publish on",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Enable a specific output module for an organization."
+      },
+      "delete": {
+        "tags": [
+          "outputs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "output module name to disable",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Disable a specific output module for an organization."
+      }
+    },
+    "/outputs/{oid}/samples": {
+      "get": {
+        "tags": [
+          "outputs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "output module name to get samples from",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get sample data from an Output."
+      }
+    },
+    "/audit/{oid}": {
+      "get": {
+        "tags": [
+          "audit"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the audit log for the organization."
+      }
+    },
+    "/errors/{oid}": {
+      "get": {
+        "tags": [
+          "errors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the error log for the organization."
+      }
+    },
+    "/autocomplete/task": {
+      "get": {
+        "tags": [
+          "sensors"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get autocomplete information for sensor tasking."
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": [
+          "general"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get available event names."
+      }
+    },
+    "/insight/{oid}": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Check if the organization is configured with Insight."
+      }
+    },
+    "/insight/{oid}/{sid}": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin fetching events",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop fetching events",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "maximum number of events to return",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "event_type",
+            "description": "specific event type to fetch",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned 'events' is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cursor",
+            "description": "optional cursor for paginated access, set to '-' for first query",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_forward",
+            "description": "direction of paginated query results, defaults to 'true' (ascending).",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve historical data from the sensor using Insight."
+      }
+    },
+    "/insight/{oid}/{sid}/overview": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sid",
+            "in": "path",
+            "required": true,
+            "description": "sensor id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin fetching events",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop fetching events",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve overview data of the historical data from the sensor using Insight."
+      }
+    },
+    "/insight/{oid}/detections": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin fetching detections",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop fetching detections",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "maximum number of detections to return",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cat",
+            "description": "specific detection category to fetch",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned 'detects' is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cursor",
+            "description": "optional cursor for paginated access, set to '-' for first query",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve historical detections using Insight."
+      },
+      "delete": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete all detections stored in Insight."
+      }
+    },
+    "/insight/{oid}/objects/{objType}": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objType",
+            "in": "path",
+            "required": true,
+            "description": "type of object, one of: user, domain, ip, file_hash, file_path, file_name, service_name, package_name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "name of the object to look for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "info",
+            "description": "the type of information to receive, one of: summary, locations",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "case_sensitive",
+            "description": "set to 'false' to disable case sensitivity",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "with_wildcards",
+            "description": "set to 'true' to be able to use '%' wildcards in the object name",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve historical information about specific objects / indicators using Insight."
+      }
+    },
+    "/insight/{oid}/objects": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objects",
+            "description": "a JSON dictionary like: {objType: [objName1, objName2, ...]}",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "case_sensitive",
+            "description": "set to 'false' to disable case sensitivity",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve historical information about specific objects / indicators using Insight."
+      }
+    },
+    "/insight/{oid}/objects_timeline": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objects",
+            "description": "a JSON dictionary like: {objType: [objName1, objName2, ...]}",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "case_sensitive",
+            "description": "set to 'false' to disable case sensitivity",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned 'events' is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "sid",
+            "description": "if specified, use all data from the sensor id instead of from specific objects",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "bucketing",
+            "description": "bucket size of object prevalence, one of hour, day, week, month",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve a timeline of usage about specific objects / indicators using Insight."
+      }
+    },
+    "/insight/{oid}/object_usage/{objType}": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objType",
+            "in": "path",
+            "required": true,
+            "description": "type of object, one of: user, domain, ip, file_hash, file_path, file_name, service_name, package_name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "name of the object to look for",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "case_sensitive",
+            "description": "set to 'false' to disable case sensitivity",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned 'events' is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve summarized usage for a specific object / indicator using Insight."
+      }
+    },
+    "/insight/{oid}/traffic/breakdown": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve traffic type information using Insight."
+      }
+    },
+    "/insight/{oid}/traffic/stats": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve traffic stats information using Insight."
+      }
+    },
+    "/insight/{oid}/detections/stats": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve detection stats information using Insight."
+      }
+    },
+    "/insight/{oid}/detections/breakdown": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve detection type information using Insight."
+      }
+    },
+    "/insight/{oid}/online/stats": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve stats on sensors online using Insight."
+      }
+    },
+    "/insight/{oid}/ingestion_keys": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the ingestion keys."
+      },
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "name of the ingestion key to create",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Create a new ingestion key."
+      },
+      "delete": {
+        "tags": [
+          "insight"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "description": "name of the ingestion key to create",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove an ingestion key."
+      }
+    },
+    "/insight/{oid}/artifacts": {
+      "get": {
+        "tags": [
+          "insight",
+          "logs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "cursor",
+            "description": "optional cursor for paginated access, set to '-' for first query",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the list of logs available during a time frame."
+      }
+    },
+    "/insight/{oid}/artifacts/payloads/{payload_id}": {
+      "get": {
+        "tags": [
+          "insight",
+          "logs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payload_id",
+            "in": "path",
+            "required": true,
+            "description": "payload/log id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "records",
+            "description": "the record IDs to retrieve specifically, repeated field",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned 'logs' is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve the parsed/readable version of a specific log."
+      }
+    },
+    "/insight/{oid}/artifacts/originals/{payload_id}": {
+      "get": {
+        "tags": [
+          "insight",
+          "logs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payload_id",
+            "in": "path",
+            "required": true,
+            "description": "payload/log id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve the original version of a specific log."
+      }
+    },
+    "/usage/{oid}": {
+      "get": {
+        "tags": [
+          "orgs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get various organization usage stats."
+      }
+    },
+    "/service/{oid}/{service_name}": {
+      "post": {
+        "tags": [
+          "service"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "service_name",
+            "in": "path",
+            "required": true,
+            "description": "Service name to send the request to",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "request_data",
+            "description": "request data, as a base64 encoded string containing the JSON request",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_async",
+            "description": "if set to 'true', this REST call will not wait for the Service to finish handling the request",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Send a request to a Service."
+      }
+    },
+    "/service/{oid}/": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the list of Services enabled on this organization."
+      }
+    },
+    "/service/{service_name}/usage": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "parameters": [
+          {
+            "name": "service_name",
+            "in": "path",
+            "required": true,
+            "description": "Service name to send the request to",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the usage parameters for requests to the service."
+      }
+    },
+    "/orgs/{oid}/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List all users in organization."
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "email of the user to add",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add a new user to the organization."
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "email of the user to remove",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove a user from an organization."
+      }
+    },
+    "/orgs/{oid}/keys": {
+      "get": {
+        "tags": [
+          "api_keys"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List API keys in organization."
+      },
+      "post": {
+        "tags": [
+          "api_keys"
+        ],
+        "parameters": [
+          {
+            "name": "key_name",
+            "description": "name of the key to add",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "perms",
+            "description": "comma separated values of the permissions of the key to add",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add a new user to the organization."
+      },
+      "delete": {
+        "tags": [
+          "api_keys"
+        ],
+        "parameters": [
+          {
+            "name": "key_hash",
+            "description": "hash of the key to remove",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove an API key from an organization."
+      }
+    },
+    "/orgs/{oid}/users/permissions": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List all users and permissions in organization."
+      },
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "email of the user to add a permission to",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "perm",
+            "description": "permission to give",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Add a new user to the organization."
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "description": "email of the user to remove the permission from",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "perm",
+            "description": "permission to remove",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove a user permission."
+      }
+    },
+    "/orgs/{oid}/resources": {
+      "get": {
+        "tags": [
+          "resources"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "List all resources subscribed to by an organization."
+      },
+      "post": {
+        "tags": [
+          "resources"
+        ],
+        "parameters": [
+          {
+            "name": "res_cat",
+            "description": "resource category of the resource to subscribe to, like 'lookup'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "res_name",
+            "description": "resource name of the resource to subscribe to",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Subscribe the organization to a resource."
+      },
+      "delete": {
+        "tags": [
+          "resources"
+        ],
+        "parameters": [
+          {
+            "name": "res_cat",
+            "description": "resource category of the resource to unsubscribe from, like 'lookup'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "res_name",
+            "description": "resource name of the resource to unsubscribe from",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Unsubscribe an organization from a resource."
+      }
+    },
+    "/orgs/{oid}/quota": {
+      "post": {
+        "tags": [
+          "billing"
+        ],
+        "parameters": [
+          {
+            "name": "quota",
+            "description": "new sensor quota to request for organization",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Request a new sensor quota for an organization."
+      }
+    },
+    "/payload/{oid}/{payloadName}": {
+      "get": {
+        "tags": [
+          "payload"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payloadName",
+            "in": "path",
+            "required": true,
+            "description": "payload name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the content of a payload."
+      },
+      "post": {
+        "tags": [
+          "payload"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payloadName",
+            "in": "path",
+            "required": true,
+            "description": "payload name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Create a new payload."
+      },
+      "delete": {
+        "tags": [
+          "payload"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payloadName",
+            "in": "path",
+            "required": true,
+            "description": "payload name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Remove an existing payload."
+      }
+    },
+    "/payload/{oid}": {
+      "get": {
+        "tags": [
+          "payload"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Get the list of existing payloads."
+      }
+    },
+    "/job/{oid}": {
+      "get": {
+        "tags": [
+          "jobs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "description": "required timestamp in seconds where to begin fetching jobs",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "end",
+            "description": "required timestamp in seconds where to stop fetching jobs",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "maximum number of jobs to return",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "sid",
+            "description": "optionally only fetch jobs relating to a Sensor ID",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "with_data",
+            "description": "optionally include full job data, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Retrieve jobs for an organization."
+      }
+    },
+    "/job/{oid}/{job_id}": {
+      "get": {
+        "tags": [
+          "jobs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "description": "job id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "is_compressed",
+            "description": "set to 'true' to enable compression, data returned is base64(gzip(data))",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "with_data",
+            "description": "optionally include full job data, 'true' or 'false'",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Fetch a specific job."
+      },
+      "delete": {
+        "tags": [
+          "jobs"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "description": "job id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Delete a specific job."
+      }
+    },
+    "/export/{oid}/sensors": {
+      "post": {
+        "tags": [
+          "exports",
+          "sensors"
+        ],
+        "parameters": [
+          {
+            "name": "oid",
+            "in": "path",
+            "required": true,
+            "description": "organization id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "401": {
+            "description": "Access token is missing or invalid"
+          }
+        },
+        "summary": "Export the full sensor list (info and tags) for the Organization."
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "/v1"
+    }
+  ]
+}
