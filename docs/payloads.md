@@ -1,8 +1,3 @@
----
-title: Payloads
-slug: payloads
----
-
 # Payloads
 
 ## Overview

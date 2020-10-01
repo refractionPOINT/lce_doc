@@ -1,8 +1,3 @@
----
-title: Detection & Response
-slug: dr
----
-
 # Detection and Response Rules
 
 Detection & Response rules are designed to allow you to push out a detection rule and with a custom action in record time.

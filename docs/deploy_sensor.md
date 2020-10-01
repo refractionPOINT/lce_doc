@@ -1,8 +1,3 @@
----
-title: Deploying Sensors
-slug: deploy_sensor
----
-
 # Deploying Sensors
 
 A machine-readable (YAML) link to the latest version of the LimaCharlie Enterprise sensor is [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).

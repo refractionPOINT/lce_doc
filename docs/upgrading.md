@@ -1,8 +1,3 @@
----
-title: Upgrading
-slug: upgrading
----
-
 # Upgrading Sensors
 
 Sensors are never upgraded without your consent. Upgrading sensors does not require the manual re-installation via installers.

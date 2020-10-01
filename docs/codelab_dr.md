@@ -1,8 +1,3 @@
----
-title: Codelabs & Recipes
-slug: codelab_dr
----
-
 # Codelab Detection & Response
 
 ## Background

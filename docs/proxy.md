@@ -1,8 +1,3 @@
----
-title: Proxy Support
-slug: proxy_support
----
-
 # Proxy Support
 
 ## General

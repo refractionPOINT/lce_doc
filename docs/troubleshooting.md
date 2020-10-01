@@ -1,8 +1,3 @@
----
-title: Troubleshooting
-slug: troubleshooting
----
-
 # Troubleshooting
 
 ## Sensor not showing as online.

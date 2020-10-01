@@ -1,8 +1,3 @@
----
-title: Sensor Commands
-slug: sensor_commands
----
-
 # Sensor Commands
 
 Sensor commands are commands that can be sent to the sensor (through the backend as an intermediary) to do various things.

@@ -1,8 +1,3 @@
----
-title: ID Schemes
-slug: agentid
----
-
 # ID Schemes
 
 ## Agent IDs

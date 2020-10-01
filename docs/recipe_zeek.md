@@ -1,8 +1,3 @@
----
-title: Zeek Alerting
-slug: recipe_zeek
----
-
 # Recipe - Zeek
 
 ## Overview

@@ -1,8 +1,3 @@
----
-title: Outputs
-slug: output
----
-
 # Output Modules
 
 ## Streams

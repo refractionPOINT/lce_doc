@@ -1,8 +1,3 @@
----
-title: Add-ons
-slug: user_addons
----
-
 # User Add-ons
 
 ## Overview

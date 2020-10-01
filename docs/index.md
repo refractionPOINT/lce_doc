@@ -1,11 +1,4 @@
----
-title: Home
-slug: index
----
-
 # LimaCharlie.io
-
-***[Get Started Here](https://limacharlie.io)***
 
 ## Quick Start
 To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).

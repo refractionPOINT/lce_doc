@@ -1,8 +1,3 @@
----
-title: API Keys
-slug: api_keys
----
-
 # API Keys
 
 LimaCharlie Cloud has a concept of API keys. Those are secret keys that can be created and named which can then in turn

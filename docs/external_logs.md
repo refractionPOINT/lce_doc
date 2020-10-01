@@ -1,8 +1,3 @@
----
-title: Artifact Collection
-slug: external_logs
----
-
 # Artifact Collection
 
 The Artifact Collection system allows you to ingest artifact types like:

@@ -1,13 +1,8 @@
----
-title: Quick Start
-slug: lcc_quick_start
----
-
-# LimaCharlie Cloud Quick Start
+# LimaCharlie Quick Start
 
 ## Logging in
 To access LimaCharlie.io, you will first need to create an account. This account can be attached to a specific
-email address (which will require you to verify the email), or through a Google account (easiest by far).
+email address (which will require you to verify the email), or through a Google account.
 
 From the bottom of [https://limacharlie.io](https://app.limacharlie.io) follow the login instructions. If an email
 verification is required you will be prompted to do so.

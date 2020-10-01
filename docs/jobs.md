@@ -1,8 +1,3 @@
----
-title: Jobs
-slug: jobs
----
-
 # Jobs
 
 ## Overview

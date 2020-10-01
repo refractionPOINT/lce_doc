@@ -1,8 +1,3 @@
----
-title: Features
-slug: features
----
-
 # Feature Overview
 
 ## Security Features

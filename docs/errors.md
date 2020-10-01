@@ -1,8 +1,3 @@
----
-title: Error Codes
-slug: errors
----
-
 # Errors
 
 The following are error codes you may receive through some sensor functionality:

@@ -1,8 +1,3 @@
----
-title: ARLs
-slug: arl
----
-
 # Authenticated Resource Locator
 
 ## Overview

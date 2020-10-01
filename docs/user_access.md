@@ -1,8 +1,3 @@
----
-title: User Control
-slug: user_access
----
-
 # User Access
 
 To control who has access to an organization, and what they have access to, go
