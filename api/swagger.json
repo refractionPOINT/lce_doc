@@ -20,6 +20,7 @@
   "paths": {
     "/orgs/{oid}": {
       "get": {
+        "operationId": "getOrgInfo",
         "tags": [
           "orgs"
         ],
@@ -43,68 +44,11 @@
           }
         },
         "description": "Get information about the organization."
-      },
-      "post": {
-        "tags": [
-          "orgs"
-        ],
-        "parameters": [
-          {
-            "name": "oid",
-            "in": "path",
-            "required": true,
-            "description": "organization id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sensor_quota",
-            "description": "maximum number of sensors online",
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "401": {
-            "description": "Access token is missing or invalid"
-          }
-        },
-        "description": "Set information about the organization."
-      },
-      "delete": {
-        "tags": [
-          "orgs"
-        ],
-        "parameters": [
-          {
-            "name": "oid",
-            "in": "path",
-            "required": true,
-            "description": "organization id",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "401": {
-            "description": "Access token is missing or invalid"
-          }
-        },
-        "description": "Delete the organization."
       }
     },
     "/orgs/{oid}/url": {
       "get": {
+        "operationId": "getOrgURLs",
         "tags": [
           "orgs"
         ],
@@ -132,6 +76,7 @@
     },
     "/sensors/{oid}": {
       "get": {
+        "operationId": "getSensorList",
         "tags": [
           "sensors"
         ],
@@ -159,6 +104,7 @@
     },
     "/online/{oid}": {
       "get": {
+        "operationId": "getOnlineSensors",
         "tags": [
           "sensors"
         ],
@@ -184,6 +130,7 @@
         "description": "Get the number of sensors online belonging to the organization."
       },
       "post": {
+        "operationId": "getOnlineSensorsInList",
         "tags": [
           "sensors"
         ],
@@ -222,6 +169,7 @@
     },
     "/{sid}": {
       "get": {
+        "operationId": "getSensorInfo",
         "tags": [
           "sensors"
         ],
@@ -247,6 +195,7 @@
         "description": "Get the sensor information and online status."
       },
       "post": {
+        "operationId": "taskSensor",
         "tags": [
           "sensors"
         ],
@@ -291,6 +240,7 @@
         "description": "Send a task to a sensor."
       },
       "delete": {
+        "operationId": "deleteSensor",
         "tags": [
           "sensors"
         ],
@@ -318,6 +268,7 @@
     },
     "/{sid}/tags": {
       "get": {
+        "operationId": "getSensorTags",
         "tags": [
           "sensors",
           "tags"
@@ -344,6 +295,7 @@
         "description": "Get the sensor tags."
       },
       "post": {
+        "operationId": "addSensorTag",
         "tags": [
           "sensors",
           "tags"
@@ -389,6 +341,7 @@
         "description": "Add tags to the sensor."
       },
       "delete": {
+        "operationId": "removeSensorTag",
         "tags": [
           "sensors",
           "tags"
@@ -433,6 +386,7 @@
     },
     "/{sid}/isolation": {
       "get": {
+        "operationId": "getSensorIsolation",
         "tags": [
           "sensors"
         ],
@@ -458,6 +412,7 @@
         "description": "Get the sensor isolation status."
       },
       "post": {
+        "operationId": "isolateSensor",
         "tags": [
           "sensors"
         ],
@@ -483,6 +438,7 @@
         "description": "Set the sensor in network isolation."
       },
       "delete": {
+        "operationId": "rejoinSensor",
         "tags": [
           "sensors"
         ],
@@ -510,6 +466,7 @@
     },
     "/hostnames/{oid}": {
       "get": {
+        "operationId": "findSensorByHostname",
         "tags": [
           "sensors"
         ],
@@ -545,6 +502,7 @@
     },
     "/ips/{oid}": {
       "get": {
+        "operationId": "findSensorWithIP",
         "tags": [
           "sensors"
         ],
@@ -596,6 +554,7 @@
     },
     "/tasks": {
       "get": {
+        "operationId": "getAvailableSensorTasks",
         "tags": [
           "sensors"
         ],
@@ -613,6 +572,7 @@
     },
     "/tasks/{cmd}": {
       "get": {
+        "operationId": "getTaskUsage",
         "tags": [
           "sensors"
         ],
@@ -640,6 +600,7 @@
     },
     "/tags/{oid}/{tag_expr}": {
       "get": {
+        "operationId": "findSensorsWithTag",
         "tags": [
           "sensors",
           "tags"
@@ -677,6 +638,7 @@
     },
     "/rules/{oid}": {
       "get": {
+        "operationId": "getOrgRules",
         "tags": [
           "rules"
         ],
@@ -710,6 +672,7 @@
         "description": "List all active detection for a specific organization."
       },
       "post": {
+        "operationId": "setOrgRule",
         "tags": [
           "rules"
         ],
@@ -783,6 +746,7 @@
         "description": "Add a new detection and response rule to the organization."
       },
       "delete": {
+        "operationId": "removeOrgRule",
         "tags": [
           "rules"
         ],
@@ -826,6 +790,7 @@
     },
     "/fp/{oid}": {
       "get": {
+        "operationId": "getOrgFalsePositiveRule",
         "tags": [
           "false_positives"
         ],
@@ -851,6 +816,7 @@
         "description": "List all active false positive rules for a specific organization."
       },
       "post": {
+        "operationId": "setOrgFalsePositiveRule",
         "tags": [
           "false_positives"
         ],
@@ -900,6 +866,7 @@
         "description": "Add a new false positive rule to the organization."
       },
       "delete": {
+        "operationId": "removeOrgFalsePositiveRule",
         "tags": [
           "false_positives"
         ],
@@ -935,6 +902,7 @@
     },
     "/modules/{oid}": {
       "post": {
+        "operationId": "upgradeOrg",
         "tags": [
           "modules"
         ],
@@ -970,6 +938,7 @@
     },
     "/installationkeys/{oid}": {
       "get": {
+        "operationId": "getInstallationKeys",
         "tags": [
           "installationkeys"
         ],
@@ -995,6 +964,7 @@
         "description": "Get the installation keys for the organization."
       },
       "post": {
+        "operationId": "addInstallationKey",
         "tags": [
           "installationkeys"
         ],
@@ -1039,6 +1009,7 @@
         "description": "Create a new installation key for the organization."
       },
       "delete": {
+        "operationId": "removeInstallationKey",
         "tags": [
           "installationkeys"
         ],
@@ -1074,6 +1045,7 @@
     },
     "/outputs/{oid}": {
       "get": {
+        "operationId": "getOutputs",
         "tags": [
           "outputs"
         ],
@@ -1099,6 +1071,7 @@
         "description": "Get the various outputs for an organization."
       },
       "post": {
+        "operationId": "setOutput",
         "tags": [
           "outputs"
         ],
@@ -1364,6 +1337,7 @@
         "description": "Enable a specific output module for an organization."
       },
       "delete": {
+        "operationId": "removeOutput",
         "tags": [
           "outputs"
         ],
@@ -1399,6 +1373,7 @@
     },
     "/outputs/{oid}/samples": {
       "get": {
+        "operationId": "getOutputSamples",
         "tags": [
           "outputs"
         ],
@@ -1434,6 +1409,7 @@
     },
     "/audit/{oid}": {
       "get": {
+        "operationId": "getAuditLog",
         "tags": [
           "audit"
         ],
@@ -1461,6 +1437,7 @@
     },
     "/errors/{oid}": {
       "get": {
+        "operationId": "getErrorLog",
         "tags": [
           "errors"
         ],
@@ -1488,6 +1465,7 @@
     },
     "/autocomplete/task": {
       "get": {
+        "operationId": "autocompleteTask",
         "tags": [
           "sensors"
         ],
@@ -1505,6 +1483,7 @@
     },
     "/events": {
       "get": {
+        "operationId": "getAvailableEvents",
         "tags": [
           "general"
         ],
@@ -1522,6 +1501,7 @@
     },
     "/insight/{oid}": {
       "get": {
+        "operationId": "getInsightStatus",
         "tags": [
           "insight"
         ],
@@ -1549,6 +1529,7 @@
     },
     "/insight/{oid}/{sid}": {
       "get": {
+        "operationId": "getHistoricEvents",
         "tags": [
           "insight"
         ],
@@ -1641,6 +1622,7 @@
     },
     "/insight/{oid}/{sid}/overview": {
       "get": {
+        "operationId": "getHistoricEventOverview",
         "tags": [
           "insight"
         ],
@@ -1693,6 +1675,7 @@
     },
     "/insight/{oid}/detections": {
       "get": {
+        "operationId": "getDetections",
         "tags": [
           "insight"
         ],
@@ -1766,6 +1749,7 @@
         "description": "Retrieve historical detections using Insight."
       },
       "delete": {
+        "operationId": "deleteAllDetections",
         "tags": [
           "insight"
         ],
@@ -1793,6 +1777,7 @@
     },
     "/insight/{oid}/objects/{objType}": {
       "get": {
+        "operationId": "getObjectInformation",
         "tags": [
           "insight"
         ],
@@ -1863,6 +1848,7 @@
     },
     "/insight/{oid}/objects": {
       "get": {
+        "operationId": "getSpecificObjects",
         "tags": [
           "insight"
         ],
@@ -1906,6 +1892,7 @@
     },
     "/insight/{oid}/objects_timeline": {
       "post": {
+        "operationId": "getObjectTimeline",
         "tags": [
           "insight"
         ],
@@ -1989,6 +1976,7 @@
     },
     "/insight/{oid}/object_usage/{objType}": {
       "post": {
+        "operationId": "getObjectSummary",
         "tags": [
           "insight"
         ],
@@ -2066,6 +2054,7 @@
     },
     "/insight/{oid}/traffic/breakdown": {
       "get": {
+        "operationId": "getTrafficBreakdown",
         "tags": [
           "insight"
         ],
@@ -2109,6 +2098,7 @@
     },
     "/insight/{oid}/traffic/stats": {
       "get": {
+        "operationId": "getTrafficStats",
         "tags": [
           "insight"
         ],
@@ -2152,6 +2142,7 @@
     },
     "/insight/{oid}/detections/stats": {
       "get": {
+        "operationId": "getDetectionStats",
         "tags": [
           "insight"
         ],
@@ -2195,6 +2186,7 @@
     },
     "/insight/{oid}/detections/breakdown": {
       "get": {
+        "operationId": "getDetectionBreakdown",
         "tags": [
           "insight"
         ],
@@ -2238,6 +2230,7 @@
     },
     "/insight/{oid}/online/stats": {
       "get": {
+        "operationId": "getOnlineStats",
         "tags": [
           "insight"
         ],
@@ -2281,6 +2274,7 @@
     },
     "/insight/{oid}/ingestion_keys": {
       "get": {
+        "operationId": "getIngestionKeys",
         "tags": [
           "insight"
         ],
@@ -2306,6 +2300,7 @@
         "description": "Get the ingestion keys."
       },
       "post": {
+        "operationId": "addIngestionKey",
         "tags": [
           "insight"
         ],
@@ -2339,6 +2334,7 @@
         "description": "Create a new ingestion key."
       },
       "delete": {
+        "operationId": "removeIngestionKey",
         "tags": [
           "insight"
         ],
@@ -2354,7 +2350,7 @@
           },
           {
             "name": "name",
-            "description": "name of the ingestion key to create",
+            "description": "name of the ingestion key to remove",
             "schema": {
               "type": "string"
             },
@@ -2374,6 +2370,7 @@
     },
     "/insight/{oid}/artifacts": {
       "get": {
+        "operationId": "getArtifactList",
         "tags": [
           "insight",
           "logs"
@@ -2426,6 +2423,7 @@
     },
     "/insight/{oid}/artifacts/payloads/{payload_id}": {
       "get": {
+        "operationId": "getArtifactInfo",
         "tags": [
           "insight",
           "logs"
@@ -2482,6 +2480,7 @@
     },
     "/insight/{oid}/artifacts/originals/{payload_id}": {
       "get": {
+        "operationId": "getOriginalArtifact",
         "tags": [
           "insight",
           "logs"
@@ -2519,6 +2518,7 @@
     },
     "/usage/{oid}": {
       "get": {
+        "operationId": "getOrgUsageStats",
         "tags": [
           "orgs"
         ],
@@ -2546,6 +2546,7 @@
     },
     "/service/{oid}/{service_name}": {
       "post": {
+        "operationId": "makeServiceRequest",
         "tags": [
           "service"
         ],
@@ -2598,6 +2599,7 @@
     },
     "/service/{oid}/": {
       "get": {
+        "operationId": "getAvailableServices",
         "tags": [
           "service"
         ],
@@ -2625,6 +2627,7 @@
     },
     "/service/{service_name}/usage": {
       "get": {
+        "operationId": "getServiceUsage",
         "tags": [
           "service"
         ],
@@ -2652,6 +2655,7 @@
     },
     "/orgs/{oid}/users": {
       "get": {
+        "operationId": "getOrgUsers",
         "tags": [
           "users"
         ],
@@ -2677,6 +2681,7 @@
         "description": "List all users in organization."
       },
       "post": {
+        "operationId": "addOrgUser",
         "tags": [
           "users"
         ],
@@ -2710,6 +2715,7 @@
         "description": "Add a new user to the organization."
       },
       "delete": {
+        "operationId": "removeOrgUser",
         "tags": [
           "users"
         ],
@@ -2745,6 +2751,7 @@
     },
     "/orgs/{oid}/keys": {
       "get": {
+        "operationId": "getOrgApiKeys",
         "tags": [
           "api_keys"
         ],
@@ -2770,6 +2777,7 @@
         "description": "List API keys in organization."
       },
       "post": {
+        "operationId": "addOrgApiKey",
         "tags": [
           "api_keys"
         ],
@@ -2811,6 +2819,7 @@
         "description": "Add a new user to the organization."
       },
       "delete": {
+        "operationId": "removeOrgApiKey",
         "tags": [
           "api_keys"
         ],
@@ -2846,6 +2855,7 @@
     },
     "/orgs/{oid}/users/permissions": {
       "get": {
+        "operationId": "getUsersAndPermissions",
         "tags": [
           "users"
         ],
@@ -2871,6 +2881,7 @@
         "description": "List all users and permissions in organization."
       },
       "post": {
+        "operationId": "addUserPermission",
         "tags": [
           "users"
         ],
@@ -2912,6 +2923,7 @@
         "description": "Add a new user to the organization."
       },
       "delete": {
+        "operationId": "removeUserPermission",
         "tags": [
           "users"
         ],
@@ -2955,6 +2967,7 @@
     },
     "/orgs/{oid}/resources": {
       "get": {
+        "operationId": "getOrgResources",
         "tags": [
           "resources"
         ],
@@ -2980,6 +2993,7 @@
         "description": "List all resources subscribed to by an organization."
       },
       "post": {
+        "operationId": "registerOrgToResource",
         "tags": [
           "resources"
         ],
@@ -3021,6 +3035,7 @@
         "description": "Subscribe the organization to a resource."
       },
       "delete": {
+        "operationId": "unregisterOrgFromResource",
         "tags": [
           "resources"
         ],
@@ -3064,6 +3079,7 @@
     },
     "/orgs/{oid}/quota": {
       "post": {
+        "operationId": "setOrgQuota",
         "tags": [
           "billing"
         ],
@@ -3099,6 +3115,7 @@
     },
     "/payload/{oid}/{payloadName}": {
       "get": {
+        "operationId": "getPayload",
         "tags": [
           "payload"
         ],
@@ -3133,6 +3150,7 @@
         "description": "Get the content of a payload."
       },
       "post": {
+        "operationId": "addPayload",
         "tags": [
           "payload"
         ],
@@ -3167,6 +3185,7 @@
         "description": "Create a new payload."
       },
       "delete": {
+        "operationId": "removePayload",
         "tags": [
           "payload"
         ],
@@ -3203,6 +3222,7 @@
     },
     "/payload/{oid}": {
       "get": {
+        "operationId": "listPayloads",
         "tags": [
           "payload"
         ],
@@ -3230,6 +3250,7 @@
     },
     "/job/{oid}": {
       "get": {
+        "operationId": "getJobs",
         "tags": [
           "jobs"
         ],
@@ -3305,6 +3326,7 @@
     },
     "/job/{oid}/{job_id}": {
       "get": {
+        "operationId": "getJobInfo",
         "tags": [
           "jobs"
         ],
@@ -3355,6 +3377,7 @@
         "description": "Fetch a specific job."
       },
       "delete": {
+        "operationId": "removeJob",
         "tags": [
           "jobs"
         ],
@@ -3391,6 +3414,7 @@
     },
     "/export/{oid}/sensors": {
       "post": {
+        "operationId": "exportSensorList",
         "tags": [
           "exports",
           "sensors"
