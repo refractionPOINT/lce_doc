@@ -1,8 +1,44 @@
 {
   "openapi": "3.0.0",
   "tags": [{
-    "name": "LimaCharlie.io API",
-    "description": "REST API for the LimaCharlie.io platform."
+    "name": "orgs",
+    "description": "Operations related to the management of Organizations."
+  },{
+    "name": "sensors",
+    "description": "Operations related to the interaction with Sensors."
+  },{
+    "name": "tags",
+    "description": "Operations related to the tagging of sensors."
+  },{
+    "name": "rules",
+    "description": "Operations related to the Detection & Response rules."
+  },{
+    "name": "outputs",
+    "description": "Operations related to the forwarding of data."
+  },{
+    "name": "general",
+    "description": "Misc. Operations."
+  },{
+    "name": "insight",
+    "description": "Operations related to data retention, visualization and searching."
+  },{
+    "name": "service",
+    "description": "Operations related to interaction with LimaCharlie Services."
+  },{
+    "name": "users",
+    "description": "Operations related to user and permissions management."
+  },{
+    "name": "resources",
+    "description": "Operations related to subscription and updating of Resources."
+  },{
+    "name": "payload",
+    "description": "Operations related to the management of Payloads."
+  },{
+    "name": "jobs",
+    "description": "Operations related to the management of Jobs."
+  },{
+    "name": "exports",
+    "description": "Operations related to the exporting of data."
   }],
   "info": {
     "termsOfService": "https://limacharlie.io/tos",
