@@ -1,9 +1,5 @@
 {
     "formats": {
-      "openapi": {
-        "rootDir": "api",
-        "include": ["**"]
-      },
       "markdown": {
         "rootDir": "docs",
         "include": ["**"]
