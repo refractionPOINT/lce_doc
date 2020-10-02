@@ -1,9 +1,5 @@
 # Deploying Sensors
 
-A machine-readable (YAML) link to the latest version of the LimaCharlie Enterprise sensor is [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
-
-Direct links are also available from [LimaCharlie.io](https://limacharlie.io).
-
 The sensor is signed and the same for everyone. The sensor's customization (who is the owner) is done at installation time
 based on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect
 to enroll as well as the encryption key used to start the enrollment process.
