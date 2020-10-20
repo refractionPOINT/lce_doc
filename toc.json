@@ -191,6 +191,16 @@
             "type": "item",
             "title": "Zeek",
             "uri": "docs/zeek.md"
+          },
+          {
+            "type": "item",
+            "title": "PagerDuty",
+            "uri": "docs/pagerduty.md"
+          },
+          {
+            "type": "item",
+            "title": "Twilio",
+            "uri": "docs/twilio.md"
           }
         ]
       }
