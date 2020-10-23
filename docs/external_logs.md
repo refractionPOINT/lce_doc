@@ -11,6 +11,7 @@ The Artifact Collection system allows you to ingest artifact types like:
 * Full memory dumps
 * Generic JSON
 * OLE (MS Word, Excel etc)
+* Windows MFT CSV Listing
 
 Those artifacts can be ingested from hosts running a LimaCharlie sensor, or they
 can be pushed to the LimaCharlie platform via a REST interface.
