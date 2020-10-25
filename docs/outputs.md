@@ -202,6 +202,27 @@ humio_repo: sandbox
 humio_api_token: fdkoefj0erigjre8iANUDBFyfjfoerjfi9erge
 ```
 
+### Kafka
+Output events and detections to a Kafka target.
+
+* `dest_host`: the IP or DNS and port to connect to, format `kafka.myorg.com`.
+* `is_tls`: if `true` will output over TCP/TLS.
+* `is_strict_tls`: if `true` will enforce validation of TLS certs.
+* `username`: if specified along with `password`, use for Basic authentication.
+* `password`: if specified along with `username`, use for Basic authentication.
+* `routing_topic`: use the element with this name from the `routing` of the event as the Kafka topic name.
+* `literal_topic`: use this specific value as a topic.
+
+Example:
+```
+dest_host: kafka.corp.com
+is_tls: "true"
+is_strict_tls: "true"
+username: lc
+password: letmein
+literal_topic: telemetry
+```
+
 ## Integrations
 
 ### Common Patterns
@@ -309,25 +330,6 @@ It is recommended you enable `is_compression`.
 1. Enter the bucket name, key_id and secret_key you noted down from AWS.
 1. Click "Create".
 1. After a minute, the data should start getting written to your bucket.
-
-### Kafka
-Output events and detections to a Kafka target.
-
-* `dest_host`: the IP or DNS and port to connect to, format `www.myorg.com:514`.
-* `is_tls`: if `true` will output over TCP/TLS.
-* `is_strict_tls`: if `true` will enforce validation of TLS certs.
-* `username`: if specified along with `password`, use for Basic authentication.
-* `password`: if specified along with `username`, use for Basic authentication.
-* `routing_topic`: use the element with this name from the `routing` of the event as the Kafka topic name.
-* `literal_topic`: use this specific value as a topic.
-
-Example:
-```
-dest_host: storage.corp.com
-is_tls: "true"
-is_strict_tls: "true"
-is_no_header: "false"
-```
 
 #### Policy Sample
 
