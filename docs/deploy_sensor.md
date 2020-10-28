@@ -1,9 +1,5 @@
 # Deploying Sensors
 
-A machine-readable (YAML) link to the latest version of the LimaCharlie Enterprise sensor is [here](https://lcio.nyc3.digitaloceanspaces.com/sensors/index.yaml).
-
-Direct links are also available from [LimaCharlie.io](https://limacharlie.io).
-
 The sensor is signed and the same for everyone. The sensor's customization (who is the owner) is done at installation time
 based on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect
 to enroll as well as the encryption key used to start the enrollment process.
@@ -98,7 +94,7 @@ directory is the directory where you want the few sensor-related files written t
 
 Common Linux packages may be available in the future.
 
-A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](lc_linux_installer.sh).
+A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh).
 You can invoke it like this:
 ```
 sudo chmod +x ./lc_linux_installer.sh

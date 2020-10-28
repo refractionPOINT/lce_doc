@@ -1,0 +1,3 @@
+steps:
+  - name: gcr.io/legion-212720/readmeio
+    args: ['docs', './test', '--version=4.0.0', '--key', 'kAq3ZjLrEsLNIWK9rEgmyzyFkE7BIpWa']

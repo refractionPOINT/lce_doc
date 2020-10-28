@@ -1,9 +1,10 @@
 # Payloads
 
 ## Overview
-Payloads are executables that can be delivered and executed through LimaCharlie's sensor.
+Payloads are executables or scripts that can be delivered and executed through LimaCharlie's sensor.
 
-Those payloads can be any executable. The main use case is to run something with specific
+Those payloads can be any executable or script natively understood by the endpoint.
+The main use case is to run something with specific
 functionality not available in the main LimaCharlie functionality. For example: custom
 executables provided by another vendor to cleanup a machine, forensic utilities or
 firmware-related utilities.
@@ -15,6 +16,10 @@ advantages:
 * Data returned is always well structured JSON.
 * Can be tasked automatically and [Detection & Response](dr.md) rules can be created from their data.
 * Data returned is indexed and searchable.
+
+It is possible to set the Payload's file extension on the endpoint by making the Payload name end with
+that extension. For example, naming a Payload `extract_everything.bat`, the Payload will be sent
+as a batch file (`.bat`) and executed as such.
 
 ## Lifecycle
 Payloads are uploaded to the LimaCharlie platform and given a name. The task `run` can then be used

@@ -91,6 +91,71 @@ When uploaded, the data for the lookup can be provided in three different ways:
 
 The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
 
+#### Optimized Format
+Sometimes when creating a Lookup you may want to include right metadata for each element
+of the lookup, but the maximum size may be an issue. In cases where there is a lot of metadata
+repetion you may use an optimized format. This format will allow you to associate large
+pieces of metadata with a high number of lookup items.
+
+To accomplish this, you will need to split up your metadata from your lookup values like:
+
+```
+{
+  "_LC_METADATA": [
+    {
+      "some": "metadata",
+      ...
+    }, {
+      "some": "moremetadata",
+      ...
+    }, {
+      "somemore": "metadata",
+      ...
+    }
+  ],
+  "_LC_INDICATORS: {
+    "evil.exe": 0,
+    "another.exe": 0,
+    "more.exe": 1,
+    "vals.exe": 2,
+    ...
+  }
+}
+```
+
+The `_LC_METADATA` key has as a value a list of all the pieces of metadata you want to include.
+
+The `_LC_INDICATORS` is the normal list of indicators, but instead of having the metadata directly
+associated with each indicator as the value, it uses an integer that refers to the `_LC_METADATA`
+list's index where the metadata can be found.
+
+The above example is equivalent to the non-optimized:
+
+```
+{
+  "evil.exe": {
+      "some": "metadata",
+      ...
+    },
+  "another.exe": {
+      "some": "metadata",
+      ...
+    },
+  "more.exe": {
+      "some": "moremetadata",
+      ...
+    },
+  "vals.exe": {
+      "somemore": "metadata",
+      ...
+    },
+}
+```
+
+As you can see, this optimization is useful to reduce the repeated metadata. This is particularly
+useful if, for example, you have large numbers of IoCs for a given actor. In that case every
+IoC in the lookup would be associated with the same metadata (information about the actor).
+
 #### From MISP
 When creating an add-on from MISP content, LimaCharlie expects the data to be a JSON document
 to have the following structure:

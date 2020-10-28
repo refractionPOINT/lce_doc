@@ -52,7 +52,7 @@ to events coming from the LimaCharlie agents. Other targets are available howeve
 
 While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
 
-* All the basics: `is`, `and`, `or`, `exists`, `contains`, `starst with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
+* All the basics: `is`, `and`, `or`, `exists`, `contains`, `starts with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
 * `artifact` target only: `artifact source`, `artifact type`
