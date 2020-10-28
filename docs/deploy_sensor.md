@@ -94,7 +94,7 @@ directory is the directory where you want the few sensor-related files written t
 
 Common Linux packages may be available in the future.
 
-A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](lc_linux_installer.sh).
+A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh).
 You can invoke it like this:
 ```
 sudo chmod +x ./lc_linux_installer.sh
