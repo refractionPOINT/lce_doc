@@ -747,6 +747,22 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
+### dns_resolve
+Cause the sensor to do a network resolution.
+Mainly used for internal purposes.
+
+Platforms: Windows, Linux, MacOS, Chrome
+
+```
+usage: dns_resolve [-h] domain
+
+positional arguments:
+  domain      domain name to resolve
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
 ## Artifact Collection
 
 Note that instead of using the `artifact_get` command directly it is recommended
