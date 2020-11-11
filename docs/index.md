@@ -1,6 +1,6 @@
 # LimaCharlie.io
 
-<img src="https://storage.cloud.google.com/limacharlie-io/logo_mono.png" width="150">
+<img src="https://storage.googleapis.com/limacharlie-io/logo_mono.png" width="150">
 
 ## Quick Start
 To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
