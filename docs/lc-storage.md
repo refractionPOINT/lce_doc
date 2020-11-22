@@ -1,0 +1,1 @@
+![image 'lc-storage'](./images/lc-storage.png)
