@@ -1,6 +1,6 @@
 ![image 'lc-rbac'](./images/lc-access.png)
 
-LimaCharlie employes a fine-grained permission scheme across the API and user accounts.
+LimaCharlie employs a fine-grained permission scheme across the API and user accounts.
 
 ## <span style="color:#816122">User Access</span>
 
