@@ -2,6 +2,17 @@
 
 LimaCharlie employes a fine-grained permission scheme across the API and user accounts.
 
+# <span style="color:#816122">User Access</span>
+
+Details on giving a new user initial access can be [found here]().
+
+2FA is offered through the following technologies. NAtive 2FA is coming to LimaCharlie in 2021.
+* Google 
+* Microsoft
+* Github
+
+If you havew any questions or specific needs around user authentication please do not hesitate to [get in touch]().
+
 # <span style="color:#816122">Analyst Permissions</span>
 
 Administrators can manage multiple analysts across multiple organizations. LimaCharlie provides a top-level user management scheme that allows for the creation of user groups with defined permissions across organizations.
