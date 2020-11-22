@@ -4,11 +4,9 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
 
 # <span style="color:#747a80">Educational Resources</span>
 
-[Quickstart Guide]()
-* A quickstart guide to help you get data fllowing so you can start experimenting in your lab.
+[Quickstart Guide](./lcc_quick_start.md): A quickstart guide to help you get data fllowing so you can start experimenting in your lab.
 
-[Free Online Training Course](https://edu.limacharlie.io/)
-* A growing collection of online training courses.
+[Free Online Training Course](https://edu.limacharlie.io/): A growing collection of online training courses.
 
 [Upcoming and Recorded Webinars]()
 * Register for an upcoming webinar or watch previously recorded ones.

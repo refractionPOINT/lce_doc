@@ -30,7 +30,6 @@ LimaCharlie offers an ever growing set of online courses via the [Thinkific](htt
 
 * [Network Capture and Zeek](https://www.youtube.com/watch?v=wSN2BrGx0j8&t=964s)
 
-
 # <span style="color:#596a37">Edu Doc</span>
 
 * [Getting Started Guide](https://storage.googleapis.com/limacharlie-io/public_documents/LC_GettingStartedGuide.pdf)
