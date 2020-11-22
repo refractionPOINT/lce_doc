@@ -15,6 +15,8 @@ Various builds of the agent can run on the following for x86, ARM & MIPS archite
 
 The agent is approximately 500kb in size but that varies a little depending on which platform it is compiled for. While running it consumes less that 1% CPU but does spike very briefly when certain events take place like an application starting up. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection. The round trip time from an event being detected to the time a response is actioned on the endpoint is generally less than 100 milliseconds.
 
+Documentation on deploying the agent can be [found here](./deploy_sensor.md).
+
 # <span style="color:#3e516b">Live View</span>
 
 Authorized programs and scripts can interact with the LimaCharlie agent in real-time. Analysts can also interact with the agent in real-time using the web application. LimaCharlie's Live View provides a graphic based control panel into the endpoint.
@@ -112,6 +114,7 @@ Installing the sensor requires administrator (or root) execution:
 **Note:** A sample installer script is [available here](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh) that works on Debian and CentOS families.
 
 **Chrome(+OS):** See our [documentation here]()
+
 
 **Docker:** See our [documentation here]()
 

@@ -2,6 +2,8 @@
 
 Education and open data is at the heart of LimaCharlie. To ensure that users get up to speed quickly - and make the most of the platform - LimaCharlie provides a host of educational resources.
 
+For those looking to get started right away: [Quickstart Guide](lcc_quick_start.md)
+
 # <span style="color:#596a37">Course Material</span>
 
 LimaCharlie offers an ever growing set of online courses via the [Thinkific](https://www.thinkific.com/) platform. Courses are free and offers accreditation through posted certificates.
