@@ -19,7 +19,43 @@ The agent is approximately 500kb in size but that varies a little depending on w
 
 Authorized programs and scripts can interact with the LimaCharlie agent in real-time. Analysts can also interact with the agent in real-time using the web application. LimaCharlie's Live View provides a graphic based control panel into the endpoint.
 
-Users can 
+Live View is accessed from the user interface of the web application under the Sensors tab.
+
+![image 'Go Live'](./images/sc-sensor-tab-go-live.png)
+
+The Live View user interface of the web application uses a tabbed format. Through each of the tabs an analysts has access to and can perform the following.
+
+**Info Tab:** Users can view hostname, platform (OS), sensor ID, external IP, internal IP, last connected and is able to list and edit tags.
+
+**Management Tab:** Froim this tab users can exercise fine-grained control over the type of telemetry from the endpoint that should be sent to the cloud. A full list of events that can monitored can be [found here](./events.md).
+
+**Console Tab:** The console tab allows users to query the endpoint in real-time. A full list of sensor commands that can be sent the endpoint can be [found here](./sensor_commands.md).
+
+**Feed Tab:** The feed tab allows users to view a live stream of events as they are happening on the endpoint. This is a computationally intensive process in the browser and should be closed when not being used. A full list of events that can be viewed through this user interface are [listed here](./events.md).
+
+**Processes Tab:** The process tab allows users to see a list of processes running on the endpoint and perform several ppossible operations on each. For each process running on the endpoint the user can do the following.
+* View Modules
+* Kill Process
+* Suspend Process
+* Resume Process
+* Memory Strings
+* Memory Map
+* Network Connections
+
+**File System Tab:** Fron the file systems tab users can perform the following.
+* Navigate the endpoint's file systems
+* Download files from the endpoint
+* Generate a hash for a given file and optionally check that hash against [VirusTotal](https://www.virustotal.com/)
+
+**Network Tab:** The network tab will display the following for the given endpoint. The underlying mechanism is [netstat](https://linux.die.net/man/8/netstat).
+* Process Name
+* Local IP
+* Local Port
+* Foreign IP
+* Foreign Port
+* State
+* Process Hash
+
 
 # <span style="color:#3e516b">Installers</span>
 
