@@ -1,100 +1,90 @@
-# LimaCharlie.io
-
-<img src="https://storage.googleapis.com/limacharlie-io/logo_mono.png" width="150">
-
-# <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
-## <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+![image 'lc-rbac'](./images/lc-logo.png)
+## Quick Start
+To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
+# <span style="color:rgba(00, 00, 00, 0)">Overview</span>
 
 ![image 'lc-rbac'](./images/lc-access.png)
+## <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts.
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
-## <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
+[Details]()
+
+# <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+
 
 ![image 'lc-agent'](./images/lc-agent.png)
 
+## <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span> 
+
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. 
 
+[Details]()
 
-## Quick Start
-To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
+# <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
 
-## Core Concepts
-### Sensors
-The LimaCharlie sensor is a cross platform endpoint sensor (agent). It is a low-level, light-weight sensor that executes detection and response functionality in real-time.
+![image 'lc-agent'](./images/lc-code.png)
 
-The sensor provides a wide range of advanced capability.
+## <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span> 
 
-* Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
-* Host isolation, automated response rules, intelligent local caching of events for in depth Incident Response (IR)
-as well as some forensic features like dumping memory.
+LimaCharlie provides standalone tools for security proffesionals to get started hunting out of the box but at its heart it is a toolbox for builders. This section of the documentation is a place where developers can find the resources they need to build and monetize their own products.
 
-Sensors are designed to limit the potential for abuse resulting from unauthorized access to the LimaCharlie platform.
-This is achieved by limited open-ended commands as well as commands that could enable an attacker to
-covertly upload malicious software to your hosts. This means the LimaCharlie sensor is extremely powerful
-but also keeps its "read-only" qualities on your infrastructure. Of course, all access and interactions with the hosts
-are also logged for audit both within the cloud and tamper-proof forwarding to your own infrastructure.
+[Details]()
 
-Full commands list is in the [Sensor Commands section](sensor_commands.md).
+# <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span>
 
-### Installer Key
-Installer Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
-Get more details in the [Installation Keys section](manage_keys.md).
+![image 'lc-agent'](./images/lc-edu.png)
 
-### Tags
-Sensors can have Tags associated with them. Tags are added during creation or dynamically through the UI, API or Detection & Response Rules.
-Get more information in the [Tagging section](tagging.md).
+## <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span> 
 
-### Detection & Response Rules
-The Detection & Response Rules act as an automation engine. The Detection component is a rule that either matches an event
-or not. If the Detection component matches, the Response component of the rule is actioned. This can be used to automatically
-investigate, mitigate or apply Tags.
+Education and open data is at the heart of LimaCharlie. To ensure that users get up to speed quickly - and make the most of the platform - LimaCharlie provides a host of educational resources.
 
-Detailed explanation in the [Detection & Response section](dr.md).
+[Details]()
 
-### Insight
-Insight is our built-in data retention and searching. It is included within our 2 sensor free tier as well.
+# <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span>
 
-When you enable Insight, we configure everything for you so that you get access to one year of your data for visualization and searching.
+![image 'lc-agent'](./images/lc-hunt.png)
 
-You don't *have to* use the built-in data retention; you can forward data to your infrastructure
-directly if you'd like. In general though, it is much simpler and a better experience to use Insight. If you prefer not to use Insight,
-go through the next section (Outputs).
+## <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span> 
 
-### Outputs
-If you are using Insight (data retention), you can skip this section.
+LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform.
 
-LimaCharlie can relay the data somewhere for longer term storage and analysis. Where that data is sent depends on which Outputs
-are activated. You can have as many Output modules active as you want, so you can send it to multiple syslog destinations using
-the Syslog Output module and then send it to some cold storage over an Scp Output module.
+[Details]()
 
-Output is also split between four categories: "event", "detect", "audit" and "deployment". Selecting a Stream when creating an Output
-will select the relevant type of data to flow through it.
+# <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span>
 
-Exact configuration possibilities in the [Output section](outputs.md).
+![image 'lc-agent'](./images/lc-marketplace.png)
 
-### API Keys
-The API keys are represented as UUIDs. They are linked to your specific organization and enable you to programatically acquire
-authorization tokens that can be used on our REST API. See the [API Key section](api_keys.md) for more details.
+## <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span> 
 
-## Operations
+LimaCharlie offers additional free and paid integrated services through it's Add-Ons Marketplace.
 
-### Quick Start
-* [LimaCharlie Cloud Quick Start](lcc_quick_start.md)
+[Details]()
 
-### User Operations
-* [Manage Installation Keys](manage_keys.md)
-* [Manage Tags](tagging.md)
-* [Manage Detection & Response Rules](dr.md)
-* [Sensor Commands](sensor_commands.md)
-* [Output Configuration](outputs.md)
-* [Deploying Sensors](deploy_sensor.md)
-* [Add-ons](user_addons.md)
+# <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span>
 
-### Reference
-* [Events](events.md)
-* [Error Codes](errors.md)
+![image 'lc-agent'](./images/lc-output.png)
 
-### FAQ
-* [FAQ](faq.md)
+# <span style="color:rgba(00, 00, 00, 0)">LC-OUTPUT</span>
+
+The data produced by the LimaCharlie endpoint is under complete control of the user. LimaCharlie provides extensive storage and search options as part of its core offering but makes the full telemetry stream availble to users.
+
+[Details]()
+
+## <span style="color:rgba(00, 00, 00, 0)">LC-OUPUT</span> 
+
+![image 'lc-agent'](./images/lc-storage.png)
+
+# <span style="color:rgba(00, 00, 00, 0)">LC-STORAGE</span>
+
+By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
+
+All files and telemetry ingested are indiexed across common indicators of compromise and are easily processed by any of the subsystems or products in the LimaCharlie offering.
+
+[Details]()
+
+## <span style="color:rgba(00, 00, 00, 0)">LC-Storage</span> 
+
+
+
+
