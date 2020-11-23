@@ -1,4 +1,6 @@
-![image 'lc-rbac'](./images/lc-logo.png)
+<img src="./images/lc-logo.png"
+     alt="LimaCharlie.io Logo"
+     style="" />
 ## Quick Start
 To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
@@ -7,7 +9,9 @@ A high-level overview of LimaCharlie's core concepts can be found here: [Core Co
 
 # <span style="color:rgba(00, 00, 00, 0)">Overview</span>
 
-![image 'lc-rbac'](./images/lc-access.png)
+<img src="./images/lc-access.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 ## <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts.
@@ -16,9 +20,9 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
 
-
-![image 'lc-agent'](./images/lc-agent.png)
-
+<img src="./images/lc-agent.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 ## <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span> 
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. 
@@ -26,8 +30,9 @@ The LimaCharlie agent - or sensor - is fully interactive and can monitor over [7
 [Details](./lc-agent.md)
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
-
-![image 'lc-agent'](./images/lc-code.png)
+<img src="./images/lc-code.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 
 ## <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span> 
 
@@ -37,8 +42,9 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span>
 
-![image 'lc-agent'](./images/lc-edu.png)
-
+<img src="./images/lc-edu.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 ## <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span> 
 
 Education and open data is at the heart of LimaCharlie. To ensure that users get up to speed quickly - and make the most of the platform - LimaCharlie provides a host of educational resources.
@@ -47,8 +53,9 @@ Education and open data is at the heart of LimaCharlie. To ensure that users get
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span>
 
-![image 'lc-agent'](./images/lc-hunt.png)
-
+<img src="./images/lc-hunt.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 ## <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span> 
 
 LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform.
@@ -57,8 +64,9 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span>
 
-![image 'lc-agent'](./images/lc-marketplace.png)
-
+<img src="./images/lc-marketplace.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 ## <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span> 
 
 LimaCharlie offers additional free and paid integrated services through it's Add-Ons Marketplace.
@@ -67,8 +75,9 @@ LimaCharlie offers additional free and paid integrated services through it's Add
 
 # <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span>
 
-![image 'lc-agent'](./images/lc-output.png)
-
+<img src="./images/lc-output.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 # <span style="color:rgba(00, 00, 00, 0)">LC-OUTPUT</span>
 
 The data produced by the LimaCharlie endpoint is under complete control of the user. LimaCharlie provides extensive storage and search options as part of its core offering but makes the full telemetry stream availble to users.
@@ -77,8 +86,9 @@ The data produced by the LimaCharlie endpoint is under complete control of the u
 
 ## <span style="color:rgba(00, 00, 00, 0)">LC-OUPUT</span> 
 
-![image 'lc-agent'](./images/lc-storage.png)
-
+<img src="./images/lc-storage.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 50%" />
 # <span style="color:rgba(00, 00, 00, 0)">LC-STORAGE</span>
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
