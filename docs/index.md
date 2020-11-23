@@ -7,8 +7,8 @@ To skip all of the details and get set up with endpoint detection and response c
 ## Core Concepts
 A high-level overview of LimaCharlie's core concepts can be found here: [Core Concepts]()
 
-# <span style="color:rgba(00, 00, 00, 0)">Overview</span>
 ## <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-access.png"
      alt="LimaCharlie.io Logo"
@@ -18,8 +18,10 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
 
 [Details](./lc-access.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+
 ## <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span> 
+# <span style="color:rgba(00, 00, 00, 0)"></span>
+
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-agent.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />
@@ -28,8 +30,10 @@ The LimaCharlie agent - or sensor - is fully interactive and can monitor over [7
 
 [Details](./lc-agent.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
+
 ## <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span> 
+# <span style="color:rgba(00, 00, 00, 0)"></span>
+
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-code.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />
@@ -38,8 +42,8 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
 
 [Details](./lc-code.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-CODE</span>
 ## <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span> 
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-edu.png"
      alt="LimaCharlie.io Logo"
@@ -49,8 +53,8 @@ Education and open data is at the heart of LimaCharlie. To ensure that users get
 
 [Details](./lc-edu.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-EDU</span>
 ## <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span> 
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-hunt.png"
      alt="LimaCharlie.io Logo"
@@ -61,8 +65,8 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
 
 [Details](./lc-hunt.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-HUNT</span>
 ## <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span> 
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-marketplace.png"
      alt="LimaCharlie.io Logo"
@@ -72,8 +76,8 @@ LimaCharlie offers additional free and paid integrated services through it's Add
 
 [Details](./lc-marketplace.md)
 
-# <span style="color:rgba(00, 00, 00, 0)">LC-MARKETPLACE</span>
 ## <span style="color:rgba(00, 00, 00, 0)">LC-OUTPUT</span>
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-output.png"
      alt="LimaCharlie.io Logo"
@@ -84,7 +88,7 @@ The data produced by the LimaCharlie endpoint is under complete control of the u
 [Details](./lc-output.md)
 
 ## <span style="color:rgba(00, 00, 00, 0)">LC-OUPUT</span> 
-# <span style="color:rgba(00, 00, 00, 0)">LC-STORAGE</span>
+# <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-storage.png"
      alt="LimaCharlie.io Logo"
