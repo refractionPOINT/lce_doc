@@ -2,6 +2,21 @@
 
 <img src="https://storage.googleapis.com/limacharlie-io/logo_mono.png" width="150">
 
+# <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+## <span style="color:rgba(00, 00, 00, 0)">LC-ACESS</span>
+
+![image 'lc-rbac'](./images/lc-access.png)
+
+LimaCharlie employs a fine-grained permission scheme across the API and user accounts.
+
+# <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
+## <span style="color:rgba(00, 00, 00, 0)">LC-AGENT</span>
+
+![image 'lc-agent'](./images/lc-agent.png)
+
+The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. 
+
+
 ## Quick Start
 To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
