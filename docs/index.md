@@ -87,7 +87,7 @@ The data produced by the LimaCharlie endpoint is under complete control of the u
 
 [Details](./lc-output.md)
 
-## <span style="color:rgba(00, 00, 00, 0)">LC-OUPUT</span> 
+## <span style="color:rgba(00, 00, 00, 0)">LC-Storage</span> 
 # <span style="color:rgba(00, 00, 00, 0)"></span>
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-storage.png"
@@ -100,7 +100,7 @@ All files and telemetry ingested are indiexed across common indicators of compro
 
 [Details](./lc-agent.md)
 
-## <span style="color:rgba(00, 00, 00, 0)">LC-Storage</span> 
+
 
 
 
