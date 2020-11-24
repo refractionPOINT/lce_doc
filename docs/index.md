@@ -14,7 +14,7 @@ A high-level overview of LimaCharlie's core concepts can be found here: [Core Co
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-access-icon.png"
      alt="LimaCharlie.io Logo"
-     style="width: 15%; float:right;" />
+     style="width: 15%; float:right; font-family: serif;" />
 
 ## <span style="color:#764b0b">lc-access</span>
 
