@@ -37,7 +37,7 @@ The LimaCharlie agent - or sensor - is fully interactive and can monitor over [7
 * [Programmatic Access](./lc-access.md#programatic-access)
 
 
-## <span style="color:#747a80">lc-code</span> 
+# <span style="color:#747a80">lc-code</span> 
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-code.png"
      alt="LimaCharlie.io Logo"
@@ -45,7 +45,7 @@ The LimaCharlie agent - or sensor - is fully interactive and can monitor over [7
 
 LimaCharlie provides standalone tools for security proffesionals to get started hunting out of the box but at its heart it is a toolbox for builders. This section of the documentation is a place where developers can find the resources they need to build and monetize their own products.  A detailed overview can be [found here](./lc-access.md).
 
-## <span style="color:#596a37">lc-edu</span> 
+# <span style="color:#596a37">lc-edu</span> 
 
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-edu.png"
      alt="LimaCharlie.io Logo"
