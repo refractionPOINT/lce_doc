@@ -23,7 +23,7 @@ Details on giving a new user initial access can be [found here](./user_access.md
 
 This feature set can be accessed through the web application at the top of the main dashboard. In the upper right corner you will see a new ‘Create Group’ button. Clicking on this will prompt you to name the new group.
 
-![image 'Create Group'](./images/sc-create-group.png)
+<kbd><img src="./images/sc-create-group.png"/></kbd>
 
 Once you name the group you will see it show up in the list of groups. From here you can click on it, select the organizations, set permissions and add users. Users can be a mix of owners and members of various groups that have access to a variety of organizations with different permission levels - the possibilities are endless.
 
