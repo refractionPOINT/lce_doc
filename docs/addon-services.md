@@ -1,8 +1,8 @@
-# <span style="color:#185000">dumper</span>
+## <span style="color:#185000">dumper</span>
 
 **Cost:** FREE 
 
-**Platforms:**  
+**Platforms:** Windows
 
 **Permissions Requested:** dr.del.replicant, dr.list.replicant, dr.set.replicant, org.get, payload.ctrl, payload.use, sensor.get, sensor.task
 
@@ -18,123 +18,123 @@ API Flair: lock, secret, segment
 >
 >For an example of requesting a dump through a D&R rule, see the "service request" action
 
-# <span style="color:#185000">exfil</span>
+## <span style="color:#185000">exfil</span>
 
 **Website:** https://doc.limacharlie.io/en/master/exfil/
 
 **Cost:** FREE
 
-**Platforms:**
+**Platforms:** MacOS, Linux, Windows
 
 >Automates the management of event selection for the events from agents that should be sent to the cloud in real-time.
 
 # <span style="color:#185000">generic-macos</span>
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:  
+**Platforms:** MacOS
 
-Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp.ctrl, org.get, replicant.get, replicant.task
+**Permissions Requested:** dr.del.replicant, dr.list.replicant, dr.set.replicant, fp.ctrl, org.get, replicant.get, replicant.task
 
-API Flair: lock, secret, segment
+**API Flair:** lock, secret, segment
 
 >Generic MacOS detections for suspicious behavior. Requires the Exfil service.
 
-# <span style="color:#185000">integrity</span>
+## <span style="color:#185000">integrity</span>
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:
+**Platforms:** MacOS, Windows
 
 Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp.ctrl, org.get, replicant.get, replicant.task
 
-API Flair: lock, secret, segment
+**API Flair:** lock, secret, segment
 
 >Automates management of the File/Registry integrity monitoring
 
-# <span style="color:#185000">loggin</span>
+## <span style="color:#185000">logging</span>
 
-Website: https://doc.limacharlie.io/en/master/external_logs/
+**Website:** https://doc.limacharlie.io/en/master/external_logs/
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:
+**Platforms:** MacOS, Linux, Windows
 
 >Automates various aspects of external log collection from endpoints.
 
-# <span style="color:#185000">otx</span>
+## <span style="color:#185000">otx</span>
 
-Website: https://otx.alienvault.com/
+**Website:** https://otx.alienvault.com/
 
-Cost: $0.05 USD / sensor
+**Cost:** $0.05 USD / sensor
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
-Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, org.conf.get, org.get
+**Permissions Requested:** dr.del.replicant, dr.list.replicant, dr.set.replicant, org.conf.get, org.get
 
-API Flair: bulk, lock, secret, segment
+**API Flair:** bulk, lock, secret, segment
 
 >Continuously import all your OTX pulses and the relevant D&R rules for most indicator types. Set your OTX API key in the Integrations section and subscribe to this Service.
 
-# <span style="color:#185000">pagerduty</span>
+## <span style="color:#185000">pagerduty</span>
 
-Website: https://pagerduty.com
+**Website:** https://pagerduty.com
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
-Permissions requested: org.conf.get, org.get
+**Permissions Requested:** org.conf.get, org.get
 
-API Flair: bulk, lock, secret, segment
+**API Flair:** bulk, lock, secret, segment
 
 >Trigger alerts with PagerDuty.
 >
 >For more information: https://doc.limacharlie.io/docs/documentation/docs/pagerduty.md
 
-# <span style="color:#185000">reliable-tasking</span>
+## <span style="color:#185000">reliable-tasking</span>
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows    
 
-Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, job.set, org.get, sensor.get, sensor.list, sensor.task
+**Permissions Requested:** dr.del.replicant, dr.list.replicant, dr.set.replicant, job.set, org.get, sensor.get, sensor.list, sensor.task
 
-API Flair: bulk, lock, secret, segment
+**API Flair:** bulk, lock, secret, segment
 
 >Enables reliable, asynchronous and large scale tasking of LimaCharlie sensors. This means you can send a task to a large number of sensors, including offline sensors. The service takes care of retrying to send the task to offline sensors to ensure each of the targeted sensors is tasked at least once. An optional expiry is available to stop retrying tasks after a given time period.
 
-# <span style="color:#185000">replay</span>
+## <span style="color:#185000">replay</span>
 
-Website: https://doc.limacharlie.io/en/master/replay/
+**Website:** https://doc.limacharlie.io/en/master/replay/
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:
+**Platforms:** MacOS, Linux, Windows
 
 >Automates the Replay of various Detection & Response rules on historical sensor data.
 
-# <span style="color:#185000">responder</span>
+## <span style="color:#185000">responder</span>
 
-Website: https://doc.limacharlie.io/en/master/responder/
+**Website:** https://doc.limacharlie.io/en/master/responder/
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:
+**Platforms:** MacOS, Linux, Windows
 
 >Automates various aspects of investigation and incident response.
 
-# <span style="color:#185000">sensor-cull</span>
+## <span style="color:#185000">sensor-cull</span>
 
-Website: https://limacharlie.io
+**Website:** https://limacharlie.io
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
-Permissions requested: org.get, sensor.del, sensor.get, sensor.list
+**Permissions Requested:** org.get, sensor.del, sensor.get, sensor.list
 
-API Flair: bulk, lock, secret, segment
+**API Flair:** bulk, lock, secret, segment
 
 >Automated sensor deletion upon an expiration time.
 >
@@ -142,13 +142,13 @@ API Flair: bulk, lock, secret, segment
 >
 >See documentation here: https://doc.limacharlie.io/en/master/sensor_cull/
 
-# <span style="color:#185000">sigma</span>
+## <span style="color:#185000">sigma</span>
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:  
+**Platforms:** Windows
 
-Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, org.get
+**Permissions Requested:** dr.del.replicant, dr.list.replicant, dr.set.replicant, org.get
 
 >This service provides a core set of the open source Sigma rules in managed fashion.
 >
@@ -162,47 +162,47 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, or
 >
 >Some Sigma rules on Windows rely on Windows Event Logs which are not collected by LimaCharlie by default. In order to leverage these you will need to configure automated collection of the relevant Windows Event Logs through the Artifact Collection service.
 
-# <span style="color:#185000">twilio</span>
+## <span style="color:#185000">twilio</span>
 
-Website: https://twilio.com
+**Website:** https://twilio.com
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
-Permissions requested: org.conf.get, org.get
+**Permissions Requested:** org.conf.get, org.get
 
-API Flair: bulk, lock, secret, segment
+**API Flair:** bulk, lock, secret, segment
 
 >Send messages using Twilio.
-
+>
 >For more information: https://doc.limacharlie.io/docs/documentation/docs/twilio.md
 
-# <span style="color:#185000">yara</span>
+## <span style="color:#185000">yara</span>
 
-Website: https://doc.limacharlie.io/en/master/yara/
+**Website:** https://doc.limacharlie.io/en/master/yara/
 
-Owner: ops@limacharlie.io
+**Owner:** ops@limacharlie.io
 
-Cost: FREE
+**Cost:** FREE
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
 >Automates management of Yara signature sets and their use in scanning.
 
-# <span style="color:#185000">zeek</span>
+## <span style="color:#185000">zeek</span>
 
-Website: https://limacharlie.io
+**Website:** https://limacharlie.io
 
-Owner: ops@limacharlie.io
+**Owner:** ops@limacharlie.io
 
-Cost: Based on Usage
+**Cost:** Based on Usage
 
-Platforms:    
+**Platforms:** MacOS, Linux, Windows
 
-Permissions requested: ingestkey.ctrl, insight.evt.get
+**Permissions Requested:** ingestkey.ctrl, insight.evt.get
 
-API Flair: lock, secret, segment
+**API Flair:** lock, secret, segment
 
 >Once enabled, the Zeek service will watch for PCAP files being ingested through External Logs. For each PCAP, the Zeek service will run the Zeek tool (aka Bro) on the PCAP. All the resulting Zeek log files will then be re-ingested into External Logs where they can be viewed or Detection & Response rules can be created to generated detections or automate responses.
 >

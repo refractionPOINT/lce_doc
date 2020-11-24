@@ -6,7 +6,7 @@
 
 **Cost:** FREE
 
-**Platforms:** MacOS, Linux, Windows
+**Platforms:** MacOS, Linux, Windows, ChromeOS
 
 **Permissions Requested:** Permissions requested:
 dr.del.replicant, dr.list.replicant, dr.set.replicant, org.get
