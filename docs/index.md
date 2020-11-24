@@ -11,11 +11,13 @@ To skip all of the details and get set up with endpoint detection and response c
 A high-level overview of LimaCharlie's core concepts can be found here: [Core Concepts]()
 
 
-# <span style="color:#764b0b">lc-access</span>
-
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/lc-access-icon.png"
      alt="LimaCharlie.io Logo"
      style="width: 15%; float:right;" />
+
+# <span style="color:#764b0b">lc-access</span>
+
+
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts. A detailed overview can be [found here](./lc-access.md).
 
