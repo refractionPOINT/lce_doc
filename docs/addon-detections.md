@@ -1,3 +1,19 @@
+# <span style="color:#185000">evil-maid</span>
+
+**Website:** http://doc.limacharlie.io
+
+**Owner:** ops@limacharlie.io
+
+**Cost:** FREE
+
+**Platforms:** MacOS, Linux, Windows
+
+>Simple check for sensors becoming online from hosts that should not be running. This is well suited to detecting "evil maid" attacks (https://goo.gl/Uis8BP). Tag sensors that should not be online with "check-evil-maid". To avoid duplication of alerts, the response should tag with "is-evil-maid" which will make this detection ignore further alerts as long as the tag is present: Example:
+>
+>action: add tag tag: is-evil-maid ttl: 864000
+>action: report name: evil-maid
+
+
 # <span style="color:#185000">powershell-encoded-command
 </span>
 

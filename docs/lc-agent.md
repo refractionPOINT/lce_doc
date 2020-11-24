@@ -1,6 +1,6 @@
 ![image 'lc-agent'](./images/lc-agent.png)
 
-# <span style="color:#3e516b">Overview</span>
+## <span style="color:#3e516b">Overview</span>
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
@@ -17,7 +17,7 @@ The agent is approximately 500kb in size but that varies a little depending on w
 
 Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 
-# <span style="color:#3e516b">Live View</span>
+## <span style="color:#3e516b">Live View</span>
 
 Authorized programs and scripts can interact with the LimaCharlie agent in real-time. Analysts can also interact with the agent in real-time using the web application. LimaCharlie's Live View provides a graphic based control panel into the endpoint.
 
@@ -59,11 +59,11 @@ The Live View user interface of the web application uses a tabbed format. Throug
 * Process Hash
 
 
-# <span style="color:#3e516b">Installers</span>
+## <span style="color:#3e516b">Installers</span>
 
-## <span style="color:#3e516b">Downloads</span>
+### <span style="color:#3e516b">Downloads</span>
 
-### <span style="color:#3e516b">Windows</span>
+**Windows**
 
 [Windows 32 bit](https://app.limacharlie.io/get/windows/32)
 
@@ -73,13 +73,13 @@ The Live View user interface of the web application uses a tabbed format. Throug
 
 [Windows msi64](https://app.limacharlie.io/get/windows/msi64)
 
-### <span style="color:#3e516b">MacOS</span>
+**MacOS**
 
 [MacOS 64 bit](https://app.limacharlie.io/get/mac/64)
 
 [MacOS pkg](https://app.limacharlie.io/get/mac/pkg)
 
-### <span style="color:#3e516b">Linux</span>
+**Linux**
 
 [Linux 32 bit](https://app.limacharlie.io/get/linux/32)
 
@@ -93,11 +93,11 @@ The Live View user interface of the web application uses a tabbed format. Throug
 
 [Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
 
-### <span style="color:#3e516b">Chrome/ChromeOS</span>
+**Chrome/ChromeOS** 
 
 [Chrome](https://app.limacharlie.io/get/chrome/)
 
-## <span style="color:#3e516b">Installing</span>
+### <span style="color:#3e516b">Installing</span>
 
 Installing the sensor requires administrator (or root) execution:
 
@@ -118,7 +118,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Docker:** See our [documentation here]()
 
-## <span style="color:#3e516b">Connectivity</span>
+### <span style="color:#3e516b">Connectivity</span>
 
 **Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
