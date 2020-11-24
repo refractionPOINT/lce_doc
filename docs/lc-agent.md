@@ -23,7 +23,7 @@ Authorized programs and scripts can interact with the LimaCharlie agent in real-
 
 Live View is accessed from the user interface of the web application under the Sensors tab.
 
-<kbd><img src="./images/sc-sensor-tab-go-live.png"/></kbd>
+<kbd>![image 'Go Live'](./images/sc-sensor-tab-go-live.png)</kbd>
 
 The Live View user interface of the web application uses a tabbed format. Through each of the tabs an analysts has access to and can perform the following.
 
