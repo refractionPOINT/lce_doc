@@ -1,6 +1,6 @@
 ![image 'lc-agent'](./images/lc-agent.png)
 
-## <span style="color:#3e516b">Overview</span>
+## <span style="color:#3e516b">Architecture & OS Support</span>
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
@@ -58,46 +58,7 @@ The Live View user interface of the web application uses a tabbed format. Throug
 * State
 * Process Hash
 
-
-## <span style="color:#3e516b">Installers</span>
-
-### <span style="color:#3e516b">Downloads</span>
-
-**Windows**
-
-[Windows 32 bit](https://app.limacharlie.io/get/windows/32)
-
-[Windows 64 bit](https://app.limacharlie.io/get/windows/64)
-
-[Windows msi32](https://app.limacharlie.io/get/windows/msi32)
-
-[Windows msi64](https://app.limacharlie.io/get/windows/msi64)
-
-**MacOS**
-
-[MacOS 64 bit](https://app.limacharlie.io/get/mac/64)
-
-[MacOS pkg](https://app.limacharlie.io/get/mac/pkg)
-
-**Linux**
-
-[Linux 32 bit](https://app.limacharlie.io/get/linux/32)
-
-[Linux 64 bit](https://app.limacharlie.io/get/linux/64)
-
-[Linux alpine64](https://app.limacharlie.io/get/linux/alpine64)
-
-[Linux arm32](https://app.limacharlie.io/get/linux/arm32)
-
-[Linux arm64](https://app.limacharlie.io/get/linux/arm64)
-
-[Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
-
-**Chrome/ChromeOS** 
-
-[Chrome](https://app.limacharlie.io/get/chrome/)
-
-### <span style="color:#3e516b">Installing</span>
+## <span style="color:#3e516b">Installing the Agent</span>
 
 Installing the sensor requires administrator (or root) execution:
 
@@ -137,3 +98,39 @@ Installing the sensor requires administrator (or root) execution:
 Upgrading sensors is done transparently when the user clicks a button in the web application or through the API/SDK/CLI. Rolling back sensor versions can also be done with the click of a button in the web application or through the API/SDK/CLI. You do not need to re-download installers (in fact the installer stays the same). Once an upgrade has been triggered the new version should be in effect across the organization within about 20 minutes.
 
 ![image 'Sensor Upgrade'](./images/sc-upgrade-sensor.png)
+
+## <span style="color:#3e516b">Installer Downloads</span>
+
+**Windows**
+
+[Windows 32 bit](https://app.limacharlie.io/get/windows/32)
+
+[Windows 64 bit](https://app.limacharlie.io/get/windows/64)
+
+[Windows msi32](https://app.limacharlie.io/get/windows/msi32)
+
+[Windows msi64](https://app.limacharlie.io/get/windows/msi64)
+
+**MacOS**
+
+[MacOS 64 bit](https://app.limacharlie.io/get/mac/64)
+
+[MacOS pkg](https://app.limacharlie.io/get/mac/pkg)
+
+**Linux**
+
+[Linux 32 bit](https://app.limacharlie.io/get/linux/32)
+
+[Linux 64 bit](https://app.limacharlie.io/get/linux/64)
+
+[Linux alpine64](https://app.limacharlie.io/get/linux/alpine64)
+
+[Linux arm32](https://app.limacharlie.io/get/linux/arm32)
+
+[Linux arm64](https://app.limacharlie.io/get/linux/arm64)
+
+[Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
+
+**Chrome/ChromeOS** 
+
+[Chrome](https://app.limacharlie.io/get/chrome/)

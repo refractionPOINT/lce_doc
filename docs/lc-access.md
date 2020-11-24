@@ -27,7 +27,7 @@ This feature set can be accessed through the web application at the top of the m
 
 Once you name the group you will see it show up in the list of groups. From here you can click on it, select the organizations, set permissions and add users. Users can be a mix of owners and members of various groups that have access to a variety of organizations with different permission levels - the possibilities are endless.
 
-### <span style="color:#816122">Organization Groups</span>
+## <span style="color:#816122">Organization Groups</span>
 Organization Groups allow you to grant permissions to a set of users on a group of organizations.
  
 Permissions granted through the group are applied on top of permissions granted at the organization level. Ther permissions are additive, and a group cannot be used to subsctract permissions granted at the organization level.
