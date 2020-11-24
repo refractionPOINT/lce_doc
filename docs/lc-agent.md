@@ -79,7 +79,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Docker:** See our [documentation here]()
 
-### <span style="color:#3e516b">Connectivity</span>
+## <span style="color:#3e516b">Connectivity</span>
 
 **Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
