@@ -1,4 +1,4 @@
-![image 'lc-agent'](./images/lc-agent.png)
+![image 'lc-agent'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-agent.png)
 
 ## <span style="color:#3e516b">Architecture & OS Support</span>
 

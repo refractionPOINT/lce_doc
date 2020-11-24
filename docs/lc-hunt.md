@@ -1,4 +1,4 @@
-![image 'lc-hunt'](./images/lc-hunt.png)
+![image 'lc-hunt'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-hunt.png)
 
 LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform.
 

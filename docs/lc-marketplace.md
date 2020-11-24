@@ -1,5 +1,5 @@
 
-![image 'lc-marketplace'](./images/lc-marketplace.png)
+![image 'lc-marketplace'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-marketplace.png)
 
 LimaCharlie offers additional free and paid integrated services through it's Add-Ons Marketplace.
 

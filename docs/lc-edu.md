@@ -1,4 +1,4 @@
-![image 'lc-edu'](./images/lc-edu.png)
+![image 'lc-edu'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-edu.png)
 
 Education and open data is at the heart of LimaCharlie. To ensure that users get up to speed quickly - and make the most of the platform - LimaCharlie provides a host of educational resources.
 
