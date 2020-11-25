@@ -30,8 +30,7 @@ LimaCharlie provides several methods for searching out indicators of compromise.
 
 Users can write D&R rules against historical telemetry and log files using the Replay mechanism which is documneted [here](./replay.md).
 
-LimaCharlie also provides a universal search field on the organization-level dashbaord. 
-From this interface users can search using a sensor ID, hostname prefix, IP address, hash, file path and more.
+On any dashbaord for a given organization LimaCharlie provides a universal search field. From this interface users can search using a sensor ID, hostname prefix, IP address, hash, file path and more.
 
 Searching for an IP, file path, hash or user name will bring back stats around the prevalence of the given datapoint. The prevalence is represented by three numbers indicating how many times the data point was seen on the given organization’s hosts over the last day, last week and last month. 
 
@@ -51,11 +50,20 @@ LimaCharlie users can also perform more complex searching for common indicators 
 
 ## <span style="color:#6a3b32">Community Resources</span>
 
+A full list of community resources made available through the LimaCharlie Add-On Marketplace can be found [here](./lc-marketplace).
+
 ### <span style="color:#6a3b32">YARA</span>
+
+[YARA](https://virustotal.github.io/yara/) is a tool aimed at (but not limited to) helping malware researchers to identify and classify malware samples. With YARA you can create descriptions of malware families (or whatever you want to describe) based on textual or binary patterns. Each description, a.k.a rule, consists of a set of strings and a boolean expression which determine its logic.
+
+Documentation on how to leverage YARA with LimaCharlie can be found [here](./yara.md).
 
 ### <span style="color:#6a3b32">Sigma</span>
 
-###  <span style="color:#6a3b32">Marketplace</span>
+[Sigma](https://github.com/Neo23x0/sigma) is a generic and open signature format that allows you to describe relevant log events in a straightforward manner. The rule format is very flexible, easy to write and applicable to any type of log file. The main purpose of this project is to provide a structured form in which researchers or analysts can describe their once developed detection methods and make them shareable with others.
+
+Sigma is for log files what Snort is for network traffic and YARA is for files.
+
+Documentation on how to leverage Sigma with LimaCharlie can be found [here]().
 
 
-A full list of community resources made available through the LimaCharlie Add-On Marketplace can be found here.
