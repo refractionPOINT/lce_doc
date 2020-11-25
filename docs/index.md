@@ -7,7 +7,7 @@
 ## Quick Start
 To skip all of the etails and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
-## Core Concepts
+## Core Features
 A high-level overview of LimaCharlie's core concepts can be found here: [Core Concepts]()
 
 # <span style="color:#764b0b"></span>
@@ -17,7 +17,6 @@ A high-level overview of LimaCharlie's core concepts can be found here: [Core Co
      style="width: 15%; float:right;" />
 
 ## <span style="color:#764b0b;">lc-access</span>
-
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts. A detailed overview can be [found here](./lc-access.md).
 
