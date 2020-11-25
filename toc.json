@@ -11,13 +11,13 @@
       },
       {
         "type": "item",
-        "title": "Features",
-        "uri": "docs/features.md"
+        "title": "Quick Start",
+        "uri": "docs/lcc_quick_start.md"
       },
       {
         "type": "item",
-        "title": "Quick Start",
-        "uri": "docs/lcc_quick_start.md"
+        "title": "Feature Overview",
+        "uri": "docs/features.md"
       },
       {
         "type": "divider",
@@ -27,6 +27,41 @@
         "type": "item",
         "title": "lc-access",
         "uri": "docs/lc-access.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-agent",
+        "uri": "docs/lc-agent.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-code",
+        "uri": "docs/lc-code.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-edu",
+        "uri": "docs/lc-edu.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-hunt",
+        "uri": "docs/lc-hunt.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-marketplace",
+        "uri": "docs/lc-marketplace.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-output",
+        "uri": "docs/lc-output.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-storage",
+        "uri": "docs/lc-storage.md"
       },
       {
         "type": "divider",
