@@ -8,7 +8,7 @@
 To skip all of the etails and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
 ## Core Features
-A high-level overview of LimaCharlie's core concepts can be found here: [Core Concepts]()
+A high-level overview of LimaCharlie's core concepts can be found here: [Core Features](./features.md)
 
 # <span style="color:#764b0b"></span>
 
@@ -108,10 +108,8 @@ LimaCharlie offers additional free and paid integrated services through it's Add
 
 The data produced by the LimaCharlie endpoint is under complete control of the user. LimaCharlie provides extensive storage and search options as part of its core offering but makes the full telemetry stream availble to users. A detailed overview can be [found here](./lc-output.md).
 
-* [Outputs](./lc-)
-* [Integrations](./lc-)
-* [](./lc-)
-* [](./lc-)
+* [Outputs](./lc-output.md#outputs)
+* [Integrations](./lc-output.md#integrations)
 
 # <span style="color:#5570df"></span> 
 
@@ -123,6 +121,6 @@ The data produced by the LimaCharlie endpoint is under complete control of the u
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more. A detailed overview can be [found here](./lc-storage.md).
 
-* [Telemetry Storage](./lc-)
-* [Artifact Collection](./lc-)
-* [Historical Threat Hunting](./lc-)
+* [Telemetry Storage](./lc-storage.md#telemetry-storage)
+* [Artifact Collection](./lc-storage.md#artifact-collection)
+* [Historical Threat Hunting](./lc-storage.md#historical-threat-hunting)
