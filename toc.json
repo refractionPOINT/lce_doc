@@ -21,6 +21,15 @@
       },
       {
         "type": "divider",
+        "title": "Guides"
+      },
+      {
+        "type": "item",
+        "title": "lc-access",
+        "uri": "docs/lc-access.md"
+      },
+      {
+        "type": "divider",
         "title": "Reference"
       },
       {
