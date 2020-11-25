@@ -4,7 +4,7 @@
 
 **Owner:** intelligence@refractionpoint.eu
 
-**Cost:** FREE
+**Cost:** $0.3 USD / sensor
 
 **Platforms:** MacOS, Linux, Windows, ChromeOS
 
