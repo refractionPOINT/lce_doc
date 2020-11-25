@@ -23,29 +23,29 @@ Add-Ons fall into one of several categories, each of which is linked below.
 
 Users inbterested in creating their own products or services that can be integrated with LimaCharlie through the Add-On Marketplace should start [here](./user_addons.md).
 
-## <span style="color:#185000">Monetizing Products wit LimaCharlie</span> 
+## <span style="color:#185000">Monetizing Products with LimaCharlie</span> 
 
 LimaCharlie is partnering with develoeprs on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenu share model. We have had several success using this model and are eager to develop the program further. Some of the succesful products thus far are as follows.
 
 ### <span style="color:#185000">cuttingEdge</span> 
 
-The Cutting Edge threat feeds are aggregated, filtered and augmented from a multitude of sources.
+>The Cutting Edge threat feeds are aggregated, filtered and augmented from a multitude of sources.
+>
+>Emphasis is put on timely Indicators of Compromise (IoC) for new and upcoming threats.
+>
+>Produced detections are made more powerful for operations by including a lot of metadata around the origin of the IoC as well as the nature of the threat which provides pre-emptive investigation data.
+>
+>A "sentiment" metric is also included to help you dial in the level of certainty you want to receive alerts for.
 
-Emphasis is put on timely Indicators of Compromise (IoC) for new and upcoming threats.
-
-Produced detections are made more powerful for operations by including a lot of metadata around the origin of the IoC as well as the nature of the threat which provides pre-emptive investigation data.
-
-A "sentiment" metric is also included to help you dial in the level of certainty you want to receive alerts for.
-
-Details [here](.addon-community.md#cuttingedge)
+More details [here](.addon-community.md#cuttingedge)
 
 ### <span style="color:#185000">soteria-rules</span> 
 
-A managed set of Detection & Response rules developed by [Soteria](https://soteria.io/).
+>A managed set of Detection & Response rules developed by [Soteria](https://soteria.io/).
+>
+>The rules cover most common attacks on Windows, MacOS and Linux. When subscribing to this service, LimaCharlie will automate the installation and updating of the rules in an opaque way. You simply get the Detections containing information about the detected behavior.
 
-The rules cover most common attacks on Windows, MacOS and Linux. When subscribing to this service, LimaCharlie will automate the installation and updating of the rules in an opaque way. You simply get the Detections containing information about the detected behavior.
-
-Details [here](addon-community.md#soteria-rules).
+More details [here](addon-community.md#soteria-rules).
 
 ## <span style="color:#185000">Developer Grant Program</span> 
 
