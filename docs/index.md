@@ -80,6 +80,7 @@ Education and open data is at the heart of LimaCharlie. To ensure that users get
 LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform. A detailed overview can be [found here](./lc-hunt.md).
 
 * [Detecion & Response Rules](./lc-hunt.md#detection--response-rules)
+* [Targets](./lc-hunt.md#targets)
 * [Search & Historical Threat Hunting](./lc-hunt.md#search--historical-threat-hunting)
 * [Community Resources](./lc-hunt.md#community-resources)
 
@@ -93,10 +94,10 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
 
 LimaCharlie offers additional free and paid integrated services through it's Add-Ons Marketplace. A detailed overview can be [found here](./lc-marketplace.md).
 
-* [Add-Ons & Subscriptions](./lc-)
-* [Developing Products](./lc-)
-* [Monetizing Products with LimaCharlie](./lc-)
-* [Developer Grant Program](./lc-)
+* [Add-Ons & Subscriptions](./lc-marketplace.md#add-ons--subscriptions)
+* [Developing Products](./lc-marketplace.md#developing-products)
+* [Monetizing Products with LimaCharlie](./lc-marketplace.md#monetizing-products-wit-limacharlie)
+* [Developer Grant Program](./lc-marketplace.md#developer-grant-program)
 
 # <span style="color:#635041"></span>
 
