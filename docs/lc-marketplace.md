@@ -27,7 +27,7 @@ Users inbterested in creating their own products or services that can be integra
 
 LimaCharlie is partnering with develoeprs on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenu share model. We have had several success using this model and are eager to develop the program further. Some of the succesful products thus far are as follows.
 
-[cuttingEdge](.addon-community.md#cuttingedge)
+### <span style="color:#185000">cuttingEdge</span> 
 
 The Cutting Edge threat feeds are aggregated, filtered and augmented from a multitude of sources.
 
@@ -39,7 +39,7 @@ A "sentiment" metric is also included to help you dial in the level of certainty
 
 Details [here](.addon-community.md#cuttingedge)
 
-[soteria-rules](addon-community.md#soteria-rules)
+### <span style="color:#185000">soteria-rules</span> 
 
 A managed set of Detection & Response rules developed by [Soteria](https://soteria.io/).
 
