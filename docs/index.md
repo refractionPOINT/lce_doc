@@ -1,5 +1,4 @@
-## <span style="color:rgba(0,0,0,0);">limacharlie.io</span>
-
+# limachalrie.io
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/logo_w_text-horizontal.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />
