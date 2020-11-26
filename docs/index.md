@@ -1,4 +1,4 @@
-# limachalrie.io
+# Home
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/logo_w_text-horizontal.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />

@@ -1,3 +1,5 @@
+# lc-storage
+
 ![image 'lc-storage'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-storage.png)
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
