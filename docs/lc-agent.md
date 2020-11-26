@@ -1,4 +1,5 @@
-# lc-agent
+<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
+# 
 
 ![image 'lc-agent'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-agent.png)
 

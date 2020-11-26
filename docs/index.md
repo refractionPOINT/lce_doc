@@ -1,4 +1,6 @@
-# Home
+<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
+# 
+
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/logo_w_text-horizontal.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />
