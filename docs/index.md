@@ -5,7 +5,7 @@
 # <span style="color:rgba(00, 00, 00, 0)"></span>
 
 ## Quick Start
-To skip all of the etails and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
+To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
 ## Core Features
 A high-level overview of LimaCharlie's core concepts can be found here: [Core Features](./features.md)
