@@ -4,9 +4,7 @@
 <img src="https://storage.googleapis.com/limacharlie-io/brand/logo/logo_w_text-horizontal.png"
      alt="LimaCharlie.io Logo"
      style="width: 50%" />
-
-# <span style="color:rgba(00, 00, 00, 0)"></span>
-
+ 
 ## Quick Start
 To skip all of the details and get set up with endpoint detection and response capability you can follow our [quick start instructions](lcc_quick_start.md).
 
