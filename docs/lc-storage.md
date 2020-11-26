@@ -1,4 +1,4 @@
-# lc-storage
+#
 
 ![image 'lc-storage'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-storage.png)
 
