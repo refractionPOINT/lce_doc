@@ -60,13 +60,6 @@ Shodan provides a public API that allows other tools to access all of Shodan's d
 
 Product website [here](https://www.shodan.io/).
 
-### <span style="color:#605142">Shodan</span>
-
-
-Shodan provides a public API that allows other tools to access all of Shodan's data. Integrations are available for Nmap, Metasploit, Maltego, FOCA, Chrome, Firefox and many more.
-
-Product website [here](https://www.shodan.io/).
-
 ### <span style="color:#605142">PagerDuty</span>
 
 PagerDuty is intgrated with LimaCharlie and can be used for alerting analysts using advanced step-wise notification system. Get the people you need without buggin the ones you don't.
