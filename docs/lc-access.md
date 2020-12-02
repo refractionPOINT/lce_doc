@@ -9,12 +9,12 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
 
 Details on giving a new user initial access can be [found here]().
 
-2FA is offered through the following technologies. NAtive 2FA is coming to LimaCharlie in 2021.
+Multi-factor authentication is offered through the following technologies:
 * Google 
 * Microsoft
-* Github
+* GitHub
 
-If you havew any questions or specific needs around user authentication please do not hesitate to [get in touch]().
+If you havew any questions or specific needs around user authentication please do not hesitate to [get in touch](mailto:answers@limacharlie.io).
 
 ## <span style="color:#816122">Analyst Permissions</span>
 
