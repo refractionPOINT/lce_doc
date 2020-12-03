@@ -35,7 +35,7 @@ LimaCharlie is partnering with develoeprs on a case-by-case basis to enable them
 >
 >A "sentiment" metric is also included to help you dial in the level of certainty you want to receive alerts for.
 
-More details [here](.addon-community.md#cuttingedge)
+More details [here](./addon-community.md#cuttingedge)
 
 ### <span style="color:#185000">soteria-rules</span> 
 
@@ -43,12 +43,12 @@ More details [here](.addon-community.md#cuttingedge)
 >
 >The rules cover most common attacks on Windows, MacOS and Linux. When subscribing to this service, LimaCharlie will automate the installation and updating of the rules in an opaque way. You simply get the Detections containing information about the detected behavior.
 
-More details [here](addon-community.md#soteria-rules).
+More details [here](./addon-community.md#soteria-rules).
 
 ## <span style="color:#185000">Developer Grant Program</span> 
 
 LimaCharlie is offering a $1000 in computation credits that can be applied towards using LimaCharlie to develop any kind of project you want. If you are looking to commercialize an idea we can help you get it into our marketplace and if there is traction there we can further support you in growing.
 
-Interested parties can apply for the grant program [here](https:://limacharlie.io/grant-program).
+Interested parties can apply for the grant program [here](https://limacharlie.io/grant-program).
 
 
