@@ -55,30 +55,16 @@ more limited capabilities of the agent that do not require kernel support.
 #### Checking it Runs
 In an administrative command prompt issue the command `sc query rphcpsvc` and confirm the `STATE` displayed is `RUNNING`.
 
-### MacOS
+### macOS
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
-mentioned above. This will install the sensor as a launchctl service and trigger its enrollment.
+mentioned above.
 
-#### System Requirements
-All versions of 64 bit macOS 10.9 and above are supported. If you need more, contact us.
 
-#### Checking it Runs
-In a Terminal, run the command `sudo launchctl list | grep com.refractionpoint.rphcp` which should return a single record with
-the first column of the output being a number (a `-` indicates it is NOT running).
+[Step-by-step instructions for macOS 10.15 (Catalina) and newer](./sensor_installation/macOS_sensor_installation-latest.md)
 
-*Important Note*
 
-On MacOS, Apple has recently made installing kernel extensions (as the one used by LimaCharlie) much harder. Unfortunately
-this is ***entirely*** outside of our control. LC as well as many other vendors are affected by this.
-The net effect of this is that the first time the sensor installs onto a MacOS system, a popup will appear asking the
-user to go in the Security Control Panel and manually click on the button to approve the installation of the kernel
-extension.
+[Step-by-step instructions for macOS 10.14 (Mojave) and older](./sensor_installation/macOS_sensor_installation-older.md)
 
-Currently, the only way to automate the installation of the extension is to use an Apple approved MDM solution. These
-solutions are often used by large organizations to manage their Mac fleet. If you are using such a solution, see your
-vendor's documentation on how to add a kernel extension as whitelisted to your entire fleet.
-
-We're aware this is a big inconvenient and hopefully Apple will eventually provide a solution for security vendors.
 
 ### Linux
 Executing the installer via the command line, pass the `-d INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
