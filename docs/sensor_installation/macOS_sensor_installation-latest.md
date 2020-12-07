@@ -1,4 +1,17 @@
-# macOS Sensor
+# macOS Sensor (macOS 10.15 and macOS 11)
+
+This document provides details of how to install, verify, and uninstall the LimaCharlie sensor on macOS (versions 10.15 and newer).  We also offer [documentation for macOS 10.14 and prior](macOS_sensor_installation-older.md).
+
+
+
+<u>Table of Contents</u>
+
+[Installation Flow](#Installation-Flow)
+[Verifying the installation](#Verifying-Installation)
+[Uninstallation Flow](#Uninstallation-Flow)
+[System Requirements](#System-Requirements)
+
+
 
 ## Installation Flow
 
@@ -16,13 +29,13 @@
 
 > sudo ./hcp_osx_x64_release_4.23.0 -i YOUR_INSTALLATION_KEY_GOES_HERE
 
-<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/01-Basic_installation.png" alt="Basic installation" style="zoom:50%;" />
+<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/01-Basic_installation.png" alt="Basic installation" style="zoom:100%;" />
 
 You can obtain the installation key from the Installation Keys section of the LimaCharlie web application.  [More information about installation keys](https://doc.limacharlie.io/docs/documentation/docs/manage_keys.md).
 
 The sensor will be installed as a launchctl service.  Installation will trigger the sensors enrollment with the LimaCharlie cloud.
 
-<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/02-Installation_success.png" alt="Installation success" style="zoom:50%;" />
+<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/02-Installation_success.png" alt="Installation success" style="zoom:100%;" />
 
 4. An application (RPHCP.app) will be installed in the /Applications folder and will automatically launch.  You will be prompted to grant permissions for system extensions to be installed.
 
@@ -62,43 +75,59 @@ If the agent is running, this command should return records as shown above.
 
 
 
-On macOS 10.14 and higher you can also go to the /Applications folder and launch the RPHCP.app.  The application will show a message to indicate if the required permissions have been granted.
+You can also check the /Applications folder and launch the RPHCP.app.
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/10-Applications.png" alt="Applications folder" style="zoom:100%;" />
 
+
+
+The application will show a message to indicate if the required permissions have been granted.
+
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/11-App_Installed_Correctly.png" alt="App installed correctly" style="zoom:50%;" />
+
+As described in the dialog, the RPHCP.app application must be left in the /Applications folder in order for it to continue operating properly.
+
+
 
 
 ### A note on permissions
-On macOS, Apple has purposely made installing extensions (like the ones used by LimaCharlie) a process that requires several clicks.  The net effect of this is that the first time the sensor is installed on a macOS system, permissions will need to be granted via System Preferences
+Apple has purposely made installing extensions (like the ones used by LimaCharlie) a process that requires several clicks on macOS.  The net effect of this is that the first time the sensor is installed on a macOS system, permissions will need to be granted via System Preferences
 
 Currently, the only way to automate the installation is to use an Apple-approved MDM solution. These solutions are often used by large organizations to manage their Mac fleet. If you are using such a solution, see your vendor's documentation on how to add extensions to the allow list which can be applied to your entire fleet.
 
 We're aware this is an inconvenience and hope Apple will provide better solutions for security vendors in future.
 
 
+
+
 ## Uninstallation Flow
 
 To uninstall the sensor:
 
-1. Run the installer via the command line.
-
-You'll pass the argument -c
+1. Run the installer via the command line.  You'll pass the argument -c
 
 > sudo ./hcp_osx_x64_release_4.23.0 -c
 
-<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/1-Uninstall_Progress.png" alt="Uninstall progress" style="zoom:50%;" />
+<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/1-Uninstall_Progress.png" alt="Uninstall progress" style="zoom:100%;" />
 
 2. You will be prompted for credentials to modify system extensions.  Enteryour password and press OK.
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/2-Uninstaller_Permissions.png" alt="Uninstall permissions" style="zoom:50%;" />
 
+The related system extension will be removed and the RPHCP.app will be removed from the /Applications folder.
+
+
+
 3.  You should see a message indicating that the uninstallation was successful.
 
-<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/3-Uninstall_Success.png" alt="Uninstall success" style="zoom:50%;" />
+<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/3-Uninstall_Success.png" alt="Uninstall success" style="zoom:100%;" />
 
 
 
-## Supported OS' & Hardware
+## System Requirements
+
+**Supported OS' & Hardware**
+
 - macOS version 10.9 to macOS 11 are supported
 - Supported on both Intel (64-bit) and Apple Silicon based hardware 
+

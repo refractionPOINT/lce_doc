@@ -59,7 +59,12 @@ In an administrative command prompt issue the command `sc query rphcpsvc` and co
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above.
 
-[Step-by-step installation details for macOS](./sensor_installation/macOS_sensor_installation.md)
+
+[Step-by-step instructions for macOS 10.15 (Catalina) and newer](./sensor_installation/macOS_sensor_installation-latest.md)
+
+
+[Step-by-step instructions for macOS 10.14 (Mojave) and older](./sensor_installation/macOS_sensor_installation-older.md)
+
 
 ### Linux
 Executing the installer via the command line, pass the `-d INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
