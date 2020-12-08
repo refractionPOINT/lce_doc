@@ -20,11 +20,11 @@ You can white label the LimaCharlie installer for Windows by using an MSI wrappe
 
 1.  An MSI wrapper application, such as the exemsi application referenced in the instructions below
 
-2. A digital code signing certificate from Microsoft (optional, but highly recommended)
+2. A digital code signing certificate  (optional, but highly recommended)
 
 
 
-Without a digital code signing certificate from Microsoft, the installer will show a warning that the MSI installer is from an unknown publisher.
+Without a digital code signing certificate the installer will show a warning that it is from an unknown publisher.
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/uac-signed.png" alt="UAC Signed" style="zoom:80%;" /> - vs - <img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/uac-warning.png" alt="UAC Warning" style="zoom:80%;" />
 
