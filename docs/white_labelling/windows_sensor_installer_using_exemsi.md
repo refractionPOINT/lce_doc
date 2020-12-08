@@ -4,6 +4,33 @@ You can white label the LimaCharlie installer for Windows by using an MSI wrappe
 
 
 
+<u>Table of Contents</u>
+
+[Prerequisites](#Prerequisites)
+
+[Instructions](#Instructions)
+
+[Experience when running the MSI](#Experience)
+
+
+
+
+<a name="Prerequisites"></a>
+## Prerequisites
+
+1.  An MSI wrapper application, such as the exemsi application referenced in the instructions below
+
+2. A digital code signing certificate from Microsoft (optional, but highly recommended)
+
+
+
+Without a digital code signing certificate from Microsoft, the installer will show a warning that the MSI installer is from an unknown publisher.
+
+<img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/uac-signed.png" alt="UAC Signed" style="zoom:80%;" /> - vs - <img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/uac-warning.png" alt="UAC Warning" style="zoom:80%;" />
+
+
+
+<a name="Instructions"></a>
 ## Instructions
 
 1. Download the [LimaCharlie sensor EXE](https://app.limacharlie.io/get/windows/64)
@@ -96,11 +123,12 @@ To provide the option to uninstall, set the Uninstall argument to "-c" (note tha
 <img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/MSI_Wrapper_-_11_-_Status.png" alt="exemsi" style="zoom:100%;" />
 
 
+Once you have created the MSI package you should sign it using your digital signature.  You can [learn more about signing the MSI on the exemsi website](https://www.exemsi.com/documentation/sign-your-msi/).
 
 ***
 
 
-
+<a name="Experience"></a>
 ## Experience when running the MSI
 
 When installing the application using the MSI you'll see your application name in the title bar.
@@ -120,7 +148,3 @@ In the Apps & Features section of Windows, you'll see the application listed und
 <img src="https://storage.googleapis.com/limacharlie-io/doc/white-label/exemsi-instructions/Shown_in_Control_Panel_-_Apps_and_Features.png" alt="exemsi" style="zoom:100%;" />
 
 ***
-
-
-
-Once you have created the MSI package you may wish to sign it using your digital signature.  You can [learn more about signing the MSI on the exemsi website](https://www.exemsi.com/documentation/sign-your-msi/).
