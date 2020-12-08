@@ -7,11 +7,16 @@ This document provides details of how to install, verify, and uninstall the Lima
 <u>Table of Contents</u>
 
 [Installation Flow](#Installation-Flow)
+
 [Verifying the installation](#Verifying-Installation)
+
 [Uninstallation Flow](#Uninstallation-Flow)
+
+[Installer Options](#Installer-Options)
+
 [System Requirements](#System-Requirements)
 
-
+<a name="Installation-Flow"></a>
 
 ## Installation Flow
 
@@ -61,8 +66,9 @@ The installation is now complete and you should see a message indicating that th
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/09-Success.png" alt="Success" style="zoom:50%;" />
 
-
+<a name="Verifying-Installation"></a>
 ## Verifying Installation
+
 To verify that the sensor was installed successfully, you can log into the LimaCharlie web application and see if the device has appeared in the Sensors section.  Additionally, you can check the following on the device itself:
 
 In a Terminal, run the command:
@@ -99,7 +105,7 @@ We're aware this is an inconvenience and hope Apple will provide better solution
 
 
 
-
+<a name="Uninstallation-Flow"></a>
 ## Uninstallation Flow
 
 To uninstall the sensor:
@@ -123,7 +129,28 @@ The related system extension will be removed and the RPHCP.app will be removed f
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/3-Uninstall_Success.png" alt="Uninstall success" style="zoom:100%;" />
 
 
+<a name="Installer-Options"></a>
+## Installer Options
 
+When running the installer from the command line, you can pass the following arguments:
+
+-v: display build version.
+
+-d <INSTALLATION_KEY>: the installation key to use to enroll, no permanent installation.
+
+-i <INSTALLATION_KEY>: install executable as a service with deployment key.
+
+-r: uninstall executable as a service.
+
+-c: uninstall executable as a service and delete identity files.
+
+-w: executable is running as a macOS service.
+
+-h: displays the list of accepted arguments.
+
+
+
+<a name="System-Requirements"></a>
 ## System Requirements
 
 **Supported OS' & Hardware**
