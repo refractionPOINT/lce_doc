@@ -122,12 +122,19 @@ You'll pass the argument -c
 When running the installer from the command line, you can pass the following arguments:
 
 -v: display build version.
+
 -d <INSTALLATION_KEY>: the deployment key to use to enroll, no permanent installation.
+
 -i <INSTALLATION_KEY>: install executable as a service with deployment key.
+
 -r: uninstall executable as a service.
+
 -c: uninstall executable as a service and delete identity files.
+
 -w: executable is running as a macOS service.
+
 -h: displays the list of accepted arguments.
+
 
 <a name="System-Requirements"></a>
 ## System Requirements
