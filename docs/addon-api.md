@@ -12,7 +12,7 @@
 
 ## <span style="color:#185000">ip-geo</span>
 
-**Website:** [doc.limacharlie.io/en/master/dr/#ip-geolocation](http://doc.limacharlie.io/en/master/dr/#ip-geolocation)
+**Website:** [doc.limacharlie.io/docs/documentation/docs/dr.md#ip-geolocation](https://doc.limacharlie.io/docs/documentation/docs/dr.md#ip-geolocation)
 
 **Owner:** ops@limacharlie.io
 
@@ -24,7 +24,7 @@
 
 ## <span style="color:#185000">vt</span>
 
-**Website:** [doc.limacharlie.io/en/master/dr/#virustotal](http://doc.limacharlie.io/en/master/dr/#virustotal)
+**Website:** [doc.limacharlie.io/docs/documentation/docs/dr.md#virustotal](http://doc.limacharlie.io/docs/documentation/docs/dr.md#virustotal)
 
 **Owner:**ops@limacharlie.io
 

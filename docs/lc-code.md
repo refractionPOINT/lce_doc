@@ -20,7 +20,7 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
 
 ## <span style="color:#747a80">Codelabs & Recipes</span>
 
-* [Detection & Resonse Rules](https://doc.limacharlie.io/docs/documentation/docs/codelab_dr.md)
+* [Detection & Response Rules](https://doc.limacharlie.io/docs/documentation/docs/codelab_dr.md)
 
 * [Zeek Alerting](https://doc.limacharlie.io/docs/documentation/docs/recipe_zeek.md)
 
