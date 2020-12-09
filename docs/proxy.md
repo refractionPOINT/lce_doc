@@ -15,3 +15,8 @@ On Windows, you may use a light auto-detection of a globally-configured unauthen
 To enable this, set the same environment variable to the `-` value, like `LC_PROXY=-`. This will make the sensor query
 the registry key `HKLM\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer` and use its
 value as the proxy destination.
+
+Also on Windows, in some cases the environment variable changes do not propagate to all processes in the expected way.
+Usually a reboot of the machine will fix it, but for machines that cannot be rebooted you have the ability to set a
+special value to the environment variable (deletion is usually problematic but setting a var works) that will disable
+the proxy specifically: `!`. So if you set the `LC_PROXY` variable to `!` (exclamation mark), the proxy will be disabled.
