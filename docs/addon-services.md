@@ -1,3 +1,6 @@
+<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
+### 
+
 ## <span style="color:#185000">dumper</span>
 
 **Cost:** FREE 
@@ -20,7 +23,7 @@ API Flair: lock, secret, segment
 
 ## <span style="color:#185000">exfil</span>
 
-**Website:** https://doc.limacharlie.io/en/master/exfil/
+**Website:** https://doc.limacharlie.io/docs/documentation/docs/exfil.md
 
 **Cost:** FREE
 
@@ -54,7 +57,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 ## <span style="color:#185000">logging</span>
 
-**Website:** https://doc.limacharlie.io/en/master/external_logs/
+**Website:** https://doc.limacharlie.io/docs/documentation/docs/external_logs.md
 
 **Cost:** FREE
 
@@ -106,7 +109,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 ## <span style="color:#185000">replay</span>
 
-**Website:** https://doc.limacharlie.io/en/master/replay/
+**Website:** https://doc.limacharlie.io/docs/documentation/docs/replay.md
 
 **Cost:** FREE
 
@@ -116,7 +119,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 ## <span style="color:#185000">responder</span>
 
-**Website:** https://doc.limacharlie.io/en/master/responder/
+**Website:** https://doc.limacharlie.io/docs/documentation/docs/responder.md
 
 **Cost:** FREE
 
@@ -140,7 +143,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 >
 >Ideal for cloud docker deployments of VM based deployments creating sensors in continuous fashion.
 >
->See documentation here: https://doc.limacharlie.io/en/master/sensor_cull/
+>See documentation here: https://doc.limacharlie.io/docs/documentation/docs/sensor_cull.md
 
 ## <span style="color:#185000">sigma</span>
 
@@ -180,7 +183,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 ## <span style="color:#185000">yara</span>
 
-**Website:** https://doc.limacharlie.io/en/master/yara/
+**Website:** https://doc.limacharlie.io/docs/documentation/docs/yara.md
 
 **Owner:** ops@limacharlie.io
 

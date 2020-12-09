@@ -1,5 +1,6 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
-# 
+### 
+
 ![image 'lc-code'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-code.png)
 
 LimaCharlie provides standalone tools for security proffesionals to get started hunting out of the box but at its heart it is a toolbox for builders. This section of the documentation is a place where developers can find the resources they need to build and monetize their own products.
@@ -20,7 +21,7 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
 
 ## <span style="color:#747a80">Codelabs & Recipes</span>
 
-* [Detection & Resonse Rules](https://doc.limacharlie.io/docs/documentation/docs/codelab_dr.md)
+* [Detection & Response Rules](https://doc.limacharlie.io/docs/documentation/docs/codelab_dr.md)
 
 * [Zeek Alerting](https://doc.limacharlie.io/docs/documentation/docs/recipe_zeek.md)
 
