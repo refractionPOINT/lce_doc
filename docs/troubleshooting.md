@@ -49,6 +49,7 @@ channel up
 If you are having trouble having your sensor connect to the cloud, we recommend:
 1. Restart the LimaCharlie service.
 1. Check that the service is running.
+    * The service process should be called `rphcp`.
 1. If the sensor still shows as not online, check the `hcp.log` file mentioned above:
     * Check that the "configs applied" step is reached. If not it may indicate the Installation Key provided is wrong or has a typo.
     * Check that the proxy is mentioned in the log if you are using a proxy configuration.
