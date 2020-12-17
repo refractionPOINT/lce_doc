@@ -46,7 +46,7 @@ headers sent
 channel up
 ```
 
-If you are having trouble having your sensor connect to the cloud, we recommend:
+If you are having trouble getting your sensor connected to the cloud, we recommend that you attempt the following on the host:
 1. Restart the LimaCharlie service.
 1. Check that the service is running.
     * The service process should be called `rphcp`.
