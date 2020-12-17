@@ -20,7 +20,7 @@ expect it to be online, give it 30 seconds, in most situations it will come back
 Sensors connect to the LimaCharlie.io cloud via an SSL connection on port 443. Make sure your network allows such
 a connection. It is a very common port usually used for HTTPS so an issue is highly unlikely.
 
-The sensor uses a pinned SSL certificate to talk to the cloud. This means that if you are in a network that enforces SSL inspection (a man-in-the-middle of the SSL connections sometimes used in large corporate environments), this may prevent the sensor from connecting. LimaCharlie uses a pinned certificate to ensure the highest level of security possible as usage of off-the-shelf certificates can be leveraged by state sponsored (or advanced) attackers.
+The sensor uses a pinned SSL certificate to talk to the cloud. This means that if you are in a network that enforces SSL inspection (a man-in-the-middle of the SSL connections sometimes used in large corporate environments), this may prevent the sensor from connecting. LimaCharlie uses a pinned certificate to ensure the highest level of security possible as usage of off-the-shelf certificates can be leveraged by state-sponsored (or advanced) attackers.
 
 If your network uses SSL inspection, we recommend you setup an exception for the LimaCharlie cloud domain
 relevant to you. Get in touch with us and we can provide you with the necessary information.
