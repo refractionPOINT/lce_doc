@@ -55,6 +55,26 @@ Policies govern the access as well as the configuration of various other tools u
 
 Operations on policies are generic and the specific configuration is dependant on the policy type itself.
 
+Policies can be set using the CLI like this:
+
+```
+$ limacharlie net policy set --help
+usage: limacharlie net policy set [-h] [--policy-file POLICYFILE]
+                                  [--policy POLICY]
+                                  name type
+
+positional arguments:
+  name                  policy name
+  type                  policy type
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --policy-file POLICYFILE
+                        path to file with policy content in JSON or YAML
+                        format
+  --policy POLICY       literal policy content in JSON or YAML format
+```
+
 ### Firewall
 
 Firewall policies define what *outbound* access is allowed or disallowed. Since all clients in Net are under a NAT, the *inbound* access is defined through `service` policies which are next.
