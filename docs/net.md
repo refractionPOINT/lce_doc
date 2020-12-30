@@ -59,8 +59,8 @@ Policies can be set using the CLI like this:
 
 ```
 $ limacharlie net policy set --help
-usage: limacharlie net policy set [-h] [--policy-file POLICYFILE]
-                                  [--policy POLICY]
+usage: limacharlie net policy set [-h] [--expires-on EXPIRESON]
+                                  [--policy-file POLICYFILE] [--policy POLICY]
                                   name type
 
 positional arguments:
@@ -69,6 +69,8 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  --expires-on EXPIRESON
+                        optional second epoch when the policy should expire
   --policy-file POLICYFILE
                         path to file with policy content in JSON or YAML
                         format
