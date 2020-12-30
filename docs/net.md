@@ -59,8 +59,8 @@ Policies can be set using the CLI like this:
 
 ```
 $ limacharlie net policy set --help
-usage: limacharlie net policy set [-h] [--policy-file POLICYFILE]
-                                  [--policy POLICY]
+usage: limacharlie net policy set [-h] [--expires-on EXPIRESON]
+                                  [--policy-file POLICYFILE] [--policy POLICY]
                                   name type
 
 positional arguments:
@@ -69,6 +69,8 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  --expires-on EXPIRESON
+                        optional second epoch when the policy should expire
   --policy-file POLICYFILE
                         path to file with policy content in JSON or YAML
                         format
@@ -150,5 +152,49 @@ Sample policy:
         "remote_port": 0,
         "ingest_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
+}
+```
+
+### DNS
+
+A DNS policy defines custom DNS entries that are available to some of your lc-net endpoints. This can be used
+either for traditional DNS purposes (providing simplified names to access resources), but it can also be used
+for security purposes to [sinkhole](https://en.wikipedia.org/wiki/DNS_sinkhole) malicious domains.
+
+These domains are private to your lc-net.
+
+Sample sinkhole for `evil.com` and all its subdomains on all lc-net devices:
+```
+{
+  "domain": "evil.com",
+  "tag": "",
+  "to_a": [
+    "127.0.0.1"
+  ],
+  "with_subdomains": true
+}
+```
+
+Sample internal service only for finance devices:
+```
+{
+  "domain": "testserver.srv",
+  "tag": "finance",
+  "to_a": [
+    "10.130.177.248"
+  ],
+  "with_subdomains": false
+}
+```
+
+Sample internal cname:
+```
+{
+  "domain": "testserver.srv",
+  "tag": "",
+  "to_cname": [
+    "www.google.com"
+  ],
+  "with_subdomains": false
 }
 ```
