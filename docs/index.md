@@ -14,7 +14,7 @@ Get a high-level overview of the LimaCharlie platform and get setup with a varie
 ## Core Features
 A high-level overview of LimaCharlie's core concepts and features can be found [here](./features.md)
 
-# <span style="color:#3889c7"><img style="float: left; max-width: 13%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-blue.png" alt="LimaCharlie Platform"/>Platform</span>
+# <span style="color:#3889c7"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-blue.png" alt="LimaCharlie Platform"/>Platform</span>
 
 <img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-agent-i.png"
      alt="LimaCharlie.io Logo"
@@ -41,7 +41,7 @@ By default LimaCharlie stores a full year of searchable endpoint telemetry as we
 * [Artifact Collection](./lc-storage.md#artifact-collection)
 * [Historical Threat Hunting](./lc-storage.md#historical-threat-hunting)
 
-# <span style="color:#d98e24"><img style="float: left; max-width: 13%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-yellow.png" alt="LimaCharlie Platform"/>Access</span>
+# <span style="color:#d98e24"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-yellow.png" alt="LimaCharlie Platform"/>Access</span>
 
 <img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-output-i.png"
      alt="LimaCharlie.io Logo"
@@ -66,7 +66,7 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
 * [Organization Groups](./lc-access.md#organization-groups)
 * [Programmatic Access](./lc-access.md#programatic-access)
 
-# <span style="color:#c42932"><img style="float: left; max-width: 13%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-red.png" alt="LimaCharlie Platform"/>Hunting</span> 
+# <span style="color:#c42932"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-red.png" alt="LimaCharlie Platform"/>Hunting</span> 
 
 <img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-hunt-i.png"
      alt="LimaCharlie.io Logo"
@@ -81,7 +81,7 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
 * [Search & Historical Threat Hunting](./lc-hunt.md#search--historical-threat-hunting)
 * [Community Resources](./lc-hunt.md#community-resources)
 
-# <span style="color:#3b8452"><img style="float: left; max-width: 13%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-green.png" alt="LimaCharlie Platform"/>Resources</span> 
+# <span style="color:#3b8452"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-green.png" alt="LimaCharlie Platform"/>Resources</span> 
 
 <img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-marketplace-i.png"
      alt="LimaCharlie.io Logo"
