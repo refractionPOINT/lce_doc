@@ -100,6 +100,8 @@ LimaCharlie offers additional free and paid integrated services through it's Add
 <img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-code-i.png"
      alt="LimaCharlie.io Logo"
      style="width: 13%; float:right;" />
+     
+## <span style="color:#3b8452">lc-code</span>
 
 LimaCharlie provides standalone tools for security proffesionals to get started hunting out of the box but at its heart it is a toolbox for builders. This section of the documentation is a place where developers can find the resources they need to build and monetize their own products. A detailed overview can be [found here](./lc-code.md).
 
