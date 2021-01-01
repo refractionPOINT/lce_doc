@@ -1,7 +1,7 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ###
 
-![image 'lc-hunt'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-hunt.png)
+![image 'lc-hunt'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-hunt.png)
 
 LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform.
 
@@ -9,7 +9,7 @@ Several high-level topics around threat detection and mitigation are outlined be
 
 Questions or concerns can be directed to our user [ticket saystem]().
 
-## <span style="color:#6a3b32">Detection & Response Rules</span>
+## <span style="color:#c42932">Detection & Response Rules</span>
 
 [Detection & Response Documentation](./dr.md)
 
@@ -19,7 +19,7 @@ Questions or concerns can be directed to our user [ticket saystem]().
 
 LimaCharlie also offers online training material which walks through the creation of D&R rules at [edu.limacharlie.io](https://edu.limachalire.io) 
 
-## <span style="color:#6a3b32">Targets</span>
+## <span style="color:#c42932">Targets</span>
 
 LimaCharlie has the concept of D&R targets and you can now create D&R rules that specifically target different log or file types ingested. This means that, for example, you can create your own regular expressions that if matching a log line from your web proxy logs, generates a Detection. 
 
@@ -27,7 +27,7 @@ The rules apply to any files ingested, from the unstructured text logs to the ra
 
 Information on log and file ingestion can be found [here](./external_logs.md), and information on log specific DR rules can be found [here]./dr.md#targets).
 
-## <span style="color:#6a3b32">Search & Historical Threat Hunting</span>
+## <span style="color:#c42932">Search & Historical Threat Hunting</span>
 
 LimaCharlie provides several methods for searching out indicators of compromise.
 
@@ -51,17 +51,17 @@ LimaCharlie users can also perform more complex searching for common indicators 
 
 ![image 'Sensor Upgrade'](./images/sc-hunt-search-ui.png)
 
-## <span style="color:#6a3b32">Community Resources</span>
+## <span style="color:#c42932">Community Resources</span>
 
 A full list of community resources made available through the LimaCharlie Add-On Marketplace can be found [here](./lc-marketplace).
 
-### <span style="color:#6a3b32">YARA</span>
+### <span style="color:#c42932">YARA</span>
 
 [YARA](https://virustotal.github.io/yara/) is a tool aimed at (but not limited to) helping malware researchers to identify and classify malware samples. With YARA you can create descriptions of malware families (or whatever you want to describe) based on textual or binary patterns. Each description, a.k.a rule, consists of a set of strings and a boolean expression which determine its logic.
 
 Documentation on how to leverage YARA with LimaCharlie can be found [here](./yara.md).
 
-### <span style="color:#6a3b32">Sigma</span>
+### <span style="color:#c42932">Sigma</span>
 
 [Sigma](https://github.com/Neo23x0/sigma) is a generic and open signature format that allows you to describe relevant log events in a straightforward manner. The rule format is very flexible, easy to write and applicable to any type of log file. The main purpose of this project is to provide a structured form in which researchers or analysts can describe their once developed detection methods and make them shareable with others.
 
