@@ -1,7 +1,7 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ### 
 
-## <span style="color:#185000">insight</span>
+## <span style="color:#3b8452">insight</span>
 
 **Website:** https://limacharlie.io/ 
 
@@ -13,7 +13,7 @@
 
 >Insight provides storage, retention and searching of all data for up to one year.
 
-## <span style="color:#185000">ip-geo</span>
+## <span style="color:#3b8452">ip-geo</span>
 
 **Website:** [doc.limacharlie.io/docs/documentation/docs/dr.md#ip-geolocation](https://doc.limacharlie.io/docs/documentation/docs/dr.md#ip-geolocation)
 
@@ -25,7 +25,7 @@
 
 >API to perform IP Geolocation. Data provided by [maxmind.com](https://maxmind.com).
 
-## <span style="color:#185000">vt</span>
+## <span style="color:#3b8452">vt</span>
 
 **Website:** [doc.limacharlie.io/docs/documentation/docs/dr.md#virustotal](http://doc.limacharlie.io/docs/documentation/docs/dr.md#virustotal)
 
