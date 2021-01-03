@@ -1,9 +1,9 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ###
 
-![image 'lc-agent'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-agent.png)
+![image 'lc-agent'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-agent.png)
 
-## <span style="color:#3e516b">Architecture & OS Support</span>
+## <span style="color:#3889c7">Architecture & OS Support</span>
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
@@ -20,7 +20,7 @@ The agent is approximately 500kb in size but that varies a little depending on w
 
 Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 
-## <span style="color:#3e516b">Live View</span>
+## <span style="color:#3889c7">Live View</span>
 
 Authorized programs and scripts can interact with the LimaCharlie agent in real-time. Analysts can also interact with the agent in real-time using the web application. LimaCharlie's Live View provides a graphic based control panel into the endpoint.
 
@@ -61,7 +61,7 @@ The Live View user interface of the web application uses a tabbed format. Throug
 * State
 * Process Hash
 
-## <span style="color:#3e516b">Installing the Agent</span>
+## <span style="color:#3889c7">Installing the Agent</span>
 
 Installing the sensor requires administrator (or root) execution:
 
@@ -82,7 +82,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Docker:** See our [documentation here]()
 
-## <span style="color:#3e516b">Connectivity</span>
+## <span style="color:#3889c7">Connectivity</span>
 
 **Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
@@ -96,13 +96,13 @@ Installing the sensor requires administrator (or root) execution:
 **Replay API:** agents do NOT require access
 0651b4f82df0a29c.replay.limacharlie.io
 
-## <span style="color:#3e516b">Upgrading</span>
+## <span style="color:#3889c7">Upgrading</span>
 
 Upgrading sensors is done transparently when the user clicks a button in the web application or through the API/SDK/CLI. Rolling back sensor versions can also be done with the click of a button in the web application or through the API/SDK/CLI. You do not need to re-download installers (in fact the installer stays the same). Once an upgrade has been triggered the new version should be in effect across the organization within about 20 minutes.
 
 ![image 'Sensor Upgrade'](./images/sc-upgrade-sensor.png)
 
-## <span style="color:#3e516b">Installer Downloads</span>
+## <span style="color:#3889c7">Installer Downloads</span>
 
 **Windows**
 
