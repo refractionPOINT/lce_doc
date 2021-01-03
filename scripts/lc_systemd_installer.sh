@@ -46,7 +46,7 @@ Type=simple
 User=root
 Restart=always
 RestartSec=10
-ExecStart=/bin/bash '${SENSOR_DIR}${SENSOR_NAME_ON_DISK} -d ${INSTALLATION_KEY}'
+ExecStart=${SENSOR_DIR}./${SENSOR_NAME_ON_DISK} -d ${INSTALLATION_KEY}
 
 [Install]
 WantedBy=multi-user.target
@@ -62,7 +62,7 @@ systemctl start ${UNIT_FILE_NAME}
 # Start the service on every reboot
 systemctl enable ${UNIT_FILE_NAME}
 
-# Display the status of the service: $ systemctl status 
+# Display the status of the service: $ systemctl status limacharlie.service
 # Debug: $ journalctl -u limacharlie.service -b
 
 
