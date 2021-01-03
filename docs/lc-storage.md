@@ -1,19 +1,19 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ###
 
-![image 'lc-storage'](https://storage.googleapis.com/limacharlie-io/brand/logo/lc-storage.png)
+![image 'lc-storage'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-storage.png)
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
 
 All files and telemetry ingested are indiexed across common indicators of compromise and are easily processed by any of the subsystems or products in the LimaCharlie offering.
 
-## <span style="color:#666fa5">Telemetry Storage</span>
+## <span style="color:#3889c7">Telemetry Storage</span>
  
 Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
 
 Telemetry uses the concept of [atoms](./events.md#atoms) and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
 
-## <span style="color:#666fa5">Artifact Collection</span>
+## <span style="color:#3889c7">Artifact Collection</span>
  
 The Artifact Collection system allows you to ingest artifact types like:
 
@@ -40,7 +40,7 @@ We call this "artifact operationalization". It is not mean to be a general viewi
 
 Details on Artifact Collection and how to utilize it can be found [here](./external_logs.md).
 
-## <span style="color:#666fa5">Exfil Control</span>
+## <span style="color:#3889c7">Exfil Control</span>
 
 By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc.
 
@@ -48,6 +48,6 @@ If you enable the Exfil Service, this default profile is replaced by a custom se
 
 Details on using custom exfil can be found [here](./exfil.md).
 
-## <span style="color:#666fa5">Historical Threat Hunting</span>
+## <span style="color:#3889c7">Historical Threat Hunting</span>
 
  Details outlining methods for hunting threats across historical telemetry can be found in the [lc-hunt](./images/lc-hunt.md) section of the documentation.
