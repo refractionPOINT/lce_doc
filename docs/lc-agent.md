@@ -102,6 +102,19 @@ Upgrading sensors is done transparently when the user clicks a button in the web
 
 ![image 'Sensor Upgrade'](./images/sc-upgrade-sensor.png)
 
+## <span style="color:#3889c7">ARM Variants</span>
+
+Deploying on ARM can sometimes be tricky. The various architectures and naming can be confusing. To help you with this
+here are the cross-compiling toolchains used for the various ARM variants LimaCharlie supports:
+
+**arm:** gcc-arm-linux-gnueabihf
+
+**arm64:** gcc-aarch64-linux-gnu
+
+**arml:** gcc-arm-linux-gnueabi
+
+If you are targeting Raspberry Pi you likely want `arml`.
+
 ## <span style="color:#3889c7">Installer Downloads</span>
 
 **Windows**
@@ -131,6 +144,8 @@ Upgrading sensors is done transparently when the user clicks a button in the web
 [Linux arm32](https://app.limacharlie.io/get/linux/arm32)
 
 [Linux arm64](https://app.limacharlie.io/get/linux/arm64)
+
+[Linux arml](https://app.limacharlie.io/get/linux/arml)
 
 [Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
 
