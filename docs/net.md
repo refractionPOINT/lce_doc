@@ -77,7 +77,18 @@ optional arguments:
   --policy POLICY       literal policy content in JSON or YAML format
 ```
 
-### Firewall
+### Troubleshooting
+
+It is sometimes useful to see the list of policies that currentlyapply to a given sensor.
+To do this you may use one of the following:
+
+* REST endpoint: `/net/policy/applicable/SID`
+* Python CLI: `limacharlie net client policies --help`
+* Python SDK: function `getApplicablePolicies(sid)` of the class `limacharlie.Net`
+
+### Policy Types
+
+#### Firewall
 
 Firewall policies define what *outbound* access is allowed or disallowed. Since all clients in lc-net are under a NAT, the *inbound* access is defined through `service` policies (details further below).
 
@@ -105,7 +116,7 @@ Sample policy:
 }
 ```
 
-### Service
+#### Service
 
 Service policies define a service available through the network on a specific host, and which other endpoints have access to it.
 
@@ -132,7 +143,7 @@ Sample policy:
 }
 ```
 
-### Capture
+#### Capture
 
 A capture policy defines packet capture that should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
 
@@ -155,7 +166,7 @@ Sample policy:
 }
 ```
 
-### DNS
+#### DNS
 
 A DNS policy defines custom DNS entries that are available to some of your lc-net endpoints. This can be used
 either for traditional DNS purposes (providing simplified names to access resources), but it can also be used
