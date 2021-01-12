@@ -12,9 +12,32 @@ Clients connected can access the internet, but they can also access each other b
 
 The underlying technology used for VPN is called [WireGuard](https://www.wireguard.com/). WireGuard is a next-generation VPN technology that is promoted for its simplicity, speed, and security.
 
-Clients are available for [Windows, Android, macOS, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
+Clients are available for [Windows, Android, macOS, Linux, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
 
 ## Provisioning
+
+### lc-net-install Service
+This LimaCharlie Service called `lc-net-install` currently only support Windows. It allows you to easily provision
+and upgrade a lc-agent to lc-net.
+
+Since it is a LimaCharlie Service it means you can either directly interact with the service or you can issue
+service requests via the API and even D&R rules.
+
+To use the service, you will need:
+
+1. The Net version of the Installation Key you want your new lc-net sensors to use: go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
+2. The Sensor ID (sid) of the sensor you wish to upgrade. If you are using the Service interactively through the web
+interface, you may use the Hostname of the sensor and the web interface will auto-complete the Sensor ID.
+
+These steps assume you are using the web interface, but the same basic steps and parameters apply to other methods.
+
+1. Go in the main page of the Organization where you want to upgrade sensors to lc-net.
+1. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "on".
+1. From the left meny, go to the Service Request section.
+1. Select the `lc-net-install` service from the "Service" drop down.
+1. In the "iid" section, enter the Installation obtained earlier.
+1. In the "sid" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
+1. Click "Request". The service will create a new Job that will be visible from the Organization's main page where you can track the progress of the upgrade. The whole process should take less than a minute.
 
 ### CLI
 Using the [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) (`pip install limacharlie`), you can provising new clients one at a time or in batches.
