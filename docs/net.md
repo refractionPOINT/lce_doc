@@ -232,3 +232,20 @@ Sample internal cname:
   "with_subdomains": false
 }
 ```
+
+### Examples
+
+#### Prevent Use of a Service
+Let's say we want to prevent users on mobiles from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
+can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+```
+{
+  "domain": "dropbox.com",
+  "tag": "mobile",
+  "to_a": [
+    "127.0.0.1"
+  ],
+  "with_subdomains": true
+}
+```
