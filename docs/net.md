@@ -106,7 +106,7 @@ Policies often contain some generic components:
 
 ### Troubleshooting
 
-It is sometimes useful to see the list of policies that currentlyapply to a given sensor.
+It is sometimes useful to see the list of policies that currently apply to a given sensor.
 To do this you may use one of the following:
 
 * REST endpoint: `/net/policy/applicable/SID`
