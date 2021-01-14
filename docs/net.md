@@ -251,7 +251,7 @@ can be done either manually, through a D&R rule or through the tags of an Instal
 ```
 
 #### Prevent SSH
-Let's say we want to prevent users in finance from using SSH. Assuming finance users are tagged as `finance` as it
+Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it
 can be done either manually, through a D&R rule or through the tags of an Installation Key.
 
 ```
