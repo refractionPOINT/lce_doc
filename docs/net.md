@@ -33,7 +33,7 @@ These steps assume you are using the web interface, but the same basic steps and
 
 1. Go in the main page of the Organization where you want to upgrade sensors to lc-net.
 1. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "on".
-1. From the left meny, go to the Service Request section.
+1. From the left menu, go to the Service Request section.
 1. Select the `lc-net-install` service from the "Service" drop down.
 1. In the "iid" section, enter the Installation obtained earlier.
 1. In the "sid" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
