@@ -100,6 +100,10 @@ optional arguments:
   --policy POLICY       literal policy content in JSON or YAML format
 ```
 
+Policies often contain some generic components:
+
+* `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets.
+
 ### Troubleshooting
 
 It is sometimes useful to see the list of policies that currentlyapply to a given sensor.
