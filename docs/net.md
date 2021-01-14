@@ -102,7 +102,7 @@ optional arguments:
 
 Policies often contain some generic components:
 
-* `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets.
+* `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets. An empty `bpf_filter` will match all traffic.
 
 ### Troubleshooting
 
