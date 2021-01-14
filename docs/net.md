@@ -236,7 +236,7 @@ Sample internal cname:
 ### Examples
 
 #### Prevent Use of a Service
-Let's say we want to prevent users on mobiles from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
+Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
 can be done either manually, through a D&R rule or through the tags of an Installation Key.
 
 ```
