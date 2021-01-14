@@ -132,9 +132,7 @@ Sample policy:
     "policy": {
         "tag": "",
         "is_allow": true,
-        "protocol": 0,
-        "dest_cidr": "0.0.0.0/0",
-        "dest_port": ""
+        "bpf_filter": "",
     }
 }
 ```
@@ -181,9 +179,7 @@ Sample policy:
     "policy": {
         "days_retention": 7,
         "tag": "vpn",
-        "protocol": 0,
-        "local_port": 0,
-        "remote_port": 0,
+        "bpf_filter": ""
         "ingest_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 }
@@ -247,5 +243,17 @@ can be done either manually, through a D&R rule or through the tags of an Instal
     "127.0.0.1"
   ],
   "with_subdomains": true
+}
+```
+
+#### Prevent SSH
+Let's say we want to prevent users in finance from using SSH. Assuming finance users are tagged as `finance` as it
+can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+```
+{
+  "tag": "finance",
+  "is_allow": false,
+  "bpf_filter": "tcp port 22"
 }
 ```
