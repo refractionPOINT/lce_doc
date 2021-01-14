@@ -18,7 +18,7 @@ Clients are available for [Windows, Android, macOS, Linux, iOS and ChromeOS](htt
 
 ### lc-net-install Service
 This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision
-and upgrade a lc-agent to lc-net.
+and upgrade an lc-agent to lc-net.
 
 Since it is a LimaCharlie Service it means you can either directly interact with the service or you can issue
 service requests via the API and even D&R rules.
