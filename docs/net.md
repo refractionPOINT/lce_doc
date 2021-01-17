@@ -109,6 +109,9 @@ Policies often contain some generic components:
 ### Time Descriptor
 A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined together.
 
+#### Time Zone
+The Time Zone specified should match a `TZ database name` of the [Time Zones Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
 #### Epoch Times
 Specify second epoch timestamps by specifying `ts_start` and `ts_end`.
 
