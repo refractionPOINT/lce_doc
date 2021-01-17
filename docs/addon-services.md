@@ -1,7 +1,7 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ### 
 
-## <span style="color:#185000">dumper</span>
+## <span style="color:#3b8452">dumper</span>
 
 **Cost:** FREE 
 
@@ -21,7 +21,7 @@ API Flair: lock, secret, segment
 >
 >For an example of requesting a dump through a D&R rule, see the "service request" action
 
-## <span style="color:#185000">exfil</span>
+## <span style="color:#3b8452">exfil</span>
 
 **Website:** https://doc.limacharlie.io/docs/documentation/docs/exfil.md
 
@@ -31,7 +31,7 @@ API Flair: lock, secret, segment
 
 >Automates the management of event selection for the events from agents that should be sent to the cloud in real-time.
 
-# <span style="color:#185000">generic-macos</span>
+# <span style="color:#3b8452">generic-macos</span>
 
 **Cost:** FREE
 
@@ -43,7 +43,7 @@ API Flair: lock, secret, segment
 
 >Generic MacOS detections for suspicious behavior. Requires the Exfil service.
 
-## <span style="color:#185000">integrity</span>
+## <span style="color:#3b8452">integrity</span>
 
 **Cost:** FREE
 
@@ -55,7 +55,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Automates management of the File/Registry integrity monitoring
 
-## <span style="color:#185000">logging</span>
+## <span style="color:#3b8452">logging</span>
 
 **Website:** https://doc.limacharlie.io/docs/documentation/docs/external_logs.md
 
@@ -65,7 +65,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Automates various aspects of external log collection from endpoints.
 
-## <span style="color:#185000">otx</span>
+## <span style="color:#3b8452">otx</span>
 
 **Website:** https://otx.alienvault.com/
 
@@ -79,7 +79,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Continuously import all your OTX pulses and the relevant D&R rules for most indicator types. Set your OTX API key in the Integrations section and subscribe to this Service.
 
-## <span style="color:#185000">pagerduty</span>
+## <span style="color:#3b8452">pagerduty</span>
 
 **Website:** https://pagerduty.com
 
@@ -95,7 +95,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 >
 >For more information: https://doc.limacharlie.io/docs/documentation/docs/pagerduty.md
 
-## <span style="color:#185000">reliable-tasking</span>
+## <span style="color:#3b8452">reliable-tasking</span>
 
 **Cost:** FREE
 
@@ -107,7 +107,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Enables reliable, asynchronous and large scale tasking of LimaCharlie sensors. This means you can send a task to a large number of sensors, including offline sensors. The service takes care of retrying to send the task to offline sensors to ensure each of the targeted sensors is tasked at least once. An optional expiry is available to stop retrying tasks after a given time period.
 
-## <span style="color:#185000">replay</span>
+## <span style="color:#3b8452">replay</span>
 
 **Website:** https://doc.limacharlie.io/docs/documentation/docs/replay.md
 
@@ -117,7 +117,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Automates the Replay of various Detection & Response rules on historical sensor data.
 
-## <span style="color:#185000">responder</span>
+## <span style="color:#3b8452">responder</span>
 
 **Website:** https://doc.limacharlie.io/docs/documentation/docs/responder.md
 
@@ -127,7 +127,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Automates various aspects of investigation and incident response.
 
-## <span style="color:#185000">sensor-cull</span>
+## <span style="color:#3b8452">sensor-cull</span>
 
 **Website:** https://limacharlie.io
 
@@ -145,7 +145,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 >
 >See documentation here: https://doc.limacharlie.io/docs/documentation/docs/sensor_cull.md
 
-## <span style="color:#185000">sigma</span>
+## <span style="color:#3b8452">sigma</span>
 
 **Cost:** FREE
 
@@ -165,7 +165,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 >
 >Some Sigma rules on Windows rely on Windows Event Logs which are not collected by LimaCharlie by default. In order to leverage these you will need to configure automated collection of the relevant Windows Event Logs through the Artifact Collection service.
 
-## <span style="color:#185000">twilio</span>
+## <span style="color:#3b8452">twilio</span>
 
 **Website:** https://twilio.com
 
@@ -181,7 +181,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 >
 >For more information: https://doc.limacharlie.io/docs/documentation/docs/twilio.md
 
-## <span style="color:#185000">yara</span>
+## <span style="color:#3b8452">yara</span>
 
 **Website:** https://doc.limacharlie.io/docs/documentation/docs/yara.md
 
@@ -193,7 +193,7 @@ Permissions requested: dr.del.replicant, dr.list.replicant, dr.set.replicant, fp
 
 >Automates management of Yara signature sets and their use in scanning.
 
-## <span style="color:#185000">zeek</span>
+## <span style="color:#3b8452">zeek</span>
 
 **Website:** https://limacharlie.io
 
