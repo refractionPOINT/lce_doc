@@ -103,6 +103,41 @@ optional arguments:
 Policies often contain some generic components:
 
 * `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets. An empty `bpf_filter` will match all traffic.
+* `times`: this is a list of Time Descriptors that describe when this policy is valid and applied. If any of the Time Descriptor is valid, the policy will be applied. More details in the Time Descriptor section below.
+* `sources`: this is a list of networks in [CIDR notations](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) where the clients must be connecting from for the policy to apply.
+
+### Time Descriptor
+A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined together.
+
+#### Time Zone
+The Time Zone specified should match a `TZ database name` of the [Time Zones Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+#### Epoch Times
+Specify second epoch timestamps by specifying `ts_start` and `ts_end`.
+
+#### Time of Day
+Using a time of day by specifying `time_of_day_start` and `time_of_day_end`. Each of these parameters is an integer representing the 24h time and minute. For example for 16h30m specify `1630`.
+
+#### Day of Week
+Using a specific day of the week by specifying `day_of_week` where the value is the integer representing the day of the week starting with Sunday equal to `1`. So for example, Tuesday is `3`.
+
+#### Day of Month
+Using a specific day of the week by specifying `day_of_month` where the value is the integer representing the day of the month, from `1` to `31`.
+
+#### Month of year
+Using a specific month of the year by specifying `month_of_year` where the value is the integer representing the month, where January is `1` and December is `12`.
+
+#### Example
+Let's say you want a policy to be valid from 8 AM to 6 PM, Mondays in the Pacific Time Zone:
+
+```
+{
+  "time_of_day_start": 0800,
+  "time_of_day_end": 1800,
+  "tz": "America/Los_Angeles",
+  "day_of_week": 2
+}
+```
 
 ### Troubleshooting
 
