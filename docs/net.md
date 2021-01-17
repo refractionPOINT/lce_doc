@@ -104,9 +104,9 @@ Policies often contain some generic components:
 
 * `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets. An empty `bpf_filter` will match all traffic.
 * `times`: this is a list of Time Descriptors that describe when this policy is valid and applied. If any of the Time Descriptor is valid, the policy will be applied. More details in the Time Descriptor section below.
+* `sources`: this is a list of networks in [CIDR notations](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) where the clients must be connecting from for the policy to apply.
 
 ### Time Descriptor
-
 A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined together.
 
 #### Epoch Times
