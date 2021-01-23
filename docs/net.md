@@ -51,6 +51,7 @@ $ limacharlie net client provision
 usage: limacharlie net client provision [-h] [--name NAMES [NAMES ...]]
                                         [--name-file NAMEFILE]
                                         [--output OUTPUT] [--email-user]
+                                        [--within-range WITHINRANGE]
                                         iid
 
 positional arguments:
@@ -64,6 +65,9 @@ optional arguments:
   --output OUTPUT       output directory where to put new config files, or "-"
                         for stdout
   --email-user          if set, limacharlie will email users creds directly
+  --within-range WITHINRANGE
+                        if specified, this IP CIDR range will be favored when
+                        attributing an internal IP address in lc-net
 ```
 
 The `name` is the name that will be associated with the lc-net device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag and the QR code + configuration file will be emailed directly to the `name` (email address).
