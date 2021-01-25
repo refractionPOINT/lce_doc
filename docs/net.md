@@ -52,6 +52,8 @@ usage: limacharlie net client provision [-h] [--name NAMES [NAMES ...]]
                                         [--name-file NAMEFILE]
                                         [--output OUTPUT] [--email-user]
                                         [--within-range WITHINRANGE]
+                                        [--exclude-local-ranges EXCLUDELOCAL]
+                                        [--dns-servers DNSSERVERS]
                                         iid
 
 positional arguments:
@@ -68,6 +70,15 @@ optional arguments:
   --within-range WITHINRANGE
                         if specified, this IP CIDR range will be favored when
                         attributing an internal IP address in lc-net
+  --exclude-local-ranges EXCLUDELOCAL
+                        by default configs generated for clients route all
+                        public IP ranges, this comma separated list of CIDRs
+                        describes IP ranges to exclude
+  --dns-servers DNSSERVERS
+                        by default configs generated for clients use the
+                        Google Public DNS servers (8.8.8.8 and 8.8.4.4), this
+                        comma separated list of DNS servers overrides it if
+                        specified
 ```
 
 The `name` is the name that will be associated with the lc-net device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag and the QR code + configuration file will be emailed directly to the `name` (email address).
@@ -75,6 +86,18 @@ The `name` is the name that will be associated with the lc-net device. We recomm
 The `--name-file` option allows you to specify a file containing all the names to provision.
 
 The `--output` can be used to send the configuration files directly to a directory.
+
+An example provisioning a basic new client:
+
+```
+python3 -m limacharlie net client provision --name test@mycorp.com --email-user MY-INSTALLATION-KEY
+```
+
+An example provisioning a client in the `10.42.0.0/16` range and excluding the local IP range `100.115.92.200/28` from the VPN:
+
+```
+python3 -m limacharlie net client provision --name test@mycorp.com --email-user --within-range 10.43.1.0/24 --exclude-local-ranges 100.115.92.200/28 MY-INSTALLATION-KEY
+```
 
 ## Policies
 
