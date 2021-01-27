@@ -691,6 +691,20 @@ Example:
 }
 ```
 
+Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply
+to the entire [Device ID](agentid.md#device-ids), meaning that every sensor that shares this Device ID will have the tag applied (and relevant TTL). If the sensor where this response is triggered does not belong to a Device ID, then the sensor will be tagged.
+
+This can be used as a main mechanism to synchronize and operate changes across an entire device. A D&R rule could detect a behavior and then tag the whole device in order to signal to other sensors to act differently, like lc-net to start doing full pcap.
+
+For example, this would apply the `full_pcap` to all sensors on the device for 5 minutes:
+
+```yaml
+action: add tag
+tag: full_pcap
+ttl: 300
+entire_device: true
+```
+
 #### add var, del var
 Add or remove a value from the variables associated with a sensor.
 
