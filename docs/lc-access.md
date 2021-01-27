@@ -14,7 +14,7 @@ Multi-factor authentication is offered through the following technologies:
 * Microsoft
 * GitHub
 
-If you havew any questions or specific needs around user authentication please do not hesitate to [get in touch](mailto:answers@limacharlie.io).
+If you have any questions or specific needs around user authentication please [get in touch](mailto:answers@limacharlie.io).
 
 ## <span style="color:#d98e24">Analyst Permissions</span>
 
