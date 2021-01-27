@@ -29,6 +29,7 @@ structured with a major and minor platform, the important values are:
 * `0x40000000`: iOS (unused)
 * `0x50000000`: Android (unused)
 * `0x60000000`: ChromeOS
+* `ox70000000`: lc-net
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:
@@ -39,3 +40,19 @@ The architecture is an 8 bit integer that identifies the exact architecture the 
 * `4`: ARM64
 * `5`: Alpine 64
 * `6`: Chrome
+* `7`: Wireguard
+* `8`: ARML
+
+## Device IDs
+Given the breadth of platforms supported by LimaCharlie, it is not unusual for one "device" (laptop, server, mobile etc) to be visible from multiple sensors. A basic example of this might be:
+
+* We have a laptop
+* The laptop's Operating System is macOS, running a macOS sensor
+* The laptop is also running a Windows Virtual Machine, running a Windows sensor
+* Finally, the laptop is running an lc-net sensor at the macOS level
+
+In this example, we're dealing with one piece of hardware, but 3 different sensors.
+
+To help provide a holistic view of activity, LimaCharlie introduces the concept of a Device ID. This ID is mostly visible in the sensor's basic info and in the `routing` component of sensor events under the name `did` (Device ID).
+
+This Device ID is automatically generated and assigned by LimaCharlie using correlation of specific low level events common to all the sensors. This means that if two sensors share a `did: 1234-5678...` ID, it means that they are either on the same device or at least share the same visibility (they see the same activity from two angles).
