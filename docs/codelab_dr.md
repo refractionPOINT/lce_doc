@@ -90,7 +90,7 @@ Back in your terminal, log in with your credentials: `limacharlie login`.
 1. When asked for a name for this access, you can leave it blank to set the default credentials.
 1. When asked for the secret API key, enter the key you got from the previous step.
 
-You're done! If you issue a `limacharlie-dr list` you should not get any errors.
+You're done! If you issue a `limacharlie dr list` you should not get any errors.
 
 ## Draft Rule
 
@@ -271,7 +271,7 @@ respond:
     name: T1196
 ```
 
-Now validate: `limacharlie-replay --validate --rule-content T1196.rule`
+Now validate: `limacharlie replay --validate --rule-content T1196.rule`
 
 After a few seconds, you should see a response with `success: true` if the rule
 validates properly.
@@ -318,7 +318,7 @@ should still NOT match because it's not a `.cpl`.
 
 Now we can run our 3 samples against the rule using Replay,
 
-`limacharlie-replay --rule-content T1196.rule --events positive.json` should output a result
+`limacharlie replay --rule-content T1196.rule --events positive.json` should output a result
 indicating the event matched (by actioning the `report`) like:
 
 ```
@@ -334,7 +334,7 @@ indicating the event matched (by actioning the `report`) like:
 ...
 ```
 
-`limacharlie-replay --rule-content T1196.rule --events negative-1.json` should output a result
+`limacharlie replay --rule-content T1196.rule --events negative-1.json` should output a result
 indicating the event did NOT match like:
 
 ```
@@ -347,7 +347,7 @@ indicating the event did NOT match like:
 }
 ```
 
-`limacharlie-replay --rule-content T1196.rule --events negative-2.json` be the same as `negative-1.json`.
+`limacharlie replay --rule-content T1196.rule --events negative-2.json` be the same as `negative-1.json`.
 
 ### Testing Historical Data
 
@@ -359,7 +359,7 @@ costs associated.
 
 Running our rule against the last week of data is simple:
 
-`limacharlie-replay --rule-content T1196.rule --entire-org --last-seconds 604800`
+`limacharlie replay --rule-content T1196.rule --entire-org --last-seconds 604800`
 
 No matches should look like that:
 
@@ -377,5 +377,5 @@ No matches should look like that:
 
 Now is the time to push the new rule to production, the easy part.
 
-Simply run `limacharlie-dr add --rule-name T1196 --rule-file T1196.rule`
-and confirm it is operational by running `limacharlie-dr list`.
+Simply run `limacharlie dr add --rule-name T1196 --rule-file T1196.rule`
+and confirm it is operational by running `limacharlie dr list`.
