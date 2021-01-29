@@ -18,7 +18,7 @@ If you havew any questions or specific needs around user authentication please d
 
 ## <span style="color:#816122">Analyst Permissions</span>
 
-Administrators can manage multiple analysts across multiple organizations. LimaCharlie provides a top-level user management scheme that allows for the creation of user groups with defined permissions across organizations.
+Administrators can manage multiple analysts across multiple organizations. LimaCharlie provides a top-level user management scheme that allows for the creation of user groups with defined permissions across organizations. This management scheme is called Organizatio Groups and is defined in more detail below.
 
 Using this mechanism you can create groups of analysts with permissions that span multiple organizations which should drastically reduce the administration required and allow for fine grained access control.
 
