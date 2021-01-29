@@ -144,11 +144,14 @@ Output individually each event, detection, audit, deployment or artifact through
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+* `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 
 Example:
 ```
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
+auth_header_name: x-my-special-auth
+auth_header_value: 4756345846583498
 ```
 
 ### Webhook Bulk
@@ -156,14 +159,14 @@ Output batches of events, detections, audits, deployments or artifacts through a
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
-* `sec_per_file`: the number of seconds after which a file is cut and uploaded.
-* `is_compression`: if set to "true", data will be gzipped before upload.
-* `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
+* `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 
 Example:
 ```
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
+auth_header_name: x-my-special-auth
+auth_header_value: 4756345846583498
 ```
 
 ### SMTP
@@ -177,6 +180,7 @@ Output individually each event, detection, audit, deployment or log through an e
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. See "Webhook" section below.
 * `is_readable`: if 'true' the email format will be HTML and designed to be readable by a human instead of a machine.
 * `is_starttls`: if 'true', use the Start TLS method of securing the connection instead of pure SSL.
+* `is_authlogin`: if 'true', authenticate using `AUTH LOGIN` instead of `AUTH PLAIN`.
 * `subject`: is specified, use this as the alternate "subject" line.
 
 Example:

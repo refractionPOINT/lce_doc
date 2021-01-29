@@ -1,7 +1,7 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ### 
 
-## <span style="color:#185000">alienvault-ip-reputation</span>
+## <span style="color:#3b8452">alienvault-ip-reputation</span>
 
 **Website:** https://www.alienvault.com/
 
@@ -11,7 +11,7 @@
 
 >Alienvault IP Reputation
 
-## <span style="color:#185000">coinblocker</span>
+## <span style="color:#3b8452">coinblocker</span>
 
 **Website:** https://github.com/ZeroDot1/CoinBlockerLists
 
@@ -21,7 +21,7 @@
 
 >Simple lists that can help prevent cryptomining in the browser or other applications.
 
-## <span style="color:#185000">dyn-dns</span>
+## <span style="color:#3b8452">dyn-dns</span>
 
 **Website:** http://dns-bh.sagadc.org
 
@@ -31,7 +31,7 @@
 
 >Dynamic Domains
 
-## <span style="color:#185000">dyre-ips</span>
+## <span style="color:#3b8452">dyre-ips</span>
 
 **Website:** https://abuse.ch/
 
@@ -41,7 +41,7 @@
 
 >Dyre Botnet
 
-## <span style="color:#185000">feodo-ips</span>
+## <span style="color:#3b8452">feodo-ips</span>
 
 **Website:** https://abuse.ch/
 
@@ -49,7 +49,7 @@
 
 **Platforms:** MacOS, Windows
 
-## <span style="color:#185000">malwaredomains</span>
+## <span style="color:#3b8452">malwaredomains</span>
 
 **Website:** http://www.malwaredomains.com/
 
@@ -59,7 +59,7 @@
 
 >The DNS-BH project creates and maintains a listing of domains that are known to be used to propagate malware and spyware.
 
-## <span style="color:#185000">ransomware-domains</span>
+## <span style="color:#3b8452">ransomware-domains</span>
 
 **Website:** https://abuse.ch/
 
@@ -69,7 +69,7 @@
 
 >Ransomware related domains
 
-## <span style="color:#185000">talos-ip-blacklist</span>
+## <span style="color:#3b8452">talos-ip-blacklist</span>
 
 **Website:** https://www.talosintelligence.com/
 
@@ -81,7 +81,7 @@
 
 >Cisco Talos IP Blacklist
 
-## <span style="color:#185000">tor-ips</span>
+## <span style="color:#3b8452">tor-ips</span>
 
 **Website:** https://www.dan.me.uk/
 
@@ -91,7 +91,7 @@
 
 >TOR IP's
 
-## <span style="color:#185000">zeus-bad-domains</span>
+## <span style="color:#3b8452">zeus-bad-domains</span>
 
 **Website:** https://abuse.ch/
 
@@ -101,7 +101,7 @@
 
 >Zeus Command & Control Servers
 
-## <span style="color:#185000">zeus-bad-ips</span>
+## <span style="color:#3b8452">zeus-bad-ips</span>
 
 **Website:** https://abuse.ch/
 

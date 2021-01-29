@@ -12,9 +12,32 @@ Clients connected can access the internet, but they can also access each other b
 
 The underlying technology used for VPN is called [WireGuard](https://www.wireguard.com/). WireGuard is a next-generation VPN technology that is promoted for its simplicity, speed, and security.
 
-Clients are available for [Windows, Android, macOS, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
+Clients are available for [Windows, Android, macOS, Linux, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
 
 ## Provisioning
+
+### lc-net-install Service
+This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision
+and upgrade an lc-agent to lc-net.
+
+Since it is a LimaCharlie Service it means you can either directly interact with the service or you can issue
+service requests via the API and even D&R rules.
+
+To use the service, you will need:
+
+1. The Net version of the Installation Key you want your new lc-net sensors to use: go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
+2. The Sensor ID (sid) of the sensor you wish to upgrade. If you are using the Service interactively through the web
+interface, you may use the Hostname of the sensor and the web interface will auto-complete the Sensor ID.
+
+These steps assume you are using the web interface, but the same basic steps and parameters apply to other methods.
+
+1. Go in the main page of the Organization where you want to upgrade sensors to lc-net.
+1. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "on".
+1. From the left menu, go to the Service Request section.
+1. Select the `lc-net-install` service from the "Service" drop down.
+1. In the "iid" section, enter the Net Installation Key (obtained earlier).
+1. In the "sid" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
+1. Click "Request". The service will create a new Job that will be visible from the Organization's main page where you can track the progress of the upgrade. The whole process should take less than a minute.
 
 ### CLI
 Using the [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) (`pip install limacharlie`), you can provising new clients one at a time or in batches.
@@ -28,6 +51,9 @@ $ limacharlie net client provision
 usage: limacharlie net client provision [-h] [--name NAMES [NAMES ...]]
                                         [--name-file NAMEFILE]
                                         [--output OUTPUT] [--email-user]
+                                        [--within-range WITHINRANGE]
+                                        [--exclude-local-ranges EXCLUDELOCAL]
+                                        [--dns-servers DNSSERVERS]
                                         iid
 
 positional arguments:
@@ -41,6 +67,18 @@ optional arguments:
   --output OUTPUT       output directory where to put new config files, or "-"
                         for stdout
   --email-user          if set, limacharlie will email users creds directly
+  --within-range WITHINRANGE
+                        if specified, this IP CIDR range will be favored when
+                        attributing an internal IP address in lc-net
+  --exclude-local-ranges EXCLUDELOCAL
+                        by default configs generated for clients route all
+                        public IP ranges, this comma separated list of CIDRs
+                        describes IP ranges to exclude
+  --dns-servers DNSSERVERS
+                        by default configs generated for clients use the
+                        Google Public DNS servers (8.8.8.8 and 8.8.4.4), this
+                        comma separated list of DNS servers overrides it if
+                        specified
 ```
 
 The `name` is the name that will be associated with the lc-net device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag and the QR code + configuration file will be emailed directly to the `name` (email address).
@@ -48,6 +86,18 @@ The `name` is the name that will be associated with the lc-net device. We recomm
 The `--name-file` option allows you to specify a file containing all the names to provision.
 
 The `--output` can be used to send the configuration files directly to a directory.
+
+An example provisioning a basic new client:
+
+```
+python3 -m limacharlie net client provision --name test@mycorp.com --email-user MY-INSTALLATION-KEY
+```
+
+An example provisioning a client in the `10.42.0.0/16` range and excluding the local IP range `100.115.92.200/28` from the VPN:
+
+```
+python3 -m limacharlie net client provision --name test@mycorp.com --email-user --within-range 10.43.1.0/24 --exclude-local-ranges 100.115.92.200/28 MY-INSTALLATION-KEY
+```
 
 ## Policies
 
@@ -77,7 +127,57 @@ optional arguments:
   --policy POLICY       literal policy content in JSON or YAML format
 ```
 
-### Firewall
+Policies often contain some generic components:
+
+* `bpf_filter`: this is a [tcpdump-like BPF filter syntax](https://biot.com/capstats/bpf.html) describing matching packets. An empty `bpf_filter` will match all traffic.
+* `times`: this is a list of Time Descriptors that describe when this policy is valid and applied. If any of the Time Descriptor is valid, the policy will be applied. More details in the Time Descriptor section below.
+* `sources`: this is a list of networks in [CIDR notations](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) where the clients must be connecting from for the policy to apply.
+
+### Time Descriptor
+A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined together.
+
+#### Time Zone
+The Time Zone specified should match a `TZ database name` of the [Time Zones Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+#### Epoch Times
+Specify second epoch timestamps by specifying `ts_start` and `ts_end`.
+
+#### Time of Day
+Using a time of day by specifying `time_of_day_start` and `time_of_day_end`. Each of these parameters is an integer representing the 24h time and minute. For example for 16h30m specify `1630`.
+
+#### Day of Week
+Using a specific day of the week by specifying `day_of_week` where the value is the integer representing the day of the week starting with Sunday equal to `1`. So for example, Tuesday is `3`.
+
+#### Day of Month
+Using a specific day of the week by specifying `day_of_month` where the value is the integer representing the day of the month, from `1` to `31`.
+
+#### Month of year
+Using a specific month of the year by specifying `month_of_year` where the value is the integer representing the month, where January is `1` and December is `12`.
+
+#### Example
+Let's say you want a policy to be valid from 8 AM to 6 PM, Mondays in the Pacific Time Zone:
+
+```
+{
+  "time_of_day_start": 0800,
+  "time_of_day_end": 1800,
+  "tz": "America/Los_Angeles",
+  "day_of_week": 2
+}
+```
+
+### Troubleshooting
+
+It is sometimes useful to see the list of policies that currently apply to a given sensor.
+To do this you may use one of the following:
+
+* REST endpoint: `/net/policy/applicable/SID`
+* Python CLI: `limacharlie net client policies --help`
+* Python SDK: function `getApplicablePolicies(sid)` of the class `limacharlie.Net`
+
+### Policy Types
+
+#### Firewall
 
 Firewall policies define what *outbound* access is allowed or disallowed. Since all clients in lc-net are under a NAT, the *inbound* access is defined through `service` policies (details further below).
 
@@ -98,14 +198,12 @@ Sample policy:
     "policy": {
         "tag": "",
         "is_allow": true,
-        "protocol": 0,
-        "dest_cidr": "0.0.0.0/0",
-        "dest_port": ""
+        "bpf_filter": "",
     }
 }
 ```
 
-### Service
+#### Service
 
 Service policies define a service available through the network on a specific host, and which other endpoints have access to it.
 
@@ -132,7 +230,7 @@ Sample policy:
 }
 ```
 
-### Capture
+#### Capture
 
 A capture policy defines packet capture that should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
 
@@ -147,15 +245,13 @@ Sample policy:
     "policy": {
         "days_retention": 7,
         "tag": "vpn",
-        "protocol": 0,
-        "local_port": 0,
-        "remote_port": 0,
+        "bpf_filter": ""
         "ingest_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 }
 ```
 
-### DNS
+#### DNS
 
 A DNS policy defines custom DNS entries that are available to some of your lc-net endpoints. This can be used
 either for traditional DNS purposes (providing simplified names to access resources), but it can also be used
@@ -196,5 +292,34 @@ Sample internal cname:
     "www.google.com"
   ],
   "with_subdomains": false
+}
+```
+
+### Examples
+
+#### Prevent Use of a Service
+Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
+can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+```
+{
+  "domain": "dropbox.com",
+  "tag": "mobile",
+  "to_a": [
+    "127.0.0.1"
+  ],
+  "with_subdomains": true
+}
+```
+
+#### Prevent SSH
+Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it
+can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+```
+{
+  "tag": "finance",
+  "is_allow": false,
+  "bpf_filter": "tcp port 22"
 }
 ```

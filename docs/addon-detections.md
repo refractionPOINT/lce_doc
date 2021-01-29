@@ -1,7 +1,7 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ### 
 
-## <span style="color:#185000">evil-maid</span>
+## <span style="color:#3b8452">evil-maid</span>
 
 **Website:** http://doc.limacharlie.io
 
@@ -17,7 +17,7 @@
 >action: report name: evil-maid
 
 
-## <span style="color:#185000">powershell-encoded-command
+## <span style="color:#3b8452">powershell-encoded-command
 </span>
 
 **Website:** https://github.com/refractionPOINT/rules
@@ -28,7 +28,7 @@
 
 > Detects usage of Powershell using an encoded command line.
 
-## <span style="color:#185000">win-acl-tampering
+## <span style="color:#3b8452">win-acl-tampering
 </span>
 
 **Website:** https://github.com/refractionPOINT/rules
@@ -39,7 +39,7 @@
 
 >Detects tampering of Windows filesystem Access Control List using the Windows built in utility.
 
-## <span style="color:#185000">win-document-exe-payload</span>
+## <span style="color:#3b8452">win-document-exe-payload</span>
 
 **Website:** https://github.com/refractionPOINT/rules
 
@@ -49,7 +49,7 @@
 
 >Detects Windows common productivity software dropping executables.
 
-## <span style="color:#185000">win-document-exploit
+## <span style="color:#3b8452">win-document-exploit
 </span>
 
 **Website:** https://github.com/refractionPOINT/rules
@@ -60,7 +60,7 @@
 
 >Detects Windows exploits from common document formats.
 
-## <span style="color:#185000">win-password-dump</span>
+## <span style="color:#3b8452">win-password-dump</span>
 
 Website: https://github.com/refractionPOINT/rules
 
@@ -70,7 +70,7 @@ Website: https://github.com/refractionPOINT/rules
 
 >Detects the loading of password dumping related modules.
 
-## <span style="color:#185000">win-recon</span>
+## <span style="color:#3b8452">win-recon</span>
 
 **Website:** https://github.com/refractionPOINT/rules
 
@@ -80,7 +80,7 @@ Website: https://github.com/refractionPOINT/rules
 
 >Detects Windows automated reconnaissance.
 
-## <span style="color:#185000">win-shadow-volume-tampering</span>
+## <span style="color:#3b8452">win-shadow-volume-tampering</span>
 
 **Website:** https://github.com/refractionPOINT/rules
 
@@ -90,7 +90,7 @@ Website: https://github.com/refractionPOINT/rules
 
 >Detects tampering of Windows Shadow Volumes.
 
-## <span style="color:#185000">win-suspicious-command-line
+## <span style="color:#3b8452">win-suspicious-command-line
 </span>
 
 **Website:** https://github.com/refractionPOINT/rules
@@ -101,7 +101,7 @@ Website: https://github.com/refractionPOINT/rules
 
 >Detects Windows execution with suspicious command lines.
 
-## <span style="color:#185000">win-suspicious-exec-location</span>
+## <span style="color:#3b8452">win-suspicious-exec-location</span>
 
 Website: https://github.com/refractionPOINT/rules
 
@@ -111,7 +111,7 @@ Website: https://github.com/refractionPOINT/rules
 
 >Detects Windows execution from suspicious locations.
 
-## <span style="color:#185000">win-suspicious-exec-name</span>
+## <span style="color:#3b8452">win-suspicious-exec-name</span>
 
 **Website:** https://github.com/refractionPOINT/rules
 
