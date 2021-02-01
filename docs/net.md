@@ -146,7 +146,7 @@ Specify second epoch timestamps by specifying `ts_start` and `ts_end`.
 Using a time of day by specifying `time_of_day_start` and `time_of_day_end`. Each of these parameters is an integer representing the 24h time and minute. For example for 16h30m specify `1630`.
 
 #### Day of Week
-Using a specific day of the week by specifying `day_of_week` where the value is the integer representing the day of the week starting with Sunday equal to `1`. So for example, Tuesday is `3`.
+Using a day of the week range by specifying `day_of_week_start` and `day_of_week_end` where the value is the integer representing the day of the week starting with Sunday equal to `1`. So for example, Tuesday is `3`.
 
 #### Day of Month
 Using a specific day of the week by specifying `day_of_month` where the value is the integer representing the day of the month, from `1` to `31`.
