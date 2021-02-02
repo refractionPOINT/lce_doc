@@ -234,7 +234,7 @@ Sample policy:
 
 A capture policy defines packet capture that should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
 
-Various filters are available. The `ingest_key` is an [Ingestion Key](external_logs.md#using-the-rest-api) created by you in the REST API section.
+Various filters are available. The `ingest_key` is an [Ingestion Key](external_logs.md#using-the-rest-api) created by you in the REST API section, if left blank a default `__net_capture` key will be generated for you.
 
 The following policy demonstrates a full packet capture from a sensor, to be retained in LimaCharlie for 7 days.
 
