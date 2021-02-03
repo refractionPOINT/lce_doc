@@ -40,6 +40,11 @@
       },
       {
         "type": "item",
+        "title": "lc-net",
+        "uri": "docs/net.md"
+      },
+      {
+        "type": "item",
         "title": "lc-edu",
         "uri": "docs/lc-edu.md"
       },

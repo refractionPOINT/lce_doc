@@ -24,7 +24,7 @@ A high-level overview of LimaCharlie's core concepts and features can be found [
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. A detailed overview can be [found here](./lc-agent.md).
 
-* [Architecture & OS Support](./lc-agent.md##architecture--os-support)
+* [Architecture & OS Support](./lc-agent.md#architecture--os-support)
 * [Live View](./lc-agent.md#live-view)
 * [Installing the Agent](./lc-agent.md#installing-the-agent)
 * [Connectivity](./lc-agent.md#connectivity) 
@@ -40,6 +40,19 @@ By default LimaCharlie stores a full year of searchable endpoint telemetry as we
 * [Telemetry Storage](./lc-storage.md#telemetry-storage)
 * [Artifact Collection](./lc-storage.md#artifact-collection)
 * [Historical Threat Hunting](./lc-storage.md#historical-threat-hunting)
+
+<img src="https://storage.googleapis.com/lc-edu/content/images/logos/lc-net-i.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 10%; float:right;" />
+
+## <span style="color:#3889c7">lc-net</span>
+
+LimaCharlie Net is a network inspection, control and micro-segmentation service. Like our lc-agent, lc-net is cloud native and requires no on-premises deployment of infrastructure. In seconds, you can gain full visibility into network flows, capture, limit and shape all activity; the staples of Zero-Trust and Software Defined Perimeter.
+
+* [Firewall](./net.md#firewall)
+* [Full/Partial Cloud Packet Capture](./net.md#capture)
+* [Dynamic Internal DNS](./net.md#dns)
+* [Dynamic Internal Service Access](./net.md#service) 
 
 # <span style="color:#d98e24"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-yellow.png" alt="LimaCharlie Platform"/>Access</span>
 
