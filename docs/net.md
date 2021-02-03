@@ -157,12 +157,13 @@ Using a specific month of the year by specifying `month_of_year` where the value
 #### Example
 Let's say you want a policy to be valid from 8 AM to 6 PM, Mondays in the Pacific Time Zone:
 
-```
+```json
 {
   "time_of_day_start": 0800,
   "time_of_day_end": 1800,
   "tz": "America/Los_Angeles",
-  "day_of_week": 2
+  "day_of_week_start": 2,
+  "day_of_week_end": 2
 }
 ```
 
@@ -192,7 +193,7 @@ Firewall policies can either specify:
 On a connection, all `firewall` policies will be applied. For the connection to be allowed, at least one policy must positively allow the traffic. If, however even a single policy defines the destination is *not* allowed, then the connection will be denied.
 
 Sample policy:
-```
+```json
 "default-allow-outbound": {
     "type": "firewall",
     "policy": {
@@ -218,7 +219,7 @@ The following example describes that all lc-net endpoints with the `finance` tag
 Once in place, accessing this service can be done using the server's Internal IP that is available through the detailed information view of a given sensor. In the case of lc-net endpoints, this Internal IP is always in the `10.x.x.x` range and is static, meaning a sensor is given an Internal IP that it will keep for its whole lifetime, making it easier to bookmark services or even create your own DNS entries for services.
 
 Sample policy:
-```
+```json
 "test-http": {
     "type": "service",
     "policy": {
@@ -239,13 +240,13 @@ Various filters are available. The `ingest_key` is an [Ingestion Key](external_l
 The following policy demonstrates a full packet capture from a sensor, to be retained in LimaCharlie for 7 days.
 
 Sample policy:
-```
+```json
 "pcap-all": {
     "type": "capture",
     "policy": {
         "days_retention": 7,
         "tag": "vpn",
-        "bpf_filter": ""
+        "bpf_filter": "",
         "ingest_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 }
@@ -260,7 +261,7 @@ for security purposes to [sinkhole](https://en.wikipedia.org/wiki/DNS_sinkhole) 
 These domains are private to your lc-net.
 
 Sample sinkhole for `evil.com` and all its subdomains on all lc-net devices:
-```
+```json
 {
   "domain": "evil.com",
   "tag": "",
@@ -272,7 +273,7 @@ Sample sinkhole for `evil.com` and all its subdomains on all lc-net devices:
 ```
 
 Sample internal service only for finance devices:
-```
+```json
 {
   "domain": "testserver.srv",
   "tag": "finance",
@@ -284,7 +285,7 @@ Sample internal service only for finance devices:
 ```
 
 Sample internal cname:
-```
+```json
 {
   "domain": "testserver.srv",
   "tag": "",
@@ -301,7 +302,9 @@ Sample internal cname:
 Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
 can be done either manually, through a D&R rule or through the tags of an Installation Key.
 
-```
+This is the `dns` policy:
+
+```json
 {
   "domain": "dropbox.com",
   "tag": "mobile",
@@ -316,10 +319,24 @@ can be done either manually, through a D&R rule or through the tags of an Instal
 Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it
 can be done either manually, through a D&R rule or through the tags of an Installation Key.
 
-```
+But only do this Monday through Friday, 8AM to 6PM Pacific Time, when the user is connected from an office which is hosted behind `9.9.9.0/24`.
+
+This is the `firewall` policy:
+
+```json
 {
   "tag": "finance",
   "is_allow": false,
-  "bpf_filter": "tcp port 22"
+  "bpf_filter": "tcp port 22",
+  "times": [{
+    "day_of_week_end": 6,
+    "day_of_week_start": 2,
+    "time_of_day_end": 1800,
+    "time_of_day_start": 800,
+    "tz": "America/Los_Angeles"
+  }],
+  "sources": [
+    "9.9.9.0/24"
+  ]
 }
 ```
