@@ -40,11 +40,6 @@
       },
       {
         "type": "item",
-        "title": "lc-net",
-        "uri": "docs/net.md"
-      },
-      {
-        "type": "item",
         "title": "lc-edu",
         "uri": "docs/lc-edu.md"
       },
@@ -57,6 +52,11 @@
         "type": "item",
         "title": "lc-marketplace",
         "uri": "docs/lc-marketplace.md"
+      },
+      {
+        "type": "item",
+        "title": "lc-net",
+        "uri": "docs/lc-net.md"
       },
       {
         "type": "item",
