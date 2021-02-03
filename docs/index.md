@@ -49,10 +49,10 @@ By default LimaCharlie stores a full year of searchable endpoint telemetry as we
 
 LimaCharlie Net is a network inspection, control and micro-segmentation service. Like our lc-agent, lc-net is cloud native and requires no on-premises deployment of infrastructure. In seconds, you can gain full visibility into network flows, capture, limit and shape all activity; the staples of Zero-Trust and Software Defined Perimeter.
 
-* [Firewall](./net.md#firewall)
-* [Full/Partial Cloud Packet Capture](./net.md#capture)
-* [Dynamic Internal DNS](./net.md#dns)
-* [Dynamic Internal Service Access](./net.md#service) 
+* [Firewall](./lc-net.md#firewall)
+* [Full/Partial Cloud Packet Capture](./lc-net.md#capture)
+* [Dynamic Internal DNS](./lc-net.md#dns)
+* [Dynamic Internal Service Access](./lc-net.md#service) 
 
 # <span style="color:#d98e24"><img style="float: left; max-width: 10%; padding-right: 10px;" src="https://storage.googleapis.com/lc-edu/content/images/logos/chevron-yellow.png" alt="LimaCharlie Platform"/>Access</span>
 

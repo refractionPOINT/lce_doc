@@ -1,4 +1,7 @@
-# Net
+<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
+###
+
+![image 'lc-hunt'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-net.png)
 
 LimaCharlie Net (lc-net) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access.
 
@@ -14,7 +17,7 @@ The underlying technology used for VPN is called [WireGuard](https://www.wiregua
 
 Clients are available for [Windows, Android, macOS, Linux, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
 
-## Provisioning
+## <span style="color:#3889c7">Provisioning</span>
 
 ### lc-net-install Service
 This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision
@@ -99,7 +102,7 @@ An example provisioning a client in the `10.42.0.0/16` range and excluding the l
 python3 -m limacharlie net client provision --name test@mycorp.com --email-user --within-range 10.43.1.0/24 --exclude-local-ranges 100.115.92.200/28 MY-INSTALLATION-KEY
 ```
 
-## Policies
+## <span style="color:#3889c7">Policies</span>
 
 Policies govern the access as well as the configuration of various other tools used by lc-net. Generally policies will apply either to all lc-net endpoints or lc-net endpoints with a given tag applied to them.
 
