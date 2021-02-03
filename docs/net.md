@@ -246,7 +246,7 @@ Sample policy:
     "policy": {
         "days_retention": 7,
         "tag": "vpn",
-        "bpf_filter": ""
+        "bpf_filter": "",
         "ingest_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 }
