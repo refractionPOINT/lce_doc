@@ -206,6 +206,11 @@ humio_repo: sandbox
 humio_api_token: fdkoefj0erigjre8iANUDBFyfjfoerjfi9erge
 ```
 
+Note: you may need to use the following parser definition in Humio to correctly parse timestamps:
+```
+parseJson() | parseTimestamp(field=@timestamp,format="unixTimeMillis",timezone="Etc/UTC")
+```
+
 ### Kafka
 Output events and detections to a Kafka target.
 
