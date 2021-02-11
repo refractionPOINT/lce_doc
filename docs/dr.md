@@ -99,7 +99,9 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the type of event being
 evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter in certain types of events. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
-of `_DETECTIONNAME`. This can be used to compose higher order detections.
+of `_DETECTIONNAME`. This can be used to compose higher order detections. Finally, a special value can be used in the
+`event`/`events` field: `_*`. By specifying this `_*` wildcard as the only value of `event:`, you ask the D&R rule engine
+to match against all Detections that are re-sent through the engine as describe previously. This effectively allows you to relax the rule of having at least one `event:` type literal in your rule for Detections. Example: `event: _*` will match all detections.
 
 ### Logical Operations
 Some parameters are available to all logical operations.
