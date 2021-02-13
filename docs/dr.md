@@ -99,7 +99,9 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the type of event being
 evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter in certain types of events. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
-of `_DETECTIONNAME`. This can be used to compose higher order detections.
+of `_DETECTIONNAME`. This can be used to compose higher order detections. Finally, a special value can be used in the
+`event`/`events` field: `_*`. By specifying this `_*` wildcard as the only value of `event:`, you ask the D&R rule engine
+to match against all Detections that are re-sent through the engine as describe previously. This effectively allows you to relax the rule of having at least one `event:` type literal in your rule for Detections. Example: `event: _*` will match all detections.
 
 ### Logical Operations
 Some parameters are available to all logical operations.
@@ -199,6 +201,30 @@ detect:
 respond:
   - action: report
     name: unsigned-exec-removable-drive
+```
+
+#### Times
+
+All evaluators support an optional key named `times`. When specified, it must contain a list of [Time Descriptors](lc-net.md#time-descriptor) where the given evaluator is valid. These Time Descriptors are at the "operator" level, meaning that your rule can mix-and-match multiple Time Descriptors as part of a single rule.
+
+Example that matches the Chrome process starting between 11PM and 5AM, Monday through Friday, Pacific Time:
+```yaml
+event: NEW_PROCESS
+op: ends with
+path: event/FILE_PATH
+value: chrome.exe
+case sensitive: false
+times:
+  - day_of_week_start: 2
+    day_of_week_end: 6
+    time_of_day_start: 2200
+    time_of_day_end: 2359
+    tz: America/Los_Angeles
+  - day_of_week_start: 2
+    day_of_week_end: 6
+    time_of_day_start: 0
+    time_of_day_end: 500
+    tz: America/Los_Angeles
 ```
 
 #### Operators
