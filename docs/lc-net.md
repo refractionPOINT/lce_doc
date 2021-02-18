@@ -292,9 +292,7 @@ Sample internal cname:
 {
   "domain": "testserver.srv",
   "tag": "",
-  "to_cname": [
-    "www.google.com"
-  ],
+  "to_cname": "www.google.com",
   "with_subdomains": false
 }
 ```
