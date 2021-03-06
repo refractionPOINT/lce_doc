@@ -20,7 +20,7 @@ A high-level overview of LimaCharlie's core concepts and features can be found [
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3889c7">lc-agent</span>
+## <span style="color:#3889c7">Agent</span>
 
 The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. A detailed overview can be [found here](./lc-agent.md).
 
@@ -33,7 +33,7 @@ The LimaCharlie agent - or sensor - is fully interactive and can monitor over [7
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3889c7">lc-storage</span>
+## <span style="color:#3889c7">Storage</span>
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more. A detailed overview can be [found here](./lc-storage.md).
 
@@ -45,7 +45,7 @@ By default LimaCharlie stores a full year of searchable endpoint telemetry as we
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3889c7">lc-net</span>
+## <span style="color:#3889c7">Net</span>
 
 LimaCharlie Net is a network inspection, control and micro-segmentation service. Like our lc-agent, lc-net is cloud native and requires no on-premises deployment of infrastructure. In seconds, you can gain full visibility into network flows, capture, limit and shape all activity; the staples of Zero-Trust and Software Defined Perimeter.
 
@@ -60,7 +60,7 @@ LimaCharlie Net is a network inspection, control and micro-segmentation service.
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#d98e24">lc-output</span>
+## <span style="color:#d98e24">Output</span>
 
 The data produced by the LimaCharlie endpoint is under complete control of the user. LimaCharlie provides extensive storage and search options as part of its core offering but makes the full telemetry stream availble to users. A detailed overview can be [found here](./lc-output.md).
 
@@ -71,7 +71,7 @@ The data produced by the LimaCharlie endpoint is under complete control of the u
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#d98e24;">lc-rbac</span>
+## <span style="color:#d98e24;">Authorization</span>
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts. A detailed overview can be [found here](./lc-access.md).
 
@@ -85,7 +85,7 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#c42932">lc-hunt</span> 
+## <span style="color:#c42932">Hunting</span> 
 
 LimaCharlie is information security tools and infrastructure. Infrastructure to support any scale and tools to help analysts get started hunting as they grow into the platform. A detailed overview can be [found here](./lc-hunt.md).
 
@@ -100,7 +100,7 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3b8452">lc-marketplace</span> 
+## <span style="color:#3b8452">Marketplace</span> 
 
 LimaCharlie offers additional free and paid integrated services through it's Add-Ons Marketplace. A detailed overview can be [found here](./lc-marketplace.md).
 
@@ -114,7 +114,7 @@ LimaCharlie offers additional free and paid integrated services through it's Add
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3b8452">lc-code</span>
+## <span style="color:#3b8452">Code</span>
 
 LimaCharlie provides standalone tools for security proffesionals to get started hunting out of the box but at its heart it is a toolbox for builders. This section of the documentation is a place where developers can find the resources they need to build and monetize their own products. A detailed overview can be [found here](./lc-code.md).
 
@@ -127,7 +127,7 @@ LimaCharlie provides standalone tools for security proffesionals to get started 
      alt="LimaCharlie.io Logo"
      style="width: 10%; float:right;" />
 
-## <span style="color:#3b8452">lc-edu</span>
+## <span style="color:#3b8452">Education</span>
 
 Education and open data is at the heart of LimaCharlie. To ensure that users get up to speed quickly - and make the most of the platform - LimaCharlie provides a host of educational resources. A detailed overview can be [found here](./lc-edu.md).
 
