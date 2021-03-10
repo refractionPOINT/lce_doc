@@ -85,3 +85,14 @@ The following flairs are currently supported:
 The `lock` flair is useful if you are using a key to specifically manage an aspect of your deployment that relies on things like
 precisely defined D&R rules, Exfil Watch rules etc. The key flair ensures someone else does not modify it by mistake.
 It does NOT bring privacy (other users with the appropriate permissions will still see those resources, but they will not be able to modify them).
+
+## Managing at Scale
+Managing API access at scale can be done through a couple of different ways. We will go through the major ways starting with more straight-forward, but less scalable.
+
+### Organization API Keys
+Since you can create an API key in an Organization. You could simply create a new API key for each one, and keep the list of tuples of `Organization ID + API Key` on your side of the automation. Then whenever you want to perform an action with LimaCharlie, you resolve the `OID + API Key` you need and perform the call to the API.
+
+Of course, the main drawback here is the need to create a new key for every new Organization and keep track all the `OID + API Key` combinations. Even more complexity comes in if you want to have multiple sets of keys to perform different actions, or if you want to update the keys.
+
+### Machine User API Keys
+This method tends to scale better when managing large numbers of Organizations. It is achieved by creating 
