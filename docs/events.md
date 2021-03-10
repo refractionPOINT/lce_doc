@@ -862,6 +862,8 @@ The following file patterns are considered "documents":
 * `.com`
 * `.png`
 * `.jpg`
+* `.asp`
+* `.aspx`
 * `\windows\system32\`
 
 Platforms: Windows, MacOS
