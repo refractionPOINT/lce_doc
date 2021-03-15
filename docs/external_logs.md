@@ -152,6 +152,9 @@ for "in artifact".
 ## Windows Event Logs
 
 ### From Real-Time Events
+
+*Only supported on Windows 2008 and up*
+
 It is possible to subscribe to receive Windows Event Logs in real-time from the sensor. By doing this, the targeted Windows Events will be sent to
 the cloud as normal LimaCharlie telemetry events encapsulated in an event type of `WEL`. The Windows Events in those cases will be structured as JSON similarly
 to other LimaCharlie telemetry. This means you can create [D&R rules](dr.md) that operate directly on Windows Events, or even correlate between Windows Events and native LimaCharlie telemetry events.
