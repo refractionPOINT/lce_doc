@@ -71,6 +71,9 @@ Note that matching files are watched for changes. When a change is detected, the
 
 For example syslog is rolled from `syslog` to `syslog.1` after a day, you want to target `syslog.1` to avoid duplicating records from a file being appended to.
 
+Rules may also specify special accesses to log. For example, specifying a rule with a file path of `wel://Security:*` will begin collection
+of the Windows Event Logs (`wel`) in real-time directly from the sensor. See the Windows Event Logs section below.
+
 ##### Network Capture
 The service also offers a rule system to do network capture from the host. This
 feature is currently only available on Linux.
@@ -147,7 +150,28 @@ viewing the details of a specific event, right-clicking on an indicator and clic
 for "in artifact".
 
 ## Windows Event Logs
-When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest
+
+### From Real-Time Events
+It is possible to subscribe to receive Windows Event Logs in real-time from the sensor. By doing this, the targeted Windows Events will be sent to
+the cloud as normal LimaCharlie telemetry events encapsulated in an event type of `WEL`. The Windows Events in those cases will be structured as JSON similarly
+to other LimaCharlie telemetry. This means you can create [D&R rules](dr.md) that operate directly on Windows Events, or even correlate between Windows Events and native LimaCharlie telemetry events.
+
+To configure this collection, you need to specify a special kind of log path as a collection pattern. The format is as follows:
+
+```
+wel://EventSource:FilterExpression
+```
+
+The `wel://` prefix tells LimaCharlie this is not a file at rest, but a live API request from the sensor. The `EventSource` part of the expression refers
+to the `ChannelPath` described in the Windows documentation here: https://docs.microsoft.com/en-us/windows/win32/api/winevt/nf-winevt-evtsubscribe.
+The `FilterExpression` component refers to the `Query` parameter described in the same documentation. Additional documentation on the filter format can also be found here: https://docs.microsoft.com/en-us/windows/win32/wes/consuming-events.
+
+Examples of supported patterns:
+* `wel://Security:*`
+* `wel://System:Event[System[EventID=4624]]`
+
+### From Files at Rest
+When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`) that were acquired from files at rest, although the [Artifact Collection Service](external_logs.md) may ingest
 the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
 processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
 
