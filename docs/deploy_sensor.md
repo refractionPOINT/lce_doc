@@ -48,6 +48,11 @@ mentioned above. This will install the sensor as a Windows service and trigger i
 
 You may also install the Windows sensor using the MSI version. With the MSI, install using: `installer.msi WRAPPED_ARGUMENTS="INSTALLATION_KEY"`.
 
+You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-i -`. This will make the installer look for the
+installation key in alternate place in the following order:
+* Environment variable `LC_INSTALLATION_KEY`
+* Text file in current working directory: `lc_installation_key.txt`
+
 #### System Requirements
 The LimaCharlie.io agent supports Windows XP 32 bit and up (32 and 64 bit). However, Windows XP and 2003 support is for the
 more limited capabilities of the agent that do not require kernel support.
@@ -65,6 +70,10 @@ mentioned above.
 
 [Step-by-step instructions for macOS 10.14 (Mojave) and older](./sensor_installation/macOS_sensor_installation-older.md)
 
+You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-i -`. This will make the installer look for the
+installation key in alternate place in the following order:
+* Environment variable `LC_INSTALLATION_KEY`
+* Text file in current working directory: `lc_installation_key.txt`
 
 ### Linux
 Executing the installer via the command line, pass the `-d INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
@@ -78,14 +87,17 @@ This means you can wrap the executable using the specific service management tec
 simply specifying the location of the installer, the `-d INSTALLATION_KEY` parameter and making sure the current working
 directory is the directory where you want the few sensor-related files written to disk to reside.
 
-Common Linux packages may be available in the future.
-
 A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh).
 You can invoke it like this:
 ```
 sudo chmod +x ./lc_linux_installer.sh
 sudo ./lc_linux_installer.sh <PATH_TO_LC_SENSOR> <YOUR_INSTALLATION_KEY>
 ```
+
+You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-d -`. This will make the installer look for the
+installation key in alternate place in the following order:
+* Environment variable `LC_INSTALLATION_KEY`
+* Text file in current working directory: `lc_installation_key.txt`
 
 #### Disabling Netlink
 By default the Linux sensor makes use of Netlink if it's availabe. In some rare configurations
