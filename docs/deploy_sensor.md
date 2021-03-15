@@ -49,7 +49,7 @@ mentioned above. This will install the sensor as a Windows service and trigger i
 You may also install the Windows sensor using the MSI version. With the MSI, install using: `installer.msi WRAPPED_ARGUMENTS="INSTALLATION_KEY"`.
 
 You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-i -`. This will make the installer look for the
-installation key in alternate place in the following order:
+installation key in an alternate place in the following order:
 * Environment variable `LC_INSTALLATION_KEY`
 * Text file in current working directory: `lc_installation_key.txt`
 
