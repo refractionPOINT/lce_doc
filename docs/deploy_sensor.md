@@ -71,7 +71,7 @@ mentioned above.
 [Step-by-step instructions for macOS 10.14 (Mojave) and older](./sensor_installation/macOS_sensor_installation-older.md)
 
 You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-i -`. This will make the installer look for the
-installation key in alternate place in the following order:
+installation key in an alternate place in the following order:
 * Environment variable `LC_INSTALLATION_KEY`
 * Text file in current working directory: `lc_installation_key.txt`
 
