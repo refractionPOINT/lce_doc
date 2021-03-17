@@ -201,6 +201,74 @@ Platforms: Windows, Linux
 }
 ```
 
+### WEL
+Generated when a matching (Artifact Collection Rule) Windows Event Log is
+seen on a Windows box.
+
+Platforms: Windows
+
+```json
+{
+  "EVENT": {
+    "EventData": {
+      "AuthenticationPackageName": "Negotiate",
+      "ElevatedToken": "%%1842",
+      "ImpersonationLevel": "%%1833",
+      "IpAddress": "-",
+      "IpPort": "-",
+      "KeyLength": "0",
+      "LmPackageName": "-",
+      "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+      "LogonProcessName": "Advapi",
+      "LogonType": "5",
+      "ProcessId": "0x290",
+      "ProcessName": "C:\\Windows\\System32\\services.exe",
+      "RestrictedAdminMode": "-",
+      "SubjectDomainName": "WORKGROUP",
+      "SubjectLogonId": "0x3e7",
+      "SubjectUserName": "WIN-5KC7E0NG1OD$",
+      "SubjectUserSid": "S-1-5-18",
+      "TargetDomainName": "NT AUTHORITY",
+      "TargetLinkedLogonId": "0x0",
+      "TargetLogonId": "0x3e7",
+      "TargetOutboundDomainName": "-",
+      "TargetOutboundUserName": "-",
+      "TargetUserName": "SYSTEM",
+      "TargetUserSid": "S-1-5-18",
+      "TransmittedServices": "-",
+      "VirtualAccount": "%%1843",
+      "WorkstationName": "-"
+    },
+    "System": {
+      "Channel": "Security",
+      "Computer": "WIN-5KC7E0NG1OD",
+      "Correlation": {
+        "ActivityID": "{cc484453-193e-0001-fe44-48cc3e19d701}"
+      },
+      "EventID": "4624",
+      "EventRecordID": "42742",
+      "Execution": {
+        "ProcessID": "664",
+        "ThreadID": "1080"
+      },
+      "Keywords": "0x8020000000000000",
+      "Level": "0",
+      "Opcode": "0",
+      "Provider": {
+        "Guid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+        "Name": "Microsoft-Windows-Security-Auditing"
+      },
+      "Security": "",
+      "Task": "12544",
+      "TimeCreated": {
+        "SystemTime": "2021-03-17T00:41:45.3692165Z"
+      },
+      "Version": "2"
+    }
+  }
+}
+```
+
 ### DNS_REQUEST
 Generated from DNS responses and therefore includes both the
 requested domain and the response from the server. If the server responds
