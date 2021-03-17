@@ -177,6 +177,30 @@ Platforms: Windows, Linux, MacOS
 }
 ```
 
+### PROCESS_ENVIRONMENT
+Generated when a process starts. It lists all environment variables
+associated with that new process.
+
+Platforms: Windows, Linux
+
+```json
+{
+  "ENVIRONMENT_VARIABLES": [
+    "LANG=en_US.UTF-8",
+    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "NOTIFY_SOCKET=/run/systemd/notify",
+    "LISTEN_PID=18950",
+    "LISTEN_FDS=2",
+    "LISTEN_FDNAMES=systemd-udevd-kernel.socket:systemd-udevd-control.socket",
+    "WATCHDOG_PID=18950",
+    "WATCHDOG_USEC=180000000",
+    "INVOCATION_ID=07d6d5f06eea44cabd20adb6c6dcfe0c",
+    "JOURNAL_STREAM=9:4165813"
+  ],
+  "PROCESS_ID": 13463
+}
+```
+
 ### DNS_REQUEST
 Generated from DNS responses and therefore includes both the
 requested domain and the response from the server. If the server responds
