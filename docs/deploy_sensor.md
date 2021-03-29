@@ -187,7 +187,7 @@ This is accomplished by a combination of a few techniques:
 
 The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` and `ENV NET_NS=/netns` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
 
-The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
+The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs -v /var/run/docker/netns:/netns:ro --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
 
 Remember to pick the approriate LC sensor architecture installer for the *container* that will be running LC (not the host).
 So if your privileged container runs Alpine Linux, use the `alpine64` version of LC.
