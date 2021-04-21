@@ -1,7 +1,9 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
 ###
 
-![image 'lc-rbac'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-access.png)
+# Access & Permissions
+
+LimaCharlie employs a multi-tenant architecture.
 
 LimaCharlie employs a fine-grained permission scheme across the API and user accounts.
 
