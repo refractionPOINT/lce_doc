@@ -8,13 +8,15 @@ This document provides details of how to install, verify, and uninstall the Lima
 
 [Installation Flow](#Installation-Flow)
 
-[Verifying the installation](#Verifying-Installation)
+[Verifying the Installation](#Verifying-Installation)
 
 [Uninstallation Flow](#Uninstallation-Flow)
 
 [Installer Options](#Installer-Options)
 
 [System Requirements](#System-Requirements)
+
+[Using MDM Solutions](#Using-MDM-Solutions)
 
 <a name="Installation-Flow"></a>
 
@@ -158,3 +160,7 @@ When running the installer from the command line, you can pass the following arg
 - macOS version 10.9 to macOS 11 are supported
 - Supported on both Intel (64-bit) and Apple Silicon based hardware 
 
+<a name="Using-MDM-Solutions"></a>
+## Using MDM Solutions
+
+See our document <a href="./macOS-MDM-configuration-profile.md">macOS Agent Installation with MDM Solutions<a> for the Mobile Device Management (MDM) Configuration Profile that can be used to deploy the LimaCharlie agent to an enterprise fleet.
