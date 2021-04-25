@@ -138,6 +138,8 @@ When running the installer from the command line, you can pass the following arg
 
 -v: display build version.
 
+-q: quiet; do not display banner.
+
 -d <INSTALLATION_KEY>: the installation key to use to enroll, no permanent installation.
 
 -i <INSTALLATION_KEY>: install executable as a service with deployment key.
