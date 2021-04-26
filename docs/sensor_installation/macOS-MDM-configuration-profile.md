@@ -31,10 +31,10 @@ Full Disk Access
 
 ## Configuration Profile Details
 
-We have provided a sample configuration profile for reference:  <a href="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/LimaCharlie.mobileconfig.zip">LimaCharlie.mobileconfig
+We have provided a sample configuration profile for reference:  <a href="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/LimaCharlie.mobileconfig.zip"><img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/mobileconfig-icon.png" alt="MobileConfig icon" style="zoom:50%;" /></a>
 <br>
-<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/mobileconfig-icon.png" alt="MobileConfig icon" style="zoom:50%;" />
- Download sample configuration profile
+<a href="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/LimaCharlie.mobileconfig.zip">
+Download LimaCharlie.mobileconfig sample configuration profile
 </a>
 
 This profile includes the following permissions:
@@ -67,7 +67,7 @@ Identifier Type:
 Bundle ID
 
 Code Requirement:
-anchor apple generic and identifier "com.refractionpoint.rphcp.extension" and (certificate leaf/[field.1.2.840.113635.100.6.1.9/] //* exists /*/ or certificate 1/[field.1.2.840.113635.100.6.2.6/] //* exists /*/ and certificate leaf/[field.1.2.840.113635.100.6.1.13/] //* exists /*/ and certificate leaf/[subject.OU/] = N7N82884NH)
+anchor apple generic and identifier "com.refractionpoint.rphcp.extension" and (certificate leaf\[field.1.2.840.113635.100.6.1.9\] /* exists \*/ or certificate 1\[field.1.2.840.113635.100.6.2.6\] /\* exists \*/ and certificate leaf\[field.1.2.840.113635.100.6.1.13\] /\* exists \*/ and certificate leaf\[subject.OU\] = N7N82884NH)
 
 App or Service:
 SystemPolicyAllFiles
@@ -104,7 +104,7 @@ Socket Filter Bundle Identifier:
 com.refractionpoint.rphcp.client
 
 Socket Filter Designated Requirement
-anchor apple generic and identifier "com.refractionpoint.rphcp.client" and (certificate leaf/[field.1.2.840.113635.100.6.1.9/] //* exists /*/ or certificate 1/[field.1.2.840.113635.100.6.2.6/] //* exists /*/ and certificate leaf/[field.1.2.840.113635.100.6.1.13/] //* exists /*/ and certificate leaf/[subject.OU/] = N7N82884NH)
+anchor apple generic and identifier "com.refractionpoint.rphcp.client" and (certificate leaf\[field.1.2.840.113635.100.6.1.9\] /* exists \*/ or certificate 1\[field.1.2.840.113635.100.6.2.6\] /\* exists \*/ and certificate leaf\[field.1.2.840.113635.100.6.1.13\] /\* exists \*/ and certificate leaf\[subject.OU\] = N7N82884NH)
 
 Add a Network Filter with the following details:
 
@@ -112,7 +112,7 @@ Network Filter Bundle Identifier:
 com.refractionpoint.rphcp.client
 
 Network Filter Designated Requirement:
-anchor apple generic and identifier "com.refractionpoint.rphcp.client" and (certificate leaf/[field.1.2.840.113635.100.6.1.9/] //* exists /*/ or certificate 1/[field.1.2.840.113635.100.6.2.6/] //* exists /*/ and certificate leaf/[field.1.2.840.113635.100.6.1.13/] //* exists /*/ and certificate leaf/[subject.OU/] = N7N82884NH)
+anchor apple generic and identifier "com.refractionpoint.rphcp.client" and (certificate leaf\[field.1.2.840.113635.100.6.1.9\] /* exists \*/ or certificate 1\[field.1.2.840.113635.100.6.2.6\] /\* exists \*/ and certificate leaf\[field.1.2.840.113635.100.6.1.13\] /\* exists \*/ and certificate leaf\[subject.OU\] = N7N82884NH)
 
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/JamfPro-4-ContentFilter.png" alt="System Extensions Required" style="zoom:50%;" />
