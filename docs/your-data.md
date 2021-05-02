@@ -22,7 +22,7 @@ We use transparency as a mitigating control against insider threats.  In particu
 
 1)  An entry is made to the Audit Log in your organization.  You can access the audit log in the web interface and via the [API](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json/paths/~1audit~1%7Boid%7D/get).  We also provide the ability for you to [send audit log data out](https://doc.limacharlie.io/docs/documentation/docs/outputs.md#google-cloud-storage-1) of LimaCharlie immediately to a write-only bucket that you control in your own environment.
 
-2)  An entry is made to the LimaCharlie infrastructure logs.  These logs are regularly audited.
+2)  We use a _break-glass_ system, meaning that LimaCharlie personnel do not have access to customer data by default. This requires an explicit programmatic action (internal to LimaCharlie) that includes its own audit trail that cannot be modified by LimaCharlie staff.  This audit trail is regularly reviewed.
 
 
 ### Role-Based Access Control
