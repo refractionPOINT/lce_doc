@@ -7,7 +7,7 @@ LimaCharlie employs a fine-grained permission scheme across the API and user acc
 
 ## <span style="color:#d98e24">User Access</span>
 
-Details on giving a new user initial access can be [found here]().
+Details on giving a new user initial access can be [found here](./user_access.md).
 
 Multi-factor authentication is offered through the following technologies:
 * Google 
