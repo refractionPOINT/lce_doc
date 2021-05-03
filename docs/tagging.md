@@ -36,3 +36,12 @@ Issue a `GET` to `/{sid}/tags` REST endpoint
 
 ### Detection & Response
 In detection and response rules
+
+## System Tags
+We provide system level functionality with a few system tags.  Those tags are listed below for reference:
+
+### latest
+When you tag a sensor with _latest_, the sensor version currently assigned to the Organization will be ignore for that specific sensor and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the latest tag in order to test-deploy the latest version and confirm no negative effects.
+
+### experimental
+When you tag a sensor with _experimental_, the sensor version currently assigned to the Organization will be ignore for that specific sensor an experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.
