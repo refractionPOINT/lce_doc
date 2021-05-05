@@ -7,7 +7,7 @@ LimaCharlie is information security tools and infrastructure. Infrastructure to 
 
 Several high-level topics around threat detection and mitigation are outlined below.
 
-Questions or concerns can be directed to our user [ticket saystem]().
+Questions or concerns can be directed to our user [ticket system](https://www.limacharlie.io/user-ticket).
 
 ## <span style="color:#c42932">Detection & Response Rules</span>
 
@@ -17,7 +17,7 @@ Questions or concerns can be directed to our user [ticket saystem]().
 
 [Webinar Series: Intro to D&R Rules](https://www.youtube.com/watch?v=0bwgMPkfbFE&t=187s)
 
-LimaCharlie also offers online training material which walks through the creation of D&R rules at [edu.limacharlie.io](https://edu.limachalire.io) 
+LimaCharlie also offers online training material which walks through the creation of D&R rules at [edu.limacharlie.io](https://edu.limacharlie.io) 
 
 ## <span style="color:#c42932">Targets</span>
 
