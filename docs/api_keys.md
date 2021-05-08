@@ -39,7 +39,7 @@ endpoint to get a JWT only valid for that organization.
 You may also use a User API Key to get the list of organizations available to it by querying the following REST endpoint:
 
 ```
-https://app.limacharlie.io/user_key_info?secret=<YOUR_USER_API_KEY>&uid=<YOUR_USER_ID>
+https://app.limacharlie.io/user_key_info?secret=<YOUR_USER_API_KEY>&uid=<YOUR_USER_ID>&with_names=true
 ```
 
 ## Python
