@@ -260,18 +260,6 @@ secret_key: {
 }
 ```
 
-
-Example:
-```
-dest_host: kafka.corp.com
-is_tls: "true"
-is_strict_tls: "true"
-username: lc
-password: letmein
-literal_topic: telemetry
-```
-
-
 ## Integrations
 
 ### Common Patterns
