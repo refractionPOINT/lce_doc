@@ -1,0 +1,184 @@
+
+<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
+# 
+
+<img src="https://storage.googleapis.com/lc-edu/content/images/logos/logo_w_text-horizontal.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 60%; padding-bottom: 40px;" />
+     
+     
+<p>LimaCharlie provides information security tools and infrastructure designed for massive scale. The platform supplies all the tools to run an MSSP or SOC as well as providing API’s that allow users to build and monetize their own products.</p>
+
+
+<p>Developer documentation can be found <a href="https://doc.limacharlie.io/docs/documentation/docs/index.md" target="_blank">here</a>.</p>
+<p></p>
+
+<p>The REST API documentation can be found <a href="https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json" target="_blank">here</a>.</p>
+
+
+## Quickstart
+<p>To skip all of the details and get set up with endpoint detection and response capability you can follow our <a href="https://doc.limacharlie.io/docs/documentation/docs/lcc_quick_start.md" target="_blank">quick start instructions</a> or take the equivalent <a href="https://doc.limacharlie.io/docs/documentation/docs/lcc_quick_start.md" target="_blank">e-learning course</a>.</p>
+
+## Questions, Feedback & Feature Requests
+
+<p>If you have any questions, have feedback or would like to make a feature request (or report a bug!) please fill out the form <a href="https://www.limacharlie.io/user-ticket" target="_blank">here</a>.</p>
+
+# <span style="color:#3889c7">Products</span>
+
+<img src="https://storage.googleapis.com/lc-edu/content/images/logos/edr.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 10%; float:right; padding-right: 40px;" />
+
+## <span style="color:#3889c7">EDR/XDR</span>
+
+The LimaCharlie agent - or sensor - is fully interactive and can monitor over <a href="https://doc.limacharlie.io/docs/documentation/docs/events.md" target="_blank">70 different event types</a>. The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. A detailed overview can be <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-agent.md" target="_blank">found here</a>.
+
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-agent.md##architecture--os-support" target="_blank">Architecture & OS Support</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-agent.md#live-view" target="_blank">Live View</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-agent.md#installing-the-agent" target="_blank">Installing the Agent</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-agent.md#connectivity" target="_blank">Connectivity</a>
+
+<img src="https://storage.googleapis.com/lc-edu/content/images/logos/net.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 10%; float:right; padding-right: 40px;" />
+
+## <span style="color:#3889c7">Net</span>
+
+<p>LimaCharlie Net is a Secure Access Service Edge (SASE) that rolls SD-WAN into a cloud service. It changes the way that secure remote access is delivered. It is much more than a virtual private network and can be established with the click of a button. It is a micro-segmentable network that can capture full or partial PCAP files entirely in the cloud without impacting users. These captured files can also be analyzed with the <a href="https://zeek.org/" target="_blank">Zeek Network Monitoring Tool</a> and have detection rules written against them.</p>
+
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-net.md#firewall" target="_blank">Firewall</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-net.md#capture" target="_blank">Full/Partial Cloud Packet Capture</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-net.md#dns" target="_blank">Dynamic Internal DNS</a>
+* <a href="https://doc.limacharlie.io/docs/documentation/docs/lc-net.md#service" target="_blank">Dynamic Internal Service Access</a>
+
+<img src="https://storage.googleapis.com/lc-edu/content/images/logos/comms.png"
+     alt="LimaCharlie.io Logo"
+     style="width: 10%; float:right;  padding-right: 40px;" />
+
+## <span style="color:#3889c7">Comms</span>
+
+Comms is the place to respond to detections as a team. It's built close to the metal to give you full visibility of the actions your team is taking to mitigate any threats. It all starts when a detection happens - a Room is generated for your team to assign ownership, discuss as a team, assess indicators of compromise, and issue commands. It's more than a paper trail - it's a digital war room.
+
+# <span style="color:#3b8452">Education</span> 
+
+<table style="width: 100%;">
+    <tr>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">General Overview</h2>
+            <p>A high-level overview of the LimaCharlie platform. It explains the architecture and various components of the platform at a high level.</p>
+            <p><a href="https://edu.limacharlie.io/courses/general-overview" target="_blank">E-Learning Course</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-edu-icon-1.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Quickstart</h2>
+            <p>The quickest way to get going. This course walks you through setting up your first DR rule, adding a threat feed, monitoring string distance and configuring email alerts.</p>
+            <p><a href="" target="_blank">E-Learning Course</a></p>
+            <p><a href="" target="_blank">Documentation</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-edu-icon-1.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Basic Detection & Response</h2>
+            <p>An introduction to the principles of detection and response with an examination of basic DR rules.</p>
+            <p><a href="https://edu.limacharlie.io/courses/basic-detection-response" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIoreJ9ELkuOAX48Z76uiobI" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-edr-icon-1.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Advanced Detection & Response</h2>
+            <p>A brief review of basic DR followed by an examination of Artifact Events, False Positive Rules, Variables, Lookups and Stateful Rules.</p>
+            <p><a href="https://edu.limacharlie.io/courses/advanced-detection-response" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIrPSK6ws1O0ZwydgN2gR1Bb" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-edr-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Setting up an MSSP</h2>
+            <p>This course outlines best practices for the most efficient use of LimaCharlie at scale. This structure is ideal for a Managed Security Service Provider (MSSP) or Security Operations Center (SOC) that is managing multiple organizations.</p>
+            <p><a href="https://edu.limacharlie.io/courses/setting-up-an-mssp" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIouf3f8192rA3UqV1xvCqr2" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-mssp-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Using the CLI & SDK</h2>
+            <p>With the CLI users can search across their entire fleet, search over historical data, replicate orgs, run spot checks on endpoints, push logs for ingestion. With the SDK users can capture data from the firehose or spout, and much much more.</p>
+            <p><a href="https://edu.limacharlie.io/courses/using-the-cli-sdk" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIp43_ZqQfFf7HPRPGo5QleZ" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-code-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Monitor Windows Event Logs in Real-Time</h2>
+            <p>In this course you will learn about LimaCharlie’s powerful ability to capture and analyze Windows Event Logs (WEL) in real-time. Ingested WEL are indexed along common indicators of compromise (IoC’s) and run through the Detection & Response engine.</p>
+            <p><a href="https://edu.limacharlie.io/courses/monitor-windows-event-logs-in-real-time" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIrLAZ8i6uO-NkUO9zsOZz7O" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-storage-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Zeek Network Monitoring</h2>
+            <p>In this course LimaCharlie founder, Maxime Lamothe-Brassard walks through how users can leverage the agent to do PCAP capture on the network. Once the PCAPS are captured they can be re-ingested and processed by the Zeek Network Monitoring Tool.</p>
+            <p><a href="https://edu.limacharlie.io/courses/zeek-network-monitoring" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIrDNYBh2Q80-USSY5duXTqQ" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-net-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Ingesting Artifacts (Windows Event <p>Logs, PCAPS, pfSense, Syslog & more)</h2>
+            LimaCharlie can ingest almost any form of telemetry or logs and run detection rules against them. Windows Event Logs, PCAPS, pfSense, Syslog and many more with new formats being added constantly. Learn about ingesting and analyzing artifacts.</p>
+            <p><a href="https://edu.limacharlie.io/courses/ingesting-artifacts-windows-event-logs-pcaps-pfsense-syslog-more" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIrTTgk638zQbogEe0SCZkOY" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">
+            <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-storage-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+        <td style="width: 35%; vertical-align: top;">
+            <h2 style="color: #3b8452;">Secure Access Service Edge (SASE)</h2>
+            <p>LimaCharlie Net is a Zero Trust solution that can create secure connections to internal resources based on the identity of the device regardless of the client location. Simple policies, mass provisioning, PCAP capture and analysis and much more!</p>
+            <p><a href="https://edu.limacharlie.io/courses/secure-access-service-edge" target="_blank">E-Learning Course</a></p>
+            <p><a href="https://www.youtube.com/playlist?list=PLO8_Yc4h5cIrQNvaFzsZLRwt5oI5M1w1s" target="_blank">YouTube Playlist</a></p>
+        </td>
+        <td style="width: 15%;">  <img src="https://storage.googleapis.com/lc-edu/content/images/logos/a-net-icon-2.png"
+            alt="LimaCharlie.io Logo"
+            style="width: 80%; float:left; padding-left: 10px;" />
+        </td>
+    </tr>
+    
+</table>
