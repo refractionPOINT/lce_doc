@@ -1,6 +1,7 @@
 # Errors
 
-The following are error codes you may receive through some sensor functionality:
+## General
+The following are general error codes you may receive through some sensor functionality:
 
 ```
 ERROR_SUCCESS                  0
@@ -44,3 +45,12 @@ ERROR_DIRECTORY                267
 ERROR_INVALID_ADDRESS          487
 ERROR_TIMEOUT                  1460
 ```
+
+## Yara Specific
+When doing Yara scanning operations, you may receive Yara specific error codes.
+These are documented here:
+[https://github.com/VirusTotal/yara/blob/master/libyara/include/yara/error.h](https://github.com/VirusTotal/yara/blob/master/libyara/include/yara/error.h)
+
+## Payload Specific
+When dealing with Payloads or Artifact collection, you may receive HTTP specific error codes:
+[https://developer.mozilla.org/en-US/docs/Web/HTTP/Status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
