@@ -9,6 +9,8 @@ This document provides details of the Mobile Device Management (MDM) Configurati
 
 [Configuration Profile Details](#Configuration-Profile-Details)
 
+[Silent Installation Preference](#Silent-Installation-Preference)
+
 [Example Jamf Pro Setup](#Example-Jamf-Pro-Setup)
 
 
@@ -26,6 +28,9 @@ Network Filter
 Full Disk Access
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/08-Full_Disk_Access.png" alt="Full disk access" style="zoom:50%;" />
 
+Application Installation
+<img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/03-Permissions_Required.png" alt="RPHCP application install" style="zoom:50%;" />
+
 
 <a name="Configuration-Profile-Details"></a>
 
@@ -41,6 +46,21 @@ This profile includes the following permissions:
 - System Extension
 - Full Disk Access
 - Network Content Filter
+
+
+<a name="Silent-Installation-Preference"></a>
+
+## Silent Installation Preference
+
+In addition to the MDM profile, you will also want to place the following preference file in the /Library/Preferences folder on the endpoint prior to installation.  With this preference file in place the application will provide for a silent installation.
+
+The required preference file can be downloaded here:  <a href="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/com.refractionpoint.rphcp.client.plist.zip"><img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/preference-icon.png" alt="Preference file icon" style="zoom:25%;" /></a>
+<br>
+<a href="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/MDM_profiles/com.refractionpoint.rphcp.client.plist.zip">
+Download com.refractionpoint.rphcp.client.plist preference file (to be placed in the /Library/Preferences folder on the endpoint)
+</a>
+
+
 
 
 <a name="Example-Jamf-Pro-Setup"></a>
