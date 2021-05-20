@@ -3,7 +3,7 @@
 
 ![image 'lc-marketplace'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-marketplace.png)
 
-LimaCharlie offers additional free and paid integrated services through it's  Marketplace.
+LimaCharlie offers additional free and paid integrated services through its  Marketplace.
 
 ## <span style="color:#3b8452"> & Subscriptions</span> 
 
