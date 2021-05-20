@@ -143,7 +143,7 @@ is_no_header: "false"
 Output individually each event, detection, audit, deployment or artifact through a POST webhook.
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook Details" section below.
 * `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 
 Example:
@@ -158,8 +158,10 @@ auth_header_value: 4756345846583498
 Output batches of events, detections, audits, deployments or artifacts through a POST webhook.
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. See "Webhook" section below.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. This is a required field. See "Webhook Details" section below.
 * `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
+* `sec_per_file`: the number of seconds after which a file is cut and uploaded.
+
 
 Example:
 ```
@@ -177,7 +179,7 @@ Output individually each event, detection, audit, deployment or log through an e
 * `from_email`: the email address to set in the From field of the email sent.
 * `username`: the username (if any) to authenticate with the SMTP server with.
 * `password`: the password (if any) to authenticate with the SMTP server with.
-* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. See "Webhook" section below.
+* `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the email to verify authenticity. This is a required field. See "Webhook Details" section below.
 * `is_readable`: if 'true' the email format will be HTML and designed to be readable by a human instead of a machine.
 * `is_starttls`: if 'true', use the Start TLS method of securing the connection instead of pure SSL.
 * `is_authlogin`: if 'true', authenticate using `AUTH LOGIN` instead of `AUTH PLAIN`.
@@ -232,6 +234,32 @@ is_strict_tls: "true"
 username: lc
 password: letmein
 literal_topic: telemetry
+```
+
+
+### Google Cloud Pubsub
+Output events and detections to a Pubsub topic.
+
+* `secret_key`: the secret json key identifying a service account.
+* `project`: the GCP Project name where the Topic lives.
+* `topic`: use this specific value as a topic.
+
+Example:
+```
+project: my-project
+topic: telemetry
+secret_key: {
+  "type": "service_account",
+  "project_id": "my-lc-data",
+  "private_key_id": "11b6f4173dedabcdefb779e4afae6d88ddce3cc1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n.....\n-----END PRIVATE KEY-----\n",
+  "client_email": "my-service-writer@my-lc-data.iam.gserviceaccount.com",
+  "client_id": "102526666608388828174",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-writer%40my-lc-data.iam.gserviceaccount.com"
+}
 ```
 
 ## Integrations
@@ -419,7 +447,7 @@ be notified of this by special events in the stream like this: `{"__trace":"drop
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.
 
-### Webhook
+### Webhook Details
 Using this ouput, every element will be sent over HTTP(S) to a webserver of your choice via a POST.
 
 The JSON data will be found in the `data` parameter of the `application/x-www-form-urlencoded` encoded POST.
