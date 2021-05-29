@@ -1433,7 +1433,7 @@ Deleted Sensor deployment events are produced when a sensor that was previously 
     "event_time": 1561741553230
   },
   "event": {
-    "denied_for": "30 days"
+    "denied_for": "720h0m0s"
   }
 }
 ```
