@@ -774,7 +774,7 @@ action: rejoin network
 ```
 
 #### undelete sensor
-Un-deletes a sensor that was previously deleted. Used in confunction with the [sensor_deleted](events.md#sensor_deleted) event.
+Un-deletes a sensor that was previously deleted. Used in conjunction with the [sensor_deleted](events.md#sensor_deleted) event.
 
 ```yaml
 action: undelete sensor
