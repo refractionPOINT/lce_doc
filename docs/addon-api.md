@@ -37,7 +37,7 @@
 
 >VirusTotal is an online platform used to share potential malware samples and the related scan results from a multitude of Anti-Virus engines.
 >
->You can use the VirusTotal API as part of LimaCharlie D&R rules to obtain the number of Anti-Virus engines having flagged a specific file hash as malicious.
+>You can use the VirusTotal API as part of LimaCharlie D&R rules to obtain the number of Anti-Virus engines having flagged a specific file hash, IP address or Domain as malicious.
 >
 >See the VirusTotal website for API keys: [virustotal.com](https://virustotal.com)
 
