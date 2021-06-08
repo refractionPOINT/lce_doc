@@ -773,6 +773,13 @@ Removes the isolation status of a sensor that had it set using `isolate network`
 action: rejoin network
 ```
 
+#### undelete sensor
+Un-deletes a sensor that was previously deleted. Used in conjunction with the [sensor_deleted](events.md#sensor_deleted) event.
+
+```yaml
+action: undelete sensor
+```
+
 ## Putting it Together
 
 Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration

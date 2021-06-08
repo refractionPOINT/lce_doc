@@ -1215,7 +1215,7 @@ has been modified.
 
 Platforms: Windows, MacOS, Linux
 
-```
+```json
 {
   "PROCESS": {
     "MEMORY_USAGE": 25808896,
@@ -1251,7 +1251,7 @@ or a remote thread to sensitive operating system processes like lsass.exe on Win
 
 Platforms: Windows
 
-```
+```json
 {
     "EVENTS": [
       {
@@ -1327,7 +1327,7 @@ This event is emitted whenever an HTTP request is made.
 
 Platforms: Chrome
 
-```
+```json
 {
   "URL": "https://play.google.com/log?authuser=0",
   "IP_ADDRESS": "172.217.2.142",
@@ -1348,7 +1348,7 @@ Events around the global status of the deployment.
 
 Enrollment deployment events are produced when a sensor enrolls into the organization for the first time.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1373,7 +1373,7 @@ Sensor clone events are generated when the LimaCharlie Cloud detects that a spec
 Cloning means the same SID is associated with two different hosts at the same time. This is most often due to
 a machine image being created with a LC sensor installed on it, and then being deployed multiple times.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1395,7 +1395,7 @@ a machine image being created with a LC sensor installed on it, and then being d
 
 Over quota deployment events are produced when a sensor tries to connect but the organization quota is already reached.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1414,6 +1414,30 @@ Over quota deployment events are produced when a sensor tries to connect but the
 }
 ```
 
+### deleted_sensor
+
+Deleted Sensor deployment events are produced when a sensor that was previously deleted from an Org attempts to connect to the LimaCharlie cloud.
+
+```json
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "ext_ip": "104.196.34.101",
+    "int_ip": "172.17.0.2",
+    "hostname": "linux-server-1",
+    "event_type": "sensor_deleted",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "denied_for": "720h0m0s"
+  }
+}
+```
+
 ## Artifact Events
 
 Events around activity in Artifacts Collection. Currently only used in
@@ -1423,7 +1447,7 @@ service notifications.
 
 A new artifact has been ingested.
 
-```
+```json
 {
     "routing" : {
         "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
@@ -1445,7 +1469,7 @@ A new artifact has been ingested.
 
 An export of artifact data is completed and ready for download.
 
-```
+```json
 {
     "routing" : {
         "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
