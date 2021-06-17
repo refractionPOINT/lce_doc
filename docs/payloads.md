@@ -19,7 +19,7 @@ advantages:
 
 It is possible to set the Payload's file extension on the endpoint by making the Payload name end with
 that extension. For example, naming a Payload `extract_everything.bat`, the Payload will be sent
-as a batch file (`.bat`) and executed as such.
+as a batch file (`.bat`) and executed as such.  This is also true for PowerShell files (`.ps1`).
 
 ## Lifecycle
 Payloads are uploaded to the LimaCharlie platform and given a name. The task `run` can then be used
