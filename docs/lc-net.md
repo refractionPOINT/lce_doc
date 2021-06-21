@@ -299,12 +299,11 @@ Sample internal cname:
 
 ##### DNS over HTTPS
 
-Some browsers have now switched to using [DNS over HTTPS](https://en.wikipedia.org/wiki/DNS_over_HTTPS). This may manifest itself if you
-implement a DNS Policy (like blocking a domain) but not seeing take effect when using a web browser. To ensure the default DNS traffic
-uses the classic DNS resolution method (UDP port 53), you may put in place the following example `firewall` rules to prevent the
-DNS over HTTPS, which will result in the browsers backing off to the classic mode.
+Some browsers have switched to using [DNS over HTTPS](https://en.wikipedia.org/wiki/DNS_over_HTTPS). This may become apparent if you implement a DNS Policy (like blocking a domain) but not see it take effect when using a web browser. To ensure that DNS traffic uses the classic DNS resolution method (UDP port 53), you can put a `firewall` rule in place to prevent DNS over HTTPS.  The firewall rule will result in browsers reverting to the classic mode of DNS resolution.
 
-Note that this has security implications you will want to research and consider.
+Note that this has security implications that you may want to research and consider.
+
+Example firewall rule to block Google DNS servers over HTTPS:
 
 ```json
 "block-dns-over-https": {
