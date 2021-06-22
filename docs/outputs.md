@@ -22,6 +22,7 @@ When creating a new Output, you chose a Stream. Streams determine the type of da
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
+* `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
 
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
