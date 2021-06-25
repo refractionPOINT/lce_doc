@@ -17,6 +17,20 @@ For security reasons, this service does not have the permissions to operate dire
 user leveraging the service to elevate its access). This means the requester _must_ supply a `jwt: YOUR_JWT_VALUE` parameter which provides the
 required permissions for the operations requested.
 
+Given that this service runs in the cloud and not in a local file system, the actual configuration contents are provided using one of the following two methods:
+
+### Method 1: Literal Configs
+
+The `config` parameter specifies the literal content of the config to push. The format is the same YAML as normal config files, but the config
+cannot contain any "includes", it must be final.
+
+### Method 2: Authenticated Resource Locators (ARL)
+
+The `config_source` and `config_root` must be specified and reference an [ARL](https://github.com/refractionPOINT/authenticated_resource_locator).
+
+1. The `config_source` is the actual ARL describing where the config files are located, for example: `[github,refractionPOINT/mssp-demo/]`.
+1. The `config_root` is the absolute (within the ARL) file path where the initial config file is located. This config file may "include" other config files relative to itself. For example: `/configs/customers/cus_2/main.yaml`.
+
 ## REST
 
 The REST interface mimicks the [CLI tool](https://github.com/refractionPOINT/python-limacharlie/#configs-1). Here is its usage information:
