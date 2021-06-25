@@ -10,6 +10,13 @@ A simplified UI is also available (once your tenant subscribes to the `infrastru
 ## Interacting
 All interaction with this service mimicks the [CLI tool](https://github.com/refractionPOINT/python-limacharlie/#configs-1).
 
+Receiving feedback from the service (as to what modifications to the Org were required) requires using the `is_async: false` parameter (to receive the
+feedback synchronously).
+
+For security reasons, this service does not have the permissions to operate directly on your Org (therefore elliminating the possibility of a
+user leveraging the service to elevate its access). This means the requester _must_ supply a `jwt: YOUR_JWT_VALUE` parameter which provides the
+required permissions for the operations requested.
+
 ## REST
 
 The REST interface mimicks the [CLI tool](https://github.com/refractionPOINT/python-limacharlie/#configs-1). Here is its usage information:
