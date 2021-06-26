@@ -316,6 +316,22 @@ Example firewall rule to block Google DNS servers over HTTPS:
 }
 ```
 
+#### DNS Tracking
+
+A DNS tracking policy (`dns-tracking`) will generate [DNS_REQUEST](events.md#dns_request) LimaCharlie events in real-time from
+the Net traffic. These events will be visible in the Net Sensor's Timeline or Live Feed section. The events
+also go through the `edr` Target of D&R rules.
+
+This policy has no parameters.
+
+#### Connections Tracking
+
+A Connection tracking policy (`conn-tracking`) will generate [NETWORK_CONNECTION](events.md#network_connections) LimaCharlie events in real-time from
+the Net traffic. These events will be visible in the Net Sensor's Timeline or Live Feed section. The events
+also go through the `edr` Target of D&R rules.
+
+This policy has no parameters.
+
 ### Examples
 
 #### Prevent Use of a Service
