@@ -284,9 +284,8 @@ the value at the specified path, it compares the length of the value at that pat
 
 ##### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
-Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
-is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
-to log files.
+Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables 
+you to apply the regexp to log files.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
