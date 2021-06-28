@@ -284,9 +284,8 @@ the value at the specified path, it compares the length of the value at that pat
 
 ##### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
-Under the hood, this uses the Python 2.7 `re` module with `findall`, which means the regular expression
-is applied to every line of the field (if the field is multi-line), which enables you to apply the regexp
-to log files.
+Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables 
+you to apply the regexp to log files.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -461,6 +460,30 @@ matched N times before it is considered successful. So setting `count: 3` in a n
 only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes
 which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
 to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
+
+###### Testing
+
+When testing stateful D&R rules, it is important to keep in mind that the state engine is forward-looking only and that
+changing a stateful rule will reset its state tracking.
+
+Concretely this means that if your rule is tracking, for example, `excel.exe --child of--> cmd.exe` and you modify your
+rule, even just a little, you will need to make sure to re-launch the `excel.exe` instance you're doing your testing
+with since the engine will no longer be aware of its previous launch.
+
+###### Reporting & Actions
+
+The `report` action in stateful rules has a subtle difference to other actions taken in those rules. The report
+(generating a new Detection) will include the _first_ telemetry event that started the stateful detection as the
+`detect` component of the detection.
+
+For example, with `excel.exe --child of--> cmd.exe`, the detection will include the `excel.exe` as the `detect`.
+
+For other actions (responses in the rule) however, the event under analysis is the last one being processed. So
+if the engine is analyzing the `cmd.exe` NEW_PROCESS, issuing a `report` will report the `excel.exe` in the detection
+but doing issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
+
+So if you wanted to kill the `excel.exe` in response to the above stateful rule matching, you would have to issue a
+`deny_tree` to the atom `<<routing/parent>>`.
 
 ##### VirusTotal
 The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the
