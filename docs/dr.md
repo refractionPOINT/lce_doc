@@ -470,6 +470,21 @@ Concretely this means that if your rule is tracking, for example, `excel.exe --c
 rule, even just a little, you will need to make sure to re-launch the `excel.exe` instance you're doing your testing
 with since the engine will no longer be aware of its previous launch.
 
+###### Reporting & Actions
+
+The `report` action in stateful rules has a subtle difference to other actions taken in those rules. The report
+(generating a new Detection) will include the _first_ telemetry event that started the stateful detection as the
+`detect` component of the detection.
+
+For example, with `excel.exe --child of--> cmd.exe`, the detection will include the `excel.exe` as the `detect`.
+
+For other actions (responses in the rule) however, the event under analysis is the last one being processed. So
+if the engine is analyzing the `cmd.exe` NEW_PROCESS, issuing a `report` will report the `excel.exe` in the detection
+but doing issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
+
+So if you wanted to kill the `excel.exe` in response to the above stateful rule matching, you would have to issue a
+`deny_tree` to the atom `<<routing/parent>>`.
+
 ##### VirusTotal
 The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the
 organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations
