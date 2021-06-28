@@ -173,7 +173,7 @@ The `FilterExpression` component refers to the `Query` parameter described in th
 Examples of supported patterns:
 * `wel://Security:*`
 * `wel://System:Event[System[EventID=4624]]`
-
+* `wel://System:*[System[(EventID='7040')]]`
 ### From Files at Rest
 When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`) that were acquired from files at rest, although the [Artifact Collection Service](external_logs.md) may ingest
 the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
