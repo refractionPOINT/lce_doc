@@ -461,6 +461,15 @@ only if we see 3 instances of a `cmd.exe` in that context to match. An example u
 which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
 to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
 
+###### Testing
+
+When testing stateful D&R rules, it is important to keep in mind that the state engine is forward-looking only and that
+changing a stateful rule will reset its state tracking.
+
+Concretely this means that if your rule is tracking, for example, `excel.exe --child of--> cmd.exe` and you modify your
+rule, even just a little, you will need to make sure to re-launch the `excel.exe` instance you're doing your testing
+with since the engine will no longer be aware of its previous launch.
+
 ##### VirusTotal
 The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the
 organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations
