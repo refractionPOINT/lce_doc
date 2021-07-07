@@ -368,6 +368,51 @@ Example:
 }
 ```
 
+##### scope
+In some cases, you may want to limit the scope of the matching and the `path` you use
+to be within a specific part of the event. The `scope` operator allows you to do just
+that, reset the root of the `event/` in paths to be a sub-path of the event.
+
+This comes in as very useful for example when you want to test multiple values of a
+connection in a `NETWORK_CONNECTIONS` event but always on a per-connection. If you
+were to do a rule like:
+
+```yaml
+event: NETWORK_CONNECTIONS
+op: and
+rules:
+  - op: starts with
+    path: event/NETWORK_ACTIVITY/?/SOURCE/IP_ADDRESS
+    value: '10.'
+  - op: is
+    path: event/NETWORK_ACTIVITY/?/DESTINATION/PORT
+    value: 445
+```
+
+you would hit on events where _any_ connection has a source IP prefix of `10.` and
+_any_ connection has a destination port of `445`. Obviously this is not what we had
+in mind, we wanted if a _single_ connection has those two characteristics.
+
+The solution is to use the `scope` operator. The `path` in the operator will become
+the new `event/` root path in all operators found under the `rule`. So the above
+would become
+
+Example:
+```yaml
+event: NETWORK_CONNECTIONS
+op: scope
+path: event/NETWORK_ACTIVITY/
+rule:
+  op: and
+  rules:
+    - op: starts with
+      path: event/SOURCE/IP_ADDRESS
+      value: '10.'
+    - op: is
+      path: event/DESTINATION/PORT
+      value: 445
+```
+
 ##### Stateful
 
 Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time and either matches or doesn't.
