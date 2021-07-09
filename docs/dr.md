@@ -506,6 +506,27 @@ only if we see 3 instances of a `cmd.exe` in that context to match. An example u
 which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
 to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
 
+
+Example rule that matches on Outlook writing 5 new `.ps1` documents within 60 seconds.
+
+```
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: outlook.exe
+case sensitive: false
+with child:
+    op: ends with
+    event: NEW_DOCUMENT
+    path: event/FILE_PATH
+    value: .ps1
+    case sensitive: false
+    count: 5
+    within: 60
+```
+
+
+
 ###### Testing
 
 When testing stateful D&R rules, it is important to keep in mind that the state engine is forward-looking only and that
