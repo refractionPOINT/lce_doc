@@ -118,7 +118,7 @@ Output detections and audit (only) to a Slack community and channel.
 Example:
 ```
 slack_api_token: d8vyd8yeugr387y8wgf8evfb
-slack_channe: #detections
+slack_channel: #detections
 ```
 
 #### Provisioning
