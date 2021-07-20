@@ -1,6 +1,6 @@
 # Anti-Virus Integration
 
-Although LimaCharlie does not currently implement an Anti-Virus solution, we offer various levels of integration to support existing Anti-Virus deployments.
+LimaCharlie offer integration to support existing Anti-Virus deployments.
 
 ## Microsoft Defender
 
