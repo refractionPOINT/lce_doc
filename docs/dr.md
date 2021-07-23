@@ -511,7 +511,7 @@ to the `count: N` limits the count to where the first and last event in the coun
 
 Example rule that matches on Outlook writing 5 new `.ps1` documents within 60 seconds.
 
-```
+```yaml
 op: ends with
 event: NEW_PROCESS
 path: event/FILE_PATH
