@@ -22,6 +22,7 @@ When creating a new Output, you chose a Stream. Streams determine the type of da
 * `event_white_list`: only send event of the types in this list (newline-seperated).
 * `event_black_list`: only send event not of the types in this list (newline-seperated).
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
+* `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
 
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
@@ -110,8 +111,6 @@ password: XXXXXXXXXXXX
 
 ### Slack
 Output detections and audit (only) to a Slack community and channel.
-The Slack integration currently uses [Slack Legacy Tokens](https://api.slack.com/custom-integrations/legacy-tokens).
-
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to in the community.
@@ -119,8 +118,19 @@ The Slack integration currently uses [Slack Legacy Tokens](https://api.slack.com
 Example:
 ```
 slack_api_token: d8vyd8yeugr387y8wgf8evfb
-slack_channe: #detections
+slack_channel: #detections
 ```
+
+#### Provisioning
+To use this Output, you need to create a Slack App and Bot. This is very simple:
+1. Head over to https://api.slack.com/apps
+1. Click on "Create App" and select the workspace where it should go
+1. From the sidebar, click on OAuth & Permissions
+1. Go to the section "Bot Token Scope" and click "Add an OAuth Scope"
+1. Select the scope `chat:write`
+1. From the sidebar, click "Install App" and then "Install to Workspace"
+1. Copy token shown, this is the `slack_api_token` you need in LimaCharlie
+1. In your Slack workspace, go to the channel you want receive messages in and type the slash command: `/invite @limacharlie` (assuming the app name is `limacharlie`)
 
 ### Syslog (TCP)
 Output events and detections to a syslog target.

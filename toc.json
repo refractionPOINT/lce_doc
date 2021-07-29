@@ -1,9 +1,82 @@
 {
     "items": [
+      
       {
-        "type": "divider",
-        "title": "Overview"
+        "type": "group",
+        "title": "Overview",
+        "items": [
+          {
+            "type": "item",
+            "title": "Home",
+            "uri": "docs/index.md"
+          },
+          {
+            "type": "item",
+            "title": "Quick Start",
+            "uri": "docs/lcc_quick_start.md"
+          }
+        ]
       },
+      {
+        "type": "group",
+        "title": "Products",
+        "items": [
+          {
+            "type": "item",
+            "title": "Endpoint Detection & Response (EDR)",
+            "uri": "docs/product-edr.md"
+          },
+          {
+            "type": "item",
+            "title": "Net: Secure Access Service Edge",
+            "uri": "docs/product-sase.md"
+          },
+          {
+            "type": "item",
+            "title": "Log & Artifact Ingestion",
+            "uri": "docs/product-artifact_ingestion.md"
+          },
+          {
+            "type": "item",
+            "title": "Comms: Operations at Scale",
+            "uri": "docs/comms.md"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "title": "Referenced",
+        "items": [
+          {
+            "type": "item",
+            "title": "Nested Item",
+            "uri": "docs/nested-item.md"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "title": "Operations",
+        "items": [
+          {
+            "type": "item",
+            "title": "Nested Item",
+            "uri": "docs/nested-item.md"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "title": "Capabilitites",
+        "items": [
+          {
+            "type": "item",
+            "title": "Nested Item",
+            "uri": "docs/nested-item.md"
+          }
+        ]
+      },
+
       {
         "type": "item",
         "title": "Home",
