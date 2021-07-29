@@ -1,7 +1,4 @@
-<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
-###
-
-![image 'lc-hunt'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-net.png)
+# LimaCharlie Net: Secure Access Service Edge 
 
 LimaCharlie Net (lc-net) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access.
 
