@@ -1,13 +1,11 @@
 <!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
-###
-
-![image 'lc-storage'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-storage.png)
+# Storage
 
 By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
 
 All files and telemetry ingested are indiexed across common indicators of compromise and are easily processed by any of the subsystems or products in the LimaCharlie offering.
 
-## <span style="color:#3889c7">Telemetry Storage</span>
+Telemetry Storage
  
 Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
 
@@ -40,11 +38,14 @@ We call this "artifact operationalization". It is not mean to be a general viewi
 
 Details on Artifact Collection and how to utilize it can be found [here](./external_logs.md).
 
-## <span style="color:#3889c7">Exfil Control</span>
+## Exfil Control
+
+By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc. A complete list of events can be found [here](./events.md).
+
+If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
+
+Details on using custom exfil can be found [here](./exfil.md).
 
 
 
 
-## <span style="color:#3889c7">Historical Threat Hunting</span>
-
- Details outlining methods for hunting threats across historical telemetry can be found in the [lc-hunt](./images/lc-hunt.md) section of the documentation.

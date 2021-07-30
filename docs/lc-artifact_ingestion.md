@@ -35,3 +35,18 @@ Details on using custom exfil can be found [here](./exfil.md).
 
 ## Outputs
 
+LimaCharlie users can choose to send their data anywhere that they want. 
+
+The following output methods are currently availble with a general overview [here](./outputs.md). If you have any special needs around output methods please file a ticket [here](https://limacharlie.io/user-ticket).
+
+* [Amazon S3](./outputs.md#amazon-s3)
+* [Google Cloud Storage](./outputs.md#google-cloud-storage)
+* [SCP](./outputs.md#scp)
+* [Slack](./outputs.md#slack)
+* [Syslog (TCP)](./outputs.md#syslog-tcp)
+* [Webhook](./outputs.md#webhook)
+* [Webhook Bulk](./outputs.md#webhook-bulk)
+* [SMTP](./outputs.md#smtp)
+* [Humio](./outputs.md#humio)
+* [Kafka](./outputs.md#kafka)
+* [Splunk](./outputs.md#splunk)
