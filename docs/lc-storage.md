@@ -13,7 +13,7 @@ Telemetry sent to the LimaCharlie is based on [events](./events.md) and is store
 
 Telemetry uses the concept of [atoms](./events.md#atoms) and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
 
-## <span style="color:#3889c7">Artifact Collection</span>
+## Artifact Collection 
  
 The Artifact Collection system allows you to ingest artifact types like:
 
@@ -42,11 +42,8 @@ Details on Artifact Collection and how to utilize it can be found [here](./exter
 
 ## <span style="color:#3889c7">Exfil Control</span>
 
-By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc.
 
-If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
 
-Details on using custom exfil can be found [here](./exfil.md).
 
 ## <span style="color:#3889c7">Historical Threat Hunting</span>
 

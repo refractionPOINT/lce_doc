@@ -1,7 +1,6 @@
 {
     "items": [
       
-      //OVERVIEW
       {
         "type": "divider",
         "title": "Overview"
@@ -23,7 +22,6 @@
       },
       
       
-      //PRODUCTS
       {
         "type": "divider",
         "title": "Products"
@@ -49,7 +47,6 @@
         "uri": "docs/comms.md"
       },
 
-      //REFERENCE
       {
         "type": "divider",
         "title": "Reference"
@@ -82,9 +79,6 @@
       },
       
 
-
-
-      //OPERATIONS
       {
         "type": "divider",
         "title": "Operations"
