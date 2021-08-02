@@ -18,19 +18,24 @@ Traffic:
 
 Using the Replay API requires the [API key](api_keys.md) to have the following permissions:
 
-* `dr.list`
-
-If the traffic source is from an organization, the following additional permissions are required:
-
 * `insight.evt.get`
-* `insight.det.get`
 
 The returned data from the API contains the following:
 
-* `responses`: a list of the actions that would have been taken by the rule (like `report`, `task`, etc).
-* `num_evals`: a number of evaluation operation performed by the rule. This is a rough estimate of the performance of the rule.
-* `num_events`: the number of events that were replayed.
-* `eval_time`: the number of seconds it took to replay the data.
+```json
+{
+  "error": "",        // if an error occured.
+  "stats": {
+    "n_proc": 0,      // the number of events processed
+    "n_shard": 0,     // the number of chunks the replay job was broken into
+    "n_eval": 0,      // the number of operator evaluations performed
+    "wall_time": 0    // the number of real-world seconds the job took
+  },
+  "did_match": false, // indicates if the rule matched any event at all
+  "results": [],      // a list of dictionaries containing the details of actions the engine would have taken
+  "traces": []        // a list of trace items to help you troubleshoot where a rule failed
+}
+```
 
 ### Python CLI
 The [Python CLI](https://github.com/refractionPOINT/python-limacharlie) gives you a friendly way to replay data, and to do so across larger datasets
@@ -80,51 +85,34 @@ Authentication to this API works with the same JWTs as the main limacharlie.io A
 
 For this example, we will use the experimental datacenter's URL:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/
+https://0651b4f82df0a29c.replay.limacharlie.io/
 ```
 
-The API mainly works on a per-sensor basis, on a limited amount of time. Replaying for
-multiple sensors (or entire org), or longer time period is done through multiple
-parallel API calls. This multiplexing is taken care of for you by the Python CLI above.
+To query Replay, do a `POST` with a `Content-Type` header of `application-json` and with a JSON body like:
 
-Specify which Organization ID (`OID`) and Sensor ID (`SID`) through the following URI:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}
-```
-
-Specify the `start` and `end` time range, as unix second epoch in the query string:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}
-```
-
-Specify the rule to apply. This can be done via a `rule_name` query string parameter, or
-by supplying the rule, as `JSON` in the body of the `POST` and a `Content-Type` header of `application-json`:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}&rule_name={EXISTING_RULE_NAME}
-```
-
-You may also use events provided during the request by using the endpoint:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/simulate/{OID}
-```
-The body of the `POST` should be a `JSON` blob like:
-```
+```json
 {
-  "rule": {...},
-  "events": [
-    ...
-  ]
+  "oid": "",             // OID this query relates to
+  "rule_source": {       // rule source information (use one of "rule_name" or "rule")
+    "rule_name": "",     // pre-existing rule name to run
+    "rule": {            // literal rule to run
+      "detect": {},
+      "respond": []
+    }
+  },
+  "event_source": {      // event source information (use one of "sensor_events" or "events")
+    "sensor_events": {   // use historical events from sensors
+      "sid": "",         // sensor id to replay from, or entire org if empty
+      "start_time": 0,   // start second epoch time to replay from
+      "end_time": 0      // end second epoch time to replay to
+    },
+    "events": [{}]       // literal list of events to replay
+  },
+  "limit_event": 0,      // optional approximate number of events to process
+  "limit_eval": 0,       // optional approximate number of operator evaluations to perform
+  "trace": false         // optional, if true add trace information to response, VERY VERBOSE
 }
 ```
-Like the other endpoints you can also submit a `rule_name` in the URL query if you want
-to use an existing organization rule.
-
-You may also specify a `limit_event` and `limit_eval` parameter as integers. They will limit the number events evaluated
-and the number of rule evaluations performed (approximately). If the limits are reached, the response will contain an
-item named `limit_eval_reached: true` and `limit_event_reached: true`.
-
-Finally, you may also set `trace` to `true` in the request to receive a detailed trace of the rule evaluation. This is
-useful in the development of new rules to find where rules are failing.
 
 ## Billing
 The Replay service is billed on a per operator evaluation basis.
@@ -135,6 +123,6 @@ on the `number of events replayed X complexity of the rule`.
 
 Rules, especially complex ones can be hard to evaluate since rules will often perform evaluation short-cicruits
 to reduce the number of evaluations in certain cases. Therefore the best way to evaluate a rule is to use the
-[LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) with the `limacharlie-replay` command
+[LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) with the `limacharlie replay` command
 which outputs precise statistics about a Replay job. This will include number of operator evaluations which will
 then help you determine the performance of your rule.
