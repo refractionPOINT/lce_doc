@@ -28,10 +28,10 @@ To use LimaCharlie Net you will need to download and configure the WireGuard cli
 
 Once you have installed the client you will need to connect it to LimaCharlie. 
 
-1. Go to the Add-ons tab, visit the API section and subscribe to <code>net</code>.
+1. Go to the Add-ons tab, visit the API section and subscribe to `net`.
 2. Go to the Install Sensors page and create an Installation Key.
 3. Go the Net Clients page and provision a new client.
-    1.  Enter your email Host Name field and select the 'Send installation instructions' checkbox.
+    1. Enter your email Host Name field and select the 'Send installation instructions' checkbox.
     2. Select the Installation Key you just created from the frop down of the same name.
 4. Follow the instructions that are emailed to the address used for provisioning the client.
 
