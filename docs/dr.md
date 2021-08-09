@@ -58,7 +58,7 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 * `artifact` target only: `artifact source`, `artifact type`
 
 In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
-path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+path `/text` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
 
 For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
