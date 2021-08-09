@@ -14,16 +14,17 @@
 ## Access & Permissions
 * [Overview](./access.md)
 * [Users]()
-     * [Logging in via Google / Microsoft / Github]()
+     * [User Access](./user_access.md)
+     <!-- * [Logging in via Google / Microsoft / Github]() -->
 * [Organizations]()
-     * [Managing user permissions withing an organization]()
-     * [Enabling / disabling features within an organization]()
-* [Organization Groups]()
-     * [Managing permissions for groups of users]()
-* [API Keys]()
-     * [Using API keys to access an organization]()
+     <!-- * [Managing user permissions withing an organization]()
+     * [Enabling / disabling features within an organization]() -->
+* [Organization Groups](./user_access.md#access-management-via-organization-groups)
+     <!-- * [Managing permissions for groups of users]() -->
+* [API Keys](./api_keys.md)
+     <!-- * [Using API keys to access an organization]()
      * [Using API keys to access on behalf of a user]()
-     * [Controlling access with fine-grained permissions on API keys]()
+     * [Controlling access with fine-grained permissions on API keys]() -->
 
 ## XDR / EDR
 
@@ -56,7 +57,7 @@
      * [Making custom executables available on endpoints]()
      * [Executing payloads via the agent]()
 * [Services]()
-     * [Overview]()
+     <!-- * [Overview]() -->
      * [Replay](./replay.md)
      * [Responder](./responder.md)
      *** Get full list ***
