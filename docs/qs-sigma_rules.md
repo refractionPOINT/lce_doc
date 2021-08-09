@@ -1,15 +1,5 @@
 # Using the Sigma Rule Set
 
-Endpoint Detection & Response (EDR) uses rules to discover and take action against malicious behaviour. LimaCharlie uses its own YAML-based language to express Detection & Response (DR) rules and can also leverage existing community-based formats such as YARA and Sigma.
-
-The focus of this lesson is to get the user setup with [basic Sigma rule](https://github.com/refractionPOINT/rules/tree/master/Sigma) coverage across all endpoints. To do so we are going to deploy a mirror of the official Sigma rule. Later in the lesson we will show you how to create False Positive rules.
-
-The Sigma rule set is an open source signature format that can describe relevant log events in a straightforward manner. The rule format itself is very flexible and applicable to any type of log file. The main purpose of Sigma is to provide a structured form with which researchers and analysts can describe and share detection methods with the wider community.
-
-More information on Sigma: Generic Signature Format for SIEM Systems.
-
-## Endpoint Detection & Response
-
 Endpoint Detection & Response (EDR) uses rules to discover and take action against malicious behaviour. LimaCharlie uses a YAML-based language to express Detection & Response (DR) rules and can leverage existing community-based formats such as YARA and Sigma.
 
 In this lesson we are going to deploy a mirror of the official Sigma rule set which will enable solid coverage across the entire fleet. Later in the lesson we will show you how to create False Positive rules.
@@ -18,7 +8,7 @@ The Sigma rule set is an open source signature format that can describe relevant
 
 More information on Sigma: [Generic Signature Format for SIEM Systems](https://github.com/Neo23x0/sigma)
 
-Details on LimaCharlie's own powerful Detection & Response language can be found [here]().
+Details on LimaCharlie's own powerful Detection & Response language can be found [here](./dr.md).
 
 ## Getting Started
 
