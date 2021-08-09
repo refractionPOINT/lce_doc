@@ -1,8 +1,12 @@
-# Endpoint Detection & Reesponse (EDR)
+# Endpoint Detection & Response (EDR)
 
-## <span style="color:#3889c7">Architecture & OS Support</span>
+LimaCharlie’s EDR capability centralizes the collection of historic and real-time [event data](./events.md) in a common data format.
 
-The LimaCharlie agent installs a sensor which is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
+An infrastructure and API-first approach means that you can build what you need or choose to subscribe to a turnkey solution.
+
+## Architecture & OS Support
+
+ The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
 Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
 
@@ -13,12 +17,47 @@ Various builds of the agent can run on the following for x86, ARM & MIPS archite
  
  LimaCharlie also provides a seperate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
 
+## Technical Specs
+
 The agent is approximately 500kb in size but that varies a little depending on which platform it is compiled for. While running it consumes less that 1% CPU but does spike very briefly when certain events take place like an application starting up. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection. The round trip time from an event being detected to the time a response is actioned on the endpoint is generally less than 100 milliseconds.
 
 Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 
+The LimaCharlie agent installs a sensor which is fully interactive and can monitor over [70 different event types](./events.md).
 
-## <span style="color:#3889c7">Installing the Agent</span>
+## Telemetry & Retention
+ 
+Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
+
+Telemetry uses the concept of [atoms](./events.md#atoms) and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
+
+## Exfil Control
+
+By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc. A complete list of events can be found [here](./events.md).
+
+If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
+
+Details on using custom exfil can be found [here](./exfil.md).
+
+## Outputs
+
+LimaCharlie users can choose to send their data anywhere that they want. 
+
+The following output methods are currently availble with a general overview [here](./outputs.md). If you have any special needs around output methods please file a ticket [here](https://limacharlie.io/user-ticket).
+
+* [Amazon S3](./outputs.md#amazon-s3)
+* [Google Cloud Storage](./outputs.md#google-cloud-storage)
+* [SCP](./outputs.md#scp)
+* [Slack](./outputs.md#slack)
+* [Syslog (TCP)](./outputs.md#syslog-tcp)
+* [Webhook](./outputs.md#webhook)
+* [Webhook Bulk](./outputs.md#webhook-bulk)
+* [SMTP](./outputs.md#smtp)
+* [Humio](./outputs.md#humio)
+* [Kafka](./outputs.md#kafka)
+* [Splunk](./outputs.md#splunk)
+0
+## Installing the Agent
 
 Installing the sensor requires administrator (or root) execution:
 
@@ -39,7 +78,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Docker:** See our [documentation here]()
 
-## <span style="color:#3889c7">Connectivity</span>
+## Connectivity
 
 **Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
