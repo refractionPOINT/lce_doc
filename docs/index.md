@@ -10,9 +10,11 @@
 * [Quickstart](./lcc_quick_start.md)
 * [Top use cases](./top-use-cases.md)
 * [Feature overview](./features.md)
+* [Frequently Asked Questions](./faq.md)
+* [Troubleshooting](./troubleshooting.md)
 
 ## Access & Permissions
-* [Overview](./access.md)
+* [Overview](./sol-create_account.md)
 * [Users]()
      * [User Access](./user_access.md)
      <!-- * [Logging in via Google / Microsoft / Github]() -->
@@ -25,69 +27,48 @@
      <!-- * [Using API keys to access an organization]()
      * [Using API keys to access on behalf of a user]()
      * [Controlling access with fine-grained permissions on API keys]() -->
+* [Data Access](your-data.md)
 
-## XDR / EDR
+## General Content
 
-* [Overview]()
-* [Agent](./lc-agent.md)
-     * [Installing the agent on endpoints]()
-     * [Installing the agent in VMs and containers]()
-     * [Managing groups of sensors using tags]()
-     * [Using Live View to interact with endpoints]()
-     * [Outputing telemetry data to custom destinations]()
-     * [Managing rollout of sensor versions]()
-     * [Reference: commands]()
-     * [Reference: Events](./events.md)
-     * [Reference: Errors & ID Schemes]()
-     * [Troubleshooting]
+* [ID Schemes](./agentid.md)
+* [API Keys](./api_keys.md)
+* [Authenticated Resource Locator](./arl.md)
+* [Anti-Virus Integration](./av.md)
+* [Billing](./billing.md)
+* [Core Concepts](./core-concepts.md)
+* [Deploying Payloads to Endpoints](./payloads.md)
+* [Deploying Sensors](./deploy_sensor.md)
 * [Detection & Response](./dr.md)
-     * [Creating detection & response rules]()
-     * [Creating rules to omit false positives]()
-     * [Investigating detections visually using the Event Explorer]()
-     * [Applying managed rulesets via add-ons]()
-     * [Creating and configuring add-ons]()
-     * [Selling add-ons in the Marketplace]()
-* [Storage](./lc-storage.md)
-     * [Telemetry Storage]()
-     * [Collecting artifacts via collection rules]()
-     * [Collecting artifacts via cli or REST]()
-     * [Replaying rules over artifacts & historical data]()
-* [Outputs](./lc-output.md)
-* [Payloads](./payloads.md GG)
-     * [Making custom executables available on endpoints]()
-     * [Executing payloads via the agent]()
-* [Services]()
-     <!-- * [Overview]() -->
-     * [Replay](./replay.md)
-     * [Responder](./responder.md)
-     *** Get full list ***
-## Net
+* [Memory Dumps at Scale](./dumper.md)
+* [Error Codes](./errors.md)
+* [Events](./events.md)
+* [Exfil Control](./exfil.md)
+* [File & Registry Integrity Monitoring](./integrity.md)
+* [Historical Threat Hunting](./replay.md)
+* [Infrastructure Service](./infrastructure-service.md)
+* [Jobs](./jobs.md)
+* [Log & Artifact Collection](./external_logs.md) 
+* [Managing Keys](./manage_keys.md)
+* [Data Output](./outputs.md)
+* [Pager Duty](./pagerduty.md)
+* [Proxy Support](./proxy.md)
+* [Reliable Tasking Service](./reliable_tasking.md)
+* [Responder Service](./responder.md)
+* [Sensor Commands](./sensor_commands.md)
+* [Sensor Cull Service](./sensor_cull.md)
+* [Twilio Integration](./)
+* [Upgrading Sensors](./upgrading.md)
+* [User Add-ons](./user_addons.md)
+* [YARA Integration](./yara.md)
+* [Zeek Integration](./zeek.md)
 
-* [Overview](./lc-net.md)
-* [VPN Client]()
-     * [Provisioning clients by upgrading the agent (Windows)]()
-     * [Provisioning clients via web interface]()
-     * [Provisioning clients via CLI]()
-* [VPN Policies]()
-     * [Understanding policy types]()
-     * [Defining policies via web interface]()
-     * [Define policies via CLI]()
+<!-- ## Services (?)
 
-## Artifact Collection
+## Integrations (?) -->
 
-* [Overview]()
-* [Collecting artifacts via collections rules]()
-* [Collecting artifacts via CLI or REST]()
-* [Running detectors or artifacts & historical data]()
-
-## Comms
-
-* [Overview](./comms.md)
-* [Rooms]()
-     * [Configuring detections to create Rooms]()
-
-## Marketplace
-* [Overview]()
+<!-- ## Marketplace
+* [Overview]() -->
 
 ## References
 
@@ -95,7 +76,9 @@
 * [API Docs]()
 * [Free Training](./lc-edu.md)
 * [Webinars]()
-* [Codelabs & Deep Dives]()
-     * [Configuring DR rules]()
-     * [Zeek alerting]()
+
+## Codelabs & Deep Dives
+
+* [Configuring DR rules](./codelab_dr.md)
+* [Zeek alerting](./recipe_zeek.md)
  
