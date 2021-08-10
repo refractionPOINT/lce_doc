@@ -1,4 +1,4 @@
-# LimaCharlie Net: Secure Access Service Edge 
+# LimaCharlie Net: Secure Access Service Edge (SASE)
 
 LimaCharlie Net (lc-net) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access.
 
