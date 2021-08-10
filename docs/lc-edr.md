@@ -56,7 +56,7 @@ The following output methods are currently availble with a general overview [her
 * [Humio](./outputs.md#humio)
 * [Kafka](./outputs.md#kafka)
 * [Splunk](./outputs.md#splunk)
-0
+
 ## Installing the Agent
 
 Installing the sensor requires administrator (or root) execution:
@@ -95,8 +95,6 @@ Installing the sensor requires administrator (or root) execution:
 ## <span style="color:#3889c7">Updating Sensor Versions</span>
 
 Upgrading sensors is done transparently when the user clicks a button in the web application or through the API/SDK/CLI. Rolling back sensor versions can also be done with the click of a button in the web application or through the API/SDK/CLI. You do not need to re-download installers (in fact the installer stays the same). Once an upgrade has been triggered the new version should be in effect across the organization within about 20 minutes.
-
-<!-- ![image 'Sensor Upgrade'](./images/sc-upgrade-sensor.png) -->
 
 ## <span style="color:#3889c7">ARM Variants</span>
 
