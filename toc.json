@@ -29,22 +29,22 @@
       {
         "type": "item",
         "title": "Endpoint Detection & Response (EDR)",
-        "uri": "docs/product-edr.md"
+        "uri": "docs/lc-edr.md"
       },
       {
         "type": "item",
         "title": "Net: Secure Access Service Edge",
-        "uri": "docs/product-sase.md"
+        "uri": "docs/lc-sase.md"
       },
       {
         "type": "item",
         "title": "Log & Artifact Ingestion",
-        "uri": "docs/product-artifact_ingestion.md"
+        "uri": "docs/lc-artifact_ingestion.md"
       },
       {
         "type": "item",
         "title": "Comms: Operations at Scale",
-        "uri": "docs/comms.md"
+        "uri": "docs/lc-comms.md"
       },
 
       {
