@@ -19,11 +19,11 @@ LimaCharlie has a well developed  Marketplace where users can enable a wide plet
 
 ## <span style="color:#3b8452">Developing Products</span> 
 
-Users inbterested in creating their own products or services that can be integrated with LimaCharlie through the Add-On Marketplace should start [here](./user_addons.md).
+Users interested in creating their own products or services that can be integrated with LimaCharlie through the Add-On Marketplace should start [here](./user_addons.md).
 
 ## <span style="color:#3b8452">Monetizing Products with LimaCharlie</span> 
 
-LimaCharlie is partnering with develoeprs on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenu share model. We have had several success using this model and are eager to develop the program further. Some of the succesful products thus far are as follows.
+LimaCharlie is partnering with developers on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenu share model. We have had several successes using this model and are eager to develop the program further. Some products thus far are as follows.
 
 ### <span style="color:#3b8452">cuttingEdge</span> 
 
