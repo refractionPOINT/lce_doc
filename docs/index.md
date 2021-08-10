@@ -15,12 +15,12 @@
 
 ## Access & Permissions
 * [Overview](./sol-create_account.md)
-* [Users]()
-     * [User Access](./user_access.md)
+<!-- * [Users]() -->
+* [User Access](./user_access.md)
      <!-- * [Logging in via Google / Microsoft / Github]() -->
-* [Organizations]()
-     <!-- * [Managing user permissions withing an organization]()
-     * [Enabling / disabling features within an organization]() -->
+<!-- * [Organizations]() -->
+     <!-- * [Managing user permissions withing an organization]() -->
+     <!-- * [Enabling / disabling features within an organization]() -->
 * [Organization Groups](./user_access.md#access-management-via-organization-groups)
      <!-- * [Managing permissions for groups of users]() -->
 * [API Keys](./api_keys.md)
@@ -72,10 +72,11 @@
 
 ## References
 
-* [Troubleshooting]()
-* [API Docs]()
+* [API Docs](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json)
 * [Free Training](./lc-edu.md)
-* [Webinars]()
+* [Webinars](https://www.limacharlie.io/webinar)
+* [YouTube Channel](https://www.youtube.com/limacharlieio)
+* [Online Course Material](https://edu.limacharlie.io/)
 
 ## Codelabs & Deep Dives
 
