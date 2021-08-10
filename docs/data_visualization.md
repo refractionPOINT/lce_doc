@@ -1,6 +1,6 @@
 # Data Visualization
 
-The Data Visualization page allows users to search for a variety of data types across the entire fleet for up to a year, as well as a detailed pull of telemetry from any given endpoint for the given time range.
+The Data Visualization page allows users to search for a variety of data types across the entire fleet for up to a year, as well as a detailed pull of telemetry from any given endpoint for the applicable time range.
 
 ## Data Types
 
@@ -17,11 +17,11 @@ The data types that can be searched for are:
 
 ## Node Size
 
-The node - as it is displayed on the graph - is calculated based on how many events of the given type are bucketed into the given hour represented by the x axis (you can also hover over the node to get the time). These event are bucketed by type and represent events across multiple endpoints. Clicking on a node will bring up a list of the given events in the lower menu. Clicking on a listed event in the lower menu will bring up sensor details which can be further expanded into the tabbed region on the lower right.
+The node - as it is displayed on the graph - is calculated based on how many events of the given type are bucketed into the given hour represented by the x axis (simply hover over the node to get the time). These event are bucketed by type and represent events across multiple endpoints. Clicking on a node will bring up a list of the given events in the lower menu. Clicking on a listed event in the lower menu will bring up sensor details which can be further expanded into the tabbed region on the lower right.
 
 ## Prevalence 
 
-The prevalence is represented by a given nodes position on the y axis. The prevalence represents the number of hosts the specific type instance that has been observed on during the time period.
+The prevalence is represented by a given node's position on the y axis. The prevalence represents the number of hosts the specific type instance that has been observed on during the time period.
 
 ## Opacity
 
