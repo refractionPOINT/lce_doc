@@ -15,18 +15,9 @@
 
 ## Access & Permissions
 * [Overview](./sol-create_account.md)
-<!-- * [Users]() -->
 * [User Access](./user_access.md)
-     <!-- * [Logging in via Google / Microsoft / Github]() -->
-<!-- * [Organizations]() -->
-     <!-- * [Managing user permissions withing an organization]() -->
-     <!-- * [Enabling / disabling features within an organization]() -->
 * [Organization Groups](./user_access.md#access-management-via-organization-groups)
-     <!-- * [Managing permissions for groups of users]() -->
 * [API Keys](./api_keys.md)
-     <!-- * [Using API keys to access an organization]()
-     * [Using API keys to access on behalf of a user]()
-     * [Controlling access with fine-grained permissions on API keys]() -->
 * [Data Access](your-data.md)
 
 ## General Content
@@ -62,13 +53,6 @@
 * [User Add-ons](./user_addons.md)
 * [YARA Integration](./yara.md)
 * [Zeek Integration](./zeek.md)
-
-<!-- ## Services (?)
-
-## Integrations (?) -->
-
-<!-- ## Marketplace
-* [Overview]() -->
 
 ## References
 
