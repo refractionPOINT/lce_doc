@@ -20,7 +20,7 @@
 * [User Access](./user_access.md)
 * [Organization Groups](./user_access.md#access-management-via-organization-groups)
 * [API Keys](./api_keys.md)
-* [Data Access](your-data.md)
+* [Data Access](./your-data.md)
 
 ## General Content
 

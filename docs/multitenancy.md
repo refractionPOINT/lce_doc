@@ -18,7 +18,7 @@ Users have a many-to-many mapping with Organizations.
 
 An API Key represents a set of permissions and are used to interact with LimaCharlie. 
 
-Full documentation on API Keys can be here.
+Full documentation on API Keys can be [here](./api_keys.md).
 
 ## Organization Groups
 
@@ -27,3 +27,5 @@ Organization Groups provides a way for managing permissions for multiple Users a
 An Organization Group has a set of permissions associated with it that are applied to all Users in the group. Permissions are additive.
 
 Organization Groups drastically reduce the administration required and allows for fine-grained access control.
+
+More information [here](./user_access.md#access-management-via-organization-groups).
