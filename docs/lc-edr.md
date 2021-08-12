@@ -1,11 +1,12 @@
-<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
-###
+# Endpoint Detection & Response (EDR)
 
-![image 'lc-agent'](https://storage.googleapis.com/lc-edu/content/images/logos/lc-agent.png)
+LimaCharlie’s EDR capability centralizes the collection of historic and real-time [event data](./events.md) in a common data format.
 
-## <span style="color:#3889c7">Architecture & OS Support</span>
+An infrastructure and API-first approach means that you can build what you need or choose to subscribe to a turnkey solution.
 
-The LimaCharlie agent - or sensor - is fully interactive and can monitor over [70 different event types](./events.md). The agent is written in C and then compiled for each different platform and architecture it runs on which means is that it has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
+## Architecture & OS Support
+
+The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
 Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
 
@@ -16,52 +17,47 @@ Various builds of the agent can run on the following for x86, ARM & MIPS archite
  
  LimaCharlie also provides a seperate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
 
+## Technical Specs
+
 The agent is approximately 500kb in size but that varies a little depending on which platform it is compiled for. While running it consumes less that 1% CPU but does spike very briefly when certain events take place like an application starting up. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection. The round trip time from an event being detected to the time a response is actioned on the endpoint is generally less than 100 milliseconds.
 
 Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 
-## <span style="color:#3889c7">Live View</span>
+The LimaCharlie agent installs a sensor which is fully interactive and can monitor over [70 different event types](./events.md).
 
-Authorized programs and scripts can interact with the LimaCharlie agent in real-time. Analysts can also interact with the agent in real-time using the web application. LimaCharlie's Live View provides a graphic based control panel into the endpoint.
+## Telemetry & Retention
+ 
+Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
 
-Live View is accessed from the user interface of the web application under the Sensors tab.
+Telemetry uses the concept of [atoms](./events.md#atoms) and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
 
-![image 'Go Live'](./images/sc-sensor-tab-go-live.png)
+## Exfil Control
 
-The Live View user interface of the web application uses a tabbed format. Through each of the tabs an analysts has access to and can perform the following.
+By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc. A complete list of events can be found [here](./events.md).
 
-**Info Tab:** Users can view hostname, platform (OS), sensor ID, external IP, internal IP, last connected and is able to list and edit tags.
+If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
 
-**Management Tab:** Froim this tab users can exercise fine-grained control over the type of telemetry from the endpoint that should be sent to the cloud. A full list of events that can monitored can be [found here](./events.md).
+Details on using custom exfil can be found [here](./exfil.md).
 
-**Console Tab:** The console tab allows users to query the endpoint in real-time. A full list of sensor commands that can be sent the endpoint can be [found here](./sensor_commands.md).
+## Outputs
 
-**Feed Tab:** The feed tab allows users to view a live stream of events as they are happening on the endpoint. This is a computationally intensive process in the browser and should be closed when not being used. A full list of events that can be viewed through this user interface are [listed here](./events.md).
+LimaCharlie users can choose to send their data anywhere that they want. 
 
-**Processes Tab:** The process tab allows users to see a list of processes running on the endpoint and perform several ppossible operations on each. For each process running on the endpoint the user can do the following.
-* View Modules
-* Kill Process
-* Suspend Process
-* Resume Process
-* Memory Strings
-* Memory Map
-* Network Connections
+The following output methods are currently availble with a general overview [here](./outputs.md). If you have any special needs around output methods please file a ticket [here](https://limacharlie.io/user-ticket).
 
-**File System Tab:** Fron the file systems tab users can perform the following.
-* Navigate the endpoint's file systems
-* Download files from the endpoint
-* Generate a hash for a given file and optionally check that hash against [VirusTotal](https://www.virustotal.com/)
+* [Amazon S3](./outputs.md#amazon-s3)
+* [Google Cloud Storage](./outputs.md#google-cloud-storage)
+* [SCP](./outputs.md#scp)
+* [Slack](./outputs.md#slack)
+* [Syslog (TCP)](./outputs.md#syslog-tcp)
+* [Webhook](./outputs.md#webhook)
+* [Webhook Bulk](./outputs.md#webhook-bulk)
+* [SMTP](./outputs.md#smtp)
+* [Humio](./outputs.md#humio)
+* [Kafka](./outputs.md#kafka)
+* [Splunk](./outputs.md#splunk)
 
-**Network Tab:** The network tab will display the following for the given endpoint. The underlying mechanism is [netstat](https://linux.die.net/man/8/netstat).
-* Process Name
-* Local IP
-* Local Port
-* Foreign IP
-* Foreign Port
-* State
-* Process Hash
-
-## <span style="color:#3889c7">Installing the Agent</span>
+## Installing the Agent
 
 Installing the sensor requires administrator (or root) execution:
 
@@ -82,7 +78,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Docker:** See our [documentation here]()
 
-## <span style="color:#3889c7">Connectivity</span>
+## Connectivity
 
 **Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
@@ -96,11 +92,9 @@ Installing the sensor requires administrator (or root) execution:
 **Replay API:** agents do NOT require access
 0651b4f82df0a29c.replay.limacharlie.io
 
-## <span style="color:#3889c7">Upgrading</span>
+## <span style="color:#3889c7">Updating Sensor Versions</span>
 
 Upgrading sensors is done transparently when the user clicks a button in the web application or through the API/SDK/CLI. Rolling back sensor versions can also be done with the click of a button in the web application or through the API/SDK/CLI. You do not need to re-download installers (in fact the installer stays the same). Once an upgrade has been triggered the new version should be in effect across the organization within about 20 minutes.
-
-![image 'Sensor Upgrade'](./images/sc-upgrade-sensor.png)
 
 ## <span style="color:#3889c7">ARM Variants</span>
 

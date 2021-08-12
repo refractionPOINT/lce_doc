@@ -1,5 +1,6 @@
 {
     "items": [
+      
       {
         "type": "divider",
         "title": "Overview"
@@ -16,58 +17,36 @@
       },
       {
         "type": "item",
-        "title": "Feature Overview",
-        "uri": "docs/features.md"
+        "title": "FAQ",
+        "uri": "docs/faq.md"
       },
+      
+      
       {
         "type": "divider",
-        "title": "Guides"
+        "title": "Products"
       },
       {
         "type": "item",
-        "title": "Access",
-        "uri": "docs/lc-access.md"
+        "title": "Endpoint Detection & Response (EDR)",
+        "uri": "docs/lc-edr.md"
       },
       {
         "type": "item",
-        "title": "Agent",
-        "uri": "docs/lc-agent.md"
-      },
-      {
-        "type": "item",
-        "title": "Code",
-        "uri": "docs/lc-code.md"
-      },
-      {
-        "type": "item",
-        "title": "Education",
-        "uri": "docs/lc-edu.md"
-      },
-      {
-        "type": "item",
-        "title": "Hunting",
-        "uri": "docs/lc-hunt.md"
-      },
-      {
-        "type": "item",
-        "title": "Marketplace",
-        "uri": "docs/lc-marketplace.md"
-      },
-      {
-        "type": "item",
-        "title": "Net",
+        "title": "Net: Secure Access Service Edge",
         "uri": "docs/lc-net.md"
       },
       {
         "type": "item",
-        "title": "Output",
-        "uri": "docs/lc-output.md"
+        "title": "Log & Artifact Ingestion",
+        "uri": "docs/lc-artifact_ingestion.md"
       },
       {
         "type": "item",
-        "title": "Storage",
-        "uri": "docs/lc-storage.md"
+        "title": "Comms: Operations at Scale",
+        "uri": "docs/lc-comms.md"
       },
+
       {
         "type": "divider",
         "title": "Reference"
@@ -92,16 +71,14 @@
         "title": "ID Schemes",
         "uri": "docs/agentid.md"
       },
-      {
-        "type": "item",
-        "title": "FAQ",
-        "uri": "docs/faq.md"
-      },
+ 
       {
         "type": "item",
         "title": "Error Codes",
         "uri": "docs/errors.md"
       },
+      
+
       {
         "type": "divider",
         "title": "Operations"
