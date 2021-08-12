@@ -1,6 +1,6 @@
 # Ingesting Windows Event Logs in Real-Time
 
-INTRODUCTION HERE
+Along with [Log & Artifact Ingestion](./external_logs.md), LimaCharlie can ingest Window Event Logs in real-time.
 
 ## From Real-Time Events
 \* *Only supported on Windows 2008 and up*

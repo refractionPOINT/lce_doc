@@ -15,6 +15,7 @@
 
 ## Access & Permissions
 * [Overview](./sol-create_account.md)
+* [Multitenancy](./multitenancy.md)
 * [User Access](./user_access.md)
 * [Organization Groups](./user_access.md#access-management-via-organization-groups)
 * [API Keys](./api_keys.md)
