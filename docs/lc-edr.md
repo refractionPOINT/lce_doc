@@ -6,7 +6,7 @@ An infrastructure and API-first approach means that you can build what you need 
 
 ## Architecture & OS Support
 
- The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
+The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
 Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
 
