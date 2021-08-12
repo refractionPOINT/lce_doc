@@ -60,7 +60,6 @@
 ## References
 
 * [API Docs](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json)
-* [Free Training](./lc-edu.md)
 * [Webinars](https://www.limacharlie.io/webinar)
 * [YouTube Channel](https://www.youtube.com/limacharlieio)
 * [Online Course Material](https://edu.limacharlie.io/)
@@ -68,5 +67,5 @@
 ## Codelabs & Deep Dives
 
 * [Configuring DR rules](./codelab_dr.md)
-* [Zeek alerting](./recipe_zeek.md)
+* [Zeek Alerting](./recipe_zeek.md)
  
