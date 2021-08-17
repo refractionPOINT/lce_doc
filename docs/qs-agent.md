@@ -1,7 +1,7 @@
 
 # Installing the Agent
 
-Before we can start leveraging the capabilities available in LimaCharlie we have to get up and running first. This section guides the user through getting set up with an agent running on an endpoint.
+Before we can start leveraging the capabilities available in LimaCharlie, we have to get up and running first. This section guides the user through set up with an agent running on an endpoint.
 
 The first step is to [create an account and your first Organization]().
 
@@ -15,7 +15,7 @@ To get started you will need to create an installation key. They can be created 
 
 ![Create an Installation Key](https://storage.googleapis.com/lc-edu/content/images/content/qs-agent-1.png)
 
-Once the key has been created copy it to your clipboard. Next visit the Sensor Downloads section of the web application and download the appropriate installer.
+Once the key has been created, copy it to your clipboard. Next, visit the Sensor Downloads section of the web application and download the appropriate installer.
 
 Once the sensor is downloaded to the endpoint you will need to give it the appropriate permissions and use the installation key when executing.
 
@@ -27,7 +27,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Linux**: `chmod +x installer ; installer -d YOUR_INSTALLATION_KEY`
 
-**Note**: On Linux the exact persistence mechanism, like `launchd`, is left to the administrator, therefore the `-d` argument launches the sensor from the current working directory without persistence. The sensor does not daemonize itself.
+**Note**: On Linux the exact persistence mechanism, like `launchd`, is left to the administrator. As a result, the `-d` argument launches the sensor from the current working directory without persistence. The sensor does not daemonize itself.
 
 If you wish to remove the sensor from the endpoint you can do so by running the installer with the `-c` flag.
 

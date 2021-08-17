@@ -2,13 +2,13 @@
 
 LimaCharlie Net (`lc-net`) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access. 
 
-**To prevent abuse this feature requires a minimum sensor quota of 3 (credit card required). Sensor quota can be set on the Billing page inside of the web application.**
+**To prevent abuse this feature requires a minimum sensor quota of three (credit card required). Sensor quota can be set on the Billing page inside of the web application.**
 
 ![Billing Quota](https://storage.googleapis.com/lc-edu/content/images/content/qs-billing-quota.png)
 
 `lc-net` endpoints appear like other endpoints in your LimaCharlie deployment, but they're quite different in nature. These `lc-net` endpoints need to be provisioned to be accessed.
 
-By provisioning an `lc-net` endpoint, you create a set of VPN credentials that can be used by a single device. One set of credentials should be used by only a single device, they should not be shared among devices.
+By provisioning an `lc-net` endpoint, you create a set of VPN credentials that can be used by a single device. One set of credentials should be used by only a single device, and not shared among devices.
 
 Once connected, these devices will be able to connect to the internet by default. Connectivity and additional features that can be enabled by `lc-net` are defined using "policies".
 
@@ -32,12 +32,12 @@ Once you have installed the client you will need to connect it to LimaCharlie.
 2. Go to the Install Sensors page and create an Installation Key.
 3. Go the Net Clients page and provision a new client.
     1. Enter your email Host Name field and select the 'Send installation instructions' checkbox.
-    2. Select the Installation Key you just created from the frop down of the same name.
+    2. Select the Installation Key you just created from the drop down of the same name.
 4. Follow the instructions that are emailed to the address used for provisioning the client.
 
 ### Installing the WireGuard client using the CLI
 
-Using the [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) (`pip install limacharlie`), you can provising new clients one at a time or in batches.
+Using the [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) (`pip install limacharlie`), you can provision new clients one at a time or in batches.
 
 Provisioning is done in the context of an installation key, just like an host based endpoint.
 
@@ -77,19 +77,19 @@ optional arguments:
                         comma separated list of DNS servers overrides it if
                         specified
 ```
-The name is the `name` that will be associated with the `lc-net` device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag and the QR code + configuration file will be emailed directly to the `name` (email address).
+The name is the `name` that will be associated with the `lc-net` device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag. The QR code + configuration file will be emailed directly to the `name` (email address).
 
 The `--name-file` option allows you to specify a file containing all the names to provision.
 
 The `--output` can be used to send the configuration files directly to a directory.
 
-An example provisioning a basic new client:
+An example of provisioning a basic new client:
 
 ```
 python3 -m limacharlie net client provision --name test@mycorp.com --email-user MY-INSTALLATION-KEY
 ```
 
-An example provisioning a client in the 10.42.0.0/16 range and excluding the local IP range 100.115.92.200/28 from the VPN:
+An example of provisioning a client in the 10.42.0.0/16 range and excluding the local IP range 100.115.92.200/28 from the VPN:
 
 ```
 python3 -m limacharlie net client provision --name test@mycorp.com --email-user --within-range 10.43.1.0/24 --exclude-local-ranges 100.115.92.200/28 MY-INSTALLATION-KEY
@@ -99,19 +99,19 @@ python3 -m limacharlie net client provision --name test@mycorp.com --email-user 
 
 This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision and upgrade an lc-agent to `lc-net`.
 
-Since it is a LimaCharlie Service it means you can either directly interact with the service or you can issue service requests via the API and even D&R rules.
+Since it is a LimaCharlie Service this allows you to either directly interact with the service or issue service requests via the API and even D&R rules.
 
 To use the service, you will need:
 
-1. The Net version of the Installation Key you want your new `lc-net` sensors to use: go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
+1. The Net version of the Installation Key you want your new `lc-net` sensors to use. Go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
 2. The Sensor ID (sid) of the sensor you wish to upgrade. If you are using the Service interactively through the web interface, you may use the Hostname of the sensor and the web interface will auto-complete the Sensor ID.
 These steps assume you are using the web interface, but the same basic steps and parameters apply to other methods.
 
-1. Go in the main page of the Organization where you want to upgrade sensors to `lc-net`.
+1. Go to the main page of the Organization where you want to upgrade sensors to `lc-net`.
 2. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "*on*".
 3. From the left menu, go to the Service Request section.
 4. Select the `lc-net-install` service from the "*Service*" drop down.
-5. In the "*iid*" section, enter the Net Installation Key (obtained earlier).
+5. In the "*iid*" section, enter the Net Installation Key (obtained earlier, in step one).
 6. In the "*sid*" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
 7. Click "*Request*". The service will create a new Job that will be visible from the Organization's main page where you can track the progress of the upgrade. The whole process should take less than a minute.
 
@@ -150,7 +150,7 @@ Policies often contain some generic components:
 * `sources`: this is a list of networks in [CIDR notations](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) where the clients must be connecting from for the policy to apply.
 
 ### Time Descriptor
-A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined together.
+A Time Descriptor is a block of configuration that describes a period of time. This can be done in a few different ways. These different ways can be combined.
 
 #### Time Zone
 The Time Zone specified should match a `TZ database name` of the [Time Zones Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
@@ -206,7 +206,7 @@ Firewall policies can either specify:
 - `is_allow: true` indicating this policy defines a destination that should be allowed
 - `is_allow: false` indicating this policy defines a destination that should be denied
 
-On a connection, all `firewall` policies will be applied. For the connection to be allowed, at least one policy must positively allow the traffic. If, however even a single policy defines the destination is *not* allowed, then the connection will be denied.
+On a connection, all `firewall` policies will be applied. For the connection to be allowed, at least one policy must positively allow the traffic. If, however, even a single policy defines the destination as *not* allowed, then the connection will be denied.
 
 Sample policy:
 ```json
@@ -222,7 +222,7 @@ Sample policy:
 
 #### Service
 
-Service policies define a service available through the network on a specific host, and which other endpoints have access to it.
+Service policies define a service available through the network on a specific host, and which other endpoints have access to.
 
 The `server_sid` specifies the Sensor ID of the lc-net endpoint running the service. The `service_port` defines a specific port (or `0` for any) where the service is running.
 
@@ -230,9 +230,9 @@ The `tag_clients` specifies a tag that defines which lc-net endpoints have acces
 
 The `protocol` defines the [network protocol](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ID that the service is allowed on. TCP is `6` and UDP is `17`.
 
-The following example describes that all lc-net endpoints with the `finance` tag should be allowed to connect to the service running on TCP port 8000 for the Sensor ID `9ccd5a2c-e83c-4ffb-8f52-9f48626a6fc6`.
+The following example describes all lc-net endpoints with the `finance` tag should be allowed to connect to the service running on TCP port 8000 for the Sensor ID `9ccd5a2c-e83c-4ffb-8f52-9f48626a6fc6`.
 
-Once in place, accessing this service can be done using the server's Internal IP that is available through the detailed information view of a given sensor. In the case of lc-net endpoints, this Internal IP is always in the `10.x.x.x` range and is static, meaning a sensor is given an Internal IP that it will keep for its whole lifetime, making it easier to bookmark services or even create your own DNS entries for services.
+Once in place, accessing this service can be done using the server's Internal IP, available through the detailed information view of a given sensor. In the case of lc-net endpoints, this Internal IP is always in the `10.x.x.x` range and is static, meaning a sensor is given an Internal IP that it will keep for its  lifetime, making it easier to bookmark services or create your own DNS entries for services.
 
 Sample policy:
 ```json
@@ -249,9 +249,9 @@ Sample policy:
 
 #### Capture
 
-A capture policy defines packet capture that should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
+A capture policy defines packet capture which should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
 
-Various filters are available. The `ingest_key` is an [Ingestion Key](external_logs.md#using-the-rest-api) created by you in the REST API section, if left blank a default `__net_capture` key will be generated for you.
+Various filters are available. The `ingest_key` is an [Ingestion Key](external_logs.md#using-the-rest-api) created by you in the REST API section. If left blank a default `__net_capture` key will be generated for you.
 
 The following policy demonstrates a full packet capture from a sensor, to be retained in LimaCharlie for 7 days.
 
@@ -312,9 +312,9 @@ Sample internal cname:
 
 ##### DNS over HTTPS
 
-Some browsers have switched to using [DNS over HTTPS](https://en.wikipedia.org/wiki/DNS_over_HTTPS). This may become apparent if you implement a DNS Policy (like blocking a domain) but not see it take effect when using a web browser. To ensure that DNS traffic uses the classic DNS resolution method (UDP port 53), you can put a `firewall` rule in place to prevent DNS over HTTPS.  The firewall rule will result in browsers reverting to the classic mode of DNS resolution.
+Some browsers have switched to using [DNS over HTTPS](https://en.wikipedia.org/wiki/DNS_over_HTTPS). This may become apparent if you implement a DNS Policy (like blocking a domain) but do not see it take effect when using a web browser. To ensure that DNS traffic uses the classic DNS resolution method (UDP port 53), you can put a `firewall` rule in place to prevent DNS over HTTPS.  The firewall rule will result in browsers reverting to the classic mode of DNS resolution.
 
-Note that this has security implications that you may want to research and consider.
+Note that this has security implications you may want to research and consider.
 
 Example firewall rule to block Google DNS servers over HTTPS:
 
@@ -349,7 +349,7 @@ This policy has no parameters.
 
 #### Prevent Use of a Service
 Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
-can be done either manually, through a D&R rule or through the tags of an Installation Key.
+can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 This is the `dns` policy:
 
@@ -366,7 +366,7 @@ This is the `dns` policy:
 
 #### Prevent SSH
 Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it
-can be done either manually, through a D&R rule or through the tags of an Installation Key.
+can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 But only do this Monday through Friday, 8AM to 6PM Pacific Time, when the user is connected from an office which is hosted behind `9.9.9.0/24`.
 
