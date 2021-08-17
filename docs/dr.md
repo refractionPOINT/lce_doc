@@ -58,7 +58,21 @@ While the `edr` and `deployment` targets supports most of the APIs, stateful ope
 * `artifact` target only: `artifact source`, `artifact type`
 
 In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
-path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+path `/text` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+
+You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
+
+```
+artifact type: txt
+case sensitive: false
+op: matches
+path: /text
+re: .*(authentication failure|Failed password).*
+target: artifact
+artifact path: /var/log/auth.log
+```
+
+this will match all artifacts with file paths that start with `/var/log/auth.log`, including `/var/log/auth.log.1`.
 
 For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
@@ -415,6 +429,8 @@ rule:
 
 ##### Stateful
 
+###### Process Level
+
 Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time and either matches or doesn't.
 
 To be able to perform D&R rules across events to detect more complex behaviors, you can use the `with child` and `with descendant`
@@ -500,7 +516,7 @@ Another parameter comes into play if you want to define a set of operators under
 and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you
 want to be applied statelessly.
 
-Finally, a node in stateful mode under a `with child` or `with descendand` can specify a `count: N` parameter. When specified, you specify that the given node must be
+Finally, a node in stateful mode under a `with child` or `with descendant` can specify a `count: N` parameter. When specified, you specify that the given node must be
 matched N times before it is considered successful. So setting `count: 3` in a node looking for a `event/FILE_PATH` ending in `cmd.exe` will mean that we want to match
 only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes
 which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
@@ -509,7 +525,7 @@ to the `count: N` limits the count to where the first and last event in the coun
 
 Example rule that matches on Outlook writing 5 new `.ps1` documents within 60 seconds.
 
-```
+```yaml
 op: ends with
 event: NEW_PROCESS
 path: event/FILE_PATH
@@ -525,7 +541,30 @@ with child:
     within: 60
 ```
 
+###### Sensor Level
 
+You may want to correlate activity, not in the context of process relationship, but at the sensor level instead.
+For example, you may want to detect "if 5 bad login attempts occur on a Windows box within 60 seconds". Since you may
+be relying on the `WEL` events (Windows Event Logs), it doesn't make sense to use `with child` or `with descendant`.
+
+For these cases, you can use the `with events` parameter, like this:
+
+```yaml
+event: WEL
+op: is windows
+with events:
+  event: WEL
+  op: is
+  path: event/EVENT/System/EventID
+  value: '4625'
+  count: 5
+  within: 60
+
+```
+
+Much like `with child`, the `with events` defines that the rule underneath it should be evaluated in "stateful mode", and
+in a single "global" context for each sensor. This means the rule underneath could also be a complex evaluation using `op: and`
+containing the evaluation of several different event types which must all be true for the rule to match.
 
 ###### Testing
 
