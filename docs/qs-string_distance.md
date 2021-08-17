@@ -1,6 +1,6 @@
 # Levenshtein Distance
 
-Another good starting item to get set up as part of your initial posture is Levenshtein distance. A common phishing practice employed by bad actors is to use a domain that is similar enough to the given organization that a user will not recognize the difference on a quick glance. The detection in this example will catch when a domain that is similar (but different) to the ones being watched shows up on the endpoint. This particular notification is fired when said domain is one or two characters different than one of the ones we are monitoring.
+Another good starting item to set up as part of your initial posture is Levenshtein distance. A common phishing practice employed by bad actors is to use a domain that is similar enough to the given organization that a user will not recognize the difference on a quick glance. The detection in this example will catch when a domain that is similar (but different) to the ones being watched shows up on the endpoint. This particular notification is fired when said domain is one or two characters different than the ones we are monitoring.
 
 ```yaml
 max: 2
