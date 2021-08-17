@@ -3,10 +3,9 @@
 ## Overview
 Billing in LimaCharlie is done on monthly cycles and per-Organization (multi-tenant).
 
-Some features like centralized billing are available to larger LC users like MSSPs, if
-you would like more details contact us at sales@limacharlie.io.
+Some features, such as centralized billing are available to larger LC users like MSSPs. For more details contact us at sales@limacharlie.io.
 
-For exact pricing see the [LimaCharlie website](https://limacharlie.io) or [Web App](https://app.limacharlie.io).
+Exact pricing is available on the [LimaCharlie website](https://limacharlie.io) or [Web App](https://app.limacharlie.io).
 
 ## Services
 
@@ -15,7 +14,7 @@ The EDR service is the foundation of LimaCharlie. In order to make billing
 simpler and more predictible, it is based on a Quota set by the user.
 
 The Quota is the number of sensors (agents) concurrently online that should be 
-supported by the given Organization. The Quota applies to concurrently onlie sensors
+supported by the given Organization. The Quota applies to concurrently online sensors,
 meaning that you may have more sensors registered than your quota.
 
 If sensors attempt to connect to the cloud while the Quota is full, they will simply
@@ -28,14 +27,14 @@ in real-time.
 #### Sidecar Sensors
 A special case around Quota use is called Sidecar Sensors. At the moment the only
 Sidecar Sensor is the Chrome sensor. A Sidecar Sensor will not count against your
-Quota as long as it has a correspondant "normal" sensor.
+Quota as long as it has a corresponding "normal" sensor.
 
 For example, let's say you have 10 Windows sensors and 10 MacOS sensors online for
 a total of 20 "normal" sensors. This means you will be able to have up to 20 other
 Chrome sensors online without using any extra quota. If 25 Chrome sensors become
 online however, 5 extra Quota will be consumed.
 
-The intent is to allow Chrome sensors to be companion sensors enhancing visibility
+The intent is to allow Chrome sensors to be companion sensors, enhancing visibility
 of your existing LimaCharlie deployment without making Chrome-only deployments
 effectively free.
 
