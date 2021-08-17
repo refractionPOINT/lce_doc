@@ -17,9 +17,9 @@ Those artifacts can be ingested from hosts running a LimaCharlie sensor, or they
 
 Once ingested, the artifacts are retained and made available to you with a custom retention period. Ingested artifacts are also indexed similarly to LimaCharlie events. This means that you can search all of your artifact for the last year for Indicators like IP Addresses, Domain Names, User Names, Hashes etc.
 
-This in turn makes it possible for you to be looking at sensor data, identity an IP of interest, and launch a quick search to see if this IP has been observed in any artifacts over the past year. If it has, with one click you can visualize the relevant artifact entries to assist you in your investigation.
+This in turn makes it possible for you to be looking at sensor data, identify an IP of interest, and launch a quick search to see if this IP has been observed in any artifacts over the past year. If it has, with one click you can visualize the relevant artifact entries to assist you in your investigation.
 
-We call this "artifact operationalization". It is not mean to be a general viewing and querying tool like Splunk, but as a tactical tool providing you with critical answers as you need them during security operations.
+We call this "artifact operationalization". It is not meant to be a general viewing and querying tool like Splunk, but as a tactical tool providing you with critical answers as you need them during security operations.
 
 **Note:** that Artifact Collection configurations are synchronized with sensors every few minutes.
 

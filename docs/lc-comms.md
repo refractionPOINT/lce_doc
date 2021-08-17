@@ -2,7 +2,7 @@
 
 Comms is designed to enable teams to respond to detections in real-time. It is not a SIEM and can most easily be described as Slack for incident responders. It is built close to the metal and provides full visibility of the actions your team is taking to mitigate any threats.
 
-When a detection happens a Room is generated for your team to assign ownership, assess indicators of compromise and issue commands. Rich linking of entities allows your team to observe trends across multiple detections: like an endpoint with several detected threats, or a common detection popping up on several boxes. Navigate between them easily or merge rooms together to create a shared context for complex emerging issues.
+When a detection happens a Room is generated for your team to assign ownership, assess indicators of compromise, and issue commands. Rich linking of entities allows your team to observe trends across multiple detections: like an endpoint with several detected threats, or a common detection popping up on several boxes. Navigate between them easily or merge rooms together to create a shared context for complex emerging issues.
 
 <!-- As is the case with all things in LimaCharlie, Comms is available through an API as well as the web application. Full documentation on the API can be found [here]().  -->
 
@@ -54,7 +54,7 @@ Using Task any sensor can be tasked with any Sensor command <link>
 
 ### Links
 
-Links provide quick accessf to resources related to the given investigation. 
+Links provide quick access to resources related to the given investigation. 
 
 Currently links support:
 
