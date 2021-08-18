@@ -35,7 +35,7 @@ Many events generated in LimaCharlie have a good analog event in Sysmon (as desc
 * Event ID 17 (PipeEvent created): [NEW_NAMED_PIPE](events.md#new_named_pipe)
 * Event ID 18 (PipeEvent connected): [OPEN_NAMED_PIPE](events.md#open_named_pipe)
 
-Obviously, we also have [tons of other events](events.md) that are not found in Sysmon.
+We also have [tons of other events](events.md) that are not found in Sysmon.
 
 ### Why do I get an error 110 when isolating a host from the network?
 The `segregate_network` command requires kernel support to be running on the target host. Kernel support is not always
@@ -53,7 +53,7 @@ Detection and Response (D&R) rules are not currently mirrored in the sensor. Thi
 rules were always designed to be forward-deployable.
 
 When the host is offline, the sensor will keep collecting telemetry and store it locally in a "ring buffer"
-(which limits the total possible size). When the host will get back online, the content of this buffer will
+(which limits the total possible size). When the host is back online, the content of this buffer will
 be flushed to the cloud where D&R rules will still apply as usual.
 
 The same ring buffer is used during normal running of the sensor. It holds the full detailed telemetry generated

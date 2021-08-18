@@ -23,12 +23,12 @@ Ingested artifacts are also indexed similarly to LimaCharlie events. This means
 that you can search all of your artifact for the last year for Indicators like
 IP Addresses, Domain Names, User Names, Hashes etc.
 
-This in turn makes it possible for you to be looking at sensor data, identity
+This in turn makes it possible for you to be looking at sensor data, identify
 an IP of interest, and launch a quick search to see if this IP has been observed
 in any artifacts over the past year. If it has, with one click you can visualize the
 relevant artifact entries to assist you in your investigation.
 
-We call this "artifact operationalization". It is not mean to be a general viewing
+We call this "artifact operationalization". It is not meant to be a general viewing
 and querying tool like Splunk, but as a tactical tool providing you with critical
 answers as you need them during security operations.
 
@@ -128,7 +128,7 @@ using the following Header fields:
 
 * `lc-source` is a free form string used as an identifier of the origin of the artifact. When an artifact is ingested from a LC sensor, this value is the Sensor ID (SID) of the sensor.
 * `lc-hint` if present, this indicates to the backend how the file should be interpreted. It default to `auto` which results in the backend auto-detecting the formal. Currently supported hints include `wel` (Windows Events Log), `prefetch` (Windows prefetch file), `pcap`, `txt`, `pe`, `zeek`, `json`.
-* `lc-payload-id` if present, this is a globally unique identifier for the artifact file. It can be used to ingest artifacts in an idempotent way, meaning a second file ingested with this same value will be ignore.
+* `lc-payload-id` if present, this is a globally unique identifier for the artifact file. It can be used to ingest artifacts in an idempotent way, meaning a second file ingested with this same value will be ignored.
 * `lc-path` if present, should be a base-64 encoded string representing the original file path of the artifact on the source system.
 * `lc-part` if present, is used to track multi-part artifact uploads. If set, it should be an integer starting at `0` and incrementing for every part with the last part being set to `done`. The `lc-payload-id` MUST be set and constant across all parts.
 
@@ -144,9 +144,9 @@ you search for an indicator, enabling this switch will return you all the hits
 from the artifact files you have previously ingested.
 
 The historical view has a button that appears in the top left of the page after
-a search. Click it will list all log files received from that sensor during that
-time period and will allow you to go view them. Finally, from the same page, when
-viewing the details of a specific event, right-clicking on an indicator and clicking
+a search. Clicking it will list all log files received from that sensor during that
+time period and will allow you to view them. Finally, from the same page, when
+viewing the details of a specific event, right-clicking on an indicator and selecting
 "Find Other Locations" will bring you a search interface where you can also search
 for "in artifact".
 
