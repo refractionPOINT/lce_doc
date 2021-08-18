@@ -80,7 +80,7 @@ Platforms: Windows, Linux, MacOS
 ```
 
 ### SHUTTING_DOWN
-Event generated when the sensor shuts down, may not be observed if the
+Event generated when the sensor shuts down may not be observed if the
 host shuts down too quickly or abruptly.
 
 Platforms: Windows, Linux, MacOS
@@ -514,7 +514,7 @@ Platforms: Windows, MacOS
 ### NETWORK_SUMMARY
 Generated either when a process exits or when a process has established 10 network
 connections. This event combines process information with the first 10 network connections
-it has done. It is a way to generated detections on process/network information without
+it has done. It is a way to generate detections on process/network information without
 sending home all network events all the time which is a lot of data.
 
 ***Deprecated, replaced by:*** `NETWORK_CONNECTIONS`
@@ -859,7 +859,7 @@ Platforms: Windows, Linux, MacOS
 
 ### MODULE_MEM_DISK_MISMATCH
 Generated when a mismatch between the contents of memory and the expected module
-on disk is found, can be an indicator of process hollowing.
+on disk is found. Can be an indicator of process hollowing.
 
 Platforms: Windows, Linux, MacOS
 
@@ -969,7 +969,7 @@ Platforms: Windows, MacOS
 ```
 
 ### GET_DOCUMENT_REP
-Generated when a doc_cache_get task requrested a cached document.
+Generated when a doc_cache_get task requests a cached document.
 
 Platforms: Windows, MacOS
 

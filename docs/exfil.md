@@ -31,20 +31,20 @@ The above rule would tell the sensor to send to the cloud, in real-time, all `MO
 Finally, note that Exfil configurations are synchronized with sensors every few minutes.
 
 ## Performance Mode
-Although not stricly related to Exfil, the sensor's Performance Mode can also be set as a rule on top of interactively.
+Although not stricly related to Exfil, the sensor's Performance Mode can also be set as a rule, on top of interactively.
 
 This is done by modifying Performance Rules through the web app or REST interface. Any sensor matching a rule will have its performance mode enabled.
 
 ## Throughput Limits
 Enabling every event for exfil can produce an exceedingly large amount of traffic (think all file io, all network, all registry etc).
 
-Managing this requires a few different mechanism.
+Managing this requires a few different mechanisms.
 
 First of all, if you leave the default exfil profiles enabled, you should never have to worry about any of the following.
 
 LimaCharlie attempts to process all events in real-time. When it falls behind, the events get enqueued, up to a certain limit.
-If that limit is reached (as in the case of a long, sustained burst, or enabling all event types all the time), the queue gets
-eventually dropped and you may lose events. In that case, an error is emitted to the platform logs.
+If that limit is reached (as in the case of a long, sustained burst, or enabling all event types all the time), the queue 
+eventually gets dropped and you may lose events. In that case, an error is emitted to the platform logs.
 
 Seeing those errors should be a sign you need to do one or more of the following:
 
@@ -56,7 +56,7 @@ Seeing those errors should be a sign you need to do one or more of the following
 Before the queue gets dropped, LimaCharlie attempts to increase performance by entering a special mode we call "afterburner".
 
 This mode tries to address one of the common scenarios that can lead to large influx of data: spammy processes starting over and over again. This
-happens most often in situations like during building of software where, for example, `devenv.exe` or `git.exe` can be called hundreds of times
+happens most often in situations such as during building of software where, for example, `devenv.exe` or `git.exe` can be called hundreds of times
 per second. The afterburner mode attempts to de-duplicate those processes and only process each one once through the D&R rules and Outputs (storage).
 
 The afterburner mode does not address all possible causes or situations, so another tool is available, the "IR mode". This mode is enabled by tagging
