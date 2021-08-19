@@ -20,7 +20,7 @@ Users interested in creating their own products or services that can be integrat
 
 ## Monetizing Products with LimaCharlie 
 
-LimaCharlie is partnering with developers on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenu share model. We have had several successes using this model and are eager to develop the program further. Some products thus far are as follows.
+LimaCharlie is partnering with developers on a case-by-case basis to enable them to sell their products or services in the LimaCharlie Marketplace using a revenue share model. We have had several successes using this model and are eager to develop the program further. Some products thus far are as follows.
 
 ### cuttingEdge 
 
@@ -40,7 +40,7 @@ LimaCharlie is partnering with developers on a case-by-case basis to enable them
 
 ## Developer Grant Program
 
-LimaCharlie is offering a $1000 in computation credits that can be applied towards using LimaCharlie to develop any kind of project you want. If you are looking to commercialize an idea we can help you get it into our marketplace and if there is traction there we can further support you in growing.
+LimaCharlie is offering a $1000 in computation credits that can be applied towards using LimaCharlie to develop any kind of project you want. If you are looking to commercialize an idea we can help you get it into our marketplace and if there is traction there, we can further support you in growing.
 
 Interested parties can apply for the grant program [here](https://limacharlie.io/grant-program).
 

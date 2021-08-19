@@ -6,7 +6,7 @@ An infrastructure and API-first approach means that you can build what you need 
 
 ## Architecture & OS Support
 
-The agent is written in C and then compiled for each different platform and architecture it runs on which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
+The agent is written in C and then compiled for each different platform and architecture it runs on, which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
 
 Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
 
@@ -15,11 +15,11 @@ Various builds of the agent can run on the following for x86, ARM & MIPS archite
  MacOS
  * Builds for Solaris and BSD can be produced on [request](https://limacharlie.io/user-ticket)
  
- LimaCharlie also provides a seperate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
+ LimaCharlie also provides a separate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
 
 ## Technical Specs
 
-The agent is approximately 500kb in size but that varies a little depending on which platform it is compiled for. While running it consumes less that 1% CPU but does spike very briefly when certain events take place like an application starting up. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection. The round trip time from an event being detected to the time a response is actioned on the endpoint is generally less than 100 milliseconds.
+The agent is approximately 500kb in size but that varies a little depending on which platform it is compiled for. While running it consumes less than 1% CPU but does spike very briefly when certain events take place, such as an application starting up. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection. The round trip time from an event being detected to the time a response is actioned on the endpoint is generally less than 100 milliseconds.
 
 Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 
@@ -27,9 +27,9 @@ The LimaCharlie agent installs a sensor which is fully interactive and can monit
 
 ## Telemetry & Retention
  
-Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
+Telemetry sent to LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
 
-Telemetry uses the concept of [atoms](./events.md#atoms) and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
+Telemetry uses the concept of [atoms](./events.md#atoms), and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
 
 ## Exfil Control
 
@@ -80,13 +80,14 @@ Installing the sensor requires administrator (or root) execution:
 
 ## Connectivity
 
-**Agent to cloud:** agents require accesss over port 443 using pinned SSL certificates (SSL interception is not supported)
+**Agent to cloud:** agents require access over port 443 using pinned SSL certificates (SSL interception is not supported)
 0651b4f82df0a29c.lc.limacharlie.io
 
-**Chrome Agent to cloud:** agents require accesss over port 443 using normal SSL certificates websockets
+**Chrome Agent to cloud:** agents require access over port 443 using normal SSL certificates websockets
 0651b4f82df0a29c.wss.limacharlie.io
 
-**Artifact Collection ingestion:** agents require accesss over port 443 to ingest artifact
+**Artifact Collection ingestion:** agents require access over port 443 to ingest artifact
+
 0651b4f82df0a29c.ingest.limacharlie.io
 
 **Replay API:** agents do NOT require access

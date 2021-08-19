@@ -1,6 +1,6 @@
 # Detection and Response Rules
 
-Detection & Response rules are designed to allow you to push out a detection rule and with a custom action in record time.
+Detection & Response rules are designed to allow you to push out a detection rule with a custom action in record time.
 Think of them like AWS Lambda or Google Cloud Functions. They can be added and removed with single operations
 and they become immediately available/running as they are set.
 
@@ -20,7 +20,7 @@ The website version of this (on limacharlie.io) takes the rules as YAML to make 
 Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
 operations on rules use the `general` namespace.
 
-However, if you plan on having multiple groups of people accessing DR rules and want to maintain some segmentation, then
+However, if you plan on having multiple groups of people accessing D&R rules and want to maintain some segmentation, then
 namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
 giving them access to the MSSP-maintained sets of rules.
 
@@ -29,19 +29,19 @@ on namespaces other than `general` can only be accomplished using the [REST API]
 parameter in the relevant queries.
 
 ## Expiration
-It is possible to set an experation time for D&R rules as well as False Positive rules. The expiration is set by providing
+It is possible to set an expiration time for D&R rules as well as False Positive rules. The expiration is set by providing
 a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based
 unix epoch timestamp, like `expire_on: 1588876878`.
 
 Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration
-can vary, the rule could effectively remain in operation for as long as 10 minutes past the expiration.
+can vary. The rule could effectively remain in operation for as long as 10 minutes past the expiration.
 
 ## Detection Component
 The Detection component describes what event(s) should produce a match, which the Response section will then action.
 
 ### Targets
 
-Targets are types of sources of events that the rule should apply to. The D&R rules apply by default to the `edr` target.
+Targets are types of event sources the rule should apply to. The D&R rules apply by default to the `edr` target.
 This means that if you omit the `target` element from the Detection component, the rule will assume you want it to apply
 to events coming from the LimaCharlie agents. Other targets are available however.
 
@@ -50,15 +50,15 @@ to events coming from the LimaCharlie agents. Other targets are available howeve
 * `artifact_event`: applies to lifecycle around artifacts, like a new artifact being ingested.
 * `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
 
-While the `edr` and `deployment` targets supports most of the APIs, stateful operators and actions below, the `log` target only supports the following subset:
+While the `edr` and `deployment` targets support most of the APIs, stateful operators, and actions below, the `log` target only supports the following subset:
 
 * All the basics: `is`, `and`, `or`, `exists`, `contains`, `starts with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
 * `artifact` target only: `artifact source`, `artifact type`
 
-In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` DR rules, but rules on pure text logs requires using the
-path `/text` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` D&R rules, but rules on pure text logs require using the
+path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
@@ -72,13 +72,13 @@ target: artifact
 artifact path: /var/log/auth.log
 ```
 
-this will match all artifacts with file paths that start with `/var/log/auth.log`, including `/var/log/auth.log.1`.
+This will match all artifacts with file paths that start with `/var/log/auth.log`, including `/var/log/auth.log.1`.
 
 For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
 #### Windows Event Logs
 When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest
-the same Windows Event Log file that contains some records that have already been processed by the rules, the LimaCharlie platform will keep track of the
+the same Windows Event Log file that contains some records which have already been processed by the rules, the LimaCharlie platform will keep track of the
 processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
 
 This means you can safely set the [Artifact Collection Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
@@ -322,8 +322,8 @@ For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r`
 
 This can be used to find variations of file names or domain names that could be used for phishing, for example.
 
-Suppose your company is `onephoton.com`, looking for the Levenshtein Distance between all `DOMAIN_NAME` in
-`DNS_REQUEST` events, compared to `onephoton.com` could detect an attacker using `onephot0n.com` in a phishing
+Suppose your company is `onephoton.com`. Looking for the Levenshtein Distance between all `DOMAIN_NAME` in
+`DNS_REQUEST` events, compared to `onephoton.com` it could detect an attacker using `onephot0n.com` in a phishing
 email domain.
 
 The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the
@@ -405,7 +405,7 @@ rules:
 
 you would hit on events where _any_ connection has a source IP prefix of `10.` and
 _any_ connection has a destination port of `445`. Obviously this is not what we had
-in mind, we wanted if a _single_ connection has those two characteristics.
+in mind, we wanted to know if a _single_ connection has those two characteristics.
 
 The solution is to use the `scope` operator. The `path` in the operator will become
 the new `event/` root path in all operators found under the `rule`. So the above
@@ -429,9 +429,7 @@ rule:
 
 ##### Stateful
 
-###### Process Level
-
-Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time and either matches or doesn't.
+Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time, and either matches or doesn't.
 
 To be able to perform D&R rules across events to detect more complex behaviors, you can use the `with child` and `with descendant`
 parameters. Note that those parameters can ONLY be specified on a rule operator specifying the `event: NEW_PROCESS` since they only
@@ -439,10 +437,10 @@ apply to the relationship between an event and a process.
 
 Both the `with child` and `with descendant` parameters are effectively the same except for the "depth" of the relationship they cover.
 The `child` specifies that the target state (described below) must apply to the direct children of the matching process. The `descendant`
-specifies that the target state must apply globally to any descendands (children of children) of the matching process.
+specifies that the target state must apply globally to any descendants (children of children) of the matching process.
 
 The value of a `with child` (or descendant) is simply another (stateless) rule operator. The logic defined in this rule operator describes
-the set of conditions that must match, not a single event, but the collection of events that are children (or descendants) of the matching
+the set of conditions that must match. Not a single event, but the collection of events that are children (or descendants) of the matching
 process.
 
 Here is an example of a stateful detection looking for a "cmd.exe" process that has a child "calc.exe":
@@ -585,7 +583,7 @@ For example, with `excel.exe --child of--> cmd.exe`, the detection will include 
 
 For other actions (responses in the rule) however, the event under analysis is the last one being processed. So
 if the engine is analyzing the `cmd.exe` NEW_PROCESS, issuing a `report` will report the `excel.exe` in the detection
-but doing issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
+but issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
 
 So if you wanted to kill the `excel.exe` in response to the above stateful rule matching, you would have to issue a
 `deny_tree` to the atom `<<routing/parent>>`.
@@ -734,7 +732,7 @@ The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<
 the main source of Yara signatures are the [Yara Sources](yara.md#sources) specified in the [Yara Service](yara.md). If your Yara Source is
 named `my-yara-source`, the LC Resource would be: `lcr://service/yara/my-yara-source`.
 
-The `yara` operator scan the log file at most once. This means it can be used both as a simple "scan" detection like this:
+The `yara` operator scans the log file at most, once. This means it can be used both as a simple "scan" detection like this:
 
 ```yaml
 op: yara
@@ -1113,7 +1111,7 @@ value: this_is_fine.exe
 
 ### Ignore Detections on a Specific Host
 
-Any detection originating from a specific host will be ignore.
+Any detection originating from a specific host will be ignored.
 
 ```yaml
 op: is

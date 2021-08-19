@@ -8,7 +8,7 @@ Note that FIM configurations are synchronized with sensors every few minutes.
 ### Rules
 Rules define which file path patterns and registry patterns should be monitored for changes for specific sets of hosts.
 
-Filter tags are tags that must ALL be present on a sensor for it to match (AND condition), while the platform of the sensor much match one of the platforms in the filter (OR condition).
+Filter tags are tags that must ALL be present on a sensor for it to match (AND condition), while the platform of the sensor must match one of the platforms in the filter (OR condition).
 
 Patterns are file or registry patterns, supporting wildcards (*, ?, +). Windows directory separators (backslash, "\") must be escaped like "\\".
 
