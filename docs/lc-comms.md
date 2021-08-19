@@ -4,8 +4,6 @@ Comms is designed to enable teams to respond to detections in real-time. It is n
 
 When a detection happens a Room is generated for your team to assign ownership, assess indicators of compromise, and issue commands. Rich linking of entities allows your team to observe trends across multiple detections: like an endpoint with several detected threats, or a common detection popping up on several boxes. Navigate between them easily or merge rooms together to create a shared context for complex emerging issues.
 
-<!-- As is the case with all things in LimaCharlie, Comms is available through an API as well as the web application. Full documentation on the API can be found [here]().  -->
-
 ## Rooms
 
 A Room is a virtual space where team members can collaborate. When a detection is triggered a Room is automatically created. Rooms can also be created manually.

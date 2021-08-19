@@ -87,6 +87,7 @@ Installing the sensor requires administrator (or root) execution:
 0651b4f82df0a29c.wss.limacharlie.io
 
 **Artifact Collection ingestion:** agents require access over port 443 to ingest artifact
+
 0651b4f82df0a29c.ingest.limacharlie.io
 
 **Replay API:** agents do NOT require access
