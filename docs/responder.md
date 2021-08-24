@@ -6,7 +6,7 @@ The Responder service is able to perform various incident response tasks for you
 ### Sweep
 A sweep is an in-depth look through the state of a host. The sweep will highlight parts of the activity that are suspicious. This provides you with a good starting position when beginning an investigation. It allows you to focus on the important things right away.
 
-The types of information returned by the sweep is constantly evolving but you can expect it to return the following information:
+The types of information returned by the sweep is constantly evolving, but you can expect it to return the following information:
 
 * A full list of processes and modules
 * A list of unsigned binary code running in processes

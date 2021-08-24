@@ -1,13 +1,13 @@
 # User Add-ons
 
 ## Overview
-In LimaCharlie.io, the Add-ons marketplace is a place where you users can subscribe
+In LimaCharlie.io, the Add-ons marketplace is a place where users can subscribe
 to various capabilities as provided by other users.
 
-Several categories of capabilities exists like Detections and Lookups:
+Several categories of capabilities exist like Detections and Lookups:
 
 * Detections are components you can use as part of [D&R rules](dr.md).
-* Lookups are lists of values to match in incoming LC data along with metadata for each value. They are use as part of [D&R rules](dr.md) as well.
+* Lookups are lists of values to match incoming LC data along with metadata for each value. They are used as part of [D&R rules](dr.md) as well.
 
 Users can create their own add-ons privately which gives them access to enable those
 rules in organizations they are members of, or publicly where anyone in the marketplace
@@ -15,7 +15,7 @@ can subscribe.
 
 ## Using
 In order to use add-ons, you must first subscribe to them with an organization.
-To do this, go to the "Add-ons" menu in your organization, then go to the category
+To do this, go to the "Add-ons" menu in your organization, then go to the category,
 and find the add-on you want to subscribe to. Click on the subscribe switch.
 
 After a second you will get a confirmation the add-on has been enabled for your organization.
@@ -42,9 +42,9 @@ so, especially when marking the add-on as public, keep these in mind:
 * Make the purpose and usage of the add-on clear for users not aware of the capability.
 * If the add-on requires a lot of background information, put it in the website link
 rather than the description.
-* Your email address will be included in the add-on description, if you plan on publishing
-many rules you may want to create a limacharlie.io account specifically for this purpose.
-* The platforms flags are not enforced but are a courtesy to the users to let them
+* Your email address will be included in the add-on description. If you plan on publishing
+many rules, you may want to create a limacharlie.io account specifically for this purpose.
+* The platforms flags are not enforced, but are a courtesy to the users to let them
 know where they can expect your add-on to work.
 * Subscribers to your add-on will NOT have access to the exact implementation, this helps
 you protect specific Intellectual Property you may have, but it also means you need to be clear
@@ -56,7 +56,7 @@ required for the detection, but avoid filtering on organization-defined labels a
 organization to organization. If you do use labels, describe the exact usage in the description.
 * Before making an add-on public, make sure to test it.
 
-***Keep in mind that creating an add-on does not immediatly grant organizations you're a member of
+***Keep in mind that creating an add-on does not immediatly grant the organizations you're a member of
 access to it. After creating it, you must go in the organization you want to access it from, go to
 the Add-ons section and "subscribe" to your add-on. This will grant the organization access and then
 you can begin using it as part of D&R rules.***
@@ -87,14 +87,14 @@ When uploaded, the data for the lookup can be provided in three different ways:
 
 1. As data literal in the upload API.
 1. As a URL callback, where your data is a URL like https://www.my.data.
-1. As an [Authenticated Resource Locator (ARL)](arl.md) (the prefered method)
+1. As an [Authenticated Resource Locator (ARL)](arl.md) (the preferred method)
 
 The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
 
 #### Optimized Format
-Sometimes when creating a Lookup you may want to include right metadata for each element
+Sometimes when creating a Lookup you may want to include correct metadata for each element
 of the lookup, but the maximum size may be an issue. In cases where there is a lot of metadata
-repetion you may use an optimized format. This format will allow you to associate large
+repetition you may use an optimized format. This format will allow you to associate large
 pieces of metadata with a high number of lookup items.
 
 To accomplish this, you will need to split up your metadata from your lookup values like:
@@ -123,7 +123,7 @@ To accomplish this, you will need to split up your metadata from your lookup val
 }
 ```
 
-The `_LC_METADATA` key has as a value a list of all the pieces of metadata you want to include.
+The `_LC_METADATA` key has as a value, a list of all the pieces of metadata you want to include.
 
 The `_LC_INDICATORS` is the normal list of indicators, but instead of having the metadata directly
 associated with each indicator as the value, it uses an integer that refers to the `_LC_METADATA`
@@ -153,7 +153,7 @@ The above example is equivalent to the non-optimized:
 ```
 
 As you can see, this optimization is useful to reduce the repeated metadata. This is particularly
-useful if, for example, you have large numbers of IoCs for a given actor. In that case every
+useful if, for example, you have large numbers of IoCs for a given actor. In that case, every
 IoC in the lookup would be associated with the same metadata (information about the actor).
 
 #### From MISP
@@ -187,8 +187,8 @@ The MISP event above once ingested in LC will be transformed to a Lookup like:
 }
 ```
 
-LimaCharlie understand the MISP format regarless of how it is ingested. That being
-said the classic way of ingesting it would be to ingest the MSIP Events use an [ARL](https://github.com/refractionPOINT/authenticated_resource_locator)
+LimaCharlie understand the MISP format, regardless of how it is ingested. That being
+said, the classic way of ingesting it would be to ingest the MSIP Events use an [ARL](https://github.com/refractionPOINT/authenticated_resource_locator)
 on a MISP REST API with one of the supported ARL authentication types like `basic`.
 
 For example: `[https,misp.my.corp.com/events/1234,basic,myuser:mypassword]`.
