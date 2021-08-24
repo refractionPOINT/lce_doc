@@ -84,19 +84,18 @@ So what's going on here?
 
 First the Detection component.
 It says to target the `artifact_event` system (as opposed to the default `edr` system).
-Then it specifies to look for events of type `ingest`, meaning that a new Artifact has been ingested.
-Finally, we specify to only use events where the log type is `pcap` since Artifacts could be anything from PCAPs to Windows Event Logs or syslogs.
-The last components simply say that we don't really care about the contents of the event, just knowing that the
-event occured is enough for us to want to "match" and take action according to the Response component of the rule.
+Then it specifies looking for events of type `ingest`, meaning that a new Artifact has been ingested.
+Finally, we specify only to use events where the log type is `pcap` since Artifacts could be anything from PCAPs to Windows Event Logs or syslogs.
+The last components simply say that the contents of the event don't matter, as knowing the event occurred is enough for us to want to "match" and take action according to the Response component of the rule.
 
 The Response component is telling LimaCharlie what to do when the Detection "matches". In our case, we want
 to make a request to the `zeek` service to run over the PCAP. The `request` component of the Response here
-is the data included to the Zeek service, in this case we want to ask zeek to run specifically over the "log"
+is the data included to the Zeek service. In this case, we want to ask zeek to run specifically over the "log"
 with ID equal to the value in the `routing/log_id` of the `ingest` / `artifact_event` and to retain the resulting
 Zeek logs for 90 days.
 
 As you can now see, this recipe aims to retain the raw full PCAPs for 1 week, but the Zeek logs for 3 months since
-the Zeek logs will be much smaller than the full PCAP.
+those Zeek logs will be much smaller than the full PCAP.
 
 Once you create this rule, any time a PCAP comes in, Zeek will run over it. The resulting Zeek logs will be
 themselves re-ingested as Artifacts. This means you will be able to find them in the Artifact Collection section
@@ -145,5 +144,5 @@ This is a field from a Zeek log's `conn.log` file that contains the originating 
 The Response simply states to `report` (alert) with a name of `outbound connection from telnet port`.
 
 ## Conclusion
-That's it, from this point on, we'll alert on automatically collect network data, retain it, process it
+From this point on, we'll alert on automatically collect network data, retain it, process it
 with Zeek, retain those Zeek logs and alert on those logs as well.

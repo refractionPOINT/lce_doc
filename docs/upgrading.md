@@ -7,7 +7,7 @@ LimaCharlie indicates to you when a newer version is available for upgrade on th
 At all times we provide a `Stable` version and a `Fallback` version. When a new version of the sensor is available, it
 is made the new `Stable`.
 
-The LimaCharlie Web UI (Sensor Download page) allows to upgrade or downgrade your sensors to `Stable` or `Fallback` at will.
+The LimaCharlie Web UI (Sensor Download page) allows you to upgrade or downgrade your sensors to `Stable` or `Fallback` at will.
 
 When you click to upgrade or downgrade, the process begins automatically and over the next hour (or as sensors come online) they
 will be moved to the appropriate version.

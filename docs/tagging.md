@@ -4,7 +4,7 @@ Tags in LCE are simple strings that can be associated with any number of sensors
 of tags associated with it.
 
 Tags appear in every event coming from a sensor under the `routing` component of the event. This creates a lot of
-duplication of data in the events but it also greatly simplifies the writing of detection and response rules based
+duplication of data in the events, but it also greatly simplifies the writing of detection and response rules based
 on the presence of specific tags.
 
 Tags can be added to a sensor a few different ways:
@@ -41,7 +41,7 @@ In detection and response rules
 We provide system level functionality with a few system tags.  Those tags are listed below for reference:
 
 ### latest
-When you tag a sensor with _latest_, the sensor version currently assigned to the Organization will be ignore for that specific sensor and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the latest tag in order to test-deploy the latest version and confirm no negative effects.
+When you tag a sensor with _latest_, the sensor version currently assigned to the Organization will be ignored for that specific sensor, and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the latest tag in order to test-deploy the latest version and confirm no negative effects.
 
 ### experimental
-When you tag a sensor with _experimental_, the sensor version currently assigned to the Organization will be ignore for that specific sensor an experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.
+When you tag a sensor with _experimental_, the sensor version currently assigned to the Organization will be ignored for that specific sensor. An experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.

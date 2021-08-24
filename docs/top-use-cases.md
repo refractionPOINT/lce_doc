@@ -34,8 +34,6 @@ LimaCharlie’s engineering approach to cybersecurity makes automated testing an
 
 LimaCharlie offers easy to read and well-structured documentation. Wether you are looking to dive headfirst into our quick start guide or want to plan a detailed migration we have got you covered.
 
-LimaCharlie’s engineering approach to cyber security makes automated testing and deployment easy. Use a Detectors as Code approach to put an end to false negatives and gain peace of mind with a reliable test and deploy toolkit. Track changes in your detection methodology over long periods of time and run detections against historical telemetry. 
-
 Empower every level of your organization to contribute. Introduce a peer review process to your detection methodology that make cross-training a part of regular day-to-day operations.
 
 ## Remote Work

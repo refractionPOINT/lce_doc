@@ -81,17 +81,12 @@ Installing the sensor requires administrator (or root) execution:
 ## Connectivity
 
 **Agent to cloud:** agents require access over port 443 using pinned SSL certificates (SSL interception is not supported)
-0651b4f82df0a29c.lc.limacharlie.io
 
 **Chrome Agent to cloud:** agents require access over port 443 using normal SSL certificates websockets
-0651b4f82df0a29c.wss.limacharlie.io
 
 **Artifact Collection ingestion:** agents require access over port 443 to ingest artifact
 
-0651b4f82df0a29c.ingest.limacharlie.io
-
 **Replay API:** agents do NOT require access
-0651b4f82df0a29c.replay.limacharlie.io
 
 ## <span style="color:#3889c7">Updating Sensor Versions</span>
 

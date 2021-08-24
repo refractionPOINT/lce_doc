@@ -349,6 +349,7 @@ This policy has no parameters.
 ### Examples
 
 #### Prevent Use of a Service
+
 Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 This is the `dns` policy:
@@ -365,6 +366,7 @@ This is the `dns` policy:
 ```
 
 #### Prevent SSH
+
 Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 But only do this Monday through Friday, 8AM to 6PM Pacific Time, when the user is connected from an office which is hosted behind `9.9.9.0/24`.
