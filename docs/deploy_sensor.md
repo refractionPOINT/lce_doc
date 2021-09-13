@@ -32,6 +32,7 @@ For example:
 * https://app.limacharlie.io/get/linux/arm32 for the Linux ARM 32 bit installer
 * https://app.limacharlie.io/get/linux/arm64 for the Linux ARM 64 bit installer
 * https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
+* https://app.limacharlie.io/get/mac/arm64 for the MacOS ARM 64 bit (Apple Silicon) installer
 * https://app.limacharlie.io/get/chrome for the Chrome extension
 
 ## Installing the Sensor
