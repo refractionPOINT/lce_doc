@@ -3,7 +3,7 @@
 
 Before we can start leveraging the capabilities available in LimaCharlie, we have to get up and running first. This section guides the user through set up with an agent running on an endpoint.
 
-The first step is to [create an account and your first Organization]().
+The first step is to [create an account and your first Organization](https://www.youtube.com/watch?v=9icgkpYAoyA  ).
 
 ## Organization View
 
@@ -11,7 +11,7 @@ From the Organizational View navigate to the Install Sensors menu item in the lo
 
 ## Getting an Installation Key
 
-To get started you will need to create an installation key. They can be created by visiting the Installation Keys section of the web application and clicking on the plus icon in the upper right corner. 
+To get started you will need to create an installation key. They can be created by visiting the Installation Keys section of the web application and clicking on the plus icon in the upper right corner.
 
 ![Create an Installation Key](https://storage.googleapis.com/lc-edu/content/images/content/qs-agent-1.png)
 

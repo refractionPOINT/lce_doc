@@ -6,15 +6,15 @@ An infrastructure and API-first approach means that you can build what you need 
 
 ## Architecture & OS Support
 
-The agent is written in C and then compiled for each different platform and architecture it runs on, which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc. 
+The agent is written in C and then compiled for each different platform and architecture it runs on, which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc.
 
 Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
 
  * 32-bit Windows all way Back to Windows XP through to the most modern version of 64-bit Windows
- * All flavours of Linux both 32-bit and 64-bit 
+ * All flavours of Linux both 32-bit and 64-bit
  MacOS
  * Builds for Solaris and BSD can be produced on [request](https://limacharlie.io/user-ticket)
- 
+
  LimaCharlie also provides a separate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
 
 ## Technical Specs
@@ -26,7 +26,7 @@ Documentation on deploying the agent can be [found here](./deploy_sensor.md).
 The LimaCharlie agent installs a sensor which is fully interactive and can monitor over [70 different event types](./events.md).
 
 ## Telemetry & Retention
- 
+
 Telemetry sent to LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
 
 Telemetry uses the concept of [atoms](./events.md#atoms), and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
@@ -41,7 +41,7 @@ Details on using custom exfil can be found [here](./exfil.md).
 
 ## Outputs
 
-LimaCharlie users can choose to send their data anywhere that they want. 
+LimaCharlie users can choose to send their data anywhere that they want.
 
 The following output methods are currently availble with a general overview [here](./outputs.md). If you have any special needs around output methods please file a ticket [here](https://limacharlie.io/user-ticket).
 
@@ -139,6 +139,6 @@ If you are targeting Raspberry Pi you likely want `arml`.
 
 [Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
 
-**Chrome/ChromeOS** 
+**Chrome/ChromeOS**
 
 [Chrome](https://app.limacharlie.io/get/chrome/)
