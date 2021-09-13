@@ -31,15 +31,15 @@ For example:
 * https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
 * https://app.limacharlie.io/get/linux/arm32 for the Linux ARM 32 bit installer
 * https://app.limacharlie.io/get/linux/arm64 for the Linux ARM 64 bit installer
-* https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
-* https://app.limacharlie.io/get/mac/arm64 for the MacOS ARM 64 bit (Apple Silicon) installer
+* https://app.limacharlie.io/get/mac/64 for the macOS 64 bit installer
+* https://app.limacharlie.io/get/mac/arm64 for the macOS ARM 64 bit (Apple Silicon) installer
 * https://app.limacharlie.io/get/chrome for the Chrome extension
 
 ## Installing the Sensor
 The sensors are designed to be simple to use and re-package for any deployment methodology you use in your organization.
 
 The sensor requires administrative privileges to install. On Windows this means an Administrator or System account, on
-MacOS and Linux it means the root account.
+macOS and Linux it means the root account.
 
 Before installing, you will need the [installation key](manage_keys.md) you want to use.
 
