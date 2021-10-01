@@ -514,6 +514,35 @@ Another parameter comes into play if you want to define a set of operators under
 and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you
 want to be applied statelessly.
 
+Another parameter available to stateful rules is the `report latest event: true` parameter. When specified in the operator holding the stateful parameter like `with child`,
+it will tell the engine that the event that should be reported by this rule is the latest event in the set of stateful operators that matched, instead of the default
+behavior where the first event to have started the stateful rule is reported.
+
+In the example above, the default behavior of `report` is to report the `outlook.exe` process in the detection. But if we set `report latest event: true`, the
+last event is reported, so either a `chrome.exe` or `.ps1` document, whichever occured last. Here is an example of the above rule with the `report latest event`:
+
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: outlook.exe
+case sensitive: false
+report latest event: true
+with child:
+  op: and
+  rules:
+    - op: ends with
+      event: NEW_PROCESS
+      path: event/FILE_PATH
+      value: chrome.exe
+      case sensitive: false
+    - op: ends with
+      event: NEW_DOCUMENT
+      path: event/FILE_PATH
+      value: .ps1
+      case sensitive: false
+```
+
 Finally, a node in stateful mode under a `with child` or `with descendant` can specify a `count: N` parameter. When specified, you specify that the given node must be
 matched N times before it is considered successful. So setting `count: 3` in a node looking for a `event/FILE_PATH` ending in `cmd.exe` will mean that we want to match
 only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes
