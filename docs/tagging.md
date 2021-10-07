@@ -45,3 +45,9 @@ When you tag a sensor with _latest_, the sensor version currently assigned to th
 
 ### experimental
 When you tag a sensor with _experimental_, the sensor version currently assigned to the Organization will be ignored for that specific sensor. An experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.
+
+### no_kernel
+When you tag a sensor with _experimental_, the kernel component will not be loaded on the host. 
+
+### debug
+When you tag a sensor with _debug_, the debug version of the sensor currently assigned to the Organization will be used. 
