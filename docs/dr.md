@@ -181,7 +181,6 @@ First, add new external drives to a variable when they are connected:
 
 The detection component:
 
-<!-- We need to decide if we show the detect: and respond: base level items here of if we are writing this for the documentaiotn  -->
 
 ```
 event: VOLUME_MOUNT
