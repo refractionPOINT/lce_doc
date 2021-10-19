@@ -357,7 +357,7 @@ max: 2
 
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
-##### is windows, is linux, is mac, is chrome, is 32 bit, is 64 bit
+##### is windows, is linux, is mac, is chrome, is text, is json, is gcp, is carbon_black, is 32 bit, is 64 bit, is arm
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
 correct.
 
