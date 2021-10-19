@@ -746,7 +746,6 @@ op: external
 resource": lcr://detection/suspicious-windows-exec-location
 ```
 
-<!-- this is where i quite - next one looks like it will be event type wel-->
 
 
 Complex example extending a resource rule:
