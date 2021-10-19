@@ -62,6 +62,7 @@ path `/txt` as the value of a log line. The `artifact source` matches the log's 
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
+<!-- this rule has been tested -->
 ```
 artifact type: txt
 case sensitive: false
@@ -95,20 +96,14 @@ operations to perform.
 Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
-```json
-{
-    "op": "and",
-    "rules" : [
-        {
-            "op": "is linux",
-            "event": "STARTING_UP"
-        },
-        {
-            "op" : "is tagged",
-            "tag": "test_tag"
-        }
-    ]
-}
+```
+events:
+  - STARTING_UP
+op: and
+rules:
+  - op: is linux
+  - op: is tagged
+    tag: test_tag
 ```
 
 The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the type of event being
@@ -186,35 +181,44 @@ For example, these rules looking for unsigned execution from external drives (li
 
 First, add new external drives to a variable when they are connected:
 
-```yaml
-detect:
-  event: VOLUME_MOUNT
-  op: is windows
+The detection component:
 
-respond:
-  - action: add var
-    name: external-volumes
-    value: <<event/VOLUME_PATH>>
+<!-- We need to decide if we show the detect: and respond: base level items here of if we are writing this for the documentaiotn  -->
+
+```
+event: VOLUME_MOUNT
+op: is windows
 ```
 
-Second, look for unsigned execution starting on those drives:
+The respond component:
+
+```
+- action: add var
+  name: external-volumes
+  value: <<event/VOLUME_PATH>>
+```
+
+Second, look for unsigned execution starting on those drives.
+
+The detection component:
 
 ```yaml
-detect:
-  event: NEW_PROCESS
-  op: and
-  rules:
-    - path: event/FILE_IS_SIGNED
-      value: 0
-      op: is
-    - path: event/FILE_PATH
-      case sensitive: false
-      value: '[[external-volumes]]'
-      op: starts with
+event: NEW_PROCESS
+op: and
+rules:
+  - path: event/FILE_IS_SIGNED
+    value: 0
+    op: is
+  - path: event/FILE_PATH
+    case sensitive: false
+    value: '[[external-volumes]]'
+    op: starts with
+```
+The response component:
 
-respond:
-  - action: report
-    name: unsigned-exec-removable-drive
+```yaml
+- action: report
+  name: unsigned-exec-removable-drive
 ```
 
 #### Times
@@ -222,6 +226,7 @@ respond:
 All evaluators support an optional key named `times`. When specified, it must contain a list of [Time Descriptors](lc-net.md#time-descriptor) where the given evaluator is valid. These Time Descriptors are at the "operator" level, meaning that your rule can mix-and-match multiple Time Descriptors as part of a single rule.
 
 Example that matches the Chrome process starting between 11PM and 5AM, Monday through Friday, Pacific Time:
+
 ```yaml
 event: NEW_PROCESS
 op: ends with
@@ -263,13 +268,14 @@ parameter.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
+<!-- what event type is this? -->
+
 Example rule:
-```json
-{
-    "op": "is",
-    "path": "event/PARENT/PROCESS_ID",
-    "value": 9999
-}
+```yaml
+event: NEW_PROCESS
+op: is
+path: event/PARENT/PROCESS_ID
+value: 9999
 ```
 
 ##### exists
@@ -277,6 +283,7 @@ Tests if any elements exist at the given path.
 
 Example rule:
 ```yaml
+event: NEW_PROCESS
 op: exists
 path: event/PARENT
 ```
@@ -298,19 +305,18 @@ the value at the specified path, it compares the length of the value at that pat
 
 ##### matches
 The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
-Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables 
+Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables
 you to apply the regexp to log files.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
-```json
-{
-    "op": "matches",
-    "path": "event/FILE_PATH",
-    "re": ".*\\\\system32\\\\.*\\.scr",
-    "case sensitive": false
-}
+```yaml
+event: NEW_PROCESS
+op: matches
+path: event/FILE_PATH
+re: ".*\\\\system32\\\\.*\\.scr
+case sensitive: false
 ```
 
 ##### string distance
@@ -335,6 +341,7 @@ Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```yaml
+event: NEW_PROCESS
 op: string distance
 path: event/DOMAIN_NAME
 value:
@@ -346,6 +353,7 @@ This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
 
 and using the [file name](#file-name) transform to apply to a file name in a path:
 ```yaml
+event: NEW_PROCESS
 op: string distance
 path: event/NEW_PROCESS
 file name: true
@@ -373,13 +381,12 @@ In order to access a resource you must have subscribed to it via `app.limacharli
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
-```json
-{
-    "op": "lookup",
-    "path": "event/DOMAIN_NAME",
-    "resource": "lcr://lookup/malwaredomains",
-    "case sensitive": false
-}
+```yaml
+event: NEW_PROCESS
+op: lookup
+path: event/DOMAIN_NAME
+resource: lcr://lookup/malwaredomains
+case sensitive: false
 ```
 
 ##### scope
@@ -446,8 +453,8 @@ process.
 Here is an example of a stateful detection looking for a "cmd.exe" process that has a child "calc.exe":
 
 ```yaml
-op: ends with
 event: NEW_PROCESS
+op: ends with
 path: event/FILE_PATH
 value: cmd.exe
 case sensitive: false
@@ -480,8 +487,8 @@ cmd.exe --> firefox.exe --> powershell.exe --> calc.exe
 Much like other stateless rules, the `with child` (and descendant) can also be more complex. For example:
 
 ```yaml
-op: ends with
 event: NEW_PROCESS
+op: ends with
 path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
@@ -522,8 +529,8 @@ In the example above, the default behavior of `report` is to report the `outlook
 last event is reported, so either a `chrome.exe` or `.ps1` document, whichever occured last. Here is an example of the above rule with the `report latest event`:
 
 ```yaml
-op: ends with
 event: NEW_PROCESS
+op: ends with
 path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
@@ -553,8 +560,8 @@ to the `count: N` limits the count to where the first and last event in the coun
 Example rule that matches on Outlook writing 5 new `.ps1` documents within 60 seconds.
 
 ```yaml
-op: ends with
 event: NEW_PROCESS
+op: ends with
 path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
@@ -636,8 +643,8 @@ Also note that if your API Key runs out of quota with VirusTotal, hashes seen un
 
 Example:
 ```yaml
-op: lookup
 event: CODE_IDENTITY
+op: lookup
 path: event/HASH
 resource: 'lcr://api/vt'
 metadata_rules:
@@ -718,10 +725,10 @@ Also note that if your API Key runs out of quota with VirusTotal, hashes seen un
 
 Example (is the connecting agent in a European Union country):
 ```yaml
+event: CONNECTED
 op: lookup
 resource: 'lcr://api/ip-geo'
 path: routing/ext_ip
-event: CONNECTED
 metadata_rules:
   op: is
   value: true
@@ -737,12 +744,13 @@ type `detection`. The external detection replaces the current detection rule, wh
 detection logic using the `and` and `or` operations.
 
 Example:
-```json
-{
-    "op": "external",
-    "resource": "lcr://detection/suspicious-windows-exec-location"
-}
+```yaml
+op: external
+resource": lcr://detection/suspicious-windows-exec-location
 ```
+
+<!-- this is where i quite - next one looks like it will be event type wel-->
+
 
 Complex example extending a resource rule:
 ```yaml
