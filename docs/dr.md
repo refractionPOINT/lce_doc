@@ -62,7 +62,6 @@ path `/txt` as the value of a log line. The `artifact source` matches the log's 
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
-<!-- this rule has been tested -->
 ```
 artifact type: txt
 case sensitive: false
