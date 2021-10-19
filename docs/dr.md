@@ -97,8 +97,7 @@ Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
 ```
-events:
-  - STARTING_UP
+event: STARTING_UP
 op: and
 rules:
   - op: is linux
