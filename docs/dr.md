@@ -312,7 +312,7 @@ Example:
 event: NEW_PROCESS
 op: matches
 path: event/FILE_PATH
-re: ".*\\\\system32\\\\.*\\.scr
+re: .*\\\\system32\\\\.*\\.scr
 case sensitive: false
 ```
 
