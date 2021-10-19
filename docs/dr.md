@@ -743,7 +743,7 @@ detection logic using the `and` and `or` operations.
 Example:
 ```yaml
 op: external
-resource": lcr://detection/suspicious-windows-exec-location
+resource: lcr://detection/suspicious-windows-exec-location
 ```
 
 
