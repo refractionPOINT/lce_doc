@@ -62,8 +62,7 @@ path `/txt` as the value of a log line. The `artifact source` matches the log's 
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
-<!-- this rule has been tested -->
-```
+```yaml
 artifact type: txt
 case sensitive: false
 op: matches
@@ -97,9 +96,9 @@ Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
 ```yaml
+op: and
 events:
   - STARTING_UP
-op: and
 rules:
   - op: is linux
   - op: is tagged
@@ -116,7 +115,7 @@ to match against all Detections that are re-sent through the engine as describe 
 Some parameters are available to all logical operations.
 
 * `"not": true`: will reverse the matching outcome of an operations.
-* `"case sensitive": false`: will make all string-based evaluations ignore case.
+* `"case sensitive": false`: will make all string-based evaluations.ignore case.
 
 #### Paths
 
@@ -182,8 +181,6 @@ For example, these rules looking for unsigned execution from external drives (li
 First, add new external drives to a variable when they are connected:
 
 The detection component:
-
-<!-- We need to decide if we show the detect: and respond: base level items here of if we are writing this for the documentaiotn  -->
 
 ```yaml
 event: VOLUME_MOUNT
@@ -268,8 +265,6 @@ parameter.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
-<!-- what event type is this? -->
-
 Example rule:
 ```yaml
 event: NEW_PROCESS
@@ -312,17 +307,15 @@ Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```yaml
-event: NEW_PROCESS
+event: FILE_TYPE_ACCESSED
 op: matches
 path: event/FILE_PATH
-re: ".*\\\\system32\\\\.*\\.scr
+re: .*\\\\system32\\\\.*\\.scr
 case sensitive: false
 ```
 
 ##### string distance
-The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between
-two strings. In other words it generates the minimum number of character changes required for one string
-to become equal to another.
+The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings. In other words it generates the minimum number of character changes required for one string to become equal to another.
 
 For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r` instead of `e`) is 1.
 
@@ -566,13 +559,13 @@ path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
 with child:
-    op: ends with
-    event: NEW_DOCUMENT
-    path: event/FILE_PATH
-    value: .ps1
-    case sensitive: false
-    count: 5
-    within: 60
+  op: ends with
+  event: NEW_DOCUMENT
+  path: event/FILE_PATH
+  value: .ps1
+  case sensitive: false
+  count: 5
+  within: 60
 ```
 
 ###### Sensor Level
@@ -737,31 +730,6 @@ metadata_rules:
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
-##### external
-Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
-Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
-type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
-detection logic using the `and` and `or` operations.
-
-Example:
-```yaml
-op: external
-resource": lcr://detection/suspicious-windows-exec-location
-```
-
-<!-- this is where i quite - next one looks like it will be event type wel-->
-
-
-Complex example extending a resource rule:
-```yaml
-op: and
-rules:
-  - op: is tagged
-    tag: finance-dept
-  - op: external
-    resource: lcr://detection/suspicious-windows-exec-location
-```
-
 ##### yara
 Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
@@ -860,9 +828,9 @@ This can be used to include information for internal use like reference numbers 
 
 Example:
 ```yaml
-action: report
-name: my-detection
-priority: 3
+- action: report
+  name: my-detection
+  priority: 3
 ```
 
 #### add tag, remove tag
@@ -884,10 +852,10 @@ This can be used as a main mechanism to synchronize and operate changes across a
 For example, this would apply the `full_pcap` to all sensors on the device for 5 minutes:
 
 ```yaml
-action: add tag
-tag: full_pcap
-ttl: 300
-entire_device: true
+- action: add tag
+  tag: full_pcap
+  ttl: 300
+  entire_device: true
 ```
 
 #### add var, del var
@@ -895,9 +863,9 @@ Add or remove a value from the variables associated with a sensor.
 
 Example:
 ```yaml
-action: add var
-name: my-variable
-value: <<event/VOLUME_PATH>>
+- action: add var
+  name: my-variable
+  value: <<event/VOLUME_PATH>>
 ```
 
 #### service request
@@ -910,11 +878,11 @@ All values within the `request` can contain [Lookback](#lookback) values (`<< >>
 
 Example:
 ```yaml
-action: service request
-name: dumper
-request:
-  sid: <<routing/sid>>
-  retention: 3
+- action: service request
+  name: dumper
+  request:
+    - sid: <<routing/sid>>
+    - retention: 3
 ```
 
 #### isolate network
@@ -922,14 +890,14 @@ Isolates the sensor from the network in a persistent fashion (if the sensor/host
 Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
 
 ```yaml
-action: isolate network
+- action: isolate network
 ```
 
 #### rejoin network
 Removes the isolation status of a sensor that had it set using `isolate network`.
 
 ```yaml
-action: rejoin network
+- action: rejoin network
 ```
 
 #### undelete sensor
@@ -968,9 +936,8 @@ Simple WanaCry detection and mitigation rule:
 op: ends with
 event: NEW_PROCESS
 path: event/FILE_PATH
-value: wanadecryptor@.exe
+value: wanadecryptor.exe
 case sensitive: false
-}
 ```
 
 **Respond**
@@ -980,7 +947,9 @@ case sensitive: false
 - action: task
   command: history_dump
 - action: task
-  command: [ "deny_tree", "<<routing/this>>" ]
+  command: 
+    - deny_tree
+    - <<routing/this>>
 ```
 
 
