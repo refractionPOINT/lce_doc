@@ -97,8 +97,7 @@ When we receive a `STARTING_UP` event from a linux sensor, and this sensor has t
 
 ```yaml
 op: and
-events:
-  - STARTING_UP
+event: STARTING_UP
 rules:
   - op: is linux
   - op: is tagged
