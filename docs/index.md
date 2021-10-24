@@ -8,6 +8,7 @@
 ## Overview
 
 * [Quickstart](./lcc_quick_start.md)
+* [Detection & Response Rules](./dr.md)
 * [Top use cases](./top-use-cases.md)
 * [Feature overview](./features.md)
 * [Add-ons Marketplace](./lc-marketplace.md)

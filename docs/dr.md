@@ -96,7 +96,7 @@ operations to perform.
 Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
-```
+```yaml
 events:
   - STARTING_UP
 op: and
@@ -185,14 +185,14 @@ The detection component:
 
 <!-- We need to decide if we show the detect: and respond: base level items here of if we are writing this for the documentaiotn  -->
 
-```
+```yaml
 event: VOLUME_MOUNT
 op: is windows
 ```
 
 The respond component:
 
-```
+```yaml
 - action: add var
   name: external-volumes
   value: <<event/VOLUME_PATH>>
@@ -829,12 +829,10 @@ under evaluation is from. An optional `investigation` parameter can be given, it
 identifier with the task and events from the sensor that relate to the task.
 
 Example:
-```json
-{
-    "action": "task",
-    "command": "history_dump",
-    "investigation": "susp-process-inv"
-}
+```yaml
+- action: task
+  command: history_dump
+  investigation: susp-process-inv
 ```
 
 #### report
@@ -872,12 +870,10 @@ These two actions associate and disassociate, respectively, the tag found in the
 can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
-```json
-{
-    "action": "add tag",
-    "tag": "vip",
-    "ttl": 30
-}
+```yaml
+- action: add tag
+  tag: vip
+  ttl: 30
 ```
 
 Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply
@@ -940,7 +936,7 @@ action: rejoin network
 Un-deletes a sensor that was previously deleted. Used in conjunction with the [sensor_deleted](events.md#sensor_deleted) event.
 
 ```yaml
-action: undelete sensor
+- action: undelete sensor
 ```
 
 ## Putting it Together
@@ -968,32 +964,23 @@ value: .scr
 Simple WanaCry detection and mitigation rule:
 
 **Detect**
-```json
-{
-    "op": "ends with",
-    "event": "NEW_PROCESS",
-    "path": "event/FILE_PATH",
-    "value": "@wanadecryptor@.exe",
-    "case sensitive": false
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: wanadecryptor@.exe
+case sensitive: false
 }
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "report",
-        "name": "wanacry"
-    },
-    {
-        "action": "task",
-        "command": "history_dump"
-    },
-    {
-        "action": "task",
-        "command": [ "deny_tree", "<<routing/this>>" ]
-    }
-]
+```yaml
+- action: report
+  name: wanacry
+- action: task
+  command: history_dump
+- action: task
+  command: [ "deny_tree", "<<routing/this>>" ]
 ```
 
 
@@ -1001,34 +988,27 @@ Simple WanaCry detection and mitigation rule:
 Tag any sensor where the CEO logs in with "vip".
 
 **Detect**
-```json
-{
-    "op": "is",
-    "event": "USER_OBSERVED",
-    "path": "event/USER_NAME",
-    "value": "stevejobs",
-    "case sensitive": false
-}
+```yaml
+op: is
+event: USER_OBSERVED
+path: event/USER_NAME
+value: stevejobs
+case sensitive: false
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "add tag",
-        "tag": "vip"
-    }
-]
+```yaml
+- action: add tag
+  tag: vip
 ```
 
 ### Suspicious Windows Executable Names
-```json
-{
-    "op": "matches",
-    "path": "event/FILE_PATH",
-    "case sensitive": false,
-    "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
-}
+```yaml
+event: CODE_IDENTITY
+op: matches
+path: event/FILE_PATH
+case sensitive: false
+re: .*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe
 ```
 
 ### Disable an Event at the Source
