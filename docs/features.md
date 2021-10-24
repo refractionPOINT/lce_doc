@@ -4,7 +4,7 @@
 
 ### Sensor Platforms
 
-The LimaCharlie sensors support the following platforms:
+LimaCharlile employes the concepts of sensors to collect telemetry and take action on the endpoint.The LimaCharlie sensors support the following platforms:
 
 * Windows XP 32 bit and up.
 * MacOS 10.7 and up.

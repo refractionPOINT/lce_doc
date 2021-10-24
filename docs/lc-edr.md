@@ -12,24 +12,23 @@ A versatile YAML-based detection syntax can be used to create detections for hig
 
 This same detection syntax can also be used to easily achieve the following:
 
-* Running Sigma rules
-* Running continuous YARA scans without impacting performance
-* File and registry integrity monitoring
-* Leveraging threat feeds or lookups
-* Checking hashes against VirusTotal 
-* Creating rules against telemetry from Windows Defender
-* Checking domains using Levenshtein distance to detect spear phishing 
+* Run Sigma rules
+* Run continuous YARA scans without impacting performance
+* Leverage threat feeds or lookups
+* Check hashes against VirusTotal
+* Create rules against telemetry from Windows Defender
+* Check domains using Levenshtein distance to detect spear phishing
 
 ### Response
 
 When a detection is triggered a response action is initiated. A response can take an action on the endpoint or be used to automate many aspects of security operations. Response actions can include:
 
-* Killing a process or process tree
-* Triggering memory dumps
-* Issuing an alert to a wide variety of destination types including the web application, any webhook, SMTP, PagerDuty, Kafka, SCP and many more.
-* Initiating full PCAP capture from the network without impacting performance
-* Triggering log ingestion and analysis
-* The ability to deploy and run any executable on endpoint such as patches or custom scripts
+* Kill a process or process tree
+* Trigger memory dumps
+* Issue an alert to a wide variety of destination types including the web application, any webhook, SMTP, PagerDuty, Kafka, SCP and more
+* Initiate full PCAP capture from the network without impacting performance
+* Trigger log ingestion and analysis
+* Deploy and run any executable on endpoint such as patches or custom scripts
 
 A repository of sample detection rules can be found in this repository: [Sample Rule Set](https://github.com/refractionPOINT/rules)
 
