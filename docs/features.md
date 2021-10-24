@@ -4,18 +4,19 @@
 
 ### Sensor Platforms
 
-LimaCharlile employs the concepts of sensors to collect telemetry and take action on the endpoint.The LimaCharlie sensors support the following platforms:
+LimaCharlie employs the concepts of sensors to collect telemetry and take action on the endpoint. LimaCharlie sensors support the following platforms:
 
 * Windows XP 32 bit and up.
 * MacOS 10.7 and up.
 * Linux all distributions (including ARM and MIPS).
 * Alpine Linux 64 bit
-* Chrome and ChromeOS
+* Microsoft Edge, Chrome and ChromeOS
+* Docker 
 
 ### Retention
 
 * Full telemetry and alerts are fully retained for a full year.
-* Indicators of Compromise are also indexed and searchable.
+* Indicators of Compromise are indexed and searchable.
 
 ### Events Control
 
