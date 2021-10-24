@@ -1,21 +1,55 @@
-# Endpoint Detection & Response (EDR)
+# Endpoint Detection & Response
 
-LimaCharlie’s EDR capability centralizes the collection of historic and real-time [event data](./events.md) in a common data format.
+LimaCharlie provides a true-real-time Endpoint Detection & Response (EDR) capability. Verbose telemetry is streamed from the endpoint sensor to the cloud in real-time over a semi-persistent TLS connection. Response actions are taken on the endpoint within 100ms of the triggering action or behaviour. 
 
-An infrastructure and API-first approach means that you can build what you need or choose to subscribe to a turnkey solution.
+Endpoint telemetry is ingested and analysed in-flight by the Detection & Response Engine (DRE). Telemetry can be tested against thousands of rules without impacting performance.
+
+LimaCharlie’s EDR sensor monitors a wide variety of [event data](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMDQ-events) that is delivered in a common JSON format.
+
+### Detection
+
+A versatile YAML-based detection syntax can be used to create detections for highly sophisticated behaviour, including the ability to track state and build multi-step detection logic that runs at wire speed. 
+
+This same detection syntax can also be used to easily achieve the following:
+
+Running Sigma rules
+Running continuous YARA scans without impacting performance
+File and registry integrity monitoring
+Leveraging threat feeds or lookups
+Checking hashes against VirusTotal 
+Creating rules against telemetry from Windows Defender
+Checking domains using Levenshtein distance to detect spear phishing 
+
+### Response
+
+When a detection is triggered a response action is initiated. A response can take an action on the endpoint or be used to automate many aspects of security operations. Response actions can include:
+
+Killing a process or process tree
+Triggering memory dumps
+Issuing an alert to a wide variety of destination types including the web application, any webhook, SMTP, PagerDuty, Kafka, SCP and many more.
+Initiating full PCAP capture from the network without impacting performance
+Triggering log ingestion and analysis
+The ability to deploy and run any executable on endpoint such as patches or custom scripts
+
+A repository of sample detection rules can be found in this repository: [Sample Rule Set](https://github.com/refractionPOINT/rules)
+
+The full open source Sigma ruleset (which can be enabled on deployments at the click of a button) can be found here: [Sigma Rule Set](https://github.com/refractionPOINT/sigma)
+
 
 ## Architecture & OS Support
 
-The agent is written in C and then compiled for each different platform and architecture it runs on, which means that the sensor has true feature parity across all operating systems. The only exceptions are platform specific functions, such as monitoring Windows registry operations, etc.
+LimaCharlie provides the widest platform support industry-wide. The EDR sensor is written in C and then compiled for each different platform and architecture it runs on. With the exception of platform specific behaviours, the EDR sensor has feature parity across all operating systems and is IoT friendly with builds across x86, ARM and MIPS architectures.
 
-Various builds of the agent can run on the following for x86, ARM & MIPS architectures.
+The EDR sensor can run on the following operating systems across x86, ARM & MIPS architectures.
 
  * 32-bit Windows all way Back to Windows XP through to the most modern version of 64-bit Windows
  * All flavours of Linux both 32-bit and 64-bit
  MacOS
+ * Docker containers
  * Builds for Solaris and BSD can be produced on [request](https://limacharlie.io/user-ticket)
 
- LimaCharlie also provides a separate agent for ChromeOS that can run stand alone or as a side-care to the main agent.
+Along with the core EDR sensor, LimaCharlie has a browser-based sensor that provides a subset of capabilities for Chromebooks, the Chrome browser and the Microsoft Edge browser.
+
 
 ## Technical Specs
 
