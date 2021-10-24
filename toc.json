@@ -24,16 +24,16 @@
 
       {
         "type": "divider",
-        "title": "Products"
+        "title": "Capabilities"
       },
       {
         "type": "item",
-        "title": "Endpoint Detection & Response (EDR)",
+        "title": "Endpoint Detection & Response",
         "uri": "docs/lc-edr.md"
       },
       {
         "type": "item",
-        "title": "Net: Secure Access Service Edge",
+        "title": "Software Defined Networking",
         "uri": "docs/lc-net.md"
       },
       {
@@ -43,7 +43,12 @@
       },
       {
         "type": "item",
-        "title": "Comms: Operations at Scale",
+        "title": "Infrastructure as Code",
+        "uri": "docs/lc-infra-as-code.md"
+      },
+      {
+        "type": "item",
+        "title": "Operational Console for Teams",
         "uri": "docs/lc-comms.md"
       },
 
