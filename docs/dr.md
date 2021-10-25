@@ -95,9 +95,9 @@ operations to perform.
 Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
-```yaml
-op: and
+```
 event: STARTING_UP
+op: and
 rules:
   - op: is linux
   - op: is tagged
@@ -181,14 +181,14 @@ First, add new external drives to a variable when they are connected:
 
 The detection component:
 
-```yaml
+```
 event: VOLUME_MOUNT
 op: is windows
 ```
 
 The respond component:
 
-```yaml
+```
 - action: add var
   name: external-volumes
   value: <<event/VOLUME_PATH>>
@@ -263,6 +263,8 @@ Tests for equality between the value of the `"value": <>` parameter and the valu
 parameter.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+<!-- what event type is this? -->
 
 Example rule:
 ```yaml
@@ -357,7 +359,7 @@ max: 2
 
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
-##### is windows, is linux, is mac, is chrome, is 32 bit, is 64 bit
+##### is windows, is linux, is mac, is chrome, is text, is json, is gcp, is carbon_black, is 32 bit, is 64 bit, is arm
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
 correct.
 
@@ -728,6 +730,29 @@ metadata_rules:
 ```
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
+
+
+##### external
+Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
+Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
+type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
+detection logic using the `and` and `or` operations.
+
+Example:
+```yaml
+op: external
+resource: lcr://detection/suspicious-windows-exec-location
+```
+
+Complex example extending a resource rule:
+```yaml
+op: and
+rules:
+  - op: is tagged
+    tag: finance-dept
+  - op: external
+    resource: lcr://detection/suspicious-windows-exec-location
+```
 
 ##### yara
 Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
