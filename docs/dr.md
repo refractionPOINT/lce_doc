@@ -62,7 +62,7 @@ path `/txt` as the value of a log line. The `artifact source` matches the log's 
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
-```
+```yaml
 artifact type: txt
 case sensitive: false
 op: matches
@@ -180,7 +180,6 @@ For example, these rules looking for unsigned execution from external drives (li
 First, add new external drives to a variable when they are connected:
 
 The detection component:
-
 
 ```
 event: VOLUME_MOUNT
@@ -309,7 +308,7 @@ Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```yaml
-event: NEW_PROCESS
+event: FILE_TYPE_ACCESSED
 op: matches
 path: event/FILE_PATH
 re: .*\\\\system32\\\\.*\\.scr
@@ -317,9 +316,7 @@ case sensitive: false
 ```
 
 ##### string distance
-The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between
-two strings. In other words it generates the minimum number of character changes required for one string
-to become equal to another.
+The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings. In other words it generates the minimum number of character changes required for one string to become equal to another.
 
 For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r` instead of `e`) is 1.
 
@@ -563,13 +560,13 @@ path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
 with child:
-    op: ends with
-    event: NEW_DOCUMENT
-    path: event/FILE_PATH
-    value: .ps1
-    case sensitive: false
-    count: 5
-    within: 60
+  op: ends with
+  event: NEW_DOCUMENT
+  path: event/FILE_PATH
+  value: .ps1
+  case sensitive: false
+  count: 5
+  within: 60
 ```
 
 ###### Sensor Level
@@ -734,6 +731,7 @@ metadata_rules:
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
+
 ##### external
 Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
 Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
@@ -745,8 +743,6 @@ Example:
 op: external
 resource: lcr://detection/suspicious-windows-exec-location
 ```
-
-
 
 Complex example extending a resource rule:
 ```yaml
@@ -825,12 +821,10 @@ under evaluation is from. An optional `investigation` parameter can be given, it
 identifier with the task and events from the sensor that relate to the task.
 
 Example:
-```json
-{
-    "action": "task",
-    "command": "history_dump",
-    "investigation": "susp-process-inv"
-}
+```yaml
+- action: task
+  command: history_dump
+  investigation: susp-process-inv
 ```
 
 #### report
@@ -858,9 +852,9 @@ This can be used to include information for internal use like reference numbers 
 
 Example:
 ```yaml
-action: report
-name: my-detection
-priority: 3
+- action: report
+  name: my-detection
+  priority: 3
 ```
 
 #### add tag, remove tag
@@ -868,12 +862,10 @@ These two actions associate and disassociate, respectively, the tag found in the
 can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
-```json
-{
-    "action": "add tag",
-    "tag": "vip",
-    "ttl": 30
-}
+```yaml
+- action: add tag
+  tag: vip
+  ttl: 30
 ```
 
 Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply
@@ -884,10 +876,10 @@ This can be used as a main mechanism to synchronize and operate changes across a
 For example, this would apply the `full_pcap` to all sensors on the device for 5 minutes:
 
 ```yaml
-action: add tag
-tag: full_pcap
-ttl: 300
-entire_device: true
+- action: add tag
+  tag: full_pcap
+  ttl: 300
+  entire_device: true
 ```
 
 #### add var, del var
@@ -895,9 +887,9 @@ Add or remove a value from the variables associated with a sensor.
 
 Example:
 ```yaml
-action: add var
-name: my-variable
-value: <<event/VOLUME_PATH>>
+- action: add var
+  name: my-variable
+  value: <<event/VOLUME_PATH>>
 ```
 
 #### service request
@@ -910,11 +902,11 @@ All values within the `request` can contain [Lookback](#lookback) values (`<< >>
 
 Example:
 ```yaml
-action: service request
-name: dumper
-request:
-  sid: <<routing/sid>>
-  retention: 3
+- action: service request
+  name: dumper
+  request:
+    sid: <<routing/sid>>
+    retention: 3
 ```
 
 #### isolate network
@@ -922,21 +914,21 @@ Isolates the sensor from the network in a persistent fashion (if the sensor/host
 Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
 
 ```yaml
-action: isolate network
+- action: isolate network
 ```
 
 #### rejoin network
 Removes the isolation status of a sensor that had it set using `isolate network`.
 
 ```yaml
-action: rejoin network
+- action: rejoin network
 ```
 
 #### undelete sensor
 Un-deletes a sensor that was previously deleted. Used in conjunction with the [sensor_deleted](events.md#sensor_deleted) event.
 
 ```yaml
-action: undelete sensor
+- action: undelete sensor
 ```
 
 ## Putting it Together
@@ -964,32 +956,24 @@ value: .scr
 Simple WanaCry detection and mitigation rule:
 
 **Detect**
-```json
-{
-    "op": "ends with",
-    "event": "NEW_PROCESS",
-    "path": "event/FILE_PATH",
-    "value": "@wanadecryptor@.exe",
-    "case sensitive": false
-}
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: wanadecryptor.exe
+case sensitive: false
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "report",
-        "name": "wanacry"
-    },
-    {
-        "action": "task",
-        "command": "history_dump"
-    },
-    {
-        "action": "task",
-        "command": [ "deny_tree", "<<routing/this>>" ]
-    }
-]
+```yaml
+- action: report
+  name: wanacry
+- action: task
+  command: history_dump
+- action: task
+  command: 
+    - deny_tree
+    - <<routing/this>>
 ```
 
 
@@ -997,34 +981,27 @@ Simple WanaCry detection and mitigation rule:
 Tag any sensor where the CEO logs in with "vip".
 
 **Detect**
-```json
-{
-    "op": "is",
-    "event": "USER_OBSERVED",
-    "path": "event/USER_NAME",
-    "value": "stevejobs",
-    "case sensitive": false
-}
+```yaml
+op: is
+event: USER_OBSERVED
+path: event/USER_NAME
+value: stevejobs
+case sensitive: false
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "add tag",
-        "tag": "vip"
-    }
-]
+```yaml
+- action: add tag
+  tag: vip
 ```
 
 ### Suspicious Windows Executable Names
-```json
-{
-    "op": "matches",
-    "path": "event/FILE_PATH",
-    "case sensitive": false,
-    "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
-}
+```yaml
+event: CODE_IDENTITY
+op: matches
+path: event/FILE_PATH
+case sensitive: false
+re: .*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe
 ```
 
 ### Disable an Event at the Source
