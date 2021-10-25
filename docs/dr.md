@@ -114,7 +114,7 @@ to match against all Detections that are re-sent through the engine as describe 
 Some parameters are available to all logical operations.
 
 * `"not": true`: will reverse the matching outcome of an operations.
-* `"case sensitive": false`: will make all string-based evaluations.ignore case.
+* `"case sensitive": false`: will make all string-based evaluations ignore case.
 
 #### Paths
 
