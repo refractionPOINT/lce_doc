@@ -905,8 +905,8 @@ Example:
 - action: service request
   name: dumper
   request:
-    - sid: <<routing/sid>>
-    - retention: 3
+    sid: <<routing/sid>>
+    retention: 3
 ```
 
 #### isolate network
