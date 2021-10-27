@@ -49,7 +49,7 @@ is_compression: "true"
 ### Google Cloud Storage
 Output events and detections to a GCS bucket.
 
-* `bucket`: the path to the AWS S3 bucket.
+* `bucket`: the path to the GCS bucket.
 * `secret_key`: the secret json key identifying a service account.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
