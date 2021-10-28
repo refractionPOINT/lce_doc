@@ -1,68 +1,79 @@
 # Detection and Response Rules
 
-Detection & Response rules are designed to allow you to push out a detection rule with a custom action in record time.
-Think of them like AWS Lambda or Google Cloud Functions. They can be added and removed with single operations
-and they become immediately available/running as they are set.
+## Introduction
 
-A D&R rule has two components:
+Detection & Response (D&R) rules are the primary method for detecting malicious behaviour and automating security operations within the LimaCharlie platform. The following is a quick introduction to the mechanics of how D&R rules work. We recommend that everybody new to the platform read this section. 
 
-* the detection part of the rule is a simple expression that describes what the rule should match on.
-* the response part of the rule describes the list of actions that should be taken when the rule matches.
+### Mechanics
 
-The REST interface expects those rules in their native JSON format (as described below), but UIs to generate this
-format are available if you are uncomfortable with the JSON.
+Endpoint telemetry is ingested and tested against D&R rules in-flight. Endpoint sensors are connected to the cloud in real-time over a semi-persistent TLS connection. Response actions are taken on the endpoint within 100ms of the triggering action or behaviour. Telemetry can be tested against thousands of rules without impacting performance. D&R rules are primarily used to detect and respond to malicious or suspicious activity on the endpoint but can also be used to automate security operations.
 
-For more sample rules and guidelines around rule writing, see our [public repository dedicated to this purpose](https://github.com/refractionPOINT/rules).
+D&R rules use a simple language to describe what behaviours to match on. Rules can be written in JSON or YAML. This documentation will be describing rules in YAML. The REST API works exclusively with JSON. YAML is the format expected when writing rules directly into the web application interface.
 
-The website version of this (on limacharlie.io) takes the rules as YAML to make them easier to visualize.
+A repository of sample detection rules can be found in this repository: [Sample Rule Set](https://github.com/refractionPOINT/rules)
 
-## Namespaces
-Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
-operations on rules use the `general` namespace.
+The full open source Sigma ruleset (which can be enabled on deployments at the click of a button) can be found here: [Sigma Rule Set](https://github.com/refractionPOINT/sigma)
 
-However, if you plan on having multiple groups of people accessing D&R rules and want to maintain some segmentation, then
-namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
-giving them access to the MSSP-maintained sets of rules.
+### The Basics
 
-Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
-on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
-parameter in the relevant queries.
+At the highest level, a D&R rule has two components.
 
-## Expiration
-It is possible to set an expiration time for D&R rules as well as False Positive rules. The expiration is set by providing
-a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based
-unix epoch timestamp, like `expire_on: 1588876878`.
-
-Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration
-can vary. The rule could effectively remain in operation for as long as 10 minutes past the expiration.
+* The detection part of the rule is a simple expression that describes what the rule should match on. 
+* The response part of the rule describes the list of actions that should be taken when the rule matches.
 
 ## Detection Component
-The Detection component describes what event(s) should produce a match, which the Response section will then action.
+
+The detection component of a rule can be simple or complex. Detections are most often used for detecting malicious behaviour on the endpoint but can also be used for detecting events used for security operations such as artifacts being ingested, new sensors coming online, cloned sensors detected and more.
+
+### Simplest Form of a Detection
+
+Every detection requires an event type and at least one operator. The simplest form of a rule can be demonstrated as follows with a rule that is apllied to the `edr` target and which will detect when a Windows sensor connects to the Internet.
+
+```yaml
+event: CONNECTED
+op: is windows
+```
+
+Detections are generally applied on a per-event basis. Events represent specific types of telemetry produced by actions on the endpoint or system information generated directly by LimaCharlie. A full list of the event types that can be monitored can be found [here](./events.md).
+
+The logical evaluation component of a detection is composed of nodes, where each node has an operator describing the logical evaluation. Most operators are simple, like `is`, `starts with`, etc. These simple nodes can be combined with boolean (true/false) logic using the `and` and `or` operators, which themselves reference a series of nodes. The `and` node matches if all the sub-nodes match, while the `or` node matches if any one of the sub-nodes matches.
+
+When evaluating an `or`, as soon as the first matching sub-node is found, the rest of the sub-nodes are skipped since they will have no impact on the final matching state of the `or`. Similarly, failure of a sub-node in an `and` node will immediately terminate its evaluation.
+
+A full list of the primary operators are `is`, `and`, `or`, `exists`, `contains`, `starts with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`. A detailed explanation of each operator type can be found [here](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMDE-detection-and-response-rules#operators).
+
 
 ### Targets
 
-Targets are types of event sources the rule should apply to. The D&R rules apply by default to the `edr` target.
-This means that if you omit the `target` element from the Detection component, the rule will assume you want it to apply
-to events coming from the LimaCharlie agents. Other targets are available however.
+To determine the types of events a rule should apply to we use the concept of targets. By default D&R rules apply to the `edr` target, or more simply telemetry generated by the EDR sensors. If you omit the target element from the detection component of any rule it will assume you want it to apply to events coming from the EDR sensors. A complete list of available targets is as follows:
+* `edr`: the default, telemetry events from LimaCharlie sensors.
+* `artifact`: applies to artifacts submitted through the REST API or through the artifact_get command of the agent.
+* `artifact_event`: applies to lifecycle events around artifacts, like a new artifact being ingested.
+* `deployment`: applies to high level events about the entire deployment, like new enrollments and cloned sensors detected.
 
-* `edr`: the default, [telemetry events](events.md#edr-events) from LC agents.
-* `artifact`: applies to artifacts submitted through the REST API or through the [artifact_get](sensor_commands.md#artifact_get) command of the agent.
-* `artifact_event`: applies to lifecycle around artifacts, like a new artifact being ingested.
-* `deployment`: applies to [high level events](events.md#deployment-events) about the entire deployment, like new enrollments and cloned sensors detected.
+An example of a simple detection for the `deployment` target that fires when a sensor is cloned on Windows would look like.
 
-While the `edr` and `deployment` targets support most of the APIs, stateful operators, and actions below, the `log` target only supports the following subset:
+```yaml
+target: deployment
+event: sensor_clone
+op: is windows
+```
+
+### Target Specific Considerations
+
+While the `edr` and `deployment` targets support most of the APIs, stateful operators, and actions below, the `artifact` target only supports the following subset:
 
 * All the basics: `is`, `and`, `or`, `exists`, `contains`, `starts with`, `ends with`, `is greater than`, `is lower than`, `matches`, `string distance`
 * Referring to add-ons / resources: `lookup`, `external`
 * Response actions: `report`
 * `artifact` target only: `artifact source`, `artifact type`
 
-In the case of the `log` target, `path` references apply to JSON parsed logs the same way as in `edr` D&R rules, but rules on pure text logs require using the
+In the case of the `artifact` target, `path` references apply to JSON parsed logs the same way as in `edr` D&R rules, but rules on pure text logs require using the
 path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
-```
+```yaml
 artifact type: txt
 case sensitive: false
 op: matches
@@ -76,7 +87,7 @@ This will match all artifacts with file paths that start with `/var/log/auth.log
 
 For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
-#### Windows Event Logs
+### Windows Event Logs
 When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest
 the same Windows Event Log file that contains some records which have already been processed by the rules, the LimaCharlie platform will keep track of the
 processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
@@ -85,6 +96,14 @@ This means you can safely set the [Artifact Collection Service](external_logs.md
 without risking producing the same alert multiple times.
 
 For most Windows Event Logs available, see `c:\windows\system32\winevt\logs\`.
+
+## Expiration
+It is possible to set an expiration time for D&R rules as well as False Positive rules. The expiration is set by providing
+a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based
+unix epoch timestamp, like `expire_on: 1588876878`.
+
+Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration
+can vary. The rule could effectively remain in operation for as long as 10 minutes past the expiration.
 
 ### Basic Structure
 
@@ -95,17 +114,26 @@ operations to perform.
 Here is a basic example of a rule that says:
 When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
-```
-event: STARTING_UP
+```yaml
 op: and
+event: STARTING_UP
 rules:
   - op: is linux
   - op: is tagged
     tag: test_tag
 ```
 
-The `"event": "SOME_EVENT_NAME"` pattern can be used in all logical nodes to filter the type of event being
-evaluated. You can also use an `"events": [ "EVENT_ONE", "EVENT_THREE"]` to filter in certain types of events. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
+The `event: SOME_EVENT_NAME` pattern can be used in all logical nodes to filter the type of event being
+evaluated. You can also use an 
+
+```yaml
+events: 
+  - EVENT_ONE 
+  - EVENT_TWO
+  - EVENT_THREE
+``` 
+
+to filter in certain types of events. When a detection is generated (through the `report` action), it gets fed back into D&R rules with an `event_type`
 of `_DETECTIONNAME`. This can be used to compose higher order detections. Finally, a special value can be used in the
 `event`/`events` field: `_*`. By specifying this `_*` wildcard as the only value of `event:`, you ask the D&R rule engine
 to match against all Detections that are re-sent through the engine as describe previously. This effectively allows you to relax the rule of having at least one `event:` type literal in your rule for Detections. Example: `event: _*` will match all detections.
@@ -113,12 +141,12 @@ to match against all Detections that are re-sent through the engine as describe 
 ### Logical Operations
 Some parameters are available to all logical operations.
 
-* `"not": true`: will reverse the matching outcome of an operations.
-* `"case sensitive": false`: will make all string-based evaluations ignore case.
+* `not: true`: will reverse the matching outcome of an operations.
+* `case sensitive: false`: will make all string-based evaluations.ignore case.
 
 #### Paths
 
-A recurring parameter also found in many operations is the `"path": <>` parameter. It represents a path within the event
+A recurring parameter also found in many operations is the `path: <>` parameter. It represents a path within the event
 being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
 `*` wildcard to represent 0 or more directories, and the `?` wildcard which represents exactly one directory.
 
@@ -128,9 +156,9 @@ the routing instead.
 #### Lookback
 
 Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing
-a value to a literal like `"system32"`, can also support a value of `"<<event/PARENT/FILE_PATH>>"`. When that value is
-surrounded by `"<<  >>"`, it will be interpreted as a path within the event and the
-value at that path will replace the `"<<...>>"` value. This allows you to "look back" at the event and use values
+a value to a literal like `system32`, can also support a value of `<<event/PARENT/FILE_PATH>>`. When that value is
+surrounded by `<<  >>`, it will be interpreted as a path within the event and the
+value at that path will replace the `<<...>>` value. This allows you to "look back" at the event and use values
 within for your rule.
 
 For example, this sample JSON event:
@@ -181,15 +209,14 @@ First, add new external drives to a variable when they are connected:
 
 The detection component:
 
-
-```
+```yaml
 event: VOLUME_MOUNT
 op: is windows
 ```
 
 The respond component:
 
-```
+```yaml
 - action: add var
   name: external-volumes
   value: <<event/VOLUME_PATH>>
@@ -265,8 +292,6 @@ parameter.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
-<!-- what event type is this? -->
-
 Example rule:
 ```yaml
 event: NEW_PROCESS
@@ -309,7 +334,7 @@ Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 Example:
 ```yaml
-event: NEW_PROCESS
+event: FILE_TYPE_ACCESSED
 op: matches
 path: event/FILE_PATH
 re: .*\\\\system32\\\\.*\\.scr
@@ -317,9 +342,7 @@ case sensitive: false
 ```
 
 ##### string distance
-The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between
-two strings. In other words it generates the minimum number of character changes required for one string
-to become equal to another.
+The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings. In other words it generates the minimum number of character changes required for one string to become equal to another.
 
 For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r` instead of `e`) is 1.
 
@@ -563,13 +586,13 @@ path: event/FILE_PATH
 value: outlook.exe
 case sensitive: false
 with child:
-    op: ends with
-    event: NEW_DOCUMENT
-    path: event/FILE_PATH
-    value: .ps1
-    case sensitive: false
-    count: 5
-    within: 60
+  op: ends with
+  event: NEW_DOCUMENT
+  path: event/FILE_PATH
+  value: .ps1
+  case sensitive: false
+  count: 5
+  within: 60
 ```
 
 ###### Sensor Level
@@ -734,30 +757,6 @@ metadata_rules:
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
-##### external
-Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
-Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
-type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
-detection logic using the `and` and `or` operations.
-
-Example:
-```yaml
-op: external
-resource: lcr://detection/suspicious-windows-exec-location
-```
-
-
-
-Complex example extending a resource rule:
-```yaml
-op: and
-rules:
-  - op: is tagged
-    tag: finance-dept
-  - op: external
-    resource: lcr://detection/suspicious-windows-exec-location
-```
-
 ##### yara
 Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
@@ -825,12 +824,10 @@ under evaluation is from. An optional `investigation` parameter can be given, it
 identifier with the task and events from the sensor that relate to the task.
 
 Example:
-```json
-{
-    "action": "task",
-    "command": "history_dump",
-    "investigation": "susp-process-inv"
-}
+```yaml
+- action: task
+  command: history_dump
+  investigation: susp-process-inv
 ```
 
 #### report
@@ -858,9 +855,9 @@ This can be used to include information for internal use like reference numbers 
 
 Example:
 ```yaml
-action: report
-name: my-detection
-priority: 3
+- action: report
+  name: my-detection
+  priority: 3
 ```
 
 #### add tag, remove tag
@@ -868,12 +865,10 @@ These two actions associate and disassociate, respectively, the tag found in the
 can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
-```json
-{
-    "action": "add tag",
-    "tag": "vip",
-    "ttl": 30
-}
+```yaml
+- action: add tag
+  tag: vip
+  ttl: 30
 ```
 
 Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply
@@ -884,10 +879,10 @@ This can be used as a main mechanism to synchronize and operate changes across a
 For example, this would apply the `full_pcap` to all sensors on the device for 5 minutes:
 
 ```yaml
-action: add tag
-tag: full_pcap
-ttl: 300
-entire_device: true
+- action: add tag
+  tag: full_pcap
+  ttl: 300
+  entire_device: true
 ```
 
 #### add var, del var
@@ -895,9 +890,9 @@ Add or remove a value from the variables associated with a sensor.
 
 Example:
 ```yaml
-action: add var
-name: my-variable
-value: <<event/VOLUME_PATH>>
+- action: add var
+  name: my-variable
+  value: <<event/VOLUME_PATH>>
 ```
 
 #### service request
@@ -910,11 +905,11 @@ All values within the `request` can contain [Lookback](#lookback) values (`<< >>
 
 Example:
 ```yaml
-action: service request
-name: dumper
-request:
-  sid: <<routing/sid>>
-  retention: 3
+- action: service request
+  name: dumper
+  request:
+    - sid: <<routing/sid>>
+    - retention: 3
 ```
 
 #### isolate network
@@ -922,21 +917,21 @@ Isolates the sensor from the network in a persistent fashion (if the sensor/host
 Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
 
 ```yaml
-action: isolate network
+- action: isolate network
 ```
 
 #### rejoin network
 Removes the isolation status of a sensor that had it set using `isolate network`.
 
 ```yaml
-action: rejoin network
+- action: rejoin network
 ```
 
 #### undelete sensor
 Un-deletes a sensor that was previously deleted. Used in conjunction with the [sensor_deleted](events.md#sensor_deleted) event.
 
 ```yaml
-action: undelete sensor
+- action: undelete sensor
 ```
 
 ## Putting it Together
@@ -964,32 +959,24 @@ value: .scr
 Simple WanaCry detection and mitigation rule:
 
 **Detect**
-```json
-{
-    "op": "ends with",
-    "event": "NEW_PROCESS",
-    "path": "event/FILE_PATH",
-    "value": "@wanadecryptor@.exe",
-    "case sensitive": false
-}
+```yaml
+op: ends with
+event: NEW_PROCESS
+path: event/FILE_PATH
+value: wanadecryptor.exe
+case sensitive: false
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "report",
-        "name": "wanacry"
-    },
-    {
-        "action": "task",
-        "command": "history_dump"
-    },
-    {
-        "action": "task",
-        "command": [ "deny_tree", "<<routing/this>>" ]
-    }
-]
+```yaml
+- action: report
+  name: wanacry
+- action: task
+  command: history_dump
+- action: task
+  command: 
+    - deny_tree
+    - <<routing/this>>
 ```
 
 
@@ -997,34 +984,27 @@ Simple WanaCry detection and mitigation rule:
 Tag any sensor where the CEO logs in with "vip".
 
 **Detect**
-```json
-{
-    "op": "is",
-    "event": "USER_OBSERVED",
-    "path": "event/USER_NAME",
-    "value": "stevejobs",
-    "case sensitive": false
-}
+```yaml
+op: is
+event: USER_OBSERVED
+path: event/USER_NAME
+value: stevejobs
+case sensitive: false
 ```
 
 **Respond**
-```json
-[
-    {
-        "action": "add tag",
-        "tag": "vip"
-    }
-]
+```yaml
+- action: add tag
+  tag: vip
 ```
 
 ### Suspicious Windows Executable Names
-```json
-{
-    "op": "matches",
-    "path": "event/FILE_PATH",
-    "case sensitive": false,
-    "re": ".*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe"
-}
+```yaml
+event: CODE_IDENTITY
+op: matches
+path: event/FILE_PATH
+case sensitive: false
+re: .*((\\.txt)|(\\.doc.?)|(\\.ppt.?)|(\\.xls.?)|(\\.zip)|(\\.rar)|(\\.rtf)|(\\.jpg)|(\\.gif)|(\\.pdf)|(\\.wmi)|(\\.avi)|( {5}.*))\\.exe
 ```
 
 ### Disable an Event at the Source
@@ -1151,3 +1131,15 @@ op: is
 path: routing/hostname
 value: web-server-2
 ```
+
+## Namespaces
+Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
+operations on rules use the `general` namespace.
+
+However, if you plan on having multiple groups of people accessing D&R rules and want to maintain some segmentation, then
+namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
+giving them access to the MSSP-maintained sets of rules.
+
+Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
+on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
+parameter in the relevant queries.
