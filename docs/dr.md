@@ -757,6 +757,28 @@ metadata_rules:
 
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
+##### external
+Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
+Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
+type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
+detection logic using the `and` and `or` operations.
+
+Example:
+```yaml
+op: external
+resource: lcr://detection/suspicious-windows-exec-location
+```
+
+Complex example extending a resource rule:
+```yaml
+op: and
+rules:
+  - op: is tagged
+    tag: finance-dept
+  - op: external
+    resource: lcr://detection/suspicious-windows-exec-location
+```
+
 ##### yara
 Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
@@ -1143,3 +1165,4 @@ giving them access to the MSSP-maintained sets of rules.
 Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
 on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
 parameter in the relevant queries.
+
