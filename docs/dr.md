@@ -298,8 +298,7 @@ They both use the `path` and `value` parameters. They also both support the `len
 the value at the specified path, it compares the length of the value at that path.
 
 ##### matches
-The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter. Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables
-you to apply the regexp to log files.
+The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter. Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables you to apply the regexp to log files.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -359,9 +358,7 @@ All of these operators take no additional arguments, they simply match if the re
 Determines if the tag supplied in the `tag` parameter is already associated with the sensor that the event under evaluation is from.
 
 ##### lookup
-Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and
-the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`.
-In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`. In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -375,13 +372,9 @@ case sensitive: false
 ```
 
 ##### scope
-In some cases, you may want to limit the scope of the matching and the `path` you use
-to be within a specific part of the event. The `scope` operator allows you to do just
-that, reset the root of the `event/` in paths to be a sub-path of the event.
+In some cases, you may want to limit the scope of the matching and the `path` you use to be within a specific part of the event. The `scope` operator allows you to do just that, reset the root of the `event/` in paths to be a sub-path of the event.
 
-This comes in as very useful for example when you want to test multiple values of a
-connection in a `NETWORK_CONNECTIONS` event but always on a per-connection. If you
-were to do a rule like:
+This comes in as very useful for example when you want to test multiple values of a connection in a `NETWORK_CONNECTIONS` event but always on a per-connection. If you  were to do a rule like:
 
 ```yaml
 event: NETWORK_CONNECTIONS
@@ -395,13 +388,9 @@ rules:
     value: 445
 ```
 
-you would hit on events where _any_ connection has a source IP prefix of `10.` and
-_any_ connection has a destination port of `445`. Obviously this is not what we had
-in mind, we wanted to know if a _single_ connection has those two characteristics.
+you would hit on events where _any_ connection has a source IP prefix of `10.` and _any_ connection has a destination port of `445`. Obviously this is not what we had in mind, we wanted to know if a _single_ connection has those two characteristics.
 
-The solution is to use the `scope` operator. The `path` in the operator will become
-the new `event/` root path in all operators found under the `rule`. So the above
-would become
+The solution is to use the `scope` operator. The `path` in the operator will become the new `event/` root path in all operators found under the `rule`. So the above would become
 
 Example:
 ```yaml
@@ -574,31 +563,21 @@ Concretely this means that if your rule is tracking, for example, `excel.exe --c
 
 ###### Reporting & Actions
 
-The `report` action in stateful rules has a subtle difference to other actions taken in those rules. The report
-(generating a new Detection) will include the _first_ telemetry event that started the stateful detection as the
-`detect` component of the detection.
+The `report` action in stateful rules has a subtle difference to other actions taken in those rules. The report (generating a new Detection) will include the _first_ telemetry event that started the stateful detection as the `detect` component of the detection.
 
 For example, with `excel.exe --child of--> cmd.exe`, the detection will include the `excel.exe` as the `detect`.
 
-For other actions (responses in the rule) however, the event under analysis is the last one being processed. So
-if the engine is analyzing the `cmd.exe` NEW_PROCESS, issuing a `report` will report the `excel.exe` in the detection
-but issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
+For other actions (responses in the rule) however, the event under analysis is the last one being processed. So if the engine is analyzing the `cmd.exe` NEW_PROCESS, issuing a `report` will report the `excel.exe` in the detection but issuing a `task` that uses the lookback `<<routing/this>>` will reference the `this` atom of the `cmd.exe`.
 
-So if you wanted to kill the `excel.exe` in response to the above stateful rule matching, you would have to issue a
-`deny_tree` to the atom `<<routing/parent>>`.
+So if you wanted to kill the `excel.exe` in response to the above stateful rule matching, you would have to issue a `deny_tree` to the atom `<<routing/parent>>`.
 
 ##### VirusTotal
-The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the
-organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations
-configurations.
+The lookup can also use certain APIs in their lookup, such as VirusTotal. Note that for the VT API to be accessible, the organization needs to be subscribed to the VT API Add-On, and a valid VT API Key needs to be set in the integrations configurations.
 
-As shown in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain
-further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary
-of AntiVirus vendor reports (here we test for more than 1 vendor reporting that the hash is bad), while in the case of a custom
-lookup resource it would be whatever is set as the item's metadata.
+As shown in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of VT this is a dictionary
+of AntiVirus vendor reports (here we test for more than 1 vendor reporting that the hash is bad), while in the case of a custom lookup resource it would be whatever is set as the item's metadata.
 
-To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal
-API key in the Integrations section of the limacharlie.io web interface.
+To activate VirusTotal usage, you must subscibe to the VirusTotal API in the Add-On section. Then you must set your VirusTotal API key in the Integrations section of the limacharlie.io web interface.
 
 VirusTotal results are cached locally for a limited period of time which reduces the usage of your API key and saves you money.
 
@@ -698,10 +677,7 @@ metadata_rules:
 The geolocation data comes from GeoLite2 data created by [MaxMind](http://www.maxmind.com).
 
 ##### external
-Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter.
-Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of
-type `detection`. The external detection replaces the current detection rule, which means it can be combined with other
-detection logic using the `and` and `or` operations.
+Use an external detection rule loaded from a LimaCharlie Resource. The resource is specified via the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`. The `external` operation only supports Resources of type `detection`. The external detection replaces the current detection rule, which means it can be combined with other detection logic using the `and` and `or` operations.
 
 Example:
 ```yaml
@@ -722,9 +698,7 @@ rules:
 ##### yara
 Only accessible for the `target: artifact`. Scans the relevant original log file in the cloud using the Yara signature specified.
 
-The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<resource_type>/<resource_name>`. Currently
-the main source of Yara signatures are the [Yara Sources](yara.md#sources) specified in the [Yara Service](yara.md). If your Yara Source is
-named `my-yara-source`, the LC Resource would be: `lcr://service/yara/my-yara-source`.
+The Yara signatures are specified as a LimaCharlie Resource of the form `lcr://<resource_type>/<resource_name>`. Currently the main source of Yara signatures are the [Yara Sources](yara.md#sources) specified in the [Yara Service](yara.md). If your Yara Source is named `my-yara-source`, the LC Resource would be: `lcr://service/yara/my-yara-source`.
 
 The `yara` operator scans the log file at most, once. This means it can be used both as a simple "scan" detection like this:
 
@@ -756,14 +730,12 @@ Transforms are transformations applied to the value being evaluated in an event,
 #### file name
 Sample: `file name: true`
 
-The `file name` transform takes a file path and replaces it with the file name component of the path.
-This means that the file path `c:\windows\system32\wininet.dll` will become `wininet.dll`.
+The `file name` transform takes a file path and replaces it with the file name component of the path. This means that the file path `c:\windows\system32\wininet.dll` will become `wininet.dll`.
 
 #### sub domain
 Sample: `sub domain: "-2:"`
 
-The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in basic slice notation.
-This notation is of the form `startIndex:endIndex` where the index is 0-based and indicates which parts of the domain to keep.
+The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in basic slice notation. This notation is of the form `startIndex:endIndex` where the index is 0-based and indicates which parts of the domain to keep.
 Examples:
 
   * `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
@@ -772,8 +744,7 @@ Examples:
   * `:` means to test the operator to every component individually.
 
 ## Response Component
-The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take
-when the Detection component matches.
+The response component is simpler as it does not have the boolean logic concept. It is simply a list of actions to take when the Detection component matches.
 
 The action type is specified in the `action` parameter.
 
@@ -781,9 +752,7 @@ The action type is specified in the `action` parameter.
 Possible actions are:
 
 #### task
-This action sends the task (as described [here](sensor_commands.md)) in the `command` parameter to the sensor that the event
-under evaluation is from. An optional `investigation` parameter can be given, it associates the given
-identifier with the task and events from the sensor that relate to the task.
+This action sends the task (as described [here](sensor_commands.md)) in the `command` parameter to the sensor that the event under evaluation is from. An optional `investigation` parameter can be given, it associates the given identifier with the task and events from the sensor that relate to the task.
 
 Example:
 ```yaml
@@ -793,27 +762,15 @@ Example:
 ```
 
 #### report
-Reports the match as a detection. This means that the content of this event will be bubbled up to the Detection Output
-stream. Think of it as an alert. It takes a `name` parameter that will be used as a detection category and an optional `publish`
-parameter that defaults to `true`. If set to `false`, the report won't be published to the Output stream.
+Reports the match as a detection. This means that the content of this event will be bubbled up to the Detection Output stream. Think of it as an alert. It takes a `name` parameter that will be used as a detection category and an optional `publish` parameter that defaults to `true`. If set to `false`, the report won't be published to the Output stream.
 
-This last distinction about the `publish` parameter is important because the detections created by the `report` action
-get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those.
-Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and
-of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
+This last distinction about the `publish` parameter is important because the detections created by the `report` action get fed back into the D&R rules so that more complex rules may handle more complex evaluations of those. Setting `publish` to `false` means that this detection is only really used as an intermediary and should not be reported in and of itself. When fed back, the `event_type` is set to `_DETECTIONNAME`.
 
-A "non-published" rule stays within the D&R system only (as stated above), but sometimes we also want Services
-to get a notification of the detection without having the detection recorded to Outputs
-or retention. For example, a Service may want to listen for the `CONNECTED` event to do
-something and it makes no sense to record this detection after Services have been notified. To
-accomplish this, you can simply prefix your detection `name` with `__` (double underscore).
+A "non-published" rule stays within the D&R system only (as stated above), but sometimes we also want Services to get a notification of the detection without having the detection recorded to Outputs or retention. For example, a Service may want to listen for the `CONNECTED` event to do something and it makes no sense to record this detection after Services have been notified. To accomplish this, you can simply prefix your detection `name` with `__` (double underscore).
 
-The `priority` parameter is optional. If set, it should be an integer. This integer
-will get added to the root of the detection report.
+The `priority` parameter is optional. If set, it should be an integer. This integer will get added to the root of the detection report.
 
-The `metadata` parameter is optional. It can be set to any data which will be included
-in the detection generated in a field named `detect_mtd` at the root of the detection.
-This can be used to include information for internal use like reference numbers or URLs.
+The `metadata` parameter is optional. It can be set to any data which will be included in the detection generated in a field named `detect_mtd` at the root of the detection. This can be used to include information for internal use like reference numbers or URLs.
 
 Example:
 ```yaml
@@ -823,8 +780,7 @@ Example:
 ```
 
 #### add tag, remove tag
-These two actions associate and disassociate, respectively, the tag found in the `tag` parameter with the sensor. The "add tag" operation
-can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
+These two actions associate and disassociate, respectively, the tag found in the `tag` parameter with the sensor. The "add tag" operation can also optionally take a "ttl" parameter that is a number of seconds the tag should remain applied to the agent.
 
 Example:
 ```yaml
@@ -833,8 +789,7 @@ Example:
   ttl: 30
 ```
 
-Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply
-to the entire [Device ID](agentid.md#device-ids), meaning that every sensor that shares this Device ID will have the tag applied (and relevant TTL). If the sensor where this response is triggered does not belong to a Device ID, then the sensor will be tagged.
+Optionally, you may set a `entire_device` parameter to `true` in the `add tag`. When enabled, the new tag will apply to the entire [Device ID](agentid.md#device-ids), meaning that every sensor that shares this Device ID will have the tag applied (and relevant TTL). If the sensor where this response is triggered does not belong to a Device ID, then the sensor will be tagged.
 
 This can be used as a main mechanism to synchronize and operate changes across an entire device. A D&R rule could detect a behavior and then tag the whole device in order to signal to other sensors to act differently, like lc-net to start doing full pcap.
 
@@ -858,10 +813,7 @@ Example:
 ```
 
 #### service request
-Perform an asynchronous request to a service the organization is subscribed to. A service
-request contains two main component: the `name` of the service, like `dumper`, and the arbitrary
-content of the request to this service in the `request` value. The request content
-will vary depending on the service (see the relevant service's documentation).
+Perform an asynchronous request to a service the organization is subscribed to. A service request contains two main component: the `name` of the service, like `dumper`, and the arbitrary content of the request to this service in the `request` value. The request content will vary depending on the service (see the relevant service's documentation).
 
 All values within the `request` can contain [Lookback](#lookback) values (`<< >>`).
 
@@ -875,8 +827,7 @@ Example:
 ```
 
 #### isolate network
-Isolates the sensor from the network in a persistent fashion (if the sensor/host reboots, it will remain isolated).
-Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
+Isolates the sensor from the network in a persistent fashion (if the sensor/host reboots, it will remain isolated). Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
 
 ```yaml
 - action: isolate network
@@ -898,8 +849,7 @@ Un-deletes a sensor that was previously deleted. Used in conjunction with the [s
 
 ## Putting it Together
 
-Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration
-is used but is in YAML format instead. For example:
+Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration is used but is in YAML format instead. For example:
 **Detect:**
 ```yaml
 op: ends with
@@ -1017,9 +967,7 @@ value: /corp/private/info
 ```
 
 ### De-duplicate Cloned Sensors
-Sometimes users install a sensor on a VM image by mistake. This means every time a new instance
-of the image gets started the same sensor ID (SID) is used for multiple boxes with different names.
-When detected, LimaCharlie produces a [sensor_clone](events.md#sensor_clone) event.
+Sometimes users install a sensor on a VM image by mistake. This means every time a new instance of the image gets started the same sensor ID (SID) is used for multiple boxes with different names. When detected, LimaCharlie produces a [sensor_clone](events.md#sensor_clone) event.
 
 We can use these events to deduplicate. This example targets Windows clones.
 
@@ -1044,21 +992,15 @@ op: is windows
 
 # False Positive Rules
 
-The False Positive (FP) rules allow you to filter out detections (as generated by the `report` action).
-These rules apply globally across all `namespaces` and sources.
+The False Positive (FP) rules allow you to filter out detections (as generated by the `report` action). These rules apply globally across all `namespaces` and sources.
 
 ## Use Cases
 
-The typical use case for FP rules is to add exceptions from some detections that are cross-cutting (for
-example ignore all detections from a specific host), organization-specific exceptions (like ignoring
-alerts relating to a custom piece of software used in an organization), or suppressing errors from
-managed D&R rules you don't have direct access to.
+The typical use case for FP rules is to add exceptions from some detections that are cross-cutting (for example ignore all detections from a specific host), organization-specific exceptions (like ignoring alerts relating to a custom piece of software used in an organization), or suppressing errors from managed D&R rules you don't have direct access to.
 
 ## Structure
 
-An FP rule is structured with the same format at the `detection` component of a D&R rule. The main
-difference is that the rule applies to the content of a detection, as can be seen in the Detections
-section of the web app.
+An FP rule is structured with the same format at the `detection` component of a D&R rule. The main difference is that the rule applies to the content of a detection, as can be seen in the Detections section of the web app.
 
 Most stateless operators from the D&R rules are available in FP rules.
 
@@ -1095,14 +1037,9 @@ value: web-server-2
 ```
 
 ## Namespaces
-Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default
-operations on rules use the `general` namespace.
+Detection and Response rules support a few namespaces. Initially you do not have to worry about using them since by default operations on rules use the `general` namespace.
 
-However, if you plan on having multiple groups of people accessing D&R rules and want to maintain some segmentation, then
-namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without
-giving them access to the MSSP-maintained sets of rules.
+However, if you plan on having multiple groups of people accessing D&R rules and want to maintain some segmentation, then namespaces are for you. An example of this is an MSSP wanting to allow their customers to create their own rules without giving them access to the MSSP-maintained sets of rules.
 
-Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating
-on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace`
-parameter in the relevant queries.
+Beyond the `general` namespace, the main other namespace is called `managed` (as in MSSP-managed). Currently, operating on namespaces other than `general` can only be accomplished using the [REST API](api_keys.md) by providing the `namespace` parameter in the relevant queries.
 
