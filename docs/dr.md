@@ -87,31 +87,22 @@ This will match all artifacts with file paths that start with `/var/log/auth.log
 For examples of D&R rules applying to artifacts, you can look at the [Sigma rules generated for the Sigma Service](https://github.com/refractionPOINT/sigma/tree/lc-rules/lc-rules/windows_builtin) which uses the Windows Event Logs.
 
 ### Windows Event Logs
-When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest
-the same Windows Event Log file that contains some records which have already been processed by the rules, the LimaCharlie platform will keep track of the
-processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
+When running D&R rules against Windows Event Logs (`target: artifact` and `artifact type: wel`), although the [Artifact Collection Service](external_logs.md) may ingest the same Windows Event Log file that contains some records which have already been processed by the rules, the LimaCharlie platform will keep track of the processed `EventRecordID` and therefore will NOT run the same D&R rule over the same record multiple times.
 
-This means you can safely set the [Artifact Collection Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them
-without risking producing the same alert multiple times.
+This means you can safely set the [Artifact Collection Service](external_logs.md) to collect various Windows Event Logs from your hosts and run D&R rules over them without risking producing the same alert multiple times.
 
 For most Windows Event Logs available, see `c:\windows\system32\winevt\logs\`.
 
 ## Expiration
-It is possible to set an expiration time for D&R rules as well as False Positive rules. The expiration is set by providing
-a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based
-unix epoch timestamp, like `expire_on: 1588876878`.
+It is possible to set an expiration time for D&R rules as well as False Positive rules. The expiration is set by providing a `expire_on` paramater when creating/setting the D&R or FP rule. The value of the parameter should be a second-based unix epoch timestamp, like `expire_on: 1588876878`.
 
-Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration
-can vary. The rule could effectively remain in operation for as long as 10 minutes past the expiration.
+Once that timestamp has been reached, the rule will be automatically deleted. Note that the exact precision of the expiration can vary. The rule could effectively remain in operation for as long as 10 minutes past the expiration.
 
 ### Basic Structure
 
-Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done
-by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical
-operations to perform.
+Each logical operation in this component is a dictionary with an `op` field. Complex logical evaluation is done by using two special `op` values, `and` and `or`. These will take a `rules` parameter that is a list of other logical operations to perform.
 
-Here is a basic example of a rule that says:
-When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
+Here is a basic example of a rule that says: When we receive a `STARTING_UP` event from a linux sensor, and this sensor has the tag `test_tag`, match.
 
 ```yaml
 op: and
@@ -142,20 +133,14 @@ Some parameters are available to all logical operations.
 
 #### Paths
 
-A recurring parameter also found in many operations is the `path: <>` parameter. It represents a path within the event
-being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the
-`*` wildcard to represent 0 or more directories, and the `?` wildcard which represents exactly one directory.
+A recurring parameter also found in many operations is the `path: <>` parameter. It represents a path within the event being evaluated that we want the value of. Its structure is very close to a directory structure. It also supports the `*` wildcard to represent 0 or more directories, and the `?` wildcard which represents exactly one directory.
 
-The root of the path should be `event` or `routing` depending on whether you want to get a value from the event itself or
-the routing instead.
+The root of the path should be `event` or `routing` depending on whether you want to get a value from the event itself or the routing instead.
 
 #### Lookback
 
-Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing
-a value to a literal like `system32`, can also support a value of `<<event/PARENT/FILE_PATH>>`. When that value is
-surrounded by `<<  >>`, it will be interpreted as a path within the event and the
-value at that path will replace the `<<...>>` value. This allows you to "look back" at the event and use values
-within for your rule.
+Note that many comparison values support a special "lookback" format. That is, an operation that supports comparing a value to a literal like `system32`, can also support a value of `<<event/PARENT/FILE_PATH>>`. When that value is
+surrounded by `<<  >>`, it will be interpreted as a path within the event and the value at that path will replace the `<<...>>` value. This allows you to "look back" at the event and use values within for your rule.
 
 For example, this sample JSON event:
 ```json
@@ -187,17 +172,13 @@ The following paths with their result element:
 
 #### Variables
 
-It is possible to store some pieces of state on a per-sensor basis for the lifetime of a sensor (single boot).
-This state is called "variables". Variables have a name and a set of values associated with them. Values can
-be associated with a variable name at run-time using the `add var` (and `del var`) response.
+It is possible to store some pieces of state on a per-sensor basis for the lifetime of a sensor (single boot). This state is called "variables". Variables have a name and a set of values associated with them. Values can be associated with a variable name at run-time using the `add var` (and `del var`) response.
 
-The `add var` action supports an optional `ttl` value which is the number of seconds the value should be
-set for, like `ttl: 3600`.
+The `add var` action supports an optional `ttl` value which is the number of seconds the value should be set for, like `ttl: 3600`.
 
 Other rules may then use the values in a variable as part of the detection component.
 
-Like the "lookback" feature, variables can be used in the `is`, `contains`, `starts with` and `ends with` operators
-by surrounding the variable name with `[[` and `]]`, like `[[my-var]]`.
+Like the "lookback" feature, variables can be used in the `is`, `contains`, `starts with` and `ends with` operators by surrounding the variable name with `[[` and `]]`, like `[[my-var]]`.
 
 For example, these rules looking for unsigned execution from external drives (like USB).
 
@@ -269,9 +250,7 @@ times:
 #### Operators
 
 ##### and, or
-The standard logical boolean operations to combine other logical operations.
-Takes a single `rules:` parameter that contains a list of other operators
-to "AND" or "OR" together.
+The standard logical boolean operations to combine other logical operations. Takes a single `rules:` parameter that contains a list of other operators to "AND" or "OR" together.
 
 Example:
 ```yaml
@@ -283,8 +262,7 @@ rules:
 ```
 
 ##### is
-Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>`
-parameter.
+Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>` parameter.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -307,8 +285,7 @@ path: event/PARENT
 ```
 
 ##### contains, ends with, starts with
-The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix
-match.
+The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix match.
 
 They all use the `path` and `value` parameters.
 
@@ -317,13 +294,11 @@ Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 ##### is greater than, is lower than
 Check to see if a value is greater or lower (numerically) than a value in the event.
 
-They both use the `path` and `value` parameters.
-They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
+They both use the `path` and `value` parameters. They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
 the value at the specified path, it compares the length of the value at that path.
 
 ##### matches
-The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter.
-Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables
+The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter. Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables
 you to apply the regexp to log files.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
@@ -344,14 +319,9 @@ For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r`
 
 This can be used to find variations of file names or domain names that could be used for phishing, for example.
 
-Suppose your company is `onephoton.com`. Looking for the Levenshtein Distance between all `DOMAIN_NAME` in
-`DNS_REQUEST` events, compared to `onephoton.com` it could detect an attacker using `onephot0n.com` in a phishing
-email domain.
+Suppose your company is `onephoton.com`. Looking for the Levenshtein Distance between all `DOMAIN_NAME` in `DNS_REQUEST` events, compared to `onephoton.com` it could detect an attacker using `onephot0n.com` in a phishing email domain.
 
-The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the
-maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings
-that represent the value(s) to compare to. Note that although `string distance` supports the `value` to be
-a list, most other operators do not.
+The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings that represent the value(s) to compare to. Note that although `string distance` supports the `value` to be a list, most other operators do not.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -367,7 +337,8 @@ max: 2
 ```
 This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
 
-and using the [file name](#file-name) transform to apply to a file name in a path:
+Using the [file name](#file-name) transform to apply to a file name in a path:
+
 ```yaml
 event: NEW_PROCESS
 op: string distance
@@ -382,12 +353,10 @@ max: 2
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
 ##### is windows, is linux, is mac, is chrome, is text, is json, is gcp, is carbon_black, is 32 bit, is 64 bit, is arm
-All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is
-correct.
+All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is correct.
 
 ##### is tagged
-Determines if the tag supplied in the `tag` parameter is already associated with the sensor that the event under evaluation
-is from.
+Determines if the tag supplied in the `tag` parameter is already associated with the sensor that the event under evaluation is from.
 
 ##### lookup
 Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and
@@ -454,17 +423,11 @@ rule:
 
 Generally the D&R rules operate in a stateless fashion, meaning a rule operates on one event at a time, and either matches or doesn't.
 
-To be able to perform D&R rules across events to detect more complex behaviors, you can use the `with child` and `with descendant`
-parameters. Note that those parameters can ONLY be specified on a rule operator specifying the `event: NEW_PROCESS` since they only
-apply to the relationship between an event and a process.
+To be able to perform D&R rules across events to detect more complex behaviors, you can use the `with child` and `with descendant` parameters. Note that those parameters can ONLY be specified on a rule operator specifying the `event: NEW_PROCESS` since they only apply to the relationship between an event and a process.
 
-Both the `with child` and `with descendant` parameters are effectively the same except for the "depth" of the relationship they cover.
-The `child` specifies that the target state (described below) must apply to the direct children of the matching process. The `descendant`
-specifies that the target state must apply globally to any descendants (children of children) of the matching process.
+Both the `with child` and `with descendant` parameters are effectively the same except for the "depth" of the relationship they cover. The `child` specifies that the target state (described below) must apply to the direct children of the matching process. The `descendant` specifies that the target state must apply globally to any descendants (children of children) of the matching process.
 
-The value of a `with child` (or descendant) is simply another (stateless) rule operator. The logic defined in this rule operator describes
-the set of conditions that must match. Not a single event, but the collection of events that are children (or descendants) of the matching
-process.
+The value of a `with child` (or descendant) is simply another (stateless) rule operator. The logic defined in this rule operator describes the set of conditions that must match. Not a single event, but the collection of events that are children (or descendants) of the matching process.
 
 Here is an example of a stateful detection looking for a "cmd.exe" process that has a child "calc.exe":
 
@@ -533,16 +496,11 @@ outlook.exe --+--> chrome.exe
 
 On top of containing stateless rules, an operator underneath a `with child` (or descendant) can also contain another operator with another `with child` (or descendant).
 
-Another parameter comes into play if you want to define a set of operators underneath a `with child` to be "stateless", meaning where you want all the operators to apply
-and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you
-want to be applied statelessly.
+Another parameter comes into play if you want to define a set of operators underneath a `with child` to be "stateless", meaning where you want all the operators to apply and match with single events (like the classic stateless D&R rules). This parameter is `is stateless: true`. Simply add it to the operators at the root of the logic you want to be applied statelessly.
 
-Another parameter available to stateful rules is the `report latest event: true` parameter. When specified in the operator holding the stateful parameter like `with child`,
-it will tell the engine that the event that should be reported by this rule is the latest event in the set of stateful operators that matched, instead of the default
-behavior where the first event to have started the stateful rule is reported.
+Another parameter available to stateful rules is the `report latest event: true` parameter. When specified in the operator holding the stateful parameter like `with child`, it will tell the engine that the event that should be reported by this rule is the latest event in the set of stateful operators that matched, instead of the default behavior where the first event to have started the stateful rule is reported.
 
-In the example above, the default behavior of `report` is to report the `outlook.exe` process in the detection. But if we set `report latest event: true`, the
-last event is reported, so either a `chrome.exe` or `.ps1` document, whichever occured last. Here is an example of the above rule with the `report latest event`:
+In the example above, the default behavior of `report` is to report the `outlook.exe` process in the detection. But if we set `report latest event: true`, the last event is reported, so either a `chrome.exe` or `.ps1` document, whichever occured last. Here is an example of the above rule with the `report latest event`:
 
 ```yaml
 event: NEW_PROCESS
@@ -566,11 +524,7 @@ with child:
       case sensitive: false
 ```
 
-Finally, a node in stateful mode under a `with child` or `with descendant` can specify a `count: N` parameter. When specified, you specify that the given node must be
-matched N times before it is considered successful. So setting `count: 3` in a node looking for a `event/FILE_PATH` ending in `cmd.exe` will mean that we want to match
-only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes
-which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter
-to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
+Finally, a node in stateful mode under a `with child` or `with descendant` can specify a `count: N` parameter. When specified, you specify that the given node must be matched N times before it is considered successful. So setting `count: 3` in a node looking for a `event/FILE_PATH` ending in `cmd.exe` will mean that we want to match only if we see 3 instances of a `cmd.exe` in that context to match. An example usage of this is to set `count:` in a `matches` operator looking for a set of processes which would result in detecting a "burst" of matching processes from a parent (like: if a process starts more than 3 `cmd.exe`, alert). Adding a `within: Z` parameter to the `count: N` limits the count to where the first and last event in the count is within a `Z` seconds time window.
 
 
 Example rule that matches on Outlook writing 5 new `.ps1` documents within 60 seconds.
@@ -593,9 +547,7 @@ with child:
 
 ###### Sensor Level
 
-You may want to correlate activity, not in the context of process relationship, but at the sensor level instead.
-For example, you may want to detect "if 5 bad login attempts occur on a Windows box within 60 seconds". Since you may
-be relying on the `WEL` events (Windows Event Logs), it doesn't make sense to use `with child` or `with descendant`.
+You may want to correlate activity, not in the context of process relationship, but at the sensor level instead. For example, you may want to detect "if 5 bad login attempts occur on a Windows box within 60 seconds". Since you may be relying on the `WEL` events (Windows Event Logs), it doesn't make sense to use `with child` or `with descendant`.
 
 For these cases, you can use the `with events` parameter, like this:
 
@@ -612,18 +564,13 @@ with events:
 
 ```
 
-Much like `with child`, the `with events` defines that the rule underneath it should be evaluated in "stateful mode", and
-in a single "global" context for each sensor. This means the rule underneath could also be a complex evaluation using `op: and`
-containing the evaluation of several different event types which must all be true for the rule to match.
+Much like `with child`, the `with events` defines that the rule underneath it should be evaluated in "stateful mode", and in a single "global" context for each sensor. This means the rule underneath could also be a complex evaluation using `op: and` containing the evaluation of several different event types which must all be true for the rule to match.
 
 ###### Testing
 
-When testing stateful D&R rules, it is important to keep in mind that the state engine is forward-looking only and that
-changing a stateful rule will reset its state tracking.
+When testing stateful D&R rules, it is important to keep in mind that the state engine is forward-looking only and that changing a stateful rule will reset its state tracking.
 
-Concretely this means that if your rule is tracking, for example, `excel.exe --child of--> cmd.exe` and you modify your
-rule, even just a little, you will need to make sure to re-launch the `excel.exe` instance you're doing your testing
-with since the engine will no longer be aware of its previous launch.
+Concretely this means that if your rule is tracking, for example, `excel.exe --child of--> cmd.exe` and you modify your rule, even just a little, you will need to make sure to re-launch the `excel.exe` instance you're doing your testing with since the engine will no longer be aware of its previous launch.
 
 ###### Reporting & Actions
 
@@ -671,12 +618,9 @@ metadata_rules:
 ```
 
 ##### IP GeoLocation
-The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the
-organization needs to be subscribed to the `api/ip-geo` API Add-On.
+The lookup can also use certain APIs in their lookup, like IP GeoLocation. Note that for the IP GeoLocation to be accessible, the organization needs to be subscribed to the `api/ip-geo` API Add-On.
 
-As shown in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain
-further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of `ip-geo` this is a dictionary
-of the geolocation data returned by the IP GeoLocation data provider, [MaxMind.com](https://maxmind.com).
+As shown in the example below, a `metadata_rules` parameter is also valid for the lookup operation. It can contain further detection rules to be applied to ***the metadata returned by a lookup match***. In the case of `ip-geo` this is a dictionary of the geolocation data returned by the IP GeoLocation data provider, [MaxMind.com](https://maxmind.com).
 
 The format of the metadata returned is documented [here](https://github.com/maxmind/MaxMind-DB-Reader-python) and looks like this:
 
