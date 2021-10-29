@@ -68,8 +68,7 @@ While the `edr` and `deployment` targets support most of the APIs, stateful oper
 * Response actions: `report`
 * `artifact` target only: `artifact source`, `artifact type`
 
-In the case of the `artifact` target, `path` references apply to JSON parsed logs the same way as in `edr` D&R rules, but rules on pure text logs require using the
-path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
+In the case of the `artifact` target, `path` references apply to JSON parsed logs the same way as in `edr` D&R rules, but rules on pure text logs require using the path `/txt` as the value of a log line. The `artifact source` matches the log's source string, and the `artifact type` matches the log's type string.
 
 You may use the top-level filter `artifact path` which acts as a Prefix to the original Artifact path.  For example, if you use the following detection rule:
 
