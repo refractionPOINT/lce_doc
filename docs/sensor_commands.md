@@ -836,6 +836,32 @@ Payloads feature uses Google infrastructure and their public SSL certificates.
 This may sometimes come up in unexpected ways. For example fresh Windows Server installations
 do not have the root CAs for `google.com` enabled by default.
 
+## put
+Upload a payload to an endpoint without executing it.
+
+Platforms: Windows, Linux, MacOS
+
+```
+usage: put [-h] --payload-name NAME [--payload-path PATH] [--is-ignore-cert]
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --payload-name NAME  name of the payload to run
+  --payload-path PATH  path where to put the payload
+  --is-ignore-cert     if specified, the sensor will ignore SSL cert mismatch
+```
+
+Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
+on a host where built-in root CAs are not up to date or present at all, it may be
+necessary to use the `--is-ignore-cert` flag to allow the sensor to pull the payload to
+execute from the cloud.
+
+Unlike the main sensor transport (which uses a pinned certificate), the
+Payloads feature uses Google infrastructure and their public SSL certificates.
+
+This may sometimes come up in unexpected ways. For example fresh Windows Server installations
+do not have the root CAs for `google.com` enabled by default.
+
 ## Network Capture
 
 ### pcap_ifaces
