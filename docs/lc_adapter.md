@@ -7,6 +7,11 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * Google Cloud Pubsub
 * STDIN
 
+## Availability
+
+* Docker: https://hub.docker.com/r/refractionpoint/lc-adapter
+* Various Executables: TBD
+
 ## Usage
 
 The adapter can be used to access many different sources and many different event types. The main mechanisms specifying the source and type of events are:
