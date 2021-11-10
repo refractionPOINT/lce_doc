@@ -25,7 +25,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 
 * Syslog
 * AWS S3
-* Google Cloud Pubsub
+* Google Cloud Pub/Sub
 * STDIN
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
