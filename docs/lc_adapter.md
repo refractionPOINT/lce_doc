@@ -263,7 +263,7 @@ Here's a breakdwn of the above example:
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the Carbon Black sensors from this Adapter later if you have to re-install the Adapter.
 * `bucket_name:....`: the name of the S3 bucket holding the data.
 * `secret_key:....`: the API key for AWS that has access to this bucket.
-* `prefix=....`: the file/directory name prefix that holds the CarbonBlack data within the bucket.
+* `prefix=....`: the file/directory name prefix that holds the Carbon Black data within the bucket.
 
 ### Stdin
 
