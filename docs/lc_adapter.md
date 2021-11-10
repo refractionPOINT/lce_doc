@@ -246,7 +246,7 @@ journalctl -f -q | netcat 127.0.0.1 4444
 
 ### CarbonBlack from S3
 
-This example shows connecting CarbonBlack sensors from data exported by the CarbonBlack API to an S3 bucket.
+This example shows connecting Carbon Black sensors from data exported by the Carbon Black API to an S3 bucket.
 It uses the CLI Adapter (instead of the Docker container).
 
 ```
