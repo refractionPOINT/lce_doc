@@ -259,7 +259,7 @@ Here's a breakdwn of the above example:
 * `s3`: the data will be collected from an AWS S3 bucket.
 * `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
 * `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
-* `client_options.platform=carbon_black`: this indicates the data received will be CarbonBlack events from their API.
+* `client_options.platform=carbon_black`: this indicates the data received will be Carbon Black events from their API.
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the CarbonBlack sensors from this Adapter later if you have to re-install the Adapter.
 * `bucket_name:....`: the name of the S3 bucket holding the data.
 * `secret_key:....`: the API key for AWS that has access to this bucket.
