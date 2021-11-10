@@ -14,7 +14,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
   * [Windows x64](https://app.limacharlie.io/get/adapter/win64)
   * [macOS x64](https://app.limacharlie.io/get/adapter/mac64)
   * [macOS arm64](https://app.limacharlie.io/get/adapter/macarm64)
-  * [Linux x64](https://storage.googleapis.com/limacharlie-io/installers/lc_adapter_linux_64_1.2.2)
+  * [Linux x64](https://app.limacharlie.io/get/adapter/linux64)
   * [Let us know if you need a specific platform.](https://www.limacharlie.io/contact)
 
 ## Concept
