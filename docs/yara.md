@@ -31,21 +31,21 @@ To apply YARA Sources and scan an endpoint you must select the hostname and then
 ### REST
 
 #### List Sources
-```
+```json
 {
   "action": "list_sources"
 }
 ```
 
 #### List Rules
-```
+```json
 {
   "action": "list_rules"
 }
 ```
 
 #### Add Rule
-```
+```json
 {
   "action": "add_rule",
   "name": "example-rule",
@@ -66,7 +66,7 @@ To apply YARA Sources and scan an endpoint you must select the hostname and then
 ```
 
 #### Add Source
-```
+```json
 {
   "action": "add_source",
   "name": "example-rule",
@@ -87,7 +87,7 @@ To apply YARA Sources and scan an endpoint you must select the hostname and then
 ```
 
 #### Remove Rule
-```
+```json
 {
   "action": "remove_rule",
   "name": "example-rule"
@@ -95,7 +95,7 @@ To apply YARA Sources and scan an endpoint you must select the hostname and then
 ```
 
 #### Remove Source
-```
+```json
 {
   "action": "remove_source",
   "name": "my-source-1"
@@ -103,7 +103,7 @@ To apply YARA Sources and scan an endpoint you must select the hostname and then
 ```
 
 #### Scan
-```
+```json
 {
   "action": "scan",
   "sid": "70b69f23-b889-4f14-a2b5-633f777b0079",
