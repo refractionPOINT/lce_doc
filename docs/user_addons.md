@@ -99,7 +99,7 @@ pieces of metadata with a high number of lookup items.
 
 To accomplish this, you will need to split up your metadata from your lookup values like:
 
-```
+```json
 {
   "_LC_METADATA": [
     {
@@ -131,7 +131,7 @@ list's index where the metadata can be found.
 
 The above example is equivalent to the non-optimized:
 
-```
+```json
 {
   "evil.exe": {
       "some": "metadata",

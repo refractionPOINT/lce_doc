@@ -198,7 +198,7 @@ A public version of the container described below is available from dockerhub as
 ##### Sample Configurations
 This is a sample `Dockerfile` you may use to run LC within a privileged container as described above:
 
-```
+```dockerfile
 # Requires an LC_INSTALLATION_KEY environment variable
 # specifying the installation key value.
 # Requires a HOST_FS environment variable that specifies where
@@ -224,7 +224,7 @@ CMD ./lc_sensor -d -
 
 And this is a sample Kubernetes `deployment`:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:

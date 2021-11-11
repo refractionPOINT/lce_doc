@@ -127,7 +127,7 @@ For example, taking the example from above:
 ```
 
 and applying the following mapping configuration:
-```
+```yaml
 rename_only: true
 
 src_field: exe
@@ -147,7 +147,7 @@ would result in the following event:
 ```
 
 while applying this mapping:
-```
+```yaml
 rename_only: false
 
 src_field: exe

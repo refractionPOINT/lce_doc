@@ -25,7 +25,7 @@ Cleanup is automatically applied once a day.
 
 ### get_rules
 
-```
+```json
 {
   "action": "get_rules"
 }
@@ -35,7 +35,7 @@ Simply get the list of existing rules.
 
 ### run
 
-```
+```json
 {
   "action": "run"
 }
@@ -45,7 +45,7 @@ Do a cleanup right now.
 
 ### add_rule
 
-```
+```json
 {
   "action": "add_rule",
   "name": "my new rule",
@@ -59,7 +59,7 @@ tag and cleans them up when they haven't connected in 30 days.
 
 ### del_rule
 
-```
+```json
 {
   "action": "get_rules",
   "name": "my new rule"
