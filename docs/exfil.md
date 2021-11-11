@@ -73,14 +73,14 @@ This gives you a balance between recording all events, while maintaining basic D
 ### REST
 
 #### List Rules
-```
+```json
 {
   "action": "list_rules"
 }
 ```
 
 #### Add Event Rule
-```
+```json
 {
   "action": "add_event_rule",
   "name": "windows-vip",
@@ -98,7 +98,7 @@ This gives you a balance between recording all events, while maintaining basic D
 ```
 
 #### Remove Event Rule
-```
+```json
 {
   "action": "remove_event_rule",
   "name": "windows-vip"
@@ -106,7 +106,7 @@ This gives you a balance between recording all events, while maintaining basic D
 ```
 
 #### Add Watch
-```
+```json
 {
   "action": "add_watch",
   "name": "wininet-loading",
@@ -124,7 +124,7 @@ This gives you a balance between recording all events, while maintaining basic D
 ```
 
 #### Remove Watch
-```
+```json
 {
   "action": "remove_watch",
   "name": "wininet-loading"
@@ -132,7 +132,7 @@ This gives you a balance between recording all events, while maintaining basic D
 ```
 
 #### Add Performance Rule
-```
+```json
 {
   "action": "add_perf_rule",
   "name": "sql-servers",
@@ -146,7 +146,7 @@ This gives you a balance between recording all events, while maintaining basic D
 ```
 
 #### Remove Performance Rule
-```
+```json
 {
   "action": "remove_perf_rule",
   "name": "sql-servers"

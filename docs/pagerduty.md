@@ -9,7 +9,7 @@ Some more detailed information is available here: https://developer.pagerduty.co
 ### REST
 
 #### Trigger Event
-```
+```json
 {
   "summary": "Critical credentials theft alert.",
   "source": "limacharlie.io",

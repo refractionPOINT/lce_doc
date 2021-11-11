@@ -18,7 +18,7 @@ The types of information returned by the sweep is constantly evolving, but you c
 ### REST
 
 #### Sweep
-```
+```json
 {
   "action": "sweep",
   "sid": "70b69f23-b889-4f14-a2b5-633f777b0079"

@@ -39,7 +39,7 @@ run in 1 of 2 modes:
 ### REST
 
 #### run_on
-```
+```json
 {
   "action": "run_on",
   "artifact_id": "1111-2222-3333",

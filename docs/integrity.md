@@ -25,14 +25,14 @@ monitored.
 ### REST
 
 #### List Rules
-```
+```json
 {
   "action": "list_rules"
 }
 ```
 
 #### Add Rule
-```
+```json
 {
   "action": "add_rule",
   "name": "linux-root-ssh-configs",
@@ -50,7 +50,7 @@ monitored.
 ```
 
 #### Remove Rule
-```
+```json
 {
   "action": "remove_rule",
   "name": "linux-ssh-configs"

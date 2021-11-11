@@ -15,7 +15,7 @@ detections of characteristics of those dumps.
 ### REST
 
 #### Dumping
-```
+```json
 {
   "sid": "70b69f23-b889-4f14-a2b5-633f777b0079",
   "target": "memory",
