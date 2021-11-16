@@ -38,7 +38,7 @@ Output events and detections to an Amazon S3 bucket.
 * `dir`: the directory prefix
 
 Example:
-```
+```yaml
 bucket: my-bucket-name
 key_id: AKIAABCDEHPUXHHHHSSQ
 secret_key: fonsjifnidn8anf4fh74y3yr34gf3hrhgh8er
@@ -49,7 +49,7 @@ is_compression: "true"
 ### Google Cloud Storage
 Output events and detections to a GCS bucket.
 
-* `bucket`: the path to the AWS S3 bucket.
+* `bucket`: the path to the GCS bucket.
 * `secret_key`: the secret json key identifying a service account.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
@@ -57,7 +57,7 @@ Output events and detections to a GCS bucket.
 * `dir`: the directory prefix where to output the files on the remote host.
 
 Example:
-```
+```yaml
 bucket: my-bucket-name
 secret_key: {
   "type": "service_account",
@@ -85,7 +85,7 @@ Output events and detections over SCP (SSH file transfer).
 * `secret_key`: the optional SSH private key to authenticate with.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 dir: /uploads/
 username: storage_user
@@ -102,7 +102,7 @@ Output events and detections over SFTP.
 * `secret_key`: the optional SSH private key to authenticate with.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 dir: /uploads/
 username: storage_user
@@ -116,7 +116,7 @@ Output detections and audit (only) to a Slack community and channel.
 * `slack_channel`: the channel to output to within the community.
 
 Example:
-```
+```yaml
 slack_api_token: d8vyd8yeugr387y8wgf8evfb
 slack_channel: #detections
 ```
@@ -142,7 +142,7 @@ Output events and detections to a syslog target.
 * `structured_data`: arbitrary field to include in syslog "Structured Data" headers. Sometimes useful for cloud SIEMs integration.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 is_tls: "true"
 is_strict_tls: "true"
@@ -157,7 +157,7 @@ Output individually each event, detection, audit, deployment or artifact through
 * `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 
 Example:
-```
+```yaml
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
 auth_header_name: x-my-special-auth
@@ -174,7 +174,7 @@ Output batches of events, detections, audits, deployments or artifacts through a
 
 
 Example:
-```
+```yaml
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
 auth_header_name: x-my-special-auth
@@ -196,7 +196,7 @@ Output individually each event, detection, audit, deployment or log through an e
 * `subject`: is specified, use this as the alternate "subject" line.
 
 Example:
-```
+```yaml
 dest_host: smtp.gmail.com
 dest_email: soc@corp.com
 from_email: lc@corp.com
@@ -213,7 +213,7 @@ Output events and detections to the [Humio.com](https://humio.com) service.
 * `endpoint_url`: optionally specify a custom endpoint URL, if you have Humio deployed on-prem use this to point to it, otherwise it defaults to the Humio cloud.
 
 Example:
-```
+```yaml
 humio_repo: sandbox
 humio_api_token: fdkoefj0erigjre8iANUDBFyfjfoerjfi9erge
 ```
@@ -237,7 +237,7 @@ Output events and detections to a Kafka target.
 * `literal_topic`: use this specific value as a topic.
 
 Example:
-```
+```yaml
 dest_host: kafka.corp.com
 is_tls: "true"
 is_strict_tls: "true"
@@ -255,7 +255,7 @@ Output events and detections to a Pubsub topic.
 * `topic`: use this specific value as a topic.
 
 Example:
-```
+```yaml
 project: my-project
 topic: telemetry
 secret_key: {

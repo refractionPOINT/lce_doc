@@ -12,7 +12,7 @@ Some more detailed information is available here: https://www.twilio.com/docs/sm
 ### REST
 
 #### Send Message
-```
+```json
 {
   "body": "Critical credentials theft alert.",
   "to": "+14443339999",

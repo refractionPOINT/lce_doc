@@ -58,7 +58,7 @@ limacharlie-replay --entire-org --start 1555359000 --end 1556568600 --rule-name 
 
 If specifying a rule as content with the `--rule-content`, the format should be
 in `JSON` or `YAML` like:
-```
+```yaml
 detect:
   event: DNS_REQUEST
   op: is

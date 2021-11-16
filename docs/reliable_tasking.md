@@ -16,7 +16,7 @@ List the tasks currently queued up for given sensors.
 ### REST
 
 #### Task
-```
+```json
 {
   "action": "task",
   "task": "os_version"
@@ -34,7 +34,7 @@ Then, you can use `ttl` to specify how long the service should keep
 trying to send the task. It is a number of seconds and defaults to 1 week.
 
 #### List Tasks
-```
+```json
 {
   "action": "list"
 }

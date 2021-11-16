@@ -1099,12 +1099,34 @@ Platforms: Windows
 ### REGISTRY_WRITE
 This event is generated whenever a registry value is written to on a Windows OS.
 
+The `REGISTRY_VALUE` contains the first 16 bytes of the value written to the registry.
+If this value is a valid ASCII or Unicode string, the value will be as-is. On the other
+hand if the value is binary data, it will be a base64 encoded string, see examples below.
+
+The `SIZE` is the size value used in the original registry write call.
+The `TYPE` is the Windows data type of the entry written as per [Microsoft's definition](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-rprn/25cce700-7fcf-4bb6-a2f3-0f6d08430a55).
+
 Platforms: Windows
 
+Valid string payload:
 ```json
 {
-   "PROCESS_ID":   3584,
-   "REGISTRY_KEY":   "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\VFUProvider\\StartTime"
+  "PROCESS_ID":1820,
+  "REGISTRY_KEY":"\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows Defender\\Diagnostics\\LastKnownGoodPlatformLocation",
+  "REGISTRY_VALUE":"C:\\Progr",
+  "SIZE":1,
+  "TYPE":1,
+}
+```
+
+Binary payload:
+```json
+{
+  "PROCESS_ID": 1700,
+  "REGISTRY_KEY": "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack\\HeartBeats\\Default\\LastHeartBeatTime",
+  "REGISTRY_VALUE": "bMPGjjDM1wE=",
+  "SIZE": 11,
+  "TYPE": 11
 }
 ```
 
