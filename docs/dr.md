@@ -18,7 +18,7 @@ value: example.com
   name: DNS Hit example.com
 ```
 
-This rule will detect and respond to requests to `[example.com](http://example.com)` within 100ms of the `DNS_REQUEST` event occurring. It uses the `is` operator to assess if the given `value` can be found inside the `event` at the given `path`. 
+This rule will detect and respond to requests to `example.com` within 100ms of the `DNS_REQUEST` event occurring. It uses the `is` operator to assess if the given `value` can be found inside the `event` at the given `path`. 
 
 > Just want pure examples? Check out the TODO Examples doc page.
 
@@ -33,7 +33,7 @@ Detections must specify an `event` (or `events`), and may optionally specify a `
 - `artifact`: artifacts collected via REST API or via `artifact_get` sensor command
 - `artifact_event`: lifecycle events around artifacts such as ingestion
 
-> For a full list of event with examples, see the Events reference doc.
+> For a full list of event with examples, see the [Events](events.md) reference doc.
 
 > Most of this page focuses on `edr` events. For information about other targets, see Detection on Alternate Targets.
 
