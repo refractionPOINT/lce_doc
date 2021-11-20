@@ -38,24 +38,29 @@ op: is windows
 
 This rule de-duplicates sensors on Windows by deleting `.dat` files specific to the Windows installation and then issuing a `restart` sensor command. 
 
-To see samples of what each of the `deployment` events looks like, see [Reference: Events](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMDQ-events#deployment-events).
+> For samples of each `deployment` event type, see [Reference: Events](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMDQ-events#deployment-events).
 
 ## Target: artifact
 
-Parsed artifacts also can run through the rule engine as if they were regular `edr` events, but there are some key differences. Namely, they support a subset of operators and actions, while adding some special parameters.
+Parsed artifacts can be run through the rule engine as if they were regular `edr` events, but there are some key differences. Namely, they support a subset of operators and actions, while adding some special parameters.
 
 ### Example
 
-This rule 
+This rule will target parsed `/var/log/auth.log` entries to see if there are are auth failures.
 
 ```yaml
-artifact type: txt
-case sensitive: false
-op: matches
-path: /text
-re: .*(authentication failure|Failed password).*
+# Detection
 target: artifact
+artifact type: txt
 artifact path: /var/log/auth.log
+op: matches
+re: .*(authentication failure|Failed password).*
+path: /text
+case sensitive: false
+
+# Response
+- action: report
+  name: Failed Auth
 ```
 
 ### Supported Operators
@@ -86,6 +91,29 @@ The only response action supported for the `artifact` target is the `report` act
 * `artifact type`: matches the artifact's `type` string, e.g. `pcap`, `zeek`, `auth`, `wel`
 * `artifact source`: matches the artifact's `source` string, e.g. `hostname-123`
 
+> Note: for duplicate Windows Event Log ingestions, the rule engine will use the log's `EventRecordID` to ensure a rule will not run more than once over the same record. 
 
-## Target: artifact_event
+
+## Target: artifact_event 
+
+For unparsed logs, it can be useful to use the `ingest` and `export_complete` lifecycle events from the `artifact_event` target to automate behaviors in response to artifacts.
+
+> For samples of `ingest` and `export_complete`, see [Reference: Events](events.md#artifact-events).
+
+### Example
+
+```yaml
+# Detection
+target: artifact_event
+event: export_complete
+op: starts with
+path: routing/log_type
+value: pcap
+case sensitive: false
+
+# Response
+- action: report
+  name: PCAP Artifact ready to Download
+```
+
 
