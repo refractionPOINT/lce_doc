@@ -1,0 +1,200 @@
+# Reference: Operators
+
+Operators are used in the Detection part of a Detection & Response rule. Many operators also support transforms, referenced later in this page. 
+
+> For more information on how to use operators, read [Detection & Response Rules](dr.md). 
+
+## Operators
+
+### and, or
+
+The standard logical boolean operations to combine other logical operations. Takes a single `rules:` parameter that contains a list of other operators to "AND" or "OR" together.
+
+Example:
+```yaml
+op: or
+rules:
+  - ...rule1...
+  - ...rule2...
+  - ...
+```
+
+### is
+
+Tests for equality between the value of the `"value": <>` parameter and the value found in the event at the `"path": <>` parameter.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+Example rule:
+```yaml
+event: NEW_PROCESS
+op: is
+path: event/PARENT/PROCESS_ID
+value: 9999
+```
+
+### exists
+
+Tests if any elements exist at the given path.
+
+Example rule:
+```yaml
+event: NEW_PROCESS
+op: exists
+path: event/PARENT
+```
+
+### contains, ends with, starts with
+
+The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix match.
+
+They all use the `path` and `value` parameters.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+### is greater than, is lower than
+
+Check to see if a value is greater or lower (numerically) than a value in the event.
+
+They both use the `path` and `value` parameters. They also both support the `length of` parameter as a boolean (true or false). If set to true, instead of comparing
+the value at the specified path, it compares the length of the value at that path.
+
+### matches
+
+The `matches` op compares the value at `path` with a regular expression supplied in the `re` parameter. Under the hood, this uses the Golang's `regexp` [package](https://golang.org/pkg/regexp/), which also enables you to apply the regexp to log files.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+Example:
+```yaml
+event: FILE_TYPE_ACCESSED
+op: matches
+path: event/FILE_PATH
+re: .*\\\\system32\\\\.*\\.scr
+case sensitive: false
+```
+
+### string distance
+
+The `string distance` op looks up the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) between two strings. In other words it generates the minimum number of character changes required for one string to become equal to another.
+
+For example, the Levenshtein Distance between `google.com` and `googlr.com` (`r` instead of `e`) is 1.
+
+This can be used to find variations of file names or domain names that could be used for phishing, for example.
+
+Suppose your company is `onephoton.com`. Looking for the Levenshtein Distance between all `DOMAIN_NAME` in `DNS_REQUEST` events, compared to `onephoton.com` it could detect an attacker using `onephot0n.com` in a phishing email domain.
+
+The operator takes a `path` parameter indicating which field to compare, a `max` parameter indicating the maximum Levenshtein Distance to match and a `value` parameter that is either a string or a list of strings that represent the value(s) to compare to. Note that although `string distance` supports the `value` to be a list, most other operators do not.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+Example:
+```yaml
+event: NEW_PROCESS
+op: string distance
+path: event/DOMAIN_NAME
+value:
+  - onephoton.com
+  - www.onephoton.com
+max: 2
+```
+This would match `onephotom.com` and `0nephotom.com` but NOT `0neph0tom.com`.
+
+Using the [file name](#file-name) transform to apply to a file name in a path:
+
+```yaml
+event: NEW_PROCESS
+op: string distance
+path: event/NEW_PROCESS
+file name: true
+value:
+  - svchost.exe
+  - csrss.exe
+max: 2
+```
+
+This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
+
+### is windows, is linux, is mac, is chrome, is text, is json, is gcp, is carbon_black, is 32 bit, is 64 bit, is arm
+
+All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is correct.
+
+### is tagged
+
+Determines if the tag supplied in the `tag` parameter is already associated with the sensor that the event under evaluation is from.
+
+### lookup
+
+Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`. In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+Example:
+```yaml
+event: NEW_PROCESS
+op: lookup
+path: event/DOMAIN_NAME
+resource: lcr://lookup/malwaredomains
+case sensitive: false
+```
+
+### scope
+
+In some cases, you may want to limit the scope of the matching and the `path` you use to be within a specific part of the event. The `scope` operator allows you to do just that, reset the root of the `event/` in paths to be a sub-path of the event.
+
+This comes in as very useful for example when you want to test multiple values of a connection in a `NETWORK_CONNECTIONS` event but always on a per-connection. If you  were to do a rule like:
+
+```yaml
+event: NETWORK_CONNECTIONS
+op: and
+rules:
+  - op: starts with
+    path: event/NETWORK_ACTIVITY/?/SOURCE/IP_ADDRESS
+    value: '10.'
+  - op: is
+    path: event/NETWORK_ACTIVITY/?/DESTINATION/PORT
+    value: 445
+```
+
+you would hit on events where _any_ connection has a source IP prefix of `10.` and _any_ connection has a destination port of `445`. Obviously this is not what we had in mind, we wanted to know if a _single_ connection has those two characteristics.
+
+The solution is to use the `scope` operator. The `path` in the operator will become the new `event/` root path in all operators found under the `rule`. So the above would become
+
+Example:
+```yaml
+event: NETWORK_CONNECTIONS
+op: scope
+path: event/NETWORK_ACTIVITY/
+rule:
+  op: and
+  rules:
+    - op: starts with
+      path: event/SOURCE/IP_ADDRESS
+      value: '10.'
+    - op: is
+      path: event/DESTINATION/PORT
+      value: 445
+```
+
+## Transforms
+
+Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
+
+### file name
+
+Sample: `file name: true`
+
+The `file name` transform takes a `path` and replaces it with the file name component of the `path`. This means that a `path` of `c:\windows\system32\wininet.dll` will become `wininet.dll`.
+
+### sub domain
+
+Sample: `sub domain: "-2:"`
+
+The `sub domain` extracts specific components from a domain name. The value of `sub domain` is in [slice notation](https://stackoverflow.com/questions/509211/understanding-slice-notation). It looks like `startIndex:endIndex`, where the index is 0-based and indicates which parts of the domain to keep.
+
+Some examples:
+
+  * `0:2` means the first 2 components of the domain: `aa.bb` for `aa.bb.cc.dd`.
+  * `-1` means the last component of the domain: `cc` for `aa.bb.cc`.
+  * `1:` means all components starting at 1: `bb.cc` for `aa.bb.cc`.
+  * `:` means to test the operator to every component individually.

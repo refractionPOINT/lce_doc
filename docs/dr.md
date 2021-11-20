@@ -2,7 +2,7 @@
 
 Detection & Response rules automate actions based on the real-time events streaming into LimaCharlie. Each rule has two YAML descriptors: one that describes what to detect, and another that describes how to respond.
 
-> Understanding how Events are structured is essential for working with D&R rules. If you haven't already, read the [Events Overview](events-overview.md).
+> It's recommended to read about [Events](events-overview.md) before diving into D&R rules.
 
 ## A Basic Rule
 
@@ -71,7 +71,7 @@ There are 3 operators here:
 
 Each operator may have parameters alongside it. Some parameters, such as `not`, are useable on all operators. Most operators have required parameters specific to them. 
 
-> For a full list of operators and usage, see the TODO Operators reference doc.
+> For a full list of operators and their usage, see [Reference: Operators](operators.md).
 
 ### Paths
 
@@ -173,11 +173,11 @@ The `?` saves us from enumerating each index within the list and instead evaluat
 
 The `value` parameter is commonly used by several detection operations but can also be used by some response actions as well.
 
-In most detections `value` will be used to specify a known value like all the previous examples on this page have done, but they're capable of referencing variables, too.
+In most detections `value` will be used to specify a known value like all the previous examples on this page have done, but they're capable of referencing sensor variables, too.
 
-For example, you can reference previously set variables on the sensor by using `value: [[var-name]]`, or you can pull data directly from inside the event using a lookback like this: `value: <<event/FILE_PATH>>`.
+For example, you can reference previously set sensor variables by using `value: [[var-name]]`, or you can pull data directly from inside the event using a lookback like this: `value: <<event/FILE_PATH>>`.
 
-To learn more about how to get the most out of variables and lookback values, see Using Variables.
+To learn more about how to get the most out of sensor variables and lookback values, see TODO Using Sensor Variables.
 
 ## Response
 
@@ -194,7 +194,7 @@ The most common action is the `report` action, which creates a Detection that sh
 
 Each item in the response specifies an `action` and any accompanying parameters for that `action`.
 
-> To learn about all possible actions, see the TODO Actions reference doc.
+> To learn about all possible actions, see [Reference: Actions](actions.md).
 
 ## Putting It All Together
 
@@ -268,10 +268,10 @@ This article gives an introduction to D&R rules, but their capabilities go much 
 - Examples
 - False Positive Rules
 - [Reference: Events](events.md)
-- Reference: Operators
-- Reference: Actions
+- [Reference: Operators](operators.md)
+- [Reference: Actions](actions.md)
 - [Detection on Alternate Targets](detection-on-alternate-targets.md)
 - [Detecting Related Events](detecting-related-events.md)
 - Detection Times
-- Using Variables
 - Using Lookups
+- Using Sensor Variables

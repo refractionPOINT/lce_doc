@@ -4,7 +4,7 @@
 
 Events in LimaCharlie are in standard formatted JSON. 
 
-```json json_schema
+```schema json_schema
 {
   "type": "object",
   "properties": {
@@ -184,7 +184,7 @@ Using atom references from a single event, the entire chain of related events is
 
 For processes, the parent relationship will simply be the parent process and child process (i.e. the parent spawned the child). Other events may be less obvious. For example for a `NETWORK_SUMMARY` event, the `parent` will be the process that generated the network connections.
 
-> If using custom storage + searching solutions, you will likely want to index the values of `routing/this` and `routing/parent` for each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
+> If using custom storage + searching solutions it will be helpful to index the values of `routing/this` and `routing/parent` for each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
 
 Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
 
@@ -193,5 +193,5 @@ Finally, the `routing/target` is only sometimes found in an event, and it repres
 Here are some suggested pages for learning more about events and their usage:
 
 * [Reference: Events](events.md)
-* [Reference: D&R Rules](dr.md)
+* [Detection & Response Rules](dr.md)
 
