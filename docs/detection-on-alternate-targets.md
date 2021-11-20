@@ -42,11 +42,23 @@ To see samples of what each of the `deployment` events looks like, see [Referenc
 
 ## Target: artifact
 
-Parsed artifacts also can run through the rule engine as if they were regular `edr` events, but there are some key differences. 
+Parsed artifacts also can run through the rule engine as if they were regular `edr` events, but there are some key differences. Namely, they support a subset of operators and actions, while adding some special parameters.
+
+### Example
+
+This rule 
+
+```yaml
+artifact type: txt
+case sensitive: false
+op: matches
+path: /text
+re: .*(authentication failure|Failed password).*
+target: artifact
+artifact path: /var/log/auth.log
+```
 
 ### Supported Operators
-
-The `artifact` target supports a subset of operators under `op`:
 
 *  `is`
 * `and`
@@ -60,7 +72,15 @@ The `artifact` target supports a subset of operators under `op`:
 * `matches`
 * `string distance`
 
-### Specific Parameters
+### Supported Resources
+
+`lookup` and `external` resources are supported within rules just like the `edr` target.
+
+### Supported Actions
+
+The only response action supported for the `artifact` target is the `report` action.
+
+### Special Parameters
 
 * `artifact path`: matches the start of the artifact's `path` string, e.g. `/auth.log`
 * `artifact type`: matches the artifact's `type` string, e.g. `pcap`, `zeek`, `auth`, `wel`
