@@ -2,6 +2,8 @@
 
 Detection & Response rules automate actions based on the real-time events streaming into LimaCharlie. Each rule has two YAML descriptors: one that describes what to detect, and another that describes how to respond.
 
+> Understanding how Events are structured is essential for working with D&R rules. If you haven't already, read the [Events Overview](events-overview.md).
+
 ## A Basic Rule
 
 Here's a rule that detects DNS requests to `example.com` and responds by reporting them within the organization with a category name `DNS Hit example.com`.
@@ -269,7 +271,7 @@ This article gives an introduction to D&R rules, but their capabilities go much 
 - Reference: Operators
 - Reference: Actions
 - [Detection on Alternate Targets](detection-on-alternate-targets.md)
-- Detecting Related Events
+- [Detecting Related Events](detecting-related-events.md)
 - Detection Times
 - Using Variables
 - Using Lookups

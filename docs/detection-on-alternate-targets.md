@@ -15,7 +15,7 @@ Deployment events relate to sensors connecting to the cloud: `enrollment`, `sens
 
 Take the `sensor_clone` event as an example. This event can happen when a sensor is installed in a VM image, leading to duplicate sensor IDs connecting to the cloud. When this is detected we can use this event to automate behavior to de-duplicate the sensor. 
 
-The `deployment` target supports all of the same operators (stateful or otherwise) and actions as regular `edr` rules.
+The `deployment` target supports all of the same operators and actions as regular `edr` rules.
 
 ### Example
 
