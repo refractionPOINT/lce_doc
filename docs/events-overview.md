@@ -143,11 +143,11 @@ There are 6 different event streams moving through LimaCharlie:
 
 | Name            |  Description                                                          | D&R Target      | Output  |
 | --------------- | --------------------------------------------------------------------- | ---------------- | ------ |
-| Telemetry       | Sensor events                                                         | `edr`            | ✅     |
+| Telemetry       | Events emitted by sensors                                             | `edr`            | ✅     |
 | Detections      | Detections reported from D&R rules                                    | N/A              | ✅     |
-| Deployment      | Meta-events relating to sensors coming online and quotas              | `deployment`     | ✅     |
-| Artifacts       | Artifacts collected via REST API or via `artifact_get` sensor command | `artifact`       | ❌     |
-| Artifact Events |  Lifecycle events for artifacts such as ingestion                     | `artifact_event` | ✅     |
+| Deployment      | Lifecycle events for sensors                                          | `deployment`     | ✅     |
+| Artifacts       | Artifacts collected from sensors                                      | `artifact`       | ❌     |
+| Artifact Events | Lifecycle events for artifacts                                        | `artifact_event` | ✅     |
 | Audit           | Audit logs for management activity within LimaCharlie                 | N/A              | ✅     |
 
 
