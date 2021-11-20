@@ -7,7 +7,7 @@ resources, sometimes authenticated, provided by users.
 
 Authenticted Resource Locators (ARLs) describe a way to
 specify access to a remote resource, supporting many
-methods, and including auth data, and all that within
+methods, including authentication data, and all that within
 a single string.
 
 ## Format

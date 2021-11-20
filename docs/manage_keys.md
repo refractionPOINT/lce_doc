@@ -1,11 +1,11 @@
 # Managing Installation Keys
 
-Installation keys are the bits of text that you give to new sensors so that they may enroll properly in the organization you want.
+Installation keys are the bits of text that you give to new sensors so they may enroll properly in the organization you want.
 
 ## Components of an Installation Key
 * OID: The Organization Id that this key should enroll into.
 * IID: Installer Id that is generated and associated with every Installation Key.
-* Tags: A list of Tags that get automatically applied to sensors enrolling with the key.
+* Tags: A list of Tags automatically applied to sensors enrolling with the key.
 * Desc: The description used to help you differentiate uses of various keys.
 
 ## Common Scheme

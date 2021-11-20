@@ -1,7 +1,7 @@
 # Replay
 
 ## Overview
-Replay allows you to run [Detection & Response (DR) rules](dr.md) against historical traffic.
+Replay allows you to run [Detection & Response (D&R) rules](dr.md) against historical traffic.
 This can be done in a few combinations of sources:
 
 Rule Source:
@@ -18,19 +18,29 @@ Traffic:
 
 Using the Replay API requires the [API key](api_keys.md) to have the following permissions:
 
-* `dr.list`
-
-If the traffic source is from an organization, the following additional permissions are required:
-
 * `insight.evt.get`
-* `insight.det.get`
 
 The returned data from the API contains the following:
 
 * `responses`: a list of the actions that would have been taken by the rule (like `report`, `task`, etc).
-* `num_evals`: a number of evaluation operation performed by the rule. This is a rough estimate of the performance of the rule.
+* `num_evals`: a number of evaluation operations performed by the rule. This is a rough estimate of the performance of the rule.
 * `num_events`: the number of events that were replayed.
 * `eval_time`: the number of seconds it took to replay the data.
+
+```json
+{
+  "error": "",        // if an error occured.
+  "stats": {
+    "n_proc": 0,      // the number of events processed
+    "n_shard": 0,     // the number of chunks the replay job was broken into
+    "n_eval": 0,      // the number of operator evaluations performed
+    "wall_time": 0    // the number of real-world seconds the job took
+  },
+  "did_match": false, // indicates if the rule matched any event at all
+  "results": [],      // a list of dictionaries containing the details of actions the engine would have taken
+  "traces": []        // a list of trace items to help you troubleshoot where a rule failed
+}
+```
 
 ### Python CLI
 The [Python CLI](https://github.com/refractionPOINT/python-limacharlie) gives you a friendly way to replay data, and to do so across larger datasets
@@ -48,7 +58,7 @@ limacharlie-replay --entire-org --start 1555359000 --end 1556568600 --rule-name 
 
 If specifying a rule as content with the `--rule-content`, the format should be
 in `JSON` or `YAML` like:
-```
+```yaml
 detect:
   event: DNS_REQUEST
   op: is
@@ -62,7 +72,7 @@ respond:
 Instead of specifying the `--entire-org` or `--sid` flags, you may use events from
 a local file via the `--events` flag.
 
-We invite you to look at the command line usage itself as the tool evolves.
+We invite you to look at the command line usage itself, as the tool evolves.
 
 ### REST API
 The Replay API is available to all DataCenter locations using a per-location URL.
@@ -71,60 +81,58 @@ retrieve the URLs found [here](https://api.limacharlie.io/static/swagger/#/LimaC
 named `replay`.
 
 Having per-location URLs will allow us to guarantee that processing occurs within the
-geographical area you chose. Do not that currently some locations are NOT guaranteed
-to be in the same area due to the fact we are using the Google Cloud Run product that
-is not available globally. For these cases, processing is current done in the United States
+geographical area you chose. Currently, some locations are NOT guaranteed
+to be in the same area due to the fact we are using the Google Cloud Run product which
+is not available globally. For these cases, processing is currently done in the United States,
 but as soon as it becomes available in your area, the processing will be moved transparently.
 
 Authentication to this API works with the same JWTs as the main limacharlie.io API.
 
 For this example, we will use the experimental datacenter's URL:
 ```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/
+https://0651b4f82df0a29c.replay.limacharlie.io/
 ```
 
 The API mainly works on a per-sensor basis, on a limited amount of time. Replaying for
 multiple sensors (or entire org), or longer time period is done through multiple
-parallel API calls. This multiplexing is taken care of for you by the Python CLI above.
+parallel API calls. This multiplexing is taken care of  by the Python CLI above.
 
-Specify which Organization ID (`OID`) and Sensor ID (`SID`) through the following URI:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}
-```
+To query Replay, do a `POST` with a `Content-Type` header of `application-json` and with a JSON body like:
 
-Specify the `start` and `end` time range, as unix second epoch in the query string:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}
-```
 
-Specify the rule to apply. This can be done via a `rule_name` query string parameter, or
-by supplying the rule, as `JSON` in the body of the `POST` and a `Content-Type` header of `application-json`:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/sensor/{OID}/{SID}?start={START_EPOCH}&end={END_EPOCH}&rule_name={EXISTING_RULE_NAME}
-```
-
-You may also use events provided during the request by using the endpoint:
-```
-https://0651b4f82df0a29c.replay.limacharlie.io/simulate/{OID}
-```
-The body of the `POST` should be a `JSON` blob like:
-```
+```json
 {
-  "rule": {...},
-  "events": [
-    ...
-  ]
+  "oid": "",             // OID this query relates to
+  "rule_source": {       // rule source information (use one of "rule_name" or "rule")
+    "rule_name": "",     // pre-existing rule name to run
+    "rule": {            // literal rule to run
+      "detect": {},
+      "respond": []
+    }
+  },
+  "event_source": {      // event source information (use one of "sensor_events" or "events")
+    "sensor_events": {   // use historical events from sensors
+      "sid": "",         // sensor id to replay from, or entire org if empty
+      "start_time": 0,   // start second epoch time to replay from
+      "end_time": 0      // end second epoch time to replay to
+    },
+    "events": [{}]       // literal list of events to replay
+  },
+  "limit_event": 0,      // optional approximate number of events to process
+  "limit_eval": 0,       // optional approximate number of operator evaluations to perform
+  "trace": false         // optional, if true add trace information to response, VERY VERBOSE
 }
 ```
 Like the other endpoints you can also submit a `rule_name` in the URL query if you want
 to use an existing organization rule.
 
-You may also specify a `limit_event` and `limit_eval` parameter as integers. They will limit the number events evaluated
+You may also specify a `limit_event` and `limit_eval` parameter as integers. They will limit the number of events evaluated
 and the number of rule evaluations performed (approximately). If the limits are reached, the response will contain an
 item named `limit_eval_reached: true` and `limit_event_reached: true`.
 
 Finally, you may also set `trace` to `true` in the request to receive a detailed trace of the rule evaluation. This is
 useful in the development of new rules to find where rules are failing.
+
 
 ## Billing
 The Replay service is billed on a per operator evaluation basis.
@@ -133,8 +141,7 @@ A [D&R Rule](dr.md) is composed of multiple operator evaluations. It is each of 
 billed for the Replay service. It means that generally speak the number of operator evaluations will be based
 on the `number of events replayed X complexity of the rule`.
 
-Rules, especially complex ones can be hard to evaluate since rules will often perform evaluation short-cicruits
-to reduce the number of evaluations in certain cases. Therefore the best way to evaluate a rule is to use the
+Rules, especially complex ones, can be difficult to evaluate since rules will often perform evaluation short-circuits
+to reduce the number of evaluations in certain cases. Therefore, the best way to evaluate a rule is to use the
 [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) with the `limacharlie-replay` command
-which outputs precise statistics about a Replay job. This will include number of operator evaluations which will
-then help you determine the performance of your rule.
+which outputs precise statistics about a Replay job. This will include the number of operator evaluations which will then help you determine the performance of your rule.

@@ -1,15 +1,15 @@
 ## Core Concepts
 ### Sensors
-The LimaCharlie sensor is a cross platform endpoint sensor (agent). It is a low-level, light-weight sensor that executes detection and response functionality in real-time.
+The LimaCharlie sensor is a cross platform endpoint sensor (agent). It is a low-level, light-weight sensor which executes detection and response functionality in real-time.
 
 The sensor provides a wide range of advanced capability.
 
 * Flight Data Recorder (FDR) type functionality like Processes, Network Connections, Domain Name requests etc.
-* Host isolation, automated response rules, intelligent local caching of events for in depth Incident Response (IR)
+* Host isolation, automated response rules, intelligent local caching of events for in-depth Incident Response (IR)
 as well as some forensic features like dumping memory.
 
 Sensors are designed to limit the potential for abuse resulting from unauthorized access to the LimaCharlie platform.
-This is achieved by limited open-ended commands as well as commands that could enable an attacker to
+This is achieved by limiting open-ended commands which might enable an attacker to
 covertly upload malicious software to your hosts. This means the LimaCharlie sensor is extremely powerful
 but also keeps its "read-only" qualities on your infrastructure. Of course, all access and interactions with the hosts
 are also logged for audit both within the cloud and tamper-proof forwarding to your own infrastructure.
@@ -32,12 +32,12 @@ investigate, mitigate or apply Tags.
 Detailed explanation in the [Detection & Response section](dr.md).
 
 ### Insight
-Insight is our built-in data retention and searching. It is included within our 2 sensor free tier as well.
+Insight is our built-in data retention and search feature. It is included within our 2 sensor free tier as well.
 
 When you enable Insight, we configure everything for you so that you get access to one year of your data for visualization and searching.
 
-You don't *have to* use the built-in data retention; you can forward data to your infrastructure
-directly if you'd like. In general though, it is much simpler and a better experience to use Insight. If you prefer not to use Insight,
+You don't *have to* use the built-in data retention; you can forward data directly to your infrastructure
+ if preferred. However, it is generally much simpler and a better experience to use Insight. If you prefer not to use Insight,
 go through the next section (Outputs).
 
 ### Outputs

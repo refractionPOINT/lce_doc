@@ -1,5 +1,6 @@
 {
     "items": [
+
       {
         "type": "divider",
         "title": "Overview"
@@ -16,58 +17,41 @@
       },
       {
         "type": "item",
-        "title": "Feature Overview",
-        "uri": "docs/features.md"
+        "title": "FAQ",
+        "uri": "docs/faq.md"
       },
+
+
       {
         "type": "divider",
-        "title": "Guides"
+        "title": "Capabilities"
       },
       {
         "type": "item",
-        "title": "Access",
-        "uri": "docs/lc-access.md"
+        "title": "Endpoint Detection & Response",
+        "uri": "docs/lc-edr.md"
       },
       {
         "type": "item",
-        "title": "Agent",
-        "uri": "docs/lc-agent.md"
-      },
-      {
-        "type": "item",
-        "title": "Code",
-        "uri": "docs/lc-code.md"
-      },
-      {
-        "type": "item",
-        "title": "Education",
-        "uri": "docs/lc-edu.md"
-      },
-      {
-        "type": "item",
-        "title": "Hunting",
-        "uri": "docs/lc-hunt.md"
-      },
-      {
-        "type": "item",
-        "title": "Marketplace",
-        "uri": "docs/lc-marketplace.md"
-      },
-      {
-        "type": "item",
-        "title": "Net",
+        "title": "Software Defined Networking",
         "uri": "docs/lc-net.md"
       },
       {
         "type": "item",
-        "title": "Output",
-        "uri": "docs/lc-output.md"
+        "title": "Log & Artifact Ingestion",
+        "uri": "docs/lc-artifact_ingestion.md"
       },
       {
         "type": "item",
-        "title": "Storage",
-        "uri": "docs/lc-storage.md"
+        "title": "Infrastructure as Code",
+        "uri": "docs/lc-infra-as-code.md"
       },
+      {
+        "type": "item",
+        "title": "Operational Console for Teams",
+        "uri": "docs/lc-comms.md"
+      },
+
       {
         "type": "divider",
         "title": "Reference"
@@ -84,6 +68,12 @@
       },
       {
         "type": "item",
+        "title": "Infrastructure Service",
+        "uri": "docs/infrastructure-service.md"
+      },
+
+      {
+        "type": "item",
         "title": "Events",
         "uri": "docs/events.md"
       },
@@ -92,16 +82,14 @@
         "title": "ID Schemes",
         "uri": "docs/agentid.md"
       },
-      {
-        "type": "item",
-        "title": "FAQ",
-        "uri": "docs/faq.md"
-      },
+
       {
         "type": "item",
         "title": "Error Codes",
         "uri": "docs/errors.md"
       },
+
+
       {
         "type": "divider",
         "title": "Operations"
@@ -165,11 +153,6 @@
         "type": "item",
         "title": "User Control",
         "uri": "docs/user_access.md"
-      },
-      {
-        "type": "item",
-        "title": "Data Visualization",
-        "uri": "docs/data_visualization.md"
       },
       {
         "type": "item",

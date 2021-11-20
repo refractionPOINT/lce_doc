@@ -24,7 +24,7 @@ Platforms: Windows, Linux, MacOS
 ```
 
 ### SHUTTING_DOWN
-Event generated when the sensor shuts down, may not be observed if the
+Event generated when the sensor shuts down may not be observed if the
 host shuts down too quickly or abruptly.
 
 Platforms: Windows, Linux, MacOS
@@ -460,7 +460,7 @@ Platforms: Windows, MacOS
 ### NETWORK_SUMMARY
 Generated either when a process exits or when a process has established 10 network
 connections. This event combines process information with the first 10 network connections
-it has done. It is a way to generated detections on process/network information without
+it has done. It is a way to generate detections on process/network information without
 sending home all network events all the time which is a lot of data.
 
 ***Deprecated, replaced by:*** `NETWORK_CONNECTIONS`
@@ -805,7 +805,7 @@ Platforms: Windows, Linux, MacOS
 
 ### MODULE_MEM_DISK_MISMATCH
 Generated when a mismatch between the contents of memory and the expected module
-on disk is found, can be an indicator of process hollowing.
+on disk is found. Can be an indicator of process hollowing.
 
 Platforms: Windows, Linux, MacOS
 
@@ -915,7 +915,7 @@ Platforms: Windows, MacOS
 ```
 
 ### GET_DOCUMENT_REP
-Generated when a doc_cache_get task requrested a cached document.
+Generated when a doc_cache_get task requests a cached document.
 
 Platforms: Windows, MacOS
 
@@ -1045,12 +1045,34 @@ Platforms: Windows
 ### REGISTRY_WRITE
 This event is generated whenever a registry value is written to on a Windows OS.
 
+The `REGISTRY_VALUE` contains the first 16 bytes of the value written to the registry.
+If this value is a valid ASCII or Unicode string, the value will be as-is. On the other
+hand if the value is binary data, it will be a base64 encoded string, see examples below.
+
+The `SIZE` is the size value used in the original registry write call.
+The `TYPE` is the Windows data type of the entry written as per [Microsoft's definition](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-rprn/25cce700-7fcf-4bb6-a2f3-0f6d08430a55).
+
 Platforms: Windows
 
+Valid string payload:
 ```json
 {
-   "PROCESS_ID":   3584,
-   "REGISTRY_KEY":   "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\VFUProvider\\StartTime"
+  "PROCESS_ID":1820,
+  "REGISTRY_KEY":"\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows Defender\\Diagnostics\\LastKnownGoodPlatformLocation",
+  "REGISTRY_VALUE":"C:\\Progr",
+  "SIZE":1,
+  "TYPE":1,
+}
+```
+
+Binary payload:
+```json
+{
+  "PROCESS_ID": 1700,
+  "REGISTRY_KEY": "\\REGISTRY\\MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Diagnostics\\DiagTrack\\HeartBeats\\Default\\LastHeartBeatTime",
+  "REGISTRY_VALUE": "bMPGjjDM1wE=",
+  "SIZE": 11,
+  "TYPE": 11
 }
 ```
 
@@ -1143,7 +1165,7 @@ Platforms: Windows, MacOS
 ```
 
 ### FIM_LIST_REP
-Listing of active [FIM](sensor_commands/#file-and-registry-integrity-monitoring) entries.
+Listing of active [FIM](sensor_commands.md#file-and-registry-integrity-monitoring) entries.
 
 Platforms: Windows, MacOS, Linux
 
@@ -1156,12 +1178,12 @@ Platforms: Windows, MacOS, Linux
 ```
 
 ### FIM_HIT
-A file, directory or registry key being monitored by [FIM](sensor_commands/#file-and-registry-integrity-monitoring)
+A file, directory or registry key being monitored by [FIM](sensor_commands.md#file-and-registry-integrity-monitoring)
 has been modified.
 
 Platforms: Windows, MacOS, Linux
 
-```
+```json
 {
   "PROCESS": {
     "MEMORY_USAGE": 25808896,
@@ -1197,7 +1219,7 @@ or a remote thread to sensitive operating system processes like lsass.exe on Win
 
 Platforms: Windows
 
-```
+```json
 {
     "EVENTS": [
       {
@@ -1273,7 +1295,7 @@ This event is emitted whenever an HTTP request is made.
 
 Platforms: Chrome
 
-```
+```json
 {
   "URL": "https://play.google.com/log?authuser=0",
   "IP_ADDRESS": "172.217.2.142",
@@ -1292,7 +1314,7 @@ Events around the global status of the deployment, observable in D&R rules via t
 
 Enrollment deployment events are produced when a sensor enrolls into the organization for the first time.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1317,7 +1339,7 @@ Sensor clone events are generated when the LimaCharlie Cloud detects that a spec
 Cloning means the same SID is associated with two different hosts at the same time. This is most often due to
 a machine image being created with a LC sensor installed on it, and then being deployed multiple times.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1339,7 +1361,7 @@ a machine image being created with a LC sensor installed on it, and then being d
 
 Over quota deployment events are produced when a sensor tries to connect but the organization quota is already reached.
 
-```
+```json
 {
   "routing": {
     "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
@@ -1358,6 +1380,30 @@ Over quota deployment events are produced when a sensor tries to connect but the
 }
 ```
 
+### deleted_sensor
+
+Deleted Sensor deployment events are produced when a sensor that was previously deleted from an Org attempts to connect to the LimaCharlie cloud.
+
+```json
+{
+  "routing": {
+    "oid": "d9ae5c17-d519-4ef5-a4ac-c454a95d31ca",
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "plat": 536870912,
+    "arch": 2,
+    "ext_ip": "104.196.34.101",
+    "int_ip": "172.17.0.2",
+    "hostname": "linux-server-1",
+    "event_type": "sensor_deleted",
+    "event_time": 1561741553230
+  },
+  "event": {
+    "denied_for": "720h0m0s"
+  }
+}
+```
+
 ## Artifact Events
 
 Events around artifact collection, observable in D&R rules via the `artifact_event` target.
@@ -1367,7 +1413,7 @@ Events around artifact collection, observable in D&R rules via the `artifact_eve
 
 A new artifact has been ingested.
 
-```
+```json
 {
     "routing" : {
         "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",
@@ -1389,7 +1435,7 @@ A new artifact has been ingested.
 
 An export of artifact data is completed and ready for download.
 
-```
+```json
 {
     "routing" : {
         "log_id" : "ca812425-5a36-4c73-a0a0-935a8ace6451",

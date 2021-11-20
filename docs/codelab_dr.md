@@ -4,48 +4,47 @@
 
 ### What is a Detection & Response Rule
 
-Detection & Response (DR) Rules are similar to Google Cloud Functions or AWS Lambda.
-They allow you to push DR rules to the LimaCharlie cloud where the rules will be applied
-in real-time to the data coming from the sensors.
+Detection & Response (D&R) Rules are similar to Google Cloud Functions or AWS Lambda.
+They allow you to push D&R rules to the LimaCharlie cloud where the rules will be applied
+in real-time to data coming from the sensors.
 
-DR rules can also be applied to [Artifact Collection](external_logs.md), but we will focus
+D&R rules can also be applied to [Artifact Collection](external_logs.md), but for now we will focus
 on the simple case where it is applied to sensor events.
 
 For a full list of all rule operators and detailed documentation see the [Detection & Response](dr.md) section.
 
 ### Life of a Rule
 
-DR rules are generally applied on a per-event basis. When the rule is applied, the "detection"
-component of the rule is processed to determine if it matches. If it matches, the "response"
-component will then be applied.
+D&R rules are generally applied on a per-event basis. When the rule is applied, the "detection"
+component of the rule is processed to determine if it matches. If there is a match, the "response"
+component is applied.
 
 The detection is processed one step at a time, starting at the root of the detection. If the
 root matches, the rule is considered to be matching.
 
 The detection component is composed of "nodes", where each node has an operator describing the
-logical evaluation. Most operators are simple, like `is`, `starts with` etc. Those simple nodes
-can be combined together with boolean (true/false) logic using the `and` and `or` operators, which
+logical evaluation. Most operators are simple, like `is`, `starts with` etc. These simple nodes
+can be combined with boolean (true/false) logic using the `and` and `or` operators, which
 themselves reference a series of nodes. The `and` node matches if all the sub-nodes match, while
 the `or` node matches if any one of the sub-nodes matches.
 
-When evaluating an `or`, as soon as the first sub-node is found matching, the rest of the sub-nodes
-are skipped since they will have no impact on the final matching state of the "or". Similarly the
-a failure of a sub-node in an "and" node will immediately terminate its evaluation.
+When evaluating an `or`, as soon as the first matching sub-node is found, the rest of the sub-nodes
+are skipped since they will have no impact on the final matching state of the "or". Similarly, failure of a sub-node in an "and" node will immediately terminate its evaluation.
 
 If the "detection" component is matched, then the "response" evaluation begins.
 
 The "response" component is a list of actions that should be taken. When an action refers to a
 sensor, that sensor is assumed to be the sensor the event being evaluated is coming from.
 
-The best general strategy for DR rules is to put the parts of the rule that are most likely
-to eliminate the event at the begining of the rule so that LC may move on to the next event
+The best general strategy for D&R rules is to put the parts of the rule most likely
+to eliminate the event at the begining of the rule, so that LC may move on to the next event
 as quickly as possible.
 
 ## Introduction
 
 ### Goal
 
-The goal of is code lab will be to create a DR rule to detect the MITRE ATT&CK framework
+The goal of is code lab will be to create a D&R rule to detect the MITRE ATT&CK framework
 [Control Panel Items](https://attack.mitre.org/techniques/T1196/) execution.
 
 ### Services Used
@@ -76,11 +75,11 @@ to the REST API section of the web app.
 
 1. In the REST API section, click the "+" button in the top right of the page.
 1. Give your key a name.
-1. For simplicity, click the "Select All" button to enable all permissions. Obviously this would not be a recomended in a production environment,
+1. For simplicity, click the "Select All" button to enable all permissions. Obviously this would not be a recommended in a production environment,
 1. Click the copy-to-clipboard button for the new key and take note of it (pasting it in a temporary text note for example).
 1. Back on the REST API page, copy the "Organization ID" at the top of the page and keep note of it like the API key in the previous step.
 
-The Organization ID (OID) identifies uniquely your organization while the API key grants specific perissions to this organization.
+The Organization ID (OID) identifies uniquely your organization while the API key grants specific permissions to this organization.
 
 ### Login to the CLI
 
@@ -95,8 +94,7 @@ You're done! If you issue a `limacharlie dr list` you should not get any errors.
 ## Draft Rule
 
 To draft our rule, open your prefered text editor and save the rule to a file, we'll call it `T1196.rule`.
-The format of a rule is [YAML](https://en.wikipedia.org/wiki/YAML), if you are not familiar with it
-you're best spending a few minutes getting familiar. It is not too complex.
+The format of a rule is [YAML](https://en.wikipedia.org/wiki/YAML), if you are unfamiliar with it, there is benefit to spending a few minutes getting familiar. It won't take long as it is not overly complex.
 
 For our rules based on the [T1196](https://attack.mitre.org/techniques/T1196/) technique, we need
 to apply the following constraints:
@@ -113,14 +111,14 @@ In this case, we only care about [CODE_IDENTITY](events.md#code_identity) events
 our rule will use more than one criteria, and those criteria will be AND-ed together because we only
 want to match when they all match.
 
-```
+```yaml
 op: and
 event: CODE_IDENTITY
 rules:
   - 
 ```
 
-The above sets up the criteria #2 from above and the AND-ing that will follow. Since the AND is at the
+The above sets up the criteria #2 preceding it, with the AND-ing that will follow. Since the AND is at the
 top of our rule, and it has an `event:` clause, it will ensure that any event processed by this rule
 but is NOT a `CODE_IDENTITY` event will be skipped over right away.
 
@@ -129,7 +127,7 @@ that will be AND-ed together.
 
 Criteria #1 was to limit to Windows, that's easy:
 
-```
+```yaml
 op: and
 event: CODE_IDENTITY
 rules:
@@ -142,7 +140,7 @@ Next up is criteria #3 and #4. Both of those can be determined using the `FILE_P
 of the structure is simply to open the Historic View, start a new process on that specific host and look for
 the relevant event. If we were to do this on a Windows host, we'd get an example like this one:
 
-```
+```json
 {
     "routing": {
         "parent": "...",
@@ -185,12 +183,12 @@ the relevant event. If we were to do this on a Windows host, we'd get an example
 This means what we want is to apply rules to the `event/FILE_PATH`. First part, #3 is easy, we just want
 to test for the `event/FILE_PATH` ends in `.cpl`, we can do this using the `ends with` operator.
 
-Most operators will use a `path` and a `value`. The general convention is that the `path` describes
+Most operators will use a `path` and a `value`. General convention is the `path` describes
 how to get to a value we want to compare within the event. So `event/FILE_PATH` says "starting in the `event`
 then get the `FILE_PATH`. The `value` generally represents a value we want to compare to the element found
-in the `path`, how we compare depends on the operator.
+in the `path`. How it is compared depends on the operator.
 
-```
+```yaml
 op: and
 event: CODE_IDENTITY
 rules:
@@ -200,11 +198,11 @@ rules:
     value: .cpl
 ```
 
-That was easy, but we're missing a critical componet! By default, D&R rules operate in a case sensitive mode.
+That was easy, but we're missing a critical component! By default, D&R rules operate in a case sensitive mode.
 This means that the above node we added will match `.cpl` but will NOT match `.cPl`. To fix this, we just add
 the `case sensitive: false` statement.
 
-```
+```yaml
 op: and
 event: CODE_IDENTITY
 rules:
@@ -220,7 +218,7 @@ Finally, we want to make sure the `event/FILE_PATH` is NOT in the `windows` dire
 a regular expression with a `matches` operator. But in this case, we want to EXCLUDE the paths that include
 the `windows` directory, so we want to "invert" the match. We can do this with the `not: true` statement.
 
-```
+```yaml
 op: and
 event: CODE_IDENTITY
 rules:
@@ -241,17 +239,17 @@ Here we go, we're done drafting our first rule.
 ## Validate Rule
 
 What we want to do now is validate the rule. If the rule validates, it doesn't mean it's correct, it
-just means that the structure is correct, the operators we use are known etc. It's the first pass at
+just means that the structure is correct, the operators we use are known, etc. It's the first pass at
 detecting possible formatting issues or typos.
 
-Do validate, we will simply leverage the Replay service. This service can be used to test rules or replay
+To validate, we will simply leverage the Replay service. This service can be used to test rules or replay
 historical events against a rule. In this case however, we just want to start by validating.
 
 Up until now we focused on the "detection" part of the rule. But a full rule also contains a "response"
-component. So before we proceed, we'll just add this structure. For a response, we will just use a
-simple `action: report`. The `report` simply creates a "detection" (alert).
+component. So before we proceed, we'll add this structure. For a response, we will use a
+simple `action: report`. The `report` creates a "detection" (alert).
 
-```
+```yaml
 detect:
   op: and
   event: CODE_IDENTITY
@@ -291,16 +289,16 @@ Our test plan will take the following approach:
 1. Test on historical data.
 
 With this plan, #1 and #2 lend themselves well to [unit tests](http://softwaretestingfundamentals.com/unit-testing/)
-while the #3 can be done more holistically by just using Replay to run historical events
+while #3 can be done more holistically by using Replay to run historical events
 through the rule and evaluate if there are any [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
 
-This may be over-kill for you, or for certain rules which are very simple, we leave that
+This may be excessive for you, or for certain rules which are very simple, we leave that
 evaluation to you. For the sake of this code lab, we will do a light version to demonstrate
 how to do tests.
 
 ### Testing a Single Event
 
-To tests #1 and #2, let's just create some synthetic events. It's always better to use
+To test #1 and #2, let's just create some synthetic events. It's always better to use
 real-world samples, but we'll leave that up to you.
 
 Take the event sample we had in the "Draft Rule" section and copy it to two new files
@@ -321,7 +319,7 @@ Now we can run our 3 samples against the rule using Replay,
 `limacharlie replay --rule-content T1196.rule --events positive.json` should output a result
 indicating the event matched (by actioning the `report`) like:
 
-```
+```json
 {
   "num_evals": 4,
   "eval_time": 0.00020599365234375,
@@ -337,7 +335,7 @@ indicating the event matched (by actioning the `report`) like:
 `limacharlie replay --rule-content T1196.rule --events negative-1.json` should output a result
 indicating the event did NOT match like:
 
-```
+```json
 {
   "num_evals": 4,
   "eval_time": 0.00011777877807617188,
@@ -352,7 +350,7 @@ indicating the event did NOT match like:
 ### Testing Historical Data
 
 The final test is to run the rule against historical data. If you are not using an
-organization on the free tier, note that the Replay API is billed on usage, in the
+organization on the free tier, note that the Replay API is billed on usage. In the
 following step we will run against all historical data from the organization, so if
 your organization is not on the free tier and it is large, there may be non-trivial
 costs associated.
@@ -363,7 +361,7 @@ Running our rule against the last week of data is simple:
 
 No matches should look like that:
 
-```
+```json
 {
   "num_evals": 67354,
   "eval_time": 1107.2150619029999,

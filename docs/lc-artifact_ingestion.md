@@ -1,18 +1,5 @@
-<!-- leave the empty title here... the image below displays the info BUT the platform requires something here -->
-# Storage
+# Log & Artifact Ingestion
 
-By default LimaCharlie stores a full year of searchable endpoint telemetry as well as log files, binary assets and more.
-
-All files and telemetry ingested are indexed across common indicators of compromise and are easily processed by any of the subsystems or products in the LimaCharlie offering.
-
-Telemetry Storage
- 
-Telemetry sent to the LimaCharlie is based on [events](./events.md) and is stored in its entirety in a one-year rolling buffer.
-
-Telemetry uses the concept of [atoms](./events.md#atoms), and fine-grained control over what telemetry is sent up to the cloud can be managed using [exfil control](#exfil-control).
-
-## Artifact Collection 
- 
 The Artifact Collection system allows you to ingest artifact types like:
 
 * Plain text logs (syslog for example)
@@ -40,12 +27,26 @@ Details on Artifact Collection and how to utilize it can be found [here](./exter
 
 ## Exfil Control
 
-By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc. A complete list of events can be found [here](./events.md).
+By default, LimaCharlie sensors send events to the cloud based on a standard profile that includes events like NEW_PROCESS, DNS_REQUEST etc.
 
 If you enable the Exfil Service, this default profile is replaced by a custom set of rules you define.
 
 Details on using custom exfil can be found [here](./exfil.md).
 
+## Outputs
 
+LimaCharlie users can choose to send their data anywhere that they want. 
 
+The following output methods are currently availble with a general overview [here](./outputs.md). If you have any special needs around output methods please file a ticket [here](https://limacharlie.io/user-ticket).
 
+* [Amazon S3](./outputs.md#amazon-s3)
+* [Google Cloud Storage](./outputs.md#google-cloud-storage)
+* [SCP](./outputs.md#scp)
+* [Slack](./outputs.md#slack)
+* [Syslog (TCP)](./outputs.md#syslog-tcp)
+* [Webhook](./outputs.md#webhook)
+* [Webhook Bulk](./outputs.md#webhook-bulk)
+* [SMTP](./outputs.md#smtp)
+* [Humio](./outputs.md#humio)
+* [Kafka](./outputs.md#kafka)
+* [Splunk](./outputs.md#splunk)

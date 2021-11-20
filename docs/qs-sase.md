@@ -1,18 +1,20 @@
-# LimaCharlie Net: Secure Access Service Edge (SASE)
+# Secure Access Service Edge (SASE)
 
-LimaCharlie Net (lc-net) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access.
+LimaCharlie Net (`lc-net`) allows you to secure and monitor network access to your endpoints by providing advanced instrumented VPN access. 
 
-lc-net endpoints appear like other endpoints in your LimaCharlie deployment, but they're quite different in nature. These lc-net endpoints need to be provisioned to be accessed.
+**To prevent abuse this feature requires a minimum sensor quota of three (credit card required). Sensor quota can be set on the Billing page inside of the web application.**
 
-By provisioning an lc-net endpoint, you create a set of VPN credentials that can be used by a single device. One set of credentials should be used by only a single device, and not shared among devices.
+![Billing Quota](https://storage.googleapis.com/lc-edu/content/images/content/qs-billing-quota.png)
 
-Once connected, these devices will be able to connect to the internet by default. Connectivity and additional features that can be enabled by lc-net are defined using "policies".
+`lc-net` endpoints appear like other endpoints in your LimaCharlie deployment, but they're quite different in nature. These `lc-net` endpoints need to be provisioned to be accessed.
 
-Clients connected can access the internet, but they can also access each other based on the policies you define. This makes lc-net great to secure internal network services for access from specific devices, on premises, on the road, or from home.
+By provisioning an `lc-net` endpoint, you create a set of VPN credentials that can be used by a single device. One set of credentials should be used by only a single device, and not shared among devices.
+
+Once connected, these devices will be able to connect to the internet by default. Connectivity and additional features that can be enabled by `lc-net` are defined using "policies".
+
+Clients connected can access the internet, but they can also access each other based on the policies you define. This makes `lc-net` great to secure internal network services for access from specific devices, on premises, on the road, or from home.
 
 The underlying technology used for VPN is called [WireGuard](https://www.wireguard.com/). WireGuard is a next-generation VPN technology that is promoted for its simplicity, speed, and security.
-
-Clients are available for [Windows, Android, macOS, Linux, iOS and ChromeOS](https://www.wireguard.com/install/). Client configuration is done either through a QR code or a simple configuration file.
 
 ## Provisioning
 
@@ -20,7 +22,7 @@ LimaCharlie Net requires the WireGuard client. Clients are available for Windows
 
 There are multiple methods for installing the client. Windows users can side-load and configure the client using the LimaCharlie agent by leveraging the `lc-net-install` service; otherwise, users can manually install Net or use the CLI. Details for all of these methods are outlined below.
 
-### Manually Install the WireGuard Client
+### Manually Install the WireGuard Client (recommended for Quickstart)
 
 To use LimaCharlie Net you will need to download and configure the WireGuard client. Download and installation instructions for the WireGuard client can be found [here](https://www.wireguard.com/install/).
 
@@ -33,30 +35,8 @@ Once you have installed the client you will need to connect it to LimaCharlie.
     2. Select the Installation Key you just created from the drop down of the same name.
 4. Follow the instructions that are emailed to the address used for provisioning the client.
 
-### lc-net-install Service
-This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision
-and upgrade an lc-agent to lc-net.
+### Installing the WireGuard client using the CLI
 
-Since it is a LimaCharlie Service it means you can either directly interact with the service or issue
-service requests via the API and even D&R rules.
-
-To use the service, you will need:
-
-1. The Net version of the Installation Key you want your new lc-net sensors to use. Go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
-2. The Sensor ID (sid) of the sensor you wish to upgrade. If you are using the Service interactively through the web
-interface, you may use the Hostname of the sensor and the web interface will auto-complete the Sensor ID.
-
-These steps assume you are using the web interface, but the same basic steps and parameters apply to other methods.
-
-1. Go in the main page of the Organization where you want to upgrade sensors to lc-net.
-1. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "on".
-1. From the left menu, go to the Service Request section.
-1. Select the `lc-net-install` service from the "Service" drop down.
-1. In the "iid" section, enter the Net Installation Key (obtained earlier).
-1. In the "sid" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
-1. Click "Request". The service will create a new Job that will be visible from the Organization's main page where you can track the progress of the upgrade. The whole process should take less than a minute.
-
-### CLI
 Using the [LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) (`pip install limacharlie`), you can provision new clients one at a time or in batches.
 
 Provisioning is done in the context of an installation key, just like an host based endpoint.
@@ -86,7 +66,7 @@ optional arguments:
   --email-user          if set, limacharlie will email users creds directly
   --within-range WITHINRANGE
                         if specified, this IP CIDR range will be favored when
-                        attributing an internal IP address in lc-net
+                        attributing an internal IP address in `lc-net`
   --exclude-local-ranges EXCLUDELOCAL
                         by default configs generated for clients route all
                         public IP ranges, this comma separated list of CIDRs
@@ -98,23 +78,43 @@ optional arguments:
                         specified
 ```
 
-The `name` is the name that will be associated with the lc-net device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag and the QR code + configuration file will be emailed directly to the `name` (email address).
+The name is the `name` that will be associated with the `lc-net` device. We recommend using a user identifier like an email address. If you use an email address, you can specify the `--email-user` flag. The QR code + configuration file will be emailed directly to the `name` (email address).
 
 The `--name-file` option allows you to specify a file containing all the names to provision.
 
 The `--output` can be used to send the configuration files directly to a directory.
 
-An example provisioning a basic new client:
+An example of provisioning a basic new client:
 
 ```
 python3 -m limacharlie net client provision --name test@mycorp.com --email-user MY-INSTALLATION-KEY
 ```
 
-An example provisioning a client in the `10.42.0.0/16` range and excluding the local IP range `100.115.92.200/28` from the VPN:
+An example of provisioning a client in the 10.42.0.0/16 range and excluding the local IP range 100.115.92.200/28 from the VPN:
 
 ```
 python3 -m limacharlie net client provision --name test@mycorp.com --email-user --within-range 10.43.1.0/24 --exclude-local-ranges 100.115.92.200/28 MY-INSTALLATION-KEY
 ```
+
+### lc-net-install Service
+
+This LimaCharlie Service called `lc-net-install` currently only supports Windows. It allows you to easily provision and upgrade an lc-agent to `lc-net`.
+
+Since it is a LimaCharlie Service this allows you to either directly interact with the service or issue service requests via the API and even D&R rules.
+
+To use the service, you will need:
+
+1. The Net version of the Installation Key you want your new `lc-net` sensors to use. Go to the Installation Key section, if you don't have a key create one, and then click the copy-to-clipboard button for the Net key.
+2. The Sensor ID (sid) of the sensor you wish to upgrade. If you are using the Service interactively through the web interface, you may use the Hostname of the sensor and the web interface will auto-complete the Sensor ID.
+These steps assume you are using the web interface, but the same basic steps and parameters apply to other methods.
+
+1. Go to the main page of the Organization where you want to upgrade sensors to `lc-net`.
+2. From the left menu, go to the Add-ons section, Services tab, `lc-net-install` service and set to "*on*".
+3. From the left menu, go to the Service Request section.
+4. Select the `lc-net-install` service from the "*Service*" drop down.
+5. In the "*iid*" section, enter the Net Installation Key (obtained earlier, in step one).
+6. In the "*sid*" section, select the Sensor ID by hostname or just enter the Sensor ID itself.
+7. Click "*Request*". The service will create a new Job that will be visible from the Organization's main page where you can track the progress of the upgrade. The whole process should take less than a minute.
 
 ## Policies
 
@@ -207,7 +207,7 @@ Firewall policies can either specify:
 - `is_allow: true` indicating this policy defines a destination that should be allowed
 - `is_allow: false` indicating this policy defines a destination that should be denied
 
-On a connection, all `firewall` policies will be applied. For the connection to be allowed, at least one policy must positively allow the traffic. If, however, even a single policy defines the destination as *not* allowed, the connection will be denied.
+On a connection, all `firewall` policies will be applied. For the connection to be allowed, at least one policy must positively allow the traffic. If, however, even a single policy defines the destination as *not* allowed, then the connection will be denied.
 
 Sample policy:
 ```json
@@ -231,9 +231,9 @@ The `tag_clients` specifies a tag that defines which lc-net endpoints have acces
 
 The `protocol` defines the [network protocol](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) ID that the service is allowed on. TCP is `6` and UDP is `17`.
 
-The following example describes that all lc-net endpoints with the `finance` tag should be allowed to connect to the service running on TCP port 8000 for the Sensor ID `9ccd5a2c-e83c-4ffb-8f52-9f48626a6fc6`.
+The following example describes all lc-net endpoints with the `finance` tag should be allowed to connect to the service running on TCP port 8000 for the Sensor ID `9ccd5a2c-e83c-4ffb-8f52-9f48626a6fc6`.
 
-Once in place, accessing this service can be done using the server's Internal IP that is available through the detailed information view of a given sensor. In the case of lc-net endpoints, this Internal IP is always in the `10.x.x.x` range and is static, meaning a sensor is given an Internal IP that it will keep for its whole lifetime, making it easier to bookmark services or even create your own DNS entries for services.
+Once in place, accessing this service can be done using the server's Internal IP, available through the detailed information view of a given sensor. In the case of lc-net endpoints, this Internal IP is always in the `10.x.x.x` range and is static, meaning a sensor is given an Internal IP that it will keep for its  lifetime, making it easier to bookmark services or create your own DNS entries for services.
 
 Sample policy:
 ```json
@@ -250,7 +250,7 @@ Sample policy:
 
 #### Capture
 
-A capture policy defines packet capture that should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
+A capture policy defines packet capture which should be done in the cloud and fed back into LimaCharlie's [Artifact system](external_logs.md) where [Detection & Response](dr.md) rules can be created or where [Zeek](zeek.md) can be applied to the packet captures.
 
 Various filters are available. The `ingest_key` is an [Ingestion Key](external_logs.md#using-the-rest-api) created by you in the REST API section. If left blank a default `__net_capture` key will be generated for you.
 
@@ -349,8 +349,8 @@ This policy has no parameters.
 ### Examples
 
 #### Prevent Use of a Service
-Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it
-can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+Let's say we want to prevent users on mobile devices from accessing Dropbox. Assuming mobile users are tagged as `mobile` as it can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 This is the `dns` policy:
 
@@ -366,8 +366,8 @@ This is the `dns` policy:
 ```
 
 #### Prevent SSH
-Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it
-can be done either manually, through a D&R rule or through the tags of an Installation Key.
+
+Let's say we want to prevent users working in the Finance Department from using SSH. Assuming Finance users are tagged as `finance` as it can be done either manually, through a D&R rule, or through the tags of an Installation Key.
 
 But only do this Monday through Friday, 8AM to 6PM Pacific Time, when the user is connected from an office which is hosted behind `9.9.9.0/24`.
 
@@ -390,3 +390,4 @@ This is the `firewall` policy:
   ]
 }
 ```
+

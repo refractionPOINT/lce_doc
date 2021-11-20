@@ -18,10 +18,11 @@ When creating a new Output, you chose a Stream. Streams determine the type of da
 * `inv_id`: only send events matching the investigation id to this output (event stream only).
 * `tag`: only send events from sensors with this tag to this output (event stream only).
 * `cat`: only send detections from this category to this output (detect stream only).
-* `cat_black_list`: only send detections that do not match the prefixes in this list (newline-seperated).
-* `event_white_list`: only send event of the types in this list (newline-seperated).
-* `event_black_list`: only send event not of the types in this list (newline-seperated).
+* `cat_black_list`: only send detections that do not match the prefixes in this list (newline-separated).
+* `event_white_list`: only send event of the types in this list (newline-separated).
+* `event_black_list`: only send event not of the types in this list (newline-separated).
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
+* `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
 
 ### Amazon S3
 Output events and detections to an Amazon S3 bucket.
@@ -37,7 +38,7 @@ Output events and detections to an Amazon S3 bucket.
 * `dir`: the directory prefix
 
 Example:
-```
+```yaml
 bucket: my-bucket-name
 key_id: AKIAABCDEHPUXHHHHSSQ
 secret_key: fonsjifnidn8anf4fh74y3yr34gf3hrhgh8er
@@ -48,7 +49,7 @@ is_compression: "true"
 ### Google Cloud Storage
 Output events and detections to a GCS bucket.
 
-* `bucket`: the path to the AWS S3 bucket.
+* `bucket`: the path to the GCS bucket.
 * `secret_key`: the secret json key identifying a service account.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
@@ -56,7 +57,7 @@ Output events and detections to a GCS bucket.
 * `dir`: the directory prefix where to output the files on the remote host.
 
 Example:
-```
+```yaml
 bucket: my-bucket-name
 secret_key: {
   "type": "service_account",
@@ -84,7 +85,7 @@ Output events and detections over SCP (SSH file transfer).
 * `secret_key`: the optional SSH private key to authenticate with.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 dir: /uploads/
 username: storage_user
@@ -101,7 +102,7 @@ Output events and detections over SFTP.
 * `secret_key`: the optional SSH private key to authenticate with.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 dir: /uploads/
 username: storage_user
@@ -110,17 +111,26 @@ password: XXXXXXXXXXXX
 
 ### Slack
 Output detections and audit (only) to a Slack community and channel.
-The Slack integration currently uses [Slack Legacy Tokens](https://api.slack.com/custom-integrations/legacy-tokens).
-
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
-* `slack_channel`: the channel to output to in the community.
+* `slack_channel`: the channel to output to within the community.
 
 Example:
-```
+```yaml
 slack_api_token: d8vyd8yeugr387y8wgf8evfb
-slack_channe: #detections
+slack_channel: #detections
 ```
+
+#### Provisioning
+To use this Output, you need to create a Slack App and Bot. This is very simple:
+1. Head over to https://api.slack.com/apps
+1. Click on "Create App" and select the workspace where it should go
+1. From the sidebar, click on OAuth & Permissions
+1. Go to the section "Bot Token Scope" and click "Add an OAuth Scope"
+1. Select the scope `chat:write`
+1. From the sidebar, click "Install App" and then "Install to Workspace"
+1. Copy token shown, this is the `slack_api_token` you need in LimaCharlie
+1. In your Slack workspace, go to the channel you want to receive messages in, and type the slash command: `/invite @limacharlie` (assuming the app name is `limacharlie`)
 
 ### Syslog (TCP)
 Output events and detections to a syslog target.
@@ -132,7 +142,7 @@ Output events and detections to a syslog target.
 * `structured_data`: arbitrary field to include in syslog "Structured Data" headers. Sometimes useful for cloud SIEMs integration.
 
 Example:
-```
+```yaml
 dest_host: storage.corp.com
 is_tls: "true"
 is_strict_tls: "true"
@@ -147,7 +157,7 @@ Output individually each event, detection, audit, deployment or artifact through
 * `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 
 Example:
-```
+```yaml
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
 auth_header_name: x-my-special-auth
@@ -164,7 +174,7 @@ Output batches of events, detections, audits, deployments or artifacts through a
 
 
 Example:
-```
+```yaml
 dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
 auth_header_name: x-my-special-auth
@@ -186,7 +196,7 @@ Output individually each event, detection, audit, deployment or log through an e
 * `subject`: is specified, use this as the alternate "subject" line.
 
 Example:
-```
+```yaml
 dest_host: smtp.gmail.com
 dest_email: soc@corp.com
 from_email: lc@corp.com
@@ -203,7 +213,7 @@ Output events and detections to the [Humio.com](https://humio.com) service.
 * `endpoint_url`: optionally specify a custom endpoint URL, if you have Humio deployed on-prem use this to point to it, otherwise it defaults to the Humio cloud.
 
 Example:
-```
+```yaml
 humio_repo: sandbox
 humio_api_token: fdkoefj0erigjre8iANUDBFyfjfoerjfi9erge
 ```
@@ -227,7 +237,7 @@ Output events and detections to a Kafka target.
 * `literal_topic`: use this specific value as a topic.
 
 Example:
-```
+```yaml
 dest_host: kafka.corp.com
 is_tls: "true"
 is_strict_tls: "true"
@@ -245,7 +255,7 @@ Output events and detections to a Pubsub topic.
 * `topic`: use this specific value as a topic.
 
 Example:
-```
+```yaml
 project: my-project
 topic: telemetry
 secret_key: {
@@ -272,7 +282,7 @@ All data over batched files via SFTP, Splunk or ELK consumes the received files 
 Sensor ---> LCC (All Streams) ---> SFTP ---> ( Splunk | ELK )
 ```
 
-All data stramed in real-time via Syslog, Splunk or ELK receive directly via an open Syslog socket.
+All data streamed in real-time via Syslog, Splunk or ELK receive directly via an open Syslog socket.
 ```
 Sensor ---> LCC (All Streams) ---> Syslog( TCP+SSL) ---> ( Splunk | ELK )
 ```
@@ -282,8 +292,8 @@ All data over batched files stored on Amazon S3, Splunk or ELK consumes the rece
 Sensor ---> LCC (All Streams) ---> Amazon S3 ---> ( Splunk | ELK )
 ```
 
-Bulk events are uploaded to Amazon S3 for archival while alerts and auditing events are sent in real-time to Splunk via Syslog.
-This has the added benefit of reducing Splunk license cost while keeping the raw events available for analysis at a cheaper cost.
+Bulk events are uploaded to Amazon S3 for archiving, while alerts and auditing events are sent in real-time to Splunk via Syslog.
+This has the added benefit of reducing Splunk license cost while keeping the raw events available for analysis at a lower cost.
 ```
 Sensor ---> LCC (Event Stream) ---> Amazon S3
        +--> LCC (Alert+Audit Streams) ---> Syslog (TCP+SSL) ---> Splunk
@@ -293,20 +303,20 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
 Splunk provides you with a simple web interface to view and search the data.
 It has a paying enterprise version and a free tier.
 
-Below are manual steps to using Splunk with LimaCharlie data. But you can also use
+Below are manual steps to using Splunk with LimaCharlie data. You can also use
 this [installation script](install_simple_splunk.sh) to install and configure a free
 version on a Debian/Ubuntu server automatically.
 
 Because the LimaCharlie.io cloud needs to be able to reach your Splunk instance at all times to upload data, we recommend
 you create a virtual machine at a cloud provider like DigitalOcean, Amazon AWS or Google Cloud.
 
-Splunk is the visualization tool, but there are many ways you can use to get the data to Splunk. We will use SFTP as it
+Splunk is the visualization tool, but there are many ways to get the data to Splunk. We will use SFTP as it
 is fairly simple and safe.
 
 1. Create your virtual machine, for example using [this DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet).
-1. Install Splunk, [here](https://medium.com/@smurf3r5/splunk-enterprise-on-digital-ocean-ubuntu-16-x-95c31c7e7e2c) is a quick tutotial on how to do that.
+1. Install Splunk, [here](https://medium.com/@smurf3r5/splunk-enterprise-on-digital-ocean-ubuntu-16-x-95c31c7e7e2c) is a quick tutorial on how to do that.
 1. Configure a write-only user and directory for SFTP using [this guide](https://www.digitalocean.com/community/tutorials/how-to-enable-sftp-without-shell-access-on-ubuntu-16-04).
-  1. We recommend using `PasswordAuthentication false` and to use RSA keys instead, but for ease you may simply set a password.
+  1. We recommend using `PasswordAuthentication false` and RSA keys instead, but for ease you may simply set a password.
 1. Edit the file `/opt/splunk/etc/apps/search/local/props.conf` and add the following lines:
     ```
     [limacharlie]
@@ -321,7 +331,7 @@ is fairly simple and safe.
     ```
 1. Restart Splunk by issuing: `sudo /opt/splunk/bin/splunk restart`.
 1. Back in limacharlie.io, in your organization view, create a new Output.
-1. Give it a name, select the "sftp" module and select the stram you would like to send.
+1. Give it a name, select the "sftp" module and select the stream you would like to send.
 1. Set the "username" that you used to setup the SFTP service.
 1. Set either the "password" field or the "secret_key" field depending on which one you chose when setting up SFTP.
 1. In "dest_host", input the public IP address of the virtual machine you created.
@@ -439,10 +449,10 @@ stream from. As additional data in the POST, specify the following parameters:
 * `inv_id`: optional, specifies the investigation ID to filter on.
 
 The response from this POST will be a stream of data.
-The format of this data will be newline-seperated JSON much like all other Outputs.
+The format of this data will be newline-separated JSON much like all other Outputs.
 
-Note that this method of getting data requires you to have a fast enough connection to receive the data as the buffering
-done on the side of `stream.limacharlie.io` is very minimal. If you are not fast enough, data will be dropped and you will
+Note that this method of getting data requires having a fast connection to receive the data as the buffering
+done on the side of `stream.limacharlie.io` is very minimal. If the connection is not fast enough, data will be dropped and you will
 be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of
 that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}`
 message aproximately every minute to indicate the stream is still alive.

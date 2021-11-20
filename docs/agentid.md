@@ -2,25 +2,25 @@
 
 ## Agent IDs
 
-An AgentID is a 5-tuple that completely describes a sensor, whereas a SensorID is the smallest single unique identifier
+An AgentID is a 5-tuple that completely describes a sensor, while a SensorID is the smallest single unique identifier
 that can identify a sensor.
 
 The AgentID's components look like this: `OID.IID.SID.PLATFORM.ARCHITECTURE`.
 
-For all components, a value of `0` indicates a wildcard value that matches any value when comparing AgentIDs as masks.
+For all components, a value of `0` indicates a wildcard that matches any value when comparing AgentIDs as masks.
 
 ## OID
-The OID (Organization ID) is a UUID that identifies a unique organization.
+The OID (Organization ID) is a UUID which identifies a unique organization.
 
 ## IID
 The IID (Installer ID) is a UUID that identifies a unique installation key. This allows us to cycle installation keys and
-repudiate old keys (in the event the key gets leaked).
+repudiate old keys, in the event the key gets leaked.
 
 ## SID
 The SID (Sensor ID) is a UUID that identifies a unique sensor.
 
 ## Platform
-The platform is a 32 bit integer (in its hex format) that identifies the exact platform the sensor runs on. Although it is
+The platform is a 32 bit integer (in its hex format) which identifies the exact platform the sensor runs on. Although it is
 structured with a major and minor platform, the important values are:
 
 * `0x10000000`: Windows
@@ -55,4 +55,4 @@ In this example, we're dealing with one piece of hardware, but 3 different senso
 
 To help provide a holistic view of activity, LimaCharlie introduces the concept of a Device ID. This ID is mostly visible in the sensor's basic info and in the `routing` component of sensor events under the name `did` (Device ID).
 
-This Device ID is automatically generated and assigned by LimaCharlie using correlation of specific low level events common to all the sensors. This means that if two sensors share a `did: 1234-5678...` ID, it means that they are either on the same device or at least share the same visibility (they see the same activity from two angles).
+This Device ID is automatically generated and assigned by LimaCharlie using correlation of specific low level events common to all the sensors. This means that if two sensors share a `did: 1234-5678...` ID, it means they are either on the same device or at least share the same visibility (they see the same activity from two angles).

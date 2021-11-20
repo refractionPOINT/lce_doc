@@ -1,10 +1,10 @@
 # Deploying Sensors
 
-The sensor is signed and the same for everyone. The sensor's customization (who is the owner) is done at installation time
+The sensor is signed, and the same for everyone. The sensor's customization, which indicates the owner, is done at installation
 based on the [installation key](manage_keys.md) used. The installation key specifies where the sensor should connect
-to enroll as well as the encryption key used to start the enrollment process.
+to enroll, as well as the encryption key used to start the enrollment process.
 
-Installing the sensor does not require a reboot. Also note that once installed the sensor does not have any visual components
+Installing the sensor does not require a reboot. Also note that once installed, the sensor does not have any visual components,
 so instructions on confirming it is installed and running are found below.
 
 ## Connectivity
@@ -31,16 +31,17 @@ For example:
 * https://app.limacharlie.io/get/linux/alpine64 for the Linux Apline 64 bit installer
 * https://app.limacharlie.io/get/linux/arm32 for the Linux ARM 32 bit installer
 * https://app.limacharlie.io/get/linux/arm64 for the Linux ARM 64 bit installer
-* https://app.limacharlie.io/get/mac/64 for the MacOS 64 bit installer
+* https://app.limacharlie.io/get/mac/64 for the macOS 64 bit installer
+* https://app.limacharlie.io/get/mac/arm64 for the macOS ARM 64 bit (Apple Silicon) installer
 * https://app.limacharlie.io/get/chrome for the Chrome extension
 
 ## Installing the Sensor
 The sensors are designed to be simple to use and re-package for any deployment methodology you use in your organization.
 
 The sensor requires administrative privileges to install. On Windows this means an Administrator or System account, on
-MacOS and Linux it means the root account.
+macOS and Linux it means the root account.
 
-Before installing, you will need the [installation key](manage_keys.md) you want to use,
+Before installing, you will need the [installation key](manage_keys.md) you want to use.
 
 ### Windows
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
@@ -57,7 +58,7 @@ installation key in an alternate place in the following order:
 The LimaCharlie.io agent supports Windows XP 32 bit and up (32 and 64 bit). However, Windows XP and 2003 support is for the
 more limited capabilities of the agent that do not require kernel support.
 
-#### Checking it Runs
+#### Checking if it Runs
 In an administrative command prompt issue the command `sc query rphcpsvc` and confirm the `STATE` displayed is `RUNNING`.
 
 ### macOS
@@ -87,7 +88,7 @@ This means you can wrap the executable using the specific service management tec
 simply specifying the location of the installer, the `-d INSTALLATION_KEY` parameter and making sure the current working
 directory is the directory where you want the few sensor-related files written to disk to reside.
 
-A common methodology for Linux is to use `init.d`, if this sufficient for your needs, see this [sample install script](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh).
+A common methodology for Linux is to use `init.d`, if this is sufficient for your needs, see this [sample install script](https://github.com/refractionPOINT/lce_doc/blob/master/docs/lc_linux_installer.sh).
 You can invoke it like this:
 ```
 sudo chmod +x ./lc_linux_installer.sh
@@ -100,13 +101,13 @@ installation key in an alternate place in the following order:
 * Text file in current working directory: `lc_installation_key.txt`
 
 #### Disabling Netlink
-By default the Linux sensor makes use of Netlink if it's availabe. In some rare configurations
+By default, the Linux sensor makes use of Netlink if it's availabe. In some rare configurations
 this auto-detection may be unwanted and Netlink usage can be disabled by setting the
 environment variable `DISABLE_NETLINK` to any value on the sensor process.
 
 #### System Requirements
 All versions of Debian and CentOS starting around Debian 5 should be supported. Due to the high diversity of the ecosystem
-it's also likely to be working on other distributions. If you need a specific platform contact us.
+it's also likely to be working on other distributions. If you need a specific platform, contact us.
 
 ### Containers and Virtual Machines
 The LimaCharlie sensor can be installed in template-based environments whether they're VMs or Containers.
@@ -185,7 +186,7 @@ This is accomplished by a combination of a few techniques:
 1. LC runs with the `NET_NS` environment variable pointing to the host's directory listing network namespaces.
 1. Running the container with the required flags to make sure it can have proper access.
 
-The first step is straight forward, for example, set the environment like `ENV HOST_FS=/rootfs` and `ENV NET_NS=/netns` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
+The first step is straight forward. For example, set the environment like `ENV HOST_FS=/rootfs` and `ENV NET_NS=/netns` as part of your `Dockerfile`. This will let the LC sensor know where it can expect host-level information.
 
 The second step is to run the container like: `docker run --privileged --net=host -v /:/rootfs:ro --env HOST_FS=/rootfs -v /var/run/docker/netns:/netns:ro --env NET_NS=/netns --env LC_INSTALLATION_KEY=your_key your-lc-container-name`.
 
@@ -197,7 +198,7 @@ A public version of the container described below is available from dockerhub as
 ##### Sample Configurations
 This is a sample `Dockerfile` you may use to run LC within a privileged container as described above:
 
-```
+```dockerfile
 # Requires an LC_INSTALLATION_KEY environment variable
 # specifying the installation key value.
 # Requires a HOST_FS environment variable that specifies where
@@ -223,7 +224,7 @@ CMD ./lc_sensor -d -
 
 And this is a sample Kubernetes `deployment`:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -289,15 +290,15 @@ The Chrome sensor is available in the Chrome Web Store.
 copy the key to your clipboard.
 1. Install the sensor from: [https://app.limacharlie.io/get/chrome](https://app.limacharlie.io/get/chrome)
 1. A new tab will open where you can add your installation key from before. If you close it by mistake, you can re-open it by:
-  1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
-  1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
+    1. From the Extensions page at chrome://extensions/ click on the "Details" button of the LimaCharlie Sensor extension.
+    1. Go to the "Extension options" section, and enter your installation key from the previous step. Click save.
 
 The installation key can also be pre-configured through the Managed Storage feature (key named `installation_key`) if you are using a managed Chrome deployment.
 
 ### Staging Deployment
 When a new version of the sensor is made available, it can be useful to test the new version on specific hosts within an Organization without upgrading the whole Organization.
 
-This can be achieved using a sensor tag called `latest`. When you tag a sensor with `latest`, the sensor version currently assigned to the Organization will be ignore for that
+This can be achieved using a sensor tag called `latest`. When you tag a sensor with `latest`, the sensor version currently assigned to the Organization will be ignored for that
 specific sensor and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the `latest` tag in
 order to test-deploy the latest version and confirm no negative effects.
 

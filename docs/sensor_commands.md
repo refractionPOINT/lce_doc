@@ -3,7 +3,7 @@
 Sensor commands are commands that can be sent to the sensor (through the backend as an intermediary) to do various things.
 These commands may rely on various collectors that may or may not be currently enabled on the sensor and have been marked as such.
 
-Below is a high level listing of available commands and their purpose. Commands are sent like a command line interface
+Below is a high level listing of available commands and their purposes. Commands are sent like a command line interface
 and may have positional or optional parameters. To get exact usage, either do a `GET` to the REST interface's `/tasks`
 endpoint or issue the RPC `get_help` to the `c2/taskingproxy` category.
 
@@ -15,10 +15,10 @@ Output you have configured.
 
 To assist in finding the responses more easily, the `investigation_id` mechanism was created. When issuing a task, you can include
 an `investigation_id`, which is simply an arbitrary string you define, and that ID will be included in all related responses from
-the sensor (`routing/investigation_id`). Note that Outputs also support the `inv_id` parameter that allows you to create
+the sensor (`routing/investigation_id`). Note that Outputs also support the `inv_id` parameter which allows you to create
 an Output that will only receive data related to an investigation ID.
 
-A common scheme is to set an investigation ID in all tasks sent during an interactive session and
+A common scheme is to set an investigation ID in all tasks sent during an interactive session, and
 to create an Output with this specific ID for the duration of the session. That way you can find all the
 responses from your session in one place.
 
@@ -173,7 +173,7 @@ Display the map of memory pages from a process including size, access rights, et
 
 Platforms: Windows, Linux, MacOS
 
-**Due to recent changes in MacOS, may be less reliable on that platform.**
+**Due to recent changes in MacOS, this may be less reliable on that platform.**
 
 ```
 usage: mem_map [-h] [-p PID] [-a PROCESSATOM]
@@ -190,7 +190,7 @@ Retrieve a chunk of memory from a process given a base address and size.
 
 Platforms: Windows, Linux, MacOS
 
-**Due to recent changes in MacOS, may be less reliable on that platform.**
+**Due to recent changes in MacOS, this may be less reliable on that platform.**
 
 ```
 usage: mem_read [-h] [-p PID] [-a PROCESSATOM] baseAddr memSize
@@ -227,7 +227,7 @@ List strings from a process's memory.
 
 Platforms: Windows, Linux, MacOS
 
-**Due to recent changes in MacOS, may be less reliable on that platform.**
+**Due to recent changes in MacOS, this may be less reliable on that platform.**
 
 ```
 usage: mem_strings [-h] [-p PID] [-a PROCESSATOM]
@@ -245,7 +245,7 @@ Find specific strings in memory.
 
 Platforms: Windows, Linux, MacOS
 
-**Due to recent changes in MacOS, may be less reliable on that platform.**
+**Due to recent changes in MacOS, this may be less reliable on that platform.**
 
 ```
 usage: mem_find_string [-h] -s STRING [STRING ...] pid
@@ -501,7 +501,7 @@ optional arguments:
 
 ### set_performance_mode
 Turn on or off the high performance mode on a sensor. This mode is designed for very high performance servers requiring high
-IO throughput. This mode reduces the accuracy of certain events which in turn reduces impact on the system. This mode is not
+IO throughout. This mode reduces the accuracy of certain events which in turn reduces impact on the system. This mode is not
 useful for the vast majority of hosts. If you are considering its usage, get in touch with the team at LimaCharlie.io.
 
 Platforms: Windows
@@ -516,7 +516,7 @@ optional arguments:
 ```
 
 ### restart
-The special command `restart` can be used to tell the LimaCharlie agent to re-initialize. This is usually only useful when
+The special command `restart` can be used to tell the LimaCharlie agent to re-initialize. This is typically only useful when
 dealing with cloned sensor IDs in combination with the remote deletion of the identity file on disk.
 
 ### uninstall
@@ -705,7 +705,7 @@ optional arguments:
 ### segregate_network
 Tells the sensor to stop all network connectivity on the host except LC comms to the backend. So it's network isolation, great to stop lateral movement.
 
-Note that you should never upgrade a sensor version while the network is isolated through this mechanism. Doing so may result in the agent not re-gaining
+Note that you should never upgrade a sensor version while the network is isolated through this mechanism. Doing so may result in the agent not regaining
 connectivity to the cloud, requiring a reboot to undo.
 
 This command primitive is NOT persistent, meaning a sensor you segregate from the network using this command alone, upon reboot will rejoin the network.
@@ -827,7 +827,33 @@ optional arguments:
 
 Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
 on a host where built-in root CAs are not up to date or present at all, it may be
-necessary to use the `--is-ignore-cert` flag to allow sensor to pull the payload to
+necessary to use the `--is-ignore-cert` flag to allow the sensor to pull the payload to
+execute from the cloud.
+
+Unlike the main sensor transport (which uses a pinned certificate), the
+Payloads feature uses Google infrastructure and their public SSL certificates.
+
+This may sometimes come up in unexpected ways. For example fresh Windows Server installations
+do not have the root CAs for `google.com` enabled by default.
+
+## put
+Upload a payload to an endpoint without executing it.
+
+Platforms: Windows, Linux, MacOS
+
+```
+usage: put [-h] --payload-name NAME [--payload-path PATH] [--is-ignore-cert]
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --payload-name NAME  name of the payload to run
+  --payload-path PATH  path where to put the payload
+  --is-ignore-cert     if specified, the sensor will ignore SSL cert mismatch
+```
+
+Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed
+on a host where built-in root CAs are not up to date or present at all, it may be
+necessary to use the `--is-ignore-cert` flag to allow the sensor to pull the payload to
 execute from the cloud.
 
 Unlike the main sensor transport (which uses a pinned certificate), the
