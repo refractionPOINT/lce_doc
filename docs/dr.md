@@ -4,7 +4,7 @@ Detection & Response rules automate actions based on the real-time events stream
 
 ## A Basic Rule
 
-Here's a rule that detect DNS requests to `example.com` and responds by reporting them within the organization with a category name `DNS Hit example.com`.
+Here's a rule that detects DNS requests to `example.com` and responds by reporting them within the organization with a category name `DNS Hit example.com`.
 
 ```yaml
 # Detection
@@ -35,7 +35,7 @@ Detections must specify an `event` (or `events`), and may optionally specify a `
 
 > For a full list of event with examples, see the [Events](events.md) reference doc.
 
-> Most of this page focuses on `edr` events. For information about other targets, see Detection on Alternate Targets.
+> Most of this page focuses on `edr` events. For information about other targets, see [Detection on Alternate Targets](detection-on-alternate-targets.md).
 
 ### Operators
 
@@ -165,7 +165,7 @@ value: 189.247.166.18
 
 The `?` saves us from enumerating each index within the list and instead evaluates *all* values at the indicated level. This can be very powerful when used in combination with Lookups: lists of threat indicators such as known bad IPs or domains.  
 
-> To learn more about using lookups in detections, see TODO Advanced: Using Lookups.
+> To learn more about using lookups in detections, see TODO Using Lookups.
 
 ### Values
 
@@ -265,11 +265,11 @@ This article gives an introduction to D&R rules, but their capabilities go much 
 
 - Examples
 - False Positive Rules
-- Reference: Events
+- [Reference: Events](events.md)
 - Reference: Operators
 - Reference: Actions
-- Advanced: Detection on Alternate Targets
-- Advanced: Detecting Related Events
-- Advanced: Detection Times
-- Advanced: Using Variables
-- Advanced: Using Lookups
+- [Detection on Alternate Targets](detection-on-alternate-targets.md)
+- Detecting Related Events
+- Detection Times
+- Using Variables
+- Using Lookups
