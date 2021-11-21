@@ -264,7 +264,7 @@ This rule combines multiple operators to specify the exact conditions which migh
 This article gives an introduction to D&R rules, but their capabilities go much deeper. For further learning, here are some suggested readings:
 
 - Examples TODO
-- False Positive Rules TODO
+- [False Positive Rules](false-positive-rules.md)
 - [Reference: Events](events.md)
 - [Reference: Operators](operators.md)
 - [Reference: Actions](actions.md)
