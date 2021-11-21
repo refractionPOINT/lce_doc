@@ -35,7 +35,7 @@ Detections must specify an `event` (or `events`), and may optionally specify a `
 - `artifact`: artifacts collected via REST API or via `artifact_get` sensor command
 - `artifact_event`: lifecycle events around artifacts such as ingestion
 
-> For a full list of event with examples, see the [Events](events.md) reference doc.
+> For a full list of events with examples, see [Reference: Events](events.md).
 
 > Most of this page focuses on `edr` events. For information about other targets, see [Detection on Alternate Targets](detection-on-alternate-targets.md).
 
@@ -272,6 +272,5 @@ This article gives an introduction to D&R rules, but their capabilities go much 
 - [Reference: Actions](actions.md)
 - [Detection on Alternate Targets](detection-on-alternate-targets.md)
 - [Detecting Related Events](detecting-related-events.md)
-- Detection Times
-- Using Lookups
+- [Using API-Based Lookups](api-lookups.md)
 - Using Sensor Variables

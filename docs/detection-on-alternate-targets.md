@@ -2,7 +2,9 @@
 
 ## Overview
 
-Detection & Response rules run against `edr` events by default, but there are 3 other targets:
+> It's recommended to first read [Detection & Response Rules](dr.md) before diving into detection on alternate targets.
+
+Detection & Response rules run against `edr` events by default, however, there are 3 other targets:
 * `deployment`
 * `artifact`
 * `artifact_event`

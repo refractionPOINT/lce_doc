@@ -2,7 +2,7 @@
 
 ## Overview
 
-> Understanding how Events are structured is essential for working with D&R rules. If you haven't already, read the [Events Overview](events-overview.md).
+> It's recommended to first read [Detection & Response Rules](dr.md) before diving into detecting related events.
 
 Events in LimaCharlie have well-defined relationships to one another using `routing/this`, `routing/parent`, `routing/target`. This can be useful for writing more complex rules that connect different but related events. We call these "stateful" rules. 
 

@@ -1,6 +1,6 @@
 # Reference: Operators
 
-Operators are used in the Detection part of a Detection & Response rule. Many operators also support transforms, referenced later in this page. 
+Operators are used in the Detection part of a Detection & Response rule. Operators may also be accompanied by other available parameters, such as transforms, times, and others, referenced later in this page. 
 
 > For more information on how to use operators, read [Detection & Response Rules](dr.md). 
 
@@ -48,7 +48,7 @@ path: event/PARENT
 
 The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix match.
 
-They all use the `path` and `value` parameters.
+They all check if the value found at `path` matches the given `value`, based on the operator.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
@@ -125,18 +125,23 @@ Determines if the tag supplied in the `tag` parameter is already associated with
 
 ### lookup
 
-Looks up a value against a LimaCharlie Resource such as a threat feed. The value is supplied via the `path` parameter and the resource path is defined in the `resource` parameter. Resources are of the form `lcr://<resource_type>/<resource_name>`. In order to access a resource you must have subscribed to it via `app.limacharlie.io`.
+Looks up a value against a [lookup add-on](https://app.limacharlie.io/add-ons/category/lookup) (a.k.a. resource) such as a threat feed. 
 
-Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
-
-Example:
 ```yaml
-event: NEW_PROCESS
+event: DNS_REQUEST
 op: lookup
 path: event/DOMAIN_NAME
 resource: lcr://lookup/malwaredomains
 case sensitive: false
 ```
+
+This rule will get the `event/DOMAIN_NAME` of a `DNS_REQUEST` event and check if it's a member of the `lookup` named `malwaredomains`. If it is, then the rule is a match.  
+
+The value is supplied via the `path` parameter and the lookup is defined in the `resource` parameter. Resources are of the form `lcr://RESOURCE_TYPE/RESOURCE_NAME` (`lookup` is the `RESOURCE_TYPE` in this case). In order to access a lookup, your organization must be subscribed to it.
+
+> You can create your own lookups and optionally publish them in the add-on marketplace. To learn more, see [Creating Lookups](user_addons.md#lookups).
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
 ### scope
 
@@ -198,3 +203,31 @@ Some examples:
   * `-1` means the last component of the domain: `cc` for `aa.bb.cc`.
   * `1:` means all components starting at 1: `bb.cc` for `aa.bb.cc`.
   * `:` means to test the operator to every component individually.
+
+## Times
+
+All operators support an optional parameter named `times`. When specified, it must contain a list of [Time Descriptors](lc-net.md#time-descriptor) when the accompanying operator is valid. Your rule can mix-and-match multiple Time Descriptors as part of a single rule on per-operator basis.
+
+Here's an example rule that matches a Chrome process starting between 11PM and 5AM, Monday through Friday, Pacific Time:
+
+```yaml
+event: NEW_PROCESS
+op: ends with
+path: event/FILE_PATH
+value: chrome.exe
+case sensitive: false
+times:
+  - day_of_week_start: 2     # 1 - 7
+    day_of_week_end: 6       # 1 - 7
+    time_of_day_start: 2200  # 0 - 2359
+    time_of_day_end: 2359    # 0 - 2359
+    tz: America/Los_Angeles  # time zone
+  - day_of_week_start: 2
+    day_of_week_end: 6
+    time_of_day_start: 0
+    time_of_day_end: 500
+    tz: America/Los_Angeles
+```
+
+#### Time Zone
+The `tz` should match a TZ database name from the [Time Zones Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
