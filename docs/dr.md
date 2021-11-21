@@ -22,7 +22,7 @@ value: example.com
 
 This rule will detect and respond to requests to `example.com` within 100ms of the `DNS_REQUEST` event occurring. It uses the `is` operator to assess if the given `value` can be found inside the `event` at the given `path`. 
 
-> Just want pure examples? Check out the TODO Examples doc page.
+> Just want examples? Check out the [Examples](dr-examples.md) page.
 
 ## Detection
 
@@ -263,7 +263,7 @@ This rule combines multiple operators to specify the exact conditions which migh
 
 This article gives an introduction to D&R rules, but their capabilities go much deeper. For further learning, here are some suggested readings:
 
-- Examples TODO
+- [Examples](dr-examples.md)
 - [False Positive Rules](false-positive-rules.md)
 - [Reference: Events](events.md)
 - [Reference: Operators](operators.md)
