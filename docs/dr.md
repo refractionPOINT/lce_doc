@@ -165,9 +165,9 @@ path: event/NETWORK_ACTIVITY/?/DESTINATION/IP_ADDRESS # <---
 value: 189.247.166.18
 ```
 
-The `?` saves us from enumerating each index within the list and instead evaluates *all* values at the indicated level. This can be very powerful when used in combination with Lookups: lists of threat indicators such as known bad IPs or domains.  
+The `?` saves us from enumerating each index within the list and instead evaluates *all* values at the indicated level. This can be very powerful when used in combination with lookups: lists of threat indicators such as known bad IPs or domains.  
 
-> To learn more about using lookups in detections, see TODO Using Lookups.
+> To learn more about using lookups in detections, see the [`lookup` operator](operators.md#lookup).
 
 ### Values
 

@@ -137,11 +137,13 @@ case sensitive: false
 
 This rule will get the `event/DOMAIN_NAME` of a `DNS_REQUEST` event and check if it's a member of the `lookup` named `malwaredomains`. If it is, then the rule is a match.  
 
-The value is supplied via the `path` parameter and the lookup is defined in the `resource` parameter. Resources are of the form `lcr://RESOURCE_TYPE/RESOURCE_NAME` (`lookup` is the `RESOURCE_TYPE` in this case). In order to access a lookup, your organization must be subscribed to it.
-
-> You can create your own lookups and optionally publish them in the add-on marketplace. To learn more, see [Creating Lookups](user_addons.md#lookups).
+The value is supplied via the `path` parameter and the lookup is defined in the `resource` parameter. Resources are of the form `lcr://RESOURCE_TYPE/RESOURCE_NAME`. In order to access a lookup, your organization must be subscribed to it.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+> API-based lookups, like VirusTotal and IP Geolocation, work a little bit differently. For more information, see [Using API-Based Lookups](api-lookups.md).
+
+> You can create your own lookups and optionally publish them in the add-on marketplace. To learn more, see [Creating Lookups](user_addons.md#lookups).
 
 ### scope
 
