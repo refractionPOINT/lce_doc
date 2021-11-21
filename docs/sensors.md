@@ -42,7 +42,7 @@ Sensors can be issued commands from the cloud with several options, depending on
 
 ## Going Deeper
 
-Now, with some familiarity of the basic concepts of a sensor, some options for what's next:
+With familiarity of the core mechanics for sensors, here are some options for further learning:
 
 * [Events](events.md)
 * [Commands](sensor_commands.md)
