@@ -4,8 +4,8 @@ LimaCharlie's Net sensor enables both network visibility and granular network ac
 
 ## Supported Events
 
-* [`NETWORK_CONNECTIONS`](events.md#NETWORK_CONNECTIONS)
-* [`DNS_REQUEST`](events.md#DNS_REQUEST)
+* [`NETWORK_CONNECTIONS`](../events.md#NETWORK_CONNECTIONS)
+* [`DNS_REQUEST`](../events.md#DNS_REQUEST)
 
 ## Supported Commands
 
@@ -25,7 +25,7 @@ Defines a specific host's availability through the network to other hosts.
 
 ### Capture
 
-Defines packet captures to be collected as [Artifacts](external_logs.md).
+Defines packet captures to be collected as [Artifacts](../external_logs.md).
 
 ### DNS
 
