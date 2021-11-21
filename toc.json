@@ -67,7 +67,37 @@
           },
           {
             "type": "item",
-            "title": "Commands",
+            "title": "Windows",
+            "uri": "docs/sensors/windows.md"
+          },
+          {
+            "type": "item",
+            "title": "Mac",
+            "uri": "docs/sensors/mac.md"
+          },
+          {
+            "type": "item",
+            "title": "Linux",
+            "uri": "docs/sensors/linux.md"
+          },
+          {
+            "type": "item",
+            "title": "Net",
+            "uri": "docs/sensors/net.md"
+          },
+          {
+            "type": "item",
+            "title": "Chrome",
+            "uri": "docs/sensors/chrome.md"
+          },
+          {
+            "type": "item",
+            "title": "Edge",
+            "uri": "docs/sensors/Edge.md"
+          },
+          {
+            "type": "item",
+            "title": "Reference: Commands",
             "uri": "docs/sensor_commands.md"
           }
         ]
