@@ -52,6 +52,11 @@ Events in LimaCharlie are in standard formatted JSON.
           "format": "UUID",
           "description": "Installer Key ID"
         },
+        "investigation_id": {
+          "type": ["string", "null"],
+          "format": "string",
+          "description": "Events responding to a command will include this if it was provided along with the command"
+        },
         "parent": {
           "type": ["string", "null"],
           "description": "Atom of possible parent event",

@@ -1,4 +1,4 @@
-# Reference: Events
+# Reference: Event Types
 
 The following is a reference list of all well-structured events available in LimaCharlie. 
 
