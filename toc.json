@@ -57,9 +57,20 @@
         "title": "Reference"
       },
       {
-        "type": "item",
-        "title": "Sensor Commands",
-        "uri": "docs/sensor_commands.md"
+        "type": "group",
+        "title": "Sensors",
+        "items": [
+          {
+            "type": "item",
+            "title": "Overview",
+            "uri": "docs/sensors.md"
+          },
+          {
+            "type": "item",
+            "title": "Commands",
+            "uri": "docs/sensor_commands.md"
+          }
+        ]
       },
       {
         "type": "group",
