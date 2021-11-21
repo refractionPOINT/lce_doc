@@ -137,20 +137,6 @@ Events in LimaCharlie are in standard formatted JSON.
 
 Events can be observed and matched by [Detection & Response rules](dr.md) to automate behavior and can also be streamed via [Outputs](outputs.md) to the destination of your choice. 
 
-## Streams
-
-There are 6 different event streams moving through LimaCharlie:
-
-| Name            |  Description                                                          | D&R Target      | Output  |
-| --------------- | --------------------------------------------------------------------- | ---------------- | ------ |
-| Telemetry       | Events emitted by sensors                                             | `edr`            | ✅     |
-| Detections      | Detections reported from D&R rules                                    | N/A              | ✅     |
-| Deployment      | Lifecycle events for sensors                                          | `deployment`     | ✅     |
-| Artifacts       | Artifacts collected from sensors                                      | `artifact`       | ❌     |
-| Artifact Events | Lifecycle events for artifacts                                        | `artifact_event` | ✅     |
-| Audit           | Audit logs for management activity within LimaCharlie                 | N/A              | ✅     |
-
-
 ## Atoms
 
 Atoms are Globally Unique Identifiers (GUIDs); here's one: `1e9e242a512d9a9b16d326ac30229e7b`. You can treat them as opaque values. These unique values are used to relate events together rather than using Process IDs, which are themselves unreliable.
@@ -187,6 +173,20 @@ For processes, the parent relationship will simply be the parent process and chi
 > If using custom storage + searching solutions it will be helpful to index the values of `routing/this` and `routing/parent` for each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
 
 Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
+
+## Streams
+
+There are 6 different event streams moving through LimaCharlie:
+
+| Name            |  Description                                                          | D&R Target      | Output  |
+| --------------- | --------------------------------------------------------------------- | ---------------- | ------ |
+| Telemetry       | Events emitted by sensors                                             | `edr`            | ✅     |
+| Detections      | Detections reported from D&R rules                                    | N/A              | ✅     |
+| Deployment      | Lifecycle events for sensors                                          | `deployment`     | ✅     |
+| Artifacts       | Artifacts collected from sensors                                      | `artifact`       | ❌     |
+| Artifact Events | Lifecycle events for artifacts                                        | `artifact_event` | ✅     |
+| Audit           | Audit logs for management activity within LimaCharlie                 | N/A              | ✅     |
+
 
 ## Going Deeper
 
