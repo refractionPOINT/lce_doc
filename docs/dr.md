@@ -115,42 +115,40 @@ Paths may also employ the use of wildcards `*` to represent 0 or more directory 
 ```json
 {
   "event": {
-	  "NETWORK_ACTIVITY": [
-	    {
-	      "SOURCE": {
-	        "IP_ADDRESS": "172.16.223.138",
-	        "PORT": 50396
-	      },
-	      "IS_OUTGOING": 1,
-	      "DESTINATION": {
-	        "IP_ADDRESS": "23.214.49.56",
-	        "PORT": 80
-	      }
-	    },
-	    {
-	      "SOURCE": {
-	        "IP_ADDRESS": "172.16.223.138",
-	        "PORT": 50397
-	      },
-	      "IS_OUTGOING": 1,
-	      "DESTINATION": {
-	        "IP_ADDRESS": "189.247.166.18",
-	        "PORT": 80
-	      }
-	    },
-	    // ...there could be several connections
-	  ],
-	  "HASH": "2de228cad2e542b2af2554d61fab5463ecbba3ff8349ba88c3e48637ed8086e9",
-	  "COMMAND_LINE": "C:\\WINDOWS\\system32\\msfeedssync.exe sync",
-	  "PROCESS_ID": 6968,
-	  "FILE_IS_SIGNED": 1,
+    "NETWORK_ACTIVITY": [
+      {
+        "SOURCE": {
+          "IP_ADDRESS": "172.16.223.138",
+          "PORT": 50396
+        },
+        "IS_OUTGOING": 1,
+        "DESTINATION": {
+          "IP_ADDRESS": "23.214.49.56",
+          "PORT": 80
+        }
+      },
+      {
+        "SOURCE": {
+          "IP_ADDRESS": "172.16.223.138",
+          "PORT": 50397
+        },
+        "IS_OUTGOING": 1,
+        "DESTINATION": {
+          "IP_ADDRESS": "189.247.166.18",
+          "PORT": 80
+        }
+      },
+      // ...there could be several connections
+    ],
+    "HASH": "2de228cad2e542b2af2554d61fab5463ecbba3ff8349ba88c3e48637ed8086e9",
+    "COMMAND_LINE": "C:\\WINDOWS\\system32\\msfeedssync.exe sync",
+    "PROCESS_ID": 6968,
+    "FILE_IS_SIGNED": 1,
     "USER_NAME": "WIN-5KC7E0NG1OD\\dev",
     "FILE_PATH": "C:\\WINDOWS\\system32\\msfeedssync.exe",
     "PARENT_PROCESS_ID": 1892
   },
-  "routing": {
-		// standard routing data, omitted for brevity
-	}
+  "routing": { ... } // Omitted for brevity
 }
 ```
 
@@ -173,11 +171,11 @@ The `?` saves us from enumerating each index within the list and instead evaluat
 
 The `value` parameter is commonly used by several detection operations but can also be used by some response actions as well.
 
-In most detections `value` will be used to specify a known value like all the previous examples on this page have done, but they're capable of referencing sensor variables, too.
+In most detections `value` will be used to specify a known value like all the previous examples on this page have done. They're also capable of referencing previously set sensor variables using `value: [[var-name]]` double square bracket syntax.
 
-For example, you can reference previously set sensor variables by using `value: [[var-name]]`, or you can pull data directly from inside the event using a lookback like this: `value: <<event/FILE_PATH>>`.
+Values from events can also be forwarded in response actions using `value: <<event/FILE_PATH>>` double angle bracket syntax.
 
-To learn more about how to get the most out of sensor variables and lookback values, see TODO Using Sensor Variables.
+> To see how sensor variables and lookback values are used, see the [`add var / del var`](actions.md#add-var-del-var) action in [Reference: Actions](actions.md).
 
 ## Response
 
@@ -263,14 +261,13 @@ This rule combines multiple operators to specify the exact conditions which migh
 
 ## Going Deeper
 
-This article gives an introduction to D&R rules, but their capabilities go much deeper. For further learning, here are some suggested readings: TODO
+This article gives an introduction to D&R rules, but their capabilities go much deeper. For further learning, here are some suggested readings:
 
-- Examples
-- False Positive Rules
+- Examples TODO
+- False Positive Rules TODO
 - [Reference: Events](events.md)
 - [Reference: Operators](operators.md)
 - [Reference: Actions](actions.md)
 - [Detection on Alternate Targets](detection-on-alternate-targets.md)
 - [Detecting Related Events](detecting-related-events.md)
 - [Using API-Based Lookups](api-lookups.md)
-- Using Sensor Variables

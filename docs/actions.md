@@ -88,9 +88,12 @@ Add or remove a value from the variables associated with a sensor.
 - action: add var
   name: my-variable
   value: <<event/VOLUME_PATH>>
+  ttl: 30 # optional
 ```
 
-> For more information on using variables, see [Using Sensor Variables](using-sensor-variables.md).
+The `add var` action can optionally take a `ttl` parameter that is a number of seconds the variable should remain in state for the sensor.
+
+> For more information on using variables, see [Using Sensor Variables](sensor-variables.md).
 
 ## service request
 
