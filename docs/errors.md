@@ -1,7 +1,8 @@
 # Errors
 
-## General
-The following are general error codes you may receive through some sensor functionality:
+## Error Codes
+
+The following are error codes you may encounter in [Events](events.md) returned from sensors, usually in the `_REP` event responding to a [command](sensor_commands.md).
 
 ```
 ERROR_SUCCESS                  0

@@ -99,6 +99,11 @@
             "type": "item",
             "title": "Reference: Commands",
             "uri": "docs/sensor_commands.md"
+          },
+          {
+            "type": "item",
+            "title": "Reference: Error Codes",
+            "uri": "docs/errors.md"
           }
         ]
       },
@@ -168,12 +173,6 @@
         "type": "item",
         "title": "ID Schemes",
         "uri": "docs/agentid.md"
-      },
-
-      {
-        "type": "item",
-        "title": "Error Codes",
-        "uri": "docs/errors.md"
       },
 
 
