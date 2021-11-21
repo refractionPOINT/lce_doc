@@ -164,6 +164,7 @@ Using atom references from a single event, the entire chain of related events is
   "routing": {
     "this": "zxcv",
     "parent": "poiuy"
+    ...
   }
 }
 ```
