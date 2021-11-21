@@ -62,20 +62,66 @@
         "uri": "docs/sensor_commands.md"
       },
       {
-        "type": "item",
+        "type": "group",
+        "title": "Events",
+        "items": [
+          {
+            "type": "item",
+            "title": "Overview",
+            "uri": "docs/events-overview.md"
+          },
+          {
+            "type": "item",
+            "title": "Reference: Event Types",
+            "uri": "docs/events.md"
+          }
+        ]
+      },
+      {
+        "type": "group",
         "title": "Detection & Response",
-        "uri": "docs/dr.md"
+        "items": [
+          {
+            "type": "item",
+            "title": "Overview",
+            "uri": "docs/dr.md"
+          },
+          {
+            "type": "item",
+            "title": "Examples",
+            "uri": "docs/dr-examples.md"
+          },
+          {
+            "type": "item",
+            "title": "Detecting Related Events",
+            "uri": "docs/detecting-related-events.md"
+          },
+          {
+            "type": "item",
+            "title": "Detection On Alternate Targets",
+            "uri": "docs/detecting-related-events.md"
+          },
+          {
+            "type": "item",
+            "title": "False Positive Rules",
+            "uri": "docs/false-positive-rules.md"
+          },
+          {
+            "type": "item",
+            "title": "Reference: Operators",
+            "uri": "docs/operators.md"
+          },
+          {
+            "type": "item",
+            "title": "Reference: Actions",
+            "uri": "docs/actions.md"
+          }
+        ]
       },
       {
         "type": "item",
         "title": "Infrastructure Service",
         "uri": "docs/infrastructure-service.md"
-      },
-
-      {
-        "type": "item",
-        "title": "Events",
-        "uri": "docs/events.md"
       },
       {
         "type": "item",
