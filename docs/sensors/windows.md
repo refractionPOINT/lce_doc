@@ -28,6 +28,8 @@ The Window sensor is one of LimaCharlie's EDR-class sensors. It's low-level and 
 * [`MODULE_LOAD`](../events.md#MODULE_LOAD)
 * [`FILE_CREATE`](../events.md#FILE_CREATE)
 * [`FILE_DELETE`](../events.md#FILE_DELETE)
+* [`FILE_MODIFIED`](../events.md#FILE_MODIFIED)
+* [`FILE_TYPE_ACCESSED`](../events.md#FILE_TYPE_ACCESSED)
 * [`NETWORK_SUMMARY`](../events.md#NETWORK_SUMMARY)
 * [`EXEC_OOB`](../events.md#EXEC_OOB)
 * [`MODULE_MEM_DISK_MISMATCH`](../events.md#MODULE_MEM_DISK_MISMATCH)
@@ -35,10 +37,8 @@ The Window sensor is one of LimaCharlie's EDR-class sensors. It's low-level and 
 * [`SERVICE_CHANGE`](../events.md#SERVICE_CHANGE)
 * [`DRIVER_CHANGE`](../events.md#DRIVER_CHANGE)
 * [`AUTORUN_CHANGE`](../events.md#AUTORUN_CHANGE)
-* [`FILE_MODIFIED`](../events.md#FILE_MODIFIED)
 * [`NEW_DOCUMENT`](../events.md#NEW_DOCUMENT)
 * [`USER_OBSERVED`](../events.md#USER_OBSERVED)
-* [`FILE_TYPE_ACCESSED`](../events.md#FILE_TYPE_ACCESSED)
 * [`NEW_REMOTE_THREAD`](../events.md#NEW_REMOTE_THREAD)
 * [`REGISTRY_CREATE`](../events.md#REGISTRY_CREATE)
 * [`REGISTRY_DELETE`](../events.md#REGISTRY_DELETE)
@@ -52,7 +52,6 @@ The Window sensor is one of LimaCharlie's EDR-class sensors. It's low-level and 
 * [`NEW_NAMED_PIPE`](../events.md#NEW_NAMED_PIPE)
 * [`OPEN_NAMED_PIPE`](../events.md#OPEN_NAMED_PIPE)
 * [`DATA_DROPPED`](../events.md#DATA_DROPPED)
-* [`HTTP_REQUEST`](../events.md#HTTP_REQUEST)
 
 ## Supported Commands
 
