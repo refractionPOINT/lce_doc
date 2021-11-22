@@ -4,16 +4,18 @@
 
 > It's recommended to first read [Detection & Response Rules](dr.md) before diving into detecting related events.
 
-Events in LimaCharlie have well-defined relationships to one another using `routing/this`, `routing/parent`, `routing/target`. This can be useful for writing more complex rules that connect different but related events. We call these "stateful" rules. 
+Events in LimaCharlie have well-defined relationships to one another using `routing/this`, `routing/parent`, `routing/target`, and can even be implicitly related by occurring in a similar timeframe. The relation context can be useful for writing more complex rules.
+
+These are called "stateful" rules. 
 
 ## Detecting Children / Descendants
 
-To detect related rules, you can use the following parameters:
+To detect events in a tree you can use the following parameters:
 
 * `with child`: matches children of the initial event  
-* `with descendant`: matches descendants (children, grandchildren, etc) of the initial event
+* `with descendant`: matches descendants (children, grandchildren, etc.) of the initial event
 
-Aside from how deep they match, the `with child` and `with descendant` parameters operate identically: they create a nested rule context.
+Aside from how deep they match, the `with child` and `with descendant` parameters operate identically: they declare a nested stateful rule.
 
 For example, let's detect a `cmd.exe` process spawning a `calc.exe` process:
 
@@ -46,9 +48,33 @@ cmd.exe --> firefox.exe --> calc.exe
 
 To do that, we could use `with descendant` instead.
 
-## Nested Rules
+## Detecting Proximal Events
 
-Rules declared within `with child` and `with descendant` parameters have full range - they can do anything a normal rule might do, including declaring nested `with child` or `with descendant` rules, or using `and`/`or` operators to write complex rules. For example:
+To detect repetition of events close together on the same sensor, we can use `with events`.
+
+The `with events` parameter functions very similarly to `with child` and `with descendant`: it declares a nested stateful rule.
+
+For example, let's detect a scenario where `5` bad login attempts occur within `60` seconds.
+
+```yaml
+event: WEL
+op: is windows
+with events:
+  event: WEL
+  op: is
+  path: event/EVENT/System/EventID
+  value: '4625'
+  count: 5
+  within: 60
+```
+
+The top-level rule filters down meaningful events to [`WEL`](events.md#WEL) ones sent from Windows sensors using the `is windows` operator, and then it declares a stateful rule inside `with events`. It uses `count` and `within` to declare a suitable timespan to evaluate matching events.
+
+## Stateful Rules
+
+Stateful rules &mdash; the rules declared within `with child`, `with descendant` or `with events` &mdash; have full range. They can do anything a normal rule might do, including declaring nested stateful rules or using `and`/`or` operators to write more complex rules. 
+
+Here's a stateful rule that uses `and` to detect a specific combination of child events:
 
 ```yaml
 event: NEW_PROCESS
@@ -81,7 +107,7 @@ outlook.exe
 
 ### Counting Events
 
-Rules declared using `with child` or `with descendant` have the ability to count a given number of matching events within a given number of seconds.
+Rules declared using `with child` or `with descendant` also have the ability to use `count` and `within` to help scope the events it will statefully match.
 
 For example, a rule that matches on Outlook writing 5 new .ps1 documents within 60 seconds:
 
