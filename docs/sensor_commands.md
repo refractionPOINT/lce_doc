@@ -836,7 +836,7 @@ Payloads feature uses Google infrastructure and their public SSL certificates.
 This may sometimes come up in unexpected ways. For example fresh Windows Server installations
 do not have the root CAs for `google.com` enabled by default.
 
-## put
+### put
 Upload a payload to an endpoint without executing it.
 
 Platforms: Windows, Linux, MacOS

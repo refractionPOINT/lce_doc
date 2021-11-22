@@ -30,6 +30,7 @@ The Mac sensor is one of LimaCharlie's EDR-class sensors. It's low-level and lig
 * [`NETWORK_SUMMARY`](../events.md#NETWORK_SUMMARY)
 * [`EXEC_OOB`](../events.md#EXEC_OOB)
 * [`MODULE_MEM_DISK_MISMATCH`](../events.md#MODULE_MEM_DISK_MISMATCH)
+* [`YARA_DETECTION`](../events.md#YARA_DETECTION)
 * [`SERVICE_CHANGE`](../events.md#SERVICE_CHANGE)
 * [`DRIVER_CHANGE`](../events.md#DRIVER_CHANGE)
 * [`AUTORUN_CHANGE`](../events.md#AUTORUN_CHANGE)
@@ -99,7 +100,6 @@ The Mac sensor is one of LimaCharlie's EDR-class sensors. It's low-level and lig
 * [`artifact_get`](../sensor_commands.md#artifact_get)
 * [`run`](../sensor_commands.md#run)
 * [`put`](../sensor_commands.md#put)
-* [`pcap_ifaces`](../sensor_commands.md#pcap_ifaces)
 
 ## Artifacts
 
