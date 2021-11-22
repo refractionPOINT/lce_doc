@@ -67,7 +67,7 @@
           },
           {
             "type": "group",
-            "title": "Sensor Types",
+            "title": "Available Sensors",
             "items": [
               {
                 "type": "item",
