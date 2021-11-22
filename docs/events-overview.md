@@ -184,14 +184,14 @@ Finally, the `routing/target` is only sometimes found in an event, and it repres
 
 There are 6 different event streams moving through LimaCharlie:
 
-| Name            |  Description                                                          | D&R Target      | Output  |
-| --------------- | --------------------------------------------------------------------- | ---------------- | ------ |
-| Telemetry       | Events emitted by sensors                                             | `edr`            | ✅     |
-| Detections      | Detections reported from D&R rules                                    | N/A              | ✅     |
-| Deployment      | Lifecycle events for sensors                                          | `deployment`     | ✅     |
-| Artifacts       | Artifacts collected from sensors                                      | `artifact`       | ❌     |
-| Artifact Events | Lifecycle events for artifacts                                        | `artifact_event` | ✅     |
-| Audit           | Audit logs for management activity within LimaCharlie                 | N/A              | ✅     |
+| Name            |  Description                                          | D&R Target       | Output |
+| --------------- | ----------------------------------------------------- | ---------------- | ------ |
+| Telemetry       | Events sent from sensors                              | `edr`            | ✅ |
+| Deployment      | Lifecycle events sent from sensors                    | `deployment`     | ✅ |
+| Detections      | Detections reported from D&R rules                    | N/A              | ✅ |
+| Artifacts       | Artifacts sent from sensors (or API)                  | `artifact`       | ❌ |
+| Artifact Events | Lifecycle events for artifacts                        | `artifact_event` | ✅ |
+| Audit           | Audit logs for management activity within LimaCharlie | N/A              | ✅ |
 
 
 ## Going Deeper
