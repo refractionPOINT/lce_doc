@@ -6,6 +6,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * AWS S3
 * Google Cloud Pubsub
 * STDIN
+* 1Password API
 
 ## Availability
 
@@ -27,6 +28,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * AWS S3
 * Google Cloud Pub/Sub
 * STDIN
+* 1Password API
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
@@ -294,7 +296,7 @@ If your data source is already JSON, it's much simpler to let LimaCharlie do the
 ./lc_adapter stdin client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=json client_options.sensor_seed_key=testclient3 client_options.mapping.event_type_path=type
 ```
 
-Here's a breakdwn of the above example:
+Here's a breakdown of the above example:
 
 * `lc_adapter`: simply the CLI Adapter.
 * `stdin`: the method the Adapter should use to collect data locally. The `stdin` value will simply ingest from the Adapter's STDIN.
@@ -305,3 +307,41 @@ Here's a breakdwn of the above example:
 * `client_options.mapping.event_type_path=....`: specifies the field that should be interpreted as the "event_type" in LimaCharlie.
 
 Note that we did not need to specify a `parsing_re` because the data ingested is not text, but already JSON, so the Parsing step is already done for us by setting a `platform=json`.
+
+### GCP Logs via Pubsub
+
+This example receives GCP logs from a pubsub subscription. This assumes you've already configured a log Sink in GCP to a Pubsub Topic (see [this](https://cloud.google.com/logging/docs/export/configure_export_v2)) and a Service Account with the Pubsub Subcriber permission.
+
+```
+./lc_adapter pubsub client_options.identity.installation_key=f5eaaaad-575a-498e-bfc2-5f83e249a646 client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=gcp sub_name=usp project_name=monitored-proj client_options.sensor_seed_key=gcplogs
+```
+
+Here's the breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `pubsub`: the method the Adapter should use to collect data locally.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=gcp`: this indicates that the data read is logs from Google Cloud Platform.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor ID generated for this Adapter later if you have to re-install the Adapter.
+* `sub_name=usp`: the Subscription name to consume the logs from.
+* `project_name=monitored-proj`: the GCP Project name this Subscription belongs to.
+
+### 1Password Audit
+
+This example fetching audit logs from (1password)[https://1password.com/]. This assumes you've generated an access token from 1password, like [this](https://support.1password.com/events-reporting/).
+
+```
+./lc_adapter 1password "token=eyJhb.....lwJxu1Sw" endpoint=business client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.identity.installation_key=5f530ed8-aaaa-426f-82c5-621763a985da client_options.platform=1password client_options.sensor_seed_key=1pinfra client_options.hostname=1password
+```
+
+Here's the breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `1password`: the method the Adapter should use to collect data locally, here it's 1password API.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=1password`: this indicates that the data read is logs from 1password.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor ID generated for this Adapter later if you have to re-install the Adapter.
+* `token=...`: the API token provided by 1password.
+* `client_options.hostname=1password`: asking LimaCharlie to use the hostname `1password` for this sensor to identify it.
