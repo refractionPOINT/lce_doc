@@ -335,7 +335,7 @@ Here's the breakdown of the above example:
 
 ### 1Password Audit
 
-This example fetching audit logs from (1password)[https://1password.com/]. This assumes you've generated an access token from 1password, like [this](https://support.1password.com/events-reporting/).
+This example fetching audit logs from [1Password](https://1password.com/). This assumes you've generated an access token from 1Password, like [this](https://support.1password.com/events-reporting/).
 
 ```
 ./lc_adapter 1password "token=eyJhb.....lwJxu1Sw" endpoint=business client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.identity.installation_key=5f530ed8-aaaa-426f-82c5-621763a985da client_options.platform=1password client_options.sensor_seed_key=1pinfra client_options.hostname=1password
