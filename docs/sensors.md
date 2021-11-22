@@ -40,6 +40,12 @@ Sensors can be issued commands from the cloud with several options, depending on
 
 > Need support for a platform you don't see here? Get in touch via [Slack](https://slack.limacharlie.io) or [Email](mailto:answers@limacharlie.io).
 
+## Sensor Versions
+
+Windows, Mac, and Linux (EDR-class) sensors' versions are cloud-managed per-organization. They will not upgrade unless you choose to do so. 
+
+There are always two versions available to roll out &mdash; `Stable` or `Latest` &mdash; which can be deployed via the web application or via the [`/modules` REST API](https://doc.limacharlie.io/docs/api/b3A6MTk2NDI2OA-update-sensors). 
+
 ## Going Deeper
 
 With familiarity of the core mechanics for sensors, here are some options for further learning:
