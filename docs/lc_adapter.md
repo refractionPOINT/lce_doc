@@ -255,7 +255,7 @@ It uses the CLI Adapter (instead of the Docker container).
 ./lc_adapter s3 client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=carbon_black client_options.sensor_seed_key=tests3 bucket_name=lc-cb-test access_key=YYYYYYYYYY secret_key=XXXXXXXX  "prefix=events/org_key=NKZAAAEM/"
 ```
 
-Here's a breakdwn of the above example:
+Here's a breakdown of the above example:
 
 * `lc_adapter`: simply the CLI Adapter.
 * `s3`: the data will be collected from an AWS S3 bucket.
@@ -276,7 +276,7 @@ This method is perfect for ingesting arbitrary logs on disk or from other applic
 ./lc_adapter stdin client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=text "client_options.mapping.parsing_re=(?P<date>... \d\d \d\d:\d\d:\d\d) (?P<host>.+) (?P<exe>.+?)\[(?P<pid>\d+)\]: (?P<msg>.*)" client_options.sensor_seed_key=testclient3 client_options.mapping.event_type_path=exe
 ```
 
-Here's a breakdwn of the above example:
+Here's a breakdown of the above example:
 
 * `lc_adapter`: simply the CLI Adapter.
 * `stdin`: the method the Adapter should use to collect data locally. The `stdin` value will simply ingest from the Adapter's STDIN.
