@@ -144,7 +144,12 @@ Events can be observed and matched by [Detection & Response rules](dr.md) to aut
 
 ## Atoms
 
+### Format
+
 Atoms are Globally Unique Identifiers (GUIDs); here's one: `1e9e242a512d9a9b16d326ac30229e7b`. You can treat them as opaque values. These unique values are used to relate events together rather than using Process IDs, which are themselves unreliable.
+
+
+### Relationships
 
 Atoms can be found in up to 3 spots in an event:
 
@@ -152,18 +157,21 @@ Atoms can be found in up to 3 spots in an event:
 * `routing/parent`: parent of the current event
 * `routing/target`: target of the current event
 
-Using atom references from a single event, the entire chain of related events is constructed. For example:
+Using atom references from a single event, the chain of ancestor events can be constructed.
 
-```child_event
+Here's a simplified example of an event and its parent event:
+
+```event
 {
   "event": {...},
   "routing": {
     "this": "abcdef",
     "parent": "zxcv"
+    ...
   }
 }
 ```
-```parent_event
+```parent
 {
   "event": {...},
   "routing": {
@@ -173,6 +181,13 @@ Using atom references from a single event, the entire chain of related events is
   }
 }
 ```
+
+> API users may construct a tree from a single atom using these 2 endpoints: 
+> 
+> * [`/insight/:oid/:sid/:atom`](https://doc.limacharlie.io/docs/api/b3A6MjA1NjExOA-get-event-by-atom) - get event by atom
+> * [`/insight/:oid/:sid/:atom/children`](https://doc.limacharlie.io/docs/api/b3A6ODQzNTkzOA-get-children-of-atom) - get children of atom
+> 
+> These can be called recursively on each event's `routing/parent` and/or child events to complete a full tree if required - this is how the tree view works in the Timeline of a sensor in the web application.
 
 The parent-child relationship serves to describe parent and child processes via the [`NEW_PROCESS`](events.md#NEW_PROCESS) or [`EXISTING_PROCESS`](events.md#EXISTING_PROCESS) events, but other types of events may also have parents. For example, on [`NETWORK_SUMMARY`](events.md#NETWORK_SUMMARY) events, the `parent` will be the process that generated the network connections.
 
