@@ -1,8 +1,8 @@
-# Reference: Event Types
+# Reference: Events
 
 The following is a reference list of all well-structured events available in LimaCharlie. 
 
-For an overview of events and how they're structured, read the [Overview](events-overview.md) first.
+> We recommend reading the [Events Overview](events-overview.md) to learn about the schema for events, if you haven't already.
 
 ## Sensor Events
 
