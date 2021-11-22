@@ -67,32 +67,32 @@
           },
           {
             "type": "item",
-            "title": "Windows",
+            "title": "Type: Windows",
             "uri": "docs/sensors/windows.md"
           },
           {
             "type": "item",
-            "title": "Mac",
+            "title": "Type: Mac",
             "uri": "docs/sensors/mac.md"
           },
           {
             "type": "item",
-            "title": "Linux",
+            "title": "Type: Linux",
             "uri": "docs/sensors/linux.md"
           },
           {
             "type": "item",
-            "title": "Net",
+            "title": "Type: Net",
             "uri": "docs/sensors/net.md"
           },
           {
             "type": "item",
-            "title": "Chrome",
+            "title": "Type: Chrome",
             "uri": "docs/sensors/chrome.md"
           },
           {
             "type": "item",
-            "title": "Edge",
+            "title": "Type: Edge",
             "uri": "docs/sensors/edge.md"
           },
           {
