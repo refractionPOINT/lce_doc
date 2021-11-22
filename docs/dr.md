@@ -354,6 +354,11 @@ This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 ##### is 32 bit, is 64 bit, is arm
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is correct.
 
+Example:
+```yaml
+op: is 64 bit
+```
+
 ##### is platform
 Checks if the event under evaluation is from a sensor of the given platform.
 
