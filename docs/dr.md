@@ -198,7 +198,7 @@ Each item in the response specifies an `action` and any accompanying parameters 
 
 Let's take this knowledge and write a rule to detect something a little more interesting. 
 
-On Windows there's a command, `[icacls](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls)`, which can be used to modify access control lists. Let's write a rule which detects any tampering via that command. 
+On Windows there's a command called [`icacls`](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/icacls) which can be used to modify access control lists. Let's write a rule which detects any tampering via that command. 
 
 The first thing we can do is detect any new `icacls` processes:
 
@@ -216,9 +216,9 @@ And we'll set a basic response action to report the detection, too:
   name: win-acl-tampering
 ```
 
-With that in place we'll see detections for any interactions with `icacls` . However, not all of them will be particularly interesting from a security perspective. In this case, we only really care about invocations of `icacls` where the `grant` parameter is specified. This way we can only get notified when new access is being granted on a box. 
+If we save that, we'll start to see detections for any `icacls` processes spawning. However, not all of them will be particularly interesting from a security perspective. In this case, we only really care about invocations of `icacls` where the `grant` parameter is specified. 
 
-We'll need a more specific rule which combines multiple operators: a perfect case for an `and` operator. While we're at it, we can also make sure we don't bother evaluating other platforms by specifying `is windows` too. 
+Let's make this rule more specific. We can do this by using the `and` operator to match multiple operators. We'll check for the string `"grant"` in the `COMMAND_LINE`, and while we're at it we'll make sure we don't bother evaluating other platforms by using the `is windows` operator. 
 
 ```yaml
 event: NEW_PROCESS
@@ -257,7 +257,7 @@ rules:
   name: win-acl-tampering
 ```
 
-This rule combines multiple operators to specify the exact conditions which might make an `icacls` process interesting, reporting it as a `win-acl-tampering` detection so we can investigate.
+This rule combines multiple operators to specify the exact conditions which might make an `icacls` process interesting. If it sees one, it'll report it as a `win-acl-tampering` detection which will be forwarded to Outputs and become viewable in the Detections page.
 
 ## Going Deeper
 
