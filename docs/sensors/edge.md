@@ -1,6 +1,6 @@
 # Edge Sensor
 
-The Edge sensor is delivered as the [LimaCharlie Sensor](https://microsoftedge.microsoft.com/addons/detail/limacharlie-sensor/nomgmkpkkncolnpbkbamfnjhbhmnjehp) extension available as an Edge Add-on.
+LimaCharlie's Edge sensor is delivered as the [LimaCharlie Sensor](https://microsoftedge.microsoft.com/addons/detail/limacharlie-sensor/nomgmkpkkncolnpbkbamfnjhbhmnjehp) extension available as an Edge Add-on.
 
 ## Supported Events
 

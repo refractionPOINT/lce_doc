@@ -1,6 +1,6 @@
 # Chrome Sensor
 
-The Chrome sensor is particularly useful for gaining affordable network visibility in organizations that make heavy use of ChromeOS.
+LimaCharlie's Chrome sensor is particularly useful for gaining affordable network visibility in organizations that make heavy use of ChromeOS.
 
 It's delivered as the [LimaCharlie Sensor](https://chrome.google.com/webstore/detail/limacharlie-sensor/ljdgkaegafdgakkjekimaehhneieecki) extension available in the Chrome Web Store.
 
