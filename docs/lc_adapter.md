@@ -48,6 +48,12 @@ Configurations can be provided to the adapter in one of three ways:
 1. By specifying the configurations via the command line in the format `config-name=config-value`.
 1. By specifying the configurations via the environment variables in the format `config-name=config-value`.
 
+### Runtime Configuration
+
+The Adapter runtime supports some custom behaviors to make it more suitable for specific deployment scenarios:
+
+* `healthcheck`: an integer that specifies a port to start an HTTP server on that can be used for healthchecks.
+
 ### Core Configuration
 
 All Adapter Types support the same `client_options`, plus type-specific configurations. You should always specify the following configurations:
