@@ -318,6 +318,8 @@ Note that we did not need to specify a `parsing_re` because the data ingested is
 
 This example receives GCP logs from a pubsub subscription. This assumes you've already configured a log Sink in GCP to a Pubsub Topic (see [this](https://cloud.google.com/logging/docs/export/configure_export_v2)) and a Service Account with the Pubsub Subcriber permission.
 
+This example assumes that the adapter is running from a host that has [default credentials](https://cloud.google.com/docs/authentication/production) (via the `GOOGLE_APPLICATION_CREDENTIALS` environment variable) setup. If it's not the case you will need to use `service_account_creds` to provide the contents of the JSON credentials of the GCP Service Account to use.
+
 ```
 ./lc_adapter pubsub client_options.identity.installation_key=f5eaaaad-575a-498e-bfc2-5f83e249a646 client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=gcp sub_name=usp project_name=monitored-proj client_options.sensor_seed_key=gcplogs
 ```
