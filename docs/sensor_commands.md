@@ -1,8 +1,8 @@
-# Sensor Commands
+# Reference: Commands
 
 The following is a reference list of all commands available to run on sensors. 
 
-For an overview of the mechanics of commands and how they're sent, read the [Sensors](sensors.md#commands) article first.
+> For an overview of the mechanics of commands and how they're sent, read the [Sensor Commands](sensor-commands-overview.md) article first.
 
 ## Files and Directories
 

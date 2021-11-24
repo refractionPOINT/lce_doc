@@ -1,11 +1,10 @@
-# Managing Tags
+# Sensor Tags
 
 Tags in LCE are simple strings that can be associated with any number of sensors. A sensor can also have an arbitrary number
 of tags associated with it.
 
-Tags appear in every event coming from a sensor under the `routing` component of the event. This creates a lot of
-duplication of data in the events, but it also greatly simplifies the writing of detection and response rules based
-on the presence of specific tags.
+Tags appear in every event coming from a sensor under the `routing` component of the event. This greatly simplifies the writing of detection and response rules based
+on the presence of specific tags, at the cost of including more non-unique data per event.
 
 Tags can be added to a sensor a few different ways:
 

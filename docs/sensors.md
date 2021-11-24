@@ -1,8 +1,8 @@
 # Sensors
 
-Sensors are offered as a scalable, serverless solution to connect endpoints of an organization to the cloud. 
+Sensors are offered as a scalable, serverless solution for securely connecting endpoints of an organization to the cloud. 
 
-Once installed, they send telemetry and artifacts from the host to the organization they're registered to in the cloud. The concept of 'sensor' is grounded in LimaCharlie's open source EDR roots but has expanded to cover many sources of security data.
+Once installed, they send telemetry and artifacts from the host to the organization they're registered to in the cloud. The sensor is grounded in LimaCharlie's open source EDR roots, but is flexible in bringing security data in from different sources.
 
 ## Quota
 
