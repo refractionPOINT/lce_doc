@@ -1,70 +1,14 @@
-# Events
+# Reference: Events
 
-Below is a list of all the events available in LC along with a sample output. Please note that there may be some variability between platforms.
+The following is a reference list of all well-structured events available in LimaCharlie. 
 
-## Common Information
+> We recommend reading the [Events Overview](events-overview.md) to learn about the schema for events, if you haven't already.
 
-Some common elements to events are worth pointing out. Those elements have been removed from the events below, only leaving
-the information unique to the event. The actual event stream will contain much more information for each event.
+## Sensor Events
 
-* routing/this is a UUID generated for every event in the sensor.
-* routing/parent is a reference to the parent event's routing/this, providing strong relationships (much more reliable than simple process IDs)
-between the events. This allows you to get the extremely powerful explorer view.
-* routing/event_time is the time (UTC) the sensor produced the event.
-* routing/hostname is the hostname of where the event came from.
-* routing/tags is the list of tags associated with the agent where the event came from.
+Telemetry events from sensors, which D&R rules default to observing from the `edr` target.
 
-### Atoms
-Atoms can be found in 3 locations:
-
-* routing/parent
-* routing/this
-* routing/target
-
-Atoms are Globally Unique Identifiers that look like this: `1e9e242a512d9a9b16d326ac30229e7b`. You can treat it as an opaque value. These unique values
-are used to relate events together without the need to use clunky and unreliable things like Process IDs.
-
-The `routing/this` Atom reprents the indentifier for the current event. The `routing/parent` Atom in an event tells you the global identifier for the
-parent event of the current event. Using these two Atoms, you can create an entire chain of event.
-
-For processes, this parent relationship is simply the parent process and child process (parent spawned child), but for other less obvious events, the
-nature of relationship varies. For example for a `NETWORK_SUMMARY` event, the parent is the process that generated the network connections.
-
-Depending on the exact storage and searching solution you are using, you will likely want to index the values of `routing/this` and `routing/parent` for
-each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
-
-Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For
-example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
-
-Basic example:
-
-Event 1
-```json
-{
-  "routing": {
-    "this": "abcdef",
-    "parent": "zxcv"
-  }
-}
-```
-
-Event 2
-```json
-{
-  "routing": {
-    "this": "zxcv",
-    "parent": "poiuy"
-  }
-}
-```
-
-Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
-
-## EDR Events
-
-Telemetry events from host agents.
-
-`target: edr` (default)
+> Note: there may be some variability between different sensor platforms.
 
 ### STARTING_UP
 Event generated when the sensor starts.
@@ -134,6 +78,8 @@ contains an `ERROR` code that you can use to determine if the command
 was successful. It's often a good idea to issue the original command
 with an `investigation_id` which will get echoed in the `RECEIPT` related
 to that command to make it easier to track.
+
+> To see all possible `ERROR` codes, visit the [Errors](errors.md) reference doc.
 
 Platforms: Windows, Linux, MacOS, Chrome
 
@@ -1362,9 +1308,7 @@ Platforms: Chrome
 
 ## Deployment Events
 
-Events around the global status of the deployment.
-
-`target: deployment`
+Events around the global status of the deployment, observable in D&R rules via the `deployment` target.
 
 ### enrollment
 
@@ -1462,8 +1406,8 @@ Deleted Sensor deployment events are produced when a sensor that was previously 
 
 ## Artifact Events
 
-Events around activity in Artifacts Collection. Currently only used in
-service notifications.
+Events around artifact collection, observable in D&R rules via the `artifact_event` target.
+
 
 ### ingest
 
