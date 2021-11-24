@@ -16,7 +16,7 @@ The Watch Rules allow you to specify a platform and tag to select which sensors 
 * Event: the specific event type that should be evaluated, like `MODULE_LOAD`.
 * Path: the path within the `event` component whose value should be evaluated, like `FILE_PATH`.
 * Operator: the type of evaluation/comparison that should be done between the value at Path in the event and the Value.
-* Value: the value used in the comparison.
+* Value: the value used in the comparison (case insensitive).
 
 For example:
 ```
