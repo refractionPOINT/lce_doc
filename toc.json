@@ -89,15 +89,31 @@
         "uri": "docs/errors.md"
       },
 
+      {
+        "type": "group",
+        "title": "Access Control",
+        "items": [
+          {
+            "type": "item",
+            "title": "User Access",
+            "uri": "docs/user_access.md"
+          },
+          {
+            "type": "item",
+            "title": "API Keys",
+            "uri": "docs/api_keys.md"
+          },
+          {
+            "type": "item",
+            "title": "Installation Keys",
+            "uri": "docs/manage_keys.md"
+          }
+        ]
+      },
 
       {
         "type": "divider",
         "title": "Operations"
-      },
-      {
-        "type": "item",
-        "title": "Installation Keys",
-        "uri": "docs/manage_keys.md"
       },
       {
         "type": "item",
@@ -113,11 +129,6 @@
         "type": "item",
         "title": "Outputs",
         "uri": "docs/outputs.md"
-      },
-      {
-        "type": "item",
-        "title": "API Keys",
-        "uri": "docs/api_keys.md"
       },
       {
         "type": "item",
@@ -148,11 +159,6 @@
         "type": "item",
         "title": "Upgrading",
         "uri": "docs/upgrading.md"
-      },
-      {
-        "type": "item",
-        "title": "User Control",
-        "uri": "docs/user_access.md"
       },
       {
         "type": "item",
