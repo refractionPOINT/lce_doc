@@ -1,4 +1,4 @@
-# Recipe - Zeek
+# Writing Rules Against Zeek Logs
 
 ## Overview
 This recipe will show you how to use various features of LimaCharlie in order to do
