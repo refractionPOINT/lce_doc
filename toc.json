@@ -108,7 +108,7 @@
           },
           {
             "type": "item",
-            "title": "Sensor Commands",
+            "title": "Commands",
             "uri": "docs/sensor-commands-overview.md"
           },
           {
@@ -125,6 +125,11 @@
             "type": "item",
             "title": "Payloads",
             "uri": "docs/payloads.md"
+          },
+          {
+            "type": "item",
+            "title": "Proxy Tunneling",
+            "uri": "docs/proxy.md"
           },
           {
             "type": "item",
@@ -220,11 +225,6 @@
         "type": "item",
         "title": "Installation Keys",
         "uri": "docs/manage_keys.md"
-      },
-      {
-        "type": "item",
-        "title": "Proxy Support",
-        "uri": "docs/proxy.md"
       },
       {
         "type": "item",
