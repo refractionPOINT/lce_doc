@@ -205,12 +205,18 @@
     {
       "type": "group",
       "title": "Outputs",
-      "uri": "docs/outputs.md"
-    }
-    {
-      "type": "item",
-      "title": "Outputs",
-      "uri": "docs/outputs.md"
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/outputs.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Destinations",
+          "uri": "docs/output-destinations.md"
+        }
+      ]
     },
     {
       "type": "group",
