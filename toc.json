@@ -15,40 +15,41 @@
       "uri": "docs/lcc_quick_start.md"
     },
     {
+      "type": "group",
+      "title": "Features",
+      "items": [
+        {
+          "type": "item",
+          "title": "Endpoint Detection & Response",
+          "uri": "docs/lc-edr.md"
+        },
+        {
+          "type": "item",
+          "title": "Software Defined Networking",
+          "uri": "docs/lc-net.md"
+        },
+        {
+          "type": "item",
+          "title": "Log & Artifact Ingestion",
+          "uri": "docs/lc-artifact_ingestion.md"
+        },
+        {
+          "type": "item",
+          "title": "Infrastructure as Code",
+          "uri": "docs/lc-infra-as-code.md"
+        },
+        {
+          "type": "item",
+          "title": "Operational Console for Teams",
+          "uri": "docs/lc-comms.md"
+        }
+      ]
+    },
+    {
       "type": "item",
       "title": "FAQ",
       "uri": "docs/faq.md"
     },
-    {
-      "type": "divider",
-      "title": "Capabilities"
-    },
-    {
-      "type": "item",
-      "title": "Endpoint Detection & Response",
-      "uri": "docs/lc-edr.md"
-    },
-    {
-      "type": "item",
-      "title": "Software Defined Networking",
-      "uri": "docs/lc-net.md"
-    },
-    {
-      "type": "item",
-      "title": "Log & Artifact Ingestion",
-      "uri": "docs/lc-artifact_ingestion.md"
-    },
-    {
-      "type": "item",
-      "title": "Infrastructure as Code",
-      "uri": "docs/lc-infra-as-code.md"
-    },
-    {
-      "type": "item",
-      "title": "Operational Console for Teams",
-      "uri": "docs/lc-comms.md"
-    },
-
     {
       "type": "divider",
       "title": "Platform"
