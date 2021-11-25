@@ -283,6 +283,11 @@ spec:
       hostNetwork: true
 ```
 
+#### SELinux
+On some hardened versions of Linux, certain file paths are prevented from loading `.so` (Shared Object) files. LimaCharlie requires a location where
+it can write `.so` files and load them. To enable this on hardened versions of Linux, you can specify a `LC_MOD_LOAD_LOC` environment variable containing
+a path to a valid directory for loading, like `/lc` for example. This environment variable needs to be set for the sensor executable (`rphcp`) at runtime.
+
 ### Chrome
 The Chrome sensor is available in the Chrome Web Store.
 
