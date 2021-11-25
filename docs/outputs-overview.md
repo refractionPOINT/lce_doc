@@ -1,0 +1,237 @@
+# Outputs
+
+## Integrations
+
+### Common Patterns
+Here are a few common topologies used with LimaCharlie Cloud (LCC).
+
+All data over batched files via SFTP, Splunk or ELK consumes the received files for ingestion.
+```
+Sensor ---> LCC (All Streams) ---> SFTP ---> ( Splunk | ELK )
+```
+
+All data streamed in real-time via Syslog, Splunk or ELK receive directly via an open Syslog socket.
+```
+Sensor ---> LCC (All Streams) ---> Syslog( TCP+SSL) ---> ( Splunk | ELK )
+```
+
+All data over batched files stored on Amazon S3, Splunk or ELK consumes the received files remotely for ingestion.
+```
+Sensor ---> LCC (All Streams) ---> Amazon S3 ---> ( Splunk | ELK )
+```
+
+Bulk events are uploaded to Amazon S3 for archiving, while alerts and auditing events are sent in real-time to Splunk via Syslog. This has the added benefit of reducing Splunk license cost while keeping the raw events available for analysis at a lower cost.
+```
+Sensor ---> LCC (Event Stream) ---> Amazon S3
+       +--> LCC (Alert+Audit Streams) ---> Syslog (TCP+SSL) ---> Splunk
+```
+
+### Splunk
+Splunk provides you with a simple web interface to view and search the data. It has a paying enterprise version and a free tier.
+
+Below are manual steps to using Splunk with LimaCharlie data. You can also use this [installation script](install_simple_splunk.sh) to install and configure a free
+version on a Debian/Ubuntu server automatically.
+
+Because the LimaCharlie.io cloud needs to be able to reach your Splunk instance at all times to upload data, we recommend
+you create a virtual machine at a cloud provider like DigitalOcean, Amazon AWS or Google Cloud.
+
+Splunk is the visualization tool, but there are many ways to get the data to Splunk. We will use SFTP as it
+is fairly simple and safe.
+
+1. Create your virtual machine, for example using [this DigitalOcean tutorial](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet).
+1. Install Splunk, [here](https://medium.com/@smurf3r5/splunk-enterprise-on-digital-ocean-ubuntu-16-x-95c31c7e7e2c) is a quick tutorial on how to do that.
+1. Configure a write-only user and directory for SFTP using [this guide](https://www.digitalocean.com/community/tutorials/how-to-enable-sftp-without-shell-access-on-ubuntu-16-04).
+  1. We recommend using `PasswordAuthentication false` and RSA keys instead, but for ease you may simply set a password.
+1. Edit the file `/opt/splunk/etc/apps/search/local/props.conf` and add the following lines:
+    ```
+    [limacharlie]
+    SHOULD_LINEMERGE = false
+    ```
+1. Edit the file `/opt/splunk/etc/apps/search/local/inputs.conf` and add the following lines:
+    ```
+    [batch:///var/sftp/uploads]
+    disabled = false
+    sourcetype = limacharlie
+    move_policy = sinkhole
+    ```
+1. Restart Splunk by issuing: `sudo /opt/splunk/bin/splunk restart`.
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Give it a name, select the "sftp" module and select the stream you would like to send.
+1. Set the "username" that you used to setup the SFTP service.
+1. Set either the "password" field or the "secret_key" field depending on which one you chose when setting up SFTP.
+1. In "dest_host", input the public IP address of the virtual machine you created.
+1. Set the "dir" value to "/uploads/".
+1. Click "Create".
+1. After a minute, the data should start getting written to the `/var/sftp/uploads` directory on the server and Splunk should ingest it.
+1. In Splunk, doing a query for "sourcetype=limacharlie" should result in your data.
+
+If you are using the free version of Splunk, note that user management is not included. The suggested method to make
+access to your virtual machine safe is to use an SSH tunnel. This will turn a local port into the remote Splunk port
+over a secure connection. A sample SSH tunnel command looks like this:
+```
+ssh root@your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N
+```
+Then you can connect through the tunnel with your browser at `http://127.0.0.1:8000/`.
+
+### Amazon S3
+If you have your own visualization stack, or you just need the data archived, you can upload
+directly to Amazon S3. This way you don't need any infrastructure.
+
+If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling some indexed queries.
+LC data files begin with a `d` while special manifest files (indicating
+which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
+as flat files with a UUID name.
+
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
+
+It is recommended you enable `is_compression`.
+
+1. Log in to AWS console and go to the IAM service.
+1. Click on "Users" from the menu.
+1. Click "Add User", give it a name and select "Programmatic access".
+1. Click "Next permissions", then "Next review", you will see a warning about no access, ignore it and click "Create User".
+1. Take note of the "Access key", "Secret access key" and ARN name for the user (starts with "arn:").
+1. Go to the S3 service.
+1. Click "Create Bucket", enter a name and select a region.
+1. Click "Next" until you get to the permissions page.
+1. Select "Bucket policy" and input the policy in [sample below](#policy-sample):
+    where you replace the "<<USER_ARN>>" with the ARN name of the user you created and the "<<BUCKET_NAME>>" with the
+    name of the bucket you just created.
+1. Click "Save".
+1. Click the "Permissions" tab for your bucket.
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Give it a name, select the "s3" module and select the stream you would like to send.
+1. Enter the bucket name, key_id and secret_key you noted down from AWS.
+1. Click "Create".
+1. After a minute, the data should start getting written to your bucket.
+
+#### Policy Sample
+
+```json
+{
+   "Version": "2012-10-17",
+   "Statement": [
+      {
+         "Sid": "PermissionForObjectOperations",
+         "Effect": "Allow",
+         "Principal": {
+            "AWS": "<<USER_ARN>>"
+         },
+         "Action": "s3:PutObject",
+         "Resource": "arn:aws:s3:::<<BUCKET_NAME>>/*"
+      }
+   ]
+}
+```
+
+### External Storage
+
+If you have your own visualization stack, or you just need the data archived, you can upload directly to Google Cloud Storage (GCS) or Amazon S3.
+
+If the `is_indexing` option is enabled, data uploaded to GCS will be in a specific format enabling some indexed queries. LC data files begin with a `d` while special manifest files (indicating which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded as flat files with a UUID name.
+
+The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
+
+It is recommended you enable `is_indexing` and `is_compression`.
+
+1. Go to the [IAM Service Account console](https://console.cloud.google.com/iam-admin/serviceaccounts).
+1. Click "Create Service Account", give it a name, no role, check the "Furnish a new private key".
+1. The private key will download to your computer, this is the file containing the key you will later set as `secret_key` in the GCS Output.
+1. Go to the [Google Cloud Storage console](https://console.cloud.google.com/storage).
+1. Create a new bucket in whatever region you prefer.
+1. In your new bucket, click "Permissions", then "Add member".
+1. Enter the name of the Service Account you created above.
+1. As a role, select "Storage" --> "Storage Object Creator" and "Storage Legacy Bucket Writer" (this will grant Write-Only access to this account).
+1. Back in limacharlie.io, in your organization view, create a new Output.
+1. Give it a name, select the "gcs" module and select the stream you would like to send.
+1. Enter the bucket name and secret_key (contents of the file automatically downloaded when you created the Service Account).
+1. Click "Create".
+1. After a minute, the data should start getting written to your bucket.
+
+Now this has created a single Service Account in Write-Only mode.
+
+### HTTP Streaming
+
+It is also possible to stream an output over HTTPS. This interface allows you to stream smaller dataset like investigations or specific sensors or detections. This stream can be achieved via HTTP only without any additional software layer, although the [Python API](https://github.com/refractionpoint/python-limacharlie/) makes this task easier using the Spout object.
+
+This feature is heavily used by the Web Interface's Live view of a sensor.
+
+This feature is activated like this:
+
+Issuing an HTTP POST to `https://stream.limacharlie.io/<OID>` where `<OID>` is the organization ID you would like to stream from. As additional data in the POST, specify the following parameters:
+
+* `api_key`: this is the secret API key as provided to you in limacharlie.io.
+* `type`: this is the stream type you would like to create, one of `event`, `detect`, `audit`, `deployment` or `log`.
+* `cat`: optional, specifies the detection type to filter on.
+* `tag`: optional, specifies the sensor tags to filter on.
+* `inv_id`: optional, specifies the investigation ID to filter on.
+
+The response from this POST will be a stream of data. The format of this data will be newline-separated JSON much like all other Outputs.
+
+Note that this method of getting data requires having a fast connection to receive the data as the buffering done on the side of `stream.limacharlie.io` is very minimal. If the connection is not fast enough, data will be dropped and you will be notified of this by special events in the stream like this: `{"__trace":"dropped", "n":5}` where `n` is the number of that were dropped. If no data is present in the stream (like rare detections), you will also receive a `{"__trace":"keepalive"}` message approximately every minute to indicate the stream is still alive.
+
+### Webhook Details
+Using this output, every element will be sent over HTTP(S) to a webserver of your choice via a POST.
+
+The JSON data will be found in the `data` parameter of the `application/x-www-form-urlencoded` encoded POST.
+
+An HTTP header name `Lc-Signature` will contain an HMAC signature of the contents. This HMAC is computed from the string value of the `data` parameter and the `secret_key` set when creating the Output, using SHA256 as the hashing algorithm.
+
+The validity of the signature can be checked manually or using the `Webhook` objects of the [Python API](https://github.com/refractionpoint/python-limacharlie/) or the [JavaScript API](https://www.npmjs.com/package/limacharlie).
+
+For example, here is a sample Google Cloud Function that can receive a webhook:
+```javascript
+const Webhook = require('limacharlie/Webhook');
+
+/**
+ * Receives LimaCharlie.io webhooks.
+ *
+ * @param {!Object} req Cloud Function request context.
+ * @param {!Object} res Cloud Function response context.
+ */
+exports.lc_cloud_func = (req, res) => {
+  // Example input: {"message": "Hello!"}
+  if (req.body.data === undefined) {
+    // This is an error case, as we expect a form parameter "data".
+    console.error('Got: ' + JSON.stringify(req.body, null, 2));
+    res.status(400).send('No data defined.');
+  } else {
+    // First thing to do is validate this is a legitimate
+    // webhook sent by limacharlie.io.
+    let hookData = req.body.data;
+
+    // This is the secret key set when creating the webhook.
+    let whSecretKey = '123';
+
+    // This is the signature sent via header, we must validate it.
+    let whSignature = req.get('Lc-Signature');
+
+    // This object will do the validation for you.
+    let wh = new Webhook(whSecretKey);
+
+    // Check the signature and return early if not valid.
+    if(!wh.isSignatureValid(hookData, whSignature)) {
+    console.error("Invalid signature, do not trust!");
+      // Early return, 200 or an actual error if you want.
+      res.status(200);
+    }
+
+    console.log("Good signature, proceed.");
+
+    // Parse the JSON payload.
+    hookData = JSON.parse(hookData);
+    console.log("Parsed hook data: " + JSON.stringify(hookData, null, 2));
+
+    // This is where you would do your own processing
+    // like talking to other APIs etc.
+
+    res.status(200);
+  }
+};
+
+```
+
+### Security Onion
+A great guide for integrating LimaCharlie into [Security Onion](https://securityonion.net/) is
+available [here](https://medium.com/@wlambertts/security-onion-limacharlie-befe5e8e91fa) along
+with the code [here](https://github.com/weslambert/securityonion-limacharlie/).
