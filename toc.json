@@ -203,6 +203,11 @@
       ]
     },
     {
+      "type": "group",
+      "title": "Outputs",
+      "uri": "docs/outputs.md"
+    }
+    {
       "type": "item",
       "title": "Outputs",
       "uri": "docs/outputs.md"
