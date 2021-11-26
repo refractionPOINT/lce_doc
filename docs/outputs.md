@@ -19,8 +19,8 @@ When creating a new Output, you chose a Stream. Streams determine the type of da
 * `tag`: only send events from sensors with this tag to this output (event stream only).
 * `cat`: only send detections from this category to this output (detect stream only).
 * `cat_black_list`: only send detections that do not match the prefixes in this list (newline-separated).
-* `event_white_list`: only send event of the types in this list (newline-separated).
-* `event_black_list`: only send event not of the types in this list (newline-separated).
+* `event_white_list`: only send event of the types in this list (newline-separated, event and audit streams only).
+* `event_black_list`: only send event not of the types in this list (newline-separated, event and audit streams only).
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
 * `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
 
