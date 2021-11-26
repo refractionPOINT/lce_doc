@@ -2,7 +2,7 @@
 
 Welcome to the LimaCharlie docs &mdash; the best place to learn about the core concepts available in LimaCharlie's platform. 
 
-* Looking for the API? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
+* Looking for the API? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
 * Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
 
 > Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
