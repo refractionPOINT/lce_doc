@@ -1,19 +1,13 @@
-<img src="https://storage.googleapis.com/lc-edu/content/images/logos/logo_w_text-horizontal.png"
-     alt="LimaCharlie.io Logo"
-     style="width: 60%" />
- 
 # LimaCharlie Docs
 
-Welcome to the LimaCharlie docs.
-
-LimaCharlie provides cloud-based security infrastructure. Flexible primitives like [Sensors](sensors.md) and [Rules](dr.md) working with standard [Events](events-overview.md) enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform.
-
-Right now you're on the docs which is the best place to learn about the primitives available in LimaCharlie's platform. 
+Welcome to the LimaCharlie docs &mdash; the best place to learn about the core concepts available in LimaCharlie's platform. 
 
 * Looking for the API? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
 * Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
 
 > Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
+ 
+LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform.
 
 ## Core Concepts
 
