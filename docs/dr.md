@@ -259,6 +259,13 @@ rules:
 
 This rule combines multiple operators to specify the exact conditions which might make an `icacls` process interesting. If it sees one, it'll report it as a `win-acl-tampering` detection which will be forwarded to Outputs and become viewable in the Detections page.
 
+> Tip: test your rules without waiting for events! We recommend enabling the [`replay`](replay.md) add-on for a better D&R rule writing experience.
+> 
+> * Visit Timeline of a sensor and `Build D&R Rule` directly from real events
+> * While drafting a rule, `Replay` an event against the rule to see if it would match
+> * Replay a rule over historical events to see if any detections would have occurred 
+
+
 ## Going Deeper
 
 This article gives an introduction to D&R rules, but their capabilities go much deeper. For further learning, here are some suggested readings:
