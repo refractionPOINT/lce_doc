@@ -876,6 +876,27 @@ Un-deletes a sensor that was previously deleted. Used in conjunction with the [s
 - action: undelete sensor
 ```
 
+#### wait
+You may sometime need to introduce delays between responses while automating multiple responses to a D&R rule.
+The `wait` action allows you to specify time to wait. Note that the duration must be 1 minute or less and that using the `wait` action will block the processing of data from that endpoint for that duration of time since D&R rules are run at wire-speed and in-order.
+
+The `duration` parameter supports two types of values:
+* A string describing a duration, like `5s` for 5 seconds or `10ms` for 10 miliseconds, as defined by [this function call](https://pkg.go.dev/time#ParseDuration).
+* An integer representing a number of seconds.
+
+Example:
+```yaml
+- action: wait
+  duration: 10s
+```
+
+and
+
+```yaml
+- action: wait
+  duration: 5
+```
+
 ## Putting it Together
 
 Note that through limacharlie.io, in order to provide an easier to edit format, the same rule configuration is used but is in YAML format instead. For example:
