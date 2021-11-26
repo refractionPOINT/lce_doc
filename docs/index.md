@@ -7,66 +7,50 @@
  
 ## Overview
 
-* [Quickstart](./lcc_quick_start.md)
-* [Detection & Response Rules](./dr.md)
-* [Top use cases](./top-use-cases.md)
-* [Feature overview](./features.md)
-* [Add-ons Marketplace](./lc-marketplace.md)
+Welcome to the LimaCharlie documentation!
+
+LimaCharlie provides cloud-based security infrastructure. Flexible primitives like [Sensors](sensors.md) and [Rules](dr.md) working with standard [Events](events-overview.md) enable security engineering and security operations teams to build out their practices together under one roof.
+
+Right now you're on the docs which is the best place to build a solid foundation using LimaCharlie. 
+
+* Looking for API help? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
+* Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
+* Looking for a course to get started? Check out our [courses](https://edu.limacharlie.io/).
+* Want to talk to the team and other LimaCharlie users? Join us on [Slack](https://slack.limacharlie.io)!
+* Looking for a demo? [Book a call](https://calendly.com/limacharlie-demo) or sign up for an upcoming [webinar](https://www.limacharlie.io/webinar).
+* Want to learn LimaCharlie through videos? We've got a [YouTube Channel](https://www.youtube.com/limacharlieio).
+
+> Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
+
+## Core Concepts
+
+To see what's possible in LimaCharlie, the [Features Overview](features.md) is a good place to start.
+
+Here are the core components of the platform:
+
+### [Sensors](sensors.md)
+
+* A great place to start. Sensors are software that integrates with the host and collects standard JSON events to send to LimaCharlie.
+
+### [Rules](dr.md)
+
+* Detectors-as-code that match JSON events and trigger actions in response.
+
+### [Net Policies](dr.md)
+
+* Network access policies that provide fine-grained endpoint-to-endpoint networking.
+
+### [Outputs](outputs.md)
+
+* Streams that point toward external destinations (like S3, Google Cloud Storage, or Slack).
+
+### [Add-ons](user_addons.md)
+
+* Add-ons extend the capabilities of an organization by connecting Services or adding Lookups.
+
+## Other Topics
+
+* [Top Use Cases](./top-use-cases.md)
 * [Frequently Asked Questions](./faq.md)
 * [Troubleshooting](./troubleshooting.md)
-
-## Access & Permissions
-* [Overview](./sol-create_account.md)
-* [Multitenancy](./multitenancy.md)
-* [User Access](./user_access.md)
-* [Organization Groups](./user_access.md#access-management-via-organization-groups)
-* [API Keys](./api_keys.md)
-* [Data Access](./your-data.md)
-
-## General Content
-
-* [ID Schemes](./agentid.md)
-* [API Keys](./api_keys.md)
-* [Authenticated Resource Locator](./arl.md)
-* [Anti-Virus Integration](./av.md)
 * [Billing](./billing.md)
-* [Core Concepts](./core-concepts.md)
-* [Data Output](./outputs.md)
-* [Deploying Payloads to Endpoints](./payloads.md)
-* [Deploying Sensors](./deploy_sensor.md)
-* [Detection & Response](./dr.md)
-* [Memory Dumps at Scale](./dumper.md)
-* [Error Codes](./errors.md)
-* [Events](./events.md)
-* [Exfil Control](./exfil.md)
-* [File & Registry Integrity Monitoring](./integrity.md)
-* [Historical Threat Hunting](./replay.md)
-* [Infrastructure Service](./infrastructure-service.md)
-* [Jobs](./jobs.md)
-* [Log & Artifact Collection](./external_logs.md) 
-* [Managing Keys](./manage_keys.md)
-* [Pager Duty](./pagerduty.md)
-* [Proxy Support](./proxy.md)
-* [Reliable Tasking Service](./reliable_tasking.md)
-* [Responder Service](./responder.md)
-* [Sensor Commands](./sensor_commands.md)
-* [Sensor Cull Service](./sensor_cull.md)
-* [Storage](./lc-storage.md)
-* [Twilio Integration](./)
-* [Upgrading Sensors](./upgrading.md)
-* [User Add-ons](./user_addons.md)
-* [YARA Integration](./yara.md)
-* [Zeek Integration](./zeek.md)
-
-## References
-
-* [API Docs](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json)
-* [Webinars](https://www.limacharlie.io/webinar)
-* [YouTube Channel](https://www.youtube.com/limacharlieio)
-* [Online Course Material](https://edu.limacharlie.io/)
-
-## Codelabs & Deep Dives
-
-* [Configuring DR rules](./codelab_dr.md)
-* [Zeek Alerting](./recipe_zeek.md)
- 

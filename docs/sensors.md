@@ -76,9 +76,26 @@ The Console in the web application will provide autocompletion hints of possible
 
 > Need support for a platform you don't see here? Get in touch via [Slack](https://slack.limacharlie.io) or [Email](mailto:answers@limacharlie.io).
 
+## Installation Keys
+
+An Installation Key binds a sensor to the Organization that generated the key, optionally tagging them as well to differentiate groups of sensors from one another.
+
+It has the following properties:
+
+* OID: The Organization Id that this key should enroll into.
+* IID: Installer ID that is generated and associated with every Installation Key.
+* Tags: A list of Tags automatically applied to sensors enrolling with the key.
+* Desc: The description used to help you differentiate uses of various keys.
+
+### Recommended Usage
+
+We recommend using multiple Installation Key per organization to differentiate endpoints in your deployment. 
+
+For example, you may create a key with Tag "server" that you will use to install on your servers, a key with "vip" for executives in your organization, or a key with "sales" for the sales department, etc. This way you can use the tags on various sensors to figure out different detection and response rules for different types of hosts on your infrastructure.
+
 ## Sensor Versions
 
-Windows, Mac, and Linux (EDR-class) sensors' versions are cloud-managed per-organization. They will not upgrade unless you choose to do so. 
+Windows, Mac, and Linux (EDR-class) sensors' versions are fixed and can be managed per-organization. They will not upgrade unless you choose to do so. 
 
 There are always two versions available to roll out &mdash; `Stable` or `Latest` &mdash; which can be deployed via the web application or via the [`/modules` REST API](https://doc.limacharlie.io/docs/api/b3A6MTk2NDI2OA-update-sensors). 
 

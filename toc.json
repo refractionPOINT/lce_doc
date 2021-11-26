@@ -16,8 +16,13 @@
     },
     {
       "type": "group",
-      "title": "Capabilities",
+      "title": "Features",
       "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/features.md"
+        },
         {
           "type": "item",
           "title": "Endpoint Detection & Response",
@@ -154,6 +159,11 @@
           "type": "item",
           "title": "Overview",
           "uri": "docs/events-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Storage",
+          "uri": "docs/lc-storage.md"
         },
         {
           "type": "item",
@@ -329,8 +339,13 @@
     },
     {
       "type": "group",
-      "title": "Access Control",
+      "title": "Access & Permissions",
       "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/access-overview.md"
+        },
         {
           "type": "item",
           "title": "User Access",
@@ -343,8 +358,13 @@
         },
         {
           "type": "item",
-          "title": "Installation Keys",
-          "uri": "docs/manage_keys.md"
+          "title": "Reference: Permissions",
+          "uri": "docs/permissions.md"
+        },
+        {
+          "type": "item",
+          "title": "Policy: LimaCharlie's Access",
+          "uri": "docs/your-data.md"
         }
       ]
     },

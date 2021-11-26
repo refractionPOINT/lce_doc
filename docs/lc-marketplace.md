@@ -1,18 +1,13 @@
 # Add-ons Marketplace
 
-LimaCharlie offers additional free and paid integrated services through its  Marketplace.
 
-## Add-ons & Subscriptions</span> 
-
-LimaCharlie has a well developed  Marketplace where users can enable a wide plethora of detections, lookups, and services.
+LimaCharlie has a marketplace where users can extend an organization's capabilities by subscribing to add-ons.
 
 These fall into one of several categories, each of which is linked below.
 
-* Detections
 * API
 * Lookup
 * Services
-* Community
 
 ## Developing Products
 
