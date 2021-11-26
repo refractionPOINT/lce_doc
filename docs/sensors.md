@@ -33,7 +33,7 @@ Windows, Mac, Linux, Chrome, and Edge sensors all offer commands as a safe way o
 
 > For an introduction to commands and their usage, check out the [Commands Overview](sensor-commands-overview.md).
 
-> For a complete list of commands, see [Reference: Commands](sensor_commands.md). Alternatively, view one of the sensor types below to see supported commands.
+> For a complete list of commands, see [Reference: Commands](sensor_commands.md). Alternatively, check out any the sensor types individually to see their supported commands.
 
 ## Installation Keys
 
