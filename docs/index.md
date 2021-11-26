@@ -12,10 +12,6 @@ Right now you're on the docs which is the best place to build a solid foundation
 
 * Looking for the API? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
 * Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
-* Looking for a course to get started? Check out our [courses](https://edu.limacharlie.io/).
-* Want to talk to the team and other LimaCharlie users? Join us on [Slack](https://slack.limacharlie.io)!
-* Looking for a demo? [Book a call](https://calendly.com/limacharlie-demo) or sign up for an upcoming [webinar](https://www.limacharlie.io/webinar).
-* Want to learn LimaCharlie through videos? We've got a [YouTube Channel](https://www.youtube.com/limacharlieio).
 
 > Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
 
@@ -27,15 +23,15 @@ From an infrastructure point of view, here are the core components of the platfo
 
 ### [Sensors](sensors.md)
 
-* A great place to start. Sensors are software that integrates with the host and collects standard JSON events to send to LimaCharlie.
+* Software that integrates with the host and collects standard JSON events.
 
 ### [Detection & Response Rules](dr.md)
 
 * Detectors-as-code that match JSON events and trigger actions in response.
 
-### [Net Policies](dr.md)
+### [Net Policies](lc-net.md)
 
-* Network access policies that provide fine-grained endpoint-to-endpoint networking.
+* Policies for providing fine-grained endpoint-to-endpoint networking via Net sensors.
 
 ### [Outputs](outputs.md)
 
@@ -51,3 +47,10 @@ From an infrastructure point of view, here are the core components of the platfo
 * [Frequently Asked Questions](./faq.md)
 * [Troubleshooting](./troubleshooting.md)
 * [Billing](./billing.md)
+
+## Resources
+
+* Looking for a course to get started? Check out our [courses](https://edu.limacharlie.io/).
+* Want to talk to the team and other LimaCharlie users? Join us on [Slack](https://slack.limacharlie.io)!
+* Looking for a demo? [Book a call](https://calendly.com/limacharlie-demo) or sign up for an upcoming [webinar](https://www.limacharlie.io/webinar).
+* Want videos? Check out the [YouTube Channel](https://www.youtube.com/limacharlieio).
