@@ -5,7 +5,7 @@ LimaCharlie's [add-ons marketplace](https://app.limacharlie.io/add-ons) can augm
 
 ## Types of Add-ons
 
-* `api` add-ons are tightly integrated add-ons that enable / disable core LimaCharlie features
+* `api` add-ons are tightly integrated add-ons that enable core LimaCharlie features
 * `lookup` add-ons are lists of values usable in [rules](dr.md) to match known threat indicators
 * `service` add-ons are cloud services that can perform jobs on behalf of an organization, or add new capabilities to an organization
 

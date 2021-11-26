@@ -18,25 +18,35 @@ For a wider view of what's possible in LimaCharlie, check out the [Features Over
 
 From an infrastructure point of view, here are the core components of the platform:
 
-### [Sensors](sensors.md)
+### Sensors
 
-* Software that integrates with the host and collects standard JSON events.
+Software that integrates with the host and collects standard JSON events.
 
-### [Detection & Response Rules](dr.md)
+* Get started with [Sensors](sensors.md)
 
-* Detectors-as-code that match JSON events and trigger actions in response.
+### Detection & Response Rules
 
-### [Net Policies](lc-net.md)
+Detectors-as-code that match JSON events and trigger actions in response.
 
-* Policies for providing fine-grained endpoint-to-endpoint networking via Net sensors.
+* Get started with [Detection & Response Rules](dr.md)
 
-### [Outputs](outputs.md)
+### Net Policies
 
-* Streams that point toward external destinations (like S3, Google Cloud Storage, or Slack).
+Policies for providing fine-grained endpoint-to-endpoint networking via Net sensors.
 
-### [Add-ons](user_addons.md)
+* Get started with [Net Policies](lc-net.md)
 
-* Add-ons extend the capabilities of an organization by connecting Services or adding Lookups.
+### Outputs
+
+Streams that point toward external destinations (like S3, Google Cloud Storage, or Slack).
+
+* Get started with [Outputs](outputs.md)
+
+### Add-ons
+
+Extends the capabilities of an organization by connecting Services or Lookup lists.
+
+* Get started with [Add-ons](user_addons.md)
 
 ## Other Topics
 
