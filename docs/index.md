@@ -6,12 +6,15 @@ Welcome to the LimaCharlie docs &mdash; the best place to learn about the core c
 * Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
 
 > Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
- 
-LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform.
 
 ## Core Concepts
 
-For a wider view of what's possible in LimaCharlie, the [Features Overview](features.md) is a good place to start.
+ 
+LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform. 
+
+Using infrastructure-as-code, all of this becomes testable and repeatable across organizations & environments.
+
+For a wider view of what's possible in LimaCharlie, check out the [Features Overview](features.md).
 
 From an infrastructure point of view, here are the core components of the platform:
 
@@ -37,10 +40,11 @@ From an infrastructure point of view, here are the core components of the platfo
 
 ## Other Topics
 
-* [Top Use Cases](./top-use-cases.md)
-* [Frequently Asked Questions](./faq.md)
-* [Troubleshooting](./troubleshooting.md)
-* [Billing](./billing.md)
+* [Feature Overview](features.md)
+* [Top Use Cases](top-use-cases.md)
+* [Frequently Asked Questions](faq.md)
+* [Troubleshooting](troubleshooting.md)
+* [Billing](billing.md)
 
 ## Resources
 
