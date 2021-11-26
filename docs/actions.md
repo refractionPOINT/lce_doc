@@ -134,3 +134,28 @@ Un-deletes a sensor that was previously deleted.
 ```
 
 This can be used in conjunction with the [deleted_sensor](events.md#deleted_sensor) event to allow sensors to rejoin the fleet.
+
+## wait
+
+Adds a delay (up to 1 minute) before running the next response action.
+
+This can be useful if a previous response action needs to finish running (i.e. a command or payload run via `task`) before you can execute the next action.
+
+> The `wait` action will block processing any events from that sensor for the specified duration of time. This is because D&R  rules are run at wire-speed and in-order.
+
+The `duration` parameter supports two types of values:
+* A string describing a duration, like `5s` for 5 seconds or `10ms` for 10 miliseconds, as defined by [this function call](https://pkg.go.dev/time#ParseDuration).
+* An integer representing a number of seconds.
+
+Example:
+```yaml
+- action: wait
+  duration: 10s
+```
+
+and
+
+```yaml
+- action: wait
+  duration: 5
+```
