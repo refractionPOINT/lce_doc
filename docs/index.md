@@ -8,7 +8,6 @@ Welcome to the LimaCharlie docs &mdash; the best place to learn about the core c
 > Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
 
 ## Core Concepts
-
  
 LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform. 
 
