@@ -31,7 +31,7 @@ All sensors observe host & network activity, packaging telemetry and sending it 
 
 Windows, Mac, Linux, Chrome, and Edge sensors all offer commands as a safe way of interacting with a host for investigation, management, or threat mitigation purposes. 
 
-> For an introduction to commands and their usage, check out the [Commands Overview](sensor-commands-overview.md)
+> For an introduction to commands and their usage, check out the [Commands Overview](sensor-commands-overview.md).
 
 > For a complete list of commands, see [Reference: Commands](sensor_commands.md). Alternatively, view one of the sensor types below to see supported commands.
 
