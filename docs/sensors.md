@@ -4,6 +4,17 @@ Sensors are offered as a scalable, serverless solution for securely connecting e
 
 Once installed, they send telemetry and artifacts from the host to the organization they're registered to in the cloud. The sensor is grounded in LimaCharlie's open source EDR roots, but is flexible in bringing security data in from different sources.
 
+## Sensor Types
+
+* [Windows](sensors/windows.md)
+* [Mac](sensors/mac.md)
+* [Linux](sensors/linux.md)
+* [Chrome](sensors/chrome.md)
+* [Edge](sensors/edge.md)
+* [Net](sensors/net.md)
+
+> Need support for a platform you don't see here? Get in touch via [Slack](https://slack.limacharlie.io) or [email](mailto:answers@limacharlie.io).
+
 ## Quota
 
 All sensors register with the cloud, and many of them may go online / offline over the course of a regular day. For billing purposes, organizations must specify a sensor quota which represents the number of **concurrent online sensors** allowed to be connected to the cloud. 
@@ -14,7 +25,7 @@ If the quota is maxed out when a sensor attempts to come online, the sensor will
 
 All sensors observe host & network activity, packaging telemetry and sending it to the cloud. The types of observable events are dependent on the sensor's type. 
 
-> For an introduction to events and their structure, see the article on [Events](events-overview.md).
+> For an introduction to events and their structure, check out the [Events Overview](events-overview.md).
 
 ## Commands
 
@@ -65,17 +76,6 @@ The Console in the web application will provide autocompletion hints of possible
 
 > For a complete list of commands, see [Reference: Commands](sensor_commands.md). Alternatively, view one of the sensor types below to see supported commands.
 
-## Sensor Types
-
-* [Windows](sensors/windows.md)
-* [Mac](sensors/mac.md)
-* [Linux](sensors/linux.md)
-* [Chrome](sensors/chrome.md)
-* [Edge](sensors/edge.md)
-* [Net](sensors/net.md)
-
-> Need support for a platform you don't see here? Get in touch via [Slack](https://slack.limacharlie.io) or [Email](mailto:answers@limacharlie.io).
-
 ## Installation Keys
 
 An Installation Key binds a sensor to the Organization that generated the key, optionally tagging them as well to differentiate groups of sensors from one another.
@@ -89,7 +89,7 @@ It has the following properties:
 
 ### Recommended Usage
 
-We recommend using multiple Installation Key per organization to differentiate endpoints in your deployment. 
+We recommend using multiple installation keys per organization to differentiate endpoints in your deployment. 
 
 For example, you may create a key with Tag "server" that you will use to install on your servers, a key with "vip" for executives in your organization, or a key with "sales" for the sales department, etc. This way you can use the tags on various sensors to figure out different detection and response rules for different types of hosts on your infrastructure.
 
