@@ -31,13 +31,13 @@ Events are streamed through the LimaCharlie cloud in a standard JSON format with
 
 ### Detection & Response Rules
 
-Detectors-as-code that match JSON events and trigger actions in response.
+Detectors-as-code that match incoming events and trigger actions in response.
 
 * Get started with [Detection & Response Rules](dr.md)
 
 ### Net Policies
 
-Policies for providing fine-grained endpoint-to-endpoint networking via Net sensors.
+Policies for providing fine-grained endpoint-to-endpoint networking via [Net](sensors/net.md) sensors.
 
 * Get started with [Net Policies](lc-net.md)
 
