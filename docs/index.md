@@ -19,9 +19,15 @@ Here are the core components of the platform:
 
 ### Sensors
 
-Software that bridges a source of standard JSON events and the LimaCharlie cloud, often with the ability to take action. EDR-class sensors include [Windows](sensors/windows.md), [Mac](sensors/mac.md), and [Linux](sensors/linux.md). Sensors can also bring in sources such as syslog, AWS Cloud Trail, or 1Password.
+Software that bridges a source events and the LimaCharlie cloud, often with the ability to take action. EDR-class sensors include [Windows](sensors/windows.md), [Mac](sensors/mac.md), and [Linux](sensors/linux.md). Sensors can also bring in sources such as syslog, AWS Cloud Trail, or 1Password.
 
 * Get started with [Sensors](sensors.md)
+
+### Events
+
+Events are streamed through the LimaCharlie cloud in a standard JSON format with consistent routing information. A large collection of well-structured events can be collected from sensors.
+
+* Get started with [Events](events-overview.md)
 
 ### Detection & Response Rules
 
