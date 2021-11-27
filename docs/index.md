@@ -11,7 +11,7 @@ Welcome to the LimaCharlie docs &mdash; the best place to learn about the core c
  
 LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform. 
 
-Using infrastructure-as-code, all of this becomes testable and repeatable across organizations & environments.
+Using infrastructure-as-code, all of this can be tested and repeated across organizations & environments.
 
 For a wider view of what's possible in LimaCharlie, check out the [Features Overview](features.md).
 
