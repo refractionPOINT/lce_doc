@@ -15,7 +15,7 @@ Using infrastructure-as-code, all of this becomes testable and repeatable across
 
 For a wider view of what's possible in LimaCharlie, check out the [Features Overview](features.md).
 
-From an infrastructure point of view, here are the core components of the platform:
+Here are the core components of the platform:
 
 ### Sensors
 
@@ -51,6 +51,7 @@ Extends the capabilities of an organization by connecting Services or Lookup lis
 
 * [Feature Overview](features.md)
 * [Top Use Cases](top-use-cases.md)
+* [Help Center](https://help.limacharlie.io)
 * [Frequently Asked Questions](faq.md)
 * [Troubleshooting](troubleshooting.md)
 * [Billing](billing.md)
