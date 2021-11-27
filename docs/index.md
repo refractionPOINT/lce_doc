@@ -51,14 +51,14 @@ Extends the capabilities of an organization by connecting Services or Lookup lis
 
 * [Feature Overview](features.md)
 * [Top Use Cases](top-use-cases.md)
-* [Help Center](https://help.limacharlie.io)
 * [Frequently Asked Questions](faq.md)
 * [Troubleshooting](troubleshooting.md)
 * [Billing](billing.md)
 
 ## Resources
 
+* For answers to particular questions, check out the [Help Center](https://help.limacharlie.io).
 * Looking for a course to get started? Check out our [courses](https://edu.limacharlie.io/).
-* Want to talk to the team and other LimaCharlie users? Join us on [Slack](https://slack.limacharlie.io)!
+* Want to join the LimaCharlie community? Join our [Slack](https://slack.limacharlie.io).
 * Looking for a demo? [Book a call](https://calendly.com/limacharlie-demo) or sign up for an upcoming [webinar](https://www.limacharlie.io/webinar).
 * Want videos? Check out the [YouTube Channel](https://www.youtube.com/limacharlieio).
