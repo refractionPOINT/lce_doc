@@ -19,7 +19,7 @@ Once installed, they send telemetry and artifacts from the host to the organizat
 
 All sensors register with the cloud, and many of them may go online / offline over the course of a regular day. For billing purposes, organizations must specify a sensor quota which represents the number of **concurrent online sensors** allowed to be connected to the cloud. 
 
-If the quota is maxed out when a sensor attempts to come online, the sensor will be dismissed and a [`sensor_over_quota`](events.md#sensor_over_quota) event will be emitted.
+If the quota is maxed out when a sensor attempts to come online, the sensor will be dismissed and a [`sensor_over_quota`](events.md#sensor_over_quota) event will be emitted in the [`deployments`](events-overview.md#streams) stream.
 
 ## Events
 

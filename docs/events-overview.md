@@ -193,7 +193,7 @@ The parent-child relationship serves to describe parent and child processes via 
 
 > Tip: when using custom storage and/or searching solutions it's helpful to index the values of `routing/this` and `routing/parent` for each event. Doing so will speed up searching during threat hunting and investigations.
 
-Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
+Finally, the `routing/target` is only sometimes found in an event, and it represents an event that interacts with another event without having a parent-child relationship. For example, in the `NEW_REMOTE_THREAD` event, this `target` represents a process where a remote thread was created.
 
 ## Streams
 
