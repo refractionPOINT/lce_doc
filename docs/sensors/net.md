@@ -4,8 +4,8 @@ LimaCharlie's Net sensor enables both network visibility and granular network ac
 
 ## Supported Events
 
-* [`NETWORK_CONNECTIONS`](../events.md#NETWORK_CONNECTIONS)
-* [`DNS_REQUEST`](../events.md#DNS_REQUEST)
+* [`NETWORK_CONNECTIONS`](../events.md#network_connections)
+* [`DNS_REQUEST`](../events.md#dns_request)
 
 ## Supported Commands
 

@@ -4,10 +4,10 @@ LimaCharlie's Edge sensor is delivered as the [LimaCharlie Sensor](https://micro
 
 ## Supported Events
 
-* [`CONNECTED`](../events.md#CONNECTED)
-* [`RECEIPT`](../events.md#RECEIPT)
-* [`HTTP_REQUEST`](../events.md#HTTP_REQUEST)
-* [`DNS_REQUEST`](../events.md#DNS_REQUEST)
+* [`CONNECTED`](../events.md#connected)
+* [`CLOUD_NOTIFICATION`](../events.md#cloud_notification)
+* [`HTTP_REQUEST`](../events.md#http_request)
+* [`DNS_REQUEST`](../events.md#dns_request)
 
 ## Supported Commands
 

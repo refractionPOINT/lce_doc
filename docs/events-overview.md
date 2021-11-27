@@ -189,7 +189,7 @@ Here's a simplified example of an event and its parent event:
 > 
 > These can be called recursively on each event's `routing/parent` and/or child events to complete a full tree if required - this is how the tree view works in the Timeline of a sensor in the web application.
 
-The parent-child relationship serves to describe parent and child processes via the [`NEW_PROCESS`](events.md#NEW_PROCESS) or [`EXISTING_PROCESS`](events.md#EXISTING_PROCESS) events, but other types of events may also have parents. For example, on [`NETWORK_SUMMARY`](events.md#NETWORK_SUMMARY) events, the `parent` will be the process that generated the network connections.
+The parent-child relationship serves to describe parent and child processes via the [`NEW_PROCESS`](events.md#new_process) or [`EXISTING_PROCESS`](events.md#existing_process) events, but other types of events may also have parents. For example, on [`NETWORK_SUMMARY`](events.md#network_summary) events, the `parent` will be the process that generated the network connections.
 
 > Tip: when using custom storage and/or searching solutions it's helpful to index the values of `routing/this` and `routing/parent` for each event. Doing so will speed up searching during threat hunting and investigations.
 
