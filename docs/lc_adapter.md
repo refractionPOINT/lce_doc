@@ -32,6 +32,14 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
+We provide built-in parsing/mapping for many popular formats (called `platform`) like:
+* Google Cloud Platform audit logs
+* AWS Cloud Trail logs
+* CarbonBlack EDR
+* 1password event logs
+
+The adapter also provides you with the ability to define custom parsing/mapping yourself.
+
 ## Usage
 
 The adapter can be used to access many different sources and many different event types. The main mechanisms specifying the source and type of events are:
