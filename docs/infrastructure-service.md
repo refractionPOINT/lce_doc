@@ -5,7 +5,7 @@ The `infrastructure-service` service allows you to perform infrastructure-as-cod
 to your tenant configuration without the use of the [Command Line Interface (CLI)](https://github.com/refractionPOINT/python-limacharlie/#configs-1).
 
 The service offers the same parameters as the CLI through the generic Service Request section of the [web app](https://app.limacharlie.io).
-A simplified UI is also available (once your tenant subscribes to the `infrastructure-service` add-on) under a section called "Infrastructure Config". 
+A simplified UI is also available (once your tenant subscribes to the `infrastructure-service` add-on) under the "Templates" view. 
 
 ## Interacting
 All interaction with this service mimics the [CLI tool](https://github.com/refractionPOINT/python-limacharlie/#configs-1).

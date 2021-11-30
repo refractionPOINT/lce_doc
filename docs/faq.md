@@ -12,11 +12,11 @@
 * Only certain events are sent back to the cloud for performance reasons.
 * All events sent to the cloud are always sent to whatever Output you've configured.
 * You can trigger the retrieval of additional events from the sensor through two ways:
-  1. Sending the [`history_dump`](sensor_commands.md) task to a sensor will tell it to send home all events cached in memory.
-  1. Using the [`add_exfil`](sensor_commands.md) task to a sensor will tell it to send all instances of a specific event
+  1. Sending the [`history_dump`](sensor_commands.md#history_dump) task to a sensor will tell it to send home all events cached in memory.
+  2. Sending the [`exfil_add`](sensor_commands.md#exfil_add) task to a sensor will tell it to send all instances of a specific event
      home for a specific amount of time.
 * This means a common strategy is to have "first level" detections that look for general
-  suspicious behavior, and when necessary for those detections to trigger `history_dump` to get full context.
+  suspicious behavior, and when necessary for those detections to trigger [`history_dump`](sensor_commands.md#history_dump) to get full context.
 
 ### How do LimaCharlie events map with Sysmon events on Windows?
 Many events generated in LimaCharlie have a good analog event in Sysmon (as described [here](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon)):

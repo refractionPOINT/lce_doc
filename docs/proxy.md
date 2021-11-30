@@ -1,6 +1,5 @@
-# Proxy Support
+# Sensor Proxy Tunneling
 
-## General
 The LimaCharlie sensor supports unauthenticated proxy tunneling through [HTTP CONNECT](https://en.wikipedia.org/wiki/HTTP_tunnel).
 
 This allows the LimaCharlie connection to go through the proxy in an opaque way (since the sensor does not support

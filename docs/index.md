@@ -1,72 +1,70 @@
-<!-- leave the empty title here...  the image below displays the info BUT the platform requires something here -->
-# 
+# LimaCharlie Docs
 
-<img src="https://storage.googleapis.com/lc-edu/content/images/logos/logo_w_text-horizontal.png"
-     alt="LimaCharlie.io Logo"
-     style="width: 60%" />
+Welcome to the LimaCharlie docs &mdash; the best place to learn about the core concepts available in LimaCharlie's platform. 
+
+* Looking for the API? Check out our [Swagger API documentation](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json).
+* Looking for an answer to a specific question? Check out our [help center](https://help.limacharlie.io).
+
+> Get up and running fast with the [Quickstart Guide](lcc_quick_start.md).
+
+## Core Concepts
  
-## Overview
+LimaCharlie provides cloud-based security infrastructure. Flexible primitives like Sensors, Rules, and Outputs enable security engineering and security operations teams to build out their security posture, practices, and tool chain on a common platform. 
 
-* [Quickstart](./lcc_quick_start.md)
-* [Detection & Response Rules](./dr.md)
-* [Top use cases](./top-use-cases.md)
-* [Feature overview](./features.md)
-* [Add-ons Marketplace](./lc-marketplace.md)
-* [Frequently Asked Questions](./faq.md)
-* [Troubleshooting](./troubleshooting.md)
+Using infrastructure-as-code, all of this can be tested and repeated across organizations & environments.
 
-## Access & Permissions
-* [Overview](./sol-create_account.md)
-* [Multitenancy](./multitenancy.md)
-* [User Access](./user_access.md)
-* [Organization Groups](./user_access.md#access-management-via-organization-groups)
-* [API Keys](./api_keys.md)
-* [Data Access](./your-data.md)
+For a wider view of what's possible in LimaCharlie, check out the [Features Overview](features.md).
 
-## General Content
+Here are the core components of the platform:
 
-* [ID Schemes](./agentid.md)
-* [API Keys](./api_keys.md)
-* [Authenticated Resource Locator](./arl.md)
-* [Anti-Virus Integration](./av.md)
-* [Billing](./billing.md)
-* [Core Concepts](./core-concepts.md)
-* [Data Output](./outputs.md)
-* [Deploying Payloads to Endpoints](./payloads.md)
-* [Deploying Sensors](./deploy_sensor.md)
-* [Detection & Response](./dr.md)
-* [Memory Dumps at Scale](./dumper.md)
-* [Error Codes](./errors.md)
-* [Events](./events.md)
-* [Exfil Control](./exfil.md)
-* [File & Registry Integrity Monitoring](./integrity.md)
-* [Historical Threat Hunting](./replay.md)
-* [Infrastructure Service](./infrastructure-service.md)
-* [Jobs](./jobs.md)
-* [Log & Artifact Collection](./external_logs.md) 
-* [Managing Keys](./manage_keys.md)
-* [Pager Duty](./pagerduty.md)
-* [Proxy Support](./proxy.md)
-* [Reliable Tasking Service](./reliable_tasking.md)
-* [Responder Service](./responder.md)
-* [Sensor Commands](./sensor_commands.md)
-* [Sensor Cull Service](./sensor_cull.md)
-* [Storage](./lc-storage.md)
-* [Twilio Integration](./)
-* [Upgrading Sensors](./upgrading.md)
-* [User Add-ons](./user_addons.md)
-* [YARA Integration](./yara.md)
-* [Zeek Integration](./zeek.md)
+### Sensors
 
-## References
+Software that bridges a source of events and the LimaCharlie cloud, often with the ability to take action. EDR-class sensors include [Windows](sensors/windows.md), [Mac](sensors/mac.md), and [Linux](sensors/linux.md). Sensors can also bring in sources such as syslog, AWS Cloud Trail, or 1Password.
 
-* [API Docs](https://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.jsonhttps://doc.limacharlie.io/docs/api/container/static/swagger/v1/swagger.json)
-* [Webinars](https://www.limacharlie.io/webinar)
-* [YouTube Channel](https://www.youtube.com/limacharlieio)
-* [Online Course Material](https://edu.limacharlie.io/)
+* Get started with [Sensors](sensors.md)
 
-## Codelabs & Deep Dives
+### Events
 
-* [Configuring DR rules](./codelab_dr.md)
-* [Zeek Alerting](./recipe_zeek.md)
- 
+Events are streamed through the LimaCharlie cloud in a standard JSON format with consistent routing information. A large collection of well-structured events can be collected from sensors.
+
+* Get started with [Events](events-overview.md)
+
+### Detection & Response Rules
+
+Detectors-as-code that match incoming events and trigger actions in response.
+
+* Get started with [Detection & Response Rules](dr.md)
+
+### Net Policies
+
+Policies for providing fine-grained endpoint-to-endpoint networking via [Net](sensors/net.md) sensors.
+
+* Get started with [Net Policies](lc-net.md)
+
+### Outputs
+
+Streams that point toward external destinations (like S3, Google Cloud Storage, or Slack).
+
+* Get started with [Outputs](outputs.md)
+
+### Add-ons
+
+Extends the capabilities of an organization by connecting Services or Lookup lists.
+
+* Get started with [Add-ons](user_addons.md)
+
+## Other Topics
+
+* [Feature Overview](features.md)
+* [Top Use Cases](top-use-cases.md)
+* [Frequently Asked Questions](faq.md)
+* [Troubleshooting](troubleshooting.md)
+* [Billing](billing.md)
+
+## Resources
+
+* For answers to particular questions, check out the [Help Center](https://help.limacharlie.io).
+* Looking for a course to get started? Check out our [courses](https://edu.limacharlie.io/).
+* Want to join the LimaCharlie community? Join our [Slack](https://slack.limacharlie.io).
+* Looking for a demo? [Book a call](https://calendly.com/limacharlie-demo) or sign up for an upcoming [webinar](https://www.limacharlie.io/webinar).
+* Want videos? Check out the [YouTube Channel](https://www.youtube.com/limacharlieio).

@@ -1,4 +1,4 @@
-# Codelab Detection & Response
+# Writing & Testing Rules
 
 ## Background
 
@@ -49,8 +49,7 @@ The goal of is code lab will be to create a D&R rule to detect the MITRE ATT&CK 
 
 ### Services Used
 
-This code lab will use the Detection & Response service as well as the Replay service
-to validate and test the rule prior to pushing it to production.
+This code lab will use the Replay service to validate and test the rule prior to pushing it to production.
 
 ## Setup and Requirements
 

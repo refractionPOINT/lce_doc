@@ -1,240 +1,391 @@
 {
-    "items": [
-
-      {
-        "type": "divider",
-        "title": "Overview"
-      },
-      {
-        "type": "item",
-        "title": "Home",
-        "uri": "docs/index.md"
-      },
-      {
-        "type": "item",
-        "title": "Quick Start",
-        "uri": "docs/lcc_quick_start.md"
-      },
-      {
-        "type": "item",
-        "title": "FAQ",
-        "uri": "docs/faq.md"
-      },
-
-
-      {
-        "type": "divider",
-        "title": "Products"
-      },
-      {
-        "type": "item",
-        "title": "Endpoint Detection & Response",
-        "uri": "docs/lc-edr.md"
-      },
-      {
-        "type": "item",
-        "title": "Software Defined Networking",
-        "uri": "docs/lc-net.md"
-      },
-      {
-        "type": "item",
-        "title": "Log & Artifact Ingestion",
-        "uri": "docs/lc-artifact_ingestion.md"
-      },
-      {
-        "type": "item",
-        "title": "Infrastructure as Code",
-        "uri": "docs/lc-infra-as-code.md"
-      },
-      {
-        "type": "item",
-        "title": "Operational Console for Teams",
-        "uri": "docs/lc-comms.md"
-      },
-
-      {
-        "type": "divider",
-        "title": "Reference"
-      },
-      {
-        "type": "item",
-        "title": "Sensor Commands",
-        "uri": "docs/sensor_commands.md"
-      },
-      {
-        "type": "item",
-        "title": "Detection & Response",
-        "uri": "docs/dr.md"
-      },
-      {
-        "type": "item",
-        "title": "Infrastructure Service",
-        "uri": "docs/infrastructure-service.md"
-      },
-
-      {
-        "type": "item",
-        "title": "Events",
-        "uri": "docs/events.md"
-      },
-      {
-        "type": "item",
-        "title": "ID Schemes",
-        "uri": "docs/agentid.md"
-      },
-
-      {
-        "type": "item",
-        "title": "Error Codes",
-        "uri": "docs/errors.md"
-      },
-
-
-      {
-        "type": "divider",
-        "title": "Operations"
-      },
-      {
-        "type": "item",
-        "title": "Installation Keys",
-        "uri": "docs/manage_keys.md"
-      },
-      {
-        "type": "item",
-        "title": "Deploying Sensors",
-        "uri": "docs/deploy_sensor.md"
-      },
-      {
-        "type": "item",
-        "title": "Proxy Support",
-        "uri": "docs/proxy.md"
-      },
-      {
-        "type": "item",
-        "title": "Outputs",
-        "uri": "docs/outputs.md"
-      },
-      {
-        "type": "item",
-        "title": "API Keys",
-        "uri": "docs/api_keys.md"
-      },
-      {
-        "type": "item",
-        "title": "Tagging",
-        "uri": "docs/tagging.md"
-      },
-      {
-        "type": "item",
-        "title": "Add-ons",
-        "uri": "docs/user_addons.md"
-      },
-      {
-        "type": "item",
-        "title": "Jobs",
-        "uri": "docs/jobs.md"
-      },
-      {
-        "type": "item",
-        "title": "Artifact Collection",
-        "uri": "docs/external_logs.md"
-      },
-      {
-        "type": "item",
-        "title": "Payloads",
-        "uri": "docs/payloads.md"
-      },
-      {
-        "type": "item",
-        "title": "Upgrading",
-        "uri": "docs/upgrading.md"
-      },
-      {
-        "type": "item",
-        "title": "User Control",
-        "uri": "docs/user_access.md"
-      },
-      {
-        "type": "item",
-        "title": "Troubleshooting",
-        "uri": "docs/troubleshooting.md"
-      },
-      {
-        "type": "group",
-        "title": "Codelabs & Recipes",
-        "items": [
-          {
-            "type": "item",
-            "title": "D&R Rules",
-            "uri": "docs/codelab_dr.md"
-          },
-          {
-            "type": "item",
-            "title": "Zeek Alerting",
-            "uri": "docs/recipe_zeek.md"
-          }
-        ]
-      },
-      {
-        "type": "group",
-        "title": "Services",
-        "items": [
-          {
-            "type": "item",
-            "title": "Replay",
-            "uri": "docs/replay.md"
-          },
-          {
-            "type": "item",
-            "title": "Responder",
-            "uri": "docs/responder.md"
-          },
-          {
-            "type": "item",
-            "title": "Exfil",
-            "uri": "docs/exfil.md"
-          },
-          {
-            "type": "item",
-            "title": "File/Reg Integrity",
-            "uri": "docs/integrity.md"
-          },
-          {
-            "type": "item",
-            "title": "Yara",
-            "uri": "docs/yara.md"
-          },
-          {
-            "type": "item",
-            "title": "Memory/MFT Dumper",
-            "uri": "docs/dumper.md"
-          },
-          {
-            "type": "item",
-            "title": "Reliable Tasking",
-            "uri": "docs/reliable_tasking.md"
-          },
-          {
-            "type": "item",
-            "title": "Sensor Cull",
-            "uri": "docs/sensor_cull.md"
-          },
-          {
-            "type": "item",
-            "title": "Zeek",
-            "uri": "docs/zeek.md"
-          },
-          {
-            "type": "item",
-            "title": "PagerDuty",
-            "uri": "docs/pagerduty.md"
-          },
-          {
-            "type": "item",
-            "title": "Twilio",
-            "uri": "docs/twilio.md"
-          }
-        ]
-      }
-    ]
-  }
+  "items": [
+    {
+      "type": "divider",
+      "title": "Overview"
+    },
+    {
+      "type": "item",
+      "title": "Home",
+      "uri": "docs/index.md"
+    },
+    {
+      "type": "item",
+      "title": "Quick Start",
+      "uri": "docs/lcc_quick_start.md"
+    },
+    {
+      "type": "group",
+      "title": "Features",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/features.md"
+        },
+        {
+          "type": "item",
+          "title": "Endpoint Detection & Response",
+          "uri": "docs/lc-edr.md"
+        },
+        {
+          "type": "item",
+          "title": "Software Defined Networking",
+          "uri": "docs/lc-net.md"
+        },
+        {
+          "type": "item",
+          "title": "Log & Artifact Ingestion",
+          "uri": "docs/lc-artifact_ingestion.md"
+        },
+        {
+          "type": "item",
+          "title": "Infrastructure as Code",
+          "uri": "docs/lc-infra-as-code.md"
+        },
+        {
+          "type": "item",
+          "title": "Operational Console for Teams",
+          "uri": "docs/lc-comms.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "FAQ",
+      "uri": "docs/faq.md"
+    },
+    {
+      "type": "divider",
+      "title": "Platform"
+    },
+    {
+      "type": "group",
+      "title": "Sensors",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/sensors.md"
+        },
+        {
+          "type": "item",
+          "title": "Getting Started",
+          "uri": "docs/deploy_sensor.md"
+        },
+        {
+          "type": "group",
+          "title": "Types of Sensors",
+          "items": [
+            {
+              "type": "item",
+              "title": "Windows",
+              "uri": "docs/sensors/windows.md"
+            },
+            {
+              "type": "item",
+              "title": "Mac",
+              "uri": "docs/sensors/mac.md"
+            },
+            {
+              "type": "item",
+              "title": "Linux",
+              "uri": "docs/sensors/linux.md"
+            },
+            {
+              "type": "item",
+              "title": "Net",
+              "uri": "docs/sensors/net.md"
+            },
+            {
+              "type": "item",
+              "title": "Chrome",
+              "uri": "docs/sensors/chrome.md"
+            },
+            {
+              "type": "item",
+              "title": "Edge",
+              "uri": "docs/sensors/edge.md"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "title": "Commands",
+          "uri": "docs/sensor-commands-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Sensor Tags",
+          "uri": "docs/tagging.md"
+        },
+        {
+          "type": "item",
+          "title": "Artifact Collection",
+          "uri": "docs/external_logs.md"
+        },
+        {
+          "type": "item",
+          "title": "Payloads",
+          "uri": "docs/payloads.md"
+        },
+        {
+          "type": "item",
+          "title": "Proxy Tunneling",
+          "uri": "docs/proxy.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Commands",
+          "uri": "docs/sensor_commands.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Error Codes",
+          "uri": "docs/errors.md"
+        },
+        {
+          "type": "item",
+          "title": "Troubleshooting",
+          "uri": "docs/troubleshooting.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Events",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/events-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Storage",
+          "uri": "docs/lc-storage.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Event Types",
+          "uri": "docs/events.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Rules",
+      "items": [
+        {
+          "type": "item",
+          "title": "Detection & Response Rules",
+          "uri": "docs/dr.md"
+        },
+        {
+          "type": "item",
+          "title": "Examples",
+          "uri": "docs/dr-examples.md"
+        },
+        {
+          "type": "item",
+          "title": "Detecting Related Events",
+          "uri": "docs/detecting-related-events.md"
+        },
+        {
+          "type": "item",
+          "title": "Detection On Alternate Targets",
+          "uri": "docs/detection-on-alternate-targets.md"
+        },
+        {
+          "type": "item",
+          "title": "False Positive Rules",
+          "uri": "docs/false-positive-rules.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Operators",
+          "uri": "docs/operators.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Actions",
+          "uri": "docs/actions.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Outputs",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/outputs.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Destinations",
+          "uri": "docs/output-destinations.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Add-ons",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/user_addons.md"
+        },
+        {
+          "type" :"group",
+          "title": "Services",
+          "items": [
+            {
+              "type": "item",
+              "title": "Overview",
+              "uri": "docs/services.md"
+            },
+            {
+              "type": "item",
+              "title": "Service Jobs",
+              "uri": "docs/jobs.md"
+            },
+            {
+              "type" :"group",
+              "title": "Official Services",
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Infrastructure Service",
+                  "uri": "docs/infrastructure-service.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Replay",
+                  "uri": "docs/replay.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Responder",
+                  "uri": "docs/responder.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Exfil",
+                  "uri": "docs/exfil.md"
+                },
+                {
+                  "type": "item",
+                  "title": "File/Reg Integrity",
+                  "uri": "docs/integrity.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Yara",
+                  "uri": "docs/yara.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Memory/MFT Dumper",
+                  "uri": "docs/dumper.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Reliable Tasking",
+                  "uri": "docs/reliable_tasking.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Sensor Cull",
+                  "uri": "docs/sensor_cull.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Zeek",
+                  "uri": "docs/zeek.md"
+                },
+                {
+                  "type": "item",
+                  "title": "PagerDuty",
+                  "uri": "docs/pagerduty.md"
+                },
+                {
+                  "type": "item",
+                  "title": "Twilio",
+                  "uri": "docs/twilio.md"
+                }
+              ]
+            },
+            {
+              "type": "item",
+              "title": "Community Services",
+              "uri": "docs/creating-service.md"
+            },
+            {
+              "type": "item",
+              "title": "Creating a Service",
+              "uri": "docs/creating-service.md"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "title": "Lookups",
+          "uri": "docs/lookups.md"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "title": "Access & Permissions",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "docs/access-overview.md"
+        },
+        {
+          "type": "item",
+          "title": "User Access",
+          "uri": "docs/user_access.md"
+        },
+        {
+          "type": "item",
+          "title": "API Keys",
+          "uri": "docs/api_keys.md"
+        },
+        {
+          "type": "item",
+          "title": "Reference: Permissions",
+          "uri": "docs/permissions.md"
+        },
+        {
+          "type": "item",
+          "title": "Policy: LimaCharlie's Access",
+          "uri": "docs/your-data.md"
+        }
+      ]
+    },
+    {
+      "type": "item",
+      "title": "ID Schemes",
+      "uri": "docs/agentid.md"
+    },
+    {
+      "type": "divider",
+      "title": "Guides"
+    },
+    {
+      "type": "item",
+      "title": "Writing & Testing Rules",
+      "uri": "docs/codelab_dr.md"
+    },
+    {
+      "type": "item",
+      "title": "Writing Rules Against Zeek Logs",
+      "uri": "docs/recipe_zeek.md"
+    }
+  ]
+}

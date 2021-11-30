@@ -32,6 +32,14 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
+We provide built-in parsing/mapping for many popular formats (called `platform`) like:
+* Google Cloud Platform audit logs
+* AWS Cloud Trail logs
+* CarbonBlack EDR
+* 1password event logs
+
+The adapter also provides you with the ability to define custom parsing/mapping yourself.
+
 ## Usage
 
 The adapter can be used to access many different sources and many different event types. The main mechanisms specifying the source and type of events are:
@@ -270,6 +278,7 @@ Here's a breakdown of the above example:
 * `client_options.platform=carbon_black`: this indicates the data received will be Carbon Black events from their API.
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the Carbon Black sensors from this Adapter later if you have to re-install the Adapter.
 * `bucket_name:....`: the name of the S3 bucket holding the data.
+* `access_key:....`: the AWS Access Key for the API key below.
 * `secret_key:....`: the API key for AWS that has access to this bucket.
 * `prefix=....`: the file/directory name prefix that holds the Carbon Black data within the bucket.
 
@@ -353,3 +362,24 @@ Here's the breakdown of the above example:
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor ID generated for this Adapter later if you have to re-install the Adapter.
 * `token=...`: the API token provided by 1password.
 * `client_options.hostname=1password`: asking LimaCharlie to use the hostname `1password` for this sensor to identify it.
+
+### AWS CloudTrail from S3
+
+This example shows connecting AWS CloudTrail logs stored in an S3 bucket.
+It uses the CLI Adapter (instead of the Docker container).
+
+```
+./lc_adapter s3 client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=aws  bucket_name=lc-ct-test access_key=YYYYYYYYYY secret_key=XXXXXXXX client_options.hostname=cloudtrail-logs
+```
+
+Here's a breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `s3`: the data will be collected from an AWS S3 bucket.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=aws`: this indicates the data received will be AWS Cloud Trail logs.
+* `bucket_name:....`: the name of the S3 bucket holding the data.
+* `access_key:....`: the AWS Access Key for the API key below.
+* `secret_key:....`: the API key for AWS that has access to this bucket.
+* `client_options.hostname=cloudtrail-logs`: asking LimaCharlie to use the hostname `cloudtrail-logs` for this sensor to identify it.

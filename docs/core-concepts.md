@@ -16,12 +16,14 @@ are also logged for audit both within the cloud and tamper-proof forwarding to y
 
 Full commands list is in the [Sensor Commands section](sensor_commands.md).
 
-### Installer Key
-Installer Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
+### Installation Key
+Installation Keys are used to install a sensor. By specifying a key during installation the sensor can cryptographically be tied to your account.
+
 Get more details in the [Installation Keys section](manage_keys.md).
 
 ### Tags
 Sensors can have Tags associated with them. Tags are added during creation or dynamically through the UI, API or Detection & Response Rules.
+
 Get more information in the [Tagging section](tagging.md).
 
 ### Detection & Response Rules

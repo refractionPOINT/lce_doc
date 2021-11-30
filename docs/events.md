@@ -1,70 +1,14 @@
-# Events
+# Reference: Events
 
-Below is a list of all the events available in LC along with a sample output. Please note that there may be some variability between platforms.
+The following is a reference list of all well-structured events available in LimaCharlie. 
 
-## Common Information
+> We recommend reading the [Events Overview](events-overview.md) to learn about the schema for events, if you haven't already.
 
-Some common elements to events are worth pointing out. Those elements have been removed from the events below, only leaving
-the information unique to the event. The actual event stream will contain much more information for each event.
+## Sensor Events
 
-* routing/this is a UUID generated for every event in the sensor.
-* routing/parent is a reference to the parent event's routing/this, providing strong relationships (much more reliable than simple process IDs)
-between the events. This allows you to get the extremely powerful explorer view.
-* routing/event_time is the time (UTC) the sensor produced the event.
-* routing/hostname is the hostname of where the event came from.
-* routing/tags is the list of tags associated with the agent where the event came from.
+Telemetry events from sensors, which D&R rules default to observing from the `edr` target.
 
-### Atoms
-Atoms can be found in 3 locations:
-
-* routing/parent
-* routing/this
-* routing/target
-
-Atoms are Globally Unique Identifiers that look like this: `1e9e242a512d9a9b16d326ac30229e7b`. You can treat it as an opaque value. These unique values
-are used to relate events together without the need to use clunky and unreliable things like Process IDs.
-
-The `routing/this` Atom reprents the indentifier for the current event. The `routing/parent` Atom in an event tells you the global identifier for the
-parent event of the current event. Using these two Atoms, you can create an entire chain of event.
-
-For processes, this parent relationship is simply the parent process and child process (parent spawned child), but for other less obvious events, the
-nature of relationship varies. For example for a `NETWORK_SUMMARY` event, the parent is the process that generated the network connections.
-
-Depending on the exact storage and searching solution you are using, you will likely want to index the values of `routing/this` and `routing/parent` for
-each event, doing so will allow you to very quickly find the root cause and actions of everything on your hosts.
-
-Finally, the `routing/target` is only sometimes found in an event, and it represents a second related (without having a parent-child relationship). For
-example, in the `NEW_REMOTE_THREAD` event, this `target` represents the process where the remote thread was created.
-
-Basic example:
-
-Event 1
-```json
-{
-  "routing": {
-    "this": "abcdef",
-    "parent": "zxcv"
-  }
-}
-```
-
-Event 2
-```json
-{
-  "routing": {
-    "this": "zxcv",
-    "parent": "poiuy"
-  }
-}
-```
-
-Means that Event 1 is the parent of Event 2 (`Event1 ---> Event2`).
-
-## EDR Events
-
-Telemetry events from host agents.
-
-`target: edr` (default)
+> Note: there may be some variability between different sensor platforms.
 
 ### STARTING_UP
 Event generated when the sensor starts.
@@ -80,8 +24,8 @@ Platforms: Windows, Linux, MacOS
 ```
 
 ### SHUTTING_DOWN
-Event generated when the sensor shuts down may not be observed if the
-host shuts down too quickly or abruptly.
+Event generated when the sensor shuts down. Note: this event may not be observed if the
+host shuts down abruptly or too quickly.
 
 Platforms: Windows, Linux, MacOS
 
@@ -94,8 +38,9 @@ Platforms: Windows, Linux, MacOS
 ```
 
 ### CONNECTED
-Generated when sensor connects to cloud. The `IS_SEGREGATED` flag
-signals whether the sensor is currently under network isolation.
+Generated when sensor connects to cloud.
+
+The `IS_SEGREGATED` flag signals whether the sensor is currently under network isolation.
 
 Platforms: Windows, Linux, MacOS, Chrome
 
@@ -131,9 +76,11 @@ Platforms: Windows, Linux, MacOS
 ### RECEIPT
 This event is used as a generic response to some commands. It usually
 contains an `ERROR` code that you can use to determine if the command
-was successful. It's often a good idea to issue the original command
+was successful or not. It's often a good idea to issue the original command
 with an `investigation_id` which will get echoed in the `RECEIPT` related
 to that command to make it easier to track.
+
+> To see all possible `ERROR` codes, visit the [Errors](errors.md) reference doc.
 
 Platforms: Windows, Linux, MacOS, Chrome
 
@@ -272,7 +219,7 @@ Platforms: Windows
 ### DNS_REQUEST
 Generated from DNS responses and therefore includes both the
 requested domain and the response from the server. If the server responds
-with multiple responses as allowed by the DNS protocol, the N answers will
+with multiple responses (as allowed by the DNS protocol) the N answers will
 become N DNS_REQUEST events, so you can always assume one DNS_REQUEST event
 means one answer.
 
@@ -469,7 +416,7 @@ being known by the operating system.
 
 Platforms: Windows
 
-**Temporarily unavailable as we transition from the open source solution.**
+**Temporarily unavailable.**
 
 ### MODULE_LOAD
 Generated when a module (like DLL on Windows) is loaded in a process.
@@ -490,7 +437,7 @@ Platforms: Windows, Linux, MacOS
 ### FILE_CREATE
 Generated when a file is created.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (eBPF)
 
 ```json
 {
@@ -502,7 +449,7 @@ Platforms: Windows, MacOS
 ### FILE_DELETE
 Generated when a file is deleted.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (eBPF)
 
 ```json
 {
@@ -820,7 +767,7 @@ Generated when an execution out of bounds (like a thread injection) is detected.
 
 Platforms: Windows, Linux, MacOS
 
-**Temporarily unavailable as we transition from the open source solution.**
+**Temporarily unavailable.**
 
 ```json
 {
@@ -863,10 +810,10 @@ on disk is found. Can be an indicator of process hollowing.
 
 Platforms: Windows, Linux, MacOS
 
-**Temporarily unavailable as we transition from the open source solution.**
+**Temporarily unavailable.**
 
 ### YARA_DETECTION
-Generated when a Yara scan finds a match.
+Generated when a YARA scan finds a match.
 
 Platforms: Windows, Linux, MacOS
 
@@ -913,7 +860,7 @@ Platforms: Windows, Linux, MacOS
 ### FILE_MODIFIED
 Generated when a file is modified.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (eBPF)
 
 ```json
 {
@@ -1009,7 +956,7 @@ This is the mapping between rule name ID and extensions:
 * 64 = `.locky`
 * 64 = `.aesir`
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux (eBPF)
 
 ```json
 {
@@ -1197,7 +1144,7 @@ Platforms: Windows
 ### VOLUME_MOUNT
 This event is generated when a volume is mounted.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux
 
 ```json
 {
@@ -1209,7 +1156,7 @@ Platforms: Windows, MacOS
 ### VOLUME_UNMOUNT
 This event is generated when a volume is unmounted.
 
-Platforms: Windows, MacOS
+Platforms: Windows, MacOS, Linux
 
 ```json
 {
@@ -1267,9 +1214,10 @@ a remote process.
 
 Platforms: Windows
 
+**Temporarily unavailable.**
+
 ### SENSITIVE_PROCESS_ACCESS
-This event is generated when a process gains sensitive access through a remote process handle
-or a remote thread to sensitive operating system processes like lsass.exe on Windows.
+This event is generated when a process gains sensitive access through a remote process handle or a remote thread to sensitive operating system processes like lsass.exe on Windows.
 
 Platforms: Windows
 
@@ -1360,11 +1308,123 @@ Platforms: Chrome
 }
 ```
 
+## BROWSER_REQUEST_CONTEXT
+Equivalent to New Process event.  Gets emitted on every HTTP request.  Allows a request to be related to its parent.
+
+## EXISTING_PROCESS
+This event is similar to the NEW_PROCESS event.  It gets emitted when a process existed prior to the LimaCharlie sensor loading.
+
+## GET_EXFIL_EVENT_REP
+Response from an exfil_get request.
+
+## LOG_GET_REP
+Response from an log_get request.
+
+## LOG_LIST_REP
+Response from an log_list request.
+
+## OS_RESUME_REP
+Response from an os_resume request.
+
+## OS_SUSPEND_REP
+Response from an os_suspend request.
+
+## OS_VERSION_REP
+Response from an os_version request.
+
+## POSSIBLE_DOC_EXPLOIT
+In-sensor stateful detection.  Looks for specific ancestor proceses (e.g. Word, Chrome, Firefox, etc.) spawning specific decendants (e.g. command.exe, ipconfig, etc.). As these relationships generally don't occur, they're considered suspect and this event is emitted.
+
+**Temporarily unavailable.**
+
+## RECON_BURST
+In-sensor stateful detection.  A list of executables used during a recon phase of an attack (e.g. ipconfig, netstat, arp, route, traceroute, etc.); if >4 execute within 5 seconds, this event is emitted.
+
+**Temporarily unavailable.**
+
+## SELF_TEST_RESULT
+Internal event used during a power-on-self-test (POST) of the sensor.
+
+
+## ACK_MESSAGES
+Acknowledge messages event is used by some LimaCharlie sensors (e.g. USP). It is not used by the EDR.
+
+## BACKOFF
+Used for flow control.  Provides a number of seconds that the sensor should wait before sending events to the cloud.
+
+## DEBUG_DATA_REP
+Response from a get_debug_data request.
+
+## FIM_ADD
+Add a new File Integrity Monitoring (FIM) rule interactively (e.g. via console command).
+
+## FIM_REMOVE
+Remove a new File Integrity Monitoring (FIM) rule interactively (e.g. via console command)
+
+## HTTP_REQUEST_HEADERS
+Provides HTTP Request headers.
+
+Platforms: Chrome
+
+## HTTP_RESPONSE_HEADERS
+Provides HTTP Response headers.
+
+Platforms: Chrome
+
+## LATE_MODULE_LOAD
+In-sensor stateful detection.  Looks for processes that have been running for >60 seconds which then spontaneously load a new module (e.g. DLL, Dylib).
+
+**Temporarily unavailable.**
+
+## LOG_ADD
+**Temporarily unavailable.**
+
+## LOG_REMOVE
+**Temporarily unavailable.**
+
+## NEW_RELATION
+**Temporarily unavailable.**
+
+## ONGOING_IDENTITY
+Emits code identity signature information even when they are not newly seen.
+
+## PCAP_LIST_INTERFACES_REP
+Response from a pcap_ifaces request.
+
+## REJOIN_NETWORK
+Emitted after a sensor is allowed network connectivity again (after it was previously segregated).
+
+## RUN
+Emitted after a run command has been issued (e.g. to run a payload, shell command, etc.)
+
+## SEGREGATE_NETWORK
+Emitted when a sensor is segregated (isolated) from the network using the `segregate_network` command.
+
+## SELF_TEST
+Internal event to manually request a power-on-self-test (POST) from the sensor.
+
+## SET_PERFORMANCE_MODE
+Enables performance mode in the kernel (e.g. disables file tracking on Windows).
+
+## SYNC
+Internal event used as a heartbeat to the cloud.  Sent by default every 10 minutes.
+
+## UNLOAD_KERNEL
+Allows manual unloading of kernel component.
+
+## UPDATE
+Internal event used to update the configuration of a specific collector within the endpoint.
+
+## YARA_RULES_UPDATE
+Update the set of rules that are continuously scanned on the endpoint.
+
+## YARA_SCAN
+Run a specific YARA scan on the endpoint immediately.
+
+
 ## Deployment Events
 
-Events around the global status of the deployment.
-
-`target: deployment`
+Events around the global status of the deployment, observable in D&R rules via the `deployment` target.
 
 ### enrollment
 
@@ -1392,8 +1452,7 @@ Enrollment deployment events are produced when a sensor enrolls into the organiz
 ### sensor_clone
 
 Sensor clone events are generated when the LimaCharlie Cloud detects that a specific Sensor ID may have been cloned.
-Cloning means the same SID is associated with two different hosts at the same time. This is most often due to
-a machine image being created with a LC sensor installed on it, and then being deployed multiple times.
+Cloning means the same SID is associated with two different hosts at the same time. This is most often due to a machine image being created with a LC sensor installed on it, and then being deployed multiple times.
 
 ```json
 {
@@ -1462,8 +1521,8 @@ Deleted Sensor deployment events are produced when a sensor that was previously 
 
 ## Artifact Events
 
-Events around activity in Artifacts Collection. Currently only used in
-service notifications.
+Events around artifact collection, observable in D&R rules via the `artifact_event` target.
+
 
 ### ingest
 
