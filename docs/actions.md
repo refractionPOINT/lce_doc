@@ -37,14 +37,10 @@ Reports the match as a detection. Think of it as an alert. Detections go a few p
 
 ### Limiting Scope
 
-There are two mechanisms for limiting scope of a `report`:
+There is a mechanism for limiting scope of a `report`, prefixing `name` with `__` (double underscore). This will cause the detection
+generated to be visible to chained D&R rules and Services, but the detection will *not* be sent to the Outputs for storage.
 
-* Specifying `publish: false`
-* Prefixing `name` with `__` (double underscore)
-
-Setting `publish: false` is used to set the detection as strictly intermediary - the only place it will be visible is to the rule engine so it can be chained in another D&R rule, selectable by using `event: _DETECTIONNAME`.
-
-The `__` double underscore naming approach functions similarly to `publish: false`, but allows Services to see the detection. 
+This is a useful mechanism to automate behavior using D&R rules without generating extra traffic that is not useful.
 
 ### Optional Parameters
 
