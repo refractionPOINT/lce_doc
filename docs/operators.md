@@ -115,7 +115,7 @@ max: 2
 
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
-##### is 32 bit, is 64 bit, is arm
+### is 32 bit, is 64 bit, is arm
 
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is correct.
 
@@ -124,7 +124,7 @@ Example:
 op: is 64 bit
 ```
 
-##### is platform
+### is platform
 Checks if the event under evaluation is from a sensor of the given platform.
 
 Takes a `name` parameter for the platform name. The current platforms are:
