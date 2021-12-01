@@ -115,9 +115,38 @@ max: 2
 
 This would match `svhost.exe` and `csrss32.exe` but NOT `csrsswin32.exe`.
 
-### is windows, is linux, is mac, is chrome, is text, is json, is gcp, is carbon_black, is 32 bit, is 64 bit, is arm
+##### is 32 bit, is 64 bit, is arm
 
 All of these operators take no additional arguments, they simply match if the relevant sensor characteristic is correct.
+
+Example:
+```yaml
+op: is 64 bit
+```
+
+##### is platform
+Checks if the event under evaluation is from a sensor of the given platform.
+
+Takes a `name` parameter for the platform name. The current platforms are:
+* `windows`
+* `linux`
+* `macos`
+* `ios`
+* `android`
+* `chrome`
+* `vpn`
+* `text`
+* `json`
+* `gcp`
+* `aws`
+* `carbon_black`
+* `1password`
+
+Example:
+```yaml
+op: is platform
+name: 1password
+```
 
 ### is tagged
 
