@@ -320,12 +320,52 @@ Generated when a TCPv4 connection terminates.
 
 ### TERMINATE_UDP4_CONNECTION
 Generated when a UDPv4 socket terminates.
+```json
+{
+  "DESTINATION": {
+    "IP_ADDRESS": "0.0.0.0",
+    "PORT": 0
+  },
+  "PROCESS_ID": 2616,
+  "SOURCE": {
+    "IP_ADDRESS": "192.168.1.15",
+    "PORT": 65286
+  }
+}
+```
+
 
 ### TERMINATE_TCP6_CONNECTION
 Generated when a TCPv6 connection terminates.
+```json
+{
+  "DESTINATION": {
+    "IP_ADDRESS": "c489:9e03::60c2:9e03:0:0",
+    "PORT": 5985
+  },
+  "PROCESS_ID": 2552,
+  "SOURCE": {
+    "IP_ADDRESS": "a489:9e03::408a:9e03:0:0",
+    "PORT": 63359
+  }
+}
+```
 
 ### TERMINATE_UDP6_CONNECTION
 Generated when a UDPv6 socket terminates.
+```json
+{
+  "DESTINATION": {
+    "IP_ADDRESS": "c489:9e03::f0c2:9e03:0:0",
+    "PORT": 62413
+  },
+  "PROCESS_ID": 2576,
+  "SOURCE": {
+    "IP_ADDRESS": "a489:9e03::408a:9e03:0:0",
+    "PORT": 54400
+  }
+}
+```
 
 ### NETWORK_CONNECTIONS
 List of recent network connections performed by a process.
@@ -522,26 +562,60 @@ Platforms: Windows, Linux, MacOS
 
 ### FILE_GET_REP
 Response from a file retrieval request.
+```json
+{
+  "ERROR": 2,
+  "FILE_PATH": "c:\\Installeracme.msi",
+  "MAX_SIZE": 10485760
+}
+```
 
 Platforms: Windows, Linux, MacOS
 
 ### FILE_DEL_REP
 Response from a file deletion request.
+```json
+{
+  "FILE_PATH": "c:\\rem.ico"
+}
+```
 
 Platforms: Windows, Linux, MacOS
 
 ### FILE_MOV_REP
 Response from a file move request.
+```json
+{
+  "DESTINATION": "c:\\rem.ico",
+  "SOURCE": "c:\\512.ico"
+}
+```
 
 Platforms: Windows, Linux, MacOS
 
 ### FILE_HASH_REP
 Response from a file hash request.
+```json
+{
+  "FILE_PATH": "c:\\errorlog.txt",
+  "HASH": "201418fcaa8ac33cdc80117dee6a845b717a7efbdb2e7de4d3bfbf91e8cfab2b"
+}
+```
 
 Platforms: Windows, Linux, MacOS
 
 ### FILE_INFO_REP
 Response from a file information request.
+```json
+{
+  "ACCESS_TIME": 1638300157248,
+  "ATTRIBUTES": 0,
+  "CREATION_TIME": 1606169743743,
+  "FILE_PATH": "c:\\errorlog.txt",
+  "FILE_SIZE": 66,
+  "MODIFICATION_TIME": 1606169743743
+}
+```
 
 Platforms: Windows, Linux, MacOS
 
@@ -632,6 +706,10 @@ Platforms: Windows, Linux, MacOS
 
 ### MEM_MAP_REP
 Response from a memory map request.
+```json
+
+```
+
 
 Platforms: Windows, Linux, MacOS
 
