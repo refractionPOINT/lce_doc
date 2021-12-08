@@ -25,7 +25,7 @@ Output events and detections to an Amazon S3 bucket.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
-* `region_name`: optionally specify a region name.
+* `region_name`: a region name of the bucket, it is recommended to set it, though not always required.
 * `endpoint_url`: optionally specify a custom endpoint URL, usually used with region_name to output to S3-compatible 3rd party services.
 * `dir`: the directory prefix
 
