@@ -4,10 +4,10 @@ LimaCharlie is infrastructure to connect sources of security data, automate acti
 
 That said, let's set up LimaCharlie to provide basic EDR capabilities. This guide will cover:
 
-1. [Creating a new **Organization**](quick-start.md#creating-an-organization)
-2. [Connecting a **Sensor** to the Organization](quick-start.md#connecting-a-sensor)
-3. [Adding **Sigma Rules** to detect known threat signatures](quick-start.md#adding-rules)
-5. [Forwarding detections to an external destination via **Output**](quick-start.md#forwarding-via-output)
+1. [Creating a new **Organization**](getting-started.md#creating-an-organization)
+2. [Connecting a **Sensor** to the Organization](getting-started.md#connecting-a-sensor)
+3. [Adding **Sigma Rules** to detect known threat signatures](getting-started.md#adding-rules)
+5. [Forwarding detections to an external destination via **Output**](getting-started.md#forwarding-via-output)
 
 All of this is possible to try for free (payment is only required when scaling up beyond 2 sensors).
 
