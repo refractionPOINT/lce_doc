@@ -61,7 +61,7 @@ Enabling the Sigma add-on will automatically apply rules to your organization to
 
 ## Forwarding via Output
 
-Security data generated from sensors is yours to do with as you wish. For example's sake, let's say we want to forward detections to an [Amazon S3 bucket](https://aws.amazon.com/s3/) for longer-lived storage of detections
+Security data generated from sensors is yours to do with as you wish. For example's sake, let's say we want to forward detections to an [Amazon S3 bucket](https://aws.amazon.com/s3/) for longer-lived storage of detections.
 
 From the Outputs page in your organization, click `Add Output` to open the setup flow for new outputs. Again, the setup flow should make this process straightforward. 
 
@@ -73,7 +73,7 @@ From the Outputs page in your organization, click `Add Output` to open the setup
   * Key ID
   * Secret Key
   * Region
-* Optionally, view samples of the stream's data (assuming recent samples are available)
+* Optionally, you can view samples of the detection stream's data (assuming recent detections have occurred)
 
 With this output in place you can extend the life of your detections beyond the 1 year LimaCharlie retains them, and even make them available for consumption from any tool that can pull from S3. 
 
