@@ -72,6 +72,7 @@ From the Outputs page in your organization, click `Add Output` to open the setup
   * Bucket Name
   * Key ID
   * Secret Key
+  * Region
 * Optionally, view samples of the stream's data (assuming recent samples are available)
 
 With this output in place you can extend the life of your detections beyond the 1 year LimaCharlie retains them, and even make them available for consumption from any tool that can pull from S3. 
