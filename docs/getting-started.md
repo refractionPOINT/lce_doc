@@ -75,17 +75,27 @@ From the Outputs page in your organization, click `Add Output` to open the setup
   * Region
 * Optionally, you can view samples of the detection stream's data (assuming recent detections have occurred)
 
-With this output in place you can extend the life of your detections beyond the 1 year LimaCharlie retains them, and even make them available for consumption from any tool that can pull from S3. 
+With this output in place you can extend the life of your detections beyond the 1 year LimaCharlie retains them, and stage them for any tool that can pull from S3. 
 
 ## Next Steps
 
-This guide is meant to be illustrative and give an overview of what pieces a minimal setup might use. 
+This guide is meant to be illustrative and give an overview of what pieces a minimal setup might use and how to configure them via the web application. 
 
-LimaCharlie's core capabilities are relatively unopinionated, independent, and highly configurable to enable you to build out your deployments without the overhead of hosting and scaling them.
+LimaCharlie's core capabilities are unopinionated, independent, and configurable via multiple methods to enable you to build out your deployments flexibly without the overhead of hosting and scaling them.
 
-For further learning, dive deeper into the specific area that reflects your needs.
+You can interact with your organizations using any of the supported methods:
 
-### References
+* Web application - available at [`https://app.limacharlie.io`](https://app.limacharlie.io)
+* REST API ([view docs](https://doc.limacharlie.io/docs/api)) - available at `https://api.limacharlie.io/v1`
+* LimaCharlie CLI ([view repository](https://github.com/refractionPOINT/python-limacharlie)) - available via `pip install limacharlie`
+* LimaCharlie Python SDK ([view repository](https://github.com/refractionPOINT/python-limacharlie)) - available via `pip install limacharlie`
+* LimaCharlie Golang SDK ([view repository](https://github.com/refractionPOINT/go-limacharlie)) - available via `go get github.com/refractionPOINT/go-limacharlie`
+
+Infrastructure configuration may also be expressed as code (YAML) and applied in batch to an organization.
+
+For further learning, dive deeper into the specific area that supports your needs.
+
+### Further Learning
 
 * [Sensors](sensors.md)
 * [Events](events-overview.md)
