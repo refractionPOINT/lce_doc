@@ -2,6 +2,8 @@
 
 LimaCharlie's Mac sensor is one of the EDR-class sensors. It interfaces with the kernel to acquire deep visibility into the host's activity while taking measures to preserve the host's performance. 
 
+Supports MacOS 10.7 and up.
+
 ## Supported Events
 
 * [`AUTORUN_CHANGE`](../events.md#autorun_change)

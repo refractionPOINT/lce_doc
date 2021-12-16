@@ -11,8 +11,8 @@
     },
     {
       "type": "item",
-      "title": "Quick Start",
-      "uri": "docs/lcc_quick_start.md"
+      "title": "Getting Started",
+      "uri": "docs/getting-started.md"
     },
     {
       "type": "group",
