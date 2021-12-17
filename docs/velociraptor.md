@@ -31,8 +31,8 @@ An optional `ttl` parameter will define how long (in seconds) the service will w
 and be processed for collection.
 
 #### Artifact Spec
-One of the `artifact_name` or `custom_artifact` needs to be specified. The `artifact_name` is the exact name
-as defined by Velociraptor. It can also be a comma-separated list of Velociraptor artifacts to collect.
+One of the `artifact_name`, `artifact_list` or `custom_artifact` needs to be specified. The `artifact_name` is the exact name
+as defined by Velociraptor. The `artifact_list` is a comma-separated list of Velociraptor artifacts to collect.
 
 The `custom_artifact` is the content of a custom Velociraptor YAML artifact definition to execute instead
 of a pre-defined Velociraptor artifact.
