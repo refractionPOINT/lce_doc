@@ -155,3 +155,17 @@ and
 - action: wait
   duration: 5
 ```
+
+## output
+
+Forwards the matched event to an Output identified by `name` in the `tailored` [stream](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMTY-outputs#tailored-stream).
+
+This allows you to create highly granular Outputs for specific events.
+
+The `name` parameter is the name of the Output.
+
+Example:
+```yaml
+- action: output
+  name: my-output
+```
