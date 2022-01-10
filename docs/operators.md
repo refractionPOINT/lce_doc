@@ -44,11 +44,29 @@ op: exists
 path: event/PARENT
 ```
 
-### contains, ends with, starts with
+### contains
 
-The `contains` checks for a substring match, `starts with` checks for a prefix match and `ends with` checks for a suffix match.
+The `contains` checks if a substring can be found in the value at the path.
 
-They all check if the value found at `path` matches the given `value`, based on the operator.
+An optional parameter `count: 3` can be specified to only match if the given
+substring is found _at least_ 3 times in path.
+
+Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
+
+Example rule:
+```yaml
+event: NEW_PROCESS
+op: contains
+path: event/COMMAND_LINE
+value: reg
+count: 2
+```
+
+### ends with, starts with
+
+The `starts with` checks for a prefix match and `ends with` checks for a suffix match.
+
+They both check if the value found at `path` matches the given `value`, based on the operator.
 
 Supports the [file name](#file-name) and [sub domain](#sub-domain) transforms.
 
