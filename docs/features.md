@@ -165,6 +165,6 @@ Send [commands](sensor_commands.md) to sensors in real-time on demand, automatic
 
 * Centralized a Billing Point of Contact for all organizations created by members of your domain.
 
-### White Label
+### Custom Branding
 
-* White label the web interface with your logo, colors and domain.
+* Customize the web interface for your brand (set your logo, colors, and domain).
