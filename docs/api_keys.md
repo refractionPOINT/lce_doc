@@ -41,6 +41,9 @@ You may also use a User API Key to get the list of organizations available to it
 ```
 https://app.limacharlie.io/user_key_info?secret=<YOUR_USER_API_KEY>&uid=<YOUR_USER_ID>&with_names=true
 ```
+#### Ingestion Keys
+
+The [artifact collection](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMDY-artifact-collection) in LC requires Ingestion Keys, which can be managed through the REST API section of the LC web interface. Access to manage these Ingestion Keys requires the ingestkey.ctrl permission.
 
 ## Python
 A simple [Python API](https://github.com/refractionpoint/python-limacharlie/) is also
