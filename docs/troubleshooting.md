@@ -16,6 +16,13 @@ internet, the sensor should be online. There are, however, a few situations that
 disconnecting from the cloud for a few seconds. This means that if you notice a sensor is offline when you
 expect it to be online, give it 30 seconds, and in most situations it will come back online within 5 seconds.
 
+### Upgrading Sensors
+
+To ensure the sensor version is up-to-date, open the "Install Sensors" page in the web app (under "Setup") and navigate to the "Upgrading Sensors"
+ section. 
+
+Upgrading sensors is done transparently for you once you click the button in the web app interface. You do not need to re-download installers (in fact the installer stays the same). The new version should be in effect across the organization within about 20 minutes.
+
 ## Sensor not Connecting
 Sensors connect to the LimaCharlie.io cloud via an SSL connection on port 443. Make sure your network allows such
 a connection. It is a very common port typically used for HTTPS so an issue is highly unlikely.
