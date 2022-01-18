@@ -34,7 +34,7 @@ Limit results to Rooms created by the given user.
 
 Limit results to Rooms with the given Assignee
 
-### Commands
+## Commands
 
 Using a slash-command format, operators can issue commands directly from a Room. Comms currently supports the following commands.
 
@@ -50,12 +50,18 @@ When an investigation is done operators can use the close command to shut it dow
 
 Using Task any sensor can be tasked with any Sensor command <link>
 
-### Links
+## Links
 
 Links provide quick access to resources related to the given investigation.
 
 Currently links support:
 
-Sensor
-Rooms
-Detection
+- Sensor
+- Rooms
+- Detection
+
+## Bucketing Rules
+
+Bucketing rules are used to group detections and have them appear in a room. 
+
+Bucketing rules use the same YAML format as [LimaCharlie D&R rules](https://doc.limacharlie.io/docs/master/dr.md).  
