@@ -7,6 +7,10 @@ connected to your organization in a number of days.
 This is useful for environments with cloud deployments or VM template based deployments
 that enroll sensors over and over.
 
+Note that the sensor will not reinstall automatically but it [can be restored by issuing an action.](https://doc.limacharlie.io/docs/documentation/ZG9jOjExNjM2MTMz-reference-actions#undelete-sensor) 
+
+
+
 ## Interacting
 The sensor-cull service does not implement a web UI, but because of its simplicity all
 interactions, like managing rules can be done via the generic Service Request section
