@@ -1,5 +1,9 @@
 # Webhook Bulk
-Output batches of events, detections, audits, deployments or artifacts through a POST webhook.
+Output batches of events, detections, audits, deployments or artifacts through a POST webhook. 
+
+**Webhook Bulk Usage**
+
+Webhook Bulk is similar to the S3 output, GCS, or SFTP Outputs in that it sends a batch of newline-separated events instead of sending one event at a time. LimaCharlie accumulates the events for a set time and then sends the accumulated events at once. This avoids creating too much traffic and therefore does not cause the HTTP overhead. 
 
 * `dest_host`: the IP or DNS, port and page to HTTP(S) POST to, format `https://www.myorg.com:514/whatever`.
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. This is a required field. See "Webhook Details" section below.
