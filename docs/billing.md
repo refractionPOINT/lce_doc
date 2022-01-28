@@ -13,7 +13,131 @@ Exact pricing is available on the [LimaCharlie website](https://limacharlie.io) 
 
 There are two categories of sensors: sensors billed on Quota set by the user (vSensor basis), and sensors billed on usage basis. 
 
-![image](https://user-images.githubusercontent.com/90273720/151613250-7e158766-0344-4bd2-b91f-5eba8965e22c.png)
+<table>
+<thead>
+<tr>
+<th>Sensor Type</th>
+<th>Billed On</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<thead>
+<tr>
+<th>Windows</th>
+<th>Quota</th>
+<th>$2.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Linux</th>
+<th>Quota</th>
+<th>$2.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>macOS</th>
+<th>Quota</th>
+<th>$2.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Net</th>
+<th>Quota</th>
+<th>$2.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Docker</th>
+<th>Quota</th>
+<th>$2.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>VMWare Carbon Black EDR</th>
+<th>Quota</th>
+<th>$0.5/sensor/month</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Chrome OS</th>
+<th>Quota</th>
+<th>Free</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Syslog</th>
+<th>Usage basis</th>
+<th>$0.15 / GB
+</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Amazon AWS CloudTrail Logs</th>
+<th>Usage basis</th>
+<th>$0.15 / GB
+</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Google Cloud Platform (GCP) Logs
+</th>
+<th>Usage basis</th>
+<th>$0.15 / GB
+</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>1Password
+</th>
+<th>Usage basis</th>
+<th>$0.15 / GB
+</th>
+</tr>
+</thead>
+</tbody>
+<tbody>
+<thead>
+<tr>
+<th>Other external sources</th>
+<th>Usage basis</th>
+<th>$0.15 / GB
+</th>
+</tr>
+</thead>
+</tbody>
+</table>
+
 
 For more information about vSensors and the examples, visit our [help center page.](https://help.limacharlie.io/en/articles/5931547-how-is-the-cost-of-sensors-add-ons-calculated-in-limacharlie) 
 
