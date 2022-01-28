@@ -9,9 +9,13 @@ Exact pricing is available on the [LimaCharlie website](https://limacharlie.io) 
 
 ## Services
 
-### Endpoints (EDR)
-The EDR service is the foundation of LimaCharlie. In order to make billing
-simpler and more predictible, it is based on a Quota set by the user.
+### Sensors
+
+There are two categories of sensors: sensors billed on Quota set by the user (vSensor basis), and sensors billed on usage basis. 
+
+![image](https://user-images.githubusercontent.com/90273720/151613250-7e158766-0344-4bd2-b91f-5eba8965e22c.png)
+
+For more information about vSensors and the examples, visit our [help center page.](https://help.limacharlie.io/en/articles/5931547-how-is-the-cost-of-sensors-add-ons-calculated-in-limacharlie) 
 
 The Quota is the number of sensors (agents) concurrently online that should be 
 supported by the given Organization. The Quota applies to concurrently online sensors,
@@ -23,20 +27,6 @@ will also be emitted which you can use in [D&R rules](dr.md) for automation.
 
 The endpoint service includes [Outputs](outputs.md) as well as [D&R rules](dr.md) processed
 in real-time.
-
-#### Sidecar Sensors
-A special case around Quota use is called Sidecar Sensors. At the moment the only
-Sidecar Sensor is the Chrome sensor. A Sidecar Sensor will not count against your
-Quota as long as it has a corresponding "normal" sensor.
-
-For example, let's say you have 10 Windows sensors and 10 MacOS sensors online for
-a total of 20 "normal" sensors. This means you will be able to have up to 20 other
-Chrome sensors online without using any extra quota. If 25 Chrome sensors become
-online however, 5 extra Quota will be consumed.
-
-The intent is to allow Chrome sensors to be companion sensors, enhancing visibility
-of your existing LimaCharlie deployment without making Chrome-only deployments
-effectively free.
 
 ### Insight (Retention)
 Insight is also a foundational service of LimaCharlie. It provides a flat 1 year of
@@ -91,3 +81,7 @@ size of the file. The billing metric is therefore "byte-days".
 
 For example, a file that is 100 MB and is ingested with a retention period of
 10 days would be one-time billed for `100 X 10 MB-days`. 
+
+## Add-Ons
+
+LimaCharlie Add-Ons are billed on the vSensor basis. When an add-on is used with a sensor billed on usage (eg., 1Password), the Add-On is free. For more information and the examples, visit our [help center.](https://help.limacharlie.io/en/articles/5931547-how-is-the-cost-of-sensors-add-ons-calculated-in-limacharlie) 
