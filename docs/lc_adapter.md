@@ -358,6 +358,7 @@ Here's the breakdown of the above example:
 
 * `lc_adapter`: simply the CLI Adapter.
 * `1password`: the method the Adapter should use to collect data locally, here it's 1password API.
+* `endpoint`: the correct 1password API endpoint based on your subscription, see [their doc](https://support.1password.com/events-api-reference/).
 * `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
 * `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
 * `client_options.platform=1password`: this indicates that the data read is logs from 1password.
