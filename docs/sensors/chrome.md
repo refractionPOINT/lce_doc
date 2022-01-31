@@ -10,6 +10,9 @@ It's delivered as the [LimaCharlie Sensor](https://chrome.google.com/webstore/de
 * [`CLOUD_NOTIFICATION`](../events.md#cloud_notification)
 * [`HTTP_REQUEST`](../events.md#http_request)
 * [`DNS_REQUEST`](../events.md#dns_request)
+* [`HTTP_REQUEST_HEADERS`](../events.md#http_request_headers)
+* [`HTTP_RESPONSE_HEADERS`](../events.md#http_response_headers)
+* [`RECEIPT`](../events.md#receipt)
 
 ## Supported Commands
 
