@@ -62,8 +62,6 @@ systemctl start ${UNIT_FILE_NAME}
 # Start the service on every reboot
 systemctl enable ${UNIT_FILE_NAME}
 
-echo 'The LimaCharlie agent has been isntalled. You can check service status by running "systemctl status limacharlie.service"'
+echo 'The LimaCharlie agent has been installed. You can check service status by running "systemctl status limacharlie.service"'
 
 echo 'If required, debugging information can be found by running "journalctl -u limacharlie.service -b"'
-
-
