@@ -29,7 +29,13 @@ structured with a major and minor platform, the important values are:
 * `0x40000000`: iOS (unused)
 * `0x50000000`: Android (unused)
 * `0x60000000`: ChromeOS
-* `ox70000000`: lc-net
+* `0x70000000`: lc-net
+* `0x80000000`: Text (external telemetry)
+* `0x90000000`: JSON (external telemetry)
+* `0xA0000000`: GCP (external telemetry)
+* `0xB0000000`: AWS (external telemetry)
+* `0xC0000000`: VMWare Carbon Black (external telemetry)
+* `0xD0000000`: 1Password (external telemetry)
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:
@@ -42,6 +48,7 @@ The architecture is an 8 bit integer that identifies the exact architecture the 
 * `6`: Chrome
 * `7`: Wireguard
 * `8`: ARML
+* `9`: lc-adapter
 
 ## Device IDs
 Given the breadth of platforms supported by LimaCharlie, it is not unusual for one "device" (laptop, server, mobile etc) to be visible from multiple sensors. A basic example of this might be:
