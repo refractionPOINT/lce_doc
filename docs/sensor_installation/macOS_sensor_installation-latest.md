@@ -165,4 +165,4 @@ When running the installer from the command line, you can pass the following arg
 <a name="Using-MDM-Solutions"></a>
 ## Using MDM Solutions
 
-See our document <a href="./macOS-MDM-configuration-profile.md">macOS Agent Installation with MDM Solutions<a> for the Mobile Device Management (MDM) Configuration Profile that can be used to deploy the LimaCharlie agent to an enterprise fleet.
+See our document <a href="macOS-MDM-configuration-profile.md">macOS Agent Installation with MDM Solutions<a> for the Mobile Device Management (MDM) Configuration Profile that can be used to deploy the LimaCharlie agent to an enterprise fleet.
