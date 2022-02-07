@@ -47,7 +47,7 @@ Before installing, you will need the [installation key](manage_keys.md) you want
 Executing the installer via the command line, pass the `-i INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above. This will install the sensor as a Windows service and trigger its enrollment.
 
-You may also install the Windows sensor using the MSI version. With the MSI, install using: `installer.msi WRAPPED_ARGUMENTS="INSTALLATION_KEY"`.
+You may also install the Windows sensor using the MSI version. With the MSI, install using: `installer.msi InstallationKey="INSTALLATION_KEY"`.
 
 You may also pass the value `-` instead of the `INSTALLATION_KEY` like: `-i -`. This will make the installer look for the
 installation key in an alternate place in the following order:

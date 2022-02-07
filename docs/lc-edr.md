@@ -97,7 +97,7 @@ Installing the sensor requires administrator (or root) execution:
 
 **Windows EXE:** ```installer.exe -i YOUR_INSTALLATION_KEY```
 
-**Windows MSI:** ```installer.msi WRAPPED_ARGUMENTS="YOUR_INSTALLATION_KEY"```
+**Windows MSI:** ```installer.msi InstallationKey="YOUR_INSTALLATION_KEY"```
 
 **MacOS:** ```chmod +x installer ; installer -i YOUR_INSTALLATION_KEY```
 
