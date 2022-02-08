@@ -113,7 +113,9 @@ This gives you a balance between recording all events, while maintaining basic D
   "event": "MODULE_LOAD",
   "operator": "ends with",
   "value": "wininet.dll",
-  "path": "FILE_PATH",
+  "path": [
+    "FILE_PATH"
+  ],
   "tags": [
     "server"
   ],
