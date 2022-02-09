@@ -1519,6 +1519,24 @@ Deleted Sensor deployment events are produced when a sensor that was previously 
 }
 ```
 
+### quota_changed
+
+Quota changed events are emitted when the quota for an Organization changes.
+
+```json
+{
+  "event":{
+    "new_quota": 30,
+    "old_quota": 25
+  },
+  "routing": {
+    "event_time": 1644444297696,
+    "event_type": "quota_changed",
+    "oid": "8cbe27f4-aaaa-cccc-bbbb-138cd51389cd"
+  }
+}
+```
+
 ## Artifact Events
 
 Events around artifact collection, observable in D&R rules via the `artifact_event` target.
