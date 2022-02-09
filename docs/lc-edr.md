@@ -33,7 +33,7 @@ The ability to deploy and run any executable on endpoint such as patches or cust
 
 A repository of sample detection rules can be found in this repository: [Sample Rule Set](https://github.com/refractionPOINT/rules)
 
-The full open source Sigma ruleset (which can be enabled on deployments at the click of a button) can be found here: [Sigma Rule Set](https://github.com/refractionPOINT/sigma)
+The full open source Sigma ruleset (which can be enabled on deployments at the click of a button) can be found here: [Sigma Rule Set](https://github.com/refractionPOINT/sigma-limacharlie/tree/rules)
 
 
 ## Architecture & OS Support
