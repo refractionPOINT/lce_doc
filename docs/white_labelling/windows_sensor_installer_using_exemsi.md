@@ -33,7 +33,7 @@ Without a digital code signing certificate the installer will show a warning tha
 <a name="Instructions"></a>
 ## Instructions
 
-1. Download the [LimaCharlie sensor EXE](https://app.limacharlie.io/get/windows/64)
+1. Download the [LimaCharlie sensor EXE](https://downloads.limacharlie.io/sensor/windows/64)
 2. Download the [MSI Wrapper application from exemsi.com](https://exemsi.com)
 3. Install the exemsi application on your computer
 4. Launch the exemsi application and go through the EXE to MSI Converter Wizard steps as shown below:
