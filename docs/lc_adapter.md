@@ -12,10 +12,10 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 
 * Docker: https://hub.docker.com/r/refractionpoint/lc-adapter
 * Various Executables:
-  * [Windows x64](https://app.limacharlie.io/get/adapter/win64)
-  * [macOS x64](https://app.limacharlie.io/get/adapter/mac64)
-  * [macOS arm64](https://app.limacharlie.io/get/adapter/macarm64)
-  * [Linux x64](https://app.limacharlie.io/get/adapter/linux64)
+  * [Windows x64](https://downloads.limacharlie.io/adapter/windows/64)
+  * [macOS x64](https://downloads.limacharlie.io/adapter/mac/64)
+  * [macOS arm64](https://downloads.limacharlie.io/adapter/mac/arm64)
+  * [Linux x64](https://downloads.limacharlie.io/adapter/linux/64)
   * [Let us know if you need a specific platform.](https://www.limacharlie.io/contact)
 
 ## Concept

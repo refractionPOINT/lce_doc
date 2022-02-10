@@ -143,36 +143,36 @@ If you are targeting Raspberry Pi you likely want `arml`.
 
 **Windows**
 
-[Windows 32 bit](https://app.limacharlie.io/get/windows/32)
+[Windows 32 bit](https://downloads.limacharlie.io/sensor/windows/32)
 
-[Windows 64 bit](https://app.limacharlie.io/get/windows/64)
+[Windows 64 bit](https://downloads.limacharlie.io/sensor/windows/64)
 
-[Windows msi32](https://app.limacharlie.io/get/windows/msi32)
+[Windows msi32](https://downloads.limacharlie.io/sensor/windows/msi32)
 
-[Windows msi64](https://app.limacharlie.io/get/windows/msi64)
+[Windows msi64](https://downloads.limacharlie.io/sensor/windows/msi64)
 
 **MacOS**
 
-[MacOS 64 bit](https://app.limacharlie.io/get/mac/64)
+[MacOS 64 bit](https://downloads.limacharlie.io/sensor/mac/64)
 
-[MacOS pkg](https://app.limacharlie.io/get/mac/pkg)
+[MacOS pkg](https://downloads.limacharlie.io/sensor/mac/pkg)
 
 **Linux**
 
-[Linux 32 bit](https://app.limacharlie.io/get/linux/32)
+[Linux 32 bit](https://downloads.limacharlie.io/sensor/linux/32)
 
-[Linux 64 bit](https://app.limacharlie.io/get/linux/64)
+[Linux 64 bit](https://downloads.limacharlie.io/sensor/linux/64)
 
-[Linux alpine64](https://app.limacharlie.io/get/linux/alpine64)
+[Linux alpine64](https://downloads.limacharlie.io/sensor/linux/alpine64)
 
-[Linux arm32](https://app.limacharlie.io/get/linux/arm32)
+[Linux arm32](https://downloads.limacharlie.io/sensor/linux/arm32)
 
-[Linux arm64](https://app.limacharlie.io/get/linux/arm64)
+[Linux arm64](https://downloads.limacharlie.io/sensor/linux/arm64)
 
-[Linux arml](https://app.limacharlie.io/get/linux/arml)
+[Linux arml](https://downloads.limacharlie.io/sensor/linux/arml)
 
 [Docker](https://hub.docker.com/r/refractionpoint/limacharlie_sensor)
 
 **Chrome/ChromeOS**
 
-[Chrome](https://app.limacharlie.io/get/chrome/)
+[Chrome](https://downloads.limacharlie.io/sensor/chrome/)

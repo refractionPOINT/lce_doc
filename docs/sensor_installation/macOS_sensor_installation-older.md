@@ -18,7 +18,7 @@ This document provides details of how to install, verify, and uninstall the Lima
 <a name="Installation-Flow"></a>
 ## Installation Flow
 
-1. Download the [Sensor installer file](https://app.limacharlie.io/get/mac/64)
+1. Download the [Sensor installer file](https://downloads.limacharlie.io/sensor/mac/64)
 
 
 
