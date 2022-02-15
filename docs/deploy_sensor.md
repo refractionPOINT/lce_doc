@@ -91,6 +91,9 @@ Installating interactively:
 ```
 sudo dpkg -i limacharlie.deb
 ```
+Uninstalling interactively:
+
+sudo dpkg -r limacharlie
 
 Installing and setting the installation key programmatically:
 ```
