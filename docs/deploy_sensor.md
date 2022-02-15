@@ -77,6 +77,32 @@ installation key in an alternate place in the following order:
 * Text file in current working directory: `lc_installation_key.txt`
 
 ### Linux
+
+#### Deb Package
+If you are deploying on a Debian Linux system, we recommend using the `.deb` package.
+
+The deb package will install the LimaCharlie sensor using a `systemd` service, or if unavailable a `system V` service.
+
+The installation key is required by the installer via the `debconf` configuration mechanism. By default, installing
+the package interactively will request the installation key via a local command/GUI interface. To perform large
+scale installations, we recommend setting the installation key programmatically.
+
+Installating interactively:
+```
+dpkg -i limacharlie.deb
+```
+
+Installing and setting the installation key programmatically:
+```
+echo "limacharlie limacharlie/installation_key string INSTALLATION_KEY_HERE" | debconf-set-selections && dpkg -i limacharlie.deb
+```
+
+Debian packages are offered for the various architectures the Linux sensor suppport, like:
+```
+https://downloads.limacharlie.io/sensor/linux/64   --->   https://downloads.limacharlie.io/sensor/linux/deb64
+```
+
+#### Custom Installation
 Executing the installer via the command line, pass the `-d INSTALLATION_KEY` argument where `INSTALLATION_KEY` is the key
 mentioned above.
 
