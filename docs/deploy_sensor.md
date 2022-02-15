@@ -89,7 +89,7 @@ scale installations, we recommend setting the installation key programmatically.
 
 Installating interactively:
 ```
-dpkg -i limacharlie.deb
+sudo dpkg -i limacharlie.deb
 ```
 
 Installing and setting the installation key programmatically:
