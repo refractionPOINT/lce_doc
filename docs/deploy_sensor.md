@@ -97,7 +97,7 @@ sudo dpkg -r limacharlie
 
 Installing and setting the installation key programmatically:
 ```
-echo "limacharlie limacharlie/installation_key string INSTALLATION_KEY_HERE" | debconf-set-selections && dpkg -i limacharlie.deb
+echo "limacharlie limacharlie/installation_key string INSTALLATION_KEY_HERE" | sudo debconf-set-selections && sudo dpkg -i limacharlie.deb
 ```
 
 Debian packages are offered for the various architectures the Linux sensor suppport, like:
