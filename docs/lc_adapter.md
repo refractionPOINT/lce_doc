@@ -29,6 +29,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * Google Cloud Pub/Sub
 * STDIN
 * 1Password API
+* Office 365 API
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
@@ -262,6 +263,8 @@ To test it, assuming we're on the same Debian box as the container, pipe the sys
 journalctl -f -q | netcat 127.0.0.1 4444
 ```
 
+A visual guide for onboarding this is also available from our help center [here](https://help.limacharlie.io/en/articles/5702125-how-to-get-realtime-syslog-ingestion-with-limacharlie).
+
 ### CarbonBlack from S3
 
 This example shows connecting Carbon Black sensors from data exported by the Carbon Black API to an S3 bucket.
@@ -346,6 +349,8 @@ Here's the breakdown of the above example:
 * `sub_name=usp`: the Subscription name to consume the logs from.
 * `project_name=monitored-proj`: the GCP Project name this Subscription belongs to.
 
+A visual guide for onboarding this is also available from our help center [here](https://help.limacharlie.io/en/articles/5754343-how-to-connect-google-cloud-logs-to-limacharlie).
+
 ### 1Password Audit
 
 This example fetching audit logs from [1Password](https://1password.com/). This assumes you've generated an access token from 1Password, like [this](https://support.1password.com/events-reporting/).
@@ -386,3 +391,7 @@ Here's a breakdown of the above example:
 * `access_key:....`: the AWS Access Key for the API key below.
 * `secret_key:....`: the API key for AWS that has access to this bucket.
 * `client_options.hostname=cloudtrail-logs`: asking LimaCharlie to use the hostname `cloudtrail-logs` for this sensor to identify it.
+
+### Microsoft / Office 365
+
+A visual guide for onboarding this is available from our help center [here](https://help.limacharlie.io/en/articles/5986334-how-to-bring-microsoft-office-365-logs-into-limacharlie).
