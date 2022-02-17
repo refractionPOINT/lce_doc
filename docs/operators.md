@@ -159,6 +159,7 @@ Takes a `name` parameter for the platform name. The current platforms are:
 * `aws`
 * `carbon_black`
 * `1password`
+* `office365`
 
 Example:
 ```yaml
