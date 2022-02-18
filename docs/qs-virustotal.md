@@ -8,7 +8,7 @@ Once you have created an account find the API key.
 
 The free tier of VirusTotal allows four lookups per minute via the API.
 
-Note: LimaCharlie employs a global cache of all VirusTotal requests which should significantly reduce your costs if you are using VirusTotal at scale.
+Note: LimaCharlie employs a global cache of all VirusTotal requests which should significantly reduce your costs if you are using VirusTotal at scale. VirusTotal requests are cached for 3 days. 
 
 Once you have your VirusTotal API key you can add it to the integrations section of the LimaCharlie web app.
 
