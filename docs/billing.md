@@ -21,7 +21,7 @@ There are two categories of sensors: sensors billed on Quota set by the user (vS
 | Net | Quota | $2.5/sensor/month |
 | Docker | Quota | $2.5/sensor/month |
 | VMWare Carbon Black EDR | Quota | $0.5/sensor/month |
-| Chrome OS | Quota | Free |
+| Chrome OS | Quota | $0.25/sensor/month |
 | Syslog | Usage basis | $0.15 / GB |
 | Amazon AWS CloudTrail Logs | Usage basis | $0.15 / GB |
 | Google Cloud Platform (GCP) Logs | Usage basis | $0.15 / GB |
