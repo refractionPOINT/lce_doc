@@ -903,6 +903,7 @@ The following file patterns are considered "documents":
 * `.jpg`
 * `.asp`
 * `.aspx`
+* `.php`
 * `\windows\system32\`
 
 Platforms: Windows, MacOS
