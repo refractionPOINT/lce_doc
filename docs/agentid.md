@@ -37,6 +37,8 @@ structured with a major and minor platform, the important values are:
 * `0xC0000000`: VMWare Carbon Black (external telemetry)
 * `0xD0000000`: 1Password (external telemetry)
 * `0xE0000000`: Microsoft/Office 365 (external telemetry)
+* `0x02000000`: XML (external telemetry)
+* `0x03000000`: Windows Event Logs (external telemetry)
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:

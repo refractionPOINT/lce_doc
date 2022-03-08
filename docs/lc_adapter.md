@@ -7,6 +7,8 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * Google Cloud Pubsub
 * STDIN
 * 1Password API
+* Office 365 API
+* Native Windows Event Logs
 
 ## Availability
 
@@ -30,6 +32,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * STDIN
 * 1Password API
 * Office 365 API
+* Native Windows Event Logs
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
@@ -40,6 +43,8 @@ We provide built-in parsing/mapping for many popular formats (called `platform`)
 * 1password event logs (`1password`)
 * Text logs (`text`)
 * JSON logs (`json`)
+* XML logs (`xml`)
+* Windows Event Logs (`wel`)
 
 The adapter also provides you with the ability to define custom parsing/mapping yourself.
 
@@ -395,3 +400,22 @@ Here's a breakdown of the above example:
 ### Microsoft / Office 365
 
 A visual guide for onboarding this is available from our help center [here](https://help.limacharlie.io/en/articles/5986334-how-to-bring-microsoft-office-365-logs-into-limacharlie).
+
+### Windows Event Logs
+
+This example shows collecting Windows Event Logs (`wel`) from a Windows box natively (and therefore is only available using the Windows Adapter).
+This is useful for cases where you'd like to collect WEL without running the LimaCharlie Windows Agent.
+
+```
+./lc_adapter wel client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.sensor_seed_key=domain-controller1 client_options.platform=wel evt_sources=security:*,application:*,system:*,Microsoft-Windows-Windows Defender/Operational:*
+```
+
+Here's a breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `wel`: the method the Adapter should use to collect data locally. The `wel` value will use a native local Windows Event Logs subscription.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=wel`: this indicates the type of data that will be received from this adapter. In this case it's `wel` events.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor ID generated for this Adapter later if you have to re-install the Adapter.
+* `evt_sources=....`: a comma separated list of event channel to collect along with a XPath filter expression for each. The format is `CHANNEL_NAME:FILTER_EXPRESSION` where a filter of `*` means all events. Common channels: `security`, `system` and `application`.
