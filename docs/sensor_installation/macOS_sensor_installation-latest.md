@@ -1,4 +1,4 @@
-# macOS Sensor (macOS 10.15 and macOS 11)
+# macOS Sensor (macOS 10.15 and newer)
 
 This document provides details of how to install, verify, and uninstall the LimaCharlie sensor on macOS (versions 10.15 and newer).  We also offer [documentation for macOS 10.14 and prior](macOS_sensor_installation-older.md).
 
@@ -22,19 +22,19 @@ This document provides details of how to install, verify, and uninstall the Lima
 
 ## Installation Flow
 
-1. Download the [Sensor installer file](https://downloads.limacharlie.io/sensor/mac/64)
+1. Download the Sensor installer file.  Installer for: [Intel Mac](https://downloads.limacharlie.io/sensor/mac/64) -or- [Apple Silicon Mac](https://downloads.limacharlie.io/sensor/mac/arm64)
 
 
 
 2. Add execute permission to the installer file via the command line
 
-> chmod +x hcp_osx_x64_release_4.23.0
+> chmod +x lc_sensor
 
 
 
 3. Run the installer via the command line.  You'll pass the argument -i and your installation key.
 
-> sudo ./hcp_osx_x64_release_4.23.0 -i YOUR_INSTALLATION_KEY_GOES_HERE
+> sudo ./lc_sensor -i YOUR_INSTALLATION_KEY_GOES_HERE
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Installation/01-Basic_installation.png" alt="Basic installation" style="zoom:100%;" />
 
