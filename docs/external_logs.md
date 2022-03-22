@@ -136,19 +136,9 @@ using the following Header fields:
 There are several ways to access the artifacts.
 
 The main page contains a link to
-"Artifact Collection" which displays all logs files ingested in the last week. From
-there you can select a specific log and view it.
+"Artifact Collection" which displays all logs files ingested in the last week. From there you can select a specific log and view it.
 
-The search page contains a switch to search "in artifacts" instead of sensors. When
-you search for an indicator, enabling this switch will return you all the hits
-from the artifact files you have previously ingested.
-
-The historical view has a button that appears in the top left of the page after
-a search. Clicking it will list all log files received from that sensor during that
-time period and will allow you to view them. Finally, from the same page, when
-viewing the details of a specific event, right-clicking on an indicator and selecting
-"Find Other Locations" will bring you a search interface where you can also search
-for "in artifact".
+The historical view has a button that appears in the top left of the page after a search. Clicking it will list all log files received from that sensor during that time period and will allow you to view them. 
 
 ## Windows Event Logs
 
