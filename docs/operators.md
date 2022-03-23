@@ -160,6 +160,7 @@ Takes a `name` parameter for the platform name. The current platforms are:
 * `carbon_black`
 * `1password`
 * `office365`
+* `msdefender`
 
 Example:
 ```yaml
