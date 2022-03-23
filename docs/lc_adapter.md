@@ -9,6 +9,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * 1Password API
 * Office 365 API
 * Native Windows Event Logs
+* Azure Event Hubs
 
 ## Availability
 
@@ -26,13 +27,14 @@ It can be run on any platform and in any location (on premises for example).
 
 The Adapter may itself get the logs/telemetry any number of locations and using many different methods like:
 
-* Syslog
-* AWS S3
-* Google Cloud Pub/Sub
-* STDIN
-* 1Password API
-* Office 365 API
-* Native Windows Event Logs
+* Syslog (`syslog`)
+* AWS S3 (`s3`)
+* Google Cloud Pub/Sub (`pubsub`)
+* STDIN (`stdin`)
+* 1Password API (`1password`)
+* Office 365 API (`office365`)
+* Native Windows Event Logs (`wel`)
+* Azure Event Hubs (`azure_event_hub`)
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
@@ -45,6 +47,7 @@ We provide built-in parsing/mapping for many popular formats (called `platform`)
 * JSON logs (`json`)
 * XML logs (`xml`)
 * Windows Event Logs (`wel`)
+* Microsoft Defender (`msdefender`)
 
 The adapter also provides you with the ability to define custom parsing/mapping yourself.
 
@@ -76,7 +79,7 @@ All Adapter Types support the same `client_options`, plus type-specific configur
 
 * `client_options.identity.oid`: the LimaCharlie Organization ID (OID) this adapter is used with.
 * `client_options.identity.installation_key`: the LimaCharlie Installation Key this adapter should use to identify with LimaCharlie.
-* `client_options.platform`: the type of data ingested through this adapter, like `text`, `json`, `gcp` or `carbon_black`.
+* `client_options.platform`: the type of data ingested through this adapter, like `text`, `json`, `gcp`, `carbon_black`, etc.
 * `client_options.sensor_seed_key`: an arbitrary name for this adapter which Sensor IDs (SID) are generated from, see below.
 
 ### Parsing and Mapping
@@ -419,3 +422,23 @@ Here's a breakdown of the above example:
 * `client_options.platform=wel`: this indicates the type of data that will be received from this adapter. In this case it's `wel` events.
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor ID generated for this Adapter later if you have to re-install the Adapter.
 * `evt_sources=....`: a comma separated list of event channel to collect along with a XPath filter expression for each. The format is `CHANNEL_NAME:FILTER_EXPRESSION` where a filter of `*` means all events. Common channels: `security`, `system` and `application`.
+
+### Microsoft Defender from Azure Event Hub
+
+This example shows connecting Microsoft Defender sensors from data exported to Azure Event Hub.
+It uses the CLI Adapter (instead of the Docker container).
+
+```
+./lc_adapter azure_event_hub client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=msdefender client_options.sensor_seed_key=msdefenderfeed client_options.hostname=Defender "connection_string=Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fnaaaaaaaaaaaaaaak0g54alYbbbbbbbbbbbbbbbALQ=;EntityPath=lc-stream"
+```
+
+Here's a breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `azure_event_hub`: the data will be collected from an AWS S3 bucket.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=msdefender`: this indicates the data received will be Carbon Black events from their API.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
+* `client_options.hostname=1password`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
+* `connection_string:....`: the connection string provided in Azure for connecting to the Azure Event Hub, including the `EntityPath=...` at the end which identifies the Hub Name (this component is sometimes now shown in the connection string provided by Azure).
