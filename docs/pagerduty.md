@@ -44,3 +44,6 @@ From this point on, you may use a D&R rule to trigger a PagerDuty event. For exa
     source: limacharlie.io
     class: dr-rules
 ```
+
+### Further Assistance
+Need additional help?  [Contact us via live chat](https://help.limacharlie.io/en/)
