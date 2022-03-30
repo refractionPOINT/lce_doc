@@ -16,7 +16,6 @@ Add-ons can be found and added to organizations through the [add-ons marketplace
 The following add-ons enable additional functionality in the web application:
 
 * [`atomic-red-team`](https://app.limacharlie.io/add-ons/detail/atomic-red-team) - scan Windows sensors right from their `Overview` page
-* [`comms`](https://app.limacharlie.io/add-ons/detail/comms) - central cross-org UI for managing incidents with a shared console
 * [`exfil`](https://app.limacharlie.io/add-ons/detail/exfil) - enables `Exfil Control` to configure which events should be collected per platform
 * [`infrastructure-service`](https://app.limacharlie.io/add-ons/detail/infrastructure-service) - enable `Templates` in the UI to manage org config in `yaml`
 * [`insight`](https://app.limacharlie.io/add-ons/detail/insight) - enables retention & browsing events and detections via `Timeline` and `Detections` 
