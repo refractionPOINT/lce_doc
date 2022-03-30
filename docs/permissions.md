@@ -43,15 +43,7 @@ The following is a list of all permissions that can be applied via User, API Key
 | replicant.get     | Get the list of active Services.                                     
 | ingestkey.ctrl    | Change ingestion keys.                                               
 | payload.ctrl      | Add/Remove/Get Payloads.                                             
-| payload.use       | Deploy a payload to a sensor.                                        
-| comms.room.list   | List and view rooms.                                                 
-| comms.room.create | Create rooms.                                                        
-| comms.status      | Change room status.                                                  
-| comms.assign      | Assign users to rooms.                                               
-| comms.msg.view    | View messages in rooms.                                              
-| comms.msg.post    | Post messages in rooms.                                              
-| comms.link        | Add and remove links in rooms.                                       
-| comms.bucket      | Modify room bucketing rules.                                         
+| payload.use       | Deploy a payload to a sensor.                                                                
 | net.provision     | Provision new net endpoints.                                         
 | net.policy.get    | Get the policies applied to net endpoints.                           
 | net.policy.set    | Set a policy applied to net endpoints.                               
