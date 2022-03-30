@@ -19,7 +19,6 @@ Here's a basic config for an organization in LimaCharlie:
 version: 3
 resources:
   api:
-  - comms
   - insight
   replicant:
   - infrastructure-service
@@ -63,7 +62,7 @@ artifact:
 
 Applying this would get an org started with some basics:
 
-* Add-ons that enable incident response (`comms`, `insight`, `reliable-tasking`, `responder`)
+* Add-ons that enable incident response (`insight`, `reliable-tasking`, `responder`)
 * Managed detection & response rulesets (`sigma`, `soteria-rules`)
 * Services that add sensor capabilities (`integrity`, `logging`, `yara`)
 * Some basic configurations to monitor file integrity of `*/.ssh` on Linux and collect syslog, auth logs, and Windows event logs
