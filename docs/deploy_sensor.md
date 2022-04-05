@@ -34,6 +34,7 @@ For example:
 * https://downloads.limacharlie.io/sensor/mac/64 for the macOS 64 bit installer
 * https://downloads.limacharlie.io/sensor/mac/arm64 for the macOS ARM 64 bit (Apple Silicon) installer
 * https://downloads.limacharlie.io/sensor/chrome for the Chrome extension
+* https://downloads.limacharlie.io/sensor/edge for the MS Edge extension
 
 ## Installing the Sensor
 The sensors are designed to be simple to use and re-package for any deployment methodology you use in your organization.
