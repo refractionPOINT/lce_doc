@@ -5,6 +5,7 @@
 All Destinations can be configured with the following options: 
 
 * `is_flat`: take the json output and flatten the whole thing to a flat structure.
+* `is_payload_as_string`: converts the payload (`event` or `detect` components) of events and detections into a JSON string instead of a JSON object.
 * `inv_id`: only send events matching the investigation id to this output (event stream only).
 * `tag`: only send events from sensors with this tag to this output (event stream only).
 * `cat`: only send detections from this category to this output (detect stream only).
