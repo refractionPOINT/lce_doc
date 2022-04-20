@@ -152,6 +152,22 @@ will be converted into:
 }
 ```
 
+#### No Sharding
+
+The no sharding option removes the first directory in the destination path of files uploaded through a LimaCharlie Output.
+
+For example:
+```
+f/2022/4/20/1/df2d955bb-aa51-46ea-9418-be547f1076fd_90.gz.enc
+```
+
+becomes:
+```
+2022/4/20/1/df2d955bb-aa51-46ea-9418-be547f1076fd_90.gz.enc
+```
+
+This can be useful for example when uploading files where you are required to list files per time range. The sharding prefix is used to naturally shard high throughput Outputs, but it turns a time based prefix query more complicated because it requires a wildcard or doing multiple queries.
+
 ### HTTP Streaming
 
 It's possible to stream an Output directly over HTTPS. This interface allows you to stream smaller datasets in a temporary manner, like investigations or specific sensors or detections. This stream can be achieved via HTTP only without any additional software layer, although the [Python API](https://github.com/refractionpoint/python-limacharlie/) makes this task easier using the Spout object.

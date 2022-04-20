@@ -29,6 +29,7 @@ Output events and detections to an Amazon S3 bucket.
 * `region_name`: the region name of the bucket, it is recommended to set it, though not always required.
 * `endpoint_url`: optionally specify a custom endpoint URL, usually used with region_name to output to S3-compatible 3rd party services.
 * `dir`: the directory prefix
+* `is_no_sharding`: do not add a shard directory at the root of the files generated.
 
 Example:
 ```yaml
@@ -151,6 +152,7 @@ Output events and detections to a GCS bucket.
 * `is_compression`: if set to "true", data will be gzipped before upload.
 * `is_indexing`: if set to "true", data is uploaded in a way that makes it searchable.
 * `dir`: the directory prefix where to output the files on the remote host.
+* `is_no_sharding`: do not add a shard directory at the root of the files generated.
 
 Example:
 ```yaml
@@ -240,6 +242,7 @@ Output events and detections over SCP (SSH file transfer).
 * `username`: the SSH username to log in with.
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
+* `is_no_sharding`: do not add a shard directory at the root of the files generated.
 
 Example:
 ```yaml
@@ -257,6 +260,7 @@ Output events and detections over SFTP.
 * `username`: the username to log in with.
 * `password`: optional password to use to login with.
 * `secret_key`: the optional SSH private key to authenticate with.
+* `is_no_sharding`: do not add a shard directory at the root of the files generated.
 
 Example:
 ```yaml
@@ -352,6 +356,7 @@ Output batches of events, detections, audits, deployments or artifacts through a
 * `secret_key`: an arbitrary shared secret used to compute an HMAC (SHA256) signature of the webhook to verify authenticity. This is a required field. [See "Webhook Details" section.](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMTY-outputs#webhook-details)
 * `auth_header_name` and `auth_header_value`: set a specific value to a specific HTTP header name in the outgoing webhooks.
 * `sec_per_file`: the number of seconds after which a file is cut and uploaded.
+* `is_no_sharding`: do not add a shard directory at the root of the files generated.
 
 
 Example:
