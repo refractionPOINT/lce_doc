@@ -435,10 +435,10 @@ It uses the CLI Adapter (instead of the Docker container).
 Here's a breakdown of the above example:
 
 * `lc_adapter`: simply the CLI Adapter.
-* `azure_event_hub`: the data will be collected from an AWS S3 bucket.
+* `azure_event_hub`: the data will be collected from an Azure Event Hub.
 * `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
 * `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
-* `client_options.platform=msdefender`: this indicates the data received will be Carbon Black events from their API.
+* `client_options.platform=msdefender`: this indicates the data received will be Defender events from their API.
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
 * `client_options.hostname=1password`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
 * `connection_string:....`: the connection string provided in Azure for connecting to the Azure Event Hub, including the `EntityPath=...` at the end which identifies the Hub Name (this component is sometimes now shown in the connection string provided by Azure).
