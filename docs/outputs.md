@@ -91,20 +91,82 @@ ssh root@your-splunk-machine -L 127.0.0.1:8000:0.0.0.0:8000 -N
 ```
 Then you can connect through the tunnel with your browser at `http://127.0.0.1:8000/`.
 
-### Cloud Storage -> Visualization
-If you have your own visualization stack, or you just need the data archived, you can output
-directly to Amazon S3 or Google Cloud Storage.
+### Output to Systems with Schemas
 
-If the `is_indexing` option is enabled, data uploaded to S3 will be in a specific format enabling some indexed queries.
-LC data files begin with a `d` while special manifest files (indicating
-which data files contain which sensors' data) begin with an `m`. Otherwise (not `is_indexing`) data is uploaded
-as flat files with a UUID name.
+Because LimaCharlie can process external logs, or telemetry from sources outside our control (like Windows Event Logs), exporting to systems requiring a schema (like BigQuery) can sometimes be difficult if fields of the data exported are overloaded (a same field name has two different data type in different events). A few transformations are available to help you with this:.
 
-The `is_compression` flag, if on, will compress each file as GZIP when uploaded.
+#### Flatten
 
-It is recommended you enable `is_compression`.
+The flattening option of Outputs allows you to take the nested JSON output from LimaCharlie and transfor it into a single-level JSON object. This is useful for systems that don't handle nested JSON objects well like ELK.
 
-Check out the [Destinations](output-destinations.md) reference for specific instructions on [Amazon S3](output-destinations.md#amazon-s3) or [Google Cloud Storage](output-destinations.md#google-cloud-storage)
+#### Prefix (wrap event with event_type)
+
+If collisions occurs from different event types you're ingesting in the same destination, this option will take the `routing/event_type` component of your events and use it as a wrapper for your event.
+
+For example, the event:
+
+```json
+{
+  "event": "test",
+  "routing": { "event_type": "my-event"}
+}
+```
+
+will become:
+
+```json
+{
+  "my-event": {
+    "event": "test",
+    "routing": { "event_type": "my-event"}
+  }
+}
+```
+
+#### Payload as String
+
+Overloading is usually only an issue within the "payload" of LimaCharlie data, meaning the `detect` or `event` component of detections and events. Other components are more heavily controlled by LimaCharlie and therefore don't usually have overloaded definitions.
+
+This means a viable strategy to load the data into other systems is to treat this payload as a JSON string instead of a JSON object. When this option is enabled, an event that looks like this:
+
+```json
+{
+  "event": {
+    "some": "event-data",
+    "andother": "fields"
+  },
+  "routing": {
+    "event_type": "my-event"
+  }
+}
+```
+
+will be converted into:
+
+```json
+{
+  "event": "{\"some\": \"event-data\",\"andother\": \"fields\"}",
+  "routing": {
+    "event_type": "my-event"
+  }
+}
+```
+
+#### No Sharding
+
+The no sharding option removes the first directory in the destination path of files uploaded through a LimaCharlie Output.
+
+For example:
+```
+f/2022/4/20/1/df2d955bb-aa51-46ea-9418-be547f1076fd_90.gz.enc
+```
+
+becomes:
+```
+2022/4/20/1/df2d955bb-aa51-46ea-9418-be547f1076fd_90.gz.enc
+```
+
+This can be useful for example when uploading files where you are required to list files per time range. The sharding prefix is used to naturally shard high throughput Outputs, but it turns a time based prefix query more complicated because it requires a wildcard or doing multiple queries.
 
 ### HTTP Streaming
 
