@@ -46,7 +46,7 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
 
 ### Sampling
 
-The `sampling_rate` option enables general sampling across all Outputs.
+The `sample_rate` option enables general sampling across all Outputs.
 
 LimaCharlie will limit actual data sent to the Output to be 1 over sample_rate. So by setting it to a value like `10`, the Output
 will receive 1/10 (10%) of events.
