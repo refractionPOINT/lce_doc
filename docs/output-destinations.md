@@ -14,6 +14,7 @@ All Destinations can be configured with the following options:
 * `event_black_list`: only send event not of the types in this list (newline-separated, event and audit streams only).
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
 * `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
+* `sampling_rate`: limits data sent to Output to be 1/sampling_rate.
 
 > Need support for a Destination we haven't integrated yet? Let us know by chiming in on the [LimaCharlie community Slack](https://slack.limacharlie.io/), or by emailing us at [`support@limacharlie.io`](mailto:support@limacharlie.io).
 

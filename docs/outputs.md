@@ -44,6 +44,13 @@ Sensor ---> LCC (Event Stream) ---> Amazon S3
        +--> LCC (Alert+Audit Streams) ---> Syslog (TCP+SSL) ---> Splunk
 ```
 
+### Sampling
+
+The `sampling_rate` option enables general sampling across all Outputs.
+
+LimaCharlie will limit actual data sent to the Output to be 1 over sample_rate. So by setting it to a value like `10`, the Output
+will receive 1/10 (10%) of events.
+
 ### Splunk
 Splunk provides you with a simple web interface to view and search the data. It has a paying enterprise version and a free tier.
 
