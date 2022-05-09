@@ -106,13 +106,13 @@
               "type": "item",
               "title": "Edge",
               "uri": "docs/sensors/edge.md"
+            },
+            {
+              "type": "item",
+              "title": "Adapters",
+              "uri": "docs/lc_adapter.md"
             }
           ]
-        },
-        {
-          "type": "item",
-          "title": "Adapters",
-          "uri": "docs/lc_adapter.md"
         },
         {
           "type": "item",
