@@ -111,6 +111,11 @@
         },
         {
           "type": "item",
+          "title": "Adapters",
+          "uri": "docs/lc_adapter.md"
+        },
+        {
+          "type": "item",
           "title": "Commands",
           "uri": "docs/sensor-commands-overview.md"
         },
