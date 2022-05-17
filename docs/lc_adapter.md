@@ -2,14 +2,15 @@
 
 The LimaCharlie Adapter can be used to ingest external data streams from many different technologies including:
 
-* Syslog
-* AWS S3
-* Google Cloud Pubsub
-* STDIN
 * 1Password API
-* Office 365 API
-* Native Windows Event Logs
+* AWS S3
 * Azure Event Hubs
+* Duo API
+* Google Cloud Pubsub
+* Native Windows Event Logs
+* Office 365 API
+* STDIN
+* Syslog
 
 ## Availability
 
@@ -27,27 +28,29 @@ It can be run on any platform and in any location (on premises for example).
 
 The Adapter may itself get the logs/telemetry any number of locations and using many different methods like:
 
-* Syslog (`syslog`)
-* AWS S3 (`s3`)
-* Google Cloud Pub/Sub (`pubsub`)
-* STDIN (`stdin`)
 * 1Password API (`1password`)
-* Office 365 API (`office365`)
-* Native Windows Event Logs (`wel`)
+* AWS S3 (`s3`)
 * Azure Event Hubs (`azure_event_hub`)
+* Duo API (`duo`)
+* Google Cloud Pub/Sub (`pubsub`)
+* Native Windows Event Logs (`wel`)
+* Office 365 API (`office365`)
+* STDIN (`stdin`)
+* Syslog (`syslog`)
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
 We provide built-in parsing/mapping for many popular formats (called `platform`) like:
-* Google Cloud Platform audit logs (`gcp`)
+* 1password event logs (`1password`)
 * AWS Cloud Trail logs (`aws`)
 * CarbonBlack EDR (`carbon_black`)
-* 1password event logs (`1password`)
-* Text logs (`text`)
+* Duo authentication & admin logs (`duo`)
+* Google Cloud Platform audit logs (`gcp`)
 * JSON logs (`json`)
-* XML logs (`xml`)
-* Windows Event Logs (`wel`)
 * Microsoft Defender (`msdefender`)
+* Text logs (`text`)
+* Windows Event Logs (`wel`)
+* XML logs (`xml`)
 
 The adapter also provides you with the ability to define custom parsing/mapping yourself.
 
