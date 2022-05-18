@@ -29,6 +29,7 @@ There are two categories of sensors: sensors billed on Quota set by the user (vS
 | Microsoft/Office 365 | Usage basis | $0.15 / GB |
 | Windows Event Logs | Usage basis | $0.15 / GB |
 | Microsoft Defender | Usage basis | $0.15 / GB |
+| Duo | Usage basis | $0.15 / GB |
 | Other external sources | Usage basis | $0.15 / GB |
 
 For more information about vSensors and the examples, visit our [help center page.](https://help.limacharlie.io/en/articles/5931547-how-is-the-cost-of-sensors-add-ons-calculated-in-limacharlie) 
