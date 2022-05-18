@@ -47,6 +47,25 @@ To assist in finding the responses more easily, you may specify an `investigatio
 
 If an `investigation_id` is prefixed with `__` (double underscore) it will omit the resulting events from being forwarded to Outputs. This is primarily to allow Services to interact with sensors without spamming. 
 
+## Command Line Format
+When issuing commands to sensors as a command line (versus a list of tokens), the quoting and escaping of arguments can be confusing. This is a short explanation:
+
+The command line tasks are parsed as if they were issued to a shell like `sh` or `cmd.exe` with a few tweaks to make it easier and more intuitive to use.
+
+Arguments are parsed as separated by spaces, like: `dir_list /home/user *` is equal to 2 arguments: `/home/user` and `*`.
+
+If an argument contains spaces, for example a single directory like `/file/my files`, you must use either single (`'`) or double (`"`) quotes around the argument, like: `dir_list "/files/my files"`.
+
+A backslash (`\`), like in Windows file paths does not need to be escaped. It is only interpreted as an escape character when it is followed by a single or double quote.
+
+The difference between single quotes and double quotes is that double quotes support escaping characters within using `\`, while single quotes never interpret `\` as an escape character. For example:
+* `log_get --file "c:\\temp\\my dir\\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
+* `log_get --file 'c:\\temp\\my dir\\' --type json` becomes `log_get`, `--file`, `c:\\temp\\my dir\\`, `--type`, `json`
+* `log_get --file 'c:\temp\my dir\' --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
+* `log_get --file "c:\temp\my dir\\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
+
+This means that as a general statement, unless you want to embed quoted strings within specific arguments, it is easier to use single quotes around arguments and not worry about escaping `\`.
+
 ## Going Deeper
 
 * [Reference: Commands](sensor_commands.md)
