@@ -88,7 +88,7 @@ Example:
 event: FILE_TYPE_ACCESSED
 op: matches
 path: event/FILE_PATH
-re: .*\\\\system32\\\\.*\\.scr
+re: .*\\system32\\.*\.scr
 case sensitive: false
 ```
 

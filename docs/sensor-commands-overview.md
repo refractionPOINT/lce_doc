@@ -59,10 +59,10 @@ If an argument contains spaces, for example a single directory like `/file/my fi
 A backslash (`\`), like in Windows file paths does not need to be escaped. It is only interpreted as an escape character when it is followed by a single or double quote.
 
 The difference between single quotes and double quotes is that double quotes support escaping characters within using `\`, while single quotes never interpret `\` as an escape character. For example:
-* `log_get --file "c:\\temp\\my dir\\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
-* `log_get --file 'c:\\temp\\my dir\\' --type json` becomes `log_get`, `--file`, `c:\\temp\\my dir\\`, `--type`, `json`
+* `log_get --file "c:\temp\my dir\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
 * `log_get --file 'c:\temp\my dir\' --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
-* `log_get --file "c:\temp\my dir\\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
+* `log_get --file 'c:\temp\my dir\' --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
+* `log_get --file "c:\temp\my dir\" --type json` becomes `log_get`, `--file`, `c:\temp\my dir\`, `--type`, `json`
 
 This means that as a general statement, unless you want to embed quoted strings within specific arguments, it is easier to use single quotes around arguments and not worry about escaping `\`.
 
