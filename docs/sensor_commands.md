@@ -370,7 +370,7 @@ Platforms: Windows
 usage: reg_list [-h] reg
 
 positional arguments:
-  reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku", e.g. "hklm\\software"...
+  reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku", e.g. "hklm\software"...
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -520,10 +520,10 @@ Note that the pattern is not a string literal, therefore "\" needs to be escaped
 
 So for example, you could do:
 
-* `?:\\\\*\\\\Programs\\\\Startup\\\\*`
-* `\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*`
+* `?:\*\Programs\Startup\*`
+* `\REGISTRY\*\Microsoft\Windows\CurrentVersion\Run*`
 
-Which would result in: `fim_add --pattern "?:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"`
+Which would result in: `fim_add --pattern "?:\*\Programs\Startup\*" --pattern "\REGISTRY\*\Microsoft\Windows\CurrentVersion\Run*"`
 
 Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on Linux support)
 

@@ -97,7 +97,7 @@ op: is windows
 
 # Response
 - action: task
-  command: fim_add --pattern "C:\\\\*\\\\Programs\\\\Startup\\\\*" --pattern "\\\\REGISTRY\\\\*\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run*"
+  command: fim_add --pattern 'C:\*\Programs\Startup\*' --pattern '\REGISTRY\*\Microsoft\Windows\CurrentVersion\Run*'
 ```
 
 ### Mention of an Internal Resource
@@ -128,11 +128,11 @@ op: is windows
 
 # Response
 - action: task
-  command: file_del %windir%\\system32\\hcp.dat
+  command: file_del %windir%\system32\hcp.dat
 - action: task
-  command: file_del %windir%\\system32\\hcp_hbs.dat
+  command: file_del %windir%\system32\hcp_hbs.dat
 - action: task
-  command: file_del %windir%\\system32\\hcp_conf.dat
+  command: file_del %windir%\system32\hcp_conf.dat
 - action: task
   command: restart
 ```
