@@ -19,3 +19,15 @@ Some more detailed information is available here: https://www.twilio.com/docs/sm
   "from": "+15551112222"
 }
 ```
+
+
+Example Response portion of a D&R rule that sends a message out via Twilio as the response action:
+
+```
+- action: service request
+  name: twilio
+  request:
+    body: Triggered_alert
+    from: '+15551234567'
+    to: '+15559878543'
+```
