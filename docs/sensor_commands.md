@@ -828,3 +828,14 @@ do not have the root CAs for `google.com` enabled by default.
 
 ### pcap_ifaces
 List the network interfaces available for capture on a host.
+
+## First Class Commands
+
+### shutdown
+Execute an immediate system shut down (no warnings and zero delay time)
+
+Platforms: Windows
+
+```
+usage: shutdown --is-confirmed
+```
