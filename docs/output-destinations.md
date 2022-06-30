@@ -368,3 +368,28 @@ auth_header_name: x-my-special-auth
 auth_header_value: 4756345846583498
 ```
 
+## Azure Event Hub
+Output events and detections to an Azure Event Hub (similar to PubSub and Kafka).
+
+* `connection_string`: the connection string provided by Azure.
+
+Note that the connection string should end with `;EntityPath=your-hub-name` which is sometimes missing from the "Connection String" provided by Azure.
+
+Example:
+```yaml
+connection_string: Endpoint=sb://lc-test.servicebus.windows.net/;SharedAccessKeyName=lc;SharedAccessKey=jidnfisnjfnsdnfdnfjd=;EntityPath=test-hub
+```
+
+## Azure Storage Blob
+Output events and detections to a Blob Container in Azure Storage Blobs.
+
+* `secret_key`: the secret access key for the Blob Container.
+* `blob_container`: the name of the Blob Container to upload to.
+* `account_name`: the account name used to authenticate in Azure.
+
+Example:
+```yaml
+blob_container: testlcdatabucket
+account_name: lctestdata
+secret_key: dkndsgnlngfdlgfd
+```
