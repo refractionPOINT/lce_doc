@@ -834,7 +834,7 @@ List the network interfaces available for capture on a host.
 ### shutdown
 Execute an immediate system shut down (no warnings and zero delay time)
 
-Platforms: Windows
+Platforms: Linux, Mac, Windows
 
 ```
 usage: shutdown --is-confirmed
