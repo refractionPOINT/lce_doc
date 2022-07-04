@@ -2,7 +2,7 @@
 
 ## Overview
 
-Events in LimaCharlie are in standard formatted JSON. 
+At a high level, Events in LimaCharlie are in standard formatted JSON.
 
 ```schema json_schema
 {
@@ -139,6 +139,8 @@ Events in LimaCharlie are in standard formatted JSON.
   },
 }
 ```
+
+Specific Event schemas are learned and available through the [Schema API](schema.md).
 
 Events can be observed and matched by [Detection & Response rules](dr.md) to automate behavior and can also be streamed via [Outputs](outputs.md) to the destination of your choice. 
 
