@@ -39,14 +39,17 @@ In detection and response rules
 ## System Tags
 We provide system level functionality with a few system tags.  Those tags are listed below for reference:
 
-### latest
-When you tag a sensor with _latest_, the sensor version currently assigned to the Organization will be ignored for that specific sensor, and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the latest tag in order to test-deploy the latest version and confirm no negative effects.
+### lc:latest
+When you tag a sensor with _lc:latest_, the sensor version currently assigned to the Organization will be ignored for that specific sensor, and the latest version of the sensor will be used instead. This means you can tag a representative set of computers in the Organization with the lc:latest tag in order to test-deploy the latest version and confirm no negative effects.
 
-### experimental
-When you tag a sensor with _experimental_, the sensor version currently assigned to the Organization will be ignored for that specific sensor. An experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.
+### lc:stable
+When you tag a sensor with _lc:stable_, the sensor version currently assigned to the Organization will be ignored for that specific sensor, and the _stable_ version of the sensor will be used instead. This means you can upgrade an organization as a whole, but leave a few specific sensors behind by assigning the lc:stable tag to them.
 
-### no_kernel
-When you tag a sensor with _no_kernel_, the kernel component will not be loaded on the host. 
+### lc:experimental
+When you tag a sensor with _lc:experimental_, the sensor version currently assigned to the Organization will be ignored for that specific sensor. An experimental version of the sensor will be used instead. This tag is typically used when working with the LimaCharlie team to troubleshoot sensor-specific issues.
 
-### debug
-When you tag a sensor with _debug_, the debug version of the sensor currently assigned to the Organization will be used. 
+### lc:no_kernel
+When you tag a sensor with _lc:no_kernel_, the kernel component will not be loaded on the host.
+
+### lc:debug
+When you tag a sensor with _lc:debug_, the debug version of the sensor currently assigned to the Organization will be used.
