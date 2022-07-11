@@ -10,6 +10,8 @@ More information on Sigma: [Generic Signature Format for SIEM Systems](https://g
 
 Details on LimaCharlie's own powerful Detection & Response language can be found [here](./dr.md).
 
+Alternatively, if you wish to convert Sigma rules for LimaCharlie yourself, we've made a [simple REST converter service](./sigma-converter.md) available.
+
 ## Getting Started
 
 Getting started with Sigma detection coverage is easy. In the web application, navigate to the Setup section of the main navigation and click on Add-ons.
