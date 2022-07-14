@@ -1538,6 +1538,23 @@ Quota changed events are emitted when the quota for an Organization changes.
 }
 ```
 
+### cloud_adapter_disabled
+
+This event is emitted when a Cloud Adapter gets disabled because it has been erroring for a long period of time.
+
+```json
+{
+  "event":{
+    "error": "invalid api key"
+  },
+  "routing": {
+    "event_time": 1644444297696,
+    "event_type": "cloud_adapter_disabled",
+    "oid": "8cbe27f4-aaaa-cccc-bbbb-138cd51389cd"
+  }
+}
+```
+
 ## Artifact Events
 
 Events around artifact collection, observable in D&R rules via the `artifact_event` target.
