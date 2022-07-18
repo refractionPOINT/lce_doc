@@ -15,6 +15,7 @@ All Destinations can be configured with the following options:
 * `is_delete_on_failure`: if an error occurs during output, delete the output automatically.
 * `is_prefix_data`: wrap JSON events in a dictionary with the event_type as the key and original event as value.
 * `sample_rate`: limits data sent to Output to be 1/sample_rate.
+* `custom_transform`: a [transform template](./template_and_transforms.md) to apply to the JSON data as a last output step.
 
 > Need support for a Destination we haven't integrated yet? Let us know by chiming in on the [LimaCharlie community Slack](https://slack.limacharlie.io/), or by emailing us at [`support@limacharlie.io`](mailto:support@limacharlie.io).
 
@@ -276,11 +277,19 @@ Output detections and audit (only) to a Slack community and channel.
 
 * `slack_api_token`: the Slack provided API token used to authenticate.
 * `slack_channel`: the channel to output to within the community.
+* `attachment_text`: a [template string](./template_and_transforms.md) of the content to put in the "attachment" component of the Slack message.
+* `message`: a [template string](./template_and_transforms.md) of the Slack message content.
+* `color`: the attachment color to use, can either be one of `good` (green), `warning` (yellow), `danger` (red), or any hex color code (eg. `#439FE0`).
 
 Example:
 ```yaml
 slack_api_token: d8vyd8yeugr387y8wgf8evfb
 slack_channel: #detections
+color: danger
+message: Alert {{ .cat }} on {{ .routing.hostname }}.
+attachment_text: |
+   Raw content from {{ .routing.event_type }}:
+   {{ . }}
 ```
 
 ## Provisioning
@@ -306,7 +315,8 @@ Output individually each event, detection, audit, deployment or log through an e
 * `is_readable`: if 'true' the email format will be HTML and designed to be readable by a human instead of a machine.
 * `is_starttls`: if 'true', use the Start TLS method of securing the connection instead of pure SSL.
 * `is_authlogin`: if 'true', authenticate using `AUTH LOGIN` instead of `AUTH PLAIN`.
-* `subject`: is specified, use this as the alternate "subject" line.
+* `subject`: is specified, use this as the alternate "subject" line, support [template string](./template_and_transforms.md).
+* `template`: email content [template string](./template_and_transforms.md) in plaintext or HTML (if `is_readable` is enabled).
 
 Example:
 ```yaml
@@ -316,6 +326,18 @@ from_email: lc@corp.com
 username: lc
 password: password-for-my-lc-email-user
 secret_key: this-is-my-secret-shared-key
+is_readable: 'true'
+template: |
+   <html>
+      <head></head>
+      <body>
+         <b><i>User Name:</i></b> {{ .routing.hostname }}
+         <br/>
+         <b><i>Raw Data:</i></b>
+         <br/>
+         <pre>{{ . }}</pre>
+      </body>
+   </html>
 ```
 
 ## Syslog (TCP)
@@ -348,6 +370,16 @@ dest_host: https://webhooks.corp.com/new_detection
 secret_key: this-is-my-secret-shared-key
 auth_header_name: x-my-special-auth
 auth_header_value: 4756345846583498
+```
+
+Example [hook to Google Chat](https://developers.google.com/chat/how-tos/webhooks):
+```yaml
+dest_host: https://chat.googleapis.com/v1/spaces/AAAA4-AAAB/messages?key=afsdfgfdgfE6vySjMm-dfdssss&token=pBh2oZWr7NTSj9jisenfijsnvfisnvijnfsdivndfgyOYQ%3D
+secret_key: gchat-hook-sig42
+custom_transform: |
+   {
+      "text": "Detection {{ .cat }} on {{ .routing.hostname }}: {{ .link }}"
+   }
 ```
 
 ## Webhook Bulk

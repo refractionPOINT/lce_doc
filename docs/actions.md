@@ -35,6 +35,8 @@ Reports the match as a detection. Think of it as an alert. Detections go a few p
 * The organization's Detections page (if [`insight`](https://app.limacharlie.io/add-ons/detail/insight) is enabled)
 * The D&R rule engine, for chaining detections
 
+The `name` parameter supports [string templates](./template_and_transforms.md) like `detected {{ .cat }} on {{ .routing.hostname }}`.
+
 ### Limiting Scope
 
 There is a mechanism for limiting scope of a `report`, prefixing `name` with `__` (double underscore). This will cause the detection
