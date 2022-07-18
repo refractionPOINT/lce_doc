@@ -16,6 +16,8 @@ Sends a task in the `command` parameter to the sensor that the event under evalu
 
 An optional `investigation` parameter can be given to create a unique identifier for the task and any events emitted from the sensor as a result of the task.
 
+The `command` parameter supports [string templates](./template_and_transforms.md) like `artifact_get {{ .event.FILE_PATH }}`.
+
 > To view all possible commands, see [Reference: Sensor Commands](sensor_commands.md)
 
 ## report
