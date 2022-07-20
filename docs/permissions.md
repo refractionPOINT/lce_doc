@@ -12,7 +12,12 @@ The following is a list of all permissions that can be applied via User, API Key
 | sensor.get        | Get information about a sensor.                                      
 | sensor.task       | Send commands to a sensor.                                           
 | sensor.del        | Delete a sensor and remove its access.                               
-| sensor.tag        | Add and remove tags.                                                 
+| sensor.tag        | Add and remove tags.     
+| cloudsensor.del	  | Delete Cloud Sensor configuration.
+| cloudsensor.get	  | Get Cloud Sensor configuration.
+| cloudsensor.get.mtd | Get Cloud Sensor Metadata configuration.
+| cloudsensor.set	| Set Cloud Sensor configuration.
+| cloudsensor.set.mtd	| Set Cloud Sensor Metadata configuration.
 | dr.list           | List all Detection & Response rules in the 'general' namespace.      
 | dr.set            | Add and update Detection & Response rules in the 'general' namespace.
 | dr.del            | Delete Detection & Response rules in the 'general' namespace.        
