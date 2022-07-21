@@ -252,7 +252,88 @@ RUN chmod 500 ./lc_sensor
 CMD ./lc_sensor -d -
 ```
 
-And this is a sample Kubernetes `deployment`:
+And this is a sample Kubernetes `deployment` on
+
+a cluster supporting eBPF (kernel > 5.7):
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: lc-sensor
+  namespace: lc-monitoring
+  labels:
+    app: lc-monitoring
+spec:
+  minReadySeconds: 30
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: lc-monitoring
+  template:
+    metadata:
+      namespace: lc-monitoring
+      labels:
+        app: lc-monitoring
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+        - name: lc-sensor
+          image: refractionpoint/limacharlie_sensor:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+            capabilities:
+              add: ['CAP_SYS_ADMIN']
+          resources:
+            requests:
+              memory: 128M
+              cpu: 0.01
+            limits:
+              memory: 256M
+              cpu: 0.9
+          volumeMounts:
+            - mountPath: /rootfs
+              name: all-host
+            - mountPath: /netns
+              name: all-host-ns
+            - mountPath: /sys/kernel/debug
+              name: all-host-krnl
+            - mountPath: /sys/kernel/btf
+              name: btf
+            - mountPath: /lib/modules
+              name: libmodules
+          env:
+            - name: HOST_FS
+              value: /rootfs
+            - name: NET_NS
+              value: /netns
+            - name: LC_INSTALLATION_KEY
+              value: <<<< YOUR INSTALLATION KEY GOES HERE >>>>
+      volumes:
+        - name: all-host
+          hostPath:
+            path: /
+        - name: all-host-ns
+          hostPath:
+            path: /var/run/docker/netns
+        - name: all-host-krnl
+          hostPath:
+            path: /sys/kernel/debug
+        - name: btf
+          hostPath:
+            path: /sys/kernel/btf
+        - name: libmodules
+          hostPath:
+            path: /lib/modules
+```
+
+a cluster not supporting eBPF (kernel < 5.7):
 
 ```yaml
 apiVersion: apps/v1
@@ -286,10 +367,10 @@ spec:
             privileged: true
           resources:
             requests:
-              memory: 80M
+              memory: 128M
               cpu: 0.01
             limits:
-              memory: 128M
+              memory: 256M
               cpu: 0.9
           volumeMounts:
             - mountPath: /rootfs
