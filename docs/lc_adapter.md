@@ -9,6 +9,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * Google Cloud Pubsub
 * Native Windows Event Logs
 * Office 365 API
+* Slack Audit Logs API
 * STDIN
 * Syslog
 
@@ -36,6 +37,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * Google Cloud Storage (`gcs`)
 * Native Windows Event Logs (`wel`)
 * Office 365 API (`office365`)
+* Slack Audit Logs API (`slack`)
 * STDIN (`stdin`)
 * Syslog (`syslog`)
 
@@ -50,6 +52,7 @@ We provide built-in parsing/mapping for many popular formats (called `platform`)
 * Google Cloud Platform audit logs (`gcp`)
 * JSON logs (`json`)
 * Microsoft Defender (`msdefender`)
+* Slack audit logs (`slack`)
 * Text logs (`text`)
 * Windows Event Logs (`wel`)
 * XML logs (`xml`)
@@ -447,3 +450,35 @@ Here's a breakdown of the above example:
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
 * `client_options.hostname=1password`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
 * `connection_string:....`: the connection string provided in Azure for connecting to the Azure Event Hub, including the `EntityPath=...` at the end which identifies the Hub Name (this component is sometimes now shown in the connection string provided by Azure).
+
+### Slack from the Slack Audit Logs API
+
+This example shows connecting Slack audit logs from the Slack Audit Logs API.
+It uses the CLI Adapter (instead of the Docker container).
+
+Note that the Slack Audit Logs are only available through the Slack Enterprise Grid.
+
+```
+./lc_adapter slack client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=slack client_options.sensor_seed_key=slack client_options.hostname=slack-audit token=xoxp-ddjfidsfsdf-fgdfgdfgdf-dfgdfgd-86597a5d4010b92d17dfgdfgdfgfgdfg
+```
+
+Here's a breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `slack`: the data will be collected from the Slack Audit Logs API.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=slack`: this indicates the data received will be Slack audit logs.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
+* `client_options.hostname=slack-audit`: asking LimaCharlie to use the hostname `slack-audit`.
+* `token:....`: the Slack App OAuth token with `auditlogs:read` permission.
+
+#### Provisioning a Token
+To use this Adapter, you need to create a Slack App. This is very simple:
+1. Head over to https://api.slack.com/apps
+1. Click on "Create App" and select the workspace where it should go
+1. From the sidebar, click on OAuth & Permissions
+1. Go to the section "User Token Scope" and click "Add an OAuth Scope"
+1. Select the scope `auditlogs:read`
+1. From the sidebar, click "Install App" and then "Install to Workspace"
+1. Copy token shown, this is the `token` you need for the Adapter configuration
