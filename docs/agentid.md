@@ -41,8 +41,6 @@ structured with a major and minor platform, the important values are:
 * `0x03000000`: Windows Event Logs (external telemetry)
 * `0x04000000`: Microsoft Defender (external telemetry)
 * `0x05000000`: Duo (external telemetry)
-* `0x06000000`: Okta (external telemetry)
-* `0x07000000`: SentinelOne (external telemetry)
 * `0x08000000`: GitHub (external telemetry)
 * `0x09000000`: Slack (external telemetry)
 
