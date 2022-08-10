@@ -28,7 +28,7 @@ Output Example:
 
 CURL Example:
 ```
-curl -X POST  https://sigma.limacharlie.io/convert/repo -d "rule=@my-rule-file.yaml"
+curl -X POST  https://sigma.limacharlie.io/convert/rule -H 'content-type: application/x-www-form-urlencoded' --data-urlencode "rule@my-rule-file.yaml"
 ```
 
 ### Multiple Rules
