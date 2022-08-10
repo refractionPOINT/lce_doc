@@ -93,8 +93,6 @@ Add or remove a value from the variables associated with a sensor.
 
 The `add var` action can optionally take a `ttl` parameter that is a number of seconds the variable should remain in state for the sensor.
 
-> For more information on using variables, see [Using Sensor Variables](sensor-variables.md).
-
 ## service request
 
 Perform an asynchronous request to a service the organization is subscribed to. 
