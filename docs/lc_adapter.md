@@ -4,9 +4,11 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 
 * 1Password API
 * AWS S3
+* AWS SQS
 * Azure Event Hubs
 * Duo API
 * Google Cloud Pubsub
+* Google Cloud Storage
 * Native Windows Event Logs
 * Office 365 API
 * Slack Audit Logs API
@@ -31,6 +33,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 
 * 1Password API (`1password`)
 * AWS S3 (`s3`)
+* AWS SQS (`sqs`)
 * Azure Event Hubs (`azure_event_hub`)
 * Duo API (`duo`)
 * Google Cloud Pub/Sub (`pubsub`)
@@ -448,7 +451,7 @@ Here's a breakdown of the above example:
 * `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
 * `client_options.platform=msdefender`: this indicates the data received will be Defender events from their API.
 * `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
-* `client_options.hostname=1password`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
+* `client_options.hostname=Defender`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
 * `connection_string:....`: the connection string provided in Azure for connecting to the Azure Event Hub, including the `EntityPath=...` at the end which identifies the Hub Name (this component is sometimes now shown in the connection string provided by Azure).
 
 ### Slack from the Slack Audit Logs API
@@ -482,3 +485,27 @@ To use this Adapter, you need to create a Slack App. This is very simple:
 1. Select the scope `auditlogs:read`
 1. From the sidebar, click "Install App" and then "Install to Workspace"
 1. Copy token shown, this is the `token` you need for the Adapter configuration
+
+### AWS Cloud Trail from SQS
+
+This example shows connecting Cloud Trail from data exported to SQS.
+It uses the CLI Adapter (instead of the Docker container).
+
+```
+./lc_adapter sqs client_options.identity.installation_key=e9a3bcdf-efa2-47ae-b6df-579a02f3a54d client_options.identity.oid=8cbe27f4-bfa1-4afb-ba19-138cd51389cd client_options.platform=aws client_options.sensor_seed_key=sqsfeed client_options.hostname=CloudTrail access_key=YYYYYYYYYY secret_key=XXXXXXXX queue_url=https://sqs.us-west-2.amazonaws.com/005407111505/lc-test-queue region=us-west-2
+
+```
+
+Here's a breakdown of the above example:
+
+* `lc_adapter`: simply the CLI Adapter.
+* `sqs`: the data will be collected from SQS.
+* `client_options.identity.installation_key=....`: the installation key value from LimaCharlie.
+* `client_options.identity.oid=....`: the Organization ID from LimaCharlie the installation key above belongs to.
+* `client_options.platform=aws`: this indicates the data received will be Defender events from their API.
+* `client_options.sensor_seed_key=....`: this is the value that identifies this instance of the Adapter. Record it to re-use the Sensor IDs generated for the MS Defender for Endpoint sensors from this Adapter later if you have to re-install the Adapter.
+* `client_options.hostname=CloudTrail`: asking LimaCharlie to use the hostname `Defender` for the data coming in from MS Defender, but not from an Endpoint (like email attachment events).
+* `access_key=....`: the AWS Access Key for the API key below.
+* `secret_key=....`: the API key for AWS that has access to this SQS.
+* `region=us-west-2` the AWS region where the SQS instance lives.
+* `queue_url=.....`: the URL to the SQS instance.
