@@ -839,3 +839,21 @@ Platforms: Linux, Mac, Windows
 ```
 usage: shutdown --is-confirmed
 ```
+
+### logoff
+Execute a logoff for all the users
+
+Platforms: Mac, Windows
+
+```
+usage: logoff --is-confirmed
+```
+
+### reboot
+Execute an immediate system reboot (no warnings and zero delay time)
+
+Platforms: Linux, Mac, Windows
+
+```
+usage: reboot --is-confirmed
+```
