@@ -55,4 +55,4 @@ When you tag a sensor with _lc:no_kernel_, the kernel component will not be load
 When you tag a sensor with _lc:debug_, the debug version of the sensor currently assigned to the Organization will be used.
 
 ### lc:sleep
-When you tag a sensor wuth _lc:sleep_, the sensor will keep its connection to the LimaCharlie Cloud, but will disable all other functionality to avoid any impact on the system.
+When you tag a sensor with _lc:sleep_, the sensor will keep its connection to the LimaCharlie Cloud, but will disable all other functionality to avoid any impact on the system.
