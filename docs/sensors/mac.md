@@ -4,6 +4,10 @@ LimaCharlie's Mac sensor is one of the EDR-class sensors. It interfaces with the
 
 Supports MacOS 10.7 and up.
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/acae13e5a95fa-deploying-sensors) 
+
 ## Supported Events
 
 * [`AUTORUN_CHANGE`](../events.md#autorun_change)
