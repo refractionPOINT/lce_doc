@@ -4,6 +4,10 @@ LimaCharlie's Chrome sensor is particularly useful for gaining affordable networ
 
 It's delivered as the [LimaCharlie Sensor](https://chrome.google.com/webstore/detail/limacharlie-sensor/ljdgkaegafdgakkjekimaehhneieecki) extension available in the Chrome Web Store.
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/acae13e5a95fa-deploying-sensors#chrome) 
+
 ## Supported Events
 
 * [`CONNECTED`](../events.md#connected)
