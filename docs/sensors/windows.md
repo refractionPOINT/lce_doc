@@ -4,6 +4,10 @@ LimaCharlie's Windows sensor is one of the EDR-class sensors. It interfaces with
 
 Supports Windows XP 32 bit and up.
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/acae13e5a95fa-deploying-sensors) 
+
 ## Supported Events
 
 * [`AUTORUN_CHANGE`](../events.md#autorun_change)
