@@ -4,7 +4,43 @@ Actions are used in the Response part of a Detection & Response rule.
 
 > For more information on how to use Actions, read [Detection & Response Rules](dr.md). 
 
-## task
+## Common Features
+
+## Suppression
+
+In some cases, you may want to limit the number of times a specific Action is executed over a certain
+period of time. You can achieve this through `suppression`. This feature is supported in every Actions.
+
+A suppression descriptor can be added to an Action like:
+
+```yaml
+- action: report
+  name: evil-process-detected
+  suppression:
+    max_count: 1
+    period: 1h
+    is_global: true
+    keys:
+      - '{{ .event.FILE_PATH }}'
+      - 'evil-process-detected'
+```
+
+The above example means that the `evil-process-detected` detection will be generated up to once per hour per `FILE_PATH`.
+Beyond the first `report` with a given `FILE_PATH`, during the one hour period, new `report` actions from this rule will be skipped.
+
+The `is_global: true` means that the suppression should operate globally within the Org (tenant), if the value
+was `false`, the suppression would be scoped per-sensor.
+
+The `keys` parameter is a list of strings that support [templating](template_and_transforms.md). Together, the
+unique combination of values of all those strings (ANDed) will be the uniqueness key this suppression rule uses. By adding to
+the keys the `{{ .event.FILE_PATH }}` template, we indicate that the `FILE_PATH` of the event generating this `report` is part
+of the key, while the constant string `evil-process-detected` is just a convenient way for us to specify a value related to this
+specific detection. If the `evil-process-detected` component of the key was not specified, then _all_ actions that also just specify
+the `{{ .event.FILE_PATH }}` would be contained in this suppression. This means that using `is_global: true` and a complex key set, it
+is possible to suppress some actions across multiple Actions across multiple D&R rules.
+
+## Available Actions
+### task
 
 ```yaml
 - action: task
@@ -20,7 +56,7 @@ The `command` parameter supports [string templates](./template_and_transforms.md
 
 > To view all possible commands, see [Reference: Sensor Commands](sensor_commands.md)
 
-## report
+### report
 
 ```yaml
 - action: report
@@ -39,20 +75,20 @@ Reports the match as a detection. Think of it as an alert. Detections go a few p
 
 The `name` parameter supports [string templates](./template_and_transforms.md) like `detected {{ .cat }} on {{ .routing.hostname }}`.
 
-### Limiting Scope
+#### Limiting Scope
 
 There is a mechanism for limiting scope of a `report`, prefixing `name` with `__` (double underscore). This will cause the detection
 generated to be visible to chained D&R rules and Services, but the detection will *not* be sent to the Outputs for storage.
 
 This is a useful mechanism to automate behavior using D&R rules without generating extra traffic that is not useful.
 
-### Optional Parameters
+#### Optional Parameters
 
 The `priority` parameter, if set, should be an integer. It will be added to the root of the detection report as `priority`.
 
 The `metadata` parameter, if set, can include any data. It will be added to the root of the detection report as `detect_mtd`. This can be used to include information for internal use like reference numbers or URLs.
 
-## add tag, remove tag
+### add tag, remove tag
 
 ```yaml
 - action: add tag
@@ -63,7 +99,7 @@ The `metadata` parameter, if set, can include any data. It will be added to the 
 
 Adds or removes tags on the sensor. 
 
-### Optional Parameters
+#### Optional Parameters
 
 The `add tag` action can optionally take a `ttl` parameter that is a number of seconds the tag should remain applied to the sensor.
 
@@ -80,7 +116,7 @@ For example, this would apply the `full_pcap` to all sensors on the device for 5
   entire_device: true
 ```
 
-## add var, del var
+### add var, del var
 
 Add or remove a value from the variables associated with a sensor.
 
@@ -93,7 +129,7 @@ Add or remove a value from the variables associated with a sensor.
 
 The `add var` action can optionally take a `ttl` parameter that is a number of seconds the variable should remain in state for the sensor.
 
-## service request
+### service request
 
 Perform an asynchronous request to a service the organization is subscribed to. 
 
@@ -107,7 +143,7 @@ Perform an asynchronous request to a service the organization is subscribed to.
 
 The `request` parameters will vary depending on the service (see the relevant service's documentation). Parameters can also leverage [lookback](#lookback) values (i.e. `<<path/to/value>>`) from the detected event.
 
-## isolate network
+### isolate network
 
 Isolates the sensor from the network in a persistent fashion (if the sensor/host reboots, it will remain isolated). Only works on platforms supporting the `segregate_network` [sensor command](sensor_commands.md#segregate_network).
 
@@ -115,7 +151,7 @@ Isolates the sensor from the network in a persistent fashion (if the sensor/host
 - action: isolate network
 ```
 
-## rejoin network
+### rejoin network
 
 Removes the isolation status of a sensor that had it set using `isolate network`.
 
@@ -123,7 +159,7 @@ Removes the isolation status of a sensor that had it set using `isolate network`
 - action: rejoin network
 ```
 
-## undelete sensor
+### undelete sensor
 
 Un-deletes a sensor that was previously deleted. 
 
@@ -133,7 +169,7 @@ Un-deletes a sensor that was previously deleted.
 
 This can be used in conjunction with the [deleted_sensor](events.md#deleted_sensor) event to allow sensors to rejoin the fleet.
 
-## wait
+### wait
 
 Adds a delay (up to 1 minute) before running the next response action.
 
@@ -158,7 +194,7 @@ and
   duration: 5
 ```
 
-## output
+### output
 
 Forwards the matched event to an Output identified by `name` in the `tailored` [stream](https://doc.limacharlie.io/docs/documentation/ZG9jOjE5MzExMTY-outputs#tailored-stream).
 
