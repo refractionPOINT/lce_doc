@@ -15,6 +15,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * STDIN
 * Syslog
 
+
 ## Availability
 
 * Docker: https://hub.docker.com/r/refractionpoint/lc-adapter
@@ -61,6 +62,9 @@ We provide built-in parsing/mapping for many popular formats (called `platform`)
 * XML logs (`xml`)
 
 The adapter also provides you with the ability to define custom parsing/mapping yourself.
+
+Note, the AWS S3 and Google Cloud Storage ingestion methods use buckets as a sink, so it will delete blobs as it consumes them. The ingestion API key will require the ability to delete objects in AWS S3 bucket/GCS. To avoid any errors, it is recommended to create a dedicated bucket to ingest logs into LimaCharlie.
+
 
 ## Usage
 
