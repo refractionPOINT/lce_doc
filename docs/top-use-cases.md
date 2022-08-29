@@ -24,7 +24,7 @@ LimaCharlie lives in multiple independent data centers around the globe. Choosin
 
 The LimaCharlie agent can be deployed across all major operating systems for x86, ARM and MIPS architectures.
 
-The agent is approximately 500kb in size and consumes less that 1% CPU on average. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection.
+The agent is approximately 500kb in size and consumes less than 1% CPU on average. LimaCharlie is able to pack so much power into such a small program because it treats the agent as an extension of the cloud by utilizing a true real-time persistent TLS connection.
 
 Exfil control ensures that you can tailor the amount of telemetry produced and focus on protecting what you care about.
 
