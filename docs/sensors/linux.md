@@ -4,6 +4,10 @@ LimaCharlie's Linux sensor is one of the EDR-class sensors. It  interfaces with 
 
 Supports all Linux distributions (including ARM and MIPS).
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/acae13e5a95fa-deploying-sensors) 
+
 ## Supported Events
 
 * [`AUTORUN_CHANGE`](../events.md#autorun_change)
