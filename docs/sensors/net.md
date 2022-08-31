@@ -2,6 +2,10 @@
 
 LimaCharlie's Net sensor enables both network visibility and granular network access control. It is built on top of the WireGuard VPN tunnel client, which effectively routes all network activity through your organization's Net Policies.
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/ZG9jOjU4NjkzNDA-lima-charlie-net-secure-access-service-edge-sase) 
+
 ## Supported Events
 
 * [`NETWORK_CONNECTIONS`](../events.md#network_connections)
