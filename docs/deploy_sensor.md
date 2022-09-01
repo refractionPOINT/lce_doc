@@ -411,6 +411,14 @@ copy the key to your clipboard.
 
 The installation key can also be pre-configured through the Managed Storage feature (key named `installation_key`) if you are using a managed Chrome deployment.
 
+### Microsoft Edge
+The Edge sensor is available in the Edge Add-ons section.
+
+1. In the LimaCharlie web app (app.limacharlie.io), go to the "Installation Keys" section, select your installation key and click the "Chrome Key" copy icon to
+copy the key to your clipboard.
+1. Install the sensor from: [https://microsoftedge.microsoft.com/addons/detail/limacharlie-sensor/nomgmkpkkncolnpbkbamfnjhbhmnjehp](https://microsoftedge.microsoft.com/addons/detail/limacharlie-sensor/nomgmkpkkncolnpbkbamfnjhbhmnjehp)
+2. A new tab will open where you can add your installation key from before.
+
 ### Staging Deployment
 When a new version of the sensor is made available, it can be useful to test the new version on specific hosts within an Organization without upgrading the whole Organization.
 
