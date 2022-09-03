@@ -232,6 +232,43 @@ rule:
       value: 445
 ```
 
+### cidr
+
+The `cidr` checks if an IP address at the path is contained within a given
+[CIDR network mask](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+
+Example rule:
+```yaml
+event: NETWORK_CONNECTIONS
+op: cidr
+path: event/NETWORK_ACTIVITY/SOURCE/IP_ADDRESS
+cidr: 10.16.1.0/24
+```
+
+### is private address
+
+The `is private address` checks if an IP address at the path is a private address
+as defined by [RFC 1918](https://en.wikipedia.org/wiki/Private_network).
+
+Example rule:
+```yaml
+event: NETWORK_CONNECTIONS
+op: is private address
+path: event/NETWORK_ACTIVITY/SOURCE/IP_ADDRESS
+```
+
+### is public address
+
+The `is public address` checks if an IP address at the path is a public address
+as defined by [RFC 1918](https://en.wikipedia.org/wiki/Private_network).
+
+Example rule:
+```yaml
+event: NETWORK_CONNECTIONS
+op: is public address
+path: event/NETWORK_ACTIVITY/SOURCE/IP_ADDRESS
+```
+
 ## Transforms
 
 Transforms are transformations applied to the value being evaluated in an event, prior to the evaluation.
