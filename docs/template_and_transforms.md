@@ -23,7 +23,7 @@ Template strings also support some LimaCharlie-specific functions:
 The `token` and `anon` functions can be used to partially anonymize data anywhere a template string is supported, for example:
 ```yaml
 - action: report
-  name: 'User {{anon .event.USER_NAME }} accessed a website against policy.'
+  name: 'User {{token .event.USER_NAME }} accessed a website against policy.'
 ```
 
 ## Transforms
