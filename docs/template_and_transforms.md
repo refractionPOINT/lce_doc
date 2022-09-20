@@ -128,6 +128,7 @@ And this is our Transform definition:
     "dat": {                                                      // define a sub-object in the output
         "raw": "event.EVENT.EventData",                           // a "raw" key where we map a specific object from the input
     },
+    "anon_ip": "{{anon .routing.int_ip }}",                       // an anonymized version of the internal IP
     "ts":   "routing.event_time",                                 // map a specific simple value
     "nope": "does.not.exist",                                     // map a value that is not present
 }
@@ -165,6 +166,7 @@ Then the resulting Output would be:
     "from": "limacharlie",
     "message": "Interesting event from demo-win-2016.c.lc-demo-infra.internal",
     "nope": null,
-    "ts": 1657925305984
+    "ts": 1657925305984,
+    "anon_ip": "e80b5017098950fc58aad83c8c14978e"
 }
 ```
