@@ -16,6 +16,16 @@ The most basic example for a D&R rule customizing the detection name looks like 
   name: Evil executable on {{ .routing.hostname }}
 ```
 
+Template strings also support some LimaCharlie-specific functions:
+* `token`: applies an MD5 hashing function on the value provided.
+* `anon`: applies an MD5 hashing function on a secret seed value, plus the value provided.
+
+The `token` and `anon` functions can be used to partially anonymize data anywhere a template string is supported, for example:
+```yaml
+- action: report
+  name: 'User {{anon .event.USER_NAME }} accessed a website against policy.'
+```
+
 ## Transforms
 
 With Transforms, you specify a JSON object that describes the transformation.
