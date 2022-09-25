@@ -31,5 +31,5 @@ The following are the available operators:
 
 Here are some example:
 * all sensors with the test tag: `test in tags`
-* all windows boxes with an internal IP starting in 10.3.x.x: `plat == windows and int_ip matches `^10\.3\..*``
+* all windows boxes with an internal IP starting in 10.3.x.x: `plat == windows and int_ip matches ``^10\.3\..*```
 * all linux with network isolation or evil tag: `plat == linux or (isolated == true or evil in tags)`
