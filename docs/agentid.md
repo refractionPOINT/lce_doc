@@ -23,39 +23,41 @@ The SID (Sensor ID) is a UUID that identifies a unique sensor.
 The platform is a 32 bit integer (in its hex format) which identifies the exact platform the sensor runs on. Although it is
 structured with a major and minor platform, the important values are:
 
-* `0x10000000`: Windows
-* `0x20000000`: Linux
-* `0x30000000`: MacOS
-* `0x40000000`: iOS (unused)
-* `0x50000000`: Android (unused)
-* `0x60000000`: ChromeOS
-* `0x70000000`: lc-net
-* `0x80000000`: Text (external telemetry)
-* `0x90000000`: JSON (external telemetry)
-* `0xA0000000`: GCP (external telemetry)
-* `0xB0000000`: AWS (external telemetry)
-* `0xC0000000`: VMWare Carbon Black (external telemetry)
-* `0xD0000000`: 1Password (external telemetry)
-* `0xE0000000`: Microsoft/Office 365 (external telemetry)
-* `0x02000000`: XML (external telemetry)
-* `0x03000000`: Windows Event Logs (external telemetry)
-* `0x04000000`: Microsoft Defender (external telemetry)
-* `0x05000000`: Duo (external telemetry)
-* `0x08000000`: GitHub (external telemetry)
-* `0x09000000`: Slack (external telemetry)
+* `0x10000000`: Windows (`windows`)
+* `0x20000000`: Linux (`linux`)
+* `0x30000000`: MacOS (`macos`)
+* `0x40000000`: iOS (unused) (`ios`)
+* `0x50000000`: Android (unused) (`android`)
+* `0x60000000`: ChromeOS (`chrome`)
+* `0x70000000`: lc-net (`vpn`)
+* `0x80000000`: Text (external telemetry) (`text`)
+* `0x90000000`: JSON (external telemetry) (`json`)
+* `0xA0000000`: GCP (external telemetry) (`gcp`)
+* `0xB0000000`: AWS (external telemetry) (`aws`)
+* `0xC0000000`: VMWare Carbon Black (external telemetry) (`carbon_black`)
+* `0xD0000000`: 1Password (external telemetry) (`1password`)
+* `0xE0000000`: Microsoft/Office 365 (external telemetry) (`office365`)
+* `0x02000000`: XML (external telemetry) (`xml`)
+* `0x03000000`: Windows Event Logs (external telemetry) (`wel`)
+* `0x04000000`: Microsoft Defender (external telemetry) (`msdefender`)
+* `0x05000000`: Duo (external telemetry) (`duo`)
+* `0x08000000`: GitHub (external telemetry) (`github`)
+* `0x09000000`: Slack (external telemetry) (`slack`)
+* `0x0A000000`: Common Event Format (CEF) (`cef`)
+* `0x0B000000`: LimaCharlie Events (`lc_event`)
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:
 
-* `1`: 32 bit
-* `2`: 64 bit
-* `3`: ARM
-* `4`: ARM64
-* `5`: Alpine 64
-* `6`: Chrome
-* `7`: Wireguard
-* `8`: ARML
-* `9`: lc-adapter
+* `1`: 32 bit (`x86`)
+* `2`: 64 bit (`x64`)
+* `3`: ARM (`arm`)
+* `4`: ARM64 (`arm64`)
+* `5`: Alpine 64 (`alpine64`)
+* `6`: Chrome (`chromium`)
+* `7`: Wireguard (`wireguard`)
+* `8`: ARML (`arml`)
+* `9`: lc-adapter (`usp_adapter`)
 
 ## Device IDs
 Given the breadth of platforms supported by LimaCharlie, it is not unusual for one "device" (laptop, server, mobile etc) to be visible from multiple sensors. A basic example of this might be:
