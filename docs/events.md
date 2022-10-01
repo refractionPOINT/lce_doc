@@ -1215,8 +1215,6 @@ a remote process.
 
 Platforms: Windows
 
-**Temporarily unavailable.**
-
 ### SENSITIVE_PROCESS_ACCESS
 This event is generated when a process gains sensitive access through a remote process handle or a remote thread to sensitive operating system processes like lsass.exe on Windows.
 
