@@ -5,6 +5,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * 1Password API
 * AWS S3
 * AWS SQS
+* AWS SQS -> S3 blobs
 * Azure Event Hubs
 * Duo API
 * Google Cloud Pubsub
@@ -35,6 +36,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * 1Password API (`1password`)
 * AWS S3 (`s3`)
 * AWS SQS (`sqs`)
+* AWS SQS -> S3 (`sqs-files`)
 * Azure Event Hubs (`azure_event_hub`)
 * Duo API (`duo`)
 * Google Cloud Pub/Sub (`pubsub`)
@@ -51,6 +53,7 @@ We provide built-in parsing/mapping for many popular formats (called `platform`)
 * 1password event logs (`1password`)
 * AWS Cloud Trail logs (`aws`)
 * CarbonBlack EDR (`carbon_black`)
+* CrowdStrike EDR (`crowdstrike`)
 * Duo authentication & admin logs (`duo`)
 * GitHub audit logs (`github`)
 * Google Cloud Platform audit logs (`gcp`)

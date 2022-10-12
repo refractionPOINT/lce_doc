@@ -158,6 +158,7 @@ Takes a `name` parameter for the platform name. The current platforms are:
 * `gcp`
 * `aws`
 * `carbon_black`
+* `crowdstrike`
 * `1password`
 * `office365`
 * `msdefender`
