@@ -37,6 +37,7 @@ structured with a major and minor platform, the important values are:
 * `0xC0000000`: VMWare Carbon Black (external telemetry) (`carbon_black`)
 * `0xD0000000`: 1Password (external telemetry) (`1password`)
 * `0xE0000000`: Microsoft/Office 365 (external telemetry) (`office365`)
+* `0x01000000`: CrowdStrike (external telemetry) (`crowdstrike`)
 * `0x02000000`: XML (external telemetry) (`xml`)
 * `0x03000000`: Windows Event Logs (external telemetry) (`wel`)
 * `0x04000000`: Microsoft Defender (external telemetry) (`msdefender`)
