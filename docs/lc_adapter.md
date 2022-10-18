@@ -8,6 +8,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * AWS SQS -> S3 blobs
 * Azure Event Hubs
 * Duo API
+* File
 * Google Cloud Pubsub
 * Google Cloud Storage
 * Native Windows Event Logs
@@ -39,6 +40,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * AWS SQS -> S3 (`sqs-files`)
 * Azure Event Hubs (`azure_event_hub`)
 * Duo API (`duo`)
+* File (`file`)
 * Google Cloud Pub/Sub (`pubsub`)
 * Google Cloud Storage (`gcs`)
 * Native Windows Event Logs (`wel`)
