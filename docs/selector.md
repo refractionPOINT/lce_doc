@@ -9,6 +9,7 @@ The following fields are available in this evaluation:
 * `oid`: the Organization ID
 * `iid`: the Installation Key ID
 * `plat`: the Platform name (see [platforms](agentid.md#platform))
+* `ext_plat`: the Extended Platform name (see [platforms](agentid.md#platform))
 * `arch`: the Architecture name (see [architectures](agentid.md#architecture))
 * `enroll`: the Enrollment as a second epoch timestamp
 * `hostname`: the hostname
@@ -20,6 +21,7 @@ The following fields are available in this evaluation:
 * `should_isolate`: a boolean True if the sensor is marked to be isolated
 * `kernel`: a boolean True if the sensor has some sort of "kernel" enhanced visibility
 * `did`: the Device ID the sensor belongs to
+* `tags`: the list of tags the sensor currently has
 
 The following are the available operators:
 * `==`: equals
