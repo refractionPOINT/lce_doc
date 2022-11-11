@@ -73,7 +73,7 @@ Reports the match as a detection. Think of it as an alert. Detections go a few p
 * The organization's Detections page (if [`insight`](https://app.limacharlie.io/add-ons/detail/insight) is enabled)
 * The D&R rule engine, for chaining detections
 
-The `name` parameter supports [string templates](./template_and_transforms.md) like `detected {{ .cat }} on {{ .routing.hostname }}`.
+The `name` and `metadata` parameters support [string templates](./template_and_transforms.md) like `detected {{ .cat }} on {{ .routing.hostname }}`.
 
 #### Limiting Scope
 
@@ -141,7 +141,9 @@ Perform an asynchronous request to a service the organization is subscribed to.
     retention: 3
 ```
 
-The `request` parameters will vary depending on the service (see the relevant service's documentation). Parameters can also leverage [lookback](#lookback) values (i.e. `<<path/to/value>>`) from the detected event.
+The `request` parameters will vary depending on the service (see the relevant service's documentation). Parameters can also leverage [lookback](#lookback) values (i.e. `<<path/to/value>>`) from the detected event. The `request` parameter also support [string templates](./template_and_transforms.md).
+
+You can also specify a `based on report: true` parameter. When true (defaults to false), the lookback and template strings for the `request` will be based on the latest `report` action's report instead of the original event. This means you MUST have a `report` action _before_ the `service request`.
 
 ### isolate network
 
