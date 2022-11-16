@@ -18,7 +18,6 @@ positional arguments:
   file                  file path to file to get
 
 optional arguments:
-  -h, --help            show this help message and exit
   -o OFFSET, --offset OFFSET
                         offset bytes to begin reading the file at, in base 10
   -s MAXSIZE, --size MAXSIZE
@@ -37,8 +36,6 @@ usage: file_info [-h] file
 positional arguments:
   file        file path to file to get info on
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### dir_list
@@ -55,7 +52,6 @@ positional arguments:
                         * and ?
 
 optional arguments:
-  -h, --help            show this help message and exit
   -d DEPTH, --depth DEPTH
                         optional maximum depth of the listing, defaults to a
                         single level
@@ -75,7 +71,6 @@ positional arguments:
                         * and ?
 
 optional arguments:
-  -h, --help            show this help message and exit
   -d DEPTH, --depth DEPTH
                         optional maximum depth of the listing, defaults to a
                         single level
@@ -93,8 +88,6 @@ usage: file_del [-h] file
 positional arguments:
   file        file path to delete
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### file_mov
@@ -109,8 +102,6 @@ positional arguments:
   srcFile     source file path
   dstFile     destination file path
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### file_hash
@@ -124,8 +115,6 @@ usage: file_hash [-h] file
 positional arguments:
   file        file path to hash
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## Memory
@@ -141,7 +130,6 @@ Platforms: Windows, Linux, MacOS
 usage: mem_map [-h] [-p PID] [-a PROCESSATOM]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     pid of the process to get the map from
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target proces
@@ -162,7 +150,6 @@ positional arguments:
   memSize               number of bytes to read, in HEX FORMAT
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     pid of the process to get the map from
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target process
@@ -177,7 +164,6 @@ Platforms: Windows
 usage: mem_handles [-h] [-p PID] [-a PROCESSATOM]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     pid of the process to get the handles from, 0 for all
                         processes
   -a PROCESSATOM, --processatom PROCESSATOM
@@ -195,7 +181,6 @@ Platforms: Windows, Linux, MacOS
 usage: mem_strings [-h] [-p PID] [-a PROCESSATOM]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     pid of the process to get the strings from
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target process
@@ -216,7 +201,6 @@ positional arguments:
   pid                   pid of the process to search in, 0 for all processes
 
 optional arguments:
-  -h, --help            show this help message and exit
   -s STRING [STRING ...], --strings STRING [STRING ...]
                         list of strings to look for
 ```
@@ -232,8 +216,6 @@ usage: mem_find_handle [-h] needle
 positional arguments:
   needle      substring of the handle names to get
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## OS
@@ -246,8 +228,6 @@ Platforms: Windows, Linux, MacOS
 ```
 usage: os_services [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### os_drivers
@@ -258,8 +238,6 @@ Platforms: Windows
 ```
 usage: os_drivers [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### os_packages
@@ -270,8 +248,6 @@ Platforms: Windows, Chrome
 ```
 usage: os_packages [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### os_kill_process
@@ -283,7 +259,6 @@ Platforms: Windows, Linux, MacOS
 usage: os_kill_process [-h] [-p PID] [-a PROCESSATOM]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     pid of the process to kill
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target process
@@ -298,7 +273,6 @@ Platforms: Windows, Linux, MacOS
 usage: os_suspend [-h] [-p PID] [-a PROCESSATOM] [-t TID]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     process id
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target process
@@ -314,7 +288,6 @@ Platforms: Windows, Linux, MacOS
 usage: os_resume [-h] [-p PID] [-a PROCESSATOM] [-t TID]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -p PID, --pid PID     process id
   -a PROCESSATOM, --processatom PROCESSATOM
                         the atom of the target process
@@ -330,7 +303,6 @@ Platforms: Windows, Linux, MacOS
 usage: os_processes [-h] [-p PID] [--is-no-modules]
 
 optional arguments:
-  -h, --help         show this help message and exit
   -p PID, --pid PID  only get information on process id
   --is-no-modules    do not report modules in processes
 ```
@@ -343,8 +315,6 @@ Platforms: Windows, Linux, MacOS
 ```
 usage: os_autoruns [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### os_version
@@ -355,8 +325,6 @@ Platforms: Windows, Linux, MacOS
 ```
 usage: os_version [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## Registry
@@ -372,8 +340,6 @@ usage: reg_list [-h] reg
 positional arguments:
   reg         registry path to list, must start with one of "hkcr", "hkcc", "hkcu", "hklm", "hku", e.g. "hklm\software"...
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 
@@ -390,8 +356,6 @@ usage: hidden_module_scan [-h] pid
 positional arguments:
   pid         pid of the process to scan, or "-1" for ALL processes
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 
@@ -412,7 +376,6 @@ positional arguments:
   event                 name of event to start exfiling
 
 optional arguments:
-  -h, --help            show this help message and exit
   -e EXPIRE, --expire EXPIRE
                         number of seconds before stopping exfil of event
 ```
@@ -428,8 +391,6 @@ usage: exfil_del [-h] event
 positional arguments:
   event       name of event to stop exfiling
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### exfil_get
@@ -440,8 +401,6 @@ Platforms: Windows, Linux, MacOS
 ```
 usage: exfil_get [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### history_dump
@@ -453,7 +412,6 @@ Platforms: Windows, Linux, MacOS, Chrome
 usage: history_dump [-h] [-r ROOT] [-a ATOM] [-e EVENT]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -r ROOT, --rootatom ROOT
                         dump events present in the tree rooted at this atom
   -a ATOM, --atom ATOM  dump the event with this specific atom
@@ -472,7 +430,6 @@ Platforms: Windows
 usage: set_performance_mode [-h] [--is-enabled]
 
 optional arguments:
-  -h, --help    show this help message and exit
   --is-enabled  if specified, the high performance mode is enabled, otherwise
                 disabled
 ```
@@ -490,7 +447,6 @@ Platform: Windows, MacOS
 usage: uninstall [-h] [--is-confirmed]
 
 optional arguments:
-  -h, --help      show this help message and exit
   --is-confirmed  must be specified as a confirmation you want to uninstall
                   the sensor
 ```
@@ -531,7 +487,6 @@ Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on L
 usage: fim_add [-h] --pattern PATTERNS
 
 optional arguments:
-  -h, --help          show this help message and exit
   --pattern PATTERNS  file path or registry path pattern to monitor
 ```
 
@@ -544,7 +499,6 @@ Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on L
 usage: fim_del [-h] --pattern PATTERNS
 
 optional arguments:
-  -h, --help          show this help message and exit
   --pattern PATTERNS  file path or registry path pattern to stop monitoring
 ```
 
@@ -556,8 +510,6 @@ Platforms: Windows, MacOS, Linux (see [this](replicants.md#linux) for notes on L
 ```
 usage: fim_get [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## Yara
@@ -575,9 +527,6 @@ usage: yara_update [-h] rule
 
 positional arguments:
   rule        rule to compile and set on sensor for constant scanning, literal rule or "https://" URL or base64 encoded rule
-
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### yara_scan
@@ -588,19 +537,25 @@ Platforms: Windows, Linux, MacOS
 **The memory component of the scan on MacOS may be less reliable due to recent limitations imposed by Apple.**
 
 ```
-usage: yara_scan [-h] [-p PID] [-f FILEPATH] [-e PROC] rule
+yara_scan [--pid PID] [--filePath FILEPATH] [--processExpr PROCESSEXPR] [--is-memory-only] [--is-no-validation] [--root-dir ROOT-DIR] [--file-exp FILE-EXP] [--depth DEPTH] RULE
 
-positional arguments:
-  rule                  rule to compile and run on sensor, literal rule or "https://" URL or base64 encoded rule
+Positional arguments:
+  RULE                   rule to compile and run on sensor, Yara resource reference like "lcr://service/yara/my-source,other-source", literal rule or "https://" URL or base64 encoded rule
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -p PID, --pid PID     pid of the process to scan
-  -f FILEPATH, --filePath FILEPATH
-                        path of the file to scan
-  -e PROC, --processExpr PROC
-                        expression to match on to scan (matches on full
-                        process path)
+Options:
+  --pid PID, -p PID      pid of the process to scan [default: -1]
+  --filePath FILEPATH, -f FILEPATH
+                         path to the file scan
+  --processExpr PROCESSEXPR, -e PROCESSEXPR
+                         expression to match on to scan (matches on full process path)
+  --is-memory-only       only scan the memory, ignore files on disk. [default: true]
+  --is-no-validation     if specified, do not validate the rule before sending. [default: false]
+  --root-dir ROOT-DIR, -r ROOT-DIR
+                         the root directory where to begin the search for files to scan
+  --file-exp FILE-EXP, -x FILE-EXP
+                         a file name expression supporting basic wildcards like * and ? to match against files in the --root-dir [default: *]
+  --depth DEPTH, -d DEPTH
+                         optional maximum depth of the search for files to scan, defaults to a single level
 ```
 
 
@@ -639,7 +594,6 @@ Platforms: Windows, MacOS
 usage: doc_cache_get [-h] [-f FILE_PATTERN] [-s HASHSTR]
 
 optional arguments:
-  -h, --help            show this help message and exit
   -f FILE_PATTERN, --file_pattern FILE_PATTERN
                         a pattern to match on the file path and name of the
                         document, simple wildcards ? and * are supported
@@ -660,8 +614,6 @@ usage: deny_tree [-h] atom [atom ...]
 positional arguments:
   atom        atoms to deny from
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### segregate_network
@@ -678,8 +630,6 @@ Platforms: Windows, MacOS, Chrome
 ```
 usage: segregate_network [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### rejoin_network
@@ -690,8 +640,6 @@ Platforms: Windows, MacOS, Chrome
 ```
 usage: rejoin_network [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## Network
@@ -705,8 +653,6 @@ Platforms: Windows, Linux
 ```
 usage: netstat [-h]
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ### dns_resolve
@@ -721,8 +667,6 @@ usage: dns_resolve [-h] domain
 positional arguments:
   domain      domain name to resolve
 
-optional arguments:
-  -h, --help  show this help message and exit
 ```
 
 ## Artifact Collection
@@ -741,7 +685,6 @@ usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
                [--is-ignore-cert]
 
 optional arguments:
-  -h, --help            show this help message and exit
   --file FILE           file path to get
   --source SOURCE       optional os specific artifact source (not currently supported)
   --type TYPE           optional artifact type
@@ -776,7 +719,6 @@ usage: run [-h] [--payload-name NAME] [--arguments ARGUMENTS]
            [--shell-command SHELLCMD] [--timeout TIMEOUT] [--is-ignore-cert]
 
 optional arguments:
-  -h, --help            show this help message and exit
   --payload-name NAME   name of the payload to run
   --arguments ARGUMENTS
                         arguments to run the payload with
@@ -807,7 +749,6 @@ Platforms: Windows, Linux, MacOS
 usage: put [-h] --payload-name NAME [--payload-path PATH] [--is-ignore-cert]
 
 optional arguments:
-  -h, --help           show this help message and exit
   --payload-name NAME  name of the payload to run
   --payload-path PATH  path where to put the payload
   --is-ignore-cert     if specified, the sensor will ignore SSL cert mismatch
