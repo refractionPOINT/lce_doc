@@ -680,9 +680,9 @@ Retrieve an artifact from a sensor.
 Platforms: Windows, Linux, MacOS
 
 ```
-usage: log_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
-               [--payload-id PAYLOADID] [--days-retention RETENTION]
-               [--is-ignore-cert]
+usage: artifact_get [-h] [--file FILE] [--source SOURCE] [--type TYPE]
+                    [--payload-id PAYLOADID] [--days-retention RETENTION]
+                    [--is-ignore-cert]
 
 optional arguments:
   --file FILE           file path to get
