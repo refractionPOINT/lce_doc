@@ -253,6 +253,61 @@ The following extractors can be specified:
 * `client_options.mapping.event_type_path`: indicates which component of the event represents the Event Type of the resulting event in LimaCharlie.
 * `client_options.mapping.event_time_path`: indicates which component of the event represents the Event Time of the resulting event in LimaCharlie.
 
+### Indexing
+Indexing occurs in one of 3 ways:
+1. By the built-in indexer for specific platforms like CarbonBlack.
+1. By a generic indexer applied to all fields if no built-in indexer was available.
+1. Optionally, user-specific indexing guidelines.
+
+#### User Defined Indexing
+An Adapter can be configured to do custom indexing on the data it feeds.
+
+This is done by setting the `indexing` element in the `client_options`. This field contains a list of index descriptors.
+
+An index descriptor can have the following fields:
+* `events_included`: optionally, a list of event_type that this descriptor applies to.
+* `events_excluded`: optionally, a list of event_type this descriptor _does not_ apply to.
+* `path`: the element path this descriptor targets, like `user/metadata/user_id`.
+* `regexp`: optionally, a regular expression used on the `path` field to extract the item to index, like `email: (.+)`.
+* `index_type`: the category of index the value extracted belongs to, like `user` or `file_hash`.
+
+Here is an example of a simple index descriptor:
+```yaml
+events_included:
+  - PutObject
+path: userAgent
+index_type: user
+```
+
+Put together in a client option, you could have:
+```json
+{
+  "client_options": {
+    ...,
+    "indexing": [{
+      "events_included": ["PutObject"],
+      "path": "userAgent",
+      "index_type": "user"
+    }, {
+      "events_included": ["DelObject"],
+      "path": "original_user/userAgent",
+      "index_type": "user"
+    }]
+  }
+}
+```
+
+#### Supported Indexes
+This is the list of currently supported index types:
+* `file_hash`
+* `file_path`
+* `file_name`
+* `domain`
+* `ip`
+* `user`
+* `service_name`
+* `package_name`
+
 ### Sensor IDs
 USP Clients generate LimaCharlie Sensors at runtime. The ID of those sensors (SID) is generated based on the Organization ID (OID) and the Sensor Seed Key.
 
