@@ -255,7 +255,7 @@ The following extractors can be specified:
 
 ### Indexing
 Indexing occurs in one of 3 ways:
-1. By the built-in indexer for specific platforms like CarbonBlack.
+1. By the built-in indexer for specific platforms like Carbon Black.
 1. By a generic indexer applied to all fields if no built-in indexer was available.
 1. Optionally, user-specific indexing guidelines.
 
