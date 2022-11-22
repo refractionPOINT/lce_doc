@@ -14,7 +14,7 @@ The API Keys are managed through the organization view of the https://limacharli
 ## Getting a JWT
 Simply issue an HTTP GET or HTTP POST (recommended) such as:
 ```
-curl "https://app.limacharlie.io/jwt?oid=c82e5c17-d520-4ef5-a4ac-c454a95d31ca&secret=1b1ae891-4316-4124-b859-556dd92add00"
+curl -X POST "https://jwt.limacharlie.io/" -d "oid=c82e5c17-d520-4ef5-a4ac-c454a95d31ca&secret=1b1ae891-4316-4124-b859-556dd92add00"
 ```
 where the `oid` parameter is the organization id as found through the web interface and the `secret` parameter is the API
 key.
@@ -29,11 +29,11 @@ associated with a specific user and provide the exact same access across all org
 This makes User API Keys very powerful but also riskier to manage. Therefore we recommend using Organization API keys whenever possible.
 
 The User API keys can be used through all the same interfaces as the Organization API keys. The only difference is how you get
-the JWT. Instead of giving an `oid` parameter to `https://app.limacharlie.io/jwt`, provide it with a `uid` parameter available through
+the JWT. Instead of giving an `oid` parameter to `https://jwt.limacharlie.io/`, provide it with a `uid` parameter available through
 the LimaCharlie web interface.
 
 In some instances, the JWT resulting from a User API key may be to large for normal API use, in which case you will get an
-`HTTP 413 Payload too large` from the API gateway. In those instances, also provide an `oid` (on top of the `uid`) to the `/jwt` REST
+`HTTP 413 Payload too large` from the API gateway. In those instances, also provide an `oid` (on top of the `uid`) to the `jwt.limacharlie.io` REST
 endpoint to get a JWT valid only for that organization.
 
 You may also use a User API Key to get the list of organizations available to it by querying the following REST endpoint:
