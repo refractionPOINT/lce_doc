@@ -53,7 +53,7 @@ Platforms: Windows, Linux, MacOS, Chrome
 ### DISCONNECTED
 Generated when a sensor disconnects from the cloud.
 
-Platforms: Windows, Linux, MacOS, Chrome
+Platforms: Windows, Linux, macOS, Chrome
 
 ```json
 {}
