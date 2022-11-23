@@ -50,6 +50,15 @@ Platforms: Windows, Linux, MacOS, Chrome
 }
 ```
 
+### DISCONNECTED
+Generated when a sensor disconnects from cloud.
+
+Platforms: Windows, Linux, MacOS, Chrome
+
+```json
+{}
+```
+
 ### CLOUD_NOTIFICATION
 This event is a receipt from the agent that it has received the task
 sent to it, and includes high level errors (if any).
@@ -193,6 +202,7 @@ Platforms: Windows
         "ActivityID": "{cc484453-193e-0001-fe44-48cc3e19d701}"
       },
       "EventID": "4624",
+      "_event_id": "4624",
       "EventRecordID": "42742",
       "Execution": {
         "ProcessID": "664",
@@ -215,6 +225,12 @@ Platforms: Windows
   }
 }
 ```
+
+Note the presence of the `_event_id` field which is not part of the
+original data. This field is a synthetic field that contains the simple
+representation of the Event ID. This is due to the Windows Event Logs
+representing the Event ID with multiple different structures that makes
+writing rules more complicated.
 
 ### DNS_REQUEST
 Generated from DNS responses and therefore includes both the
