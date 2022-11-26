@@ -75,3 +75,10 @@ OR
 ```
 -30m | plat == windows | * | event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell" |
 ```
+
+## Examples
+
+Show me all Windows boxes who have received network connections originating from the public internet in the last 10 minutes. Report the host, unique destination IP and port within the network, and the count of number of connections.
+```
+-10m | plat == windows | NETWORK_CONNECTIONS | event/NETWORK_ACTIVITY/SOURCE/IP_ADDRESS is public address | routing/hostname as host event/NETWORK_ACTIVITY/DESTINATION as dest COUNT_UNIQUE(event) GROUP BY(host dest)
+```
