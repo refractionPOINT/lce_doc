@@ -76,7 +76,7 @@ OR
 -30m | plat == windows | * | event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell" |
 ```
 
-## Examples
+### Examples
 
 Show me all Windows boxes who have received network connections originating from the public internet in the last 10 minutes. Report the host, unique destination IP and port within the network, and the count of number of connections.
 
@@ -91,3 +91,21 @@ which could result in:
 |       5 | {'IP_ADDRESS': '10.128.0.3', 'PORT': 22} | demo-debian.c.lc-demo-infra.internal |
 |       2 | {'IP_ADDRESS': '10.0.0.4', 'PORT': 3389} | demo-machine                         |
 ```
+
+## Using the CLI
+
+The command line interface found in the Python CLI/SDK can be invoked like `limacharlie query` once installed (`pip install limacharlie`).
+
+To streamline day to day usage, the first 3 components of the query are set seperatly and remain between queries.
+These 3 component can be set through the following commands:
+1. `set_time` to set the timeframe of the query, like `set_time -3h` based on the [ParseDuration()](https://pkg.go.dev/time#ParseDuration) strings.
+1. `set_sensors` to set the sensors who's data is queried, like `set_sensors plat == windows`, based on the [sensor selector](https://doc.limacharlie.io/docs/documentation/36c920f4f7bc9-sensor-selector-expressions) grammar.
+1. `set_events` to set the events that should be queried, space separated like `NEW_PROCESS DNS_REQUEST`.
+
+Once set, you can specify the last component(s): the Filter, and the Projection.
+
+Several other commands are avaible to make your job easier:
+- `set_limit_event` to set a maximum number of events to scan during the query.
+- `set_output` to mirror the queries and their results to a file.
+- `set_forman` to display results either in `json` or `table`.
+- `stats` to display the total costs incurred from the queries during this session.
