@@ -12,7 +12,24 @@ Filter tags are tags that must ALL be present on a sensor for it to match (AND c
 
 Patterns are file or registry patterns, supporting wildcards (*, ?, +). Windows directory separators (backslash, "\") must be escaped like "\\".
 
+Some examples of patterns:
+```
+?:\\Windows\\System32\\drivers
+hklm\\Software\\Microsoft\\Windows\\CurrentVersion\\Run
+hklm\\Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce
+/root/.ssh/authorized_keys
+/home/*/.ssh/*
+/Users/*/Library/Keychains/*
+/Library/Keychains
+
+```
+
 ### Linux
+
+#### With eBPF Support
+Linux hosts capable of running with eBPF have file notification and FIM capabilities on par with Windows and macOS.
+
+#### Legacy
 FIM is partially supported on Linux. Specified file path expressions are actively monitored
 via inotify (as opposed to MacOS and Windows where kernel passively monitors).
 
