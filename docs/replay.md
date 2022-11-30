@@ -120,7 +120,9 @@ To query Replay, do a `POST` with a `Content-Type` header of `application-json` 
   },
   "limit_event": 0,      // optional approximate number of events to process
   "limit_eval": 0,       // optional approximate number of operator evaluations to perform
-  "trace": false         // optional, if true add trace information to response, VERY VERBOSE
+  "trace": false,        // optional, if true add trace information to response, VERY VERBOSE
+  "is_dry_run": false,   // optional, if true, an estimate of the total cost of the query will be returned
+  "query": ""            // optional alternative way to describe a replay query as a LimaCharlie Query Language (LCQL) query.
 }
 ```
 Like the other endpoints you can also submit a `rule_name` in the URL query if you want
@@ -135,13 +137,4 @@ useful in the development of new rules to find where rules are failing.
 
 
 ## Billing
-The Replay service is billed on a per operator evaluation basis.
-
-A [D&R Rule](dr.md) is composed of multiple operator evaluations. It is each of those evaluations that gets
-billed for the Replay service. It means that generally speak the number of operator evaluations will be based
-on the `number of events replayed X complexity of the rule`.
-
-Rules, especially complex ones, can be difficult to evaluate since rules will often perform evaluation short-circuits
-to reduce the number of evaluations in certain cases. Therefore, the best way to evaluate a rule is to use the
-[LimaCharlie CLI](https://github.com/refractionPOINT/python-limacharlie/) with the `limacharlie-replay` command
-which outputs precise statistics about a Replay job. This will include the number of operator evaluations which will then help you determine the performance of your rule.
+The Replay service is billed on a per event evaluated.
