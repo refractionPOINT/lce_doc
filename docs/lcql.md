@@ -166,6 +166,14 @@ q event/DOMAIN_NAME contains 'google' | event/DOMAIN_NAME as domain COUNT_UNIQUE
 This command supports tab completion for elements of the query, like `event/DO` + "tab" will suggest `event/DOMAIN_NAME`
 or other relevant elements that exist as part of the schema.
 
+#### Non Paged Mode
+
+You can also force a full query over all the data (no paging) by using the "query all" (`qa`) command like:
+
+```
+qa event/DOMAIN_NAME contains 'google' | event/DOMAIN_NAME as domain COUNT_UNIQUE(routing/sid) as count GROUP BY(domain)
+```
+
 #### Dry Run
 
 To simulate running a query, use the `dryrun` command. This will query
