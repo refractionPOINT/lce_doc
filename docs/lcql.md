@@ -78,23 +78,59 @@ OR
 
 ### Examples
 
-Show me all Windows boxes who have received network connections originating from the public internet in the last 10 minutes. Report the host, unique destination IP and port within the network, and the count of number of connections.
+#### Domains Count
+Show me all domains resolved by Windows hosts that contain "google" in the last 10 minutes and the number of times each was resolved.
 
 ```
--10m | plat == windows | NETWORK_CONNECTIONS | event/NETWORK_ACTIVITY/SOURCE/IP_ADDRESS is public address | routing/hostname as host event/NETWORK_ACTIVITY/DESTINATION as dest COUNT_UNIQUE(event) as count GROUP BY(host dest)
+-10m | plat == windows | DNS_REQUEST | event/DOMAIN_NAME contains 'google' | event/DOMAIN_NAME as domain COUNT(event) as count GROUP BY(domain)
 ```
 
 which could result in:
 ```
-|   count | dest                                     | host                                 |
-|---------|------------------------------------------|--------------------------------------|
-|       5 | {'IP_ADDRESS': '10.128.0.3', 'PORT': 22} | demo-debian.c.lc-demo-infra.internal |
-|       2 | {'IP_ADDRESS': '10.0.0.4', 'PORT': 3389} | demo-machine                         |
+|   count | domain                     |
+|---------|----------------------------|
+|      14 | logging.googleapis.com     |
+|      36 | logging-alv.googleapis.com |
+```
+
+#### Domains Prevalence
+
+Show me all domains resolved by Windows hosts that contain "google" in the last 10 minutes and the number of unique sensor that has resolved them.
+
+```
+-10m | plat == windows | DNS_REQUEST | event/DOMAIN_NAME contains 'google' | event/DOMAIN_NAME as domain COUNT_UNIQUE(routing/sid) as count GROUP BY(domain)
+```
+
+which could result in:
+```
+|   count | domain                     |
+|---------|----------------------------|
+|       4 | logging.googleapis.com     |
+|       3 | logging-alv.googleapis.com |
+```
+
+#### GitHub Protected Branch Override
+
+Show me all the GitHub branch protection override (force pushing to repo without all approvals) in the past 12h that came from a user outside the United States, with the repo, user and number of infractions.
+
+```
+-12h | plat == github | protected_branch.policy_override | event/public_repo is false and event/actor_location/country_code is not "us" | event/repo as repo event/actor as actor COUNT(event) as count GROUP BY(repo actor)
+```
+
+which could result in:
+```
+| actor    |   count | repo                               |
+|----------|---------|------------------------------------|
+| mXXXXXXa |      11 | acmeCorpCodeRep/customers          |
+| aXXXXXXb |      11 | acmeCorpCodeRep/analysis           |
+| cXXXXXXd |       3 | acmeCorpCodeRep/devops             |
 ```
 
 ## Using the CLI
 
 The command line interface found in the Python CLI/SDK can be invoked like `limacharlie query` once installed (`pip install limacharlie`).
+
+### Environment
 
 To streamline day to day usage, the first 3 components of the query are set seperatly and remain between queries.
 These 3 component can be set through the following commands:
@@ -109,3 +145,26 @@ Several other commands are avaible to make your job easier:
 - `set_output` to mirror the queries and their results to a file.
 - `set_forman` to display results either in `json` or `table`.
 - `stats` to display the total costs incurred from the queries during this session.
+
+### Querying
+
+#### Paged Mode
+
+By default, if you simply enter a query as described above, the query will be run in paged mode.
+
+Paged mode means that an initial subset of the results will be returned (usually in the 1000s of elements)
+and if you want to fetch more of the results, you can use the `next` command to fetch the next page.
+
+Some queries cannot be done in paged mode, like queries that do aggregation or queries that use a
+stateful filter (like `with child`). In those cases, all results over the entire timeline are computed.
+
+#### Dry Run
+
+It's also possible to issue a query as you'd normally do, but prefix it with `dryryn `. This will query
+the LimaCharlie API and return to you an aproximate worst case cost for the query (assuming you fetch
+all pages over its entire time range).
+
+For example:
+```
+-30m | plat == windows | * | dryrun event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell" |
+```
