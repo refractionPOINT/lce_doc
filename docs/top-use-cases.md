@@ -36,12 +36,6 @@ LimaCharlie offers easy to read and well-structured documentation. Wether you ar
 
 Empower every level of your organization to contribute. Introduce a peer review process to your detection methodology that make cross-training a part of regular day-to-day operations.
 
-## Remote Work
-
-In a post-covid world organizations are more vulnerable than ever. BYOD and public access points, such as a favorite coffee shop, increase the attack surface exponentially. LimaCharlie has the tools to secure everything everywhere.
-
-LimaCharlie Net changes the way that secure remote access is delivered. It is much more than a virtual private network and can be established with the click of a button. It is a micro-segmentable network that can capture full or partial PCAP files entirely in the cloud. All without impacting users. These captured files can also be analyzed with the Zeek Network Monitoring Tool and have detection rules written against them. 
-
 ## Chrome Shops
 
 Whether native on a Chromebook or as a side-car agent in the browser, the LimaCharlie Chrome sensor gives you visibility and capability you can't find anywhere else.
