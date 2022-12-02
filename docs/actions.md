@@ -105,7 +105,7 @@ The `add tag` action can optionally take a `ttl` parameter that is a number of s
 
 The `add tag` action can optionally have the `entire_device` parameter set to `true`. When enabled, the new tag will apply to the entire [Device ID](agentid.md#device-ids), meaning that every sensor that shares this Device ID will have the tag applied (and relevant TTL). If a Device ID is unavailable for the sensor, it will still be tagged.
 
-This can be used as a mechanism to synchronize and operate changes across an entire device. A D&R rule could detect a behavior and then tag all sensors on the device so they may act accordingly, like lc-net to start doing full pcap.
+This can be used as a mechanism to synchronize and operate changes across an entire device. A D&R rule could detect a behavior and then tag all sensors on the device so they may act accordingly, like start doing full pcap.
 
 For example, this would apply the `full_pcap` to all sensors on the device for 5 minutes:
 
