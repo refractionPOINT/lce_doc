@@ -11,7 +11,6 @@ Once installed, they send telemetry and artifacts from the host to the organizat
 * [Linux](sensors/linux.md)
 * [Chrome](sensors/chrome.md)
 * [Edge](sensors/edge.md)
-* [Net](sensors/net.md)
 * [External Telemetry (like 1Password, CarbonBlack, CrowdStrike, Office 365 etc)](lc_adapter.md)
 
 > Need support for a platform you don't see here? Get in touch via [Slack](https://slack.limacharlie.io) or [email](mailto:answers@limacharlie.io).
