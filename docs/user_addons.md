@@ -19,9 +19,7 @@ The following add-ons enable additional functionality in the web application:
 * [`exfil`](https://app.limacharlie.io/add-ons/detail/exfil) - enables `Exfil Control` to configure which events should be collected per platform
 * [`infrastructure-service`](https://app.limacharlie.io/add-ons/detail/infrastructure-service) - enable `Templates` in the UI to manage org config in `yaml`
 * [`insight`](https://app.limacharlie.io/add-ons/detail/insight) - enables retention & browsing events and detections via `Timeline` and `Detections` 
-* [`lc-net-install`](https://app.limacharlie.io/add-ons/detail/lc-net-install) - install Net sensors easily from the `Overview` page of Windows sensors 
 * [`logging`](https://app.limacharlie.io/add-ons/detail/logging) - enables `Artifact Collection` to configure which paths to collect from
-* [`net`](https://app.limacharlie.io/add-ons/detail/net) - adds `Net` sensor type and the ability to manage `Net Policies`
 * [`replay`](https://app.limacharlie.io/add-ons/detail/replay) - adds a component next to D&R rules for testing them against known / historical events 
 * [`responder`](https://app.limacharlie.io/add-ons/detail/responder) - sweep sensors right from their `Overview` page to find preliminary IoCs
 * [`yara`](https://app.limacharlie.io/add-ons/detail/yara) - enables `YARA Scanners` view to pull in sources of YARA rules and automate scans with them
