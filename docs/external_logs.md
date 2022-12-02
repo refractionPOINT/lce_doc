@@ -133,12 +133,9 @@ using the following Header fields:
 * `lc-part` if present, is used to track multi-part artifact uploads. If set, it should be an integer starting at `0` and incrementing for every part with the last part being set to `done`. The `lc-payload-id` MUST be set and constant across all parts.
 
 ## Accessing Artifacts
-There are several ways to access the artifacts.
+The left navigation contains a link to "Artifacts" which displays all artifacts ingested across all sensors in the organization. From there you can select a specific artifact and view it, or choose to download the original and/or parsed version.
 
-The main page contains a link to
-"Artifact Collection" which displays all logs files ingested in the last week. From there you can select a specific log and view it.
-
-The historical view has a button that appears in the top left of the page after a search. Clicking it will list all log files received from that sensor during that time period and will allow you to view them. 
+You can also see the artifacts collected for a particular sensor by going to the "Sensors" section, clicking into a sensor, and then clicking on "Artifacts".
 
 ## Windows Event Logs
 
