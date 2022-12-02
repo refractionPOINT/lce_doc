@@ -10,7 +10,8 @@ slack_api_token: d8vyd8yeugr387y8wgf8evfb
 slack_channel: #detections
 ```
 
-## Provisioning
+**Provisioning:**
+
 To use this Output, you need to create a Slack App and Bot. This is very simple:
 1. Head over to https://api.slack.com/apps
 1. Click on "Create App" and select the workspace where it should go
