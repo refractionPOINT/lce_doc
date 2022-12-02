@@ -7,7 +7,6 @@ Configs are a YAML representation of an organization's configured features. This
 * Event / Artifact Collection Rules
 * File / Integrity Monitoring Rules
 * Outputs
-* Net Policies
 
 The config makes it easy to reproduce setups across organizations, effectively turning organizations into containers for security environments.
 
