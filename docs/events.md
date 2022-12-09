@@ -1525,7 +1525,7 @@ Deleted Sensor deployment events are produced when a sensor that was previously 
     "ext_ip": "104.196.34.101",
     "int_ip": "172.17.0.2",
     "hostname": "linux-server-1",
-    "event_type": "sensor_deleted",
+    "event_type": "deleted_sensor",
     "event_time": 1561741553230
   },
   "event": {
