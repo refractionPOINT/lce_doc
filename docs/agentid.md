@@ -29,7 +29,6 @@ structured with a major and minor platform, the important values are:
 * `0x40000000`: iOS (unused) (`ios`)
 * `0x50000000`: Android (unused) (`android`)
 * `0x60000000`: ChromeOS (`chrome`)
-* `0x70000000`: lc-net (`vpn`)
 * `0x80000000`: Text (external telemetry) (`text`)
 * `0x90000000`: JSON (external telemetry) (`json`)
 * `0xA0000000`: GCP (external telemetry) (`gcp`)
@@ -66,7 +65,6 @@ Given the breadth of platforms supported by LimaCharlie, it is not unusual for o
 * We have a laptop
 * The laptop's Operating System is macOS, running a macOS sensor
 * The laptop is also running a Windows Virtual Machine, running a Windows sensor
-* Finally, the laptop is running an lc-net sensor at the macOS level
 
 In this example, we're dealing with one piece of hardware, but 3 different sensors.
 
