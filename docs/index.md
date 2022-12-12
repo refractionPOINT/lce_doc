@@ -35,12 +35,6 @@ Detectors-as-code that match incoming events and trigger actions in response.
 
 * Get started with [Detection & Response Rules](dr.md)
 
-### Net Policies
-
-Policies for providing fine-grained endpoint-to-endpoint networking via [Net](sensors/net.md) sensors.
-
-* Get started with [Net Policies](lc-net.md)
-
 ### Outputs
 
 Streams that point toward external destinations (like S3, Google Cloud Storage, or Slack).
