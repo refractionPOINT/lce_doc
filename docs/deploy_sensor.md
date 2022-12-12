@@ -151,7 +151,7 @@ If these occur, a [sensor_clone](events.md#sensor_clone) event will be generated
 have two choices:
 
 1. Fix the installation process and re-deploy.
-1. Run a de-duplication process with a Detection & Response rule [like this](dr.md#de-duplicate-cloned-sensors).
+1. Run a de-duplication process with a Detection & Response rule [like this](dr-examples.md#de-duplicate-cloned-sensors).
 
 Preparing sensors to run properly from templates can be done in one of two ways:
 
