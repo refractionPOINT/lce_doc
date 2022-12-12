@@ -48,7 +48,4 @@ The following is a list of all permissions that can be applied via User, API Key
 | replicant.get     | Get the list of active Services.                                     
 | ingestkey.ctrl    | Change ingestion keys.                                               
 | payload.ctrl      | Add/Remove/Get Payloads.                                             
-| payload.use       | Deploy a payload to a sensor.                                                                
-| net.provision     | Provision new net endpoints.                                         
-| net.policy.get    | Get the policies applied to net endpoints.                           
-| net.policy.set    | Set a policy applied to net endpoints.                               
+| payload.use       | Deploy a payload to a sensor.                                                                                           
