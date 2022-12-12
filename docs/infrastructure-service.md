@@ -54,10 +54,6 @@ The REST interface mimicks the [CLI tool](https://github.com/refractionPOINT/pyt
       "type": "bool",
       "desc": "applies to integrity"
     },
-    "sync_net_policies": {
-      "type": "bool",
-      "desc": "applies to net_policies"
-    },
     "action": {
       "is_required": true,
       "values": [
