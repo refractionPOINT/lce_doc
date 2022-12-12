@@ -2,6 +2,10 @@
 
 LimaCharlie's Edge sensor is delivered as the [LimaCharlie Sensor](https://microsoftedge.microsoft.com/addons/detail/limacharlie-sensor/nomgmkpkkncolnpbkbamfnjhbhmnjehp) extension available as an Edge Add-on.
 
+## Installation Instructions
+
+Sensor installation instructions can be found [here.](https://doc.limacharlie.io/docs/documentation/acae13e5a95fa-deploying-sensors)
+
 ## Supported Events
 
 * [`CONNECTED`](../events.md#connected)
