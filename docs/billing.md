@@ -18,7 +18,6 @@ There are two categories of sensors: sensors billed on Quota set by the user (vS
 | Windows | Quota | $2.5/sensor/month |
 | Linux | Quota | $2.5/sensor/month |
 | macOS | Quota | $2.5/sensor/month |
-| Net | Quota | $2.5/sensor/month |
 | Docker | Quota | $2.5/sensor/month |
 | VMWare Carbon Black EDR | Quota | $0.5/sensor/month |
 | Chrome OS | Quota | $0.25/sensor/month |
