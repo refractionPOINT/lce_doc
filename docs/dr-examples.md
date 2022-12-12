@@ -127,12 +127,5 @@ event: sensor_clone
 op: is windows
 
 # Response
-- action: task
-  command: file_del %windir%\system32\hcp.dat
-- action: task
-  command: file_del %windir%\system32\hcp_hbs.dat
-- action: task
-  command: file_del %windir%\system32\hcp_conf.dat
-- action: task
-  command: restart
+- action: re-enroll
 ```
