@@ -1569,6 +1569,35 @@ This event is emitted when a Cloud Adapter gets disabled because it has been err
 }
 ```
 
+### sensor_crash
+
+This event is generated when a sensor has crashed. It will include some telemetry useful to help LimaCharlie
+troubleshoot the crash.
+
+```json
+{
+  "routing": {
+    "arch": 2,
+    "event_time": 1670861698000,
+    "event_type": "sensor_crash",
+    "hostname": "linux-server-1",
+    "ext_ip": "104.196.34.101",
+    "int_ip": "172.17.0.2",
+    "oid": "8cbe27f4-aaaa-cccc-bbbb-138cd51389cd",
+    "plat": 268435456,
+    "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+  },
+  "event": {
+    "crash_context": {
+      "FILE_ID": 63,
+      "LINE_NUMBER": 1216,
+      "THREAD_ID": 7808
+    }
+  }
+}
+```
+
 ## Artifact Events
 
 Events around artifact collection, observable in D&R rules via the `artifact_event` target.
