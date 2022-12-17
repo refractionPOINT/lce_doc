@@ -3,6 +3,16 @@
 The Config Hive (or Hive for short) is a generic set of APIs used by LimaCharlie to maintain
 the configuration of various systems.
 
+Hive is the main system of configuration for LimaCharlie.
+
+The Hive system helps you configure the wide range of systems, features and extensions in LimaCharlie in
+a cohesive way. Each feature or system's configuration lives in its own "hive".
+
+Currently managed through Hive:
+- Detection & Response Rules
+- False Positive Rules
+- Cloud Adapters/Sensors
+
 ## Core Concepts
 
 The Hive contains configuration records organized as a simple hierarchy: `/hive/{hive_name}/{oid}/{record_name}`.
