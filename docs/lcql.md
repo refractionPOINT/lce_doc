@@ -143,7 +143,7 @@ Once set, you can specify the last component(s): the Filter, and the Projection.
 Several other commands are avaible to make your job easier:
 - `set_limit_event` to set a maximum number of events to scan during the query.
 - `set_output` to mirror the queries and their results to a file.
-- `set_forman` to display results either in `json` or `table`.
+- `set_format` to display results either in `json` or `table`.
 - `stats` to display the total costs incurred from the queries during this session.
 
 ### Querying
