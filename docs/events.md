@@ -1586,7 +1586,7 @@ troubleshoot the crash.
     "oid": "8cbe27f4-aaaa-cccc-bbbb-138cd51389cd",
     "plat": 268435456,
     "iid": "ca812425-5a36-4c73-a0a0-935a8ace6451",
-    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81",
+    "sid": "a75cc927-bf28-4178-a42d-25ecc8a6be81"
   },
   "event": {
     "crash_context": {
