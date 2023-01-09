@@ -3,6 +3,17 @@
 The Config Hive (or Hive for short) is a generic set of APIs used by LimaCharlie to maintain
 the configuration of various systems.
 
+Hive is the main system of configuration for LimaCharlie.
+
+The Hive system helps you configure the wide range of systems, features and extensions in LimaCharlie in
+a cohesive way. Each feature or system's configuration lives in its own "hive".
+
+Currently managed through Hive:
+- Detection & Response Rules (`dr-general`, `dr-managed` and `dr-service`)
+- False Positive Rules (`fp`)
+- Cloud Adapters/Sensors (`cloud_sensor`)
+- Secrets (`secret`)
+
 ## Core Concepts
 
 The Hive contains configuration records organized as a simple hierarchy: `/hive/{hive_name}/{oid}/{record_name}`.
@@ -10,7 +21,7 @@ The Hive contains configuration records organized as a simple hierarchy: `/hive/
 The `hive_name` represents the type of records it contains. For example, the `cloud_sensor` hive name will
 contain all records relating to cloud sensors (cloud hosted [LimaCharlie Adapters](lc_adapter.md)).
 
-The `oid` is a partition for the records, in this case an Organization ID (oid).
+The `oid` is a "partition" for the records, in this case an Organization ID (oid).
 
 The `record_name` is simple the unique name for the record.
 
@@ -20,21 +31,39 @@ to the cloud hosted LimaCharlie Adapter. Deleting the same record will stop the 
 
 The record data itself will be dependant on the hive name, but it will always be a JSON dictionary.
 
+## Exploring
+
+The best way to explore configurations in LimaCharlie and hive is through the LimaCharlie CLI (`pip install limacharlie`).
+
+The CLI offers a simple interface to list, get and modify records in a single unified way regardless of the type of configuration.
+
+The core command line commands are:
+* `limacharlie hive list --help`
+* `limacharlie hive get --help`
+* `limacharlie hive set --help`
+* `limacharlie hive update --help`
+* `limacharlie hive remove --help`
+
+For example, if you want to explore the D&R rules ("general" namespace) stored in LimaCharlie, you could issue:
+```
+limacharlie hive list dr-general
+```
+
 ## Record Structure
 
 Records contain 3 components:
-* The record data itself, who's format is dependant on the hive where it lives.
-* User Metadata. As outlined below, this is metadata that can modified directly by you and can be exposed to users using specific permissions without giving access to the full record data.
-* System Metadata. This is metadata that is generated and maintained by the Hive system.
+* The record data itself (referenced to as `data`), who's format is dependant on the hive where it lives.
+* User Metadata (referenced to as `usr_mtd`). As outlined below, this is metadata that can modified directly by you and can be exposed to users using specific permissions without giving access to the full record data.
+* System Metadata (referenced to as `sys_mtd`). This is metadata that is generated and maintained by the Hive system.
 
 ### User Metadata
 
 The user metadata format is the following:
 ```json
 {
-    "expiry": 123, // a milisecond epoch time when the record will automatically expire and be deleted.
+    "expiry": 123,          // a milisecond epoch time when the record will automatically expire and be deleted.
     "tags": ["abc", "def"], // a list of tags on this record.
-    "enabled": true // a boolean indicating whether the record is in an "enabled" state or not.
+    "enabled": true         // a boolean indicating whether the record is in an "enabled" state or not.
 }
 ```
 
@@ -43,19 +72,23 @@ The user metadata format is the following:
 The system metadata format is the following:
 ```json
 {
-    "etag": "abc", // a unique tag representing the current state of data of the record. Can be used for optimistic transactions: https://en.wikipedia.org/wiki/HTTP_ETag
+    "etag": "abc",        // a unique tag representing the current state of data of the record. Can be used for optimistic transactions: https://en.wikipedia.org/wiki/HTTP_ETag
     "last_author": "abc", // the identity of the last entity having modified the record.
-    "last_mod": 123, // a milisecond epoch of the last time the record was modified.
-    "guid": "abc", // a globally unique identifier of the record (not its data).
-    "last_error": "abc", // the contents of the last error related to the record.
-    "last_error_ts": 123 // the milisecond epoch of the last time an error occured relating to the record.
+    "last_mod": 123,      // a milisecond epoch of the last time the record was modified.
+    "created_by": "abc",  // the identity of the entity that originally created the record.
+    "created_at": 123,    // a milisecond epoch of the time the record was originally created.
+    "guid": "abc",        // a globally unique identifier of the record (not its data).
+    "last_error": "abc",  // the contents of the last error related to the record.
+    "last_error_ts": 123  // the milisecond epoch of the last time an error occured relating to the record.
 }
 ```
 
 ## Accessing
 
-The permissions required for various operations will vary based on the specific hive. For example, the `cloud_sensor` hive
-will use the following permissions:
+### Permissions
+The permissions required for various operations will vary based on the specific hive.:
+
+#### cloud_sensor
 
 * `cloudsensor.get`
 * `cloudsensor.set`
@@ -63,39 +96,34 @@ will use the following permissions:
 * `cloudsensor.get.mtd`
 * `cloudsensor.set.mtd`
 
+#### dr-general
+* `dr.list`
+* `dr.set`
+* `dr.del`
+
+#### dr-managed
+* `dr.list.managed`
+* `dr.set.managed`
+* `dr.del.managed`
+
+#### dr-service
+The `dr-service` namespace is a protected namespace, you may only ever have metadata permissions.
+* `dr.list` or `dr.list.managed` (metadata only)
+* `dr.set` or `dr.set.managed` (metadata only)
+
+#### fp
+* `fp.ctrl` (all operations)
+
+#### secret
+* `secret.get`
+* `secret.set`
+* `secret.del`
+* `secret.get.mtd`
+* `secret.set.mtd`
+
 ### REST
 
 The config hive can be accessed through the LimaCharlie REST API (https://api.limacharlie.io/static/swagger/).
-
-#### Listing Records
-
-You can list all the records in a given partition by issuing an HTTP GET to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}`.
-
-#### Getting Record Data
-
-You can retrieve the full contents of a record by issuing an HTTP GET to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}/{record_name}/data`.
-
-#### Setting Record Data
-
-You can set the contents of a record by issuing an HTTP POST to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}/{record_name}/data` and including
-a REST parameter of `data={record_data}`.
-
-#### Getting Record Metadata
-
-You can retrieve the metadata of a record by issuing an HTTP GET to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}/{record_name}/mtd`.
-
-#### Setting Record Metadata
-
-You can set the metadata of a record by issuing an HTTP POST to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}/{record_name}/mtd` and including
-a REST parameter of `usr_mtd={record_metadata}`.
-
-#### Deleting a Record
-
-You can delete a record by issuing an HTTP DELETE to `https://api.limacharlie.io/v1/hive/{hive_name}/{oid}/{record_name}`.
-
-#### Full Documentation
-
-For details, see the Swagger documentation: https://api.limacharlie.io/static/swagger/
 
 ### Python CLI
 
@@ -107,6 +135,9 @@ Repository: https://github.com/refractionPOINT/python-limacharlie/
 
 ## Conditional Update
 
+One of the advantages of the Hive system is the ability to perform conditional updates (where you prevent two entities from updating
+and overwriting each other's changes).
+
 You may perform conditional record updates using the `etag` parameter. When set during an update, the hive system will verify that
 the record it is about to update currently has the etag provided. If the etags do not match, the update is not performed. This allows
 you to:
@@ -115,4 +146,38 @@ you to:
 1. Update some values of X locally
 1. Set the updated Record X, including the etag received during the Get
 
-This enables you to detect when "update collision" occur.
+This enables you to detect when "update collision" occur. An example implementation can be found in the `update` function of the Python SDK [here](https://github.com/refractionPOINT/python-limacharlie/blob/016abfe041877132e4c6dd948f1532b173ca7883/limacharlie/Hive.py#L121).
+
+### Infrastructure As Code
+The Hive system also simplifies how you can store and apply your configurations through infrastructure as code.
+
+All hive related configurations are found under the key `hives`, followed by the hive name. For example:
+
+```yaml
+hives:
+  dr-general:
+    Microsoft Defender MALWAREPROTECTION_RTP_DISABLED:
+      data:
+        detect:
+          event: WEL
+          op: and
+          rules:
+            - op: is
+              path: event/EVENT/System/Channel
+              value: Microsoft-Windows-Windows Defender/Operational
+            - op: is
+              path: event/EVENT/System/EventID
+              value: "5001"
+        respond:
+          - action: report
+            name: Microsoft-defender-MALWAREPROTECTION_RTP_DISABLED
+      usr_mtd:
+        enabled: true
+        expiry: 0
+        tags:
+          - defender
+```
+
+The above example refers to the `dr-general` hive (general namespace for D&R rules), to the record
+named `Microsoft Defender MALWAREPROTECTION_RTP_DISABLED` who's `data` contains the actual content
+of the D&R rule, and this record is enabled, does not expire. The record is tagged with `defender`.
