@@ -299,6 +299,12 @@ Put together in a client option, you could have:
 }
 ```
 
+If you are passing the indexing information via the command line of an adapter, you will need to pass each index
+descriptor with a `[X]` component to indicate each element of the `indexing` array like this:
+```
+./lc_adapter ..... client_options.indexing[0].path=user/name client_options.indexing[0].index_type=user client_options.indexing[1].path=source/ip client_options.indexing[1].index_type=ip
+```
+
 #### Supported Indexes
 This is the list of currently supported index types:
 * `file_hash`
