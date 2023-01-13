@@ -1646,3 +1646,94 @@ An export of artifact data is completed and ready for download.
     },
 }
 ```
+
+## Schedule Events
+
+Events triggered automatically at various intervals per organization or per sensor, observable in D&R rules via the `schedule` target.
+
+Scheduling events have a very similar structure whether they are per-sensor or per-org.
+
+The `event` component contains a single key, `frequency` which is the number of seconds frequency this scheduling event is for. The event
+type also contains the human readable version of the frequency.
+
+The following frequencies are currently emitted:
+* `30m`: `30m_per_org` and `30m_per_sensor`
+* `1h`: `1h_per_org` and `1h_per_sensor`
+* `3h`: `3h_per_org` and `3h_per_sensor`
+* `6h`: `6h_per_org` and `6h_per_sensor`
+* `12h`: `12h_per_org` and `12h_per_sensor`
+* `24h`: `24h_per_org` and `24h_per_sensor`
+* `168h` (7 days): `168h_per_org` and `168h_per_sensor`
+
+Scheduling events are generated for each org that meets the following criteria:
+* Has had at least 1 sensor online in the last 7 days.
+
+Scheduling events are generated for each sensor that meets the following criteria:
+* Has been online at least once in the last 30 days.
+
+Scheduling events are not retained as part of the year retention in LimaCharlie. To
+leverage them, create D&R rules that target the `schedule` target and take the relevant
+`action` when matched. For example to issue an `os_packages` once per week on Windows hosts:
+
+```yaml
+detect:
+  target: schedule
+  event: 168h_per_sensor
+  op: is platform
+  name: windows
+respond:
+  - action: task
+    command: os_packages
+    investigation: weekly-package-list
+```
+
+### *_per_org
+
+Events that are emitted once per period per org. This allows you to schedule things at a global level.
+
+```json
+{
+  "event": {
+    "frequency": 86400
+  },
+  "routing": {
+    "event_id": "0f236fbb-31df-4d11-b6ab-c6b71a63a072",
+    "event_time": 1673298756512,
+    "event_type": "1h_per_org",
+    "oid": "8cbe27f4-bfa1-4afb-ba19-138cd51389cd",
+    "sid": "00000000-0000-0000-0000-000000000000",
+    "tags": []
+  }
+}
+```
+
+### *_per_sensor
+
+Events that are emitted once per period per sensor. This allows you to schedule automation for each
+sensor within an org.
+
+```json
+{
+  "event": {
+    "frequency": 1800
+  },
+  "routing": {
+    "arch": 5,
+    "did": "",
+    "event_id": "247bbf44-5e60-41c3-9642-410447aa04d2",
+    "event_time": 1673298757318,
+    "event_type": "30m_per_sensor",
+    "ext_ip": "34.82.75.115",
+    "hostname": "prod-domain-controler",
+    "iid": "ebda4de0-aaaa-aaaa-aaaa-698a5a10c3af",
+    "int_ip": "192.168.10.2",
+    "oid": "8cbe27f4-aaaa-aaaa-aaaa-138cd51389cd",
+    "plat": 536870912,
+    "sid": "640f2a6f-aaaa-aaaa-aaaa-dcc55726b450",
+    "tags": [
+      "prod",
+      "domain",
+    ]
+  }
+}
+```
