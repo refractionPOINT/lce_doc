@@ -36,11 +36,8 @@ Using a secret in combination with an Output has very few steps:
 
 For example, let's create a simple secret using the LimaCharlie CLI in a terminal:
 ```bash
-# First create a small file with the secret record in it.
-echo '{"secret": "my-secret-value"}' > my-secret.json
-
-# Next set this secret in Hive.
-limacharlie hive set secret --key my-secret --data my-secret.json
+# Set the secret in hive from the stdin using the CLI.
+echo '{"secret": "my-secret-value"}' | limacharlie hive set secret --key my-secret --data -
 
 # You should get a confirmation the secret was created like:
 # {
