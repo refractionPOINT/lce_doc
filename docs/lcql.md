@@ -73,7 +73,7 @@ All of this can result in a query like:
 OR
 
 ```
--30m | plat == windows | * | event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell" |
+-30m | plat == windows | * | event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell"
 ```
 
 ### Examples
@@ -182,5 +182,5 @@ all pages over its entire time range).
 
 For example:
 ```
-dryrun event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell" |
+dryrun event/COMMAND_LINE contains "powershell" and event/FILE_PATH not contains "powershell"
 ```
