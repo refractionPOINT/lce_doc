@@ -17,6 +17,7 @@ The LimaCharlie Adapter can be used to ingest external data streams from many di
 * Slack Audit Logs API
 * STDIN
 * Syslog
+* [Webhook](webhook_adapter.md) (Cloud Only)
 
 
 ## Availability
@@ -50,6 +51,7 @@ The Adapter may itself get the logs/telemetry any number of locations and using 
 * Slack Audit Logs API (`slack`)
 * STDIN (`stdin`)
 * Syslog (`syslog`)
+* [Webhook](webhook_adapter.md) (`webhook`)
 
 The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie according to the parameters you provided.
 
