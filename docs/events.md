@@ -920,6 +920,11 @@ The following file patterns are considered "documents":
 * `.asp`
 * `.aspx`
 * `.php`
+* `.jsp`
+* `.jspx`
+* `.html`
+* `.htm`
+* `.ocx`
 * `\windows\system32\`
 
 Platforms: Windows, MacOS
