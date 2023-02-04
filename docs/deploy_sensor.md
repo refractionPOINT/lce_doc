@@ -29,7 +29,7 @@ For example:
 * https://downloads.limacharlie.io/sensor/windows/msi64 for the Windows 64 bit MSI installer
 * https://downloads.limacharlie.io/sensor/linux/64 for the Linux 64 bit installer
 * https://downloads.limacharlie.io/sensor/linux/alpine64 for the Linux Apline 64 bit installer
-* https://downloads.limacharlie.io/sensor/linux/arm32 for the Linux ARM 32 bit installer
+* https://downloads.limacharlie.io/sensor/linux/arm for the Linux ARM 32 bit installer
 * https://downloads.limacharlie.io/sensor/linux/arm64 for the Linux ARM 64 bit installer
 * https://downloads.limacharlie.io/sensor/mac/64 for the macOS 64 bit installer
 * https://downloads.limacharlie.io/sensor/mac/arm64 for the macOS ARM 64 bit (Apple Silicon) installer
