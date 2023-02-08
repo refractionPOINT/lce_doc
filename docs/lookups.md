@@ -2,141 +2,76 @@
 # Lookups
 
 Creating a lookup add-on enables you to create a list that you can use as part of [D&R rules](dr.md).
-Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your add-on looking
-like `resource: lcr://lookup/my-lookup-name`.
+Once in place, you can refer to it using the `op: lookup` D&R rule with a reference to your lookup looking
+like `resource: hive://lookup/my-lookup-name`.
 
-Lookups support a few structures.
+Lookups are often used as a "threat feed", looking for bad indicators. But they can be used in different
+contexts by changing the Response component of the D&R rules that use them.
 
-* Newline-separated values.
-* JSON dictionary where keys are the elements of the lookup and the values are the metadata associated.
-* YAML dictionary where keys are the elements of the lookup and the values are the metadata associated.
-* OTX JSON Pulse.
-* MISP JSON Feed.
+Lookups are always compared for exact matches, but if you specify the `case sensitive: false` modifier
+when using the lookup as part of a D&R rule, the value will be set to all lower-case for you (making
+it easier for you to create a lower-case lookup and therefore being case insensitive).
 
-Here is an example of this complex format:
-```yaml
-evil.com: some evil website, definitely bad
-example.com:
-  source: my-threat-intel
-  risk: high
-  contact: email threatintel@mycorp.com immediately if spotted
-```
+## Final Structure
 
-When uploaded, the data for the lookup can be provided in three different ways:
+Fundamentally, all lookups get converted into a dictionary of string to dictionaries, where the string
+is the element to be looked up, and the value for each is a dictionary of optional metadata to report
+when the lookup returns a hit.
 
-1. As data literal in the upload API.
-1. As a URL callback, where your data is a URL like https://www.my.data.
-1. As an [Authenticated Resource Locator (ARL)](arl.md) (the preferred method)
-
-The maximum size of a lookup is 15MB through the REST API and 512KB through the web interface.
-
-## Optimized Format
-Sometimes when creating a Lookup you may want to include correct metadata for each element
-of the lookup, but the maximum size may be an issue. In cases where there is a lot of metadata
-repetition you may use an optimized format. This format will allow you to associate large
-pieces of metadata with a high number of lookup items.
-
-To accomplish this, you will need to split up your metadata from your lookup values like:
-
-```json
-{
-  "_LC_METADATA": [
-    {
-      "some": "metadata",
-      ...
-    }, {
-      "some": "moremetadata",
-      ...
-    }, {
-      "somemore": "metadata",
-      ...
-    }
-  ],
-  "_LC_INDICATORS: {
-    "evil.exe": 0,
-    "another.exe": 0,
-    "more.exe": 1,
-    "vals.exe": 2,
-    ...
-  }
-}
-```
-
-The `_LC_METADATA` key has as a value, a list of all the pieces of metadata you want to include.
-
-The `_LC_INDICATORS` is the normal list of indicators, but instead of having the metadata directly
-associated with each indicator as the value, it uses an integer that refers to the `_LC_METADATA`
-list's index where the metadata can be found.
-
-The above example is equivalent to the non-optimized:
-
-```json
-{
-  "evil.exe": {
-      "some": "metadata",
-      ...
-    },
-  "another.exe": {
-      "some": "metadata",
-      ...
-    },
-  "more.exe": {
-      "some": "moremetadata",
-      ...
-    },
-  "vals.exe": {
-      "somemore": "metadata",
-      ...
-    },
-}
-```
-
-As you can see, this optimization is useful to reduce the repeated metadata. This is particularly
-useful if, for example, you have large numbers of IoCs for a given actor. In that case, every
-IoC in the lookup would be associated with the same metadata (information about the actor).
-
-#### From MISP
-When creating an add-on from MISP content, LimaCharlie expects the data to be a JSON document
-to have the following structure:
-
-```json
-{
-  "Event": {
-    "uuid": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
-    "Attribute": [
-      {
-        "uuid": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce",
-        "value": "evil.com"
-      },
-      ...
-    ]
-  }
-}
-```
-
-The MISP event above once ingested in LC will be transformed to a Lookup like:
-
+Example:
 ```json
 {
   "evil.com": {
-    "misp_event": "fa781e8e-4332-4ff7-8286-f44445fb6f3a",
-    "attribute": "e9e6840a-ff90-4fbd-8ef1-f5b766adbbce"
+    "source": "some thread feed",
+    "priority": 3
   },
-  ...
+  "3322.org": {
+    "source": "from a tlp thread",
+    "priority": 3,
+    "author": "john@smith.com"
+  },
+  "eviler.net": {
+    "source": "twitter",
+    "priority": 1,
+    "twitter_link": "..."
+  }
 }
 ```
 
-LimaCharlie understand the MISP format, regardless of how it is ingested. That being
-said, the classic way of ingesting it would be to ingest the MSIP Events use an [ARL](https://github.com/refractionPOINT/authenticated_resource_locator)
-on a MISP REST API with one of the supported ARL authentication types like `basic`.
+## Ingestion
 
-For example: `[https,misp.my.corp.com/events/1234,basic,myuser:mypassword]`.
+Although the final format is JSON as described above, lookups can be ingested from various formats.
+Creating a lookup is done through the `lookup` [hive](hive.md). The record format to use when storing
+in Hive should be by providing one of the following fields:
+
+```json
+{
+  "lookup_data": {}, // This is the same as the final format of lookups. So you can ingest it directly in its final form.
+  // Parsed formats: this allows you to specify the data in different formats which LimaCharlie will parse into its final form.
+  "newline_content": "", // A simple set of newline-separated values which will be come keys of the lookup. The metadata component will be empty ({}).
+  "yaml_content": "", // This is the same format as the final "lookup_data", except provided as a YAML document.
+}
+```
+
+If you have some formats that would make your life easier, please get in touch with us so we can add support directly here.
+
+Here's a few one-liner examples of ingesting data into LimaCharlie using the CLI tool:
+
+```bash
+# As newline format
+echo -e '{"newline_content": "evil.com\n3322.org\neviler.net"}' | limacharlie hive set lookup --key my-lookup --data -
+
+# As YAML format with metadata
+echo -e '{"yaml_content": "3322.org:\n  author: john@smith.com\n  priority: 3\n  source: from a tlp thread\nevil.com:\n  priority: 3\n  source: some thread feed\neviler.net:\n  priority: 1\n  source: twitter\n  twitter_link: something"}' | limacharlie hive set lookup --key my-lookup --data -
+```
 
 #### Reference D&R Rules
 To put a Lookup "into effect", you need a [D&R rule](dr.md). The Lookup is a list of elements while
 the rule describes what you want to look for in that list.
 
-Below is a list of D&R rules describing how to lookup various common Indicators of Compromise:
+Referring to lookups uses the format: `hive://lookup/my-lookup-name`.
+
+Below is a list of D&R rules as examples of how to lookup various common Indicators of Compromise:
 
 ##### Hashes
 
@@ -144,7 +79,7 @@ Below is a list of D&R rules describing how to lookup various common Indicators 
 op: lookup
 event: CODE_IDENTITY
 path: event/HASH
-resource: 'lcr://lookup/my-hash-lookup'
+resource: 'hive://lookup/my-hash-lookup'
 ```
 
 ##### Domain Names
@@ -153,7 +88,7 @@ resource: 'lcr://lookup/my-hash-lookup'
 op: lookup
 event: DNS_REQUEST
 path: event/DOMAIN_NAME
-resource: 'lcr://lookup/my-dns-lookup'
+resource: 'hive://lookup/my-dns-lookup'
 ```
 
 ##### IP Addresses
@@ -162,5 +97,5 @@ resource: 'lcr://lookup/my-dns-lookup'
 op: lookup
 event: NETWORK_CONNECTIONS
 path: event/NETWORK_ACTIVITY/?/IP_ADDRESS
-resource: 'lcr://lookup/my-ip-lookup'
+resource: 'hive://lookup/my-ip-lookup'
 ```
