@@ -20,31 +20,33 @@ repudiate old keys, in the event the key gets leaked.
 The SID (Sensor ID) is a UUID that identifies a unique sensor.
 
 ## Platform
-The platform is a 32 bit integer (in its hex format) which identifies the exact platform the sensor runs on. Although it is
-structured with a major and minor platform, the important values are:
+The platform is a 32 bit integer (in its hex format) which identifies the exact platform the sensor runs on. Sensor telemetry will display the `plat` value in decimal format. Although it is structured with a major and minor platform, the important values are:
 
-* `0x10000000`: Windows (`windows`)
-* `0x20000000`: Linux (`linux`)
-* `0x30000000`: MacOS (`macos`)
-* `0x40000000`: iOS (unused) (`ios`)
-* `0x50000000`: Android (unused) (`android`)
-* `0x60000000`: ChromeOS (`chrome`)
-* `0x80000000`: Text (external telemetry) (`text`)
-* `0x90000000`: JSON (external telemetry) (`json`)
-* `0xA0000000`: GCP (external telemetry) (`gcp`)
-* `0xB0000000`: AWS (external telemetry) (`aws`)
-* `0xC0000000`: VMWare Carbon Black (external telemetry) (`carbon_black`)
-* `0xD0000000`: 1Password (external telemetry) (`1password`)
-* `0xE0000000`: Microsoft/Office 365 (external telemetry) (`office365`)
-* `0x01000000`: CrowdStrike (external telemetry) (`crowdstrike`)
-* `0x02000000`: XML (external telemetry) (`xml`)
-* `0x03000000`: Windows Event Logs (external telemetry) (`wel`)
-* `0x04000000`: Microsoft Defender (external telemetry) (`msdefender`)
-* `0x05000000`: Duo (external telemetry) (`duo`)
-* `0x08000000`: GitHub (external telemetry) (`github`)
-* `0x09000000`: Slack (external telemetry) (`slack`)
-* `0x0A000000`: Common Event Format (CEF) (`cef`)
-* `0x0B000000`: LimaCharlie Events (`lc_event`)
+Hex (decimal): Platform name (API name)
+* `0x10000000` (268435456): Windows (`windows`)
+* `0x20000000` (536870912): Linux (`linux`)
+* `0x30000000` (805306368): MacOS (`macos`)
+* `0x40000000` (1073741824): iOS (unused) (`ios`)
+* `0x50000000` (1342177280): Android (unused) (`android`)
+* `0x60000000` (1610612736): ChromeOS (`chrome`)
+* `0x80000000` (2147483648): Text (external telemetry) (`text`)
+* `0x90000000` (2415919104): JSON (external telemetry) (`json`)
+* `0xA0000000` (2684354560): GCP (external telemetry) (`gcp`)
+* `0xB0000000` (2952790016): AWS (external telemetry) (`aws`)
+* `0xC0000000` (3221225472): VMWare Carbon Black (external telemetry) (`carbon_black`)
+* `0xD0000000` (3489660928): 1Password (external telemetry) (`1password`)
+* `0xE0000000` (3758096384): Microsoft/Office 365 (external telemetry) (`office365`)
+* `0x01000000` (16777216): CrowdStrike (external telemetry) (`crowdstrike`)
+* `0x02000000` (33554432): XML (external telemetry) (`xml`)
+* `0x03000000` (50331648): Windows Event Logs (external telemetry) (`wel`)
+* `0x04000000` (67108864): Microsoft Defender (external telemetry) (`msdefender`)
+* `0x05000000` (83886080): Duo (external telemetry) (`duo`)
+* `0x08000000` (134217728): GitHub (external telemetry) (`github`)
+* `0x09000000` (150994944): Slack (external telemetry) (`slack`)
+* `0x0A000000` (167772160): Common Event Format (CEF) (`cef`)
+* `0x0B000000` (184549376): LimaCharlie Events (`lc_event`)
+
+Tip: If you're writing a D&R rule to target a specific platform, consider using the [`is platform` operator](https://doc.limacharlie.io/docs/documentation/4c4fab0fe5866-reference-operators#is-platform) instead of the decimal value for easier readability.
 
 ## Architecture
 The architecture is an 8 bit integer that identifies the exact architecture the sensor runs on. The important values are:
