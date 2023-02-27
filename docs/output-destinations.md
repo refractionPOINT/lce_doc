@@ -205,7 +205,7 @@ Output events and detections to [Elastic](https://www.elastic.co/).
 * `username`: user name if using username/password auth.
 * `password`: password if using username/password auth.
 * `cloud_id`: Cloud ID from Elastic.
-* `api_key`: API key using it for auth.
+* `api_key`: API key; if using it for auth. (use either username/password -or- API key)
 
 Example:
 ```yaml
