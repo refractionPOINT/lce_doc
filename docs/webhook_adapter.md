@@ -56,10 +56,10 @@ To get the relevant geo-specific domain, you can use:
 * Python SDK: `python3 -c "import limacharlie; print(limacharlie.Manager().getOrgURLs()['hooks'])"`
 
 Assuming the domain you get looks like `9157798c50af372c.hook.limacharlie.io`, the format of the URL
-would be `https://9157798c50af372c.hook.limacharlie.io/OID/HOOKNAME/SECRET`, where:
+would be `https://9157798c50af372c.hook.limacharlie.io/OID/HOOKNAME(/SECRET)`, where:
 * `OID` is the Organization ID, in the example above `8cbe27f4-aaaa-aaaa-aaaa-138cd51389cd`.
 * `HOOKNAME` is the name of the hook, in the example above `test-webhook`.
-* `SECRET` is the secret configured, in the example above `some-secret-value-hard-to-predict`.
+* `(/SECRET)` is optionally the secret configured, in the example above `some-secret-value-hard-to-predict`. You can provide the secret in the URL, or you can also provide the secret in an HTTP header named `lc-secret`.
 
 Which would give you: `https://9157798c50af372c.hook.limacharlie.io/8cbe27f4-aaaa-aaaa-aaaa-138cd51389cd/test-webhook/some-secret-value-hard-to-predict`
 
@@ -88,5 +88,5 @@ python -c "import requests; print( requests.post( 'https://9157798c50af372c.hook
 
 ### CURL
 ```bash
-curl -X POST https://9157798c50af372c.hook.limacharlie.io/8cbe27f4-aaaa-aaaa-aaaa-138cd51389cd/test-webhook/some-secret-value-hard-to-predict -H 'Content-Type: application/json' -d '{"some":"data"}'
+curl -X POST https://9157798c50af372c.hook.limacharlie.io/8cbe27f4-aaaa-aaaa-aaaa-138cd51389cd/test-webhook -H 'Content-Type: application/json' -d '{"some":"data"}' -H "lc-secret: some-secret-value-hard-to-predict"
 ```
