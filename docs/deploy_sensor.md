@@ -160,9 +160,9 @@ Preparing sensors to run properly from templates can be done in one of two ways:
 
 For solution 1, the identity files you will want to remove are:
 
-* Windows: `%windir%\system32\hcp*`
-* Linux: depending on the install location of the sensor, the `hcp*` files like `/usr/local/hcp*`.
-* MacOS: `/usr/local/hcp*`
+* Windows: in `%windir%\system32\`, files `hcp.dat`, `hcp_conf.dat` and `hcp_hbs.dat`
+* Linux: depending on the install location of the sensor, the `hcp`, `hcp_conf` and `hcp_hbs`, for example in `/usr/local/`.
+* MacOS: in `/usr/local/`, files `hcp`, `hcp_conf` and `hcp_hbs`.
 
 For solution 2, you can start a simple shell script like this to fetch the installer and run it on first boot:
 
