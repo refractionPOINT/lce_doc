@@ -727,6 +727,9 @@ optional arguments:
   --timeout TIMEOUT     number of seconds to wait for payload termination
   --is-ignore-cert      if specified, the sensor will ignore SSL cert mismatch
                         while upload the log
+  --interpreter INTERPRETER
+                        specifies that the named payload should be executed with
+                        a specific interpreter like "powershell"
 ```
 
 Note on usage scenarios for the `--is-ignore-cert` flag: If the sensor is deployed

@@ -434,3 +434,9 @@ re-running an installer will re-use the previous sensor config (where to connect
 
 `-c` to remove EVERYTHING. This means that after a `-c`, the previous sensor's identity is no longer recoverable. Installing a
 new sensor on the same host will result in a brand new sensor registering with the cloud.
+
+## Connectivity
+The default connecitivity of the EDR sensors is using pinned SSL certificate. This prevents SSL interception solutions (whether legitimate or malicious) from inspecting the traffic. Although this provides a higher level of security, it also makes some deployments more complex due to the required exceptions necessary.
+
+You can switch that behavior to use the public root CA infrastructure instead of pinned certficates. This is done by setting the `use_public_root_ca` parameter of
+the installation keys.
