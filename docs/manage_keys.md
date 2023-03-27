@@ -7,6 +7,7 @@ Installation keys are the bits of text that you give to new sensors so they may 
 * IID: Installer Id that is generated and associated with every Installation Key.
 * Tags: A list of Tags automatically applied to sensors enrolling with the key.
 * Desc: The description used to help you differentiate uses of various keys.
+* use_public_root_ca: a flag indicating if the sensor should connect to the cloud via a pinned SSL certificate (default), or using the public CA infrastructure.
 
 ## Common Scheme
 Generally speaking, we use at least one Installation Key per organization. Then we use different keys to help
