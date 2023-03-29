@@ -91,6 +91,20 @@ Configurations can be provided to the adapter in one of three ways:
 1. By specifying the configurations via the command line in the format `config-name=config-value`.
 1. By specifying the configurations via the environment variables in the format `config-name=config-value`.
 
+Here's an example config as a config file for an adapter using the `file` method of collection:
+```yaml
+file: // The root of the config is the adapter collection method.
+  client_options:
+    identity:
+      installation_key: e9a3bcdf-efa2-47ae-b6df-579a02f3a54d
+      oid: 8cbe27f4-bfa1-4afb-ba19-138cd51389cd
+    platform: json
+    sensor_seed_key: testclient3
+    mapping:
+      event_type_path: type
+  file_path: /var/log/syslog
+```
+
 ### Runtime Configuration
 
 The Adapter runtime supports some custom behaviors to make it more suitable for specific deployment scenarios:
@@ -262,6 +276,8 @@ Indexing occurs in one of 3 ways:
 1. By the built-in indexer for specific platforms like Carbon Black.
 1. By a generic indexer applied to all fields if no built-in indexer was available.
 1. Optionally, user-specific indexing guidelines.
+
+All indexes produced will feed into the main IOC Indexing functionality of LimaCharlie.
 
 #### User Defined Indexing
 An Adapter can be configured to do custom indexing on the data it feeds.
