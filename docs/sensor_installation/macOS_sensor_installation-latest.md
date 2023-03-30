@@ -114,7 +114,7 @@ To uninstall the sensor:
 
 1. Run the installer via the command line.  You'll pass the argument -c
 
-> sudo ./hcp_osx_x64_release_4.23.0 -c
+> sudo /usr/local/bin/rphcp -c
 
 <img src="https://storage.googleapis.com/limacharlie-io/doc/sensor-installation/macOS/images/Uninstallation/1-Uninstall_Progress.png" alt="Uninstall progress" style="zoom:100%;" />
 
