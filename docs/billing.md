@@ -44,7 +44,9 @@ If sensors attempt to connect to the cloud while the Quota is full, they will si
 be turned away for a short period of time. In that case, a special [sensor_over_quota](events.md#sensor_over_quota)
 will also be emitted which you can use in [D&R rules](dr.md) for automation.
 
-Quotas can be modified through the web or API, up to 200 times per Organization per month.
+To avoid frequent churn, Quota modifications are limited by:
+- Up to one quota decrease per day.
+- Any number of quota increases per day.
 
 The endpoint service includes [Outputs](outputs.md) as well as [D&R rules](dr.md) processed
 in real-time.
