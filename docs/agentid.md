@@ -45,6 +45,8 @@ Hex (decimal): Platform name (API name)
 * `0x09000000` (150994944): Slack (external telemetry) (`slack`)
 * `0x0A000000` (167772160): Common Event Format (CEF) (`cef`)
 * `0x0B000000` (184549376): LimaCharlie Events (`lc_event`)
+* `0x0C000000` (201326592): Azure Active Directory (`azure_ad`)
+* `0x0D000000` (218103808): Azure Monitor (`azure_monitor`)
 
 Tip: If you're writing a D&R rule to target a specific platform, consider using the [`is platform` operator](https://doc.limacharlie.io/docs/documentation/4c4fab0fe5866-reference-operators#is-platform) instead of the decimal value for easier readability.
 
