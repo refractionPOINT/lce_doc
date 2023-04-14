@@ -57,6 +57,8 @@ The data ingested can then parsed/mapped into JSON in the cloud by LimaCharlie a
 
 We provide built-in parsing/mapping for many popular formats (called `platform`) like:
 * 1password event logs (`1password`)
+* Azure Active Directory (`azure_ad`)
+* Azure Monitor (`azure_monitor`)
 * AWS Cloud Trail logs (`aws`)
 * CarbonBlack EDR (`carbon_black`)
 * CrowdStrike EDR (`crowdstrike`)
